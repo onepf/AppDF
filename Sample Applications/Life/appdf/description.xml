@@ -38,6 +38,7 @@ Don't be fooled by these simple rules, they create many different life forms inc
     <age-restrictions>
       <minimum-age>0</minimum-age>
     </age-restrictions>
+    <trial-version>no</trial-version>
     <gambling>no</gambling>
     <advertising>no</advertising>
     <user-generated-content>no</user-generated-content>
@@ -63,6 +64,11 @@ Don't be fooled by these simple rules, they create many different life forms inc
   <apk-files>
     <apk-file>bin/Life.apk</apk-file>
   </apk-files>
+
+  <consent>
+    <google-android-content-guidelines>yes</google-android-content-guidelines>
+    <us-export-laws>yes</us-export-laws>
+  </consent>
 
 </application>
 
