@@ -234,6 +234,584 @@
 </application-description-file>
 ```
 
+Application Store Support
+-------------
+AppDF provides universal category list that could be matched to any appstore category list. When we chose categories for the AppDF we tried to create the most detailed list to archive unambiguous mapping for any appstore.
+
+<table>
+<tr>
+<th>Feature</th>
+  <th>Google Play</th>
+  <th>Amazon AppStore</th>
+  <th>Opera Mobile Store</th>
+  <th>Yandex.Store</th>
+  <th>SlideME</th>
+  <th>Samsung Apps</th>
+  <th>NOOK- apps</th>
+  <th>AndroidPIT App Center</th>
+</tr>
+<tr>
+<td>Registration URL
+</td>
+  <td><a href="https://play.google.com/apps/publish/">Link</a></td>
+  <td><a href="https://developer.amazon.com/welcome.html">Link</a></td>
+  <td><a href="http://apps.opera.com/developers.php">Link</a></td>
+  <td><a href="https://developer.store.yandex.com/">Link</a></td>
+  <td><a href="http://slideme.org/developers">Link</a></td>
+  <td><a href="http://seller.samsungapps.com/">Link</a></td>
+  <td><a href="https://nookdeveloper.barnesandnoble.com/">Link</a></td>
+  <td><a href="http://www.androidpit.com/registration/form?dev=1">Link</a></td>
+	</tr>
+<tr>
+<td>Distribution agreement URL
+</td>
+  <td><a href="http://play.google.com/intl/ALL_en/about/developer-distribution-agreement.html">Link</a></td>
+  <td><a href="https://developer.amazon.com/help/da.html">Link</a></td>
+  <td><a href="http://apps.opera.com/docs/DistributionAgreementHandster_standard.pdf">Link</a></td>
+  <td><a href="http://legal.yandex.com/store_developer_agreement/">Link</a></td>
+  <td><a href="http://slideme.org/developer-conditions">Link</a></td>
+  <td><a href="http://seller.samsungapps.com/help/termsAndConditions.as">Link</a></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>AppDF ID</td>
+  <td>google</td>
+  <td>amazon</td>
+  <td>opera</td>
+  <td>yandex</td>
+  <td>slideme</td>
+  <td>samsung</td>
+  <td>nook</td>
+  <td>androidpit</td>
+	</tr>
+<tr>
+<td>Registration fee</td>
+  <td>$25</td>
+  <td>free</td>
+  <td>free</td>
+  <td>free</td>
+  <td>free</td>
+  <td>free</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Content premoderation</td>
+  <td>No</td>
+  <td>Yes</td>
+  <td>Yes</td>
+  <td>No</td>
+  <td>Yes</td>
+  <td>Yes</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Client Application</td>
+  <td>Yes</td>
+  <td>Yes</td>
+  <td>No</td>
+  <td>Yes</td>
+  <td>Yes</td>
+  <td>Yes</td>
+  <td>Yes</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>In-App Purchase Support</td>
+  <td>Yes</td>
+  <td>Yes</td>
+  <td>No</td>
+  <td>No</td>
+  <td>No</td>
+  <td>Yes</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>License verification support</td>
+  <td>Yes</td>
+  <td>?</td>
+  <td>
+RPN or serial numbers</td>
+  <td>No</td>
+  <td>Yes</td>
+  <td>Samsung DRM
+</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Title field name</td>
+  <td><strong>Title</strong></td>
+  <td><strong>App title</strong></td>
+  <td><strong>Title</strong></td>
+  <td><strong>Title</strong></td>
+  <td>?</td>
+  <td><strong>Application Title</strong></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Title maximum length</td>
+  <td>30</td>
+  <td>250</td>
+  <td>unlimited</td>
+  <td>unlimited</td>
+  <td>?</td>
+  <td>unlimited</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Short description field name</td>
+  <td>Promo text</td>
+  <td><strong>Short description</strong></td>
+  <td><strong>Short Description</strong></td>
+  <td>Promo text</td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Short description maximum length</td>
+  <td>80</td>
+  <td>1200</td>
+  <td>unlimited</td>
+  <td>unlimited</td>
+  <td>500</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Full description field name</td>
+  <td><strong>Description</strong></td>
+  <td><strong>Long description</strong></td>
+  <td><strong>Full Description</strong></td>
+  <td>Description</td>
+  <td>?</td>
+  <td><strong>Description</strong></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Full description maximum length</td>
+  <td>4000</td>
+  <td>4000</td>
+  <td>unlimited</td>
+  <td>unlimited</td>
+  <td>unlimited</td>
+  <td>4000</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Full description tags</td>
+  <td>?</td>
+  <td>Plain text</td>
+  <td>?Some HTML subset</td>
+  <td>Plain text</td>
+  <td>a, em, strong, cite, code, ul, ol, li, h4, h5, dl, dt, dd, img</td>
+  <td>Plain text</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Recent changes field name</td>
+  <td>Recent changes</td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>What’s new</td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Keywords field name</td>
+  <td>?</td>
+  <td>Keywords</td>
+  <td>Keywords</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>Other Tags</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Feature list field name</td>
+  <td><del>unsupported</del></td>
+  <td>
+<strong>Product feature bullets</strong>, 3-5 lines</td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Maximum APK file size</td>
+  <td>50M</td>
+  <td>Unlimited</td>
+  <td>?</td>
+  <td>Unlimited</td>
+  <td>66M</td>
+  <td>Unlimited</td>
+	</tr>
+<tr>
+<td>
+APK Expansion Files support</td>
+  <td>Yes</td>
+  <td>No</td>
+  <td>No</td>
+  <td>No</td>
+  <td>No</td>
+  <td>No</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Screenshots field name</td>
+  <td><strong>Screenshots</strong></td>
+  <td><strong>Screenshots</strong></td>
+  <td>
+<strong>Main image</strong>, Images</td>
+  <td><strong>Screenshots</strong></td>
+  <td>?</td>
+  <td><strong>Screenshots</strong></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Screenshot image</td>
+  <td>320×480, 480×800, 480×854, 1280×720, 1280×800</td>
+  <td>800×480, 1024×600, 1280×720,<br>
+1280×800, 1920×1200 (portrait or landscape)</td>
+  <td>?</td>
+  <td>?</td>
+  <td>240×180 – 640×480, &lt;500K</td>
+  <td>480×800 or 800×480</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Number of screenshots</td>
+  <td>2-8</td>
+  <td>3-10</td>
+  <td>1-3</td>
+  <td>2+</td>
+  <td>0-3</td>
+  <td>4</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Screenshot formats</td>
+  <td>
+JPG, PNG, no alpha</td>
+  <td>
+PNG, JPG
+</td>
+  <td>?</td>
+  <td>?</td>
+  <td>
+JPG, PNG, GIF
+</td>
+  <td>
+JPG, GIF, PNG
+</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Application icon field name</td>
+  <td><strong>High-res icon</strong></td>
+  <td><strong>Large icon</strong></td>
+  <td><strong>Thumbnail</strong></td>
+  <td><strong>High resolution application icon</strong></td>
+  <td>?</td>
+  <td><strong>Icon Image</strong></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Application icon resolution</td>
+  <td>512×512</td>
+  <td>512×512 + 114×114</td>
+  <td>preferably 512×512</td>
+  <td>512×512</td>
+  <td>150×150 – 500×500</td>
+  <td>135×135</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Application icon formats</td>
+  <td>
+PNG with alpha</td>
+  <td>
+PNG with alpha</td>
+  <td>?</td>
+  <td>?</td>
+  <td>
+JPG, PNG, GIF
+</td>
+  <td>
+JPG, GIF
+</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Promotion image field name</td>
+  <td>Feature Graphic</td>
+  <td>Promotional image</td>
+  <td><del>unsupported</del></td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Promotion image resolution</td>
+  <td>1024×500</td>
+  <td>1024 × 500</td>
+  <td><del>unsupported</del></td>
+  <td><del>unsupported</del></td>
+  <td>1024×500, &lt;1M</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Small promotion field name</td>
+  <td>Promo Graphic</td>
+  <td><del>unsupported</del></td>
+  <td><del>unsupported</del></td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Small promotion image resolution</td>
+  <td>180×120</td>
+  <td><del>unsupported</del></td>
+  <td><del>unsupported</del></td>
+  <td><del>unsupported</del></td>
+  <td>180×120, &lt;256K</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Promotion image formats</td>
+  <td>
+JPG, PNG no alpha</td>
+  <td>
+PNG, JPG
+</td>
+  <td><del>unsupported</del></td>
+  <td><del>unsupported</del></td>
+  <td>1024×500, &lt;1M</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>YouTube video field name</td>
+  <td>?</td>
+  <td>?</td>
+  <td>?</td>
+  <td>?</td>
+  <td>?</td>
+  <td>YouTube URL
+</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Root access option</td>
+  <td>No</td>
+  <td>No</td>
+  <td>No</td>
+  <td>No</td>
+  <td>Yes</td>
+	</tr>
+<tr>
+<td>Custom resolution setting</td>
+  <td>?</td>
+  <td>?</td>
+  <td>?</td>
+  <td>?</td>
+  <td>?</td>
+  <td>Yes</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Manual language list editinh</td>
+  <td>?</td>
+  <td>?</td>
+  <td>?</td>
+  <td>?</td>
+  <td>?</td>
+  <td>Yes</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Application type field name</td>
+  <td><strong>Application type</strong></td>
+  <td>?</td>
+  <td>?</td>
+  <td><strong>Categories</strong></td>
+  <td>?</td>
+  <td><strong>Category / Primary</strong></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Category field name</td>
+  <td><strong>Category</strong></td>
+  <td><strong>Category</strong></td>
+  <td><strong>Category</strong></td>
+  <td><strong>Categories</strong></td>
+  <td>?</td>
+  <td><strong>Category / Primary</strong></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Subcategory field name</td>
+  <td><del>Not used</del></td>
+  <td><strong>Category</strong></td>
+  <td><del>Not used</del></td>
+  <td><del>not used</del></td>
+  <td>?</td>
+  <td>Category / Secondary</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Minimum age field name</td>
+  <td><strong>Content rating</strong></td>
+  <td>
+<del>unsupported</del>, list of options instead</td>
+  <td>?</td>
+  <td><strong>Age rating</strong></td>
+  <td>?</td>
+  <td><strong>Age Restriction</strong></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Customer support / Email</td>
+  <td><strong>Contact details / Email</strong></td>
+  <td><strong>Customer support email address</strong></td>
+  <td>Contact Email</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td><strong>Support E-Mail</strong></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Customer support / Website</td>
+  <td><strong>Contact details / Website</strong></td>
+  <td><strong>Customer support website</strong></td>
+  <td><del>unsupported</del></td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>Support URL
+</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Customer support / Phone</td>
+  <td>Contact details / Phone</td>
+  <td><strong>Customer support phone</strong></td>
+  <td><del>unsupported</del></td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>EULA</td>
+  <td><del>unsupported</del></td>
+  <td><del>unsupported</del></td>
+  <td>Text or link</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Privacy policy</td>
+  <td>?</td>
+  <td>
+URL, requires if information collected</td>
+  <td>Text or link</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>“available-since” Support</td>
+  <td>?</td>
+  <td>Yes</td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>Yes</td>
+	</tr>
+<tr>
+<td>“available-until” Support</td>
+  <td>?</td>
+  <td>Yes</td>
+  <td>?</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td>Yes</td>
+	</tr>
+<tr>
+<td>Testing instructions</td>
+  <td>No</td>
+  <td>Yes</td>
+  <td>No</td>
+  <td><del>unsupported</del></td>
+  <td>?</td>
+  <td><strong>Comments to Certification Team</strong></td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+<tr>
+<td>Consent</td>
+  <td>Android Content Guidelines, US Export Laws</td>
+  <td>Export Compliance</td>
+  <td>?</td>
+  <td>no</td>
+  <td>?</td>
+  <td>no</td>
+  <td>?</td>
+  <td>?</td>
+	</tr>
+</table>
+
+### Application Categories
+
 Category List
 -------------
 AppDF provides universal category list that could be matched to any appstore category list. When we chose categories for the AppDF we tried to create the most detailed list to archive unambiguous mapping for any appstore.
@@ -249,15 +827,6 @@ AppDF provides universal category list that could be matched to any appstore cat
   <th>Yandex.Store</th>
   <th>Samsung Apps</th>
   <th>SlideMe</th>
-</tr>
-<tr>
-<td>Category</td>
-  <td>Google</td>
-  <td>Amazon</td>
-  <td>Opera</td>
-  <td>Yandex</td>
-  <td>SamsungApps</td>
-  <td>SlideMe</td>
 </tr>
 <tr>
 <td>Comics</td>
@@ -944,10 +1513,10 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td>Sports / Other</td>
 </tr>
 <tr>
-<td>Sports / <span class="caps">NCAA</span>
+<td>Sports / NCAA
 </td>
   <td>Sports</td>
-  <td>Sports / <span class="caps">NCAA</span>
+  <td>Sports / NCAA
 </td>
   <td>Entertainment</td>
   <td>Entertainment</td>
@@ -973,10 +1542,10 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td>Sports / Other</td>
 </tr>
 <tr>
-<td>Sports / <span class="caps">UFC</span>
+<td>Sports / UFC
 </td>
   <td>Sports</td>
-  <td>Sports / <span class="caps">UFC</span>
+  <td>Sports / UFC
 </td>
   <td>Entertainment</td>
   <td>Entertainment</td>
@@ -1308,14 +1877,14 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td>Communication / Instant Messaging</td>
 </tr>
 <tr>
-<td>Communication / <span class="caps">SMS</span>
+<td>Communication / SMS
 </td>
   <td>Communication</td>
   <td>Communication</td>
   <td>Communication</td>
   <td>Communication</td>
   <td>Social Networking</td>
-  <td>Communication / <span class="caps">SMS</span>
+  <td>Communication / SMS
 </td>
 </tr>
 <tr>
