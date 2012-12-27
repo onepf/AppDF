@@ -53,7 +53,7 @@ images/en/smallpromo_kr.png
 
 As you can see the application could include several APK files, the images and description could support localization and different stores require different resolution for the app icon.  Although the AppDF will automatically rescale your images to needed format if you want fine tuning you could prefer to include several sizes for the images.
 
-The only naming convention for the files inside AppDF package is that the description XML file should be called `description.xml`. You can include all localizations to the `description.xml` file or place them into separate files whos name should have form of `description_XXXX.xml`. Where XXXX could be any suffix. The system will automatically merge all such files into one. Using these additional files is optional, you can easily include all the localizations in one `description.xml` file. All other files could have any names supported by ZIP, could be placed in the top folder or in any of the subfolders. The names of the additional files are defined in the `description.xml` file.
+The only naming convention for the files inside AppDF package is that the description XML file should be called `description.xml`. You can include all localizations to the `description.xml` file or place them into separate files whos name should have form of `description_XXXX.xml`. Where XXXX could be any suffix. These additional files should have `<description>` as a root tag. The system will automatically merge all such files into one. Using these additional files is optional, you can easily include all the localizations in one `description.xml` file. All other files could have any names supported by ZIP, could be placed in the top folder or in any of the subfolders. The names of the additional files are defined in the `description.xml` file.
 
 Sample Description.xml File
 -------------
@@ -63,11 +63,7 @@ Sample Description.xml File
 
 <application-description-file version="1">
 
-<!-- "update" is an optional attribute, if set to "yes" it will signal the store that missed information can be taken from the previous version-->
-<application package="ru.yandex.shell" update="yes">
-
-  <!--This tag is optional. If missed then this information is taken from the APK files. Options: phone, tablet, tv, all or any of combinations of these values separated by comma-->
-  <form-factor>all</form-factor>
+<application package="ru.yandex.shell">
 
   <category>
     <!--Options: application, game-->
@@ -75,8 +71,6 @@ Sample Description.xml File
     <!--See the list of AppDF categories and subcategories in the documentation-->
     <category>finance</category>
     <subcategory>investing</subcategory>
-    <!--Optional: You can specify special handling for some stores by manully setting category name, in most cases it is not needed because the stores will be able to map AppDF category to their local category list-->
-    <x-amazon>Finance / Banking</x-amazon>
   </category>
 
   <!--Language is set in two letter ISO 639-1 codes, default is an optional attribute, if set this information is used for other languages where a particular native text is missed-->
@@ -89,6 +83,11 @@ Sample Description.xml File
     <short-description>Slightly longer version of my short description</short-description>
     <short-description>Even more longer version of my short description text</short-description>
     <full-description>My full description here</full-description>
+	<!--Optional tag. You can include full description with HTML markup for those stores that support such description-->
+    <full-description html="yes">My full description here</full-description>
+	<!--Optional tag. You can include full description without list of feeatures. It will be used by those stores that support separate feature list tag-->
+    <full-description featureless="yes">My full description here</full-description>
+	<!--Will be used only be some stores, most of the stores do not use this tag-->
     <features>
       <feature>New dialer</feature>
       <feature>Home screen</feature>
@@ -98,33 +97,44 @@ Sample Description.xml File
     <!--This tag is shown as an example how custom store localizable text information can be added, for other store specific fields see "store-specific" top level tag-->
     <x-opera-app-registration-instructions>Sample text here</x-opera-app-registration-instructions>
     <youtube-video>x8723jw2KL</youtube-video>
+
+    <!--Optional tag, some stores require it for apps that collect personal information-->
+    <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
+
+    <!--Optional tag, if presented it give custom EULA that some stores will show before installation-->
+    <eula></eula>
+
+    <images>
+	  <!--Appp icon should have 512x512 size-->
+      <app-icon size=512">icon.png</app-icon>
+	  <!--Optionally you could include application icon in different sizes. If missed AppDF will automatically resize your icon-->
+      <app-icon size="135">icon_135x135.png</app-icon>
+      <app-icon size="144">icon_144x144.png</app-icon>
+      <promo>promo.png</promo>
+      <feature>feature.png</feature>
+      <!--Minimum two screenshots should be presented-->
+	  <screenshots>
+        <screenshot>screenshot01_en.png</screenshot>
+        <screenshot>screenshot02_en.png</screenshot>
+        <screenshot>screenshot03_en.png</screenshot>
+        <screenshot>screenshot04_en.png</screenshot>
+        <screenshot>screenshot05_en.png</screenshot>
+    </images>
   </description>
 
   <description language="ru">
     <title>Яндекс.Shell</title>
+
+    <images>
+      <screenshot>screenshot01_ru.png</screenshot>
+      <screenshot>screenshot02_ru.png</screenshot>
+      <screenshot>screenshot03_ru.png</screenshot>
+    </images>
+
   </description>
 
-  <!--Language is set in two letter ISO 639-1 codes, default is an optional attribute, if set this information is used for other languages where a particular image is missed-->
-  <images language="en" default="yes">
-    <app-icon>icon.png</app-icon>
-    <promo>promo.png</promo>
-    <feature>feature.png</feature>
-    <!--Minimum two screenshots should be presented-->
-    <screenshot>screenshot01_en.png</screenshot>
-    <screenshot>screenshot02_en.png</screenshot>
-    <screenshot>screenshot03_en.png</screenshot>
-    <screenshot>screenshot04_en.png</screenshot>
-    <screenshot>screenshot05_en.png</screenshot>
-  </images>
 
-  <images language="ru">
-    <screenshot>screenshot01_ru.png</screenshot>
-    <screenshot>screenshot02_ru.png</screenshot>
-    <screenshot>screenshot03_ru.png</screenshot>
-  </images>
-
-  <!--All sub-tags are required, possible options are "no", "light", "strong"-->
-  <content-rating>
+  <content-description>
     <age-restrictions>
       <minimum-age>12</minimum-age>
       <!--Possible values are 3, 7, 12, 16, 18. "certificate" attribute is optional-->
@@ -140,22 +150,23 @@ Sample Description.xml File
       <!--Possible values are 0, 6, 12, 16, 18. "certificate" attribute is optional-->
       <rating-certificate type="FSK" certificate="whirl-pegi.pdf">0</rating-certificate>
     </age-restrictions>
-    <!--Set to "yes" if this application is a trial version of another application. Optional attribute full-version defines package name of the corresponding full version-->
-    <trial-version full-version="com.yandex.shellfullversion">no</trial-version>
-    <in-app-billing>no</in-app-billing>
-    <gambling>no</gambling>
-    <advertising>no</advertising>
-    <user-generated-content>no</user-generated-content>
-    <user-to-user-communications>no</user-to-user-communications>
-    <account-creation>no</account-creation>
-    <personal-information-collection>no</personal-information-collection>
-    <content-properties>
+	<included-activities>
+      <in-app-billing>no</in-app-billing>
+      <gambling>no</gambling>
+      <advertising>no</advertising>
+      <user-generated-content>no</user-generated-content>
+      <user-to-user-communications>no</user-to-user-communications>
+      <account-creation>no</account-creation>
+      <personal-information-collection>no</personal-information-collection>
+	</included-activities>
+    <!--All sub-tags are required, possible options are "no", "light", "strong"-->
+    <content-descriptors>
       <cartoon-violence>no</cartoon-violence>
       <realistic-violence>no</realistic-violence>
       <!--May contain profanity, sexual innuendo, threats, and all manner of slurs and epithets.-->
-      <bad-language>no</<bad-language>
+      <bad-language>no</bad-language>
       <!--May contain scenes that are considered too disturbing or frightening to younger or more emotionally vulnerable players.-->
-      <fear>yes</fear>
+      <fear>light</fear>
       <!--Sexual and suggestive content. May contain references to sexual attraction or sexual intercourse. Also may contain nudity and characters dressed in suggestive clothing.-->
       <sexual-content>no</sexual-content>
       <!--May contain references to illegal drugs or a fictional substance that has parallels to real-life illegal drugs (in use, possession, or sale).-->
@@ -165,27 +176,29 @@ Sample Description.xml File
       <!--May contain references to alcohol-->
       <alcohol>no</alcohol>
       <!--May contain references to smoking or tobacco-->
-      <smoking>no</smoking>
+      <smoking>strong</smoking>
       <!--May contain cruelty or harassment based on race, ethnicity, gender, or sexual preferences.-->
       <discrimination>no</discrimination>
-    </content-properties>
-  </content-rating>
+    </content-descriptors>
+  </content-description>
 
-  <!--Optional tag, if missed all the countries are included. exception attribute is optional, if true then the country list set the list of countries where app is NOT available-->
-  <availability-country-list exception="true">
-    <!--Two symbol ISO 3166-1 country code -->
-    <country>en</country>
-    <country>ru</country>
-    <country>de</country>
-  <availability-country-list>
+  <availability>
+    <!--Optional tag, if missed all the countries are included-->
+    <countries>
+      <!--Two symbol ISO 3166-1 country code -->
+      <include>en</include>
+      <include>ru</include>
+      <exclude>de</exclude>
+    <countries>
 
-  <!--Optional tag, if missed the app become available immediatly without experiation date-->
-  <availability-period>
-    <!--Optional tag, if missed the app become available immediatly -->
-    <available-since year="2012" month="12" day="23"/>
-    <!--Optional tag, if missed the app is without experiation date-->    
-    <available-until year="2013" month="12" day="23"/>
-  </availability-period>
+    <!--Optional tag, if missed the app become available immediatly without experiation date-->
+    <period>
+      <!--Optional tag, if missed the app become available immediatly -->
+      <ince year="2012" month="12" day="23"/>
+      <!--Optional tag, if missed the app is without experiation date-->    
+      <until year="2013" month="12" day="23"/>
+    </period>
+  </availability>	
 
   <!--If free attribute is set to "true" then all the subtags are ignored. -->
   <!--If app is not free then "base-price" is required. currency is set in three cappital letter ISO 4217 currency code -->
@@ -196,18 +209,17 @@ Sample Description.xml File
     <local-price country="de" currency="EUR">3.95</local-price>
     <local-price country="fr" currency="EUR">3.95</local-price>
     <local-price country="ru" currency="RUB">99</local-price>
+    <!--Available for free apps only. Set to "yes" if this application is a trial version of another application. Optional attribute full-version defines package name of the corresponding full version-->
+    <trial-version full-version="com.yandex.shellfullversion">yes</trial-version>
   </price>
 
   <apk-files>
-    <apk-file>yandexhell.apk</apk-file>
+    <apk-file-with-extnsion>
+	  <apf-file>yandexhell4.apk</apk-file>
+	  <extension>extensionfile.zip</extension>
+	</apk-file-with-extnsion>
+    <apk-file>yandexhell3.apk</apk-file>
   </apk-files>
-
-  <!--Optional tag, if missed the license is considered as proprietary-->
-  <agreements>
-    <license-type>apache2</license-type>
-    <!--Optional tag, if presented it give custom EULA that some stores will show before installation-->
-    <eula></eula>
-  </agreements>
 
   <!--Optional tag, add it if the application has some special requirements-->
   <requirements>
@@ -216,8 +228,6 @@ Sample Description.xml File
       <root>no</root>
       <!--Optional tag, set to yes, if your application requires Google Mobile Services, will dramatically limit supported stores-->
       <gms>no</gms>
-      <!--Optional tag, set to yes, if your application requires Samsung S-Pen. Example of store-specific tags-->
-      <x-samsung-s-pen></x-samsung-s-pen> 
     </features>
 
     <!--Optional tag, if missed this information is taked from the APK files. All languages are defined by their two letter ISO 639-1 codes language codes-->
@@ -229,23 +239,27 @@ Sample Description.xml File
       <language>it</language>
     </supported-languages>
 
-    <!--Optional tag, if missed information about the supported devices is taken from APK file. Use his tag if you want to add some exceptions-->
+    <!--Optional tag, if missed information about the supported devices is taken from the APK file. Use this tag if you want to add some exceptions-->
     <supported-devices>
       <exclude>kyleopen</exclude>
       <exclude>SHW-M130K</exclude>
     </supported-devices>
 
-    <!--Optional tag, if missed information about the supported screen resolutions is taken from APK file. Use his tag if you want to add some exceptions-->
+    <!--Optional tag, if missed information about the supported screen resolutions is taken from the APK file. Use this tag if you want to add some exceptions-->
     <supported-resolutions>
       <exclude>480x856</exclude>
       <include>240x400</include>
     </supported-resolutions>
-
   </requirements>
 
-  <!--Optional tag that collects some store specific information, some store specific information could be a part of other tags with "x-" prefix-->
+  <!--Optional tag that collects some store specific information-->
+  <!--Top level subtags correspond to store ids, see the documentation for the list of these ids-->
+  <!--The store tags could also include replacement of any of the subtags from the <application> tag. See -->
   <store-specific>
-    <x-amazon>
+    <amazon>
+      <!--Options: phone, tablet, all-->
+      <form-factor>all</form-factor>
+      <!--Optional tag, default value is no-->
       <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
       <apply-amazon-drm>yes</apply-amazon-drm>
       <kindle-support>
@@ -255,15 +269,24 @@ Sample Description.xml File
         <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
       </kindle-support>
       <binary-alias>Version 1</binary-alias>
-    </x-amazon>
-    <x-samsung>
+    </amazon>
+    <samsung>
+      <!--Options: tv, phone, tablet, or any combination in comma separated string-->
+      <form-factor>phone,tablet</form-factor>
+      <!--Optional tag, set to yes, if your application uses Samsung Zirconia DRM protection-->
       <contains-zirconia-protection>yes</contains-zirconia-protection>
+      <!--Optional tag, set to yes, if your application requires Samsung S-Pen-->
+      <s-pen>yes</s-pen> 
       <!-- Samsung requires each app to have 2-5 tags -->
       <tags>
         <tag>Education / Video</tag>
         <tag>Music / Album</tag>
       </tags>
-    </x-samsung>
+    </samsung>
+    <slideme>
+      <!--Optional tag, if missed the license is considered as proprietary-->
+	  <license-type>apache2</license-type>
+    </slideme>
   </store-specific>
 
   <!--Special requirements to test your app. maximum characters in case of Amazon: 4000-->
@@ -280,10 +303,9 @@ Sample Description.xml File
 
   <!--Optional tag, if missed customer support info from the account is used-->
   <customer-support>
-    <phone></phone>
+    <phone>+1 (555) 1234-56-78</phone>
     <email>support@yandex-team.ru</email>
     <website>http://www.yandex.ru/support</website>
-    <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
   </customer-support>
 
 </application>
