@@ -291,6 +291,156 @@ Sample Description.xml File
 </application-description-file>
 ```
 
+Description.xml Structure
+-------------
+
+`description.xml` is an XML file in UTF-8 encoding. Here is a tree of its tags:
+
+```xml
+<application-description-file>
+
+  <application>
+
+    <form-factor>
+    <category>
+      <type/>
+      <category/>
+      <subcategory/>
+    </category>
+
+    <description>
+      <title>
+      <keywords>
+      <short-description>
+      <full-description>
+      <features>
+        <feature/>
+      </features>
+      <recent-changes/>
+      <youtube-video/>
+      <x-opera-app-registration-instructions/>
+    </description>
+
+    <images>
+      <app-icon/>
+      <promo/>
+      <feature/>
+      <screenshot/>
+    </images>
+
+    <content-rating>
+      <age-restrictions>
+        <minimum-age/>
+        <rating-certificate/>
+      </age-restrictions>
+      <trial-version/>
+      <in-app-billing/>
+      <gambling/>
+      <advertising/>
+      <user-generated-content/>
+      <user-to-user-communications/>
+      <account-creation/>
+      <personal-information-collection/>
+      <content-properties>
+        <cartoon-violence/>
+        <realistic-violence/>
+        <bad-language/>
+        <fear/>
+        <sexual-content/>
+        <drugs/>no</drugs>
+        <gambling-refference/>
+        <alcohol/>
+        <smoking/>
+        <discrimination/>
+      </content-properties>
+    </content-rating>
+
+    <availability-country-list>
+      <country/>
+    <availability-country-list>
+
+    <availability-period>
+      <available-since/>
+      <available-until/>
+    </availability-period>
+
+    <price>
+      <base-price/>
+      <local-price/>
+    </price>
+
+    <apk-files>
+      <apk-file/>
+    </apk-files>
+
+    <agreements>
+      <license-type/>
+      <eula/>
+    </agreements>
+
+    <requirements>
+      <features>
+        <root/>
+        <gms/>
+        <x-samsung-s-pen/>
+      </features>
+
+      <supported-languages>
+        <language/>
+      </supported-languages>
+
+      <supported-devices>
+        <include/>
+        <exclude/>
+      </supported-devices>
+
+      <supported-resolutions>
+        <include/>
+        <exclude/>
+      </supported-resolutions>
+
+    </requirements>
+
+    <store-specific>
+      <x-amazon>
+        <free-app-of-the-day-eligibility/>
+        <apply-amazon-drm/>
+        <kindle-support>
+          <kindle-fire-first-generation/>
+          <kindle-fire/>
+          <kindle-fire-hd/>
+          <kindle-fire-hd-8-9/>
+        </kindle-support>
+        <binary-alias/>
+      </x-amazon>
+      <x-samsung>
+        <contains-zirconia-protection/>
+        <tags>
+          <tag/>
+        </tags>
+      </x-samsung>
+    </store-specific>
+
+    <testing-instructions/>
+
+    <consent>
+      <google-android-content-guidelines/>
+      <us-export-laws/>
+    </consent>
+
+    <customer-support>
+      <phone/>
+      <email/>
+      <website/>
+      <privacy-policy/>
+    </customer-support>
+
+  </application>
+
+</application-description-file>
+```
+
+
 Application Store Support
 -------------
 AppDF provides universal category list that could be matched to any appstore category list. When we chose categories for the AppDF we tried to create the most detailed list to archive unambiguous mapping for any appstore.
@@ -305,7 +455,6 @@ AppDF provides universal category list that could be matched to any appstore cat
   <th>SlideME</th>
   <th>Samsung Apps</th>
   <th>NOOK- apps</th>
-  <th>AndroidPIT App Center</th>
 </tr>
 <tr>
 <td>Registration URL
@@ -317,8 +466,7 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td><a href="http://slideme.org/developers">Link</a></td>
   <td><a href="http://seller.samsungapps.com/">Link</a></td>
   <td><a href="https://nookdeveloper.barnesandnoble.com/">Link</a></td>
-  <td><a href="http://www.androidpit.com/registration/form?dev=1">Link</a></td>
-	</tr>
+</tr>
 <tr>
 <td>Distribution agreement URL
 </td>
@@ -329,8 +477,7 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td><a href="http://slideme.org/developer-conditions">Link</a></td>
   <td><a href="http://seller.samsungapps.com/help/termsAndConditions.as">Link</a></td>
   <td>?</td>
-  <td>?</td>
-	</tr>
+</tr>
 <tr>
 <td>AppDF ID</td>
   <td>google</td>
@@ -340,8 +487,7 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td>slideme</td>
   <td>samsung</td>
   <td>nook</td>
-  <td>androidpit</td>
-	</tr>
+</tr>
 <tr>
 <td>Registration fee</td>
   <td>$25</td>
@@ -351,8 +497,7 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td>free</td>
   <td>free</td>
   <td>?</td>
-  <td>?</td>
-	</tr>
+</tr>
 <tr>
 <td>Content premoderation</td>
   <td>No</td>
@@ -362,8 +507,7 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td>Yes</td>
   <td>Yes</td>
   <td>?</td>
-  <td>?</td>
-	</tr>
+</tr>
 <tr>
 <td>Client Application</td>
   <td>Yes</td>
@@ -373,8 +517,7 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td>Yes</td>
   <td>Yes</td>
   <td>Yes</td>
-  <td>?</td>
-	</tr>
+</tr>
 <tr>
 <td>In-App Purchase Support</td>
   <td>Yes</td>
@@ -384,21 +527,17 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td>No</td>
   <td>Yes</td>
   <td>?</td>
-  <td>?</td>
-	</tr>
+</tr>
 <tr>
 <td>License verification support</td>
   <td>Yes</td>
   <td>?</td>
-  <td>
-RPN or serial numbers</td>
+  <td>RPN or serial numbers</td>
   <td>No</td>
   <td>Yes</td>
-  <td>Samsung DRM
-</td>
+  <td>Samsung DRM</td>
   <td>?</td>
-  <td>?</td>
-	</tr>
+</tr>
 <tr>
 <td>Title field name</td>
   <td><strong>Title</strong></td>
@@ -408,8 +547,7 @@ RPN or serial numbers</td>
   <td>?</td>
   <td><strong>Application Title</strong></td>
   <td>?</td>
-  <td>?</td>
-	</tr>
+</tr>
 <tr>
 <td>Title maximum length</td>
   <td>30</td>
@@ -419,8 +557,7 @@ RPN or serial numbers</td>
   <td>?</td>
   <td>unlimited</td>
   <td>?</td>
-  <td>?</td>
-	</tr>
+</tr>
 <tr>
 <td>Short description field name</td>
   <td>Promo text</td>
@@ -430,8 +567,7 @@ RPN or serial numbers</td>
   <td>?</td>
   <td><del>unsupported</del></td>
   <td>?</td>
-  <td>?</td>
-	</tr>
+</tr>
 <tr>
 <td>Short description maximum length</td>
   <td>80</td>
@@ -441,8 +577,7 @@ RPN or serial numbers</td>
   <td>500</td>
   <td><del>unsupported</del></td>
   <td>?</td>
-  <td>?</td>
-	</tr>
+</tr>
 <tr>
 <td>Full description field name</td>
   <td><strong>Description</strong></td>
