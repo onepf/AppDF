@@ -431,7 +431,11 @@ Example:
 
 #### description/title
 
-Required. No attributes. Contains application name. As everything in the `description` section is can be localized.
+Required. 
+No attributes. 
+Maximum length: 30.
+
+Application name, shown in the application list. As everything in the `description` section is can be localized.
 
 <table>
   <tr>
@@ -454,7 +458,36 @@ Required. No attributes. Contains application name. As everything in the `descri
 
 #### description/keywords
 #### description/short-description
+
 #### description/full-description
+
+Required. 
+Attributes: `html`, `featureless`. 
+Maximum length: 4000.
+
+Full application description shown on the product page. You can include several copies of your application description, one with HTML markup and one without. The stores will use one of these descriptions depending on do they support HTML in the description field or not. 
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Maximum length</th>
+    <th>Markup support</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Product Details / Title</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>30</td>
+    <td>simple HTML, no links</td>
+  </tr>
+</table>
+
 #### description/features
 #### description/recent-changes
 #### description/x-opera-app-registration-instructions
