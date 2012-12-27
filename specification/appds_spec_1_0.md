@@ -1,4 +1,61 @@
-﻿Sample Description.xml File
+﻿AppDF File Structure
+-------------
+
+An AppDF file is a ZIP archive where all the files describing the application are collected. Here is an example of a simple AppDF file content:
+```
+description.xml
+Life.apk
+icon.png
+screenshot01.png
+screenshot02.png
+screenshot03.png
+screenshot04.png
+```
+
+As you see there are just few files: APK file, application icon, screenshot and description.xml file that contains all the information about the application (title, description, category, parental control info, requirements, etc). 
+
+Let's consider more advanced example of AppDF package:
+```
+description.xml
+description_fr.xml
+description_de.xml
+descriptionkr.xml
+Life_ics.apk
+Life_fro.apk
+images/icon114x114.png
+images/icon135x135.png
+images/icon512x512.png
+images/en/screenshot01_en.png
+images/en/screenshot02_en.png
+images/en/screenshot03_en.png
+images/en/screenshot04_en.png
+images/en/largepromo_en.png
+images/en/smallpromo_en.png
+images/fr/screenshot01_fr.png
+images/fr/screenshot02_fr.png
+images/fr/screenshot03_fr.png
+images/fr/screenshot04_fr.png
+images/fr/largepromo_fr.png
+images/fr/smallpromo_fr.png
+images/de/screenshot01_de.png
+images/de/screenshot02_de.png
+images/de/screenshot03_de.png
+images/de/screenshot04_de.png
+images/en/screenshot01_kr.png
+images/en/screenshot02_kr.png
+images/en/screenshot03_kr.png
+images/en/screenshot04_kr.png
+images/en/largepromo_de.png
+images/en/smallpromo_de.png
+images/en/largepromo_kr.png
+images/en/smallpromo_kr.png
+```
+
+As you can see the application could include several APK files, the images and description could support localization and different stores require different resolution for the app icon.  Although the AppDF will automatically rescale your images to needed format if you want fine tuning you could prefer to include several sizes for the images.
+
+The only naming convention for the files inside AppDF package is that the description XML file should be called `description.xml`. You can include all localizations to the `description.xml` file or place them into separate files whos name should have form of `description_XXXX.xml`. Where XXXX could be any suffix. The system will automatically merge all such files into one. Using these additional files is optional, you can easily include all the localizations in one `description.xml` file. All other files could have any names supported by ZIP, could be placed in the top folder or in any of the subfolders. The names of the additional files are defined in the `description.xml` file.
+
+Sample Description.xml File
 -------------
 
 ```xml
