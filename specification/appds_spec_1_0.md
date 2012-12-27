@@ -440,6 +440,25 @@ Description.xml Structure
 </application-description-file>
 ```
 
+Let's consider just top level categories:
+
+```xml
+<form-factor>
+<category>
+<description>
+<images>
+<content-rating>
+<availability-country-list>
+<availability-period>
+<price>
+<apk-files>
+<agreements>
+<requirements>
+<store-specific>
+<testing-instructions/>
+<consent>
+<customer-support>
+```
 
 Application Store Support
 -------------
@@ -2822,3 +2841,69 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td>Fun &amp; Games / Sports</td>
 </tr>
 </table>
+
+Rating System
+-------------
+
+There is no universal content rating system (aka parental control rating, aka minimum age). Different stores uses different systems. This table provides mapping of AppDF rating system to all the main application stores.
+
+<table>
+<tr>
+  <th>AppDF Rating</th>
+  <th>Google Play</th>
+  <th>Amazon AppStore</th>
+  <th>Opera Store</th>
+  <th>Yandex.Store</th>
+  <th>SamsungApps</th>
+  <th>SlideMe</th>
+</tr>
+<tr>
+  <td>3</td>
+  <td>Everyone</td>
+  <td><del>custom</del></td>
+  <td>?</td>
+  <td>Children</td>
+  <td>4</td>
+  <td>G: General Audiences (for all ages)</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>Low maturity</td>
+  <td><del>custom</del></td>
+  <td>?</td>
+  <td>?</td>
+  <td>12</td>
+  <td>PG: Parental Guidance Suggested (may not be suitable for children)</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td>Medium maturity</td>
+  <td><del>custom</del></td>
+  <td>?</td>
+  <td>Teenager</td>
+  <td>12</td>
+  <td>PG-13: Parents Strongly Cautioned (may not be suitable for children under 13)</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td>?</td>
+  <td><del>custom</del></td>
+  <td>?</td>
+  <td>?</td>
+  <td>16</td>
+  <td>R: Restricted (under 17 requires accompanying adult guardian)</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td>High maturity</td>
+  <td><del>custom</del></td>
+  <td>?</td>
+  <td>Adult</td>
+  <td>18</td>
+  <td>NC-17: Not allowed for 17 and under</td>
+</tr>
+</table>
+
+### Notes
+1. Amazon hasn't one field for application rating but uses several parameters (nudity, violation, etc)
+2. Samsung uses minimum age parametr along with several other attributes that define application rating according to the standard certification systems (PEGI, ESRB, etc)
