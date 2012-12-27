@@ -328,7 +328,7 @@ Example:
 </categorization>
 ```
 
-#### type
+#### categorization/type
 
 Required. No attributes. Value could be either `application` or `game`.
 
@@ -349,7 +349,7 @@ Required. No attributes. Value could be either `application` or `game`.
   </tr>
 </table>
 
-#### category
+#### categorization/category
 
 Required. No attributes. AppDF format has its own list of categories for both games and applications. This category list is developed to be easily mapped to any of the application store category lists.
 
@@ -368,7 +368,7 @@ Required. No attributes. AppDF format has its own list of categories for both ga
   </tr>
 </table>
 
-#### subcategory
+#### categorization/subcategory
 
 Required. No attributes. Although some stores don't use subcategories AppDF includes as detailed category information as possible. It is always easy to broaden detailed AppDF category+subcategory information to a less detailed particular store category list.
 
@@ -429,21 +429,43 @@ Example:
 </description>
 ```
 
-#### title
-#### keywords
-#### short-description
-#### full-description
-#### features
-#### recent-changes
-#### x-opera-app-registration-instructions
-#### youtube-video
-#### privacy-policy
-#### eula
-#### images
-##### app-icon
-##### promo
-##### feature
-##### screenshots
+#### description/title
+
+Required. No attributes. Contains application name. As everything in the `description` section is can be localized.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Maximum length</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Product Details / Title</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>30</td>
+  </tr>
+</table>
+
+#### description/keywords
+#### description/short-description
+#### description/full-description
+#### description/features
+#### description/recent-changes
+#### description/x-opera-app-registration-instructions
+#### description/youtube-video
+#### description/privacy-policy
+#### description/eula
+#### description/images
+##### description/images/app-icon
+##### description/images/promo
+##### description/images/feature
+##### description/images/screenshots
 
 
 ### content-description
