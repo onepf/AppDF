@@ -1,4 +1,4 @@
-﻿AppDF File Structure
+AppDF File Structure
 -------------
 
 An AppDF file is a ZIP archive where all the files describing the application are collected. Here is an example of a simple AppDF file content:
@@ -65,13 +65,13 @@ Sample Description.xml File
 
 <application package="ru.yandex.shell">
 
-  <category>
+  <categorization>
     <!--Options: application, game-->
     <type>application</type>
     <!--See the list of AppDF categories and subcategories in the documentation-->
     <category>finance</category>
     <subcategory>investing</subcategory>
-  </category>
+  </categorization>
 
   <!--Language is set in two letter ISO 639-1 codes, default is an optional attribute, if set this information is used for other languages where a particular native text is missed-->
   <description language="en" default="yes">
@@ -316,25 +316,44 @@ Sample Description.xml File
 Description.xml Structure
 -------------
 
-`description.xml` is an XML file in UTF-8 encoding. Let's consider just top level tags:
+### <categorization>
 
-```xml
-<form-factor>
-<category>
-<description>
-<images>
-<content-rating>
-<availability-country-list>
-<availability-period>
-<price>
-<apk-files>
-<agreements>
-<requirements>
-<store-specific>
-<testing-instructions/>
-<consent>
-<customer-support>
-```
+#### <type>
+
+Required. Could be either `application` or `game`.
+
+Stores support:
+<table>
+  <tr>
+    <th>Store</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Possible values</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Categorization / Application Type</td>
+    <td>Yes</td>
+    <td>Applications, Games</td>
+  </tr>
+</table>
+
+#### <category>
+#### <subcategory>
+
+
+### <description> 
+### <content-description>
+### <availability>
+### <price>
+### <apk-files>
+### <requirements>
+### <store-specific>
+### <testing-instructions>
+### <consent>
+### <customer-support>
 
 Application Store Support
 -------------
