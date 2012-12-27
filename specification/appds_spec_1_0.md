@@ -465,7 +465,29 @@ Required.
 Attributes: `html`, `featureless`. 
 Maximum length: 4000.
 
-Full application description shown on the product page. You can include several copies of your application description, one with HTML markup and one without. The stores will use one of these descriptions depending on do they support HTML in the description field or not. 
+
+Full application description shown on the product page. You can include several copies of your application description, one with HTML markup and one without. The stores will use one of these descriptions depending on do they support HTML in the description field or not. In the same way you can include description with included feature list and one without. The one without will be used for the stores that use a separate feature list (to avoid feature list duplication).
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>Default</th>
+    <th>How it works</th>
+  </tr>
+  <tr>
+    <td>html</td>
+    <td>yes,no</td>
+    <td>no</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>featureless</td>
+    <td>yes,no</td>
+    <td>no</td>
+    <td></td>
+  </tr>
+</table>
 
 <table>
   <tr>
