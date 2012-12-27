@@ -119,6 +119,7 @@ Sample Description.xml File
         <screenshot>screenshot03_en.png</screenshot>
         <screenshot>screenshot04_en.png</screenshot>
         <screenshot>screenshot05_en.png</screenshot>
+      </screenshot>
     </images>
   </description>
 
@@ -316,16 +317,24 @@ Sample Description.xml File
 Description.xml Structure
 -------------
 
-### <categorization>
+### categorization
 
-#### <type>
+Example:
+```xml
+<categorization>
+  <type>application</type>
+  <category>finance</category>
+  <subcategory>investing</subcategory>
+</categorization>
+```
 
-Required. Could be either `application` or `game`.
+#### type
 
-Stores support:
+Required. No attributes. Value could be either `application` or `game`.
+
 <table>
   <tr>
-    <th>Store</th>
+    <th>Store support</th>
     <th>Supported</th>
     <th>Name</th>
     <th>Required</th>
@@ -340,20 +349,112 @@ Stores support:
   </tr>
 </table>
 
-#### <category>
-#### <subcategory>
+#### category
+
+Required. No attributes. AppDF format has its own list of categories for both games and applications. This category list is developed to be easily mapped to any of the application store category lists.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Categorization / Category</td>
+    <td>Yes</td>
+  </tr>
+</table>
+
+#### subcategory
+
+Required. No attributes. Although some stores don't use subcategories AppDF includes as detailed category information as possible. It is always easy to broaden detailed AppDF category+subcategory information to a less detailed particular store category list.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+### description 
+
+Example:
+```xml
+<description language="en" default="yes">
+  <title>Yandex.Shell</title>
+  <keywords>shell, homescreen, launcher</keywords>
+  <short-description>My short description</short-description>
+  <short-description>Slightly longer version of my short description</short-description>
+  <short-description>Even more longer version of my short description text</short-description>
+  <full-description>My full description here</full-description>
+  <full-description html="yes">My full description here</full-description>
+  <full-description featureless="yes">My full description here</full-description>
+  <features>
+    <feature>New dialer</feature>
+    <feature>Home screen</feature>
+    <feature>3D interface</feature>
+  </features>
+  <recent-changes>It is a description of what was changed in the latest version</recent-changes>
+  <x-opera-app-registration-instructions>Sample text here</x-opera-app-registration-instructions>
+  <youtube-video>x8723jw2KL</youtube-video>
+
+  <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
+  <eula></eula>
+
+  <images>
+    <app-icon size=512">icon.png</app-icon>
+    <app-icon size="135">icon_135x135.png</app-icon>
+    <app-icon size="144">icon_144x144.png</app-icon>
+    <promo>promo.png</promo>
+    <feature>feature.png</feature>
+    <screenshots>
+      <screenshot>screenshot01_en.png</screenshot>
+      <screenshot>screenshot02_en.png</screenshot>
+      <screenshot>screenshot03_en.png</screenshot>
+      <screenshot>screenshot04_en.png</screenshot>
+      <screenshot>screenshot05_en.png</screenshot>
+    </screenshots>
+  </images>
+</description>
+```
+
+#### title
+#### keywords
+#### short-description
+#### full-description
+#### features
+#### recent-changes
+#### x-opera-app-registration-instructions
+#### youtube-video
+#### privacy-policy
+#### eula
+#### images
+##### app-icon
+##### promo
+##### feature
+##### screenshots
 
 
-### <description> 
-### <content-description>
-### <availability>
-### <price>
-### <apk-files>
-### <requirements>
-### <store-specific>
-### <testing-instructions>
-### <consent>
-### <customer-support>
+### content-description
+### availability
+### price
+### apk-files
+### requirements
+### store-specific
+### testing-instructions
+### consent
+### customer-support
 
 Application Store Support
 -------------
