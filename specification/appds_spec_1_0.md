@@ -106,7 +106,7 @@ Sample Description.xml File
 
     <images>
 	  <!--Appp icon should have 512x512 size-->
-      <app-icon size=512">icon.png</app-icon>
+      <app-icon size="512">icon.png</app-icon>
 	  <!--Optionally you could include application icon in different sizes. If missed AppDF will automatically resize your icon-->
       <app-icon size="135">icon_135x135.png</app-icon>
       <app-icon size="144">icon_144x144.png</app-icon>
@@ -370,7 +370,10 @@ Required. No attributes. AppDF format has its own list of categories for both ga
 
 #### categorization/subcategory
 
-Required. No attributes. Although some stores don't use subcategories AppDF includes as detailed category information as possible. It is always easy to broaden detailed AppDF category+subcategory information to a less detailed particular store category list.
+Required. 
+No attributes. 
+
+Although some stores don't use subcategories AppDF includes as detailed category information as possible. It is always easy to broaden detailed AppDF category+subcategory information to a less detailed particular store category list.
 
 <table>
   <tr>
@@ -413,7 +416,7 @@ Example:
   <eula></eula>
 
   <images>
-    <app-icon size=512">icon.png</app-icon>
+    <app-icon size="512">icon.png</app-icon>
     <app-icon size="135">icon_135x135.png</app-icon>
     <app-icon size="144">icon_144x144.png</app-icon>
     <promo>promo.png</promo>
@@ -704,7 +707,7 @@ This tag contains all application image assets. As everything inside the `descri
 Example:
 ```xml
 <images>
-  <app-icon size=512">icon.png</app-icon>
+  <app-icon size="512">icon.png</app-icon>
   <app-icon size="135">icon_135x135.png</app-icon>
   <app-icon size="144">icon_144x144.png</app-icon>
   <promo>promo.png</promo>
@@ -720,6 +723,48 @@ Example:
 ```
 
 ##### description/images/app-icon
+
+Required. 
+Attributes: `size`. 
+
+High resolution application icon. Different stores require different resolutions of this icon. You can include several versions of the `app-icon` tag with different `size` attributes. The store will automatically select right size. AppDF will automatically rescale your image if there is no needed size. Most of the stores use 512x512 PNG image, so it is highly recommended to include such version.
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>Default</th>
+    <th>How it works</th>
+  </tr>
+  <tr>
+    <td>size</td>
+    <td>a number</td>
+    <td>512</td>
+    <td></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Resolution</th>
+    <th>Formats</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Graphic Assers / High-res icon</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>512x512</td>
+    <td>32-bit PNG (with alpha)</td>
+  </tr>
+</table>
+
 ##### description/images/promo
 ##### description/images/feature
 ##### description/images/screenshots
