@@ -932,7 +932,24 @@ Example:
 Required.
 No attributes.
 
-There is no universal content rating system (aka parental control rating, aka minimum age). Different stores uses different systems. AppDF uses ESRB standard and the following table to convert this rating to the systems of all the main application stores.
+Each application must be labeled with a minimum allowed age according to [ESRB standard](http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board). Tag value must be a number of minimum age which could be `3`, `6`, `10`, `13`, `17`, or `18`. 
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Categorization / Content rating</td>
+    <td>Yes</td>
+  </tr>
+</table>
+
+There is no universal content rating system (aka parental control rating, aka minimum age). Different stores uses different systems. AppDF uses ESRB standard but more important is how this information is mapped to the systems used in the appstores. The following table is used by AppDF to convert the rating to the systems of all the main application stores.
 
 <table>
   <tr>
@@ -965,7 +982,7 @@ There is no universal content rating system (aka parental control rating, aka mi
   </tr>
 </table>
 
-There could be exceptional products for which a generic converting rules described in this table do not work. You can use `<store-specific>` tag to specify a custom content rating for the stores in that case.
+There could be exceptional products for which a generic convertion rules described in this table don't work. You can use the `<store-specific>` tag to specify a custom content rating for the stores in that case.
 
 Here you can find more detailed information about content rating definitions used in different stores:
 <table>
@@ -1069,7 +1086,81 @@ Contains several subtags each describing one of the content descriptors. Each co
 ### store-specific
 ### testing-instructions
 ### consent
+
 ### customer-support
+Required.
+
+Example:
+```xml
+<customer-support>
+  <phone>+1 (555) 1234-56-78</phone>
+  <email>support@yandex-team.ru</email>
+  <website>http://www.yandex.ru/support</website>
+</customer-support>
+```
+
+#### customer-support/phone
+Required.
+No attributes.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Contact Details / Phone</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+</table>
+
+#### customer-support/email
+Required.
+No attributes.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Contact Details / Email</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+</table>
+
+#### customer-support/website
+Required.
+No attributes.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Contact Details / Website</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+</table>
 
 Application Store Support
 -------------
