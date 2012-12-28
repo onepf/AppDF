@@ -586,6 +586,31 @@ Full application description shown on the product page. You can include several 
 </table>
 
 #### description/recent-changes
+
+Required. 
+No attributes. 
+Maximum length: 500.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Maximum length</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Product Details / Recent changes</td>
+    <td>No</td>
+    <td>Yes</td>
+    <td>Describes the changes of the latest version (version number is taken from APK file)</td>
+  </tr>
+</table>
+
 #### description/x-opera-app-registration-instructions
 #### description/youtube-video
 #### description/privacy-policy
