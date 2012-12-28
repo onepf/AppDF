@@ -1120,125 +1120,32 @@ Example:
 Required for paid apps.
 Attributes: `currency`. 
 
-Application price. Tag value should be a dot-separated number. This price is used to automatically calculate the prices in other currencies unless you manually specify such prices using `<local-price>` tags.
-
-This tag is ignored for free apps.
-
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Possible values</th>
-    <th>Default</th>
-    <th>How it works</th>
-  </tr>
-  <tr>
-    <td>currency</td>
-    <td>?todo</td>
-    <td>USD</td>
-    <td>?todo</td>
-  </tr>
-</table>
-
 <table>
   <tr>
     <th>Store support</th>
     <th>Supported</th>
     <th>Name</th>
     <th>Currency</th>
-    <th>Including sales tax</th>
     <th>Comments</th>
   </tr>
   <tr>
     <td>Google Play</td>
     <td>Yes</td>
-    <td>Pricing and Distribution / Default Price</td>
-    <td>USD</td>
+    <td>Pricing and Distribution / Upload new APK</td>
+    <td>50M</td>
     <td>Yes</td>
-    <td>Up to a cent precision</td>
+    <td>Yes</td>
   </tr>
 </table>
 
 #### price/local-price
-Optional.
-Attributes: `country`, `currency`. 
-
-The stores will use your default price defined in the `<base-price>` tag to automatically generate prices for other currencies and other countries. Nevertheless you can use `<local-price>` tags to manually define price for some countries. Tag value should be a dot-separated number.
-
-This tag is ignored for free apps.
-
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Possible values</th>
-    <th>Default</th>
-    <th>How it works</th>
-  </tr>
-  <tr>
-    <td>country</td>
-    <td>two letter ISO 3166-1 country code</td>
-    <td>required</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>currency</td>
-    <td>Three capital letter ISO 4217 currency code</td>
-    <td>required</td>
-    <td></td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <th>Store support</th>
-    <th>Supported</th>
-    <th>Name</th>
-    <th>Including sales tax</th>
-    <th>Comments</th>
-  </tr>
-  <tr>
-    <td>Google Play</td>
-    <td>Yes</td>
-    <td>Pricing and Distribution / Country List / Price</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-</table>
-
 #### price/trial-version
-Optional.
-Attributes: `full-version`. 
 
-If presented this tag indicates that this free app is a trial/demo version of another application. `full-version` attribute defines package name of the corresponding full version application.
+  <!--If free attribute is set to "true" then all the subtags are ignored. -->
+  <!--If app is not free then "base-price" is required. currency is set in three cappital letter ISO 4217 currency code -->
+  <!--local-price tags are optional, if set they define local prices. Country is set in two letter ISO 3166-1 country code, currency is set in three cappital letter ISO 4217 currency code-->
+  <!--Dot not comma should be used as decimal diliiter symbol-->
 
-This tag is ignored for paid apps.
-
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Possible values</th>
-    <th>Default</th>
-    <th>How it works</th>
-  </tr>
-  <tr>
-    <td>full-version</td>
-    <td>package name (Android notation)</td>
-    <td>required</td>
-    <td></td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <th>Store support</th>
-    <th>Supported</th>
-    <th>Name</th>
-  </tr>
-  <tr>
-    <td>Google Play</td>
-    <td>No</td>
-    <td></td>
-  </tr>
-</table>
 
 ### apk-files
 Required.
