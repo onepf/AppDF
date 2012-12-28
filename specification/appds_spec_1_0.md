@@ -645,8 +645,58 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
 </table>
 
 #### description/x-opera-app-registration-instructions
+
 #### description/privacy-policy
+Optional. 
+No attributes. 
+
+Link to a webpage with your privacy policy for this application.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Privacy Policy / Link to policy</td>
+    <td>No</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+</table>
+
 #### description/eula
+
+Optional. 
+No attributes. 
+
+Link to a webpage with your End User License Agreement for this application.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
 #### description/images
 ##### description/images/app-icon
 ##### description/images/promo
