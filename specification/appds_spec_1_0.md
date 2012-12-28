@@ -684,7 +684,7 @@ Example:
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Description / Product feature bullets</td>
-    <td><Yes/td>
+    <td>Yes</td>
     <td>Yes</td>
     <td>Unlimited</td>
   </tr>
@@ -881,6 +881,15 @@ High resolution application icon. Different stores require different resolutions
     <td>512x512</td>
     <td>32-bit PNG (with alpha)</td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Images & Multimedia / Small Icon, Large icon</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>114x114 + 512x512</td>
+    <td>PNG (with transparency)</td>
+  </tr>
 </table>
 
 ##### description/images/large-promo
@@ -977,6 +986,16 @@ Example:
     <td>320x480, 480x800, 480x854, 1280x720, 1280x800</td>
     <td>JPG or 24-bit PNG (no alpha)</td>
     <td>2+</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Images & Multimedia / Screenshots</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>800x480, 1024x600, 1280x720, 1280x800, or 1920x1200</td>
+    <td>JPG or PNG</td>
+    <td>3-10</td>
   </tr>
 </table>
 
