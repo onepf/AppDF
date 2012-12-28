@@ -151,15 +151,6 @@ Sample Description.xml File
       <!--Possible values are 0, 6, 12, 16, 18. "certificate" attribute is optional-->
       <rating-certificate type="FSK" certificate="whirl-pegi.pdf">0</rating-certificate>
     </age-restrictions>
-	<included-activities>
-      <in-app-billing>no</in-app-billing>
-      <gambling>no</gambling>
-      <advertising>no</advertising>
-      <user-generated-content>no</user-generated-content>
-      <user-to-user-communications>no</user-to-user-communications>
-      <account-creation>no</account-creation>
-      <personal-information-collection>no</personal-information-collection>
-	</included-activities>
     <!--All sub-tags are required, possible options are "no", "light", "strong"-->
     <content-descriptors>
       <cartoon-violence>no</cartoon-violence>
@@ -181,6 +172,15 @@ Sample Description.xml File
       <!--May contain cruelty or harassment based on race, ethnicity, gender, or sexual preferences.-->
       <discrimination>no</discrimination>
     </content-descriptors>
+	<included-activities>
+      <in-app-billing>no</in-app-billing>
+      <gambling>no</gambling>
+      <advertising>no</advertising>
+      <user-generated-content>no</user-generated-content>
+      <user-to-user-communications>no</user-to-user-communications>
+      <account-creation>no</account-creation>
+      <personal-information-collection>no</personal-information-collection>
+	</included-activities>
   </content-description>
 
   <availability>
@@ -864,6 +864,49 @@ Example:
 
 
 ### content-description
+
+This section describes what activities that could be considered questionable the program/game includes. The stores using this information for filtering to show the app only to people who whom it is allowed. The three main subsections describe age restrictions and existing certificates, content descriptors that are used to calculate age restrictions and other questionable application activities that should require user and/or parent understanding but that are not covered by Android permissions.  
+
+Example:
+```xml
+<content-description>
+  <age-restrictions>
+    <minimum-age>12</minimum-age>
+    <rating-certificate type="PEGI" certificate="whirl-pegi.pdf">7</rating-certificate>
+    <rating-certificate type="ESRB" certificate="whirl-esrb.pdf">7</rating-certificate>
+    <rating-certificate type="GRB" certificate="whirl-grb.pdf">all</rating-certificate>
+    <rating-certificate type="CERO" certificate="whirl-cero.pdf">all</rating-certificate>
+    <rating-certificate type="DEJUS" certificate="whirl-dejus.pdf" mark="dejus_mark.jpg">l</rating-certificate>
+    <rating-certificate type="FSK" certificate="whirl-fsk.pdf">0</rating-certificate>
+  </age-restrictions>
+  <content-descriptors>
+    <cartoon-violence>no</cartoon-violence>
+    <realistic-violence>no</realistic-violence>
+    <bad-language>no</bad-language>
+    <fear>light</fear>
+    <sexual-content>no</sexual-content>
+    <drugs>no</drugs>
+    <gambling-refference>no</gambling-refference>
+    <alcohol>no</alcohol>
+    <smoking>strong</smoking>
+    <discrimination>no</discrimination
+  </content-descriptors>
+  <included-activities>
+    <in-app-billing>no</in-app-billing>
+    <gambling>no</gambling>
+    <advertising>no</advertising>
+    <user-generated-content>no</user-generated-content>
+    <user-to-user-communications>no</user-to-user-communications>
+    <account-creation>no</account-creation>
+    <personal-information-collection>no</personal-information-collection>
+  </included-activities>
+</content-description>
+```xml
+
+#### content-description/age-restrictions
+#### content-description/content-descriptors
+#### content-description/included-activities
+
 ### availability
 ### price
 ### apk-files
