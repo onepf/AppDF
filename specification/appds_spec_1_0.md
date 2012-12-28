@@ -351,6 +351,13 @@ Required. No attributes. Value could be either `application` or `game`.
     <td>Yes</td>
     <td>Applications, Games</td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>General Information / Category</td>
+    <td>Yes</td>
+    <td>Games is one item in the application category list</td>
+  </tr>
 </table>
 
 #### categorization/category
@@ -368,6 +375,12 @@ Required. No attributes. AppDF format has its own list of categories for both ga
     <td>Google Play</td>
     <td>Yes</td>
     <td>Store Listing / Categorization / Category</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>General Information / Category</td>
     <td>Yes</td>
   </tr>
 </table>
@@ -391,6 +404,12 @@ Although some stores don't use subcategories AppDF includes as detailed category
     <td>No</td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>General Information / Category</td>
+    <td>Yes</td>
   </tr>
 </table>
 
@@ -486,9 +505,9 @@ Application name, shown in the application list. As everything in the `<descript
   <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
-    <td>General Information / App Title</td>
+    <td>Description / Display Title</td>
     <td>Yes</td>
-    <td>No</td>
+    <td>Yes</td>
     <td>250</td>
   </tr>
 </table>
@@ -547,6 +566,15 @@ Short application description used in the app lists next to the app title. Some 
     <td>Yes</td>
     <td>80</td>
     <td>Is not shown in the app list but only on promotion pages</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Description / Short description</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>1200</td>
+    <td>A shorter version of your app description for use on mobile devices.</td>
   </tr>
 </table>
 
@@ -705,6 +733,14 @@ Link to a webpage with your privacy policy for this application.
     <td>No</td>
     <td>No</td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>General Information / Privacy policy URL</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Privacy policy URL</td>
   </tr>
 </table>
 
@@ -1193,6 +1229,13 @@ Use `<include>` and `<exclude>` subtags to define list of the countries where yo
     <td>No</td>
     <td>Supports only &lt;exclude&gt;. Many countries are united under "Rest of the world" block and cannot be checked/unchecked one by one</td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Availability & Pricing / Where would you like this app to be available?</td>
+    <td>No</td>
+    <td></td>
+  </tr>
 </table>
 
 #### availability/period/since
@@ -1240,6 +1283,12 @@ If presented this tag defines a date from which the application can be distribut
     <td>No</td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Availability & Pricing / When would you like this app to be available on Amazon?</td>
+    <td>No</td>
   </tr>
 </table>
 
@@ -1289,6 +1338,12 @@ If presented this tag defines a final date of application distribution. Stores t
     <td>No</td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Availability & Pricing / When would you like this app to be discontinued for sale?</td>
+    <td>No</td>
   </tr>
 </table>
 
@@ -1364,6 +1419,14 @@ This tag is ignored for free apps.
     <td>Yes</td>
     <td>Up to a cent precision</td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Availability & Pricing / Are you charging for this app?</td>
+    <td>USD, EUR, GBR, JPY</td>
+    <td>Yes</td>
+    <td>Up to a cent precision</td>
+  </tr>
 </table>
 
 #### price/local-price
@@ -1409,6 +1472,13 @@ This tag is ignored for free apps.
     <td>Pricing and Distribution / Country List / Price</td>
     <td>Yes</td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Availability & Pricing / Calculated prices</td>
+    <td>Yes</td>
+    <td>Only US, UK, DE, FR, ES, IT, JP are supported</td>
   </tr>
 </table>
 
@@ -1814,6 +1884,13 @@ No attributes.
     <td>No</td>
     <td>No</td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>General Information / Customer support phone</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
 </table>
 
 #### customer-support/email
@@ -1835,6 +1912,13 @@ No attributes.
     <td>Yes</td>
     <td>No</td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>General Information / Customer support email address</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
 </table>
 
 #### customer-support/website
@@ -1853,6 +1937,13 @@ No attributes.
     <td>Google Play</td>
     <td>Yes</td>
     <td>Store Listing / Contact Details / Website</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>General Information / Customer support website</td>
     <td>Yes</td>
     <td>No</td>
   </tr>
