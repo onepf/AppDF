@@ -587,7 +587,7 @@ Full application description shown on the product page. You can include several 
 
 #### description/recent-changes
 
-Required. 
+Optional. 
 No attributes. 
 Maximum length: 500.
 
@@ -607,12 +607,44 @@ Maximum length: 500.
     <td>Store Listing / Product Details / Recent changes</td>
     <td>No</td>
     <td>Yes</td>
+    <td>500</td>
     <td>Describes the changes of the latest version (version number is taken from APK file)</td>
   </tr>
 </table>
 
-#### description/x-opera-app-registration-instructions
 #### description/youtube-video
+
+Optional. 
+No attributes. 
+
+If you have a video about your product at YouTube you can include it here. Please include only ID not entire URL. For example if your YouTube video URL is:
+https://www.youtube.com/watch?v=4YcBHQ2fCDE
+
+then tag value should be just `4YcBHQ2fCDE`. Like:
+```xml
+<youtube-video>4YcBHQ2fCDE</youtube-video>
+```
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Graphic Assets / Promo Video</td>
+    <td>No</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+</table>
+
+#### description/x-opera-app-registration-instructions
 #### description/privacy-policy
 #### description/eula
 #### description/images
