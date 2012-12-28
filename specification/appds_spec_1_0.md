@@ -89,14 +89,14 @@ Sample Description.xml File
     <full-description featureless="yes">My full description here</full-description>
 	<!--Will be used only be some stores, most of the stores do not use this tag-->
     <features>
-      <feature>New dialer</feature>
-      <feature>Home screen</feature>
-      <feature>3D interface</feature>
+      <small-promo>New dialer</small-promo>
+      <small-promo>Home screen</small-promo>
+      <small-promo>3D interface</small-promo>
     </features>
     <recent-changes>It is a description of what was changed in the latest version</recent-changes>
     <!--This tag is shown as an example how custom store localizable text information can be added, for other store specific fields see "store-specific" top level tag-->
     <x-opera-app-registration-instructions>Sample text here</x-opera-app-registration-instructions>
-    <youtube-video>x8723jw2KL</youtube-video>
+    <youtube-video>x8723j<large-promo>w2KL</youtube-video>
 
     <!--Optional tag, some stores require it for apps that collect personal information-->
     <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
@@ -110,8 +110,8 @@ Sample Description.xml File
 	  <!--Optionally you could include application icon in different sizes. If missed AppDF will automatically resize your icon-->
       <app-icon size="135">icon_135x135.png</app-icon>
       <app-icon size="144">icon_144x144.png</app-icon>
-      <promo>promo.png</promo>
-      <feature>feature.png</feature>
+      <large-promo>promo.png</large-promo>
+      <small-promo>feature.png</small-promo>
       <!--Minimum two screenshots should be presented-->
 	  <screenshots>
         <screenshot>screenshot01_en.png</screenshot>
@@ -404,9 +404,9 @@ Example:
   <full-description html="yes">My full description here</full-description>
   <full-description featureless="yes">My full description here</full-description>
   <features>
-    <feature>New dialer</feature>
-    <feature>Home screen</feature>
-    <feature>3D interface</feature>
+    <small-promo>New dialer</small-promo>
+    <small-promo>Home screen</small-promo>
+    <small-promo>3D interface</small-promo>
   </features>
   <recent-changes>It is a description of what was changed in the latest version</recent-changes>
   <x-opera-app-registration-instructions>Sample text here</x-opera-app-registration-instructions>
@@ -419,8 +419,8 @@ Example:
     <app-icon size="512">icon.png</app-icon>
     <app-icon size="135">icon_135x135.png</app-icon>
     <app-icon size="144">icon_144x144.png</app-icon>
-    <promo>promo.png</promo>
-    <feature>feature.png</feature>
+    <large-promo>promo.png</large-promo>
+    <small-promo>feature.png</small-promo>
     <screenshots>
       <screenshot>screenshot01_en.png</screenshot>
       <screenshot>screenshot02_en.png</screenshot>
@@ -438,7 +438,7 @@ Required.
 No attributes. 
 Maximum length: 30.
 
-Application name, shown in the application list. As everything in the `description` section is can be localized.
+Application name, shown in the application list. As everything in the `<description>` section is can be localized.
 
 <table>
   <tr>
@@ -702,7 +702,7 @@ Link to a webpage with your End User License Agreement for this application.
 
 #### description/images
 
-This tag contains all application image assets. As everything inside the `description` tag it can be localized. If a localized version of the `description` tag does not contains one of the four sections then images from the default languages are taken. So you need to include only those images that are actually localized into the localized versions of the `description` tag and do not need to repeat the images that are the same as in the default language.  
+This tag contains all application image assets. As everything inside the `<description>` tag it can be localized. If a localized version of the `<description>` tag does not contains one of the four sections then images from the default languages are taken. So you need to include only those images that are actually localized into the localized versions of the `<description>` tag and do not need to repeat the images that are the same as in the default language.  
 
 Example:
 ```xml
@@ -710,8 +710,8 @@ Example:
   <app-icon size="512">icon.png</app-icon>
   <app-icon size="135">icon_135x135.png</app-icon>
   <app-icon size="144">icon_144x144.png</app-icon>
-  <promo>promo.png</promo>
-  <feature>feature.png</feature>
+  <large-promo>promo.png</large-promo>
+  <small-promo>feature.png</small-promo>
   <screenshots>
     <screenshot>screenshot01_en.png</screenshot>
     <screenshot>screenshot02_en.png</screenshot>
@@ -727,7 +727,7 @@ Example:
 Required. 
 Attributes: `size`. 
 
-High resolution application icon. Different stores require different resolutions of this icon. You can include several versions of the `app-icon` tag with different `size` attributes. The store will automatically select right size. AppDF will automatically rescale your image if there is no needed size. Most of the stores use 512x512 PNG image, so it is highly recommended to include such version.
+High resolution application icon. Different stores require different resolutions of this icon. You can include several versions of the `<app-icon>` tag with different `size` attributes. The store will automatically select right size. AppDF will automatically rescale your image if there is no needed size. Most of the stores use 512x512 PNG image, so it is highly recommended to include such version.
 
 <table>
   <tr>
@@ -765,13 +765,42 @@ High resolution application icon. Different stores require different resolutions
   </tr>
 </table>
 
-##### description/images/promo
-##### description/images/feature
+##### description/images/large-promo
+Required. 
+No attributes. 
+
+Large promotion picture usually used by the stores on the PC websites. 
+
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Resolution</th>
+    <th>Formats</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Graphic Assers / Feature Graphic</td>
+    <td>No</td>
+    <td>Yes</td>
+    <td>1024x500</td>
+    <td>JPG or 24-bit PNG (no alpha)</td>
+  </tr>
+</table>
+
+##### description/images/small-promo
+
+
 ##### description/images/screenshots
 Required. 
 No attributes. 
 
-Contains several `screenshot` subtags. Each `<screenshot>` subtag describes one screenshot. Different stores use different number of screenshots. You should provide at least four screenshots to support all the stores. If you provide more screenshots than a store can use the first screenshots are used. 
+Contains several `<screenshot>` subtags. Each `<screenshot>` subtag describes one screenshot. Different stores use different number of screenshots. You should provide at least four screenshots to support all the stores. If you provide more screenshots than a store can use the first screenshots are used. 
 
 Example:
 ```xml
