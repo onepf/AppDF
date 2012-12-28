@@ -483,6 +483,14 @@ Application name, shown in the application list. As everything in the `<descript
     <td>Yes</td>
     <td>30</td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>General Information / App Title</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>250</td>
+  </tr>
 </table>
 
 #### description/keywords
@@ -1550,6 +1558,185 @@ Example:
 #### requirements/supported-resolutions
 
 ### store-specific
+Optional.
+No attributes.
+
+All store specific information is collected in this section. 
+
+Example:
+```xml
+<store-specific>
+  <amazon>
+    <form-factor>all</form-factor>
+    <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
+    <apply-amazon-drm>yes</apply-amazon-drm>
+    <kindle-support>
+      <kindle-fire-first-generation>yes</kindle-fire-first-generation>
+      <kindle-fire>yes</kindle-fire>
+      <kindle-fire-hd>yes</kindle-fire-hd>
+      <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
+    </kindle-support>
+    <binary-alias>Version 1</binary-alias>
+  </amazon>
+  <samsung>
+    <form-factor>phone,tablet</form-factor>
+    <contains-zirconia-protection>yes</contains-zirconia-protection>
+    <s-pen>yes</s-pen> 
+    <tags>
+      <tag>Education / Video</tag>
+      <tag>Music / Album</tag>
+    </tags>
+  </samsung>
+  <slideme>
+    <license-type>apache2</license-type>
+  </slideme>
+</store-specific>
+```
+
+Top level subtags correspond to the application AppDF ids from the following table:
+
+<table>
+  <tr>
+    <th>Application Store</th>
+    <th>AppDF store id</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>google</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>amazon</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>opera</td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td>yandex</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>google</td>
+  </tr>
+  <tr>
+    <td>slideme</td>
+    <td>google</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>samsung</td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>nook</td>
+  </tr>
+</table>
+
+Each store subtag can replace any of the parameters from the entire description.xml by including a replacement for the corresponding tag starting from the `<application>` tag. For example if we want to use another large promotion picture for Amazon AppStore we can include the following code:
+```xml
+<store-specific>
+  <amazon>
+    <application>
+      <description language="en">
+        <images>
+          <large-promo>promo_amazon.png</large-promo>
+        </images> 
+    </application>
+  </amazon>
+</store-specific>
+```
+
+There are also some optional and required store specific parameters you can/must use if you want that your AppDF file is supported by the corresponding store. 
+
+#### store-specific/amazon
+Optional.
+No attributes.
+
+Example:
+```xml
+<amazon>
+  <form-factor>all</form-factor>
+  <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
+  <apply-amazon-drm>yes</apply-amazon-drm>
+  <kindle-support>
+    <kindle-fire-first-generation>yes</kindle-fire-first-generation>
+    <kindle-fire>yes</kindle-fire>
+    <kindle-fire-hd>yes</kindle-fire-hd>
+    <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
+  </kindle-support>
+  <binary-alias>Version 1</binary-alias>
+</amazon>
+```xml
+
+<table>
+  <tr>
+    <th>Tag</th>
+    <th>Required</th>
+    <th>Amazon name</th>
+    <th>Possible values</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>form-factory</td>
+    <td>Yes</td>
+    <td>General Information / Form Factor</td>
+    <td>phone, tablet, all</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>free-app-of-the-day-eligibility</td>
+    <td>No</td>
+    <td>Availability & Pricing / Free App of the Day (FAD) eligibility</td>
+    <td>yes, no</td>
+    <td>If your app is being considered, we will contact you with more detail about the program and what to expect as your app goes through the approval process.</td>
+  </tr>
+  <tr>
+    <td>apply-amazon-drm</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Apply Amazon DRM?</td>
+    <td>yes, no</td>
+    <td>Protect your application from unauthorized use. Without DRM, your app can be used without restrictions by any user.</td>
+  </tr>
+  <tr>
+    <td>binary-alias</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Binary1</td>
+    <td>Alphanumeric characters, dots (.), and underscores (_) only.</td>
+    <td>This name is used to distinguish between multiple binary files</td>
+  </tr>
+  <tr>
+    <td>kindle-support/kindle-fire-first-generation</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Device Support</td>
+    <td>yes, no</td>
+    <td>Kindle Fire (1st Generation) support</td>
+  </tr>
+  <tr>
+    <td>kindle-support/kindle-fire</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Device Support</td>
+    <td>yes, no</td>
+    <td>Kindle Fire support</td>
+  </tr>
+  <tr>
+    <td>kindle-support/kindle-fire-hd</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Device Support</td>
+    <td>yes, no</td>
+    <td>Kindle Fire HD support</td>
+  </tr>
+  <tr>
+    <td>kindle-support/kindle-fire-hd-8-9</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Device Support</td>
+    <td>yes, no</td>
+    <td>Kindle Fire HD 8.9 support</td>
+  </tr>
+</table>
+
+
 ### testing-instructions
 
 ### consent
