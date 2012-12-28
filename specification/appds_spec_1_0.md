@@ -136,7 +136,10 @@ Sample Description.xml File
 
 
   <content-description>
-    <age-restrictions>
+    <!--Minimum age according to ESRB rating system--> 
+    <content-rating>12</content-rating>
+
+    <rating-certificates>
       <minimum-age>12</minimum-age>
       <!--Possible values are 3, 7, 12, 16, 18. "certificate" attribute is optional-->
       <rating-certificate type="PEGI" certificate="whirl-pegi.pdf">7</rating-certificate>
@@ -150,7 +153,7 @@ Sample Description.xml File
       <rating-certificate type="DEJUS" certificate="whirl-pegi.pdf" mark="dejus_mark.jpg">l</rating-certificate>
       <!--Possible values are 0, 6, 12, 16, 18. "certificate" attribute is optional-->
       <rating-certificate type="FSK" certificate="whirl-pegi.pdf">0</rating-certificate>
-    </age-restrictions>
+    </rating-certificates>
     <!--All sub-tags are required, possible options are "no", "light", "strong"-->
     <content-descriptors>
       <cartoon-violence>no</cartoon-violence>
@@ -404,7 +407,7 @@ This section contains product in text form as well as pictures and videos. There
   </tr>
   <tr>
     <td>language</td>
-    <td>two letter ISO 639-1 language code or two letters language code + two letter ISO 3166‑1 country code</td>
+    <td>two letter ISO 639-1 language code (like `en`) or two letters language code + two letter ISO 3166‑1 country code (like `en-us`)</td>
     <td>required tag</td>
   </tr>
   <tr>
@@ -892,15 +895,15 @@ This section describes what activities that could be considered questionable the
 Example:
 ```xml
 <content-description>
-  <age-restrictions>
-    <minimum-age>12</minimum-age>
+  <content-rating>12</content-rating>
+  <rating-certificates>
     <rating-certificate type="PEGI" certificate="whirl-pegi.pdf">7</rating-certificate>
     <rating-certificate type="ESRB" certificate="whirl-esrb.pdf">7</rating-certificate>
     <rating-certificate type="GRB" certificate="whirl-grb.pdf">all</rating-certificate>
     <rating-certificate type="CERO" certificate="whirl-cero.pdf">all</rating-certificate>
     <rating-certificate type="DEJUS" certificate="whirl-dejus.pdf" mark="dejus_mark.jpg">l</rating-certificate>
     <rating-certificate type="FSK" certificate="whirl-fsk.pdf">0</rating-certificate>
-  </age-restrictions>
+  </rating-certificates>
   <content-descriptors>
     <cartoon-violence>no</cartoon-violence>
     <realistic-violence>no</realistic-violence>
@@ -925,7 +928,54 @@ Example:
 </content-description>
 ```
 
-#### content-description/age-restrictions
+#### content-description/content-rating
+Required.
+No attributes.
+
+There is no universal content rating system (aka parental control rating, aka minimum age). Different stores uses different systems. AppDF uses ESRB standard and the following table to convert this rating to the systems of all the main application stores.
+
+<table>
+  <tr>
+    <th>ESRB</th>
+    <th>Google Play</th>
+  </tr>
+  <tr>
+    <td>[Description](http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board)</th>
+    <td>[Description](http://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=188189)</th>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Everyone</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Low maturity</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>Medium maturity</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>Medium maturity</td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>High maturity</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>High maturity</td>
+  </tr>
+</table>
+
+There could be exceptional products for which a generic converting rules described in this table do not work. You can use `<store-specific>` tag to specify a custom content rating for the stores in that case.
+
+Notes:
+1. Amazon hasn't one field for application rating but uses several parameters (nudity, violation, etc)
+2. Samsung uses minimum age parameter along with several other attributes that define application rating according to the standard certification systems (PEGI, ESRB, etc)
+
+#### content-description/rating-certificates
 
 #### content-description/content-descriptors
 Required.
