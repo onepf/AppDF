@@ -901,10 +901,82 @@ Example:
     <personal-information-collection>no</personal-information-collection>
   </included-activities>
 </content-description>
-```xml
+```
 
 #### content-description/age-restrictions
+
 #### content-description/content-descriptors
+Required.
+No attributes.
+
+Contains several subtags each describing one of the content descriptors. Each content descriptor could have either `no`, `light` or `strong` value. Most of the stores do not use this information but rather use summary information from the `<minimum-age>` tag. You can read more detailed description of these categories in the articles about the content rating systems:
+http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board
+http://en.wikipedia.org/wiki/Pan_European_Game_Information
+
+<table>
+  <tr>
+    <th>Content descriptor</th>
+    <th>Explanation</th>
+  </tr>
+  <tr>
+    <td>cartoon-violence</td>
+    <td>Violent actions involving cartoon-like situations and characters. May include violence where a character is unharmed after the action has been inflicted</td>
+  </tr>
+  <tr>
+    <td>realistic-violence</td>
+    <td>May contain scenes of people getting injured or dying, often by use of weapons. Also may contain gore and blood-letting.</td>
+  </tr>
+  <tr>
+    <td>fear</td>
+    <td>May contain scenes that are considered too disturbing or frightening to younger or more emotionally vulnerable players.</td>
+  </tr>
+  <tr>
+    <td>sexual-content</td>
+    <td>May contain references to sexual attraction or sexual intercourse. Also may contain nudity and characters dressed in suggestive clothing.</td>
+  </tr>
+  <tr>
+    <td>drugs</td>
+    <td>May contain references to illegal drugs or a fictional substance that has parallels to real-life illegal drugs (in use, possession, or sale).</td>
+  </tr>
+  <tr>
+    <td>gambling-refference</td>
+    <td>May contain elements that encourage or teach gambling.</td>
+  </tr>
+  <tr>
+    <td>alcohol</td>
+    <td>The consumption of alcoholic beverages or references to and/or images or alcoholic beverages</td>
+  </tr>
+  <tr>
+    <td>smoking</td>
+    <td>References to and/or images of tobacco products</td>
+  </tr>
+  <tr>
+    <td>discrimination</td>
+    <td>May contain cruelty or harassment based on race, ethnicity, gender, or sexual preferences.</td>
+  </tr>
+  <tr>
+    <td>bad-language</td>
+    <td>May contain profanity, sexual innuendo, threats, and all manner of slurs and epithets.</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
 #### content-description/included-activities
 
 ### availability
