@@ -218,11 +218,12 @@ Sample Description.xml File
   </price>
 
   <apk-files>
+    <apk-file>yandexhell2.apk</apk-file>
+    <apk-file>yandexhell3.apk</apk-file>
     <apk-file-with-extnsion>
-	  <apf-file>yandexhell4.apk</apk-file>
+	  <apk-file>yandexhell4.apk</apk-file>
 	  <extension>extensionfile.zip</extension>
 	</apk-file-with-extnsion>
-    <apk-file>yandexhell3.apk</apk-file>
   </apk-files>
 
   <!--Optional tag, add it if the application has some special requirements-->
@@ -1095,7 +1096,7 @@ Example:
   <apk-file>yandexhell2.apk</apk-file>
   <apk-file>yandexhell3.apk</apk-file>
   <apk-file-with-extnsion>
-    <apf-file>yandexhell4.apk</apk-file>
+    <apk-file>yandexhell4.apk</apk-file>
     <extension>extensionfile.zip</extension>
   </apk-file-with-extnsion>
 </apk-files>
@@ -1106,6 +1107,7 @@ Example:
     <th>Store support</th>
     <th>Supported</th>
     <th>Name</th>
+    <th>Maximum APK file size</th>
     <th>Multiple APK file support</th>
     <th>Extension file support</th>
   </tr>
@@ -1113,12 +1115,80 @@ Example:
     <td>Google Play</td>
     <td>Yes</td>
     <td>APK / Upload new APK</td>
+    <td>50M</td>
     <td>Yes</td>
     <td>Yes</td>
   </tr>
 </table>
 
 ### requirements
+Optional.
+
+You can use this section if you application has some special requirements apart of requirements described in the APK file.
+
+Example:
+```xml
+<requirements>
+  <features>
+    <root>no</root>
+    <gms>no</gms>
+  </features>
+
+  <supported-languages>
+    <language>en</language>
+    <language>ru</language>
+    <language>de</language>
+    <language>fr</language>
+    <language>it</language>
+  </supported-languages>
+
+  <supported-devices>
+    <exclude>kyleopen</exclude>
+    <exclude>SHW-M130K</exclude>
+  </supported-devices>
+
+  <supported-resolutions>
+    <exclude>480x856</exclude>
+    <include>240x400</include>
+  </supported-resolutions>
+</requirements>
+```
+
+#### requirements/features
+
+#### requirements/supported-languages
+
+#### requirements/supported-devices
+Optional.
+
+You man manually exclude some devices from the supported device list. Add `<exclude>` tag with device model name (aka [name of the industrial design](http://developer.android.com/reference/android/os/Build.html#DEVICE)) for each device you want to exclude from the compatibility list.
+
+Example:
+```xml
+<supported-devices>
+  <exclude>kyleopen</exclude>
+  <exclude>SHW-M130K</exclude>
+</supported-devices>
+```
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>APK / Device Compatibility</td>
+    <td></td>
+  </tr>
+</table>
+
+
+#### requirements/supported-resolutions
+
 ### store-specific
 ### testing-instructions
 ### consent
