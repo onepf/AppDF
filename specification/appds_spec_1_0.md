@@ -1081,7 +1081,43 @@ Contains several subtags each describing one of the content descriptors. Each co
 
 ### availability
 ### price
+
 ### apk-files
+Required.
+
+In this section you list your APK. Each application could consist of several APK files. Google Play (and may be other stores in future) also supports APK extension files. The subtags should be either `<apk-file>` for normal APK files or `<apk-file-with-extnsion>` for APK files with extension(s). 
+
+Please note that today the only application store supporting APK file with extensions is Google Play. So by using `<apk-file-with-extnsion>` tag you limit your application to Google Play only today.
+
+Example:
+```xml
+<apk-files>
+  <apk-file>yandexhell2.apk</apk-file>
+  <apk-file>yandexhell3.apk</apk-file>
+  <apk-file-with-extnsion>
+    <apf-file>yandexhell4.apk</apk-file>
+    <extension>extensionfile.zip</extension>
+  </apk-file-with-extnsion>
+</apk-files>
+```
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Multiple APK file support</th>
+    <th>Extension file support</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>APK / Upload new APK</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+</table>
+
 ### requirements
 ### store-specific
 ### testing-instructions
