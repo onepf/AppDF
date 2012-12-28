@@ -89,9 +89,9 @@ Sample Description.xml File
     <full-description featureless="yes">My full description here</full-description>
 	<!--Will be used only be some stores, most of the stores do not use this tag-->
     <features>
-      <small-promo>New dialer</small-promo>
-      <small-promo>Home screen</small-promo>
-      <small-promo>3D interface</small-promo>
+      <feature>New dialer</feature>
+      <feature>Home screen</feature>
+      <feature>3D interface</feature>
     </features>
     <recent-changes>It is a description of what was changed in the latest version</recent-changes>
     <!--This tag is shown as an example how custom store localizable text information can be added, for other store specific fields see "store-specific" top level tag-->
@@ -449,9 +449,9 @@ Example:
   <full-description html="yes">My full description here</full-description>
   <full-description featureless="yes">My full description here</full-description>
   <features>
-    <small-promo>New dialer</small-promo>
-    <small-promo>Home screen</small-promo>
-    <small-promo>3D interface</small-promo>
+    <feature>New dialer</feature>
+    <feature>Home screen</feature>
+    <feature>3D interface</feature>
   </features>
   <recent-changes>It is a description of what was changed in the latest version</recent-changes>
   <x-opera-app-registration-instructions>Sample text here</x-opera-app-registration-instructions>
@@ -536,6 +536,15 @@ Comma separated list of keywords.
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Description / Keywords</td>
+    <td>No</td>
+    <td>Yes</td>
+    <td>80</td>
     <td></td>
   </tr>
 </table>
@@ -624,12 +633,35 @@ Full application description shown on the product page. You can include several 
     <td>Store Listing / Product Details / Title</td>
     <td>Yes</td>
     <td>Yes</td>
-    <td>30</td>
+    <td>4000</td>
+    <td>simple HTML, no links</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Description / Long description</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>4000</td>
     <td>simple HTML, no links</td>
   </tr>
 </table>
 
 #### description/features
+Optional.
+No attributes.
+
+Some stores support separate feature list (most assumes that the feature list is included into the full description). Each `<feature>` subtag should contain one feature description.
+
+Example:
+Example:
+```xml
+<features>
+  <feature>New dialer</feature>
+  <feature>Home screen</feature>
+  <feature>3D interface</feature>
+</features>
+```
 
 <table>
   <tr>
@@ -647,6 +679,14 @@ Full application description shown on the product page. You can include several 
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Description / Product feature bullets</td>
+    <td><Yes/td>
+    <td>Yes</td>
+    <td>Unlimited</td>
   </tr>
 </table>
 
@@ -762,6 +802,14 @@ Link to a webpage with your End User License Agreement for this application.
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
     <td>No</td>
     <td></td>
     <td></td>
