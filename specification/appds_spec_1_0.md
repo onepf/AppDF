@@ -391,6 +391,28 @@ Although some stores don't use subcategories AppDF includes as detailed category
 </table>
 
 ### description 
+Required.
+Attributes: `language`, `default`. 
+
+This section contains product in text form as well as pictures and videos. There could be several `<description>` tags for different languages. One of the `<description>` tags should be default (`default=yes`). If some information is missed in the localized versions of the `<description>` tag it will be taken from the default language.
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td>language</td>
+    <td>two letter ISO 639-1 language code or two letters language code + two letter ISO 3166‑1 country code</td>
+    <td>required tag</td>
+  </tr>
+  <tr>
+    <td>default</td>
+    <td>yes,no</td>
+    <td>no</td>
+  </tr>
+</table>
 
 Example:
 ```xml
