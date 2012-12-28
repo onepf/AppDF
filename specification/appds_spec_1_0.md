@@ -459,6 +459,33 @@ Application name, shown in the application list. As everything in the `descripti
 #### description/keywords
 #### description/short-description
 
+Required. 
+No attributes. 
+Maximum length: at least one tag should be shorter than 80 symbols.
+
+Short application description used in the app lists next to the app title. Some stores include such short description to the lists, some do not. You can include several copies of short description. The store will take the longest one that is fits in its maximum size.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Maximum length</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Product Details / Promo Text</td>
+    <td>No</td>
+    <td>Yes</td>
+    <td>80</td>
+    <td>Is not shown in the app list but only on promotion pages like "this":https://play.google.com/store/apps/collection/editors_choice</td>
+  </tr>
+</table>
+
 #### description/full-description
 
 Required. 
@@ -511,6 +538,26 @@ Full application description shown on the product page. You can include several 
 </table>
 
 #### description/features
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Maximum length</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
 #### description/recent-changes
 #### description/x-opera-app-registration-instructions
 #### description/youtube-video
