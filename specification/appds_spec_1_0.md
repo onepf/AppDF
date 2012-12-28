@@ -457,13 +457,40 @@ Application name, shown in the application list. As everything in the `descripti
 </table>
 
 #### description/keywords
+
+Required. 
+No attributes. 
+
+Comma separated list of keywords.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Maximum length</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
 #### description/short-description
 
 Required. 
 No attributes. 
 Maximum length: at least one tag should be shorter than 80 symbols.
 
-Short application description used in the app lists next to the app title. Some stores include such short description to the lists, some do not. You can include several copies of short description. The store will take the longest one that is fits in its maximum size.
+Short application description used in the app lists next to the app title. Some stores include such short description to the lists, some do not. Different stores have different requirements for maximum short description length. In order to have flexibility to get the best from each of the stores you can include several copies of short description tag. The store will take the longest one that is fits in its maximum size.
 
 <table>
   <tr>
@@ -482,7 +509,7 @@ Short application description used in the app lists next to the app title. Some 
     <td>No</td>
     <td>Yes</td>
     <td>80</td>
-    <td>Is not shown in the app list but only on promotion pages like "this":https://play.google.com/store/apps/collection/editors_choice</td>
+    <td>Is not shown in the app list but only on promotion pages</td>
   </tr>
 </table>
 
