@@ -1007,7 +1007,67 @@ Here you can find more detailed information about content rating definitions use
 1. Amazon hasn't one field for application rating but uses several parameters (nudity, violation, etc)
 2. Samsung uses minimum age parameter along with several other attributes that define application rating according to the standard certification systems (PEGI, ESRB, etc)
 
-#### content-description/rating-certificates
+#### content-description/rating-certificates/rating-certificate
+Optional.
+Attributes: `type`, `certificat`, `mark`. 
+
+If your application/game has a rating certificate issued by one of the authorities you can include it using the optional tag `<rating-certificate>`. Tag value should be rating given you, usually it is a minimum age number.
+ 
+Example:
+```xml
+<rating-certificates>
+  <rating-certificate type="PEGI" certificate="whirl-pegi.pdf">7</rating-certificate>
+  <rating-certificate type="ESRB" certificate="whirl-esrb.pdf">7</rating-certificate>
+  <rating-certificate type="GRB" certificate="whirl-grb.pdf">all</rating-certificate>
+  <rating-certificate type="CERO" certificate="whirl-cero.pdf">all</rating-certificate>
+  <rating-certificate type="DEJUS" certificate="whirl-dejus.pdf" mark="dejus_mark.jpg">l</rating-certificate>
+  <rating-certificate type="FSK" certificate="whirl-fsk.pdf">0</rating-certificate>
+</rating-certificates>
+```
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>Required</th>
+    <th>How it works</th>
+  </tr>
+  <tr>
+    <td>type</td>
+    <td>PEGI, ESRB, GRB, CERO, DEJUS or FSK</td>
+    <td>required</td>
+    <td>Name of the content rating certificate</td>
+  </tr>
+  <tr>
+    <td>certificate</td>
+    <td>File name from the AppDF package</td>
+    <td>optional</td>
+    <td>If you have a scanned certificate you can add it there</td>
+  </tr>
+  <tr>
+    <td>mark</td>
+    <td>File name from the AppDF package</td>
+    <td>optional</td>
+    <td>If you have a special label you can add it there</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Certificates</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 
 #### content-description/content-descriptors
 Required.
