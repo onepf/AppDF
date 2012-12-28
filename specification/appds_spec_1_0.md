@@ -198,7 +198,7 @@ Sample Description.xml File
     <!--Optional tag, if missed the app become available immediatly without experiation date-->
     <period>
       <!--Optional tag, if missed the app become available immediatly -->
-      <ince year="2012" month="12" day="23"/>
+      <since year="2012" month="12" day="23"/>
       <!--Optional tag, if missed the app is without experiation date-->    
       <until year="2013" month="12" day="23"/>
     </period>
@@ -408,13 +408,13 @@ This section contains product in text form as well as pictures and videos. There
   </tr>
   <tr>
     <td>language</td>
-    <td>two letter ISO 639-1 language code (like `en`) or two letters language code + two letter ISO 3166‑1 country code (like `en-us`)</td>
+    <td>two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")</td>
     <td>required tag</td>
   </tr>
   <tr>
     <td>default</td>
-    <td>`yes`, `no`</td>
-    <td>`no`</td>
+    <td>yes, no</td>
+    <td>no</td>
   </tr>
 </table>
 
@@ -566,7 +566,7 @@ Full application description shown on the product page. You can include several 
   </tr>
   <tr>
     <td>featureless</td>
-    <td>yes,no</td>
+    <td>yes, no</td>
     <td>no</td>
     <td></td>
   </tr>
@@ -1143,6 +1143,49 @@ Contains several subtags each describing one of the content descriptors. Each co
 #### content-description/included-activities
 
 ### availability
+Optional.
+No attributes.
+
+You can define country list of period of time where/when you application is distributed. By default your application is distributed in all the countries where language support allows.
+
+Example:
+```xml
+<availability>
+  <countries>
+    <include>en</include>
+    <include>ru</include>
+    <exclude>de</exclude>
+  <countries>
+
+  <period>
+    <since year="2012" month="12" day="23"/>
+    <until year="2013" month="12" day="23"/>
+  </period>
+</availability>
+```
+
+#### availability/countries
+Optional.
+No attributed.
+
+Use `<include>` and `<exclude>` subtags to define list of the countries where your application is distributed.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Pricing and Distribution / Distribute in These Countries</td>
+    <td>No</td>
+    <td>Supports only &lt;exclude&gt;. Many countries are united under "Rest of the world" block and cannot be checked/unchecked one by one</td>
+  </tr>
+</table>
 
 ### price
 Required.
@@ -1170,9 +1213,9 @@ Example:
   </tr>
   <tr>
     <td>free</td>
-    <td>`yes` or `no`</td>
-    <td>`yes`</td>
-    <td>`<base-price>` and `<local-price>` subtags are applicable for paid apps, `<trial-version>` subtag is applicable for free apps</td>
+    <td>yes or no</td>
+    <td>yes</td>
+    <td>&lt;base-price&gt; and &lt;local-price&gt; subtags are applicable for paid apps, &lt;trial-version&gt; subtag is applicable for free apps</td>
   </tr>
 </table>
 
