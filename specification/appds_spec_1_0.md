@@ -766,7 +766,7 @@ High resolution application icon. Different stores require different resolutions
 </table>
 
 ##### description/images/large-promo
-Required. 
+Optional. 
 No attributes. 
 
 Large promotion picture usually used by the stores on the PC websites. 
@@ -795,6 +795,32 @@ Large promotion picture usually used by the stores on the PC websites.
 
 ##### description/images/small-promo
 
+Optional. 
+No attributes. 
+
+Small promotion picture usually used by the stores on a mobile device for promoted apps. 
+
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Resolution</th>
+    <th>Formats</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Graphic Assers / Feature Graphic</td>
+    <td>No</td>
+    <td>Yes</td>
+    <td>180x120</td>
+    <td>JPG or 24-bit PNG (no alpha)</td>
+  </tr>
+</table>
 
 ##### description/images/screenshots
 Required. 
