@@ -698,6 +698,27 @@ Link to a webpage with your End User License Agreement for this application.
 </table>
 
 #### description/images
+
+This tag contains all application image assets. As everything inside the `description` tag it can be localized. If a localized version of the `description` tag does not contains one of the four sections then images from the default languages are taken. So you need to include only those images that are actually localized into the localized versions of the `description` tag and do not need to repeat the images that are the same as in the default language.  
+
+Example:
+```xml
+<images>
+  <app-icon size=512">icon.png</app-icon>
+  <app-icon size="135">icon_135x135.png</app-icon>
+  <app-icon size="144">icon_144x144.png</app-icon>
+  <promo>promo.png</promo>
+  <feature>feature.png</feature>
+  <screenshots>
+    <screenshot>screenshot01_en.png</screenshot>
+    <screenshot>screenshot02_en.png</screenshot>
+    <screenshot>screenshot03_en.png</screenshot>
+    <screenshot>screenshot04_en.png</screenshot>
+    <screenshot>screenshot05_en.png</screenshot>
+  </screenshots>
+</images>
+```
+
 ##### description/images/app-icon
 ##### description/images/promo
 ##### description/images/feature
