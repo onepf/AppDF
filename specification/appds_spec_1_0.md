@@ -1618,11 +1618,7 @@ Top level subtags correspond to the application AppDF ids from the following tab
   </tr>
   <tr>
     <td>SlideME</td>
-    <td>google</td>
-  </tr>
-  <tr>
     <td>slideme</td>
-    <td>google</td>
   </tr>
   <tr>
     <td>Samsung Apps</td>
@@ -1668,7 +1664,7 @@ Example:
   </kindle-support>
   <binary-alias>Version 1</binary-alias>
 </amazon>
-```xml
+```
 
 <table>
   <tr>
