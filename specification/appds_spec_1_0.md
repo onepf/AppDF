@@ -412,8 +412,8 @@ This section contains product in text form as well as pictures and videos. There
   </tr>
   <tr>
     <td>default</td>
-    <td>yes,no</td>
-    <td>no</td>
+    <td>`yes`, `no`</td>
+    <td>`no`</td>
   </tr>
 </table>
 
@@ -940,10 +940,6 @@ There is no universal content rating system (aka parental control rating, aka mi
     <th>Google Play</th>
   </tr>
   <tr>
-    <td>[Description](http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board)</th>
-    <td>[Description](http://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=188189)</th>
-  </tr>
-  <tr>
     <td>3</td>
     <td>Everyone</td>
   </tr>
@@ -971,7 +967,23 @@ There is no universal content rating system (aka parental control rating, aka mi
 
 There could be exceptional products for which a generic converting rules described in this table do not work. You can use `<store-specific>` tag to specify a custom content rating for the stores in that case.
 
-Notes:
+Here you can find more detailed information about content rating definitions used in different stores:
+<table>
+  <tr>
+    <th>Store</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>ESRB (used in AppDF)</td>
+    <td>http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board</td>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>http://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=188189</td>
+  </tr>
+</table>
+
+##### Notes:
 1. Amazon hasn't one field for application rating but uses several parameters (nudity, violation, etc)
 2. Samsung uses minimum age parameter along with several other attributes that define application rating according to the standard certification systems (PEGI, ESRB, etc)
 
