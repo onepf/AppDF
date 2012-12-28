@@ -768,6 +768,44 @@ High resolution application icon. Different stores require different resolutions
 ##### description/images/promo
 ##### description/images/feature
 ##### description/images/screenshots
+Required. 
+No attributes. 
+
+Contains several `screenshot` subtags. Each `<screenshot>` subtag describes one screenshot. Different stores use different number of screenshots. You should provide at least four screenshots to support all the stores. If you provide more screenshots than a store can use the first screenshots are used. 
+
+Example:
+```xml
+<screenshots>
+  <screenshot>screenshot01_en.png</screenshot>
+  <screenshot>screenshot02_en.png</screenshot>
+  <screenshot>screenshot03_en.png</screenshot>
+  <screenshot>screenshot04_en.png</screenshot>
+  <screenshot>screenshot05_en.png</screenshot>
+</screenshots>
+```
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Resolution</th>
+    <th>Formats</th>
+    <th>Number</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Graphic Assers / Screenshots</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>320x480, 480x800, 480x854, 1280x720, 1280x800</td>
+    <td>JPG or 24-bit PNG (no alpha)</td>
+    <td>2+</td>
+  </tr>
+</table>
 
 
 ### content-description
