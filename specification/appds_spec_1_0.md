@@ -1551,7 +1551,53 @@ Example:
 
 ### store-specific
 ### testing-instructions
+
 ### consent
+Required.
+No attributes.
+
+You must consent with a number of statements in order your application is published. This section includes the list of such agreements. Without this section some stores will not accept your application.  Each subtag corresponds to one of the statements you consent with. Subtag values must always be `yes` if you want your application is accepted by the corresponding stores.
+
+Example:
+```xml
+<consent>
+  <google-android-content-guidelines>yes</google-android-content-guidelines>
+  <us-export-laws>yes</us-export-laws>
+</consent>
+```
+
+<table>
+  <tr>
+    <th>Subtag</th>
+    <th>Statement</th>
+    <th>Detailed information</th>
+  </tr>
+  <tr>
+    <td>&lt;google-android-content-guidelines&gt;</td>
+    <td>This application meets Android Content Guidelines</td>
+    <td>http://play.google.com/about/developer-content-policy.html</td>
+  </tr>
+  <tr>
+    <td>&lt;us-export-laws&gt;</td>
+    <td>I acknowledge that my software application may be subject to United States export laws, regardless of my location or nationality. I agree that I have complied with all such laws, including any requirements for software with encryption functions. I hereby certify that my application is authorized for export from the United States under these laws. </td>
+    <td>https://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=113770</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Pricing and Distribution / Consent</td>
+    <td>&lt;google-android-content-guidelines&gt;, &lt;us-export-laws&gt;</td>
+  </tr>
+</table>
 
 ### customer-support
 Required.
