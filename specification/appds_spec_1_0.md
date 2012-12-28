@@ -910,8 +910,7 @@ Required.
 No attributes.
 
 Contains several subtags each describing one of the content descriptors. Each content descriptor could have either `no`, `light` or `strong` value. Most of the stores do not use this information but rather use summary information from the `<minimum-age>` tag. You can read more detailed description of these categories in the articles about the content rating systems:
-http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board
-http://en.wikipedia.org/wiki/Pan_European_Game_Information
+[ESRB](http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board), [PEGI](http://en.wikipedia.org/wiki/Pan_European_Game_Information).
 
 <table>
   <tr>
