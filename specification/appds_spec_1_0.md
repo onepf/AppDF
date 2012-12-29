@@ -238,7 +238,7 @@ Sample Description.xml File
       <gms>no</gms>
     </features>
 
-    <!--Optional tag, if missed this information is taked from the APK files. All languages are defined by their two letter ISO 639-1 codes language codes-->
+    <!--Optional tag, if missed this information is taked from the APK files. All languages are defined by their two letter ISO 639-1 language codes-->
     <supported-languages>
       <language>en</language>
       <language>ru</language>
@@ -1814,6 +1814,14 @@ Example:
     <td>Yes</td>
     <td>Yes</td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Binary file</td>
+    <td>Unlimited</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
 </table>
 
 ### requirements
@@ -1853,6 +1861,44 @@ Example:
 #### requirements/features
 
 #### requirements/supported-languages
+Optional.
+No attributes.
+
+You man manually define the list of supported languages. Add `<language>` subtag with two letter ISO 639-1 language codes for each language the application supports.
+
+Example:
+```xml
+<supported-languages>
+  <language>en</language>
+  <language>ru</language>
+  <language>de</language>
+  <language>fr</language>
+  <language>it</language>
+</supported-languages>
+```
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Language Support</td>
+    <td></td>
+  </tr>
+</table>
+
+
 
 #### requirements/supported-devices
 Optional.
@@ -1879,6 +1925,12 @@ Example:
     <td>Google Play</td>
     <td>Yes</td>
     <td>APK / Device Compatibility</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
     <td></td>
   </tr>
 </table>
@@ -2063,6 +2115,34 @@ Example:
 
 
 ### testing-instructions
+Optional.
+No attributes.
+
+Please detail any special requirements to test your app.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Maximum size</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Testing instructions</td>
+    <td>No</td>
+    <td>4000</td>
+  </tr>
+</table>
 
 ### consent
 Required.
@@ -2108,6 +2188,12 @@ Example:
     <td>Yes</td>
     <td>Pricing and Distribution / Consent</td>
     <td>&lt;google-android-content-guidelines&gt;, &lt;us-export-laws&gt;</td>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Export Compliance</td>
+    <td>&lt;us-export-laws&gt;</td>
   </tr>
 </table>
 
