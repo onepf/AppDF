@@ -325,13 +325,13 @@ Description.xml Structure
 -------------
 
 * [categorization/type](#categorizationtype)  
-  * [categorization/type](#categorizationtype)  
-    * [categorization/type](#categorizationtype)  
-    * [categorization/type](#categorizationtype)  
-  * [categorization/type](#categorizationtype)  
-    * [categorization/type](#categorizationtype)  
-    * [categorization/type](#categorizationtype)  
-  * [categorization/type](#categorizationtype)  
+	* [categorization/type](#categorizationtype)  
+		* [categorization/type](#categorizationtype)  
+		* [categorization/type](#categorizationtype)  
+	* [categorization/type](#categorizationtype)  
+		* [categorization/type](#categorizationtype)  
+		* [categorization/type](#categorizationtype)  
+	* [categorization/type](#categorizationtype)  
 * [description/title](#descriptiontitle)
 
 ### categorization
