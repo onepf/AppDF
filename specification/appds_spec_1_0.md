@@ -358,7 +358,7 @@ Table of Contents:
 	* [local-price](#pricelocal-price)
 	* [trial-version](#pricetrial-version)
 * [apk-files](#apk-files)
-* [requirements](#)
+* [requirements](#requirements)
 	* [features](#requirementsfeatures)
 		* [root](#requirementsroot)
 		* [gms](#requirementsgms)
