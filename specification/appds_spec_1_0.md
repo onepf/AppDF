@@ -1130,6 +1130,12 @@ Each application must be labeled with a minimum allowed age according to [ESRB s
     <td>Store Listing / Categorization / Content rating</td>
     <td>Yes</td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 There is no universal content rating system (aka parental control rating, aka minimum age). Different stores uses different systems. AppDF uses ESRB standard but more important is how this information is mapped to the systems used in the appstores. The following table is used by AppDF to convert the rating to the systems of all the main application stores.
@@ -1138,30 +1144,37 @@ There is no universal content rating system (aka parental control rating, aka mi
   <tr>
     <th>ESRB</th>
     <th>Google Play</th>
+    <th>Amazon AppStore</th>
   </tr>
   <tr>
     <td>3</td>
     <td>Everyone</td>
+    <td>n/a</td>
   </tr>
   <tr>
     <td>6</td>
     <td>Low maturity</td>
+    <td>n/a</td>
   </tr>
   <tr>
     <td>10</td>
     <td>Medium maturity</td>
+    <td>n/a</td>
   </tr>
   <tr>
     <td>13</td>
     <td>Medium maturity</td>
+    <td>n/a</td>
   </tr>
   <tr>
     <td>17</td>
     <td>High maturity</td>
+    <td>n/a</td>
   </tr>
   <tr>
     <td>18</td>
     <td>High maturity</td>
+    <td>n/a</td>
   </tr>
 </table>
 
@@ -1180,6 +1193,10 @@ Here you can find more detailed information about content rating definitions use
   <tr>
     <td>Google Play</td>
     <td>http://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=188189</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Uses several content descriptors instead of one rating value</td>
   </tr>
 </table>
 
@@ -1247,6 +1264,13 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### content-description/content-descriptors
@@ -1255,6 +1279,22 @@ No attributes.
 
 Contains several subtags each describing one of the content descriptors. Each content descriptor could have either `no`, `light` or `strong` value. Most of the stores do not use this information but rather use summary information from the `<minimum-age>` tag. You can read more detailed description of these categories in the articles about the content rating systems:
 [ESRB](http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board), [PEGI](http://en.wikipedia.org/wiki/Pan_European_Game_Information).
+
+Example:
+```xml
+<content-descriptors>
+  <cartoon-violence>no</cartoon-violence>
+  <realistic-violence>no</realistic-violence>
+  <bad-language>no</bad-language>
+  <fear>light</fear>
+  <sexual-content>no</sexual-content>
+  <drugs>no</drugs>
+  <gambling-refference>no</gambling-refference>
+  <alcohol>no</alcohol>
+  <smoking>strong</smoking>
+  <discrimination>no</discrimination>
+</content-descriptors>
+```
 
 <table>
   <tr>
@@ -1318,9 +1358,92 @@ Contains several subtags each describing one of the content descriptors. Each co
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Content Rating</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
 </table>
 
 #### content-description/included-activities
+Required.
+No attributes.
+
+Contains several subtags each describing one type of the application activities that may require user or parent understanding and permission but that is not covered by Android permission system. Each activity tag could have either `no`, `yes` value. 
+
+Example:
+```xml
+<included-activities>
+  <in-app-billing>no</in-app-billing>
+  <gambling>no</gambling>
+  <advertising>no</advertising>
+  <user-generated-content>no</user-generated-content>
+  <user-to-user-communications>no</user-to-user-communications>
+  <account-creation>no</account-creation>
+  <personal-information-collection>yes</personal-information-collection>
+</included-activities>
+```
+
+<table>
+  <tr>
+    <th>Activity</th>
+    <th>Explanation</th>
+  </tr>
+  <tr>
+    <td>in-app-billing</td>
+    <td>Either standard or custom in-app billing (aka In-App Purchases)</td>
+  </tr>
+  <tr>
+    <td>gambling</td>
+    <td>Gambling</td>
+  </tr>
+  <tr>
+    <td>advertising</td>
+    <td>Any form of advertising including banner or AirPush-like advertising</td>
+  </tr>
+  <tr>
+    <td>user-generated-content</td>
+    <td>User generated content</td>
+  </tr>
+  <tr>
+    <td>user-to-user-communications</td>
+    <td>User to user communications</td>
+  </tr>
+  <tr>
+    <td>account-creation</td>
+    <td>Account creation</td>
+  </tr>
+  <tr>
+    <td>personal-information-collection</td>
+    <td>Your application transfers to the server or collects locally on the device any personal information</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Content Rating</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+</table>
 
 ### availability
 Optional.
