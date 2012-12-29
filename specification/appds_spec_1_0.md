@@ -721,6 +721,15 @@ Maximum length: 500.
     <td>500</td>
     <td>Describes the changes of the latest version (version number is taken from APK file)</td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### description/youtube-video
@@ -1062,7 +1071,7 @@ Example:
     <td>Images & Multimedia / Screenshots</td>
     <td>Yes</td>
     <td>No</td>
-    <td>800x480, 1024x600, 1280x720, 1280x800, or 1920x1200</td>
+    <td>800x480, 1024x600, 1280x720, 1280x800, or 1920x1200 (portrait or landscape)</td>
     <td>JPG or PNG</td>
     <td>3-10</td>
   </tr>
@@ -1772,6 +1781,11 @@ This tag is ignored for paid apps.
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
     <td>No</td>
     <td></td>
   </tr>
