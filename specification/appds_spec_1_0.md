@@ -94,8 +94,6 @@ Sample Description.xml File
       <feature>3D interface</feature>
     </features>
     <recent-changes>It is a description of what was changed in the latest version</recent-changes>
-    <!--This tag is shown as an example how custom store localizable text information can be added, for other store specific fields see "store-specific" top level tag-->
-    <x-opera-app-registration-instructions>Sample text here</x-opera-app-registration-instructions>
 
     <!--Optional tag, some stores require it for apps that collect personal information-->
     <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
@@ -335,7 +333,6 @@ Table of Contents:
 	* [full-description](#descriptionfull-description)
 	* [features](#descriptionfeatures)
 	* [recent-changes](#descriptionrecent-changes)
-	* [x-opera-app-registration-instructions](#descriptionx-opera-app-registration-instructions)
 	* [privacy-policy](#descriptionprivacy-policy)
 	* [eula](#descriptioneula)
 	* [images](#descriptionimages)
@@ -787,85 +784,6 @@ Maximum length: 500.
   </tr>
 </table>
 
-#### description/youtube-video
-
-Optional. 
-No attributes. 
-
-If you have a video about your product at YouTube you can include it here. Please include only ID not entire URL. For example if your YouTube video URL is:
-https://www.youtube.com/watch?v=4YcBHQ2fCDE
-
-then tag value should be just `4YcBHQ2fCDE`. Like:
-```xml
-<youtube-video>4YcBHQ2fCDE</youtube-video>
-```
-
-<table>
-  <tr>
-    <th>Store support</th>
-    <th>Supported</th>
-    <th>Name</th>
-    <th>Required</th>
-    <th>Localizable</th>
-    <th>Comments</th>
-  </tr>
-  <tr>
-    <td>Google Play</td>
-    <td>Yes</td>
-    <td>Store Listing / Graphic Assets / Promo Video</td>
-    <td>No</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Amazon AppStore</td>
-    <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-
-#### description/video-file
-
-Optional. 
-No attributes. 
-
-Some stores don't support including of YouTube videos but do supports uploaded video files. You can use this tag to link to local video files about the product. You can include several different video files.
-
-<table>
-  <tr>
-    <th>Store support</th>
-    <th>Supported</th>
-    <th>Name</th>
-    <th>Required</th>
-    <th>Localizable</th>
-    <th>Number</th>
-    <th>Format</th>
-  </tr>
-  <tr>
-    <td>Google Play</td>
-    <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Amazon AppStore</td>
-    <td>Yes</td>
-    <td>Images & Multimedia / Video(s)</td>
-    <td>No</td>
-    <td>No</td>
-    <td>0-5</td>
-    <td>MPEG-2, WMV, MOV, FLV, AVI, or H.264 MPEG-4, Minimum 720px wide (4:3 or 16:9); 1200 kbps or higher</td>
-  </tr>
-</table>
-
-#### description/x-opera-app-registration-instructions
-
 #### description/privacy-policy
 Optional. 
 No attributes. 
@@ -1132,6 +1050,82 @@ Example:
   </tr>
 </table>
 
+#### description/youtube-video
+
+Optional. 
+No attributes. 
+
+If you have a video about your product at YouTube you can include it here. Please include only ID not entire URL. For example if your YouTube video URL is:
+https://www.youtube.com/watch?v=4YcBHQ2fCDE
+
+then tag value should be just `4YcBHQ2fCDE`. Like:
+```xml
+<youtube-video>4YcBHQ2fCDE</youtube-video>
+```
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Graphic Assets / Promo Video</td>
+    <td>No</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+#### description/video-file
+
+Optional. 
+No attributes. 
+
+Some stores don't support including of YouTube videos but do supports uploaded video files. You can use this tag to link to local video files about the product. You can include several different video files.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Number</th>
+    <th>Format</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Images & Multimedia / Video(s)</td>
+    <td>No</td>
+    <td>No</td>
+    <td>0-5</td>
+    <td>MPEG-2, WMV, MOV, FLV, AVI, or H.264 MPEG-4, Minimum 720px wide (4:3 or 16:9); 1200 kbps or higher</td>
+  </tr>
+</table>
 
 ### content-description
 Required.
