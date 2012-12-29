@@ -96,7 +96,6 @@ Sample Description.xml File
     <recent-changes>It is a description of what was changed in the latest version</recent-changes>
     <!--This tag is shown as an example how custom store localizable text information can be added, for other store specific fields see "store-specific" top level tag-->
     <x-opera-app-registration-instructions>Sample text here</x-opera-app-registration-instructions>
-    <youtube-video>x8723j<large-promo>w2KL</youtube-video>
 
     <!--Optional tag, some stores require it for apps that collect personal information-->
     <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
@@ -121,6 +120,10 @@ Sample Description.xml File
         <screenshot>screenshot05_en.png</screenshot>
       </screenshot>
     </images>
+
+    <youtube-video>x8723jw2KL</youtube-video>
+    <video-file>video1.mp4</video-file>
+
   </description>
 
   <description language="ru">
@@ -455,7 +458,6 @@ Example:
   </features>
   <recent-changes>It is a description of what was changed in the latest version</recent-changes>
   <x-opera-app-registration-instructions>Sample text here</x-opera-app-registration-instructions>
-  <youtube-video>x8723jw2KL</youtube-video>
 
   <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
   <eula></eula>
@@ -474,6 +476,10 @@ Example:
       <screenshot>screenshot05_en.png</screenshot>
     </screenshots>
   </images>
+
+  <youtube-video>x8723jw2KL</youtube-video>
+  <video-file>video1.mp4</video-file>
+
 </description>
 ```
 
@@ -747,6 +753,51 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
     <td>Yes</td>
     <td></td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+#### description/video-file
+
+Optional. 
+No attributes. 
+
+Some stores don't support including of YouTube videos but do supports uploaded video files. You can use this tag to link to local video files about the product. You can include several different video files.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+    <th>Number</th>
+    <th>Format</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Images & Multimedia / Video(s)</td>
+    <td>No</td>
+    <td>No</td>
+    <td>0-5</td>
+    <td>MPEG-2, WMV, MOV, FLV, AVI, or H.264 MPEG-4, Minimum 720px wide (4:3 or 16:9); 1200 kbps or higher</td>
+  </tr>
 </table>
 
 #### description/x-opera-app-registration-instructions
@@ -918,6 +969,15 @@ Large promotion picture usually used by the stores on the PC websites.
     <td>1024x500</td>
     <td>JPG or 24-bit PNG (no alpha)</td>
   </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Images & Multimedia / Promotional image</td>
+    <td>No</td>
+    <td>No</td>
+    <td>1024x500</td>
+    <td>PNG or JPG</td>
+  </tr>
 </table>
 
 ##### description/images/small-promo
@@ -946,6 +1006,15 @@ Small promotion picture usually used by the stores on a mobile device for promot
     <td>Yes</td>
     <td>180x120</td>
     <td>JPG or 24-bit PNG (no alpha)</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>PNG or JPG</td>
   </tr>
 </table>
 
