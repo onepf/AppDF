@@ -143,7 +143,6 @@ Sample Description.xml File
     <content-rating>12</content-rating>
 
     <rating-certificates>
-      <minimum-age>12</minimum-age>
       <!--Possible values are 3, 7, 12, 16, 18. "certificate" attribute is optional-->
       <rating-certificate type="PEGI" certificate="whirl-pegi.pdf">7</rating-certificate>
       <!--Possible values are 3, 6, 10, 13, 17, 18. "certificate" attribute is optional-->
@@ -324,15 +323,62 @@ Sample Description.xml File
 Description.xml Structure
 -------------
 
-* [categorization/type](#categorizationtype)  
-	* [categorization/type](#categorizationtype)  
-		* [categorization/type](#categorizationtype)  
-		* [categorization/type](#categorizationtype)  
-	* [categorization/type](#categorizationtype)  
-		* [categorization/type](#categorizationtype)  
-		* [categorization/type](#categorizationtype)  
-	* [categorization/type](#categorizationtype)  
-* [description/title](#descriptiontitle)
+* [categorization](#categorization)
+	* [type](#categorizationtype)
+	* [category](#categorizationcategory)
+	* [subcategory](#categorizationsubcategory)
+* [description](#description)
+	* [title](#descriptiontitle)
+	* [keywords](#descriptionkeywords)
+	* [short-description](#descriptionshort-description)
+	* [full-description](#descriptionfull-description)
+	* [features](#descriptionfeatures)
+		* [feature](#description)
+	* [recent-changes](#description)
+	* [x-opera-app-registration-instructions](#description)
+	* [privacy-policy](#description)
+	* [eula](#description)
+	* [images](#descriptionimages)
+		* [app-icon](#descriptionimages)
+		* [large-promo](#descriptionimages)
+		* [small-promo](#descriptionimages)
+		* [screenshots](#descriptionimages)
+			* [screenshot](#descriptionimages)
+	* [youtube-video](#description)
+	* [video-file](#description)
+* [content-description](#)
+	* [content-rating](#content-description)
+	* [rating-certificates](#content-description)
+	* [content-descriptors](#content-description)
+	* [included-activities](#content-description)
+* [availability](#)
+	* [countries](#availability)
+	* [period](#availability)
+	* [since](#availability)
+	* [until](#availability)
+* [price](#)
+	* [base-price](#price)
+	* [local-price](#price)
+	* [trial-version](#price)
+* [apk-files](#)
+* [requirements](#)
+	* [features](#requirements)
+		* [root](#requirements)
+		* [gms](#requirements)
+	* [supported-languages](#requirements)
+	* [supported-devices](#requirements)
+	* [supported-resolutions](#requirements)
+* [store-specific](#)
+	* [amazon](#store-specific)
+	* [samsung](#store-specific)
+	* [slideme](#store-specific)
+* [testing-instructions](#)
+* [consent](#)
+* [customer-support](#)
+	* [phone](#customer-support)
+	* [email](#customer-support)
+	* [website](#customer-support)
+
 
 ### categorization
 
