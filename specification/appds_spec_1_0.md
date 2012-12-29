@@ -324,8 +324,8 @@ Sample Description.xml File
 Description.xml Structure
 -------------
 
-[categorization/type](#categorization/type)
-[description/title](#description/title)
+[categorization/type](#categorizationtype)
+[description/title](#descriptiontitle)
 
 ### categorization
 
