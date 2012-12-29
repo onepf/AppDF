@@ -4689,3 +4689,8 @@ AppDF provides universal category list that could be matched to any appstore cat
   <td>Fun &amp; Games / Sports</td>
 </tr>
 </table>
+
+License
+-------------
+This file is licensed under the Creative Commons Attribution 2.5 license:
+http://creativecommons.org/licenses/by/2.5/
