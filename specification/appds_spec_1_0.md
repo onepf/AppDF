@@ -19,7 +19,7 @@ Let's consider more advanced example of AppDF package:
 description.xml
 description_fr.xml
 description_de.xml
-descriptionkr.xml
+description_kr.xml
 Life_ics.apk
 Life_fro.apk
 images/icon114x114.png
@@ -144,15 +144,15 @@ Sample Description.xml File
       <!--Possible values are 3, 7, 12, 16, 18. "certificate" attribute is optional-->
       <rating-certificate type="PEGI" certificate="whirl-pegi.pdf">7</rating-certificate>
       <!--Possible values are 3, 6, 10, 13, 17, 18. "certificate" attribute is optional-->
-      <rating-certificate type="ESRB" certificate="whirl-pegi.pdf">7</rating-certificate>
+      <rating-certificate type="ESRB" certificate="whirl-esrb.pdf">7</rating-certificate>
       <!--Possible values are "all", 12 15, 18. "certificate" attribute is optional-->
-      <rating-certificate type="GRB" certificate="whirl-pegi.pdf">all</rating-certificate>
+      <rating-certificate type="GRB" certificate="whirl-gbr.pdf">all</rating-certificate>
       <!--Possible values are "all", 12, 15, 17, 18. "certificate" attribute is optional-->
-      <rating-certificate type="CERO" certificate="whirl-pegi.pdf">all</rating-certificate>
+      <rating-certificate type="CERO" certificate="whirl-cero.pdf">all</rating-certificate>
       <!--Possible values are "l", 10, 12, 14, 16, 18. "certificate" attribute is optional-->
-      <rating-certificate type="DEJUS" certificate="whirl-pegi.pdf" mark="dejus_mark.jpg">l</rating-certificate>
+      <rating-certificate type="DEJUS" certificate="whirl-dejus.pdf" mark="dejus_mark.jpg">l</rating-certificate>
       <!--Possible values are 0, 6, 12, 16, 18. "certificate" attribute is optional-->
-      <rating-certificate type="FSK" certificate="whirl-pegi.pdf">0</rating-certificate>
+      <rating-certificate type="FSK" certificate="whirl-fsk.pdf">0</rating-certificate>
     </rating-certificates>
     <!--All sub-tags are required, possible options are "no", "light", "strong"-->
     <content-descriptors>
@@ -218,10 +218,10 @@ Sample Description.xml File
   </price>
 
   <apk-files>
-    <apk-file>yandexhell2.apk</apk-file>
-    <apk-file>yandexhell3.apk</apk-file>
+    <apk-file>yandexshell2.apk</apk-file>
+    <apk-file>yandexshell3.apk</apk-file>
     <apk-file-with-extnsion>
-	  <apk-file>yandexhell4.apk</apk-file>
+	  <apk-file>yandexshell4.apk</apk-file>
 	  <extension>extensionfile.zip</extension>
 	</apk-file-with-extnsion>
   </apk-files>
@@ -1852,10 +1852,10 @@ Please note that today the only application store supporting APK file with exten
 Example:
 ```xml
 <apk-files>
-  <apk-file>yandexhell2.apk</apk-file>
-  <apk-file>yandexhell3.apk</apk-file>
+  <apk-file>yandexshell2.apk</apk-file>
+  <apk-file>yandexshell3.apk</apk-file>
   <apk-file-with-extnsion>
-    <apk-file>yandexhell4.apk</apk-file>
+    <apk-file>yandexshell4.apk</apk-file>
     <extension>extensionfile.zip</extension>
   </apk-file-with-extnsion>
 </apk-files>
