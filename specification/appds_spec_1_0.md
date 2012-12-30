@@ -686,7 +686,7 @@ Short application description used in the app lists next to the app title. Some 
     <td>Yes</td>
     <td>Yes</td>
     <td>Unlimited</td>
-    <td></td>
+    <td>Shown on the top of the product webpage, next to the app icon</td>
   </tr>
 </table>
 
@@ -747,6 +747,15 @@ Full application description shown on the product page. You can include several 
     <td>Yes</td>
     <td>4000</td>
     <td>simple HTML, no links</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Full Description</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Unlimited</td>
+    <td>Some HTML subset</td>
   </tr>
 </table>
 
