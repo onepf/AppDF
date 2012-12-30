@@ -632,6 +632,15 @@ Comma separated list of keywords.
     <td>80</td>
     <td></td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Keywords</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Unlimited</td>
+    <td></td>
+  </tr>
 </table>
 
 #### description/short-description
@@ -669,6 +678,15 @@ Short application description used in the app lists next to the app title. Some 
     <td>Yes</td>
     <td>1200</td>
     <td>A shorter version of your app description for use on mobile devices.</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Short Description</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Unlimited</td>
+    <td></td>
   </tr>
 </table>
 
