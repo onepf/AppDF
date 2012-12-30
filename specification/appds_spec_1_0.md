@@ -414,6 +414,12 @@ Required. No attributes. Value could be either `application` or `game`.
     <td>Yes</td>
     <td>Games is one item in the application category list</td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Category</td>
+    <td>Yes</td>
+  </tr>
 </table>
 
 #### categorization/category
@@ -437,6 +443,12 @@ Required. No attributes. AppDF format has its own list of categories for both ga
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>General Information / Category</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Category</td>
     <td>Yes</td>
   </tr>
 </table>
@@ -465,6 +477,12 @@ Although some stores don't use subcategories AppDF includes as detailed category
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>General Information / Category</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Category</td>
     <td>Yes</td>
   </tr>
 </table>
@@ -568,6 +586,14 @@ Application name, shown in the application list. As everything in the `<descript
     <td>Yes</td>
     <td>Yes</td>
     <td>250</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Title</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Unlimited</td>
   </tr>
 </table>
 
