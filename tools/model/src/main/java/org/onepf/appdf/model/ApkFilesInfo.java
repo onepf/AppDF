@@ -11,6 +11,22 @@ public class ApkFilesInfo {
 	private List<String> apkFiles;
 	
 	private List<Extension> extensions;
+
+	public List<String> getApkFiles() {
+		return apkFiles;
+	}
+
+	public void setApkFiles(List<String> apkFiles) {
+		this.apkFiles = apkFiles;
+	}
+
+	public List<Extension> getExtensions() {
+		return extensions;
+	}
+
+	public void setExtensions(List<Extension> extensions) {
+		this.extensions = extensions;
+	}
 	
 	
 }
