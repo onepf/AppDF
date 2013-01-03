@@ -800,6 +800,14 @@ Example:
     <td>Yes</td>
     <td>Unlimited</td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### description/recent-changes
@@ -836,6 +844,15 @@ Maximum length: 500.
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### description/privacy-policy
@@ -859,7 +876,7 @@ Link to a webpage with your privacy policy for this application.
     <td>Store Listing / Privacy Policy / Link to policy</td>
     <td>No</td>
     <td>No</td>
-    <td></td>
+    <td>Privacy policy URL</td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
@@ -868,6 +885,14 @@ Link to a webpage with your privacy policy for this application.
     <td>No</td>
     <td>No</td>
     <td>Privacy policy URL</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Privacy Statement</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Full privacy policy text or URL</td>
   </tr>
 </table>
 
@@ -902,6 +927,14 @@ Link to a webpage with your End User License Agreement for this application.
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>EULA</td>
+    <td>No</td>
+    <td>No</td>
+    <td>EULA text or URL</td>
   </tr>
 </table>
 
