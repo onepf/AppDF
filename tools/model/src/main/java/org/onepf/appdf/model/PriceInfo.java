@@ -8,6 +8,30 @@ public class PriceInfo {
 		private String currencyCode;
 		private String price;
 		private String contryCode;
+
+		public String getCurrencyCode() {
+			return currencyCode;
+		}
+
+		public void setCurrencyCode(String currencyCode) {
+			this.currencyCode = currencyCode;
+		}
+
+		public String getPrice() {
+			return price;
+		}
+
+		public void setPrice(String price) {
+			this.price = price;
+		}
+
+		public String getContryCode() {
+			return contryCode;
+		}
+
+		public void setContryCode(String contryCode) {
+			this.contryCode = contryCode;
+		}
 	}
 
 	private boolean isFree;
