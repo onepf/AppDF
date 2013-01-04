@@ -1056,6 +1056,15 @@ Large promotion picture usually used by the stores on the PC websites.
     <td>1024x500</td>
     <td>PNG or JPG</td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 ##### description/images/small-promo
@@ -1087,6 +1096,15 @@ Small promotion picture usually used by the stores on a mobile device for promot
   </tr>
   <tr>
     <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>PNG or JPG</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
     <td>No</td>
     <td></td>
     <td></td>
