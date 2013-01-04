@@ -1010,6 +1010,15 @@ High resolution application icon. Different stores require different resolutions
     <td>114x114 + 512x512</td>
     <td>PNG (with transparency)</td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Thumbnail</td>
+    <td>No</td>
+    <td>No</td>
+    <td>512x512</td>
+    <td>PNG, JPG, GIF</td>
+  </tr>
 </table>
 
 ##### description/images/large-promo
