@@ -1212,6 +1212,14 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### description/video-file
@@ -1248,6 +1256,15 @@ Some stores don't support including of YouTube videos but do supports uploaded v
     <td>No</td>
     <td>0-5</td>
     <td>MPEG-2, WMV, MOV, FLV, AVI, or H.264 MPEG-4, Minimum 720px wide (4:3 or 16:9); 1200 kbps or higher</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
