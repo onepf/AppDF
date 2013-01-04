@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ApkFilesInfo {
 
-	public static class Extension {
+	public static class ApkFile {
 		private String fileName;
 		private List<String> exstension;
 
@@ -25,24 +25,13 @@ public class ApkFilesInfo {
 		}
 	}
 
-	private List<String> apkFiles;
+	private List<ApkFile> apkFiles;
 
-	private List<Extension> extensions;
-
-	public List<String> getApkFiles() {
+	public List<ApkFile> getApkFiles() {
 		return apkFiles;
 	}
 
-	public void setApkFiles(List<String> apkFiles) {
+	public void setApkFiles(List<ApkFile> apkFiles) {
 		this.apkFiles = apkFiles;
 	}
-
-	public List<Extension> getExtensions() {
-		return extensions;
-	}
-
-	public void setExtensions(List<Extension> extensions) {
-		this.extensions = extensions;
-	}
-
 }
