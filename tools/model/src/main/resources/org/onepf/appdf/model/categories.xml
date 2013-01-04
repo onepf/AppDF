@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <categories>
 	<category>
-		<appdf> Comics</appdf>
-		<play> Comics</play>
+		<appdf>Comics</appdf>
+		<play>Comics</play>
 		<amazon>Books &amp; Comic / Comic Strips</amazon>
 		<opera>eBooks</opera>
 		<yandex>eBooks</yandex>
@@ -10,8 +10,8 @@
 		<slideme>Publications / Comics</slideme>
 	</category>
 	<category>
-		<appdf> Books</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>Books</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>Books &amp; Comic / Other</amazon>
 		<opera>eBooks</opera>
 		<yandex>eBooks</yandex>
@@ -19,8 +19,8 @@
 		<slideme>Publications / E-books</slideme>
 	</category>
 	<category>
-		<appdf> Publications</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>Publications</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>Books &amp; Comic / Other</amazon>
 		<opera>eBooks</opera>
 		<yandex>eBooks</yandex>
@@ -28,8 +28,8 @@
 		<slideme>Publications</slideme>
 	</category>
 	<category>
-		<appdf> Books &amp; Readers</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>Books &amp; Readers</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>Books &amp; Comic / Books &amp; Readers</amazon>
 		<opera>eBooks</opera>
 		<yandex>eBooks</yandex>
@@ -37,8 +37,8 @@
 		<slideme>Publications / E-book readers</slideme>
 	</category>
 	<category>
-		<appdf> Children’s Books</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>Children’s Books</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>Books &amp; Comic / Children’s Books</amazon>
 		<opera>eBooks</opera>
 		<yandex>eBooks</yandex>
@@ -46,8 +46,8 @@
 		<slideme>Publications</slideme>
 	</category>
 	<category>
-		<appdf> Graphic Novels</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>Graphic Novels</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>Books &amp; Comic / Graphic Novels</amazon>
 		<opera>eBooks</opera>
 		<yandex>eBooks</yandex>
@@ -55,8 +55,8 @@
 		<slideme>Publications</slideme>
 	</category>
 	<category>
-		<appdf> Reference</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>Reference</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>Reference</amazon>
 		<opera>eBooks</opera>
 		<yandex>eBooks</yandex>
@@ -64,8 +64,8 @@
 		<slideme>Publications</slideme>
 	</category>
 	<category>
-		<appdf> City Info</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>City Info</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / Other</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -73,8 +73,8 @@
 		<slideme>Travel &amp; Locality / City Guides</slideme>
 	</category>
 	<category>
-		<appdf> Country Guides</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>Country Guides</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / Other</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -82,8 +82,8 @@
 		<slideme>Travel &amp; Locality / Country Guides</slideme>
 	</category>
 	<category>
-		<appdf> City Info / Boston</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>City Info / Boston</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / Boston</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -91,8 +91,8 @@
 		<slideme>Travel &amp; Locality / City Guides</slideme>
 	</category>
 	<category>
-		<appdf> City Info / Chicago</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>City Info / Chicago</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / Chicago</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -100,8 +100,8 @@
 		<slideme>Travel &amp; Locality / City Guides</slideme>
 	</category>
 	<category>
-		<appdf> City Info / Dallas</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>City Info / Dallas</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / Dallas</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -109,8 +109,8 @@
 		<slideme>Travel &amp; Locality / City Guides</slideme>
 	</category>
 	<category>
-		<appdf> City Info / Los Angeles</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>City Info / Los Angeles</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / Los Angeles</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -118,8 +118,8 @@
 		<slideme>Travel &amp; Locality / City Guides</slideme>
 	</category>
 	<category>
-		<appdf> City Info / Miami</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>City Info / Miami</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / Miami</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -127,8 +127,8 @@
 		<slideme>Travel &amp; Locality / City Guides</slideme>
 	</category>
 	<category>
-		<appdf> City Info / New York</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>City Info / New York</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / New York</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -136,8 +136,8 @@
 		<slideme>Travel &amp; Locality / City Guides</slideme>
 	</category>
 	<category>
-		<appdf> City Info / Philadelphia</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>City Info / Philadelphia</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / Philadelphia</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -145,8 +145,8 @@
 		<slideme>Travel &amp; Locality / City Guides</slideme>
 	</category>
 	<category>
-		<appdf> City Info / Phoenix</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>City Info / Phoenix</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / Phoenix</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -154,8 +154,8 @@
 		<slideme>Travel &amp; Locality / City Guides</slideme>
 	</category>
 	<category>
-		<appdf> City Info / San Francisco</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>City Info / San Francisco</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / San Francisco</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -163,8 +163,8 @@
 		<slideme>Travel &amp; Locality / City Guides</slideme>
 	</category>
 	<category>
-		<appdf> City Info / Seattle</appdf>
-		<play> Books &amp; Reference</play>
+		<appdf>City Info / Seattle</appdf>
+		<play>Books &amp; Reference</play>
 		<amazon>City Info / Seattle</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -172,8 +172,8 @@
 		<slideme>Travel &amp; Locality / City Guides</slideme>
 	</category>
 	<category>
-		<appdf> Weather</appdf>
-		<play> Weather</play>
+		<appdf>Weather</appdf>
+		<play>Weather</play>
 		<amazon>News &amp; Weather / Weather</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -181,8 +181,8 @@
 		<slideme>News &amp; Weather / Weather</slideme>
 	</category>
 	<category>
-		<appdf> Travel / Transportation</appdf>
-		<play> Transportation</play>
+		<appdf>Travel / Transportation</appdf>
+		<play>Transportation</play>
 		<amazon>Travel / Transportation</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -190,8 +190,8 @@
 		<slideme>Travel &amp; Locality / Other</slideme>
 	</category>
 	<category>
-		<appdf> Travel</appdf>
-		<play> Travel &amp; Local</play>
+		<appdf>Travel</appdf>
+		<play>Travel &amp; Local</play>
 		<amazon>Travel / Other</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -199,8 +199,8 @@
 		<slideme>Travel &amp; Locality</slideme>
 	</category>
 	<category>
-		<appdf> Travel / Auto Rental</appdf>
-		<play> Travel &amp; Local</play>
+		<appdf>Travel / Auto Rental</appdf>
+		<play>Travel &amp; Local</play>
 		<amazon>Travel / Auto Rental</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -208,8 +208,8 @@
 		<slideme>Travel &amp; Locality / Other</slideme>
 	</category>
 	<category>
-		<appdf> Travel / Flight</appdf>
-		<play> Travel &amp; Local</play>
+		<appdf>Travel / Flight</appdf>
+		<play>Travel &amp; Local</play>
 		<amazon>Travel / Flight</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -217,8 +217,8 @@
 		<slideme>Travel &amp; Locality / Other</slideme>
 	</category>
 	<category>
-		<appdf> Travel / Hotel</appdf>
-		<play> Travel &amp; Local</play>
+		<appdf>Travel / Hotel</appdf>
+		<play>Travel &amp; Local</play>
 		<amazon>Travel / Hotel</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -226,8 +226,8 @@
 		<slideme>Travel &amp; Locality / Other</slideme>
 	</category>
 	<category>
-		<appdf> Travel / Trip Planner</appdf>
-		<play> Travel &amp; Local</play>
+		<appdf>Travel / Trip Planner</appdf>
+		<play>Travel &amp; Local</play>
 		<amazon>Travel / Trip Planner</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -235,8 +235,8 @@
 		<slideme>Travel &amp; Locality / Other</slideme>
 	</category>
 	<category>
-		<appdf> Navigation</appdf>
-		<play> Travel &amp; Local</play>
+		<appdf>Navigation</appdf>
+		<play>Travel &amp; Local</play>
 		<amazon>Navigation</amazon>
 		<opera>Travel &amp; Maps</opera>
 		<yandex>Travel &amp; Maps</yandex>
@@ -244,8 +244,8 @@
 		<slideme>Travel &amp; Locality / Navigation</slideme>
 	</category>
 	<category>
-		<appdf> Religion</appdf>
-		<play> Lifestyle</play>
+		<appdf>Religion</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -253,8 +253,8 @@
 		<slideme>Religion</slideme>
 	</category>
 	<category>
-		<appdf> Religion / Buddhism</appdf>
-		<play> Lifestyle</play>
+		<appdf>Religion / Buddhism</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -262,8 +262,8 @@
 		<slideme>Religion / Buddhism</slideme>
 	</category>
 	<category>
-		<appdf> Religion / Chinese folk</appdf>
-		<play> Lifestyle</play>
+		<appdf>Religion / Chinese folk</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -271,8 +271,8 @@
 		<slideme>Religion / Chinese folk</slideme>
 	</category>
 	<category>
-		<appdf> Religion / Christianity</appdf>
-		<play> Lifestyle</play>
+		<appdf>Religion / Christianity</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -280,8 +280,8 @@
 		<slideme>Religion / Christianity</slideme>
 	</category>
 	<category>
-		<appdf> Religion / Hinduism</appdf>
-		<play> Lifestyle</play>
+		<appdf>Religion / Hinduism</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -289,8 +289,8 @@
 		<slideme>Religion / Hinduism</slideme>
 	</category>
 	<category>
-		<appdf> Religion / Islam</appdf>
-		<play> Lifestyle</play>
+		<appdf>Religion / Islam</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -298,8 +298,8 @@
 		<slideme>Religion / Islam</slideme>
 	</category>
 	<category>
-		<appdf> Religion / Other</appdf>
-		<play> Lifestyle</play>
+		<appdf>Religion / Other</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -307,8 +307,8 @@
 		<slideme>Religion / Other</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -316,8 +316,8 @@
 		<slideme>Lifestyle</slideme>
 	</category>
 	<category>
-		<appdf> Home &amp; Hobby</appdf>
-		<play> Lifestyle</play>
+		<appdf>Home &amp; Hobby</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -325,8 +325,8 @@
 		<slideme>Home &amp; Hobby</slideme>
 	</category>
 	<category>
-		<appdf> Home &amp; Hobby / Other</appdf>
-		<play> Lifestyle</play>
+		<appdf>Home &amp; Hobby / Other</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -334,8 +334,8 @@
 		<slideme>Home &amp; Hobby / Other</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Advice</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Advice</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Advice</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -343,8 +343,8 @@
 		<slideme>Lifestyle / Other</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Astrology</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Astrology</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Astrology</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -352,8 +352,8 @@
 		<slideme>Lifestyle / Other</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Celebrity</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Celebrity</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Celebrity</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -361,8 +361,8 @@
 		<slideme>Lifestyle / Celebrities</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Culture</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Culture</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Celebrity</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -370,8 +370,8 @@
 		<slideme>Lifestyle / Culture</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Design</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Design</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Celebrity</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -379,8 +379,8 @@
 		<slideme>Lifestyle / Design</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Fashion</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Fashion</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Celebrity</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -388,8 +388,8 @@
 		<slideme>Lifestyle / Fashion</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Living</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Living</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Celebrity</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -397,8 +397,8 @@
 		<slideme>Lifestyle / Living</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Hair &amp; Beauty</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Hair &amp; Beauty</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Hair &amp; Beauty</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -406,8 +406,8 @@
 		<slideme>Lifestyle / Other</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Home &amp; Garden</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Home &amp; Garden</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Home &amp; Garden</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -415,8 +415,8 @@
 		<slideme>Lifestyle / Other</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Parenting</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Parenting</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Parenting</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -424,8 +424,8 @@
 		<slideme>Lifestyle / Other</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Quizzes &amp; Games</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Quizzes &amp; Games</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Quizzes &amp; Games</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -433,8 +433,8 @@
 		<slideme>Lifestyle / Other</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Relationships</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Relationships</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Relationships</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -442,8 +442,8 @@
 		<slideme>Lifestyle / Other</slideme>
 	</category>
 	<category>
-		<appdf> Lifestyle / Self Improvement</appdf>
-		<play> Lifestyle</play>
+		<appdf>Lifestyle / Self Improvement</appdf>
+		<play>Lifestyle</play>
 		<amazon>Lifestyle / Self Improvement</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -451,8 +451,8 @@
 		<slideme>Lifestyle / Other</slideme>
 	</category>
 	<category>
-		<appdf> Magazines</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>Magazines</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>Magazines</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -460,8 +460,8 @@
 		<slideme>Publications / Magazines</slideme>
 	</category>
 	<category>
-		<appdf> Newspapers</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>Newspapers</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>Newspapers</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -469,8 +469,8 @@
 		<slideme>Publications</slideme>
 	</category>
 	<category>
-		<appdf> News</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -478,8 +478,8 @@
 		<slideme>News &amp; Weather / News</slideme>
 	</category>
 	<category>
-		<appdf> News / Regional News</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News / Regional News</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -487,8 +487,8 @@
 		<slideme>News &amp; Weather / Regional News</slideme>
 	</category>
 	<category>
-		<appdf> News / Other</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News / Other</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -496,8 +496,8 @@
 		<slideme>News &amp; Weather / Other</slideme>
 	</category>
 	<category>
-		<appdf> News &amp; Weather</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News &amp; Weather</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -505,8 +505,8 @@
 		<slideme>News &amp; Weather</slideme>
 	</category>
 	<category>
-		<appdf> News / Business</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News / Business</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / Business</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -514,8 +514,8 @@
 		<slideme>News &amp; Weather / News</slideme>
 	</category>
 	<category>
-		<appdf> News / Entertainment</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News / Entertainment</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / Entertainment</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -523,8 +523,8 @@
 		<slideme>News &amp; Weather / News</slideme>
 	</category>
 	<category>
-		<appdf> News / Health</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News / Health</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / Health</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -532,8 +532,8 @@
 		<slideme>News &amp; Weather / News</slideme>
 	</category>
 	<category>
-		<appdf> News / Politics</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News / Politics</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / Politics</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -541,8 +541,8 @@
 		<slideme>News &amp; Weather / News</slideme>
 	</category>
 	<category>
-		<appdf> News / Science &amp; Tech</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News / Science &amp; Tech</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / Science &amp; Tech</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -550,8 +550,8 @@
 		<slideme>News &amp; Weather / News</slideme>
 	</category>
 	<category>
-		<appdf> News / Sports</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News / Sports</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / Sports</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -559,8 +559,8 @@
 		<slideme>News &amp; Weather / News</slideme>
 	</category>
 	<category>
-		<appdf> News / US</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News / US</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / US</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -568,8 +568,8 @@
 		<slideme>News &amp; Weather / News</slideme>
 	</category>
 	<category>
-		<appdf> News / World</appdf>
-		<play> News &amp; Magazines</play>
+		<appdf>News / World</appdf>
+		<play>News &amp; Magazines</play>
 		<amazon>News &amp; Weather / World</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -577,8 +577,8 @@
 		<slideme>News &amp; Weather / News</slideme>
 	</category>
 	<category>
-		<appdf> Shopping</appdf>
-		<play> Shopping</play>
+		<appdf>Shopping</appdf>
+		<play>Shopping</play>
 		<amazon>Shopping</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -586,8 +586,8 @@
 		<slideme>Home &amp; Hobby / Shopping</slideme>
 	</category>
 	<category>
-		<appdf> Sports</appdf>
-		<play> Sports</play>
+		<appdf>Sports</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -595,8 +595,8 @@
 		<slideme>Sports</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Athletic</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Athletic</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -604,8 +604,8 @@
 		<slideme>Sports / Athletic</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Disabled</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Disabled</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -613,8 +613,8 @@
 		<slideme>Sports / Disabled</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Extreme</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Extreme</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -622,8 +622,8 @@
 		<slideme>Sports / Extreme</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Motor</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Motor</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -631,8 +631,8 @@
 		<slideme>Sports / Motor</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Baseball</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Baseball</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Baseball</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -640,8 +640,8 @@
 		<slideme>Sports / Other</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Basketball</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Basketball</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Basketball</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -649,8 +649,8 @@
 		<slideme>Sports / Other</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Boxing</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Boxing</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Boxing</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -658,8 +658,8 @@
 		<slideme>Sports / Other</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Football</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Football</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Football</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -667,8 +667,8 @@
 		<slideme>Sports / Other</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Golf</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Golf</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Golf</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -676,8 +676,8 @@
 		<slideme>Sports / Other</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Hockey</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Hockey</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Hockey</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -685,9 +685,9 @@
 		<slideme>Sports / Other</slideme>
 	</category>
 	<category>
-		<appdf> Sports / NCAA
+		<appdf>Sports / NCAA
 		</appdf>
-		<play> Sports</play>
+		<play>Sports</play>
 		<amazon>Sports / NCAA
 		</amazon>
 		<opera>Entertainment</opera>
@@ -696,8 +696,8 @@
 		<slideme>Sports / Other</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Soccer</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Soccer</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Soccer</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -705,8 +705,8 @@
 		<slideme>Sports / Other</slideme>
 	</category>
 	<category>
-		<appdf> Sports / Tennis</appdf>
-		<play> Sports</play>
+		<appdf>Sports / Tennis</appdf>
+		<play>Sports</play>
 		<amazon>Sports / Tennis</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -714,9 +714,9 @@
 		<slideme>Sports / Other</slideme>
 	</category>
 	<category>
-		<appdf> Sports / UFC
+		<appdf>Sports / UFC
 		</appdf>
-		<play> Sports</play>
+		<play>Sports</play>
 		<amazon>Sports / UFC
 		</amazon>
 		<opera>Entertainment</opera>
@@ -725,8 +725,8 @@
 		<slideme>Sports / Other</slideme>
 	</category>
 	<category>
-		<appdf> Novelty</appdf>
-		<play> Entertainment</play>
+		<appdf>Novelty</appdf>
+		<play>Entertainment</play>
 		<amazon>Novelty</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -734,8 +734,8 @@
 		<slideme>Entertainment</slideme>
 	</category>
 	<category>
-		<appdf> Podcasts</appdf>
-		<play> Entertainment</play>
+		<appdf>Podcasts</appdf>
+		<play>Entertainment</play>
 		<amazon>Podcasts</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -743,8 +743,8 @@
 		<slideme>Entertainment</slideme>
 	</category>
 	<category>
-		<appdf> Entertainment</appdf>
-		<play> Entertainment</play>
+		<appdf>Entertainment</appdf>
+		<play>Entertainment</play>
 		<amazon>Entertainment</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -752,8 +752,8 @@
 		<slideme>Entertainment</slideme>
 	</category>
 	<category>
-		<appdf> Entertainment / Comedy</appdf>
-		<play> Entertainment</play>
+		<appdf>Entertainment / Comedy</appdf>
+		<play>Entertainment</play>
 		<amazon>Entertainment</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -761,8 +761,8 @@
 		<slideme>Entertainment / Comedy</slideme>
 	</category>
 	<category>
-		<appdf> Entertainment / Music</appdf>
-		<play> Entertainment</play>
+		<appdf>Entertainment / Music</appdf>
+		<play>Entertainment</play>
 		<amazon>Entertainment</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -770,8 +770,8 @@
 		<slideme>Entertainment / Music</slideme>
 	</category>
 	<category>
-		<appdf> Entertainment / Sports</appdf>
-		<play> Entertainment</play>
+		<appdf>Entertainment / Sports</appdf>
+		<play>Entertainment</play>
 		<amazon>Entertainment</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -779,8 +779,8 @@
 		<slideme>Entertainment / Sports</slideme>
 	</category>
 	<category>
-		<appdf> Entertainment / Theatre</appdf>
-		<play> Entertainment</play>
+		<appdf>Entertainment / Theatre</appdf>
+		<play>Entertainment</play>
 		<amazon>Entertainment</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -788,8 +788,8 @@
 		<slideme>Entertainment / Theatre</slideme>
 	</category>
 	<category>
-		<appdf> Entertainment / Other</appdf>
-		<play> Entertainment</play>
+		<appdf>Entertainment / Other</appdf>
+		<play>Entertainment</play>
 		<amazon>Entertainment</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -797,8 +797,8 @@
 		<slideme>Entertainment / Other</slideme>
 	</category>
 	<category>
-		<appdf> Video</appdf>
-		<play> Media &amp; Video</play>
+		<appdf>Video</appdf>
+		<play>Media &amp; Video</play>
 		<amazon>Entertainment</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -806,8 +806,8 @@
 		<slideme>Entertainment / Film</slideme>
 	</category>
 	<category>
-		<appdf> Kids</appdf>
-		<play> Education</play>
+		<appdf>Kids</appdf>
+		<play>Education</play>
 		<amazon>Kids / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -815,8 +815,8 @@
 		<slideme>Education / Early Childhood</slideme>
 	</category>
 	<category>
-		<appdf> Kids / Alphabet</appdf>
-		<play> Education</play>
+		<appdf>Kids / Alphabet</appdf>
+		<play>Education</play>
 		<amazon>Kids / Alphabet</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -824,8 +824,8 @@
 		<slideme>Education / Early Childhood</slideme>
 	</category>
 	<category>
-		<appdf> Kids / Animals</appdf>
-		<play> Education</play>
+		<appdf>Kids / Animals</appdf>
+		<play>Education</play>
 		<amazon>Kids / Animals</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -833,8 +833,8 @@
 		<slideme>Education / Early Childhood</slideme>
 	</category>
 	<category>
-		<appdf> Kids / History</appdf>
-		<play> Education</play>
+		<appdf>Kids / History</appdf>
+		<play>Education</play>
 		<amazon>Kids / History</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -842,8 +842,8 @@
 		<slideme>Education / Early Childhood</slideme>
 	</category>
 	<category>
-		<appdf> Kids / Language</appdf>
-		<play> Education</play>
+		<appdf>Kids / Language</appdf>
+		<play>Education</play>
 		<amazon>Kids / Language</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -851,8 +851,8 @@
 		<slideme>Education / Early Childhood</slideme>
 	</category>
 	<category>
-		<appdf> Kids / Math</appdf>
-		<play> Education</play>
+		<appdf>Kids / Math</appdf>
+		<play>Education</play>
 		<amazon>Kids / Math</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -860,8 +860,8 @@
 		<slideme>Education / Early Childhood</slideme>
 	</category>
 	<category>
-		<appdf> Kids / Popular Characters</appdf>
-		<play> Education</play>
+		<appdf>Kids / Popular Characters</appdf>
+		<play>Education</play>
 		<amazon>Kids / Popular Characters</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -869,8 +869,8 @@
 		<slideme>Education / Early Childhood</slideme>
 	</category>
 	<category>
-		<appdf> Kids / Reading</appdf>
-		<play> Education</play>
+		<appdf>Kids / Reading</appdf>
+		<play>Education</play>
 		<amazon>Kids / Reading</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -878,8 +878,8 @@
 		<slideme>Education / Early Childhood</slideme>
 	</category>
 	<category>
-		<appdf> Kids / Science</appdf>
-		<play> Education</play>
+		<appdf>Kids / Science</appdf>
+		<play>Education</play>
 		<amazon>Kids / Science</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -887,8 +887,8 @@
 		<slideme>Education / Early Childhood</slideme>
 	</category>
 	<category>
-		<appdf> Kids / Writing</appdf>
-		<play> Education</play>
+		<appdf>Kids / Writing</appdf>
+		<play>Education</play>
 		<amazon>Kids / Writing</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -896,8 +896,8 @@
 		<slideme>Education / Early Childhood</slideme>
 	</category>
 	<category>
-		<appdf> Education</appdf>
-		<play> Education</play>
+		<appdf>Education</appdf>
+		<play>Education</play>
 		<amazon>Education / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -905,8 +905,8 @@
 		<slideme>Education</slideme>
 	</category>
 	<category>
-		<appdf> Education / Higher</appdf>
-		<play> Education</play>
+		<appdf>Education / Higher</appdf>
+		<play>Education</play>
 		<amazon>Education / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -914,8 +914,8 @@
 		<slideme>Education / Higher</slideme>
 	</category>
 	<category>
-		<appdf> Education / Primary</appdf>
-		<play> Education</play>
+		<appdf>Education / Primary</appdf>
+		<play>Education</play>
 		<amazon>Education / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -923,8 +923,8 @@
 		<slideme>Education / Primary</slideme>
 	</category>
 	<category>
-		<appdf> Education / Secondary</appdf>
-		<play> Education</play>
+		<appdf>Education / Secondary</appdf>
+		<play>Education</play>
 		<amazon>Education / Other</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -932,8 +932,8 @@
 		<slideme>Education / Secondary</slideme>
 	</category>
 	<category>
-		<appdf> Education / History</appdf>
-		<play> Education</play>
+		<appdf>Education / History</appdf>
+		<play>Education</play>
 		<amazon>Education / History</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -941,8 +941,8 @@
 		<slideme>Education / Other</slideme>
 	</category>
 	<category>
-		<appdf> Education / Math</appdf>
-		<play> Education</play>
+		<appdf>Education / Math</appdf>
+		<play>Education</play>
 		<amazon>Education / Math</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -950,8 +950,8 @@
 		<slideme>Education / Other</slideme>
 	</category>
 	<category>
-		<appdf> Education / Reading</appdf>
-		<play> Education</play>
+		<appdf>Education / Reading</appdf>
+		<play>Education</play>
 		<amazon>Education / Reading</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -959,8 +959,8 @@
 		<slideme>Education / Other</slideme>
 	</category>
 	<category>
-		<appdf> Education / Science</appdf>
-		<play> Education</play>
+		<appdf>Education / Science</appdf>
+		<play>Education</play>
 		<amazon>Education / Science</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -968,8 +968,8 @@
 		<slideme>Education / Other</slideme>
 	</category>
 	<category>
-		<appdf> Education / Test Guides</appdf>
-		<play> Education</play>
+		<appdf>Education / Test Guides</appdf>
+		<play>Education</play>
 		<amazon>Education / Test Guides</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -977,8 +977,8 @@
 		<slideme>Education / Other</slideme>
 	</category>
 	<category>
-		<appdf> Education / Writing</appdf>
-		<play> Education</play>
+		<appdf>Education / Writing</appdf>
+		<play>Education</play>
 		<amazon>Education / Writing</amazon>
 		<opera>Entertainment</opera>
 		<yandex>Entertainment</yandex>
@@ -986,8 +986,8 @@
 		<slideme>Education / Other</slideme>
 	</category>
 	<category>
-		<appdf> Education / Language</appdf>
-		<play> Education</play>
+		<appdf>Education / Language</appdf>
+		<play>Education</play>
 		<amazon>Education / Language</amazon>
 		<opera>Languages &amp; Translators</opera>
 		<yandex>Languages &amp; Translators</yandex>
@@ -995,8 +995,8 @@
 		<slideme>Languages</slideme>
 	</category>
 	<category>
-		<appdf> Education / Dictionaries</appdf>
-		<play> Education</play>
+		<appdf>Education / Dictionaries</appdf>
+		<play>Education</play>
 		<amazon>Education / Language</amazon>
 		<opera>Languages &amp; Translators</opera>
 		<yandex>Languages &amp; Translators</yandex>
@@ -1004,8 +1004,8 @@
 		<slideme>Languages / Dictionaries</slideme>
 	</category>
 	<category>
-		<appdf> Education / Language learning</appdf>
-		<play> Education</play>
+		<appdf>Education / Language learning</appdf>
+		<play>Education</play>
 		<amazon>Education / Language</amazon>
 		<opera>Languages &amp; Translators</opera>
 		<yandex>Languages &amp; Translators</yandex>
@@ -1013,8 +1013,8 @@
 		<slideme>Languages / Language learning</slideme>
 	</category>
 	<category>
-		<appdf> Web Browsers</appdf>
-		<play> Communication</play>
+		<appdf>Web Browsers</appdf>
+		<play>Communication</play>
 		<amazon>Web Browsers</amazon>
 		<opera>Communication</opera>
 		<yandex>Communication</yandex>
@@ -1022,8 +1022,8 @@
 		<slideme>Tools &amp; Utilities / Browsers</slideme>
 	</category>
 	<category>
-		<appdf> Communication</appdf>
-		<play> Communication</play>
+		<appdf>Communication</appdf>
+		<play>Communication</play>
 		<amazon>Communication</amazon>
 		<opera>Communication</opera>
 		<yandex>Communication</yandex>
@@ -1031,8 +1031,8 @@
 		<slideme>Communication</slideme>
 	</category>
 	<category>
-		<appdf> Communication / E-mail</appdf>
-		<play> Communication</play>
+		<appdf>Communication / E-mail</appdf>
+		<play>Communication</play>
 		<amazon>Communication</amazon>
 		<opera>Communication</opera>
 		<yandex>Communication</yandex>
@@ -1040,8 +1040,8 @@
 		<slideme>Communication / E-mail</slideme>
 	</category>
 	<category>
-		<appdf> Communication / Instant Messaging</appdf>
-		<play> Communication</play>
+		<appdf>Communication / Instant Messaging</appdf>
+		<play>Communication</play>
 		<amazon>Communication</amazon>
 		<opera>Communication</opera>
 		<yandex>Communication</yandex>
@@ -1049,9 +1049,9 @@
 		<slideme>Communication / Instant Messaging</slideme>
 	</category>
 	<category>
-		<appdf> Communication / SMS
+		<appdf>Communication / SMS
 		</appdf>
-		<play> Communication</play>
+		<play>Communication</play>
 		<amazon>Communication</amazon>
 		<opera>Communication</opera>
 		<yandex>Communication</yandex>
@@ -1060,8 +1060,8 @@
 		</slideme>
 	</category>
 	<category>
-		<appdf> Communication / Other</appdf>
-		<play> Communication</play>
+		<appdf>Communication / Other</appdf>
+		<play>Communication</play>
 		<amazon>Communication</amazon>
 		<opera>Communication</opera>
 		<yandex>Communication</yandex>
@@ -1069,8 +1069,8 @@
 		<slideme>Communication / Other</slideme>
 	</category>
 	<category>
-		<appdf> Social</appdf>
-		<play> Social</play>
+		<appdf>Social</appdf>
+		<play>Social</play>
 		<amazon>Social Networking</amazon>
 		<opera>Communication</opera>
 		<yandex>Communication</yandex>
@@ -1078,8 +1078,8 @@
 		<slideme>Communication / Social Networking</slideme>
 	</category>
 	<category>
-		<appdf> Real Estate</appdf>
-		<play> Business</play>
+		<appdf>Real Estate</appdf>
+		<play>Business</play>
 		<amazon>Real Estate</amazon>
 		<opera>Business &amp; Finance</opera>
 		<yandex>Business &amp; Finance</yandex>
@@ -1087,8 +1087,8 @@
 		<slideme>Finance / Other</slideme>
 	</category>
 	<category>
-		<appdf> Business</appdf>
-		<play> Business</play>
+		<appdf>Business</appdf>
+		<play>Business</play>
 		<amazon>Finance / Other</amazon>
 		<opera>Business &amp; Finance</opera>
 		<yandex>Business &amp; FinanceBusiness</yandex>
@@ -1096,8 +1096,8 @@
 		<slideme>Finance / Other</slideme>
 	</category>
 	<category>
-		<appdf> Finance</appdf>
-		<play> Finance</play>
+		<appdf>Finance</appdf>
+		<play>Finance</play>
 		<amazon>Finance / Other</amazon>
 		<opera>Business &amp; Finance</opera>
 		<yandex>Business &amp; Finance</yandex>
@@ -1105,8 +1105,8 @@
 		<slideme>Finance</slideme>
 	</category>
 	<category>
-		<appdf> Finance / Corporate</appdf>
-		<play> Finance</play>
+		<appdf>Finance / Corporate</appdf>
+		<play>Finance</play>
 		<amazon>Finance / Other</amazon>
 		<opera>Business &amp; Finance</opera>
 		<yandex>Business &amp; Finance</yandex>
@@ -1114,8 +1114,8 @@
 		<slideme>Finance / Corporate</slideme>
 	</category>
 	<category>
-		<appdf> Finance / Other</appdf>
-		<play> Finance</play>
+		<appdf>Finance / Other</appdf>
+		<play>Finance</play>
 		<amazon>Finance / Other</amazon>
 		<opera>Business &amp; Finance</opera>
 		<yandex>Business &amp; Finance</yandex>
@@ -1123,8 +1123,8 @@
 		<slideme>Finance / Other</slideme>
 	</category>
 	<category>
-		<appdf> Finance / Accounting</appdf>
-		<play> Finance</play>
+		<appdf>Finance / Accounting</appdf>
+		<play>Finance</play>
 		<amazon>Finance / Accounting</amazon>
 		<opera>Business &amp; Finance</opera>
 		<yandex>Business &amp; Finance</yandex>
@@ -1132,8 +1132,8 @@
 		<slideme>Finance</slideme>
 	</category>
 	<category>
-		<appdf> Finance / Banking</appdf>
-		<play> Finance</play>
+		<appdf>Finance / Banking</appdf>
+		<play>Finance</play>
 		<amazon>Finance / Banking</amazon>
 		<opera>Business &amp; Finance</opera>
 		<yandex>Business &amp; Finance</yandex>
@@ -1141,8 +1141,8 @@
 		<slideme>Finance</slideme>
 	</category>
 	<category>
-		<appdf> Finance / Investing</appdf>
-		<play> Finance</play>
+		<appdf>Finance / Investing</appdf>
+		<play>Finance</play>
 		<amazon>Finance / Investing</amazon>
 		<opera>Business &amp; Finance</opera>
 		<yandex>Business &amp; Finance</yandex>
@@ -1150,8 +1150,8 @@
 		<slideme>Finance</slideme>
 	</category>
 	<category>
-		<appdf> Finance / Money &amp; Currency</appdf>
-		<play> Finance</play>
+		<appdf>Finance / Money &amp; Currency</appdf>
+		<play>Finance</play>
 		<amazon>Finance / Money &amp; Currency</amazon>
 		<opera>Business &amp; Finance</opera>
 		<yandex>Business &amp; Finance</yandex>
@@ -1159,8 +1159,8 @@
 		<slideme>Finance</slideme>
 	</category>
 	<category>
-		<appdf> Personal Finance</appdf>
-		<play> Finance</play>
+		<appdf>Personal Finance</appdf>
+		<play>Finance</play>
 		<amazon>Finance / Personal Finance</amazon>
 		<opera>Business &amp; Finance</opera>
 		<yandex>Business &amp; Finance</yandex>
@@ -1168,8 +1168,8 @@
 		<slideme>Finance / Personal</slideme>
 	</category>
 	<category>
-		<appdf> Home &amp; Hobby / Budgeting</appdf>
-		<play> Finance</play>
+		<appdf>Home &amp; Hobby / Budgeting</appdf>
+		<play>Finance</play>
 		<amazon>Finance / Personal Finance</amazon>
 		<opera>Business &amp; Finance</opera>
 		<yandex>Business &amp; Finance</yandex>
@@ -1177,8 +1177,8 @@
 		<slideme>Home &amp; Hobby / Budgeting</slideme>
 	</category>
 	<category>
-		<appdf> Health &amp; Fitness</appdf>
-		<play> Health &amp; Fitness</play>
+		<appdf>Health &amp; Fitness</appdf>
+		<play>Health &amp; Fitness</play>
 		<amazon>Health &amp; Fitness / Other</amazon>
 		<opera>Health</opera>
 		<yandex>Health</yandex>
@@ -1186,8 +1186,8 @@
 		<slideme>Health &amp; Fitness</slideme>
 	</category>
 	<category>
-		<appdf> Diet &amp; Weight Loss</appdf>
-		<play> Health &amp; Fitness</play>
+		<appdf>Diet &amp; Weight Loss</appdf>
+		<play>Health &amp; Fitness</play>
 		<amazon>Health &amp; Fitness / Diet &amp; Weight Loss</amazon>
 		<opera>Health</opera>
 		<yandex>Health</yandex>
@@ -1195,8 +1195,8 @@
 		<slideme>Health &amp; Fitness / Calorie calculators</slideme>
 	</category>
 	<category>
-		<appdf> Health / Exercise</appdf>
-		<play> Health &amp; Fitness</play>
+		<appdf>Health / Exercise</appdf>
+		<play>Health &amp; Fitness</play>
 		<amazon>Health &amp; Fitness / Exercise &amp; Fitness</amazon>
 		<opera>Health</opera>
 		<yandex>Health</yandex>
@@ -1204,8 +1204,8 @@
 		<slideme>Health &amp; Fitness / Fitness</slideme>
 	</category>
 	<category>
-		<appdf> Health / Medical</appdf>
-		<play> Health &amp; Fitness</play>
+		<appdf>Health / Medical</appdf>
+		<play>Health &amp; Fitness</play>
 		<amazon>Health &amp; Fitness / Medical</amazon>
 		<opera>Health</opera>
 		<yandex>Health</yandex>
@@ -1213,8 +1213,8 @@
 		<slideme>Health &amp; Fitness / Other</slideme>
 	</category>
 	<category>
-		<appdf> Health / Meditation</appdf>
-		<play> Health &amp; Fitness</play>
+		<appdf>Health / Meditation</appdf>
+		<play>Health &amp; Fitness</play>
 		<amazon>Health &amp; Fitness / Meditation</amazon>
 		<opera>Health</opera>
 		<yandex>Health</yandex>
@@ -1222,8 +1222,8 @@
 		<slideme>Health &amp; Fitness / Other</slideme>
 	</category>
 	<category>
-		<appdf> Health / Pregnancy</appdf>
-		<play> Health &amp; Fitness</play>
+		<appdf>Health / Pregnancy</appdf>
+		<play>Health &amp; Fitness</play>
 		<amazon>Health &amp; Fitness / Pregnancy</amazon>
 		<opera>Health</opera>
 		<yandex>Health</yandex>
@@ -1231,8 +1231,8 @@
 		<slideme>Health &amp; Fitness / Family Planning</slideme>
 	</category>
 	<category>
-		<appdf> Health / Sleep Trackers</appdf>
-		<play> Health &amp; Fitness</play>
+		<appdf>Health / Sleep Trackers</appdf>
+		<play>Health &amp; Fitness</play>
 		<amazon>Health &amp; Fitness / Sleep Trackers</amazon>
 		<opera>Health</opera>
 		<yandex>Health</yandex>
@@ -1240,8 +1240,8 @@
 		<slideme>Health &amp; Fitness / Other</slideme>
 	</category>
 	<category>
-		<appdf> Cooking</appdf>
-		<play> Health &amp; Fitness</play>
+		<appdf>Cooking</appdf>
+		<play>Health &amp; Fitness</play>
 		<amazon>Cooking</amazon>
 		<opera>Health</opera>
 		<yandex>Health</yandex>
@@ -1249,8 +1249,8 @@
 		<slideme>Home &amp; Hobby / Cooking</slideme>
 	</category>
 	<category>
-		<appdf> Utilities</appdf>
-		<play> Libraries &amp; Demo</play>
+		<appdf>Utilities</appdf>
+		<play>Libraries &amp; Demo</play>
 		<amazon>Utilities / Other</amazon>
 		<opera>Utilities</opera>
 		<yandex>Utilities</yandex>
@@ -1258,8 +1258,8 @@
 		<slideme>Tools &amp; Utilities</slideme>
 	</category>
 	<category>
-		<appdf> Utilities / Developer</appdf>
-		<play> Libraries &amp; Demo</play>
+		<appdf>Utilities / Developer</appdf>
+		<play>Libraries &amp; Demo</play>
 		<amazon>Utilities / Other</amazon>
 		<opera>Utilities</opera>
 		<yandex>Utilities</yandex>
@@ -1267,8 +1267,8 @@
 		<slideme>Tools &amp; Utilities / Developer – Programmer</slideme>
 	</category>
 	<category>
-		<appdf> Utilities / Other</appdf>
-		<play> Libraries &amp; Demo</play>
+		<appdf>Utilities / Other</appdf>
+		<play>Libraries &amp; Demo</play>
 		<amazon>Utilities / Other</amazon>
 		<opera>Utilities</opera>
 		<yandex>Utilities</yandex>
@@ -1276,8 +1276,8 @@
 		<slideme>Tools &amp; Utilities / Other</slideme>
 	</category>
 	<category>
-		<appdf> Utilities / Security</appdf>
-		<play> Libraries &amp; Demo</play>
+		<appdf>Utilities / Security</appdf>
+		<play>Libraries &amp; Demo</play>
 		<amazon>Utilities / Other</amazon>
 		<opera>Utilities</opera>
 		<yandex>Utilities</yandex>
@@ -1285,8 +1285,8 @@
 		<slideme>Tools &amp; Utilities / Security</slideme>
 	</category>
 	<category>
-		<appdf> Alarms &amp; Clocks</appdf>
-		<play> Tools</play>
+		<appdf>Alarms &amp; Clocks</appdf>
+		<play>Tools</play>
 		<amazon>Utilities / Alarms &amp; Clocks</amazon>
 		<opera>Utilities</opera>
 		<yandex>Utilities</yandex>
@@ -1294,8 +1294,8 @@
 		<slideme>Tools &amp; Utilities / Other</slideme>
 	</category>
 	<category>
-		<appdf> Battery Savers</appdf>
-		<play> Tools</play>
+		<appdf>Battery Savers</appdf>
+		<play>Tools</play>
 		<amazon>Utilities / Battery Savers</amazon>
 		<opera>Utilities</opera>
 		<yandex>Utilities</yandex>
@@ -1303,8 +1303,8 @@
 		<slideme>Tools &amp; Utilities / Other</slideme>
 	</category>
 	<category>
-		<appdf> Calculators</appdf>
-		<play> Tools</play>
+		<appdf>Calculators</appdf>
+		<play>Tools</play>
 		<amazon>Utilities / Calculators</amazon>
 		<opera>Utilities</opera>
 		<yandex>Utilities</yandex>
@@ -1312,8 +1312,8 @@
 		<slideme>Tools &amp; Utilities / Other</slideme>
 	</category>
 	<category>
-		<appdf> Calendars</appdf>
-		<play> Tools</play>
+		<appdf>Calendars</appdf>
+		<play>Tools</play>
 		<amazon>Utilities / Calendars</amazon>
 		<opera>Organizers</opera>
 		<yandex>Organizers</yandex>
@@ -1321,8 +1321,8 @@
 		<slideme>Tools &amp; Utilities / Other</slideme>
 	</category>
 	<category>
-		<appdf> Notes</appdf>
-		<play> Tools</play>
+		<appdf>Notes</appdf>
+		<play>Tools</play>
 		<amazon>Utilities / Notes</amazon>
 		<opera>Organizers</opera>
 		<yandex>Organizers</yandex>
@@ -1330,8 +1330,8 @@
 		<slideme>Tools &amp; Utilities / Other</slideme>
 	</category>
 	<category>
-		<appdf> Productivity</appdf>
-		<play> Productivity</play>
+		<appdf>Productivity</appdf>
+		<play>Productivity</play>
 		<amazon>Productivity</amazon>
 		<opera>Organizers</opera>
 		<yandex>Organizers</yandex>
@@ -1339,8 +1339,8 @@
 		<slideme>Productivity</slideme>
 	</category>
 	<category>
-		<appdf> Music</appdf>
-		<play> Music &amp; Audio</play>
+		<appdf>Music</appdf>
+		<play>Music &amp; Audio</play>
 		<amazon>Music / Other</amazon>
 		<opera>Multimedia</opera>
 		<yandex>Multimedia</yandex>
@@ -1348,8 +1348,8 @@
 		<slideme>Music</slideme>
 	</category>
 	<category>
-		<appdf> Music / Artists</appdf>
-		<play> Music &amp; Audio</play>
+		<appdf>Music / Artists</appdf>
+		<play>Music &amp; Audio</play>
 		<amazon>Music / Artists</amazon>
 		<opera>Multimedia</opera>
 		<yandex>Multimedia</yandex>
@@ -1357,8 +1357,8 @@
 		<slideme>Music / Other</slideme>
 	</category>
 	<category>
-		<appdf> Music / Instruments</appdf>
-		<play> Music &amp; Audio</play>
+		<appdf>Music / Instruments</appdf>
+		<play>Music &amp; Audio</play>
 		<amazon>Music / Instruments</amazon>
 		<opera>Multimedia</opera>
 		<yandex>Multimedia</yandex>
@@ -1366,8 +1366,8 @@
 		<slideme>Music / Instruments</slideme>
 	</category>
 	<category>
-		<appdf> Music Players</appdf>
-		<play> Music &amp; Audio</play>
+		<appdf>Music Players</appdf>
+		<play>Music &amp; Audio</play>
 		<amazon>Music / Music Players</amazon>
 		<opera>Multimedia</opera>
 		<yandex>Multimedia</yandex>
@@ -1375,8 +1375,8 @@
 		<slideme>Music / Music players</slideme>
 	</category>
 	<category>
-		<appdf> Radio</appdf>
-		<play> Music &amp; Audio</play>
+		<appdf>Radio</appdf>
+		<play>Music &amp; Audio</play>
 		<amazon>Music / Radio</amazon>
 		<opera>Multimedia</opera>
 		<yandex>Multimedia</yandex>
@@ -1384,8 +1384,8 @@
 		<slideme>Music / Radio</slideme>
 	</category>
 	<category>
-		<appdf> Music / Songbooks</appdf>
-		<play> Music &amp; Audio</play>
+		<appdf>Music / Songbooks</appdf>
+		<play>Music &amp; Audio</play>
 		<amazon>Music / Songbooks</amazon>
 		<opera>Multimedia</opera>
 		<yandex>Multimedia</yandex>
@@ -1393,8 +1393,8 @@
 		<slideme>Music / Other</slideme>
 	</category>
 	<category>
-		<appdf> Photography</appdf>
-		<play> Photography</play>
+		<appdf>Photography</appdf>
+		<play>Photography</play>
 		<amazon>Photography</amazon>
 		<opera>Multimedia</opera>
 		<yandex>Multimedia</yandex>
@@ -1402,8 +1402,8 @@
 		<slideme>Photography</slideme>
 	</category>
 	<category>
-		<appdf> Photography / Camera</appdf>
-		<play> Photography</play>
+		<appdf>Photography / Camera</appdf>
+		<play>Photography</play>
 		<amazon>Photography</amazon>
 		<opera>Multimedia</opera>
 		<yandex>Multimedia</yandex>
@@ -1411,8 +1411,8 @@
 		<slideme>Photography / Camera</slideme>
 	</category>
 	<category>
-		<appdf> Photography / Editing</appdf>
-		<play> Photography</play>
+		<appdf>Photography / Editing</appdf>
+		<play>Photography</play>
 		<amazon>Photography</amazon>
 		<opera>Multimedia</opera>
 		<yandex>Multimedia</yandex>
@@ -1420,8 +1420,8 @@
 		<slideme>Photography / Editing</slideme>
 	</category>
 	<category>
-		<appdf> Photography / Gallery</appdf>
-		<play> Photography</play>
+		<appdf>Photography / Gallery</appdf>
+		<play>Photography</play>
 		<amazon>Photography</amazon>
 		<opera>Multimedia</opera>
 		<yandex>Multimedia</yandex>
@@ -1429,8 +1429,8 @@
 		<slideme>Photography / Gallery</slideme>
 	</category>
 	<category>
-		<appdf> Photography / Sharing</appdf>
-		<play> Photography</play>
+		<appdf>Photography / Sharing</appdf>
+		<play>Photography</play>
 		<amazon>Photography</amazon>
 		<opera>Multimedia</opera>
 		<yandex>Multimedia</yandex>
@@ -1438,8 +1438,8 @@
 		<slideme>Photography / Sharing</slideme>
 	</category>
 	<category>
-		<appdf> Personalization</appdf>
-		<play> Personalization</play>
+		<appdf>Personalization</appdf>
+		<play>Personalization</play>
 		<amazon>Themes</amazon>
 		<opera>Themes &amp; Skins</opera>
 		<yandex>Themes &amp; Skins</yandex>
@@ -1447,8 +1447,8 @@
 		<slideme>Themes</slideme>
 	</category>
 	<category>
-		<appdf> Live Wallpapers</appdf>
-		<play> Personalization</play>
+		<appdf>Live Wallpapers</appdf>
+		<play>Personalization</play>
 		<amazon>Themes</amazon>
 		<opera>Themes &amp; Skins</opera>
 		<yandex>Themes &amp; Skins</yandex>
@@ -1456,8 +1456,8 @@
 		<slideme>Themes / Live Wallpapers</slideme>
 	</category>
 	<category>
-		<appdf> Wallpapers</appdf>
-		<play> Personalization</play>
+		<appdf>Wallpapers</appdf>
+		<play>Personalization</play>
 		<amazon>Themes</amazon>
 		<opera>Themes &amp; Skins</opera>
 		<yandex>Themes &amp; Skins</yandex>
@@ -1465,8 +1465,8 @@
 		<slideme>Themes / Wallpapers</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Other</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1474,8 +1474,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Christian</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Christian</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Christian</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1483,8 +1483,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Classical</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Classical</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Classical</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1492,8 +1492,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Collegiate</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Collegiate</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Collegiate</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1501,8 +1501,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Comedy</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Comedy</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Comedy</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1510,8 +1510,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Country</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Country</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Country</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1519,8 +1519,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Dance &amp; Electronic</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Dance &amp; Electronic</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Dance &amp; Electronic</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1528,8 +1528,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Jazz &amp; Standards</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Jazz &amp; Standards</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Jazz &amp; Standards</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1537,8 +1537,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Latin</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Latin</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Latin</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1546,8 +1546,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Pop</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Pop</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Pop</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1555,8 +1555,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Rap</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Rap</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Rap</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1564,8 +1564,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Rock</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Rock</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Rock</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1573,8 +1573,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Sound Effects</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Sound Effects</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Sound Effects</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1582,8 +1582,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Soundtracks</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Soundtracks</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Soundtracks</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1591,8 +1591,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Sports</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Sports</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Sports</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1600,8 +1600,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / TV</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / TV</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / TV</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
@@ -1609,8 +1609,8 @@
 		<slideme>Themes / Ringtones</slideme>
 	</category>
 	<category>
-		<appdf> Ringtones / Voicetones</appdf>
-		<play> Personalization</play>
+		<appdf>Ringtones / Voicetones</appdf>
+		<play>Personalization</play>
 		<amazon>Ringtones / Voicetones</amazon>
 		<opera>Ringtones</opera>
 		<yandex>Ringtones</yandex>
