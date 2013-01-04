@@ -1335,6 +1335,12 @@ Each application must be labeled with a minimum allowed age according to [ESRB s
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 There is no universal content rating system (aka parental control rating, aka minimum age). Different stores uses different systems. AppDF uses ESRB standard but more important is how this information is mapped to the systems used in the appstores. The following table is used by AppDF to convert the rating to the systems of all the main application stores.
@@ -1344,35 +1350,42 @@ There is no universal content rating system (aka parental control rating, aka mi
     <th>ESRB</th>
     <th>Google Play</th>
     <th>Amazon AppStore</th>
+    <th>Opera Mobile Store</th>
   </tr>
   <tr>
     <td>3</td>
     <td>Everyone</td>
+    <td>n/a</td>
     <td>n/a</td>
   </tr>
   <tr>
     <td>6</td>
     <td>Low maturity</td>
     <td>n/a</td>
+    <td>n/a</td>
   </tr>
   <tr>
     <td>10</td>
     <td>Medium maturity</td>
+    <td>n/a</td>
     <td>n/a</td>
   </tr>
   <tr>
     <td>13</td>
     <td>Medium maturity</td>
     <td>n/a</td>
+    <td>n/a</td>
   </tr>
   <tr>
     <td>17</td>
     <td>High maturity</td>
     <td>n/a</td>
+    <td>n/a</td>
   </tr>
   <tr>
     <td>18</td>
     <td>High maturity</td>
+    <td>n/a</td>
     <td>n/a</td>
   </tr>
 </table>
@@ -1397,11 +1410,16 @@ Here you can find more detailed information about content rating definitions use
     <td>Amazon AppStore</td>
     <td>Uses several content descriptors instead of one rating value</td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Content rating is not used</td>
+  </tr>
 </table>
 
 ##### Notes:
 1. Amazon hasn't one field for application rating but uses several parameters (nudity, violation, etc)
-2. Samsung uses minimum age parameter along with several other attributes that define application rating according to the standard certification systems (PEGI, ESRB, etc)
+2. Opera doesn't support content rating (except "Is Adult?" question)
+3. Samsung uses minimum age parameter along with several other attributes that define application rating according to the standard certification systems (PEGI, ESRB, etc)
 
 #### content-description/rating-certificates/rating-certificate
 Optional.
@@ -1465,6 +1483,13 @@ Example:
   </tr>
   <tr>
     <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -1564,6 +1589,13 @@ Example:
     <td>Yes</td>
     <td></td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Is Adult?</td>
+    <td>Yes</td>
+    <td>Only adult descriptor is used</td>
+  </tr>
 </table>
 
 #### content-description/included-activities
@@ -1640,6 +1672,13 @@ Example:
     <td>Yes</td>
     <td>Content Rating</td>
     <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
     <td></td>
   </tr>
 </table>
