@@ -1162,6 +1162,16 @@ Example:
     <td>JPG or PNG</td>
     <td>3-10</td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Main image, Images</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>Any</td>
+    <td>JPG, PNG, GIF</td>
+    <td>1+</td>
+  </tr>
 </table>
 
 #### description/youtube-video
