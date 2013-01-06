@@ -11,9 +11,12 @@ public class CategoryCatalogTestCase{
 
 	/**
 	 * Tests if parsing is working at all
+	 * Warning is suppressed since call to class is a call to constructor witch do
+	 * most of work
 	 */
 	@Test
 	public void basicWorking(){
+		@SuppressWarnings("unused")
 		CategoryCatalog catalog = CategoryCatalog.CATALOG;		
 	}
 	/**
