@@ -14,6 +14,7 @@ public class Category {
 		private String yandex;
 		private String samsung;
 		private String slideMe;
+		private String opera;
 		
 		public CategoryBuilder appdf(String category){
 			appdf = category;
@@ -45,8 +46,13 @@ public class Category {
 			return this;
 		}
 		
+		public CategoryBuilder opera(String category){
+			opera = category;
+			return this;
+		}
+		
 		public Category create(){
-			return new Category(appdf, play, amazon, yandex, samsung, slideMe);
+			return new Category(appdf, play, amazon,opera, yandex, samsung, slideMe);
 		}
 	}
 
@@ -56,12 +62,14 @@ public class Category {
 	private final String yandex;
 	private final String samsung;
 	private final String slideMe;
+	private final String opera;
 	
-	protected Category(String appdf, String play, String amazon, String yandex,
+	protected Category(String appdf, String play, String amazon,String opera, String yandex,
 			String samsung, String slideMe) {
 		this.appdf = appdf;
 		this.play = play;
 		this.amazon = amazon;
+		this.opera = opera;
 		this.yandex = yandex;
 		this.samsung = samsung;
 		this.slideMe = slideMe;
@@ -83,6 +91,9 @@ public class Category {
 	}
 	public String getSlideMe() {
 		return slideMe;
+	}
+	public String getOpera() {
+		return opera;
 	}
 	
 	
