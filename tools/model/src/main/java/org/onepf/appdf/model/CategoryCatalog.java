@@ -25,8 +25,16 @@ import org.w3c.dom.NodeList;
 public enum CategoryCatalog {
 	CATALOG;
 
+	private static final String SLIDEME_TAG = "slideme";
+	private static final String SAMSUNG_TAG = "samsung";
+	private static final String YANDEX_TAG = "yandex";
+	private static final String OPERA_TAG = "opera";
+	private static final String AMAZON_TAG = "amazon";
+	private static final String PLAY_TAG = "play";
+	private static final String APPDF_TAG = "appdf";
 	private static final String CATEGORY_TAG = "category";
 	private static final String RESOURCE_NAME = "categories.xml";
+	
 	private List<Category> categoryList = new ArrayList<Category>();
 	private Map<String, Category> appdfMapping = new HashMap<String, Category>();
 
@@ -51,25 +59,25 @@ public enum CategoryCatalog {
 					String nodeName = child.getNodeName();
 					String childText = child.getTextContent();
 					switch (nodeName) {
-					case "appdf":
+					case APPDF_TAG:
 						builder.appdf(childText);
 						break;
-					case "play":
+					case PLAY_TAG:
 						builder.play(childText);
 						break;
-					case "amazon":
+					case AMAZON_TAG:
 						builder.amazon(childText);
 						break;
-					case "opera":
+					case OPERA_TAG:
 						builder.opera(childText);
 						break;
-					case "yandex":
+					case YANDEX_TAG:
 						builder.yandex(childText);
 						break;
-					case "samsung":
+					case SAMSUNG_TAG:
 						builder.samsung(childText);
 						break;
-					case "slideme":
+					case SLIDEME_TAG:
 						builder.slideMe(childText);
 						break;
 					default:
