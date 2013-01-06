@@ -34,4 +34,13 @@ public class CategoryCatalogTestCase{
 		List<Category> allCategories = catalog.getAllCategories();
 		allCategories.remove(0);
 	}
+	/**
+	 * This one is based upon current categories.xml
+	 */
+	@Test
+	public void properParsing(){
+		String appdfCategory = "Comics";
+		CategoryCatalog catalog = CategoryCatalog.CATALOG;
+		assertNotNull(catalog.getCategoryByAppdfName(appdfCategory)); 
+	}
 }
