@@ -1733,6 +1733,13 @@ Use `<include>` and `<exclude>` subtags to define list of the countries where yo
     <td>No</td>
     <td></td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Stores</td>
+    <td>No</td>
+    <td></td>
+  </tr>
 </table>
 
 #### availability/period/since
@@ -1786,6 +1793,12 @@ If presented this tag defines a date from which the application can be distribut
     <td>Yes</td>
     <td>Availability & Pricing / When would you like this app to be available on Amazon?</td>
     <td>No</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
@@ -1841,6 +1854,12 @@ If presented this tag defines a final date of application distribution. Stores t
     <td>Yes</td>
     <td>Availability & Pricing / When would you like this app to be discontinued for sale?</td>
     <td>No</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
@@ -1914,7 +1933,7 @@ This tag is ignored for free apps.
     <td>Pricing and Distribution / Default Price</td>
     <td>USD</td>
     <td>Yes</td>
-    <td>Up to a cent precision</td>
+    <td></td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
@@ -1922,7 +1941,15 @@ This tag is ignored for free apps.
     <td>Availability & Pricing / Are you charging for this app?</td>
     <td>USD, EUR, GBR, JPY</td>
     <td>Yes</td>
-    <td>Up to a cent precision</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Price (USD)</td>
+    <td>USD</td>
+    <td>Yes</td>
+    <td></td>
   </tr>
 </table>
 
@@ -1976,6 +2003,13 @@ This tag is ignored for free apps.
     <td>Availability & Pricing / Calculated prices</td>
     <td>Yes</td>
     <td>Only US, UK, DE, FR, ES, IT, JP are supported</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Stores</td>
+    <td>No</td>
+    <td></td>
   </tr>
 </table>
 
