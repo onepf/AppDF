@@ -419,6 +419,14 @@ Required. No attributes. Value could be either `application` or `game`.
     <td>Yes</td>
     <td>Category</td>
     <td>Yes</td>
+    <td>Games is one item in the application category list</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Category / Category / Primary</td>
+    <td>Yes</td>
+    <td>Games is one item in the application category list</td>
   </tr>
 </table>
 
@@ -449,6 +457,12 @@ Required. No attributes. AppDF format has its own list of categories for both ga
     <td>Opera Mobile Store</td>
     <td>Yes</td>
     <td>Category</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Samsung App</td>
+    <td>Yes</td>
+    <td>Category / Category / Primary</td>
     <td>Yes</td>
   </tr>
 </table>
@@ -593,6 +607,14 @@ Application name, shown in the application list. As everything in the `<descript
     <td>Title</td>
     <td>Yes</td>
     <td>Yes</td>
+    <td>Unlimited</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Binary & Device / Application Title</td>
+    <td>Yes</td>
+    <td>No</td>
     <td>Unlimited</td>
   </tr>
 </table>
@@ -1951,6 +1973,14 @@ This tag is ignored for free apps.
     <td>Yes</td>
     <td></td>
   </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Sales / Country/Price / Standard price</td>
+    <td>USD</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
 </table>
 
 #### price/local-price
@@ -2009,6 +2039,13 @@ This tag is ignored for free apps.
     <td>Yes</td>
     <td>Stores</td>
     <td>No</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Sales / Country/Price / Detailed Country &amp; Price Settings</td>
+    <td>Yes</td>
     <td></td>
   </tr>
 </table>
@@ -2112,6 +2149,14 @@ Example:
     <td>Opera Mobile Store</td>
     <td>Yes</td>
     <td>APK file:</td>
+    <td>Unlimited</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Binary File / Binary Upload / Binary File</td>
     <td>Unlimited</td>
     <td>Yes</td>
     <td>No</td>
@@ -2239,6 +2284,12 @@ Example:
     <td>Advanced compatibility options / Enable device selection</td>
     <td></td>
   </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Binary File / Detailed Device Settings</td>
+    <td></td>
+  </tr>
 </table>
 
 
@@ -2272,6 +2323,12 @@ Most of the stores take this information from the APK file. Some stores also sup
     <td>Yes</td>
     <td>Advanced compatibility options / Enable screen resolution selection</td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Binary File / Binary Upload / Resolution(s)</td>
+    <td>Required tag, per APK file</td>
   </tr>
 </table>
 
