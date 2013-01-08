@@ -2041,16 +2041,25 @@ This tag is ignored for paid apps.
     <th>Store support</th>
     <th>Supported</th>
     <th>Name</th>
+    <th>Comments</th>
   </tr>
   <tr>
     <td>Google Play</td>
     <td>No</td>
+    <td></td>
     <td></td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
     <td>No</td>
     <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td>Opera has support for trial versions but trial version is not a separate application but a separate APK file inside a shareware product</td>
   </tr>
 </table>
 
@@ -2095,6 +2104,14 @@ Example:
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Binary File(s) / Binary file</td>
+    <td>Unlimited</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>APK file:</td>
     <td>Unlimited</td>
     <td>Yes</td>
     <td>No</td>
@@ -2173,6 +2190,12 @@ Example:
     <td>Binary File(s) / Language Support</td>
     <td></td>
   </tr>
+  <tr>
+    <td>Opers Mobile Store</td>
+    <td>Yes</td>
+    <td>Languages</td>
+    <td></td>
+  </tr>
 </table>
 
 
@@ -2210,10 +2233,48 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Advanced compatibility options / Enable device selection</td>
+    <td></td>
+  </tr>
 </table>
 
 
 #### requirements/supported-resolutions
+Optional.
+No attributes.
+
+Most of the stores take this information from the APK file. Some stores also support manual selection of supported screen resolutions. In most cases you do not need to specify this tag because AppDF can provide information about supported screen resolutions even for the stores that cannot extract this information from APK files themselves.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td>This information is taken from APK file</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td></td>
+    <td></td>
+    <td>This information is taken from APK file</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Advanced compatibility options / Enable screen resolution selection</td>
+    <td></td>
+  </tr>
+</table>
+
 
 ### store-specific
 Optional.
@@ -2419,6 +2480,13 @@ Please detail any special requirements to test your app.
     <td>No</td>
     <td>4000</td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 ### consent
@@ -2467,10 +2535,16 @@ Example:
     <td>&lt;google-android-content-guidelines&gt;, &lt;us-export-laws&gt;</td>
   </tr>
   <tr>
-    <td>Google Play</td>
+    <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Binary File(s) / Export Compliance</td>
     <td>&lt;us-export-laws&gt;</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
@@ -2513,6 +2587,13 @@ No attributes.
     <td>Yes</td>
     <td>No</td>
   </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### customer-support/email
@@ -2539,6 +2620,13 @@ No attributes.
     <td>Yes</td>
     <td>General Information / Customer support email address</td>
     <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Contact Email</td>
+    <td>No</td>
     <td>No</td>
   </tr>
 </table>
@@ -2568,6 +2656,13 @@ No attributes.
     <td>General Information / Customer support website</td>
     <td>Yes</td>
     <td>No</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
