@@ -2873,7 +2873,7 @@ Example:
     <td>No</td>
     <td>License / License</td>
     <td>One from the list below</td>
-    <td>Default value is "Other / Proprietary"</td>
+    <td>Default value is "All Rights Reserved"</td>
   </tr>
 </table>
 
