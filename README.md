@@ -5,7 +5,6 @@ Application description file for the appstores. The goal is to develop a specifi
 
 How Can I Help?
 =====
-1. Join our mailing list: 
-   http://groups.google.com/group/appdf
-2. Choose an open task from the task list or propose a new one
+1. Join [our mailing list](http://groups.google.com/group/appdf)
+2. Choose an open task from [the task list](https://github.com/onepf/AppDF/issues?labels=open+tasks&page=1&state=open) or propose a new one
 3. Email the group that you want to work on this task, let's discuss how to do it in the best way
