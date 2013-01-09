@@ -5,7 +5,7 @@ Application description file for the appstores. The goal is to develop a specifi
 
 Specification
 =====
-Current specification draft can be found here:
+Current specification draft can be found here:  
 https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md
 
 How Can I Help?
