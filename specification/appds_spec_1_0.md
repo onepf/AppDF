@@ -428,6 +428,13 @@ Required. No attributes. Value could be either `application` or `game`.
     <td>Yes</td>
     <td>Games is one item in the application category list</td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Category</td>
+    <td>Yes</td>
+    <td>Games is one item in the application category list</td>
+  </tr>
 </table>
 
 #### categorization/category
@@ -465,6 +472,12 @@ Required. No attributes. AppDF format has its own list of categories for both ga
     <td>Category / Category / Primary</td>
     <td>Yes</td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Category</td>
+    <td>Yes</td>
+  </tr>
 </table>
 
 #### categorization/subcategory
@@ -498,6 +511,12 @@ Although some stores don't use subcategories AppDF includes as detailed category
     <td>Yes</td>
     <td>Category</td>
     <td>Yes</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
@@ -663,6 +682,15 @@ Comma separated list of keywords.
     <td>Unlimited</td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Keywords</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Unlimited</td>
+    <td></td>
+  </tr>
 </table>
 
 #### description/short-description
@@ -709,6 +737,15 @@ Short application description used in the app lists next to the app title. Some 
     <td>Yes</td>
     <td>Unlimited</td>
     <td>Shown on the top of the product webpage, next to the app icon</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Short description</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>500</td>
+    <td>Shown in the list of the apps on the "big" website</td>
   </tr>
 </table>
 
@@ -776,6 +813,15 @@ Full application description shown on the product page. You can include several 
     <td>Full Description</td>
     <td>Yes</td>
     <td>Yes</td>
+    <td>Unlimited</td>
+    <td>Some HTML subset</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Long Description</td>
+    <td>Yes</td>
+    <td>No</td>
     <td>Unlimited</td>
     <td>Some HTML subset</td>
   </tr>
@@ -916,6 +962,14 @@ Link to a webpage with your privacy policy for this application.
     <td>No</td>
     <td>Full privacy policy text or URL</td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>License / Privacy policy</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Only full privacy policy text is supported (no URL option)</td>
+  </tr>
 </table>
 
 #### description/eula
@@ -957,6 +1011,14 @@ Link to a webpage with your End User License Agreement for this application.
     <td>No</td>
     <td>No</td>
     <td>EULA text or URL</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>License / Terms and Conditions/Copyright</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Only text, not URL option</td>
   </tr>
 </table>
 
@@ -1041,6 +1103,15 @@ High resolution application icon. Different stores require different resolutions
     <td>512x512</td>
     <td>PNG, JPG, GIF</td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Promotion / Icon, High resolution icon</td>
+    <td>No</td>
+    <td>No</td>
+    <td>150x150 - 500x500 for Icon, 512x512 for High resolution icon</td>
+    <td>PNG, JPG, GIF</td>
+  </tr>
 </table>
 
 ##### description/images/large-promo
@@ -1087,6 +1158,15 @@ Large promotion picture usually used by the stores on the PC websites.
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Promotion / Promotional image</td>
+    <td>No</td>
+    <td>No</td>
+    <td>1024x500</td>
+    <td>PNG or JPG</td>
+  </tr>
 </table>
 
 ##### description/images/small-promo
@@ -1123,7 +1203,7 @@ Small promotion picture usually used by the stores on a mobile device for promot
     <td></td>
     <td></td>
     <td></td>
-    <td>PNG or JPG</td>
+    <td></td>
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
@@ -1132,6 +1212,15 @@ Small promotion picture usually used by the stores on a mobile device for promot
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Promotion / Small promotional image</td>
+    <td>No</td>
+    <td>No</td>
+    <td>180x120</td>
     <td>PNG or JPG</td>
   </tr>
 </table>
@@ -1194,6 +1283,16 @@ Example:
     <td>JPG, PNG, GIF</td>
     <td>1+</td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Promotion / Screenshots</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>240x180 - 640x480</td>
+    <td>JPG, PNG, GIF</td>
+    <td>1-3</td>
+  </tr>
 </table>
 
 #### description/youtube-video
@@ -1240,6 +1339,14 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <tdYes</td>
+    <td>Promotion / Video</td>
+    <td>No</td>
+    <td>No</td>
     <td></td>
   </tr>
 </table>
@@ -1363,6 +1470,12 @@ Each application must be labeled with a minimum allowed age according to [ESRB s
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Application / Parental Rating</td>
+    <td></td>
+  </tr>
 </table>
 
 There is no universal content rating system (aka parental control rating, aka minimum age). Different stores uses different systems. AppDF uses ESRB standard but more important is how this information is mapped to the systems used in the appstores. The following table is used by AppDF to convert the rating to the systems of all the main application stores.
@@ -1373,42 +1486,49 @@ There is no universal content rating system (aka parental control rating, aka mi
     <th>Google Play</th>
     <th>Amazon AppStore</th>
     <th>Opera Mobile Store</th>
+    <th>SlideME</th>
   </tr>
   <tr>
     <td>3</td>
     <td>Everyone</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>G: General Audiences (for all ages)</td>
   </tr>
   <tr>
     <td>6</td>
     <td>Low maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>G: General Audiences (for all ages)</td>
   </tr>
   <tr>
     <td>10</td>
     <td>Medium maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>PG: Parental Guidance Suggested (may not be suitable for children)</td>
   </tr>
   <tr>
     <td>13</td>
     <td>Medium maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>PG-13: Parents Strongly Cautioned (may not be suitable for children under 13)</td>
   </tr>
   <tr>
     <td>17</td>
     <td>High maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>R: Restricted (under 17 requires accompanying adult guardian)</td>
   </tr>
   <tr>
     <td>18</td>
     <td>High maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>NC-17: Not allowed for 17 and under</td>
   </tr>
 </table>
 
@@ -1703,6 +1823,13 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Application / "In-App" billing, With advertisements</td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 ### availability
@@ -1981,6 +2108,14 @@ This tag is ignored for free apps.
     <td>Yes</td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Price</td>
+    <td>USD</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
 </table>
 
 #### price/local-price
@@ -2098,6 +2233,18 @@ This tag is ignored for paid apps.
     <td></td>
     <td>Opera has support for trial versions but trial version is not a separate application but a separate APK file inside a shareware product</td>
   </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Application / Trial version</td>
+    <td>There is no support for full version package name</td>
+  </tr>
 </table>
 
 ### apk-files
@@ -2159,6 +2306,14 @@ Example:
     <td>Basic Information / Binary File / Binary Upload / Binary File</td>
     <td>Unlimited</td>
     <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Application / Application file</td>
+    <td>66M/td>
+    <td>No</td>
     <td>No</td>
   </tr>
 </table>
@@ -2508,6 +2663,50 @@ Example:
   </tr>
 </table>
 
+#### store-specific/slideme
+Optional.
+No attributes.
+
+Example:
+```xml
+<slideme>
+  <license-type>Apache License 2.0</license-type>
+</slideme>
+```
+
+<table>
+  <tr>
+    <th>Tag</th>
+    <th>Required</th>
+    <th>Amazon name</th>
+    <th>Possible values</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>license-type</td>
+    <td>No</td>
+    <td>License / License</td>
+    <td>One from the list below</td>
+    <td>Default value is "Other / Proprietary"</td>
+  </tr>
+</table>
+
+Possible `<license-type>` values:
+* All Rights Reserved
+* Apache License 2.0
+* Commercial Royalty-Free
+* Common Development and Distribution License (CDDL)
+* Eclipse Public License (EPL)
+* FREE Licensed Closed Source - Public Domain
+* GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3
+* GNU General Public License (GPL) v2
+* GNU General Public License (GPL) v3
+* GNU Library General Public License (LGPL)
+* GNU Library General Public License (LGPL)  v3
+* Mozilla Public License 1.1 (MPL)
+* New BSD License
+* Other / Proprietary
+* The MIT License
 
 ### testing-instructions
 Optional.
