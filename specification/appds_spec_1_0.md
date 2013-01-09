@@ -3160,11 +3160,11 @@ Application Store Support
 </tr>
 <tr>
   <td>Registration URL</td>
-  <td><a href="https://play.google.com/apps/publish/">Link</a></td>
+  <td><a href="https://play.google.com/apps/publish/">https://play.google.com/apps/publish/</a></td>
 </tr>
 <tr>
   <td>Distribution agreement URL</td>
-  <td><a href="http://play.google.com/intl/ALL_en/about/developer-distribution-agreement.html">Link</a></td>
+  <td><a href="http://play.google.com/intl/ALL_en/about/developer-distribution-agreement.html">http://play.google.com/intl/ALL_en/about/developer-distribution-agreement.html</a></td>
 </tr>
 <tr>
   <td>AppDF ID</td>
@@ -3201,11 +3201,11 @@ Application Store Support
 </tr>
 <tr>
   <td>Registration URL</td>
-  <td><a href="https://developer.amazon.com/welcome.html">Link</a></td>
+  <td><a href="https://developer.amazon.com/welcome.html">https://developer.amazon.com/welcome.html</a></td>
 </tr>
 <tr>
   <td>Distribution agreement URL</td>
-  <td><a href="https://developer.amazon.com/help/da.html">Link</a></td>
+  <td><a href="https://developer.amazon.com/help/da.html">https://developer.amazon.com/help/da.html</a></td>
 </tr>
 <tr>
   <td>AppDF ID</td>
@@ -3242,11 +3242,11 @@ Application Store Support
 </tr>
 <tr>
   <td>Registration URL</td>
-  <td><a href="http://apps.opera.com/developers.php">Link</a></td>
+  <td><a href="http://apps.opera.com/developers.php">http://apps.opera.com/developers.php</a></td>
 </tr>
 <tr>
   <td>Distribution agreement URL</td>
-  <td><a href="http://apps.opera.com/docs/DistributionAgreementHandster_standard.pdf">Link</a></td>
+  <td><a href="http://apps.opera.com/docs/DistributionAgreementHandster_standard.pdf">http://apps.opera.com/docs/DistributionAgreementHandster_standard.pdf</a></td>
 </tr>
 <tr>
   <td>AppDF ID</td>
@@ -3283,11 +3283,11 @@ Application Store Support
 </tr>
 <tr>
   <td>Registration URL</td>
-  <td><a href="https://developer.store.yandex.com/">Link</a></td>
+  <td><a href="https://developer.store.yandex.com/">https://developer.store.yandex.com/</a></td>
 </tr>
 <tr>
   <td>Distribution agreement URL</td>
-  <td><a href="http://legal.yandex.com/store_developer_agreement/">Link</a></td>
+  <td><a href="http://legal.yandex.com/store_developer_agreement/">http://legal.yandex.com/store_developer_agreement/</a></td>
 </tr>
 <tr>
   <td>AppDF ID</td>
@@ -3324,11 +3324,11 @@ Application Store Support
 </tr>
 <tr>
   <td>Registration URL</td>
-  <td><a href="http://slideme.org/developers">Link</a></td>
+  <td><a href="http://slideme.org/developers">http://slideme.org/developers</a></td>
 </tr>
 <tr>
   <td>Distribution agreement URL</td>
-  <td><a href="http://slideme.org/developer-conditions">Link</a></td>
+  <td><a href="http://slideme.org/developer-conditions">http://slideme.org/developer-conditions</a></td>
 </tr>
 <tr>
   <td>AppDF ID</td>
@@ -3365,11 +3365,11 @@ Application Store Support
 </tr>
 <tr>
   <td>Registration URL</td>
-  <td><a href="http://seller.samsungapps.com/">Link</a></td>
+  <td><a href="http://seller.samsungapps.com/">http://seller.samsungapps.com/</a></td>
 </tr>
 <tr>
   <td>Distribution agreement URL</td>
-  <td><a href="http://seller.samsungapps.com/help/termsAndConditions.as">Link</a></td>
+  <td><a href="http://seller.samsungapps.com/help/termsAndConditions.as">http://seller.samsungapps.com/help/termsAndConditions.as</a></td>
 </tr>
 <tr>
   <td>AppDF ID</td>
