@@ -3150,7 +3150,254 @@ No attributes.
 
 Application Store Support
 -------------
-AppDF provides universal category list that could be matched to any appstore category list. When we chose categories for the AppDF we tried to create the most detailed list to archive unambiguous mapping for any appstore.
+
+### Google Play
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Value</th>
+</tr>
+<tr>
+  <td>Registration URL</td>
+  <td><a href="https://play.google.com/apps/publish/">Link</a></td>
+</tr>
+<tr>
+  <td>Distribution agreement URL</td>
+  <td><a href="http://play.google.com/intl/ALL_en/about/developer-distribution-agreement.html">Link</a></td>
+</tr>
+<tr>
+  <td>AppDF ID</td>
+  <td>google</td>
+</tr>
+<tr>
+  <td>Registration fee</td>
+  <td>$25</td>
+</tr>
+<tr>
+  <td>Content premoderation</td>
+  <td>No</td>
+</tr>
+<tr>
+  <td>Client Application</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>In-App Purchase Support</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>License verification support</td>
+  <td>Yes</td>
+</tr>
+</table>
+
+### Amazon AppStore
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Value</th>
+</tr>
+<tr>
+  <td>Registration URL</td>
+  <td><a href="https://developer.amazon.com/welcome.html">Link</a></td>
+</tr>
+<tr>
+  <td>Distribution agreement URL</td>
+  <td><a href="https://developer.amazon.com/help/da.html">Link</a></td>
+</tr>
+<tr>
+  <td>AppDF ID</td>
+  <td>amazon</td>
+</tr>
+<tr>
+  <td>Registration fee</td>
+  <td>free</td>
+</tr>
+<tr>
+  <td>Content premoderation</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>Client Application</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>In-App Purchase Support</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>License verification support</td>
+  <td>?</td>
+</tr>
+</table>
+
+### Opera Mobile Store
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Value</th>
+</tr>
+<tr>
+  <td>Registration URL</td>
+  <td><a href="http://apps.opera.com/developers.php">Link</a></td>
+</tr>
+<tr>
+  <td>Distribution agreement URL</td>
+  <td><a href="http://apps.opera.com/docs/DistributionAgreementHandster_standard.pdf">Link</a></td>
+</tr>
+<tr>
+  <td>AppDF ID</td>
+  <td>opera</td>
+</tr>
+<tr>
+  <td>Registration fee</td>
+  <td>free</td>
+</tr>
+<tr>
+  <td>Content premoderation</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>Client Applicationo</td>
+  <td>No</td>
+</tr>
+<tr>
+  <td>In-App Purchase Support</td>
+  <td>No</td>
+</tr>
+<tr>
+  <td>License verification support</td>
+  <td>RPN or serial numbers</td>
+</tr>
+</table>
+
+### Yandex.Store
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Value</th>
+</tr>
+<tr>
+  <td>Registration URL</td>
+  <td><a href="https://developer.store.yandex.com/">Link</a></td>
+</tr>
+<tr>
+  <td>Distribution agreement URL</td>
+  <td><a href="http://legal.yandex.com/store_developer_agreement/">Link</a></td>
+</tr>
+<tr>
+  <td>AppDF ID</td>
+  <td>yandex</td>
+</tr>
+<tr>
+  <td>Registration fee</td>
+  <td>free</td>
+</tr>
+<tr>
+  <td>Content premoderation</td>
+  <td>No</td>
+</tr>
+<tr>
+  <td>Client Application</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>In-App Purchase Support</td>
+  <td>No</td>
+</tr>
+<tr>
+  <td>License verification support</td>
+  <td>No</td>
+</tr>
+</table>
+
+### SlideME
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Value</th>
+</tr>
+<tr>
+  <td>Registration URL</td>
+  <td><a href="http://slideme.org/developers">Link</a></td>
+</tr>
+<tr>
+  <td>Distribution agreement URL</td>
+  <td><a href="http://slideme.org/developer-conditions">Link</a></td>
+</tr>
+<tr>
+  <td>AppDF ID</td>
+  <td>slideme</td>
+</tr>
+<tr>
+  <td>Registration fee</td>
+  <td>free</td>
+</tr>
+<tr>
+  <td>Content premoderation</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>Client Application</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>In-App Purchase Support</td>
+  <td>No</td>
+</tr>
+<tr>
+  <td>License verification support</td>
+  <td>Yes</td>
+</tr>
+</table>
+
+### Samsung App
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Value</th>
+</tr>
+<tr>
+  <td>Registration URL</td>
+  <td><a href="http://seller.samsungapps.com/">Link</a></td>
+</tr>
+<tr>
+  <td>Distribution agreement URL</td>
+  <td><a href="http://seller.samsungapps.com/help/termsAndConditions.as">Link</a></td>
+</tr>
+<tr>
+  <td>AppDF ID</td>
+  <td>samsung</td>
+</tr>
+<tr>
+  <td>Registration fee</td>
+  <td>free</td>
+</tr>
+<tr>
+  <td>Content premoderation</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>Client Application</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>In-App Purchase Support</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>License verification support</td>
+  <td>Samsung DRM</td>
+</tr>
+</table>
+
+## Temporary Table, Will Be Deleted In the Next Version of the Spec 
 
 <table>
 <tr>
@@ -3162,88 +3409,6 @@ AppDF provides universal category list that could be matched to any appstore cat
   <th>SlideME</th>
   <th>Samsung Apps</th>
   <th>NOOK- apps</th>
-</tr>
-<tr>
-<td>Registration URL
-</td>
-  <td><a href="https://play.google.com/apps/publish/">Link</a></td>
-  <td><a href="https://developer.amazon.com/welcome.html">Link</a></td>
-  <td><a href="http://apps.opera.com/developers.php">Link</a></td>
-  <td><a href="https://developer.store.yandex.com/">Link</a></td>
-  <td><a href="http://slideme.org/developers">Link</a></td>
-  <td><a href="http://seller.samsungapps.com/">Link</a></td>
-  <td><a href="https://nookdeveloper.barnesandnoble.com/">Link</a></td>
-</tr>
-<tr>
-<td>Distribution agreement URL
-</td>
-  <td><a href="http://play.google.com/intl/ALL_en/about/developer-distribution-agreement.html">Link</a></td>
-  <td><a href="https://developer.amazon.com/help/da.html">Link</a></td>
-  <td><a href="http://apps.opera.com/docs/DistributionAgreementHandster_standard.pdf">Link</a></td>
-  <td><a href="http://legal.yandex.com/store_developer_agreement/">Link</a></td>
-  <td><a href="http://slideme.org/developer-conditions">Link</a></td>
-  <td><a href="http://seller.samsungapps.com/help/termsAndConditions.as">Link</a></td>
-  <td>?</td>
-</tr>
-<tr>
-<td>AppDF ID</td>
-  <td>google</td>
-  <td>amazon</td>
-  <td>opera</td>
-  <td>yandex</td>
-  <td>slideme</td>
-  <td>samsung</td>
-  <td>nook</td>
-</tr>
-<tr>
-<td>Registration fee</td>
-  <td>$25</td>
-  <td>free</td>
-  <td>free</td>
-  <td>free</td>
-  <td>free</td>
-  <td>free</td>
-  <td>?</td>
-</tr>
-<tr>
-<td>Content premoderation</td>
-  <td>No</td>
-  <td>Yes</td>
-  <td>Yes</td>
-  <td>No</td>
-  <td>Yes</td>
-  <td>Yes</td>
-  <td>?</td>
-</tr>
-<tr>
-<td>Client Application</td>
-  <td>Yes</td>
-  <td>Yes</td>
-  <td>No</td>
-  <td>Yes</td>
-  <td>Yes</td>
-  <td>Yes</td>
-  <td>Yes</td>
-</tr>
-<tr>
-<td>In-App Purchase Support</td>
-  <td>Yes</td>
-  <td>Yes</td>
-  <td>No</td>
-  <td>No</td>
-  <td>No</td>
-  <td>Yes</td>
-  <td>?</td>
-</tr>
-<tr>
-<td>License verification support</td>
-  <td>Yes</td>
-  <td>?</td>
-  <td>RPN or serial numbers</td>
-  <td>No</td>
-  <td>Yes</td>
-  <td>Samsung DRM</td>
-  <td>?</td>
 </tr>
 <tr>
 <td>Title field name</td>
