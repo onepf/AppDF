@@ -1500,7 +1500,7 @@ Each application must be labeled with a minimum allowed age according to [ESRB s
     <td>SlideME</td>
     <td>Yes</td>
     <td>Application / Parental Rating</td>
-    <td></td>
+    <td>Yes</td>
   </tr>
 </table>
 
@@ -1663,6 +1663,13 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### content-description/content-descriptors
@@ -1763,6 +1770,13 @@ Example:
     <td>Is Adult?</td>
     <td>Yes</td>
     <td>Only adult descriptor is used</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
@@ -1915,6 +1929,13 @@ Use `<include>` and `<exclude>` subtags to define list of the countries where yo
     <td>No</td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### availability/period/since
@@ -1971,6 +1992,12 @@ If presented this tag defines a date from which the application can be distribut
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2032,6 +2059,12 @@ If presented this tag defines a final date of application distribution. Stores t
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2209,6 +2242,13 @@ This tag is ignored for free apps.
     <td>Yes</td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### price/trial-version
@@ -2338,7 +2378,7 @@ Example:
     <td>SlideME</td>
     <td>Yes</td>
     <td>Application / Application file</td>
-    <td>66M/td>
+    <td>66M</td>
     <td>No</td>
     <td>No</td>
   </tr>
@@ -2385,7 +2425,7 @@ No attributes.
 Example:
 ```xml
 <features>
-  <root>no</>
+  <root>no</root>
   <gms>no</gms>
 </features>
 ```
@@ -2960,6 +3000,12 @@ Example:
     <td>No</td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Agreement</td>
+    <td>&lt;slideme-agreement&gt;</td>
   </tr>
 </table>
 
