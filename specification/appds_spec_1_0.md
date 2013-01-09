@@ -876,6 +876,14 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### description/recent-changes
@@ -920,6 +928,15 @@ Maximum length: 500.
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Revision information / Log message</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Unlimited</td>
+    <td>This information will go in the application's changelog and can not be changed</td>
   </tr>
 </table>
 
@@ -1388,6 +1405,15 @@ Some stores don't support including of YouTube videos but do supports uploaded v
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2353,6 +2379,108 @@ Example:
 ```
 
 #### requirements/features
+Optional.
+No attributes.
+
+Example:
+```xml
+<features>
+  <root>no</>
+  <gms>no</gms>
+</features>
+```
+
+#### requirements/features/root
+Optional.
+No attributes.
+
+Set value of this tag to `yes` if your application requires root access for working.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Opers Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Requirements / Requires 'rooted' device</td>
+    <td></td>
+  </tr>
+</table>
+
+
+#### requirements/features/gms
+Optional.
+No attributes.
+
+Set value of this tag to `yes` if your application requires Google Play to be installed on device and Google account for LVL or other actions. Please note that most it will dramatically limit your distribution options. Most of the stores work on the devices that don't have Google Play installed.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Opers Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Requirements / Requires Google Play and/or account</td>
+    <td></td>
+  </tr>
+</table>
+
 
 #### requirements/supported-languages
 Optional.
@@ -2394,6 +2522,12 @@ Example:
     <td>Opers Mobile Store</td>
     <td>Yes</td>
     <td>Languages</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
     <td></td>
   </tr>
 </table>
@@ -2445,6 +2579,12 @@ Example:
     <td>Basic Information / Binary File / Detailed Device Settings</td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 
@@ -2484,6 +2624,12 @@ Most of the stores take this information from the APK file. Some stores also sup
     <td>Yes</td>
     <td>Basic Information / Binary File / Binary Upload / Resolution(s)</td>
     <td>Required tag, per APK file</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
@@ -2743,18 +2889,26 @@ Please detail any special requirements to test your app.
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 ### consent
 Required.
 No attributes.
 
-You must consent with a number of statements in order your application is published. This section includes the list of such agreements. Without this section some stores will not accept your application.  Each subtag corresponds to one of the statements you consent with. Subtag values must always be `yes` if you want your application is accepted by the corresponding stores.
+You must consent with a number of statements in order your application is published. This section includes the list of such agreements. They are agreements some stores require you to accept every time you submit an application (not when you register an account). Without this section some stores will not accept your application.  Each subtag corresponds to one of the statements you consent with. Subtag values must always be `yes` if you want your application is accepted by the corresponding stores.
 
 Example:
 ```xml
 <consent>
   <google-android-content-guidelines>yes</google-android-content-guidelines>
+  <slideme-agreement>yes</slideme-agreement>
   <us-export-laws>yes</us-export-laws>
 </consent>
 ```
@@ -2774,6 +2928,11 @@ Example:
     <td>&lt;us-export-laws&gt;</td>
     <td>I acknowledge that my software application may be subject to United States export laws, regardless of my location or nationality. I agree that I have complied with all such laws, including any requirements for software with encryption functions. I hereby certify that my application is authorized for export from the United States under these laws. </td>
     <td>https://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=113770</td>
+  </tr>
+  <tr>
+    <td>&lt;slideme-agreement&gt;</td>
+    <td>You agree with the complete Developer/Publisher Distribution Agreement</td>
+    <td>https://slideme.org/developer-conditions/popup</td>
   </tr>
 </table>
 
@@ -2850,6 +3009,13 @@ No attributes.
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### customer-support/email
@@ -2885,6 +3051,13 @@ No attributes.
     <td>No</td>
     <td>No</td>
   </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### customer-support/website
@@ -2915,6 +3088,13 @@ No attributes.
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
     <td>No</td>
     <td></td>
     <td></td>
