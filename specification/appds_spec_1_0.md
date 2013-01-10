@@ -73,8 +73,8 @@ Sample Description.xml File
     <subcategory>investing</subcategory>
   </categorization>
 
-  <!--Language is set in two letter ISO 639-1 codes, default is an optional attribute, if set this information is used for other languages where a particular native text is missed-->
-  <description language="en" default="yes">
+  <!--Language is set in two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")-->
+  <description language="en">
     <texts>
       <!-- Maximum length of title: 30 symbols-->
       <title>Yandex.Shell</title>
@@ -130,16 +130,25 @@ Sample Description.xml File
 
   </description>
 
-  <description language="ru">
-    <title>Яндекс.Shell</title>
+  <!--Description can be localized to other languages using this tag-->
+  <!--Language is set in two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")-->
+  <!--This tag has the same structure as description but all subtags are optional-->
+  <!--If some subtags are missed they are taken from the default language description-->
+  <description-localization language="ru">
+    <texts>
+      <title>Яндекс.Shell</title>
+    </texts>
 
     <images>
-      <screenshot>screenshot01_ru.png</screenshot>
-      <screenshot>screenshot02_ru.png</screenshot>
-      <screenshot>screenshot03_ru.png</screenshot>
+	  <screenshots>
+        <screenshot>screenshot01_ru.png</screenshot>
+        <screenshot>screenshot02_ru.png</screenshot>
+        <screenshot>screenshot03_ru.png</screenshot>
+        <screenshot>screenshot04_ru.png</screenshot>
+	  </screenshots>
     </images>
 
-  </description>
+  </description-localization>
 
 
   <content-description>
@@ -350,6 +359,7 @@ Table of Contents:
 	* [videos](#descriptionvideos)
 		* [youtube-video](#descriptionvideosyoutube-video)
 		* [video-file](#descriptionvideosvideo-file)
+* [description-localization](#description-localization)
 * [content-description](#content-description)
 	* [content-rating](#content-descriptioncontent-rating)
 	* rating-certificates
@@ -530,9 +540,9 @@ Although some stores don't use subcategories AppDF includes as detailed category
 
 ### description 
 Required.
-Attributes: `language`, `default`. 
+Attributes: `language`. 
 
-This section contains product description in text form as well as pictures and videos. There could be several `<description>` tags for different languages. One of the `<description>` tags should be default (`default=yes`). If some information is missed in the localized versions of the `<description>` tag it will be taken from the default language.
+This section contains product description in text form as well as pictures and videos. A part of the main `<description>` tag there could be several `<description-localization>` tags for different languages. If some information is missed in the localized `<description-localization>` tag it will be taken from the default `<description>` section.
 
 <table>
   <tr>
@@ -545,16 +555,11 @@ This section contains product description in text form as well as pictures and v
     <td>two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")</td>
     <td>required tag</td>
   </tr>
-  <tr>
-    <td>default</td>
-    <td>yes, no</td>
-    <td>no</td>
-  </tr>
 </table>
 
 Example:
 ```xml
-<description language="en" default="yes">
+<description language="en">
   <texts>
     <title>Yandex.Shell</title>
     <title>Yandex.Shell - Free Launcher + Dialer + Widgets</title>
@@ -604,7 +609,7 @@ Example:
 Required. 
 No attributes.
 
-This tag contains all text assets. As everything inside the `<description>` tag it can be localized. If a localized version of the `<description>` tag does not contain some of the sections then text from the corresponding default language section is taken. 
+This tag contains all text assets. As everything inside the `<description>` tag it can be localized using `<description-localization>` section. 
 
 Example:
 ```xml
@@ -635,7 +640,7 @@ Required.
 No attributes. 
 Maximum length: at least one tag should be shorter than 30 symbols.
 
-Application name, shown in the application list. As everything in the `<description>` section it can be localized. Different stores have different requirements for maximum title length. In order to have flexibility to get the best from each of the stores you can include several copies of title tag. The store will take the longest one that is fits in its maximum size.
+Application name, shown in the application list. As everything inside the `<description>` tag it can be localized using `<description-localization>` section. Different stores have different requirements for maximum title length. In order to have flexibility to get the best from each of the stores you can include several copies of title tag. The store will take the longest one that is fits in its maximum size.
 
 <table>
   <tr>
@@ -693,7 +698,7 @@ Application name, shown in the application list. As everything in the `<descript
 Required. 
 No attributes. 
 
-Comma separated list of keywords.
+Comma separated list of keywords. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -749,7 +754,7 @@ Required.
 No attributes. 
 Maximum length: at least one tag should be shorter than 80 symbols.
 
-Short application description used in the app lists next to the app title. Some stores include such short description to the lists, some do not. Different stores have different requirements for maximum short description length. In order to have flexibility to get the best from each of the stores you can include several copies of short description tag. The store will take the longest one that is fits in its maximum size.
+Short application description used in the app lists next to the app title. Some stores include such short description to the lists, some do not. Different stores have different requirements for maximum short description length. In order to have flexibility to get the best from each of the stores you can include several copies of short description tag. The store will take the longest one that is fits in its maximum size. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -815,7 +820,7 @@ Attributes: `html`, `featureless`.
 Maximum length: 4000.
 
 
-Full application description shown on the product page. You can include several copies of your application description, one with HTML markup and one without. The stores will use one of these descriptions depending on do they support HTML in the description field or not. In the same way you can include description with included feature list and one without. The one without will be used for the stores that use a separate feature list (to avoid feature list duplication).
+Full application description shown on the product page. You can include several copies of your application description, one with HTML markup and one without. The stores will use one of these descriptions depending on do they support HTML in the description field or not. In the same way you can include description with included feature list and one without. The one without will be used for the stores that use a separate feature list (to avoid feature list duplication). As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -890,7 +895,7 @@ Full application description shown on the product page. You can include several 
 Required.
 No attributes.
 
-Some stores support separate feature list (most assumes that the feature list is included into the full description). Each `<feature>` subtag should contain one feature description. There should be between 3 and 5 `<feature>` subtags.
+Some stores support separate feature list (most assumes that the feature list is included into the full description). Each `<feature>` subtag should contain one feature description. There should be between 3 and 5 `<feature>` subtags. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
 
 Example:
 ```xml
@@ -1010,7 +1015,7 @@ Maximum length: 500.
 Optional. 
 No attributes. 
 
-Link to a webpage with your privacy policy for this application.
+Link to a webpage with your privacy policy for this application. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -1060,7 +1065,7 @@ Link to a webpage with your privacy policy for this application.
 Optional. 
 No attributes. 
 
-Link to a webpage with your End User License Agreement for this application.
+Link to a webpage with your End User License Agreement for this application. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -1110,7 +1115,7 @@ Link to a webpage with your End User License Agreement for this application.
 Required. 
 No attributes.
 
-This tag contains all application image assets. As everything inside the `<description>` tag it can be localized. If a localized version of the `<description>` tag does not contains one of the four sections then images from the default languages are taken. So you need to include only those images that are actually localized into the localized versions of the `<description>` tag and do not need to repeat the images that are the same as in the default language.   
+This tag contains all application image assets. As everything inside the `<description>` tag it can be localized using `<description-localization>` section. If `<description-localization>` tag does not contains any particular image type then the corresponding image from the `<description>` section is taken. 
 
 Example:
 ```xml
@@ -1386,7 +1391,7 @@ Example:
 Optional. 
 No attributes.
 
-This tag contains all video assets. As everything inside the `<description>` tag it can be localized. If a localized version of the `<description>` tag does not contains one of the sections then corresponding videos from the default language are taken. So you need to include only those videos that are actually localized into the localized versions of the `<description>` tag and do not need to repeat the videos that are the same as in the default language.  
+This tag contains all video assets. As everything inside the `<description>` tag it can be localized using `<description-localization>` section. If `<description-localization>` tag does not contains any particular video type then the corresponding video from the `<description>` section is taken.
 
 Example:
 ```xml
@@ -1454,7 +1459,6 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
 </table>
 
 ##### description/videos/video-file
-
 Optional. 
 No attributes. 
 
@@ -1507,6 +1511,45 @@ Some stores don't support including of YouTube videos but do supports uploaded v
     <td></td>
   </tr>
 </table>
+
+### description-localization
+Optional.
+Attributes: `language`. 
+
+You can use `<description-localization>` section to localize texts, images and videos in product description. This tag has the same structure as `<description>` but all subtags are optional. If some information is missed in the `<description-localization>` section it will be taken from the  `<description>` section.
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td>language</td>
+    <td>two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")</td>
+    <td>required tag</td>
+  </tr>
+</table>
+
+Example:
+```xml
+<description-localization language="de">
+  <texts>
+    <short-descriptionMeine kurze Beschreibung</short-description>
+    <full-description>Meine Sie hier</full-description>
+  </texts>
+
+  <images>
+    <large-promo>promo_de.png</large-promo>
+    <screenshots>
+      <screenshot>screenshot01_de.png</screenshot>
+      <screenshot>screenshot02_de.png</screenshot>
+      <screenshot>screenshot03_de.png</screenshot>
+      <screenshot>screenshot04_de.png</screenshot>
+    </screenshots>
+  </images>
+</description-localization>
+```
 
 ### content-description
 Required.

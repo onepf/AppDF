@@ -18,7 +18,8 @@
   <xsd:complexType name="type-application">
     <xsd:sequence>
       <xsd:element name="categorization" type="type-categorization" />
-      <xsd:element name="description" type="type-description" maxOccurs="unbounded" />
+      <xsd:element name="description" type="type-description" />
+      <xsd:element name="description-localization" type="type-descriptionlocalization" minOccurs="0" maxOccurs="unbounded" />
       <xsd:element name="content-description" type="type-contentdescription" />
     </xsd:sequence>
     <xsd:attribute name="package" type="xsd:string" use="required"/>
@@ -45,7 +46,6 @@
       <xsd:element name="videos" type="type-description-videos" minOccurs="0" />
     </xsd:sequence>
     <xsd:attribute name="language" type="type-description-attr-language" use="required"/>
-    <xsd:attribute name="default" type="type-attr-yesno" default="no" />
   </xsd:complexType>
   
   <xsd:complexType name="type-description-texts">
@@ -115,6 +115,44 @@
     </xsd:restriction>
   </xsd:simpleType>  
   
+  <xsd:complexType name="type-descriptionlocalization">
+    <xsd:sequence>
+      <xsd:element name="texts" type="type-descriptionlocalization-texts" minOccurs="0" />
+      <xsd:element name="images" type="type-descriptionlocalization-images" minOccurs="0" />
+      <xsd:element name="videos" type="type-descriptionlocalization-videos" minOccurs="0" />
+    </xsd:sequence>
+    <xsd:attribute name="language" type="type-description-attr-language" use="required"/>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-descriptionlocalization-texts">
+    <xsd:sequence>
+      <xsd:element name="title" type="xsd:string" maxOccurs="unbounded" minOccurs="0" />
+      <xsd:element name="keywords" type="xsd:string" minOccurs="0" />
+      <xsd:element name="short-description" type="xsd:string" maxOccurs="unbounded" minOccurs="0" />
+      <xsd:element name="full-description" type="xsd:string" maxOccurs="unbounded" minOccurs="0" />
+      <xsd:element name="features" type="type-description-texts-features" minOccurs="0" />
+      <xsd:element name="recent-changes" type="xsd:string" minOccurs="0" />
+      <xsd:element name="privacy-policy" type="xsd:string" minOccurs="0" />
+      <xsd:element name="eula" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-descriptionlocalization-images">
+    <xsd:sequence>
+      <xsd:element name="app-icon" type="type-description-images-appicon" maxOccurs="unbounded" minOccurs="0" />
+      <xsd:element name="large-promo" type="type-attr-localfile" minOccurs="0" />
+      <xsd:element name="small-promo" type="type-attr-localfile" minOccurs="0" />
+      <xsd:element name="screenshots" type="type-description-images-screenshots" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-descriptionlocalization-videos">
+    <xsd:sequence>
+      <xsd:element name="youtube-video" type="xsd:string" minOccurs="0" />
+      <xsd:element name="video-file" type="type-attr-localfile" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+    
   <xsd:complexType name="type-contentdescription">
     <xsd:sequence>
       <xsd:element name="content-rating" type="type-contentdescription-contentrating" />
