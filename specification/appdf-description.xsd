@@ -22,6 +22,7 @@
       <xsd:element name="description-localization" type="type-descriptionlocalization" minOccurs="0" maxOccurs="unbounded" />
       <xsd:element name="content-description" type="type-contentdescription" />
       <xsd:element name="availability" type="type-availability" minOccurs="0" />
+      <xsd:element name="price" type="type-price" />
     </xsd:sequence>
     <xsd:attribute name="package" type="xsd:string" use="required"/>
   </xsd:complexType>
@@ -285,5 +286,33 @@
       <xsd:maxInclusive value="31"/>
     </xsd:restriction>
   </xsd:simpleType>  
-    
+  
+  <xsd:complexType name="type-price">
+    <xsd:sequence>
+      <xsd:element name="base-price" type="xsd:decimal" minOccurs="0" />
+      <xsd:element name="local-price" type="type-price-localprice" minOccurs="0" maxOccurs="unbounded" />
+      <xsd:element name="trial-version" type="type-price-trialversion" minOccurs="0" />
+    </xsd:sequence>
+    <xsd:attribute name="free" type="type-attr-yesno" />
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-price-localprice">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="currency" type="type-attr-currency" use="required" />
+        <xsd:attribute name="country" type="type-attr-country" use="required" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  
+  <xsd:simpleType name="type-attr-currency">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[A-Z][A-Z][A-Z]"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+  
+  <xsd:complexType name="type-price-trialversion">
+    <xsd:attribute name="full-version" type="xsd:string" />
+  </xsd:complexType>
+  
 </xsd:schema>
