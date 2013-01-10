@@ -23,6 +23,7 @@
       <xsd:element name="content-description" type="type-contentdescription" />
       <xsd:element name="availability" type="type-availability" minOccurs="0" />
       <xsd:element name="price" type="type-price" />
+      <xsd:element name="apk-files" type="type-apkfiles" />
     </xsd:sequence>
     <xsd:attribute name="package" type="xsd:string" use="required"/>
   </xsd:complexType>
@@ -313,6 +314,20 @@
   
   <xsd:complexType name="type-price-trialversion">
     <xsd:attribute name="full-version" type="xsd:string" />
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-apkfiles">
+    <xsd:choice minOccurs="1" maxOccurs="unbounded">
+      <xsd:element name="apk-file" type="type-attr-localfile" />
+      <xsd:element name="apk-file-with-extnsion" type="type-apkfiles-apkfilewithextnsion" />
+    </xsd:choice>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-apkfiles-apkfilewithextnsion">
+    <xsd:sequence>
+      <xsd:element name="apk-file" type="type-attr-localfile" maxOccurs="1" />
+      <xsd:element name="extension" type="type-attr-localfile" maxOccurs="unbounded" />
+    </xsd:sequence>
   </xsd:complexType>
   
 </xsd:schema>
