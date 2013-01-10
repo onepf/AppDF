@@ -1535,7 +1535,7 @@ Example:
 ```xml
 <description-localization language="de">
   <texts>
-    <short-descriptionMeine kurze Beschreibung</short-description>
+    <short-description>Meine kurze Beschreibung</short-description>
     <full-description>Meine Sie hier</full-description>
   </texts>
 
