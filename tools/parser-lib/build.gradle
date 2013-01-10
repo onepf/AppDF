@@ -1,0 +1,23 @@
+allprojects {
+    apply plugin: 'java'
+    group = 'org.onepf.appdf'
+    version = '1.0-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: 'java'
+    group = 'org.onepf.appdf'
+    version = '1.0-SNAPSHOT'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        testCompile "junit:junit:4.11"
+    }
+}
+
+project(':parser') {
+    dependencies {
+        compile project(':model')
+    }
+}
