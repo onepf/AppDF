@@ -12,9 +12,26 @@
     </xsd:sequence>
     <xsd:attribute name="version" type="xsd:positiveInteger" />
   </xsd:complexType>
+  
   <xsd:complexType name="type-application">
     <xsd:sequence>
+      <xsd:element name="categorization" type="type-categorization" />
     </xsd:sequence>
     <xsd:attribute name="package" type="xsd:string" />
   </xsd:complexType>
+  
+  <xsd:complexType name="type-categorization">
+    <xsd:sequence>
+      <xsd:element name="type" type="type-categorization-type" />
+      <xsd:element name="category" type="xsd:string" />
+      <xsd:element name="subcategory" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:simpleType name="type-categorization-type">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="application|game"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+  
 </xsd:schema>
