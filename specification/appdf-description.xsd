@@ -24,6 +24,7 @@
       <xsd:element name="availability" type="type-availability" minOccurs="0" />
       <xsd:element name="price" type="type-price" />
       <xsd:element name="apk-files" type="type-apkfiles" />
+      <xsd:element name="requirements" type="type-requirements" minOccurs="0" />
     </xsd:sequence>
     <xsd:attribute name="package" type="xsd:string" use="required"/>
   </xsd:complexType>
@@ -329,5 +330,53 @@
       <xsd:element name="extension" type="type-attr-localfile" maxOccurs="unbounded" />
     </xsd:sequence>
   </xsd:complexType>
+  
+  <xsd:complexType name="type-requirements">
+    <xsd:sequence>
+      <xsd:element name="features" type="type-requirements-features" minOccurs="0" />
+      <xsd:element name="supported-languages" type="type-requirements-supportedlanguages" minOccurs="0" />
+      <xsd:element name="supported-devices" type="type-requirements-supporteddevices" minOccurs="0" />
+      <xsd:element name="supported-resolutions" type="type-requirements-supportedresolutions" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-requirements-features">
+    <xsd:sequence>
+      <xsd:element name="root" type="type-attr-yesno" minOccurs="0" />
+      <xsd:element name="gms" type="type-attr-yesno" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-requirements-supportedlanguages">
+    <xsd:sequence>
+      <xsd:element name="language" type="type-attr-language" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-requirements-supporteddevices">
+    <xsd:sequence>
+      <xsd:element name="exclude" type="xsd:string" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+   <xsd:complexType name="type-requirements-supportedresolutions">
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element name="exclude" type="type-attr-resolution" />
+      <xsd:element name="include" type="type-attr-resolution" />
+    </xsd:choice>
+  </xsd:complexType>
+  
+  <xsd:simpleType name="type-attr-resolution">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[0-9]+x[0-9]+"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+  
+  <xsd:simpleType name="type-attr-language">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[a-z][a-z]"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+  
   
 </xsd:schema>
