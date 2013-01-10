@@ -28,9 +28,9 @@ Don't be fooled by these simple rules, they create many different life forms inc
     <promo>images/promo.png</promo>
     <feature>images/feature.png</feature>
     <!--Minimum two screenshots should be presented-->
-    <screenshot>images/screenshot01_en.png</screenshot>
-    <screenshot>images/screenshot02_en.png</screenshot>
-    <screenshot>images/screenshot03_en.png</screenshot>
+    <screenshot>screenshot01_en.png</screenshot>
+    <screenshot>screenshot02_en.png</screenshot>
+    <screenshot>screenshot03_en.png</screenshot>
   </images>
 
   <!--All sub-tags are required, possible options are "no", "light", "strong"-->
