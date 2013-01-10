@@ -25,6 +25,8 @@
       <xsd:element name="price" type="type-price" />
       <xsd:element name="apk-files" type="type-apkfiles" />
       <xsd:element name="requirements" type="type-requirements" minOccurs="0" />
+      <xsd:element name="testing-instructions" type="type-testinginstructions" />
+      <xsd:element name="consent" type="type-consent" />
     </xsd:sequence>
     <xsd:attribute name="package" type="xsd:string" use="required"/>
   </xsd:complexType>
@@ -378,5 +380,18 @@
     </xsd:restriction>
   </xsd:simpleType>  
   
+  <xsd:simpleType name="type-testinginstructions">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="4000"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+  
+  <xsd:complexType name="type-consent">
+    <xsd:sequence>
+      <xsd:element name="google-android-content-guidelines" type="type-attr-yesno" minOccurs="0" />
+      <xsd:element name="us-export-laws" type="type-attr-yesno" minOccurs="0" />
+      <xsd:element name="slideme-agreement" type="type-attr-yesno" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
   
 </xsd:schema>
