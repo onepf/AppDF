@@ -116,7 +116,7 @@ Sample Description.xml File
         <screenshot>screenshot03_en.png</screenshot>
         <screenshot>screenshot04_en.png</screenshot>
         <screenshot>screenshot05_en.png</screenshot>
-      </screenshot>
+      </screenshots>
     </images>
 
     <youtube-video>x8723jw2KL</youtube-video>
