@@ -220,11 +220,12 @@ Sample Description.xml File
   </availability>	
 
   <!--If free attribute is set to "yes" then all the subtags except <trial-version> are ignored. -->
-  <!--If app is not free then "base-price" is required. currency is set in three cappital letter ISO 4217 currency code -->
+  <!--If app is not free then "base-price" is required -->
   <!--local-price tags are optional, if set they define local prices. Country is set in two letter ISO 3166-1 country code, currency is set in three cappital letter ISO 4217 currency code-->
   <!--Dot not comma should be used as decimal dilimiter symbol-->
   <price free="yes">
-    <base-price currency="USD">4.95</base-price>
+    <!-- Base price is defined in USD -->
+    <base-price>4.95</base-price>
     <local-price country="de" currency="EUR">3.95</local-price>
     <local-price country="fr" currency="EUR">3.95</local-price>
     <local-price country="ru" currency="RUB">99</local-price>
@@ -2205,14 +2206,20 @@ Attributes: `free`.
 
 This section describes whether the application is free or paid and if paid what is its price. It has also an option for free apps to mark them as trial version of another app.
 
-Example:
+Example 1:
 ```xml
 <price free="yes">
-  <base-price currency="USD">4.95</base-price>
+  <trial-version full-version="com.yandex.shellfullversion"/>
+</price>
+```
+
+Example 2:
+```xml
+<price free="no">
+  <base-price>4.95</base-price>
   <local-price country="de" currency="EUR">3.95</local-price>
   <local-price country="fr" currency="EUR">3.95</local-price>
   <local-price country="ru" currency="RUB">99</local-price>
-  <trial-version full-version="com.yandex.shellfullversion"/>
 </price>
 ```
 
@@ -2233,26 +2240,11 @@ Example:
 
 #### price/base-price
 Required for paid apps.
-Attributes: `currency`. 
+No attributes. 
 
-Application price. Tag value should be a dot-separated number. This price is used to automatically calculate the prices in other currencies unless you manually specify such prices using `<local-price>` tags.
+Application price. Tag value should be a dot-separated number. This price is set in USD used to automatically calculate the prices in other currencies unless you manually specify such prices using `<local-price>` tags.
 
 This tag is ignored for free apps.
-
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Possible values</th>
-    <th>Default</th>
-    <th>How it works</th>
-  </tr>
-  <tr>
-    <td>currency</td>
-    <td>?todo</td>
-    <td>USD</td>
-    <td>?todo</td>
-  </tr>
-</table>
 
 <table>
   <tr>
