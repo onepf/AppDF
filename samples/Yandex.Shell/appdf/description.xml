@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 
-<application-description-file version="1">
+<application-description-file version="1"
+                              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                              xsi:noNamespaceSchemaLocation="../../../specification/appdf-description.xsd">
 
 <application package="ru.yandex.shell">
 
