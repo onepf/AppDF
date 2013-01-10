@@ -27,6 +27,7 @@
       <xsd:element name="requirements" type="type-requirements" minOccurs="0" />
       <xsd:element name="testing-instructions" type="type-testinginstructions" />
       <xsd:element name="consent" type="type-consent" />
+      <xsd:element name="customer-support" type="type-customersupport" />
     </xsd:sequence>
     <xsd:attribute name="package" type="xsd:string" use="required"/>
   </xsd:complexType>
@@ -391,6 +392,14 @@
       <xsd:element name="google-android-content-guidelines" type="type-attr-yesno" minOccurs="0" />
       <xsd:element name="us-export-laws" type="type-attr-yesno" minOccurs="0" />
       <xsd:element name="slideme-agreement" type="type-attr-yesno" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-customersupport">
+    <xsd:sequence>
+      <xsd:element name="phone" type="xsd:string" />
+      <xsd:element name="email" type="xsd:string" />
+      <xsd:element name="website" type="xsd:string" />
     </xsd:sequence>
   </xsd:complexType>
   
