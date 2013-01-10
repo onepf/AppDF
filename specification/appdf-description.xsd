@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xs:annotation>
-    <xs:documentation>AppDF description.xml schema</xs:documentation>
-    <xs:documentation>Project home: http://www.github.com/onepf/appdf</xs:documentation>
-    <xs:documentation>Author: Vassili Philippov</xs:documentation>
-  </xs:annotation>
+  <xsd:annotation>
+    <xsd:documentation>AppDF description.xml schema</xsd:documentation>
+    <xsd:documentation>Project home: http://www.github.com/onepf/appdf</xsd:documentation>
+    <xsd:documentation>Author: Vassili Philippov</xsd:documentation>
+  </xsd:annotation>
   <xsd:element name="application-description-file" type="type-application-description-file" />
   <xsd:complexType name="type-application-description-file">
     <xsd:sequence>
