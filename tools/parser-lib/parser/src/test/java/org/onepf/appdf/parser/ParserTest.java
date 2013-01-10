@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.zip.ZipException;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -35,5 +36,11 @@ public class ParserTest {
 		AppdfFileParser parser = new AppdfFileParser(resource);
 		Application application = parser.parse();
 		Assert.assertNotEquals(null, application);
+	}
+	@Test(expected=ZipException.class)
+	public void failsOnNonZip() throws IOException, URISyntaxException{
+		URL nonZipResourceURL = ParserTest.class.getResource("not.appdf");
+		File file = new File(nonZipResourceURL.toURI());
+		AppdfFileParser parser = new AppdfFileParser(file);
 	}
 }
