@@ -16,6 +16,7 @@
   <xsd:complexType name="type-application">
     <xsd:sequence>
       <xsd:element name="categorization" type="type-categorization" />
+      <xsd:element name="description" type="type-description" maxOccurs="unbounded" />
     </xsd:sequence>
     <xsd:attribute name="package" type="xsd:string" />
   </xsd:complexType>
