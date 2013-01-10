@@ -37,7 +37,7 @@
     <xsd:sequence>
       <xsd:element name="type" type="type-categorization-type" />
       <xsd:element name="category" type="xsd:string" />
-      <xsd:element name="subcategory" type="xsd:string" />
+      <xsd:element name="subcategory" type="xsd:string" minOccurs="0" />
     </xsd:sequence>
   </xsd:complexType>
   
