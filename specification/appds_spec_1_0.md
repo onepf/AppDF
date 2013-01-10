@@ -501,7 +501,7 @@ Required. No attributes. AppDF format has its own list of categories for both ga
 
 #### categorization/subcategory
 
-Required. 
+Optional. 
 No attributes. 
 
 Although some stores don't use subcategories AppDF includes as detailed category information as possible. It is always easy to broaden detailed AppDF category+subcategory information to a less detailed particular store category list.
