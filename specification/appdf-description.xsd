@@ -53,14 +53,23 @@
       <xsd:element name="title" type="xsd:string" maxOccurs="unbounded"/>
       <xsd:element name="keywords" type="xsd:string"/>
       <xsd:element name="short-description" type="xsd:string" maxOccurs="unbounded" />
-      <xsd:element name="full-description" type="xsd:string" maxOccurs="unbounded" />
+      <xsd:element name="full-description" type="type-description-texts-fulldescription" maxOccurs="unbounded" />
       <xsd:element name="features" type="type-description-texts-features" />
       <xsd:element name="recent-changes" type="xsd:string" minOccurs="0"/>
-      <xsd:element name="privacy-policy" type="xsd:string" minOccurs="0"/>
-      <xsd:element name="eula" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="privacy-policy" type="xsd:anyURI" minOccurs="0"/>
+      <xsd:element name="eula" type="xsd:anyURI" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
   
+  <xsd:complexType name="type-description-texts-fulldescription">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="html" type="type-attr-yesno" default="no" />
+        <xsd:attribute name="featureless" type="type-attr-yesno" default="no" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+    
   <xsd:complexType name="type-description-texts-features">
     <xsd:sequence>
       <xsd:element name="feature" type="xsd:string" minOccurs="3" maxOccurs="5"/>
@@ -99,7 +108,7 @@
   
   <xsd:simpleType name="type-description-attr-language">
     <xsd:restriction base="xsd:string">
-      <xsd:pattern value="[a-z][a-z]"/>
+      <xsd:pattern value="[a-z][a-z]|[a-z][a-z]\-[a-z][a-z]"/>
     </xsd:restriction>
   </xsd:simpleType>  
   
