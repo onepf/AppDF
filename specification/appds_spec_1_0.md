@@ -887,12 +887,11 @@ Full application description shown on the product page. You can include several 
 </table>
 
 ##### description/texts/features
-Optional.
+Required.
 No attributes.
 
-Some stores support separate feature list (most assumes that the feature list is included into the full description). Each `<feature>` subtag should contain one feature description.
+Some stores support separate feature list (most assumes that the feature list is included into the full description). Each `<feature>` subtag should contain one feature description. There should be between 3 and 5 `<feature>` subtags.
 
-Example:
 Example:
 ```xml
 <features>
