@@ -21,6 +21,7 @@
       <xsd:element name="description" type="type-description" />
       <xsd:element name="description-localization" type="type-descriptionlocalization" minOccurs="0" maxOccurs="unbounded" />
       <xsd:element name="content-description" type="type-contentdescription" />
+      <xsd:element name="availability" type="type-availability" minOccurs="0" />
     </xsd:sequence>
     <xsd:attribute name="package" type="xsd:string" use="required"/>
   </xsd:complexType>
@@ -176,8 +177,7 @@
       <xsd:pattern value="3|6|10|13|17|18"/>
     </xsd:restriction>
   </xsd:simpleType>  
-  
-  
+    
   <xsd:complexType name="type-contentdescription-ratingcertificates">
     <xsd:sequence>
       <xsd:element name="rating-certificate" type="type-contentdescription-ratingcertificates-ratingcertificate" maxOccurs="unbounded" />
@@ -233,4 +233,57 @@
     </xsd:sequence>
   </xsd:complexType>
   
+  <xsd:complexType name="type-availability">
+    <xsd:sequence>
+      <xsd:element name="countries" type="type-availability-countries" minOccurs="0" />
+      <xsd:element name="period" type="type-availability-period" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-availability-countries">
+    <xsd:sequence>
+      <xsd:element name="include" type="type-attr-country" minOccurs="0" maxOccurs="unbounded" />
+      <xsd:element name="exclude" type="type-attr-country" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-availability-period">
+    <xsd:sequence>
+      <xsd:element name="since" type="type-attr-date" minOccurs="0" />
+      <xsd:element name="until" type="type-attr-date" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:simpleType name="type-attr-country">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[a-z][a-z]"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+  
+  <xsd:complexType name="type-attr-date">
+    <xsd:attribute name="year" type="type-attr-year" />
+    <xsd:attribute name="month" type="type-attr-month" />
+    <xsd:attribute name="day" type="type-attr-day" />
+  </xsd:complexType>
+  
+  <xsd:simpleType name="type-attr-year">
+    <xsd:restriction base="xsd:positiveInteger">
+      <xsd:minInclusive value="2007"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+    
+  <xsd:simpleType name="type-attr-month">
+    <xsd:restriction base="xsd:positiveInteger">
+      <xsd:minInclusive value="1"/>
+      <xsd:maxInclusive value="12"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+    
+  <xsd:simpleType name="type-attr-day">
+    <xsd:restriction base="xsd:positiveInteger">
+      <xsd:minInclusive value="1"/>
+      <xsd:maxInclusive value="31"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+    
 </xsd:schema>
