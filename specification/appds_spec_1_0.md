@@ -193,7 +193,7 @@ Sample Description.xml File
       <include>en</include>
       <include>ru</include>
       <exclude>de</exclude>
-    <countries>
+    </countries>
 
     <!--Optional tag, if missed the app become available immediatly without experiation date-->
     <period>
