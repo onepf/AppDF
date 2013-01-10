@@ -28,6 +28,7 @@
       <xsd:element name="testing-instructions" type="type-testinginstructions" />
       <xsd:element name="consent" type="type-consent" />
       <xsd:element name="customer-support" type="type-customersupport" />
+      <xsd:element name="store-specific" type="type-storespecific" minOccurs="0" />
     </xsd:sequence>
     <xsd:attribute name="package" type="xsd:string" use="required"/>
   </xsd:complexType>
@@ -396,11 +397,17 @@
   </xsd:complexType>
   
   <xsd:complexType name="type-customersupport">
-    <xsd:sequence>
+    <xsd:all>
       <xsd:element name="phone" type="xsd:string" />
       <xsd:element name="email" type="xsd:string" />
       <xsd:element name="website" type="xsd:string" />
-    </xsd:sequence>
+    </xsd:all>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-storespecific">
+    <xsd:sequence minOccurs="1" maxOccurs="1"> 
+      <xsd:any namespace="##any" minOccurs="0" maxOccurs="unbounded" processContents="skip" /> 
+    </xsd:sequence> 
   </xsd:complexType>
   
 </xsd:schema>
