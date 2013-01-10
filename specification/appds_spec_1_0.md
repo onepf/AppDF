@@ -1536,7 +1536,7 @@ Example:
     <gambling-refference>no</gambling-refference>
     <alcohol>no</alcohol>
     <smoking>strong</smoking>
-    <discrimination>no</discrimination
+    <discrimination>no</discrimination>
   </content-descriptors>
   <included-activities>
     <in-app-billing>no</in-app-billing>
