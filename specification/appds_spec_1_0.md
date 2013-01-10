@@ -75,31 +75,34 @@ Sample Description.xml File
 
   <!--Language is set in two letter ISO 639-1 codes, default is an optional attribute, if set this information is used for other languages where a particular native text is missed-->
   <description language="en" default="yes">
-    <!-- Maximum length of title: 30 symbols-->
-    <title>Yandex.Shell</title>
-    <keywords>shell, homescreen, launcher</keywords>
-    <!--If several versions of short-description tag are presented the store will take the longest-->
-    <short-description>My short description</short-description>
-    <short-description>Slightly longer version of my short description</short-description>
-    <short-description>Even more longer version of my short description text</short-description>
-    <full-description>My full description here</full-description>
-	<!--Optional tag. You can include full description with HTML markup for those stores that support such description-->
-    <full-description html="yes">My full description here</full-description>
-	<!--Optional tag. You can include full description without list of feeatures. It will be used by those stores that support separate feature list tag-->
-    <full-description featureless="yes">My full description here</full-description>
-	<!--Will be used only be some stores, most of the stores do not use this tag-->
-    <features>
-      <feature>New dialer</feature>
-      <feature>Home screen</feature>
-      <feature>3D interface</feature>
-    </features>
-    <recent-changes>It is a description of what was changed in the latest version</recent-changes>
+    <texts>
+      <!-- Maximum length of title: 30 symbols-->
+      <title>Yandex.Shell</title>
+      <title>Yandex.Shell - Free Launcher + Dialer + Widgets</title>
+      <keywords>shell, homescreen, launcher</keywords>
+      <!--If several versions of short-description tag are presented the store will take the longest-->
+      <short-description>My short description</short-description>
+      <short-description>Slightly longer version of my short description</short-description>
+      <short-description>Even more longer version of my short description text</short-description>
+      <full-description>My full description here</full-description>
+      <!--Optional tag. You can include full description with HTML markup for those stores that support such description-->
+      <full-description html="yes">My full description here</full-description>
+	  <!--Optional tag. You can include full description without list of feeatures. It will be used by those stores that support separate feature list tag-->
+      <full-description featureless="yes">My full description here</full-description>
+	  <!--Will be used only be some stores, most of the stores do not use this tag-->
+      <features>
+        <feature>New dialer</feature>
+        <feature>Home screen</feature>
+        <feature>3D interface</feature>
+      </features>
+      <recent-changes>It is a description of what was changed in the latest version</recent-changes>
 
-    <!--Optional tag, some stores require it for apps that collect personal information-->
-    <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
+      <!--Optional tag, some stores require it for apps that collect personal information-->
+      <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
 
-    <!--Optional tag, if presented it give custom EULA that some stores will show before installation-->
-    <eula></eula>
+      <!--Optional tag, if presented it give custom EULA that some stores will show before installation-->
+      <eula></eula>
+    </texts>
 
     <images>
 	  <!--Appp icon should have 512x512 size-->
@@ -119,8 +122,11 @@ Sample Description.xml File
       </screenshots>
     </images>
 
-    <youtube-video>x8723jw2KL</youtube-video>
-    <video-file>video1.mp4</video-file>
+    <videos>
+      <youtube-video>x8723jw2KL</youtube-video>
+      <video-file>video1.mp4</video-file>
+      <video-file>video2.mp4</video-file>
+    </videos>
 
   </description>
 
@@ -327,21 +333,23 @@ Table of Contents:
 	* [category](#categorizationcategory)
 	* [subcategory](#categorizationsubcategory)
 * [description](#description)
-	* [title](#descriptiontitle)
-	* [keywords](#descriptionkeywords)
-	* [short-description](#descriptionshort-description)
-	* [full-description](#descriptionfull-description)
-	* [features](#descriptionfeatures)
-	* [recent-changes](#descriptionrecent-changes)
-	* [privacy-policy](#descriptionprivacy-policy)
-	* [eula](#descriptioneula)
+	* [texts](#descriptiontexts)
+		* [title](#descriptiontextstitle)
+		* [keywords](#descriptiontextskeywords)
+		* [short-description](#descriptiontextsshort-description)
+		* [full-description](#descriptiontextsfull-description)
+		* [features](#descriptiontextsfeatures)
+		* [recent-changes](#descriptiontextsrecent-changes)
+		* [privacy-policy](#descriptiontextsprivacy-policy)
+		* [eula](#descriptiontextseula)
 	* [images](#descriptionimages)
 		* [app-icon](#descriptionimagesapp-icon)
 		* [large-promo](#descriptionimageslarge-promo)
 		* [small-promo](#descriptionimagessmall-promo)
 		* [screenshots](#descriptionimagesscreenshots)
-	* [youtube-video](#descriptionyoutube-video)
-	* [video-file](#descriptionvideo-file)
+	* [videos](#descriptionvideos)
+		* [youtube-video](#descriptionvideosyoutube-video)
+		* [video-file](#descriptionvideosvideo-file)
 * [content-description](#content-description)
 	* [content-rating](#content-descriptioncontent-rating)
 	* rating-certificates
@@ -524,7 +532,7 @@ Although some stores don't use subcategories AppDF includes as detailed category
 Required.
 Attributes: `language`, `default`. 
 
-This section contains product in text form as well as pictures and videos. There could be several `<description>` tags for different languages. One of the `<description>` tags should be default (`default=yes`). If some information is missed in the localized versions of the `<description>` tag it will be taken from the default language.
+This section contains product description in text form as well as pictures and videos. There could be several `<description>` tags for different languages. One of the `<description>` tags should be default (`default=yes`). If some information is missed in the localized versions of the `<description>` tag it will be taken from the default language.
 
 <table>
   <tr>
@@ -547,24 +555,25 @@ This section contains product in text form as well as pictures and videos. There
 Example:
 ```xml
 <description language="en" default="yes">
-  <title>Yandex.Shell</title>
-  <keywords>shell, homescreen, launcher</keywords>
-  <short-description>My short description</short-description>
-  <short-description>Slightly longer version of my short description</short-description>
-  <short-description>Even more longer version of my short description text</short-description>
-  <full-description>My full description here</full-description>
-  <full-description html="yes">My full description here</full-description>
-  <full-description featureless="yes">My full description here</full-description>
-  <features>
-    <feature>New dialer</feature>
-    <feature>Home screen</feature>
-    <feature>3D interface</feature>
-  </features>
-  <recent-changes>It is a description of what was changed in the latest version</recent-changes>
-  <x-opera-app-registration-instructions>Sample text here</x-opera-app-registration-instructions>
-
-  <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
-  <eula></eula>
+  <texts>
+    <title>Yandex.Shell</title>
+    <title>Yandex.Shell - Free Launcher + Dialer + Widgets</title>
+    <keywords>shell, homescreen, launcher</keywords>
+    <short-description>My short description</short-description>
+    <short-description>Slightly longer version of my short description</short-description>
+    <short-description>Even more longer version of my short description text</short-description>
+    <full-description>My full description here</full-description>
+    <full-description html="yes">My full description here</full-description>
+    <full-description featureless="yes">My full description here</full-description>
+    <features>
+      <feature>New dialer</feature>
+      <feature>Home screen</feature>
+      <feature>3D interface</feature>
+    </features>
+    <recent-changes>It is a description of what was changed in the latest version</recent-changes>
+    <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
+    <eula></eula>
+  </texts>
 
   <images>
     <app-icon size="512">icon.png</app-icon>
@@ -581,19 +590,52 @@ Example:
     </screenshots>
   </images>
 
-  <youtube-video>x8723jw2KL</youtube-video>
-  <video-file>video1.mp4</video-file>
+  <videos>
+    <youtube-video>x8723jw2KL</youtube-video>
+    <video-file>video1.mp4</video-file>
+    <video-file>video2.mp4</video-file>
+  </videos>
 
 </description>
 ```
 
-#### description/title
+#### description/texts
+
+Required. 
+No attributes.
+
+This tag contains all text assets. As everything inside the `<description>` tag it can be localized. If a localized version of the `<description>` tag does not contain some of the sections then text from the corresponding default language section is taken. 
+
+Example:
+```xml
+<texts>
+  <title>Yandex.Shell</title>
+  <title>Yandex.Shell - Free Launcher + Dialer + Widgets</title>
+  <keywords>shell, homescreen, launcher</keywords>
+  <short-description>My short description</short-description>
+  <short-description>Slightly longer version of my short description</short-description>
+  <short-description>Even more longer version of my short description text</short-description>
+  <full-description>My full description here</full-description>
+  <full-description html="yes">My full description here</full-description>
+  <full-description featureless="yes">My full description here</full-description>
+  <features>
+    <feature>New dialer</feature>
+    <feature>Home screen</feature>
+    <feature>3D interface</feature>
+  </features>
+  <recent-changes>It is a description of what was changed in the latest version</recent-changes>
+  <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
+  <eula></eula>
+</texts>
+```
+
+##### description/texts/title
 
 Required. 
 No attributes. 
-Maximum length: 30.
+Maximum length: at least one tag should be shorter than 30 symbols.
 
-Application name, shown in the application list. As everything in the `<description>` section is can be localized.
+Application name, shown in the application list. As everything in the `<description>` section it can be localized. Different stores have different requirements for maximum title length. In order to have flexibility to get the best from each of the stores you can include several copies of title tag. The store will take the longest one that is fits in its maximum size.
 
 <table>
   <tr>
@@ -646,7 +688,7 @@ Application name, shown in the application list. As everything in the `<descript
   </tr>
 </table>
 
-#### description/keywords
+##### description/texts/keywords
 
 Required. 
 No attributes. 
@@ -701,7 +743,7 @@ Comma separated list of keywords.
   </tr>
 </table>
 
-#### description/short-description
+##### description/texts/short-description
 
 Required. 
 No attributes. 
@@ -766,7 +808,7 @@ Short application description used in the app lists next to the app title. Some 
   </tr>
 </table>
 
-#### description/full-description
+##### description/texts/full-description
 
 Required. 
 Attributes: `html`, `featureless`. 
@@ -844,7 +886,7 @@ Full application description shown on the product page. You can include several 
   </tr>
 </table>
 
-#### description/features
+##### description/texts/features
 Optional.
 No attributes.
 
@@ -911,7 +953,7 @@ Example:
   </tr>
 </table>
 
-#### description/recent-changes
+##### description/texts/recent-changes
 
 Optional. 
 No attributes. 
@@ -965,7 +1007,7 @@ Maximum length: 500.
   </tr>
 </table>
 
-#### description/privacy-policy
+##### description/texts/privacy-policy
 Optional. 
 No attributes. 
 
@@ -1014,7 +1056,7 @@ Link to a webpage with your privacy policy for this application.
   </tr>
 </table>
 
-#### description/eula
+##### description/texts/eula
 
 Optional. 
 No attributes. 
@@ -1066,7 +1108,10 @@ Link to a webpage with your End User License Agreement for this application.
 
 #### description/images
 
-This tag contains all application image assets. As everything inside the `<description>` tag it can be localized. If a localized version of the `<description>` tag does not contains one of the four sections then images from the default languages are taken. So you need to include only those images that are actually localized into the localized versions of the `<description>` tag and do not need to repeat the images that are the same as in the default language.  
+Required. 
+No attributes.
+
+This tag contains all application image assets. As everything inside the `<description>` tag it can be localized. If a localized version of the `<description>` tag does not contains one of the four sections then images from the default languages are taken. So you need to include only those images that are actually localized into the localized versions of the `<description>` tag and do not need to repeat the images that are the same as in the default language.   
 
 Example:
 ```xml
@@ -1337,7 +1382,23 @@ Example:
   </tr>
 </table>
 
-#### description/youtube-video
+#### description/videos
+
+Optional. 
+No attributes.
+
+This tag contains all video assets. As everything inside the `<description>` tag it can be localized. If a localized version of the `<description>` tag does not contains one of the sections then corresponding videos from the default language are taken. So you need to include only those videos that are actually localized into the localized versions of the `<description>` tag and do not need to repeat the videos that are the same as in the default language.  
+
+Example:
+```xml
+<videos>
+  <youtube-video>x8723jw2KL</youtube-video>
+  <video-file>video1.mp4</video-file>
+  <video-file>video2.mp4</video-file>
+</videos>
+```
+
+##### description/videos/youtube-video
 
 Optional. 
 No attributes. 
@@ -1393,7 +1454,7 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
   </tr>
 </table>
 
-#### description/video-file
+##### description/videos/video-file
 
 Optional. 
 No attributes. 
