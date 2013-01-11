@@ -690,7 +690,7 @@ The application name is shown in the application list. As everything inside the 
     <td>Yes</td>
     <td>Basic Information / Binary & Device / Application Title</td>
     <td>Yes</td>
-    <td>No</td>
+    <td>Yes</td>
     <td>Unlimited</td>
   </tr>
   <tr>
@@ -749,12 +749,12 @@ Comma separated the list of keywords. As everything inside the `<description>` t
   </tr>
   <tr>
     <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Tags / Other Tags</td>
     <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>Yes</td>
+    <td>Maximum 10 keywords</td>
+    <td>Not one string but a list of keywords</td>
   </tr>
   <tr>
     <td>SlideME</td>
@@ -813,15 +813,6 @@ Short application description is used in the app lists next to the app title. So
     <td>Shown on the top of the product webpage, next to the app icon</td>
   </tr>
   <tr>
-    <td>SlideME</td>
-    <td>Yes</td>
-    <td>Short description</td>
-    <td>Yes</td>
-    <td>No</td>
-    <td>500</td>
-    <td>Shown in the list of the apps on the "big" website</td>
-  </tr>
-  <tr>
     <td>Samsung Apps</td>
     <td>No</td>
     <td></td>
@@ -829,6 +820,15 @@ Short application description is used in the app lists next to the app title. So
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Short description</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>500</td>
+    <td>Shown in the list of the apps on the "big" website</td>
   </tr>
 </table>
 
@@ -898,6 +898,15 @@ The full application description is shown on the product page. You can include s
     <td>Yes</td>
     <td>Unlimited</td>
     <td>Some HTML subset</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Display / Description</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>4000</td>
+    <td>?</td>
   </tr>
   <tr>
     <td>SlideME</td>
@@ -1012,6 +1021,15 @@ Maximum length: 500.
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -1214,6 +1232,15 @@ High resolution application icon. Different stores require different resolutions
     <td>PNG, JPG, GIF</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Icon Image</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>135x125</td>
+    <td>JPG, GIF</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Promotion / Icon, High resolution icon</td>
@@ -1261,6 +1288,15 @@ Large promotion picture usually used by the stores on the PC websites.
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -1317,6 +1353,15 @@ A small promotion picture is usually used by the stores on a mobile device for p
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -1394,6 +1439,16 @@ Example:
     <td>1+</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Screenshots</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>480x800 or 800x480</td>
+    <td>JPG, PNG, GIF, 500K maximum</td>
+    <td>4</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Promotion / Screenshots</td>
@@ -1468,6 +1523,14 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Support / YouTube URL</td>
+    <td>No</td>
+    <td>No</td>
+    <td>When you add YouTube video, the fourth screenshot will be replaced with YouTube video</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <tdYes</td>
     <td>Promotion / Video</td>
@@ -1513,6 +1576,15 @@ Some stores don't support including of YouTube videos but do support uploaded vi
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2808,8 +2880,8 @@ Example:
   </tr>
   <tr>
     <td>Samsung Apps</td>
-    <td>No</td>
-    <td></td>
+    <td>Yes</td>
+    <td>Display Information / Supported Languages</td>
     <td></td>
   </tr>
   <tr>
@@ -2957,6 +3029,13 @@ Please detail any special requirements to test your app.
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Certification / Comments to Certification Team</td>
+    <td>Yes</td>
+    <td>4000</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>No</td>
     <td></td>
@@ -3083,6 +3162,13 @@ No attributes.
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>No</td>
     <td></td>
@@ -3122,6 +3208,13 @@ No attributes.
     <td>Yes</td>
     <td>Contact Email</td>
     <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Support / Support E-Mail</td>
+    <td>Yes</td>
     <td>No</td>
   </tr>
   <tr>
@@ -3165,6 +3258,13 @@ No attributes.
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Support / Support URL</td>
+    <td>No</td>
+    <td>No</td>
   </tr>
   <tr>
     <td>SlideME</td>
