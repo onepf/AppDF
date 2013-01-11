@@ -249,6 +249,8 @@ Sample Description.xml File
       <root>no</root>
       <!--Optional tag, set to yes, if your application requires Google Mobile Services, will dramatically limit supported stores-->
       <gms>no</gms>
+      <!--Set to yes, if the application cannot work in offline more and requires internet connection-->
+      <online>no</online>
     </features>
 
     <!--Optional tag, if missed this information is taked from the APK files. All languages are defined by their two letter ISO 639-1 language codes-->
@@ -381,6 +383,7 @@ Table of Contents:
 	* [features](#requirementsfeatures)
 		* [root](#requirementsroot)
 		* [gms](#requirementsgms)
+		* [online](#requirementsonline)
 	* [supported-languages](#requirementssupported-languages)
 	* [supported-devices](#requirementssupported-devices)
 	* [supported-resolutions](#requirementssupported-resolutions)
@@ -530,6 +533,12 @@ Although some stores don't use subcategories AppDF includes as detailed category
     <td>Yes</td>
     <td>Category</td>
     <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>SlideME</td>
@@ -736,6 +745,15 @@ Comma separated the list of keywords. As everything inside the `<description>` t
     <td>No</td>
     <td>No</td>
     <td>Unlimited</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
     <td></td>
   </tr>
   <tr>
@@ -1626,6 +1644,12 @@ Each application must be labeled with a minimum age allowance according to [ESRB
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Category / Age Restriction</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Application / Parental Rating</td>
@@ -1641,6 +1665,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <th>Google Play</th>
     <th>Amazon AppStore</th>
     <th>Opera Mobile Store</th>
+    <th>Samsung Apps</th>
     <th>SlideME</th>
   </tr>
   <tr>
@@ -1648,6 +1673,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>Everyone</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 0</td>
     <td>G: General Audiences (for all ages)</td>
   </tr>
   <tr>
@@ -1655,6 +1681,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>Low maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 4</td>
     <td>G: General Audiences (for all ages)</td>
   </tr>
   <tr>
@@ -1662,6 +1689,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>Medium maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 12</td>
     <td>PG: Parental Guidance Suggested (may not be suitable for children)</td>
   </tr>
   <tr>
@@ -1669,6 +1697,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>Medium maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 16</td>
     <td>PG-13: Parents Strongly Cautioned (may not be suitable for children under 13)</td>
   </tr>
   <tr>
@@ -1676,6 +1705,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>High maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 18</td>
     <td>R: Restricted (under 17 requires accompanying adult guardian)</td>
   </tr>
   <tr>
@@ -1683,11 +1713,12 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>High maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 18</td>
     <td>NC-17: Not allowed for 17 and under</td>
   </tr>
 </table>
 
-There could be exceptional products for which a generic convertion rule described in this table don't work. You can use the `<store-specific>` tag to specify a custom content rating for the stores in that case.
+There could be exceptional products for which a generic converting rule described in this table don't work. You can use the `<store-specific>` tag to specify a custom content rating for the stores in that case.
 
 Here you can find more detailed information about content rating definitions used in different stores:
 <table>
@@ -1710,6 +1741,10 @@ Here you can find more detailed information about content rating definitions use
   <tr>
     <td>Opera Mobile Store</td>
     <td>Content rating is not used</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Samsung Age Rating Guide (link cannot be found)</td>
   </tr>
 </table>
 
@@ -1790,6 +1825,13 @@ Example:
     <td>No</td>
     <td></td>
     <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Category / Rating Information</td>
+    <td>PEGI, ESRB, GRB, MJ/DEJUS, FSK</td>
     <td></td>
   </tr>
   <tr>
@@ -1901,6 +1943,13 @@ Example:
     <td>Only adult descriptor is used</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>No</td>
     <td></td>
@@ -1993,6 +2042,13 @@ Example:
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Application / "In-App" billing, With advertisements</td>
@@ -2048,6 +2104,13 @@ Use `<include>` and `<exclude>` subtags to define list of the countries where yo
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Availability & Pricing / Where would you like this app to be available?</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Sales / Country/Price / Detailed Country &amp; Price Settings</td>
     <td>No</td>
     <td></td>
   </tr>
@@ -2126,6 +2189,12 @@ If presented this tag defines a date from which the application can be distribut
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Sales / Selling Starts</td>
+    <td>Yes, default "Selling starts on the day of approval"</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>No</td>
     <td></td>
@@ -2191,6 +2260,12 @@ If presented this tag defines a final date of application distribution. Stores t
     <td>No</td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Sales / Selling Ends</td>
+    <td>No</td>
   </tr>
   <tr>
     <td>SlideME</td>
@@ -2516,6 +2591,7 @@ Example:
   <features>
     <root>no</root>
     <gms>no</gms>
+    <online>yes</online>
   </features>
 
   <supported-languages>
@@ -2629,14 +2705,60 @@ Set value of this tag to `yes` if your application requires Google Play to be in
   </tr>
   <tr>
     <td>Samsung Apps</td>
-    <td>No</td>
-    <td></td>
+    <td>Yes</td>
+    <td>Basic Information / Binary File / Binary Upload / Manual Input Details / Google Mobile Service</td>
     <td></td>
   </tr>
   <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Requirements / Requires Google Play and/or account</td>
+    <td></td>
+  </tr>
+</table>
+
+
+#### requirements/features/online
+Optional.
+No attributes.
+
+Set value of this tag to `yes` if your application requires internet connection in order to work. In other words if it does not work in offline mode.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Opers Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Category / Runs Offline?</td>
+    <td>By default Samsung Apps assumes your application can work in offline mode</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
     <td></td>
   </tr>
 </table>
@@ -2682,6 +2804,12 @@ Example:
     <td>Opers Mobile Store</td>
     <td>Yes</td>
     <td>Languages</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
     <td></td>
   </tr>
   <tr>
