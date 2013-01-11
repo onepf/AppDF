@@ -968,7 +968,7 @@ Example:
     <td></td>
   </tr>
   <tr>
-    <td>SlideME</td>
+    <td>Samsung Apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -976,7 +976,7 @@ Example:
     <td></td>
   </tr>
   <tr>
-    <td>Samsung Apps</td>
+    <td>SlideME</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -1088,6 +1088,14 @@ Link to a webpage with your privacy policy for this application. As everything i
     <td>Full privacy policy text or URL</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>License / Privacy policy</td>
@@ -1136,6 +1144,14 @@ Link to a webpage with your End User License Agreement for this application. As 
     <td>No</td>
     <td>No</td>
     <td>EULA text or URL</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>SlideME</td>
@@ -1532,7 +1548,7 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
   </tr>
   <tr>
     <td>SlideME</td>
-    <tdYes</td>
+    <td>Yes</td>
     <td>Promotion / Video</td>
     <td>No</td>
     <td>No</td>
@@ -2180,16 +2196,16 @@ Use `<include>` and `<exclude>` subtags to define list of the countries where yo
     <td></td>
   </tr>
   <tr>
-    <td>Samsung Apps</td>
+    <td>Opera Mobile Store</td>
     <td>Yes</td>
-    <td>Basic Information / Sales / Country/Price / Detailed Country &amp; Price Settings</td>
+    <td>Stores</td>
     <td>No</td>
     <td></td>
   </tr>
   <tr>
-    <td>Opera Mobile Store</td>
+    <td>Samsung Apps</td>
     <td>Yes</td>
-    <td>Stores</td>
+    <td>Basic Information / Sales / Country/Price / Detailed Country &amp; Price Settings</td>
     <td>No</td>
     <td></td>
   </tr>
@@ -3103,6 +3119,12 @@ Example:
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
     <td>No</td>
     <td></td>
     <td></td>
