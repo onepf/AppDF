@@ -10,6 +10,6 @@ https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md
 
 How Can I Help?
 =====
-1. Join [our mailing list](http://groups.google.com/group/appdf)
-2. Choose an open task from [the task list](https://github.com/onepf/AppDF/issues?labels=open+tasks&page=1&state=open) or propose a new one
-3. Email the group that you want to work on this task, let's discuss how to do it in the best way
+1. Join [our mailing list](http://groups.google.com/group/appdf).
+2. Choose an open task from [the task list](https://github.com/onepf/AppDF/issues?labels=open+tasks&page=1&state=open) or propose a new one.
+3. Email the group that you want to work on this task and let's discuss on how to do it the best way.

@@ -51,9 +51,9 @@ images/en/largepromo_kr.png
 images/en/smallpromo_kr.png
 ```
 
-As you can see the application could include several APK files, the images and description could support localization and different stores require different resolution for the app icon.  Although the AppDF will automatically rescale your images to needed format if you want fine tuning you could prefer to include several sizes for the images.
+As you can see the application could include several APK files, the images and description could suif pport localization and different stores require different resolution for the app icon.If you want fine tuning you could opt to include several sizes for the images though the AppDF will automatically rescale your images to the needed format.
 
-The only naming convention for the files inside AppDF package is that the description XML file should be called `description.xml`. You can include all localizations to the `description.xml` file or place them into separate files whos name should have form of `description_XXXX.xml`. Where XXXX could be any suffix. These additional files should have `<description>` as a root tag. The system will automatically merge all such files into one. Using these additional files is optional, you can easily include all the localizations in one `description.xml` file. All other files could have any names supported by ZIP, could be placed in the top folder or in any of the subfolders. The names of the additional files are defined in the `description.xml` file.
+The only naming convention for the files inside AppDF package is that the description XML file should be called `description.xml`. You can include all localizations to the `description.xml` file or place them into separate files whose name should have the form of `description_XXXX.xml`. Where XXXX could be any suffix. These additional files should have `<description>` as a root tag. The system will automatically merge all such files into one. Using these additional files is optional, you can easily include all the localizations in one `description.xml` file. All other files could have any names supported by ZIP, could be placed in the top folder or in any of the subfolders. The names of the additional files are defined in the `description.xml` file.
 
 Sample Description.xml File
 -------------
@@ -543,7 +543,7 @@ Although some stores don't use subcategories AppDF includes as detailed category
 Required.
 Attributes: `language`. 
 
-This section contains product description in text form as well as pictures and videos. A part of the main `<description>` tag there could be several `<description-localization>` tags for different languages. If some information is missed in the localized `<description-localization>` tag it will be taken from the default `<description>` section.
+This section contains product description in text form as well as pictures and videos. A part of the main `<description>` tag there could be several `<description-localization>` tags for different languages. If some information is missing in the localized `<description-localization>` tag it will be taken from the default `<description>` section.
 
 <table>
   <tr>
@@ -610,7 +610,7 @@ Example:
 Required. 
 No attributes.
 
-This tag contains all text assets. As everything inside the `<description>` tag it can be localized using `<description-localization>` section. 
+This tag contains all text assets. As everything inside the `<description>` tag can be localized using `<description-localization>` section. 
 
 Example:
 ```xml
@@ -641,7 +641,7 @@ Required.
 No attributes. 
 Maximum length: at least one tag should be shorter than 30 symbols.
 
-Application name, shown in the application list. As everything inside the `<description>` tag it can be localized using `<description-localization>` section. Different stores have different requirements for maximum title length. In order to have flexibility to get the best from each of the stores you can include several copies of title tag. The store will take the longest one that is fits in its maximum size.
+The application name is shown in the application list. As everything inside the `<description>` tag can be localized using `<description-localization>` section. Different stores have different requirements for maximum title length. In order to have flexibility to get the best from each of the stores you can include several copies of title tag. The store will take the longest one that is fits in its maximum size.
 
 <table>
   <tr>
@@ -699,7 +699,7 @@ Application name, shown in the application list. As everything inside the `<desc
 Required. 
 No attributes. 
 
-Comma separated list of keywords. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
+Comma separated the list of keywords. As everything inside the `<description>` tag can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -755,7 +755,7 @@ Required.
 No attributes. 
 Maximum length: at least one tag should be shorter than 80 symbols.
 
-Short application description used in the app lists next to the app title. Some stores include such short description to the lists, some do not. Different stores have different requirements for maximum short description length. In order to have flexibility to get the best from each of the stores you can include several copies of short description tag. The store will take the longest one that is fits in its maximum size. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
+Short application description is used in the app lists next to the app title. Some stores include such short description to the lists, some do not. Different stores have different requirements for maximum short description length. In order to have flexibility to get the best from each of the stores you can include several copies of short description tag. The store will take the longest one that fits in its maximum size. As everything inside the `<description>` tag can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -821,7 +821,7 @@ Attributes: `html`, `featureless`.
 Maximum length: 4000.
 
 
-Full application description shown on the product page. You can include several copies of your application description, one with HTML markup and one without. The stores will use one of these descriptions depending on do they support HTML in the description field or not. In the same way you can include description with included feature list and one without. The one without will be used for the stores that use a separate feature list (to avoid feature list duplication). As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
+The full application description is shown on the product page. You can include several copies of your application description, one with HTML markup and one without. The stores will use one of these descriptions depending on do they support HTML in the description field or not. In the same way you can include description with included feature list and one without. The one without will be used for the stores that use a separate feature list (to avoid feature list duplication). As everything inside the `<description>` tag can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -896,7 +896,7 @@ Full application description shown on the product page. You can include several 
 Required.
 No attributes.
 
-Some stores support separate feature list (most assumes that the feature list is included into the full description). Each `<feature>` subtag should contain one feature description. There should be between 3 and 5 `<feature>` subtags. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
+Some stores support separate feature list (most assumes that the feature list is included into the full description). Each `<feature>` subtag should contain one feature description. There should be between 3 to 5 `<feature>` subtags. As everything inside the `<description>` tag can be localized using `<description-localization>` section.
 
 Example:
 ```xml
@@ -1016,7 +1016,7 @@ Maximum length: 500.
 Optional. 
 No attributes. 
 
-Link to a webpage with your privacy policy for this application. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
+Link to a webpage with your privacy policy for this application. As everything inside the `<description>` tag can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -1116,7 +1116,7 @@ Link to a webpage with your End User License Agreement for this application. As 
 Required. 
 No attributes.
 
-This tag contains all application image assets. As everything inside the `<description>` tag it can be localized using `<description-localization>` section. If `<description-localization>` tag does not contains any particular image type then the corresponding image from the `<description>` section is taken. 
+This tag contains all application image assets. As everything inside the `<description>` tag can be localized using `<description-localization>` section. If `<description-localization>` tag does not contains any particular image type then the corresponding image from the `<description>` section is taken. 
 
 Example:
 ```xml
@@ -1266,7 +1266,7 @@ Large promotion picture usually used by the stores on the PC websites.
 Optional. 
 No attributes. 
 
-Small promotion picture usually used by the stores on a mobile device for promoted apps. 
+A small promotion picture is usually used by the stores on a mobile device for promoted apps. 
 
 
 <table>
@@ -1392,7 +1392,7 @@ Example:
 Optional. 
 No attributes.
 
-This tag contains all video assets. As everything inside the `<description>` tag it can be localized using `<description-localization>` section. If `<description-localization>` tag does not contains any particular video type then the corresponding video from the `<description>` section is taken.
+This tag contains all video assets. As everything inside the `<description>` tag can be localized using `<description-localization>` section. If `<description-localization>` tag does not contain any particular video type then the corresponding video from the `<description>` section is taken.
 
 Example:
 ```xml
@@ -1408,7 +1408,7 @@ Example:
 Optional. 
 No attributes. 
 
-If you have a video about your product at YouTube you can include it here. Please include only ID not entire URL. For example if your YouTube video URL is:
+If you have a video about your product on YouTube you can include it here. Please include only ID not the entire URL. For example if your YouTube video URL is:
 https://www.youtube.com/watch?v=4YcBHQ2fCDE
 
 then tag value should be just `4YcBHQ2fCDE`. Like:
@@ -1463,7 +1463,7 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
 Optional. 
 No attributes. 
 
-Some stores don't support including of YouTube videos but do supports uploaded video files. You can use this tag to link to local video files about the product. You can include several different video files.
+Some stores don't support including of YouTube videos but do support uploaded video files. You can use this tag to link to local video files about the product. You can include several different video files.
 
 <table>
   <tr>
@@ -1517,7 +1517,7 @@ Some stores don't support including of YouTube videos but do supports uploaded v
 Optional.
 Attributes: `language`. 
 
-You can use `<description-localization>` section to localize texts, images and videos in product description. This tag has the same structure as `<description>` but all subtags are optional. If some information is missed in the `<description-localization>` section it will be taken from the  `<description>` section.
+You can use `<description-localization>` section to localize texts, images and videos in product description. This tag has the same structure as `<description>` but all subtags are optional. If some information is missing in the `<description-localization>` section it will be taken from the  `<description>` section.
 
 <table>
   <tr>
@@ -1556,7 +1556,7 @@ Example:
 Required.
 No attributes.
 
-This section describes what activities that could be considered questionable the program/game includes. The stores using this information for filtering to show the app only to people who whom it is allowed. The three main subsections describe age restrictions and existing certificates, content descriptors that are used to calculate age restrictions and other questionable application activities that should require user and/or parent understanding but that are not covered by Android permissions.  
+This section describes what activities that could be considered questionable the program/game includes. The stores use this information for filtering to show the app only to allowed individuals. The three main subsections describe age restrictions and existing certificates, content descriptors that are used to calculate age restrictions and other questionable application activities that should require user and/or parent understanding but that are not covered by Android permissions.  
 
 Example:
 ```xml
@@ -1598,7 +1598,7 @@ Example:
 Required.
 No attributes.
 
-Each application must be labeled with a minimum allowed age according to [ESRB standard](http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board). Tag value must be a number of minimum age which could be `3`, `6`, `10`, `13`, `17`, or `18`. 
+Each application must be labeled with a minimum age allowance according to [ESRB standard](http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board). Tag value must be a number of minimum age which could be `3`, `6`, `10`, `13`, `17`, or `18`. 
 
 <table>
   <tr>
@@ -1633,7 +1633,7 @@ Each application must be labeled with a minimum allowed age according to [ESRB s
   </tr>
 </table>
 
-There is no universal content rating system (aka parental control rating, aka minimum age). Different stores uses different systems. AppDF uses ESRB standard but more important is how this information is mapped to the systems used in the appstores. The following table is used by AppDF to convert the rating to the systems of all the main application stores.
+There is no universal content rating system (aka parental control rating, aka minimum age). Different stores use different systems. AppDF uses ESRB standard but the more important thing is how this information is mapped out to the systems used in the appstores. The following table is used by AppDF to convert the rating to the systems of all the main application stores.
 
 <table>
   <tr>
@@ -1687,7 +1687,7 @@ There is no universal content rating system (aka parental control rating, aka mi
   </tr>
 </table>
 
-There could be exceptional products for which a generic convertion rules described in this table don't work. You can use the `<store-specific>` tag to specify a custom content rating for the stores in that case.
+There could be exceptional products for which a generic convertion rule described in this table don't work. You can use the `<store-specific>` tag to specify a custom content rating for the stores in that case.
 
 Here you can find more detailed information about content rating definitions used in different stores:
 <table>
@@ -1714,7 +1714,7 @@ Here you can find more detailed information about content rating definitions use
 </table>
 
 ##### Notes:
-1. Amazon hasn't one field for application rating but uses several parameters (nudity, violation, etc)
+1. Amaz doesn't have one field for application rating but uses several parameters (nudity, violation, etc)
 2. Opera doesn't support content rating (except "Is Adult?" question)
 3. Samsung uses minimum age parameter along with several other attributes that define application rating according to the standard certification systems (PEGI, ESRB, etc)
 
@@ -2005,7 +2005,7 @@ Example:
 Optional.
 No attributes.
 
-You can define country list of period of time where/when you application is distributed. By default your application is distributed in all the countries where language support allows.
+You can define country list of period of time where/when you application is distributed. By default your application is distributed to all the countries where language support allows.
 
 Example:
 ```xml
@@ -2204,7 +2204,7 @@ If presented this tag defines a final date of application distribution. Stores t
 Required.
 Attributes: `free`. 
 
-This section describes whether the application is free or paid and if paid what is its price. It has also an option for free apps to mark them as trial version of another app.
+This section describes whether the application is free or paid and if paid what its price is. It has also an option for free apps to mark them as trial version of another app.
 
 Example 1:
 ```xml
@@ -2508,7 +2508,7 @@ Example:
 Optional.
 No attributes.
 
-You can use this section if you application has some special requirements apart of requirements described in the APK file.
+You can use this section if your application has some special requirements apart from requirements described in the APK file.
 
 Example:
 ```xml
@@ -2600,7 +2600,7 @@ Set value of this tag to `yes` if your application requires root access for work
 Optional.
 No attributes.
 
-Set value of this tag to `yes` if your application requires Google Play to be installed on device and Google account for LVL or other actions. Please note that most it will dramatically limit your distribution options. Most of the stores work on the devices that don't have Google Play installed.
+Set value of this tag to `yes` if your application requires Google Play to be installed on device and Google account for LVL or other actions. Please note that most it will dramatically limit your distribution options. Most of the stores work on the devices that don't have Google Play installed on them.
 
 <table>
   <tr>
@@ -2646,7 +2646,7 @@ Set value of this tag to `yes` if your application requires Google Play to be in
 Optional.
 No attributes.
 
-You man manually define the list of supported languages. Add `<language>` subtag with two letter ISO 639-1 language codes for each language the application supports.
+You can manually define the list of supported languages. Add `<language>` subtag with two letter ISO 639-1 language codes for each language the application supports.
 
 Example:
 ```xml
@@ -2698,7 +2698,7 @@ Example:
 Optional.
 No attributes.
 
-You man manually exclude some devices from the supported device list. Add `<exclude>` tag with device model name (aka [name of the industrial design](http://developer.android.com/reference/android/os/Build.html#DEVICE)) for each device you want to exclude from the compatibility list.
+You can manually exclude some devices from the supported device list. Add `<exclude>` tag with device model name (aka [name of the industrial design](http://developer.android.com/reference/android/os/Build.html#DEVICE)) for each device you want to exclude from the compatibility list.
 
 Example:
 ```xml
@@ -2841,7 +2841,7 @@ Please detail any special requirements to test your app.
 Required.
 No attributes.
 
-You must consent with a number of statements in order your application is published. This section includes the list of such agreements. They are agreements some stores require you to accept every time you submit an application (not when you register an account). Without this section some stores will not accept your application.  Each subtag corresponds to one of the statements you consent with. Subtag values must always be `yes` if you want your application is accepted by the corresponding stores.
+You must consent with a number of statements in order for your application to be published. This section includes the list of such agreements. There are agreements some stores require you to accept every time you submit an application (not when you register an account).Some stores will not accept your application without this section.  Each subtag corresponds to one of the statements you consent with. Subtag values must always be `yes` if you want your application is accepted by the corresponding stores.
 
 Example:
 ```xml
