@@ -348,6 +348,7 @@
     <xsd:sequence>
       <xsd:element name="root" type="type-attr-yesno" minOccurs="0" />
       <xsd:element name="gms" type="type-attr-yesno" minOccurs="0" />
+      <xsd:element name="online" type="type-attr-yesno" minOccurs="0" />
     </xsd:sequence>
   </xsd:complexType>
   
