@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>AppDF Editor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/appdfeditor.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="#">AddDF Editor</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="http://www.onepf.org">About AppDF</a></li>
+						<li><a href="https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md">Specification</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div><!--/.container-fluid -->
+		</div>
+	</div><!--/.navbar -->
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span2">
+				<div class="well sidebar-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">Sections</li>
+						<li><a href="#apk-files">APK File(s)</a></li>
+						<li><a href="#categorization">Category</a></li>
+						<li><a href="#description">Description</a></li>
+						<li><a href="#customer-support">Customer Support</a></li>
+					</ul>
+				</div><!--/.well -->
+			</div><!--/span-->
+			<div class="span10">
+				<div class="hero-unit">
+					<p>Uploading Android application to several appstores could be time consuming. AppDF format is designed to simplify this process. You describe your Android application once, create a simple AppDF file that includes description, APK file(s), screenshots, app icon, promo images, etc and just upload this AppDF file to all the stores that support AppDF uploading.</p>
+				</div>
+				<form class="form-horizontal" action='' method="POST" novalidate>
+					<section id="apk-files">
+						<fieldset>
+							<div id="legend">
+								<legend class="">APK File(s)</legend>
+							</div>
+							<div class="control-group">
+								<!-- Username -->
+								<label class="control-label"  for="username">Username</label>
+								<div class="controls">
+									<input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
+								</div>
+							</div>
+						</fieldset>
+					</section>
+
+					<section id="categorization">
+						<fieldset>
+							<div id="legend">
+								<legend class="">Category</legend>
+							</div>
+							<div class="control-group">
+								<!-- categorization/type -->
+								<label class="control-label"  for="categorization-type">Application type</label>
+								<div class="controls">
+									<select id="categorization-type">
+										<option value="application">Application</option>
+										<option value="game">Game</option>
+									</select>
+									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
+								</div>
+							</div><!--control-group-->
+					 
+							<div class="control-group">
+								<!-- categorization/category -->
+								<label class="control-label" for="categorization-category">Category</label>
+								<div class="controls">
+									<select id="categorization-category">
+									</select>
+									<p class="help-block">Please provide your E-mail</p>
+								</div>
+							</div><!--control-group-->
+					 
+							 <div class="control-group">
+								<!-- categorization/subcategory -->
+								<label class="control-label" for="categorization-subcategory">Subcategory</label>
+								<div class="controls">
+									<select id="categorization-subcategory">
+									</select>
+									<p class="help-block">Please provide your E-mail</p>
+								</div>
+							</div><!--control-group-->
+						</fieldset>
+					</section>
+
+					<section id="description">
+						<fieldset>
+							<div id="legend">
+								<legend class="">Description</legend>
+							</div>
+							<div class="tabbable"> <!-- Only required for left/right tabs -->
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#tab-default" data-toggle="tab">English US (Default)</a></li>
+									<li><a href="#tab-ru" data-toggle="tab">Russian</a></li>
+									<li class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#">More <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Add Localization</a></li>
+											<li><a href="#">Remove Selected Localization</a></li>
+											<li class="divider"></li>
+											<li><a href="#">German</a></li>
+											<li><a href="#">Italian</a></li>
+											<li><a href="#">French</a></li>
+										</ul>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab-default">
+										<div class="control-group">
+											<!-- description/texts/title -->
+											<label class="control-label"  for="description-texts-title">Title</label>
+											<div class="controls">
+												<input type="text" id="description-texts-title" 
+													required 
+													data-validation-required-message="Title is required" 
+													maxlength="30"
+												>
+												<p class="help-block">Different stores have different maximum title length requirements. The first title should be shorter then 30 symbols. You can <button class="btn" onclick="addMoreTitles(this); return false;">add longer title</button> for the stores that support long titles.</p>
+											</div>
+										</div><!--./control-group -->
+									 
+										<div class="control-group">
+											<!-- description/texts/short-description -->
+											<label class="control-label" for="description-texts-shortdescription">Short description</label>
+											<div class="controls">
+												<input type="text" id="description-texts-shortdescription"
+													required 
+													data-validation-required-message="Short description is required" 
+													maxlength="80"
+												>
+												<p class="help-block">Different stores have different maximum short description length requirements. The first short-description should be shorter then 80 symbols. You can <button class="btn" onclick="addMoreShortDescriptions(this); return false;">add longer short description</button> for the stores that support longer ones.</p>
+											</div>
+										</div><!--./control-group -->
+									 
+										<div class="control-group">
+											<!-- description/texts/full-description -->
+											<label class="control-label" for="description-texts-fulldescription">Full description</label>
+											<div class="controls">
+												<textarea class="input-xxlarge" rows="5" id="description-texts-fulldescription"></textarea>
+												<p class="help-block">Please provide your E-mail</p>
+											</div>
+										</div><!--./control-group -->
+
+										<div class="control-group">
+											<!-- description/texts/keywords -->
+											<label class="control-label" for="description-texts-keywords">Keywords</label>
+											<div class="controls">
+												<div class="input-append"> 
+													<input type="text" id="description-texts-keywords"> 
+													<button class="btn" type="button" onclick="addMoreKeywords(this); return false;"><i class=" icon-plus-sign"></i></button>
+												</div> 
+												<p class="help-block">Please provide your E-mail</p>
+											</div>
+										</div><!--./control-group -->
+									</div><!--./tab-pane -->
+									<div class="tab-pane" id="tab-ru">
+										<p>Howdy, I'm in Section 2.</p>
+									</div><!--./tab-pane -->
+								</div><!--./tab-content -->
+							</div><!--./tabbable -->			    
+					  </fieldset>
+					</section>
+
+					<section id="customer-support">
+						<fieldset>
+							<div id="legend">
+								<legend class="">Customer Support</legend>
+							</div>
+							<div class="control-group">
+								<!-- customer-support/phone -->
+								<label class="control-label"  for="customersupport-phone">Phone</label>
+								<div class="controls">
+									<input id="customersupport-phone" type="text" 
+										required 
+										data-validation-required-message="Customer support phone is required" 
+										data-validation-regex-regex="[0-9]*" 
+										data-validation-regex-message="Phone can contain only ditis" 
+							      	>
+									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
+								</div>
+							</div><!--control-group-->
+					 
+							<div class="control-group">
+								<!-- customer-support/email -->
+								<label class="control-label"  for="customersupport-email">Email</label>
+								<div class="controls">
+							      	<input id="customersupport-email" type="email" 
+							      		required 
+							      		data-validation-required-message="Customer support email is required" 
+							      		data-validation-email-message="Must be a valid email address"
+							      	>
+									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
+								</div>
+							</div><!--control-group-->
+					 
+							<div class="control-group">
+								<!-- customer-support/website -->
+								<label class="control-label"  for="customersupport-website">Website</label>
+								<div class="controls">
+							      	<input id="customersupport-website" type="text" 
+							      		required 
+							      		data-validation-required-message="Customer support website is required" 
+							      	>
+									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
+								</div>
+							</div><!--control-group-->
+						</fieldset>
+					</section>
+
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Generate APK File</button>
+				</div>
+			</form>
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; <a href="http://www.onepf.org">One Platform Foundation</a> 2012</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jqBootstrapValidation.js"></script>    
+	<script src="js/appdfeditor.js"></script>
+  </body>
+</html>
