@@ -23,7 +23,7 @@ public class ParserTest {
 	
 	@Before
 	public void initResource() throws URISyntaxException{
-		URL resourceUrl = ParserTest.class.getResource("life.appdf");
+		URL resourceUrl = ParserTest.class.getResource("yshell.appdf");
 		resource = new File(resourceUrl.toURI());
 	}
 	
