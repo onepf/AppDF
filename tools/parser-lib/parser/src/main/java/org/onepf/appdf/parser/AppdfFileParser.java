@@ -30,17 +30,19 @@ public class AppdfFileParser {
 	}
 	
 	/**
-	 *TODO Do we beed an async version?}
+	 *TODO Do we need an async version?
 	 * @return
 	 */
-	public Application parse(){
+	public Application parse() throws ParsingException{
 		Enumeration<? extends ZipEntry> entries = zipFile.entries();
 		Application application = new Application();
+		ApplicationParser applicationParser = new ApplicationParser();
+		
 		while ( entries.hasMoreElements()){
 			ZipEntry elem = entries.nextElement();
-			String name = elem.getName();
+			String name = elem.getName();			
 			if(ROOT_FILE_NAME.equals(name)){
-				
+				applicationParser.parse(zipFile,elem,application);
 			}
 		}
 		return application;		
