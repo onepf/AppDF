@@ -87,8 +87,8 @@
   <xsd:complexType name="type-description-images">
     <xsd:sequence>
       <xsd:element name="app-icon" type="type-description-images-appicon" maxOccurs="unbounded" />
-      <xsd:element name="large-promo" type="type-attr-localfile" />
-      <xsd:element name="small-promo" type="type-attr-localfile" />
+      <xsd:element name="large-promo" type="type-attr-localfile" minOccurs="0" />
+      <xsd:element name="small-promo" type="type-attr-localfile" minOccurs="0" />
       <xsd:element name="screenshots" type="type-description-images-screenshots" />
     </xsd:sequence>
   </xsd:complexType>
