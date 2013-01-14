@@ -10,9 +10,9 @@ public enum TopLevelTag {
 	CATEGORIZATION{
 
 		@Override
-		public void parseNode(Node nodeList, Application application,
+		public void parseNode(Node node, Application application,
 				ZipFile zipFile) throws ParsingException {	
-			throw new UnsupportedOperationException();
+			(new CategorizationParser()).parse(node, application);
 		}
 		
 	};
