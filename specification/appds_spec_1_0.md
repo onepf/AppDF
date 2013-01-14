@@ -7457,6 +7457,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
   <td></td>
 </tr>
+</table>
 
 License
 -------------
