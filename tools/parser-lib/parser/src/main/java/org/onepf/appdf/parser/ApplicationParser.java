@@ -22,6 +22,7 @@ public class ApplicationParser {
 	 * @param zipFile 
 	 * @param elem
 	 * @param application
+	 * @throws A RuntimeException as a wrapper around any inner exception this is mostly a temporary solution
 	 */
 	public  void parse(ZipFile zipFile, ZipEntry elem, Application application) {
 		InputStream inputStream = null;
