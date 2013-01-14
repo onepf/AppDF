@@ -5761,14 +5761,14 @@ AppDF supports localization to all the languages. Nevertheless not all languages
 </table>
 
 <table>
-<th>
-  <td>AppDF</td>
-  <td>Google Play</td>
-  <td>Amazon AppStore</td>
-  <td>Opera Mobile Store</td>
-  <td>Samsung Apps</td>
-  <td>Yandex.Store</td>
-</th>
+<tr>
+  <th>AppDF</th>
+  <th>Google Play</th>
+  <th>Amazon AppStore</th>
+  <th>Opera Mobile Store</th>
+  <th>Samsung Apps</th>
+  <th>Yandex.Store</th>
+</tr>
 <tr>
   <td>Afrikaans</td>
   <td>Afrikaans</td>
