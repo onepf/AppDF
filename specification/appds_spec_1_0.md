@@ -51,9 +51,9 @@ images/en/largepromo_kr.png
 images/en/smallpromo_kr.png
 ```
 
-As you can see the application could include several APK files, the images and description could support localization and different stores require different resolution for the app icon.  Although the AppDF will automatically rescale your images to needed format if you want fine tuning you could prefer to include several sizes for the images.
+As you can see the application could include several APK files, the images and description could suif pport localization and different stores require different resolution for the app icon.If you want fine tuning you could opt to include several sizes for the images though the AppDF will automatically rescale your images to the needed format.
 
-The only naming convention for the files inside AppDF package is that the description XML file should be called `description.xml`. You can include all localizations to the `description.xml` file or place them into separate files whos name should have form of `description_XXXX.xml`. Where XXXX could be any suffix. These additional files should have `<description>` as a root tag. The system will automatically merge all such files into one. Using these additional files is optional, you can easily include all the localizations in one `description.xml` file. All other files could have any names supported by ZIP, could be placed in the top folder or in any of the subfolders. The names of the additional files are defined in the `description.xml` file.
+The only naming convention for the files inside AppDF package is that the description XML file should be called `description.xml`. You can include all localizations to the `description.xml` file or place them into separate files whose name should have the form of `description_XXXX.xml`. Where XXXX could be any suffix. These additional files should have `<description>` as a root tag. The system will automatically merge all such files into one. Using these additional files is optional, you can easily include all the localizations in one `description.xml` file. All other files could have any names supported by ZIP, could be placed in the top folder or in any of the subfolders. The names of the additional files are defined in the `description.xml` file.
 
 Sample Description.xml File
 -------------
@@ -73,8 +73,8 @@ Sample Description.xml File
     <subcategory>investing</subcategory>
   </categorization>
 
-  <!--Language is set in two letter ISO 639-1 codes, default is an optional attribute, if set this information is used for other languages where a particular native text is missed-->
-  <description language="en" default="yes">
+  <!--Language is set in two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")-->
+  <description language="en">
     <texts>
       <!-- Maximum length of title: 30 symbols-->
       <title>Yandex.Shell</title>
@@ -130,16 +130,25 @@ Sample Description.xml File
 
   </description>
 
-  <description language="ru">
-    <title>Яндекс.Shell</title>
+  <!--Description can be localized to other languages using this tag-->
+  <!--Language is set in two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")-->
+  <!--This tag has the same structure as description but all subtags are optional-->
+  <!--If some subtags are missed they are taken from the default language description-->
+  <description-localization language="ru">
+    <texts>
+      <title>Яндекс.Shell</title>
+    </texts>
 
     <images>
-      <screenshot>screenshot01_ru.png</screenshot>
-      <screenshot>screenshot02_ru.png</screenshot>
-      <screenshot>screenshot03_ru.png</screenshot>
+	  <screenshots>
+        <screenshot>screenshot01_ru.png</screenshot>
+        <screenshot>screenshot02_ru.png</screenshot>
+        <screenshot>screenshot03_ru.png</screenshot>
+        <screenshot>screenshot04_ru.png</screenshot>
+	  </screenshots>
     </images>
 
-  </description>
+  </description-localization>
 
 
   <content-description>
@@ -211,11 +220,12 @@ Sample Description.xml File
   </availability>	
 
   <!--If free attribute is set to "yes" then all the subtags except <trial-version> are ignored. -->
-  <!--If app is not free then "base-price" is required. currency is set in three cappital letter ISO 4217 currency code -->
+  <!--If app is not free then "base-price" is required -->
   <!--local-price tags are optional, if set they define local prices. Country is set in two letter ISO 3166-1 country code, currency is set in three cappital letter ISO 4217 currency code-->
   <!--Dot not comma should be used as decimal dilimiter symbol-->
   <price free="yes">
-    <base-price currency="USD">4.95</base-price>
+    <!-- Base price is defined in USD -->
+    <base-price>4.95</base-price>
     <local-price country="de" currency="EUR">3.95</local-price>
     <local-price country="fr" currency="EUR">3.95</local-price>
     <local-price country="ru" currency="RUB">99</local-price>
@@ -239,6 +249,8 @@ Sample Description.xml File
       <root>no</root>
       <!--Optional tag, set to yes, if your application requires Google Mobile Services, will dramatically limit supported stores-->
       <gms>no</gms>
+      <!--Set to yes, if the application cannot work in offline more and requires internet connection-->
+      <online>no</online>
     </features>
 
     <!--Optional tag, if missed this information is taked from the APK files. All languages are defined by their two letter ISO 639-1 language codes-->
@@ -262,6 +274,29 @@ Sample Description.xml File
       <include>240x400</include>
     </supported-resolutions>
   </requirements>
+
+  <!--Special requirements to test your app. maximum characters in case of Amazon: 4000-->
+  <testing-instructions>
+  </testing-instructions>
+
+  <!--You must include these tags in order to confirm your agreement with the corresponding agreement-->
+  <consent>
+    <!--http://play.google.com/about/developer-content-policy.html-->
+    <google-android-content-guidelines>yes</google-android-content-guidelines>
+    <!--https://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=113770-->
+    <us-export-laws>yes</us-export-laws>
+    <!--https://slideme.org/developer-conditions/popup-->
+    <slideme-agreement>yes</slideme-agreement>
+    <!--If your app uses third party copyrighted images, sounds, databases or other information--> 
+    <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+  </consent>
+
+  <!--Optional tag, if missed customer support info from the account is used-->
+  <customer-support>
+    <phone>+1 (555) 1234-56-78</phone>
+    <email>support@yandex-team.ru</email>
+    <website>http://www.yandex.ru/support</website>
+  </customer-support>
 
   <!--Optional tag that collects some store specific information-->
   <!--Top level subtags correspond to store ids, see the documentation for the list of these ids-->
@@ -300,25 +335,6 @@ Sample Description.xml File
     </slideme>
   </store-specific>
 
-  <!--Special requirements to test your app. maximum characters in case of Amazon: 4000-->
-  <testing-instructions>
-  </testing-instructions>
-
-  <!--You must include these tags in order to confirm your agreement with the corresponding agreement-->
-  <consent>
-    <!--http://play.google.com/about/developer-content-policy.html-->
-    <google-android-content-guidelines>yes</google-android-content-guidelines>
-    <!--https://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=113770-->
-    <us-export-laws>yes</us-export-laws>
-  </consent>
-
-  <!--Optional tag, if missed customer support info from the account is used-->
-  <customer-support>
-    <phone>+1 (555) 1234-56-78</phone>
-    <email>support@yandex-team.ru</email>
-    <website>http://www.yandex.ru/support</website>
-  </customer-support>
-
 </application>
 
 </application-description-file>
@@ -350,6 +366,7 @@ Table of Contents:
 	* [videos](#descriptionvideos)
 		* [youtube-video](#descriptionvideosyoutube-video)
 		* [video-file](#descriptionvideosvideo-file)
+* [description-localization](#description-localization)
 * [content-description](#content-description)
 	* [content-rating](#content-descriptioncontent-rating)
 	* rating-certificates
@@ -370,19 +387,20 @@ Table of Contents:
 	* [features](#requirementsfeatures)
 		* [root](#requirementsroot)
 		* [gms](#requirementsgms)
+		* [online](#requirementsonline)
 	* [supported-languages](#requirementssupported-languages)
 	* [supported-devices](#requirementssupported-devices)
 	* [supported-resolutions](#requirementssupported-resolutions)
-* [store-specific](#store-specific)
-	* [amazon](#store-specificamazon)
-	* [samsung](#store-specificsamsung)
-	* [slideme](#store-specificslideme)
 * [testing-instructions](#testing-instructions)
 * [consent](#consent)
 * [customer-support](#customer-support)
 	* [phone](#customer-supportphone)
 	* [email](#customer-supportemail)
 	* [website](#customer-supportwebsite)
+* [store-specific](#store-specific)
+	* [amazon](#store-specificamazon)
+	* [samsung](#store-specificsamsung)
+	* [slideme](#store-specificslideme)
 
 
 ### categorization
@@ -490,7 +508,7 @@ Required. No attributes. AppDF format has its own list of categories for both ga
 
 #### categorization/subcategory
 
-Required. 
+Optional. 
 No attributes. 
 
 Although some stores don't use subcategories AppDF includes as detailed category information as possible. It is always easy to broaden detailed AppDF category+subcategory information to a less detailed particular store category list.
@@ -521,6 +539,12 @@ Although some stores don't use subcategories AppDF includes as detailed category
     <td>Yes</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>No</td>
     <td></td>
@@ -530,9 +554,9 @@ Although some stores don't use subcategories AppDF includes as detailed category
 
 ### description 
 Required.
-Attributes: `language`, `default`. 
+Attributes: `language`. 
 
-This section contains product description in text form as well as pictures and videos. There could be several `<description>` tags for different languages. One of the `<description>` tags should be default (`default=yes`). If some information is missed in the localized versions of the `<description>` tag it will be taken from the default language.
+This section contains product description in text form as well as pictures and videos. A part of the main `<description>` tag there could be several `<description-localization>` tags for different languages. If some information is missing in the localized `<description-localization>` tag it will be taken from the default `<description>` section.
 
 <table>
   <tr>
@@ -545,16 +569,11 @@ This section contains product description in text form as well as pictures and v
     <td>two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")</td>
     <td>required tag</td>
   </tr>
-  <tr>
-    <td>default</td>
-    <td>yes, no</td>
-    <td>no</td>
-  </tr>
 </table>
 
 Example:
 ```xml
-<description language="en" default="yes">
+<description language="en">
   <texts>
     <title>Yandex.Shell</title>
     <title>Yandex.Shell - Free Launcher + Dialer + Widgets</title>
@@ -604,7 +623,7 @@ Example:
 Required. 
 No attributes.
 
-This tag contains all text assets. As everything inside the `<description>` tag it can be localized. If a localized version of the `<description>` tag does not contain some of the sections then text from the corresponding default language section is taken. 
+This tag contains all text assets. As everything inside the `<description>` tag can be localized using `<description-localization>` section. 
 
 Example:
 ```xml
@@ -635,7 +654,7 @@ Required.
 No attributes. 
 Maximum length: at least one tag should be shorter than 30 symbols.
 
-Application name, shown in the application list. As everything in the `<description>` section it can be localized. Different stores have different requirements for maximum title length. In order to have flexibility to get the best from each of the stores you can include several copies of title tag. The store will take the longest one that is fits in its maximum size.
+The application name is shown in the application list. As everything inside the `<description>` tag can be localized using `<description-localization>` section. Different stores have different requirements for maximum title length. In order to have flexibility to get the best from each of the stores you can include several copies of title tag. The store will take the longest one that is fits in its maximum size.
 
 <table>
   <tr>
@@ -675,7 +694,7 @@ Application name, shown in the application list. As everything in the `<descript
     <td>Yes</td>
     <td>Basic Information / Binary & Device / Application Title</td>
     <td>Yes</td>
-    <td>No</td>
+    <td>Yes</td>
     <td>Unlimited</td>
   </tr>
   <tr>
@@ -686,6 +705,14 @@ Application name, shown in the application list. As everything in the `<descript
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>Basic Information / App Title</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>50</td>
+  </tr>
 </table>
 
 ##### description/texts/keywords
@@ -693,7 +720,7 @@ Application name, shown in the application list. As everything in the `<descript
 Required. 
 No attributes. 
 
-Comma separated list of keywords.
+Comma separated the list of keywords. As everything inside the `<description>` tag can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -733,6 +760,15 @@ Comma separated list of keywords.
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Tags / Other Tags</td>
+    <td>No</td>
+    <td>Yes</td>
+    <td>Maximum 10 keywords</td>
+    <td>Not one string but a list of keywords</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Keywords</td>
@@ -749,7 +785,7 @@ Required.
 No attributes. 
 Maximum length: at least one tag should be shorter than 80 symbols.
 
-Short application description used in the app lists next to the app title. Some stores include such short description to the lists, some do not. Different stores have different requirements for maximum short description length. In order to have flexibility to get the best from each of the stores you can include several copies of short description tag. The store will take the longest one that is fits in its maximum size.
+Short application description is used in the app lists next to the app title. Some stores include such short description to the lists, some do not. Different stores have different requirements for maximum short description length. In order to have flexibility to get the best from each of the stores you can include several copies of short description tag. The store will take the longest one that fits in its maximum size. As everything inside the `<description>` tag can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -789,6 +825,15 @@ Short application description used in the app lists next to the app title. Some 
     <td>Shown on the top of the product webpage, next to the app icon</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Short description</td>
@@ -798,13 +843,13 @@ Short application description used in the app lists next to the app title. Some 
     <td>Shown in the list of the apps on the "big" website</td>
   </tr>
   <tr>
-    <td>Samsung Apps</td>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Detail / Summary</td>
+    <td>Yes</td>
     <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>32</td>
+    <td>Shown below app name like a slogan</td>
   </tr>
 </table>
 
@@ -815,7 +860,7 @@ Attributes: `html`, `featureless`.
 Maximum length: 4000.
 
 
-Full application description shown on the product page. You can include several copies of your application description, one with HTML markup and one without. The stores will use one of these descriptions depending on do they support HTML in the description field or not. In the same way you can include description with included feature list and one without. The one without will be used for the stores that use a separate feature list (to avoid feature list duplication).
+The full application description is shown on the product page. You can include several copies of your application description, one with HTML markup and one without. The stores will use one of these descriptions depending on do they support HTML in the description field or not. In the same way you can include description with included feature list and one without. The one without will be used for the stores that use a separate feature list (to avoid feature list duplication). As everything inside the `<description>` tag can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -876,6 +921,15 @@ Full application description shown on the product page. You can include several 
     <td>Some HTML subset</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Display / Description</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>4000</td>
+    <td>?</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Long Description</td>
@@ -884,13 +938,22 @@ Full application description shown on the product page. You can include several 
     <td>Unlimited</td>
     <td>Some HTML subset</td>
   </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Detail / Description</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>1300 Korean words, or 4000 English symbols</td>
+    <td>Some HTML subset</td>
+  </tr>
 </table>
 
 ##### description/texts/features
 Required.
 No attributes.
 
-Some stores support separate feature list (most assumes that the feature list is included into the full description). Each `<feature>` subtag should contain one feature description. There should be between 3 and 5 `<feature>` subtags.
+Some stores support separate feature list (most assumes that the feature list is included into the full description). Each `<feature>` subtag should contain one feature description. There should be between 3 to 5 `<feature>` subtags. As everything inside the `<description>` tag can be localized using `<description-localization>` section.
 
 Example:
 ```xml
@@ -935,7 +998,7 @@ Example:
     <td></td>
   </tr>
   <tr>
-    <td>SlideME</td>
+    <td>Samsung Apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -943,7 +1006,7 @@ Example:
     <td></td>
   </tr>
   <tr>
-    <td>Samsung Apps</td>
+    <td>SlideME</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -996,6 +1059,15 @@ Maximum length: 500.
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Revision information / Log message</td>
@@ -1010,7 +1082,7 @@ Maximum length: 500.
 Optional. 
 No attributes. 
 
-Link to a webpage with your privacy policy for this application.
+Link to a webpage with your privacy policy for this application. As everything inside the `<description>` tag can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -1046,6 +1118,14 @@ Link to a webpage with your privacy policy for this application.
     <td>Full privacy policy text or URL</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>License / Privacy policy</td>
@@ -1060,7 +1140,7 @@ Link to a webpage with your privacy policy for this application.
 Optional. 
 No attributes. 
 
-Link to a webpage with your End User License Agreement for this application.
+Link to a webpage with your End User License Agreement for this application. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
 
 <table>
   <tr>
@@ -1096,6 +1176,14 @@ Link to a webpage with your End User License Agreement for this application.
     <td>EULA text or URL</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>License / Terms and Conditions/Copyright</td>
@@ -1110,7 +1198,7 @@ Link to a webpage with your End User License Agreement for this application.
 Required. 
 No attributes.
 
-This tag contains all application image assets. As everything inside the `<description>` tag it can be localized. If a localized version of the `<description>` tag does not contains one of the four sections then images from the default languages are taken. So you need to include only those images that are actually localized into the localized versions of the `<description>` tag and do not need to repeat the images that are the same as in the default language.   
+This tag contains all application image assets. As everything inside the `<description>` tag can be localized using `<description-localization>` section. If `<description-localization>` tag does not contains any particular image type then the corresponding image from the `<description>` section is taken. 
 
 Example:
 ```xml
@@ -1190,6 +1278,15 @@ High resolution application icon. Different stores require different resolutions
     <td>PNG, JPG, GIF</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Icon Image</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>135x125</td>
+    <td>JPG, GIF</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Promotion / Icon, High resolution icon</td>
@@ -1197,6 +1294,15 @@ High resolution application icon. Different stores require different resolutions
     <td>No</td>
     <td>150x150 - 500x500 for Icon, 512x512 for High resolution icon</td>
     <td>PNG, JPG, GIF</td>
+  </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Image / Icon</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>212x212</td>
+    <td>JPEG, PNG, GIF or BMP</td>
   </tr>
 </table>
 
@@ -1245,6 +1351,15 @@ Large promotion picture usually used by the stores on the PC websites.
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Promotion / Promotional image</td>
@@ -1260,7 +1375,7 @@ Large promotion picture usually used by the stores on the PC websites.
 Optional. 
 No attributes. 
 
-Small promotion picture usually used by the stores on a mobile device for promoted apps. 
+A small promotion picture is usually used by the stores on a mobile device for promoted apps. 
 
 
 <table>
@@ -1293,6 +1408,15 @@ Small promotion picture usually used by the stores on a mobile device for promot
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -1370,6 +1494,16 @@ Example:
     <td>1+</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Screenshots</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>480x800 or 800x480</td>
+    <td>JPG, PNG, GIF, 500K maximum</td>
+    <td>4</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Promotion / Screenshots</td>
@@ -1379,6 +1513,16 @@ Example:
     <td>JPG, PNG, GIF</td>
     <td>1-3</td>
   </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Image / Screenshots</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>no information</td>
+    <td>JPG</td>
+    <td>4</td>
+  </tr>
 </table>
 
 #### description/videos
@@ -1386,7 +1530,7 @@ Example:
 Optional. 
 No attributes.
 
-This tag contains all video assets. As everything inside the `<description>` tag it can be localized. If a localized version of the `<description>` tag does not contains one of the sections then corresponding videos from the default language are taken. So you need to include only those videos that are actually localized into the localized versions of the `<description>` tag and do not need to repeat the videos that are the same as in the default language.  
+This tag contains all video assets. As everything inside the `<description>` tag can be localized using `<description-localization>` section. If `<description-localization>` tag does not contain any particular video type then the corresponding video from the `<description>` section is taken.
 
 Example:
 ```xml
@@ -1402,7 +1546,7 @@ Example:
 Optional. 
 No attributes. 
 
-If you have a video about your product at YouTube you can include it here. Please include only ID not entire URL. For example if your YouTube video URL is:
+If you have a video about your product on YouTube you can include it here. Please include only ID not the entire URL. For example if your YouTube video URL is:
 https://www.youtube.com/watch?v=4YcBHQ2fCDE
 
 then tag value should be just `4YcBHQ2fCDE`. Like:
@@ -1444,9 +1588,25 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Support / YouTube URL</td>
+    <td>No</td>
+    <td>No</td>
+    <td>When you add YouTube video, the fourth screenshot will be replaced with YouTube video</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
-    <tdYes</td>
+    <td>Yes</td>
     <td>Promotion / Video</td>
+    <td>No</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Detail / Support URL</td>
     <td>No</td>
     <td>No</td>
     <td></td>
@@ -1454,11 +1614,10 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
 </table>
 
 ##### description/videos/video-file
-
 Optional. 
 No attributes. 
 
-Some stores don't support including of YouTube videos but do supports uploaded video files. You can use this tag to link to local video files about the product. You can include several different video files.
+Some stores don't support including of YouTube videos but do support uploaded video files. You can use this tag to link to local video files about the product. You can include several different video files.
 
 <table>
   <tr>
@@ -1498,7 +1657,25 @@ Some stores don't support including of YouTube videos but do supports uploaded v
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SK T-Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -1508,11 +1685,50 @@ Some stores don't support including of YouTube videos but do supports uploaded v
   </tr>
 </table>
 
+### description-localization
+Optional.
+Attributes: `language`. 
+
+You can use `<description-localization>` section to localize texts, images and videos in product description. This tag has the same structure as `<description>` but all subtags are optional. If some information is missing in the `<description-localization>` section it will be taken from the  `<description>` section.
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td>language</td>
+    <td>two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")</td>
+    <td>required tag</td>
+  </tr>
+</table>
+
+Example:
+```xml
+<description-localization language="de">
+  <texts>
+    <short-description>Meine kurze Beschreibung</short-description>
+    <full-description>Meine Sie hier</full-description>
+  </texts>
+
+  <images>
+    <large-promo>promo_de.png</large-promo>
+    <screenshots>
+      <screenshot>screenshot01_de.png</screenshot>
+      <screenshot>screenshot02_de.png</screenshot>
+      <screenshot>screenshot03_de.png</screenshot>
+      <screenshot>screenshot04_de.png</screenshot>
+    </screenshots>
+  </images>
+</description-localization>
+```
+
 ### content-description
 Required.
 No attributes.
 
-This section describes what activities that could be considered questionable the program/game includes. The stores using this information for filtering to show the app only to people who whom it is allowed. The three main subsections describe age restrictions and existing certificates, content descriptors that are used to calculate age restrictions and other questionable application activities that should require user and/or parent understanding but that are not covered by Android permissions.  
+This section describes what activities that could be considered questionable the program/game includes. The stores use this information for filtering to show the app only to allowed individuals. The three main subsections describe age restrictions and existing certificates, content descriptors that are used to calculate age restrictions and other questionable application activities that should require user and/or parent understanding but that are not covered by Android permissions.  
 
 Example:
 ```xml
@@ -1554,7 +1770,7 @@ Example:
 Required.
 No attributes.
 
-Each application must be labeled with a minimum allowed age according to [ESRB standard](http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board). Tag value must be a number of minimum age which could be `3`, `6`, `10`, `13`, `17`, or `18`. 
+Each application must be labeled with a minimum age allowance according to [ESRB standard](http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board). Tag value must be a number of minimum age which could be `3`, `6`, `10`, `13`, `17`, or `18`. 
 
 <table>
   <tr>
@@ -1582,6 +1798,12 @@ Each application must be labeled with a minimum allowed age according to [ESRB s
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Category / Age Restriction</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Application / Parental Rating</td>
@@ -1589,7 +1811,7 @@ Each application must be labeled with a minimum allowed age according to [ESRB s
   </tr>
 </table>
 
-There is no universal content rating system (aka parental control rating, aka minimum age). Different stores uses different systems. AppDF uses ESRB standard but more important is how this information is mapped to the systems used in the appstores. The following table is used by AppDF to convert the rating to the systems of all the main application stores.
+There is no universal content rating system (aka parental control rating, aka minimum age). Different stores use different systems. AppDF uses ESRB standard but the more important thing is how this information is mapped out to the systems used in the appstores. The following table is used by AppDF to convert the rating to the systems of all the main application stores.
 
 <table>
   <tr>
@@ -1597,6 +1819,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <th>Google Play</th>
     <th>Amazon AppStore</th>
     <th>Opera Mobile Store</th>
+    <th>Samsung Apps</th>
     <th>SlideME</th>
   </tr>
   <tr>
@@ -1604,6 +1827,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>Everyone</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 0</td>
     <td>G: General Audiences (for all ages)</td>
   </tr>
   <tr>
@@ -1611,6 +1835,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>Low maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 4</td>
     <td>G: General Audiences (for all ages)</td>
   </tr>
   <tr>
@@ -1618,6 +1843,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>Medium maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 12</td>
     <td>PG: Parental Guidance Suggested (may not be suitable for children)</td>
   </tr>
   <tr>
@@ -1625,6 +1851,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>Medium maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 16</td>
     <td>PG-13: Parents Strongly Cautioned (may not be suitable for children under 13)</td>
   </tr>
   <tr>
@@ -1632,6 +1859,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>High maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 18</td>
     <td>R: Restricted (under 17 requires accompanying adult guardian)</td>
   </tr>
   <tr>
@@ -1639,11 +1867,12 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>High maturity</td>
     <td>n/a</td>
     <td>n/a</td>
+    <td>Over age 18</td>
     <td>NC-17: Not allowed for 17 and under</td>
   </tr>
 </table>
 
-There could be exceptional products for which a generic convertion rules described in this table don't work. You can use the `<store-specific>` tag to specify a custom content rating for the stores in that case.
+There could be exceptional products for which a generic converting rule described in this table don't work. You can use the `<store-specific>` tag to specify a custom content rating for the stores in that case.
 
 Here you can find more detailed information about content rating definitions used in different stores:
 <table>
@@ -1667,10 +1896,14 @@ Here you can find more detailed information about content rating definitions use
     <td>Opera Mobile Store</td>
     <td>Content rating is not used</td>
   </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Samsung Age Rating Guide (link cannot be found)</td>
+  </tr>
 </table>
 
 ##### Notes:
-1. Amazon hasn't one field for application rating but uses several parameters (nudity, violation, etc)
+1. Amaz doesn't have one field for application rating but uses several parameters (nudity, violation, etc)
 2. Opera doesn't support content rating (except "Is Adult?" question)
 3. Samsung uses minimum age parameter along with several other attributes that define application rating according to the standard certification systems (PEGI, ESRB, etc)
 
@@ -1746,6 +1979,13 @@ Example:
     <td>No</td>
     <td></td>
     <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Category / Rating Information</td>
+    <td>PEGI, ESRB, GRB, MJ/DEJUS, FSK</td>
     <td></td>
   </tr>
   <tr>
@@ -1857,6 +2097,13 @@ Example:
     <td>Only adult descriptor is used</td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>No</td>
     <td></td>
@@ -1949,6 +2196,13 @@ Example:
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Application / "In-App" billing, With advertisements</td>
@@ -1961,7 +2215,7 @@ Example:
 Optional.
 No attributes.
 
-You can define country list of period of time where/when you application is distributed. By default your application is distributed in all the countries where language support allows.
+You can define country list of period of time where/when you application is distributed. By default your application is distributed to all the countries where language support allows.
 
 Example:
 ```xml
@@ -2011,6 +2265,13 @@ Use `<include>` and `<exclude>` subtags to define list of the countries where yo
     <td>Opera Mobile Store</td>
     <td>Yes</td>
     <td>Stores</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Sales / Country/Price / Detailed Country &amp; Price Settings</td>
     <td>No</td>
     <td></td>
   </tr>
@@ -2082,6 +2343,12 @@ If presented this tag defines a date from which the application can be distribut
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Sales / Selling Starts</td>
+    <td>Yes, default "Selling starts on the day of approval"</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>No</td>
     <td></td>
@@ -2149,6 +2416,12 @@ If presented this tag defines a final date of application distribution. Stores t
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Sales / Selling Ends</td>
+    <td>No</td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>No</td>
     <td></td>
@@ -2160,16 +2433,22 @@ If presented this tag defines a final date of application distribution. Stores t
 Required.
 Attributes: `free`. 
 
-This section describes whether the application is free or paid and if paid what is its price. It has also an option for free apps to mark them as trial version of another app.
+This section describes whether the application is free or paid and if paid what its price is. It has also an option for free apps to mark them as trial version of another app.
 
-Example:
+Example 1:
 ```xml
 <price free="yes">
-  <base-price currency="USD">4.95</base-price>
+  <trial-version full-version="com.yandex.shellfullversion"/>
+</price>
+```
+
+Example 2:
+```xml
+<price free="no">
+  <base-price>4.95</base-price>
   <local-price country="de" currency="EUR">3.95</local-price>
   <local-price country="fr" currency="EUR">3.95</local-price>
   <local-price country="ru" currency="RUB">99</local-price>
-  <trial-version full-version="com.yandex.shellfullversion"/>
 </price>
 ```
 
@@ -2190,26 +2469,11 @@ Example:
 
 #### price/base-price
 Required for paid apps.
-Attributes: `currency`. 
+No attributes. 
 
-Application price. Tag value should be a dot-separated number. This price is used to automatically calculate the prices in other currencies unless you manually specify such prices using `<local-price>` tags.
+Application price. Tag value should be a dot-separated number. This price is set in USD used to automatically calculate the prices in other currencies unless you manually specify such prices using `<local-price>` tags.
 
 This tag is ignored for free apps.
-
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Possible values</th>
-    <th>Default</th>
-    <th>How it works</th>
-  </tr>
-  <tr>
-    <td>currency</td>
-    <td>?todo</td>
-    <td>USD</td>
-    <td>?todo</td>
-  </tr>
-</table>
 
 <table>
   <tr>
@@ -2257,6 +2521,14 @@ This tag is ignored for free apps.
     <td>Yes</td>
     <td>Price</td>
     <td>USD</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Information / Price</td>
+    <td>KRW</td>
     <td>Yes</td>
     <td></td>
   </tr>
@@ -2473,7 +2745,7 @@ Example:
 Optional.
 No attributes.
 
-You can use this section if you application has some special requirements apart of requirements described in the APK file.
+You can use this section if your application has some special requirements apart from requirements described in the APK file.
 
 Example:
 ```xml
@@ -2481,6 +2753,7 @@ Example:
   <features>
     <root>no</root>
     <gms>no</gms>
+    <online>yes</online>
   </features>
 
   <supported-languages>
@@ -2565,7 +2838,7 @@ Set value of this tag to `yes` if your application requires root access for work
 Optional.
 No attributes.
 
-Set value of this tag to `yes` if your application requires Google Play to be installed on device and Google account for LVL or other actions. Please note that most it will dramatically limit your distribution options. Most of the stores work on the devices that don't have Google Play installed.
+Set value of this tag to `yes` if your application requires Google Play to be installed on device and Google account for LVL or other actions. Please note that most it will dramatically limit your distribution options. Most of the stores work on the devices that don't have Google Play installed on them.
 
 <table>
   <tr>
@@ -2594,8 +2867,8 @@ Set value of this tag to `yes` if your application requires Google Play to be in
   </tr>
   <tr>
     <td>Samsung Apps</td>
-    <td>No</td>
-    <td></td>
+    <td>Yes</td>
+    <td>Basic Information / Binary File / Binary Upload / Manual Input Details / Google Mobile Service</td>
     <td></td>
   </tr>
   <tr>
@@ -2607,11 +2880,57 @@ Set value of this tag to `yes` if your application requires Google Play to be in
 </table>
 
 
+#### requirements/features/online
+Optional.
+No attributes.
+
+Set value of this tag to `yes` if your application requires internet connection in order to work. In other words if it does not work in offline mode.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Opers Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Category / Runs Offline?</td>
+    <td>By default Samsung Apps assumes your application can work in offline mode</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+
 #### requirements/supported-languages
 Optional.
 No attributes.
 
-You man manually define the list of supported languages. Add `<language>` subtag with two letter ISO 639-1 language codes for each language the application supports.
+You can manually define the list of supported languages. Add `<language>` subtag with two letter ISO 639-1 language codes for each language the application supports.
 
 Example:
 ```xml
@@ -2650,6 +2969,12 @@ Example:
     <td></td>
   </tr>
   <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Supported Languages</td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SlideME</td>
     <td>No</td>
     <td></td>
@@ -2663,7 +2988,7 @@ Example:
 Optional.
 No attributes.
 
-You man manually exclude some devices from the supported device list. Add `<exclude>` tag with device model name (aka [name of the industrial design](http://developer.android.com/reference/android/os/Build.html#DEVICE)) for each device you want to exclude from the compatibility list.
+You can manually exclude some devices from the supported device list. Add `<exclude>` tag with device model name (aka [name of the industrial design](http://developer.android.com/reference/android/os/Build.html#DEVICE)) for each device you want to exclude from the compatibility list.
 
 Example:
 ```xml
@@ -2758,6 +3083,305 @@ Most of the stores take this information from the APK file. Some stores also sup
   </tr>
 </table>
 
+### testing-instructions
+Optional.
+No attributes.
+
+Please detail any special requirements to test your app.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Maximum size</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Testing instructions</td>
+    <td>No</td>
+    <td>4000</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Certification / Comments to Certification Team</td>
+    <td>Yes</td>
+    <td>4000</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+### consent
+Required.
+No attributes.
+
+You must consent with a number of statements in order for your application to be published. This section includes the list of such agreements. There are agreements some stores require you to accept every time you submit an application (not when you register an account).Some stores will not accept your application without this section.  Each subtag corresponds to one of the statements you consent with. Subtag values must always be `yes` if you want your application is accepted by the corresponding stores.
+
+Example:
+```xml
+<consent>
+  <google-android-content-guidelines>yes</google-android-content-guidelines>
+  <slideme-agreement>yes</slideme-agreement>
+  <us-export-laws>yes</us-export-laws>
+  <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+</consent>
+```
+
+<table>
+  <tr>
+    <th>Subtag</th>
+    <th>Statement</th>
+    <th>Detailed information</th>
+  </tr>
+  <tr>
+    <td>&lt;google-android-content-guidelines&gt;</td>
+    <td>This application meets Android Content Guidelines</td>
+    <td>http://play.google.com/about/developer-content-policy.html</td>
+  </tr>
+  <tr>
+    <td>&lt;us-export-laws&gt;</td>
+    <td>I acknowledge that my software application may be subject to United States export laws, regardless of my location or nationality. I agree that I have complied with all such laws, including any requirements for software with encryption functions. I hereby certify that my application is authorized for export from the United States under these laws. </td>
+    <td>https://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=113770</td>
+  </tr>
+  <tr>
+    <td>&lt;slideme-agreement&gt;</td>
+    <td>You agree with the complete Developer/Publisher Distribution Agreement</td>
+    <td>https://slideme.org/developer-conditions/popup</td>
+  </tr>
+  <tr>
+    <td>&lt;free-from-third-party-copytighted-content&gt;</td>
+    <td>You confirm that your application is free from third-party copyrighted picture, sounds, database or other types of information</td>
+    <td>Used by SK T-Store, more: http://dev.tstore.co.kr/devpoc/iprCenter/iprCenterInfo.omp</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Pricing and Distribution / Consent</td>
+    <td>&lt;google-android-content-guidelines&gt;, &lt;us-export-laws&gt;</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Export Compliance</td>
+    <td>&lt;us-export-laws&gt;</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>Yes</td>
+    <td>Agreement</td>
+    <td>&lt;slideme-agreement&gt;</td>
+  </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>Basic Information / Intellectual property rights</td>
+    <td>&lt;free-from-third-party-copytighted-content&gt;</td>
+  </tr>
+</table>
+
+### customer-support
+Required.
+No attributes.
+
+Example:
+```xml
+<customer-support>
+  <phone>+1 (555) 1234-56-78</phone>
+  <email>support@yandex-team.ru</email>
+  <website>http://www.yandex.ru/support</website>
+</customer-support>
+```
+
+#### customer-support/phone
+Required.
+No attributes.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Contact Details / Phone</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>General Information / Customer support phone</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+#### customer-support/email
+Required.
+No attributes.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Contact Details / Email</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>General Information / Customer support email address</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Contact Email</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Support / Support E-Mail</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+#### customer-support/website
+Required.
+No attributes.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Store Listing / Contact Details / Website</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>General Information / Customer support website</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Display Information / Support / Support URL</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 
 ### store-specific
 Optional.
@@ -2792,6 +3416,9 @@ Example:
   <slideme>
     <license-type>apache2</license-type>
   </slideme>
+  <tstore>
+    <seller-name>Yandex</seller-name>
+  </tstore>
 </store-specific>
 ```
 
@@ -2978,260 +3605,6 @@ Possible `<license-type>` values:
 * New BSD License
 * Other / Proprietary
 * The MIT License
-
-### testing-instructions
-Optional.
-No attributes.
-
-Please detail any special requirements to test your app.
-
-<table>
-  <tr>
-    <th>Store support</th>
-    <th>Supported</th>
-    <th>Name</th>
-    <th>Required</th>
-    <th>Maximum size</th>
-  </tr>
-  <tr>
-    <td>Google Play</td>
-    <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Amazon AppStore</td>
-    <td>Yes</td>
-    <td>Binary File(s) / Testing instructions</td>
-    <td>No</td>
-    <td>4000</td>
-  </tr>
-  <tr>
-    <td>Opera Mobile Store</td>
-    <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>SlideME</td>
-    <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-
-### consent
-Required.
-No attributes.
-
-You must consent with a number of statements in order your application is published. This section includes the list of such agreements. They are agreements some stores require you to accept every time you submit an application (not when you register an account). Without this section some stores will not accept your application.  Each subtag corresponds to one of the statements you consent with. Subtag values must always be `yes` if you want your application is accepted by the corresponding stores.
-
-Example:
-```xml
-<consent>
-  <google-android-content-guidelines>yes</google-android-content-guidelines>
-  <slideme-agreement>yes</slideme-agreement>
-  <us-export-laws>yes</us-export-laws>
-</consent>
-```
-
-<table>
-  <tr>
-    <th>Subtag</th>
-    <th>Statement</th>
-    <th>Detailed information</th>
-  </tr>
-  <tr>
-    <td>&lt;google-android-content-guidelines&gt;</td>
-    <td>This application meets Android Content Guidelines</td>
-    <td>http://play.google.com/about/developer-content-policy.html</td>
-  </tr>
-  <tr>
-    <td>&lt;us-export-laws&gt;</td>
-    <td>I acknowledge that my software application may be subject to United States export laws, regardless of my location or nationality. I agree that I have complied with all such laws, including any requirements for software with encryption functions. I hereby certify that my application is authorized for export from the United States under these laws. </td>
-    <td>https://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=113770</td>
-  </tr>
-  <tr>
-    <td>&lt;slideme-agreement&gt;</td>
-    <td>You agree with the complete Developer/Publisher Distribution Agreement</td>
-    <td>https://slideme.org/developer-conditions/popup</td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <th>Store support</th>
-    <th>Supported</th>
-    <th>Name</th>
-    <th>Required</th>
-  </tr>
-  <tr>
-    <td>Google Play</td>
-    <td>Yes</td>
-    <td>Pricing and Distribution / Consent</td>
-    <td>&lt;google-android-content-guidelines&gt;, &lt;us-export-laws&gt;</td>
-  </tr>
-  <tr>
-    <td>Amazon AppStore</td>
-    <td>Yes</td>
-    <td>Binary File(s) / Export Compliance</td>
-    <td>&lt;us-export-laws&gt;</td>
-  </tr>
-  <tr>
-    <td>Opera Mobile Store</td>
-    <td>No</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>SlideME</td>
-    <td>Yes</td>
-    <td>Agreement</td>
-    <td>&lt;slideme-agreement&gt;</td>
-  </tr>
-</table>
-
-### customer-support
-Required.
-No attributes.
-
-Example:
-```xml
-<customer-support>
-  <phone>+1 (555) 1234-56-78</phone>
-  <email>support@yandex-team.ru</email>
-  <website>http://www.yandex.ru/support</website>
-</customer-support>
-```
-
-#### customer-support/phone
-Required.
-No attributes.
-
-<table>
-  <tr>
-    <th>Store support</th>
-    <th>Supported</th>
-    <th>Name</th>
-    <th>Required</th>
-    <th>Localizable</th>
-  </tr>
-  <tr>
-    <td>Google Play</td>
-    <td>Yes</td>
-    <td>Store Listing / Contact Details / Phone</td>
-    <td>No</td>
-    <td>No</td>
-  </tr>
-  <tr>
-    <td>Amazon AppStore</td>
-    <td>Yes</td>
-    <td>General Information / Customer support phone</td>
-    <td>Yes</td>
-    <td>No</td>
-  </tr>
-  <tr>
-    <td>Opera Mobile Store</td>
-    <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>SlideME</td>
-    <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-
-#### customer-support/email
-Required.
-No attributes.
-
-<table>
-  <tr>
-    <th>Store support</th>
-    <th>Supported</th>
-    <th>Name</th>
-    <th>Required</th>
-    <th>Localizable</th>
-  </tr>
-  <tr>
-    <td>Google Play</td>
-    <td>Yes</td>
-    <td>Store Listing / Contact Details / Email</td>
-    <td>Yes</td>
-    <td>No</td>
-  </tr>
-  <tr>
-    <td>Amazon AppStore</td>
-    <td>Yes</td>
-    <td>General Information / Customer support email address</td>
-    <td>Yes</td>
-    <td>No</td>
-  </tr>
-  <tr>
-    <td>Opera Mobile Store</td>
-    <td>Yes</td>
-    <td>Contact Email</td>
-    <td>No</td>
-    <td>No</td>
-  </tr>
-  <tr>
-    <td>SlideME</td>
-    <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-
-#### customer-support/website
-Required.
-No attributes.
-
-<table>
-  <tr>
-    <th>Store support</th>
-    <th>Supported</th>
-    <th>Name</th>
-    <th>Required</th>
-    <th>Localizable</th>
-  </tr>
-  <tr>
-    <td>Google Play</td>
-    <td>Yes</td>
-    <td>Store Listing / Contact Details / Website</td>
-    <td>Yes</td>
-    <td>No</td>
-  </tr>
-  <tr>
-    <td>Amazon AppStore</td>
-    <td>Yes</td>
-    <td>General Information / Customer support website</td>
-    <td>Yes</td>
-    <td>No</td>
-  </tr>
-  <tr>
-    <td>Opera Mobile Store</td>
-    <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>SlideME</td>
-    <td>No</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
 
 Application Store Support
 -------------
@@ -3479,6 +3852,47 @@ Application Store Support
 <tr>
   <td>License verification support</td>
   <td>Samsung DRM</td>
+</tr>
+</table>
+
+### SK T-Store
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Value</th>
+</tr>
+<tr>
+  <td>Registration URL</td>
+  <td><a href="http://dev.tstore.co.kr/devpoc/main/main.omp">http://dev.tstore.co.kr/devpoc/main/main.omp</a></td>
+</tr>
+<tr>
+  <td>Distribution agreement URL</td>
+  <td>Public link cannot be found</a></td>
+</tr>
+<tr>
+  <td>AppDF ID</td>
+  <td>tstore</td>
+</tr>
+<tr>
+  <td>Registration fee</td>
+  <td>free</td>
+</tr>
+<tr>
+  <td>Content premoderation</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>Client Application</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>In-App Purchase Support</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>License verification support</td>
+  <td>[To be supplied.]</td>
 </tr>
 </table>
 
