@@ -5718,6 +5718,1746 @@ AppDF provides universal category list that could be matched to any appstore cat
 </tr>
 </table>
 
+Localization Support
+-------------
+AppDF supports localization to all the languages. Nevertheless not all languages supported by all the stores. The following tables contain information about current language support status (updated January 14, 2013).
+
+<table>
+  <tr>
+    <th>Application Store</th>
+    <th>Supports Localization?</th>
+    <th>Default Language</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>English US default (cannot be changed)</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>English US default (cannot be changed)</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>English is default (cannot be changed)</td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>No default language (could be any combination)</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td>No localization</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>English is default and cannot be changed</td>
+  </tr>
+</table>
+
+<table>
+<th>
+  <td>AppDF</td>
+  <td>Google Play</td>
+  <td>Amazon AppStore</td>
+  <td>Opera Mobile Store</td>
+  <td>Samsung Apps</td>
+  <td>Yandex.Store</td>
+</th>
+<tr>
+  <td>Afrikaans</td>
+  <td>Afrikaans</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Amharic</td>
+  <td>Amharic</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Arabic</td>
+  <td>Arabic</td>
+  <td></td>
+  <td>ARABIC</td>
+  <td>Arabic</td>
+  <td>Arabic</td>
+</tr>
+<tr>
+  <td>Belarusian</td>
+  <td>Belarusian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Bengali</td>
+  <td></td>
+  <td></td>
+  <td>BENGALI</td>
+  <td></td>
+  <td>Bengali</td>
+</tr>
+<tr>
+  <td>Bulgarian</td>
+  <td>Bulgarian</td>
+  <td></td>
+  <td></td>
+  <td>Bulgarian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Catalan</td>
+  <td>Catalan</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Chinese</td>
+  <td></td>
+  <td></td>
+  <td>CHINESE</td>
+  <td></td>
+  <td>Chinese</td>
+</tr>
+<tr>
+  <td>Chinese (PRC)</td>
+  <td>Chinese (Simplified)</td>
+  <td>Chinese (Simplified)</td>
+  <td></td>
+  <td>Simplified Chinese</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Chinese (Taiwan)</td>
+  <td>Chinese (Traditional)</td>
+  <td></td>
+  <td></td>
+  <td>Traditional Chinese</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Croatian</td>
+  <td>Croatian</td>
+  <td></td>
+  <td></td>
+  <td>Croatian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Czech</td>
+  <td>Czech</td>
+  <td></td>
+  <td>CZECH</td>
+  <td>Czech</td>
+  <td>Czech</td>
+</tr>
+<tr>
+  <td>Danish</td>
+  <td>Danish</td>
+  <td></td>
+  <td>DANISH</td>
+  <td>Danish</td>
+  <td>Danish</td>
+</tr>
+<tr>
+  <td>Dutch</td>
+  <td>Dutch</td>
+  <td></td>
+  <td>DUTCH</td>
+  <td>Dutch</td>
+  <td>Dutch</td>
+</tr>
+<tr>
+  <td>English</td>
+  <td></td>
+  <td></td>
+  <td>ENGLISH</td>
+  <td></td>
+  <td>English</td>
+</tr>
+<tr>
+  <td>English (US)</td>
+  <td>English (United States)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>English (Britain)</td>
+  <td>English (United Kingdom)</td>
+  <td>English (U.K.)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Estonian</td>
+  <td>Estonian</td>
+  <td></td>
+  <td></td>
+  <td>Estonian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Faroese</td>
+  <td></td>
+  <td></td>
+  <td>FARSI</td>
+  <td></td>
+  <td>Farsi</td>
+</tr>
+<tr>
+  <td>Finnish</td>
+  <td>Finnish</td>
+  <td></td>
+  <td></td>
+  <td>Finnish</td>
+  <td></td>
+</tr>
+<tr>
+  <td>French</td>
+  <td>French</td>
+  <td>French</td>
+  <td>FRENCH</td>
+  <td>French</td>
+  <td>French</td>
+</tr>
+<tr>
+  <td>German</td>
+  <td>German</td>
+  <td>German</td>
+  <td>GERMAN</td>
+  <td>German</td>
+  <td>German</td>
+</tr>
+<tr>
+  <td>Greek</td>
+  <td>Greek</td>
+  <td></td>
+  <td>GREEK</td>
+  <td>Greek</td>
+  <td>Greek</td>
+</tr>
+<tr>
+  <td>Hebrew</td>
+  <td>Hebrew</td>
+  <td></td>
+  <td></td>
+  <td>Hebrew</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Hindi</td>
+  <td>Hindi</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Hungarian</td>
+  <td>Hungarian</td>
+  <td></td>
+  <td>HUNGARIAN</td>
+  <td>Hungarian</td>
+  <td>Hungarian</td>
+</tr>
+<tr>
+  <td>Indonesian</td>
+  <td></td>
+  <td></td>
+  <td>INDONESIA</td>
+  <td>Indonesian</td>
+  <td>Indonesia</td>
+</tr>
+<tr>
+  <td>Italian</td>
+  <td>Italian</td>
+  <td>Italian</td>
+  <td>ITALIAN</td>
+  <td>Italian</td>
+  <td>Italian</td>
+</tr>
+<tr>
+  <td>Japanese</td>
+  <td>Japanese</td>
+  <td>Japanese</td>
+  <td>JAPANESE</td>
+  <td>Japanese</td>
+  <td>Japanese</td>
+</tr>
+<tr>
+  <td>Kazakh</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Kazakh</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Korean</td>
+  <td>Korean (South Korea)</td>
+  <td></td>
+  <td>KOREAN</td>
+  <td>Korean</td>
+  <td>Korean</td>
+</tr>
+<tr>
+  <td>Lithuanian</td>
+  <td>Lithuanian</td>
+  <td></td>
+  <td></td>
+  <td>Lithuanian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Latvian</td>
+  <td>Latvian</td>
+  <td></td>
+  <td></td>
+  <td>Latvian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Malay</td>
+  <td>Malay</td>
+  <td></td>
+  <td>MALAY</td>
+  <td></td>
+  <td>Malay</td>
+</tr>
+<tr>
+  <td>Nepali</td>
+  <td></td>
+  <td></td>
+  <td>NEPALESE</td>
+  <td></td>
+  <td>Nepalese</td>
+</tr>
+<tr>
+  <td>Norwegian</td>
+  <td>Norwegian</td>
+  <td></td>
+  <td>NORWAY</td>
+  <td>Norwegian</td>
+  <td>Norway</td>
+</tr>
+<tr>
+  <td>Persian</td>
+  <td>Persian</td>
+  <td></td>
+  <td></td>
+  <td>Persian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Polish</td>
+  <td>Polish</td>
+  <td></td>
+  <td>POLISH</td>
+  <td>Polish</td>
+  <td>Polish</td>
+</tr>
+<tr>
+  <td>Portuguese</td>
+  <td></td>
+  <td></td>
+  <td>PORTUGUESE</td>
+  <td>Portuguese</td>
+  <td>Portuguese</td>
+</tr>
+<tr>
+  <td>Portuguese (Brazil)</td>
+  <td>Portuguese (Brazil)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Portuguese (Portugal)</td>
+  <td>Portuguese (Portugal)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Romansh</td>
+  <td>Romansh</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Romanian</td>
+  <td>Romanian</td>
+  <td></td>
+  <td>ROMANIAN</td>
+  <td>Romanian</td>
+  <td>Romanian</td>
+</tr>
+<tr>
+  <td>Russian</td>
+  <td>Russian</td>
+  <td></td>
+  <td>RUSSIAN</td>
+  <td>Russian</td>
+  <td>Russian</td>
+</tr>
+<tr>
+  <td>Serbian</td>
+  <td>Serbian</td>
+  <td></td>
+  <td></td>
+  <td>Serbian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Gaelic</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Gaelic</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Slovak</td>
+  <td>Slovak</td>
+  <td></td>
+  <td>SLOVAK</td>
+  <td>Slovak</td>
+  <td>Slovak</td>
+</tr>
+<tr>
+  <td>Slovene</td>
+  <td>Slovenian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Spanish</td>
+  <td></td>
+  <td>Spanish</td>
+  <td>SPANISH</td>
+  <td>Spanish</td>
+  <td>Spanish</td>
+</tr>
+<tr>
+  <td>Spanish (Spain)</td>
+  <td>Spanish (Spain)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Spanish (US)</td>
+  <td>Spanish (United States)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Spanish (Latin America)</td>
+  <td>Spanish (Latin America)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Swahili</td>
+  <td>Swahili</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Swedish</td>
+  <td>Swedish</td>
+  <td></td>
+  <td>SWEDISH</td>
+  <td>Swedish</td>
+  <td>Swedish</td>
+</tr>
+<tr>
+  <td>Thai</td>
+  <td>Thai</td>
+  <td></td>
+  <td>THAI</td>
+  <td>Thai</td>
+  <td>Thai</td>
+</tr>
+<tr>
+  <td>Tagalog</td>
+  <td>Filipino</td>
+  <td></td>
+  <td>TAGALOG</td>
+  <td></td>
+  <td>Tagalog</td>
+</tr>
+<tr>
+  <td>Turkish</td>
+  <td>Turkish</td>
+  <td></td>
+  <td>TURKISH</td>
+  <td>Turkish</td>
+  <td>Turkish</td>
+</tr>
+<tr>
+  <td>Ukrainian</td>
+  <td>Ukrainian</td>
+  <td></td>
+  <td></td>
+  <td>Ukrainian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Vietnamese</td>
+  <td>Vietnamese</td>
+  <td></td>
+  <td>VIETNAMESE</td>
+  <td>Vietnamese</td>
+  <td>Vietnamese</td>
+</tr>
+<tr>
+  <td>Zulu</td>
+  <td>Zulu</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Abkhaz</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Afar</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Akan</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Albanian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Arabic (Egypt)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Arabic (Israel)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Aragonese</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Armenian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Assamese</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Avaric</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Avestan</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Aymara</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Azerbaijani</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Bambara</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Bashkir</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Basque</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Bihari</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Bislama</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Bosnian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Breton</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Burmese</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Chamorro</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Chechen</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Chichewa</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Chuvash</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Cornish</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Corsican</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Cree</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Divehi</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Dutch (Belgium)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Dutch (Netherlands)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Dzongkha</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>English (Australia)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>English (Canada)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>English (New Zealand)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>English (Singapore)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>English (Canada)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Esperanto</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Ewe</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Fijian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>French (Belgium)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>French (Canada)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>French (France)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>French (Switzerland)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Fula</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Galician</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Georgian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>German (Austria)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>German (Germany)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>German (Liechtenstein)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>German (Switzerland)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>GuaranГ­</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Gujarati</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Haitian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Hausa</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Herero</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Hiri Motu</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Interlingua</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Interlingue</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Irish</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Igbo</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Inupiaq</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Ido</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Icelandic</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Italian (Italy)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Italian (Switzerland)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Inuktitut</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Javanese</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Kalaallisut</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Kannada</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Kanuri</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Kashmiri</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Khmer</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Kikuyu</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Kinyarwanda</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Kyrgyz</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Komi</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Kongo</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Kurdish</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Kwanyama</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Latin</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Luxembourgish</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Ganda</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Limburgish</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Lingala</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Lao</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Luba-Katanga</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Manx</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Macedonian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Malagasy</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Malayalam</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Maltese</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Maori</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Marathi</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Marshallese</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Mongolian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Nauru</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Navajo</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Norwegian BokmГҐl</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>North Ndebele</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Ndonga</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Norwegian Nynorsk</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Nuosu</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>South Ndebele</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Occitan</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Ojibwe</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Oromo</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Oriya</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Ossetian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Panjabi</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>PДЃli</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Pashto</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Quechua</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Kirundi</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Sanskrit</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Sardinian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Sindhi</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Northern Sami</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Samoan</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Sango</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Shona</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Sinhala</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Somali</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Southern Sotho</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Sundanese</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Swati</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Tamil</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Telugu</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Tajik</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Tigrinya</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Tibetan Standard</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Turkmen</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Tswana</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Tonga</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Tsonga</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Tatar</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Twi</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Tahitian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Uighur</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Urdu</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Uzbek</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Venda</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>VolapГјk</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Walloon</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Welsh</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Wolof</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Western Frisian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Xhosa</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Yiddish</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Yoruba</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>Zhuang</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+
 License
 -------------
 This file is licensed under the Creative Commons Attribution 2.5 license:

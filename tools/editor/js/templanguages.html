@@ -1,0 +1,212 @@
+<html>
+<body>
+	<textarea rows="30" cols="60" id="output"></textarea>
+	<script src="js/templanguages.js"></script>
+	<script>
+
+var syn = {
+  "English (United States)": "English (US)",
+  "Chinese (Simplified)" : "Chinese (PRC)",
+  "Simplified Chinese" : "Chinese (PRC)",
+  "Norway" : "Norwegian",
+  "INDONESIA" : "Indonesian",
+  "NEPALESE" : "Nepali",
+  "FARSI" : "Faroese",
+  "Indonesia" : "Indonesian",
+  "Nepalese" : "Nepali",
+  "Farsi" : "Faroese",
+  "Traditional Chinese" : "Chinese (Taiwan)",
+  "Chinese (Traditional)" : "Chinese (Taiwan)",
+  "NORWAY" : "Norwegian",
+  "English (United Kingdom)" : "English (Britain)",
+  "English (U.K.)" : "English (Britain)",
+"Filipino" : "Tagalog",
+"Korean (South Korea)": "Korean",
+"Slovenian" : "Slovene",
+"Spanish (United States)" : "Spanish (US)"
+
+};
+
+function output(s) {
+	document.getElementById("output").innerHTML += s;
+}
+
+function sameLanguage(s1, s2) {
+	if (s1.toLowerCase()==s2.toLowerCase()) {
+		return true;
+	} 
+	if (syn[s1]==s2) {
+		return true;
+	}
+	if (syn[s2]==s1) {
+		return true;
+	}
+	return false;
+}
+
+function findGoogleLanguage(s) {
+	for (var i=0; i<googleLanguages.length; i++) {
+		if (sameLanguage(s, googleLanguages[i])) {
+			return googleLanguages.splice(i, 1);
+		}
+	}
+	return "";
+}
+
+function findAmazonLanguage(s) {
+	for (var i=0; i<allAmazon.length; i++) {
+		if (sameLanguage(s, allAmazon[i])) {
+			return allAmazon.splice(i, 1);
+		}
+	}
+	return "";
+}
+
+function findOperaLanguage(s) {
+	for (var i=0; i<allOpera.length; i++) {
+		if (sameLanguage(s, allOpera[i])) {
+			return allOpera.splice(i, 1);
+		}
+	}
+	return "";
+}
+
+function findYandexLanguage(s) {
+	for (var i=0; i<allYandex.length; i++) {
+		if (sameLanguage(s, allYandex[i])) {
+			return allYandex.splice(i, 1);
+		}
+	}
+	return "";
+}
+
+function findSamsungLanguage(s) {
+	for (var i=0; i<allSamsung.length; i++) {
+		if (sameLanguage(s, allSamsung[i])) {
+			return allSamsung.splice(i, 1);
+		}
+	}
+	return "";
+}
+
+for (k in allLanguages) {
+	output("\"" + k + "\" : {\"appdf\":\"" + allLanguages[k]["appdf"] + "\"");
+	allLanguages[k]["matched"] = false;
+
+	var sGoogle = findGoogleLanguage(allLanguages[k]["appdf"]);
+	if (sGoogle!="") {
+		output(", \"google\": \"" + sGoogle + "\"");
+		allLanguages[k]["google"] = sGoogle;
+		allLanguages[k]["matched"] = true;
+	}
+
+	var sAmazon = findAmazonLanguage(allLanguages[k]["appdf"]);
+	if (sAmazon!="") {
+		output(", \"amazon\": \"" + sAmazon + "\"");
+		allLanguages[k]["amazon"] = sAmazon;
+		allLanguages[k]["matched"] = true;
+	}
+
+	var sOpera = findOperaLanguage(allLanguages[k]["appdf"]);
+	if (sOpera!="") {
+		output(", \"opera\": \"" + sOpera + "\"");
+		allLanguages[k]["opera"] = sOpera;
+		allLanguages[k]["matched"] = true;
+	}
+
+	var sYandex = findYandexLanguage(allLanguages[k]["appdf"]);
+	if (sYandex!="") {
+		output(", \"yandex\": \"" + sYandex + "\"");
+		allLanguages[k]["yandex"] = sYandex;
+		allLanguages[k]["matched"] = true;
+	}
+
+	var sSamsung = findSamsungLanguage(allLanguages[k]["appdf"]);
+	if (sSamsung!="") {
+		output(", \"samsung\": \"" + sSamsung + "\"");
+		allLanguages[k]["samsung"] = sSamsung;
+		allLanguages[k]["matched"] = true;
+	}
+
+	output("},\n");
+}	
+
+output("=======Unmatched Google======\n");
+for (var i=0; i<googleLanguages.length; i++) {
+	output(googleLanguages[i] + "\n");
+}
+
+output("=======Unmatched Amazon======\n");
+for (var i=0; i<allAmazon.length; i++) {
+	output(allAmazon[i] + "\n");
+}
+
+output("=======Unmatched Opera======\n");
+for (var i=0; i<allOpera.length; i++) {
+	output(allOpera[i] + "\n");
+}
+
+output("=======Unmatched Yandex======\n");
+for (var i=0; i<allYandex.length; i++) {
+	output(allYandex[i] + "\n");
+}
+
+output("=======Unmatched Samsung======\n");
+for (var i=0; i<allSamsung.length; i++) {
+	output(allSamsung[i] + "\n");
+}
+
+output("=======Unmatched in AppDF======\n");
+for (k in allLanguages) {
+	if (!allLanguages[k]["matched"]) {
+		output(allLanguages[k]["appdf"]+"\n");
+	};
+}
+
+function l(k, s) {
+	if (allLanguages[k][s]) {
+		return allLanguages[k][s];
+	} else {
+		return "";
+	}
+}
+output("=======HTML======\n");
+output("<table>");
+output("<th>\n");
+output("  <td>" + "AppDF" + "</td>\n");
+output("  <td>" + "Google Play" + "</td>\n");
+output("  <td>" + "Amazon AppStore" + "</td>\n");
+output("  <td>" + "Opera Mobile Store" + "</td>\n");
+output("  <td>" + "Samsung Apps" + "</td>\n");
+output("  <td>" + "Yandex.Store" + "</td>\n");
+output("</th>\n");
+for (k in allLanguages) {
+	if (allLanguages[k]["matched"]) {
+		output("<tr>\n");
+		output("  <td>" + l(k, "appdf") + "</td>\n");
+		output("  <td>" + l(k, "google") + "</td>\n");
+		output("  <td>" + l(k, "amazon") + "</td>\n");
+		output("  <td>" + l(k, "opera") + "</td>\n");
+		output("  <td>" + l(k, "samsung") + "</td>\n");
+		output("  <td>" + l(k, "yandex") + "</td>\n");
+		output("</tr>\n");
+	}
+};
+for (k in allLanguages) {
+	if (!allLanguages[k]["matched"]) {
+		output("<tr>\n");
+		output("  <td>" + l(k, "appdf") + "</td>\n");
+		output("  <td>" + l(k, "google") + "</td>\n");
+		output("  <td>" + l(k, "amazon") + "</td>\n");
+		output("  <td>" + l(k, "opera") + "</td>\n");
+		output("  <td>" + l(k, "samsung") + "</td>\n");
+		output("  <td>" + l(k, "yandex") + "</td>\n");
+		output("</tr>\n");
+	}
+};
+
+
+
+	</script>
+</body>
+</html>
