@@ -285,6 +285,10 @@ Sample Description.xml File
     <google-android-content-guidelines>yes</google-android-content-guidelines>
     <!--https://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=113770-->
     <us-export-laws>yes</us-export-laws>
+    <!--https://slideme.org/developer-conditions/popup-->
+    <slideme-agreement>yes</slideme-agreement>
+    <!--If your app uses third party copyrighted images, sounds, databases or other information--> 
+    <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
   </consent>
 
   <!--Optional tag, if missed customer support info from the account is used-->
@@ -701,6 +705,14 @@ The application name is shown in the application list. As everything inside the 
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>Basic Information / App Title</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>50</td>
+  </tr>
 </table>
 
 ##### description/texts/keywords
@@ -830,6 +842,15 @@ Short application description is used in the app lists next to the app title. So
     <td>500</td>
     <td>Shown in the list of the apps on the "big" website</td>
   </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Detail / Summary</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>32</td>
+    <td>Shown below app name like a slogan</td>
+  </tr>
 </table>
 
 ##### description/texts/full-description
@@ -915,6 +936,15 @@ The full application description is shown on the product page. You can include s
     <td>Yes</td>
     <td>No</td>
     <td>Unlimited</td>
+    <td>Some HTML subset</td>
+  </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Detail / Description</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>1300 Korean words, or 4000 English symbols</td>
     <td>Some HTML subset</td>
   </tr>
 </table>
@@ -1265,6 +1295,15 @@ High resolution application icon. Different stores require different resolutions
     <td>150x150 - 500x500 for Icon, 512x512 for High resolution icon</td>
     <td>PNG, JPG, GIF</td>
   </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Image / Icon</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>212x212</td>
+    <td>JPEG, PNG, GIF or BMP</td>
+  </tr>
 </table>
 
 ##### description/images/large-promo
@@ -1474,6 +1513,16 @@ Example:
     <td>JPG, PNG, GIF</td>
     <td>1-3</td>
   </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Image / Screenshots</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>no information</td>
+    <td>JPG</td>
+    <td>4</td>
+  </tr>
 </table>
 
 #### description/videos
@@ -1554,6 +1603,14 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
     <td>No</td>
     <td></td>
   </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Detail / Support URL</td>
+    <td>No</td>
+    <td>No</td>
+    <td></td>
+  </tr>
 </table>
 
 ##### description/videos/video-file
@@ -1610,6 +1667,15 @@ Some stores don't support including of YouTube videos but do support uploaded vi
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SK T-Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2458,6 +2524,14 @@ This tag is ignored for free apps.
     <td>Yes</td>
     <td></td>
   </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>App Information / Price</td>
+    <td>KRW</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
 </table>
 
 #### price/local-price
@@ -3072,6 +3146,7 @@ Example:
   <google-android-content-guidelines>yes</google-android-content-guidelines>
   <slideme-agreement>yes</slideme-agreement>
   <us-export-laws>yes</us-export-laws>
+  <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
 </consent>
 ```
 
@@ -3095,6 +3170,11 @@ Example:
     <td>&lt;slideme-agreement&gt;</td>
     <td>You agree with the complete Developer/Publisher Distribution Agreement</td>
     <td>https://slideme.org/developer-conditions/popup</td>
+  </tr>
+  <tr>
+    <td>&lt;free-from-third-party-copytighted-content&gt;</td>
+    <td>You confirm that your application is free from third-party copyrighted picture, sounds, database or other types of information</td>
+    <td>Used by SK T-Store, more: http://dev.tstore.co.kr/devpoc/iprCenter/iprCenterInfo.omp</td>
   </tr>
 </table>
 
@@ -3134,6 +3214,12 @@ Example:
     <td>Yes</td>
     <td>Agreement</td>
     <td>&lt;slideme-agreement&gt;</td>
+  </tr>
+  <tr>
+    <td>SK T-Store</td>
+    <td>Yes</td>
+    <td>Basic Information / Intellectual property rights</td>
+    <td>&lt;free-from-third-party-copytighted-content&gt;</td>
   </tr>
 </table>
 
@@ -3330,6 +3416,9 @@ Example:
   <slideme>
     <license-type>apache2</license-type>
   </slideme>
+  <tstore>
+    <seller-name>Yandex</seller-name>
+  </tstore>
 </store-specific>
 ```
 
@@ -3763,6 +3852,47 @@ Application Store Support
 <tr>
   <td>License verification support</td>
   <td>Samsung DRM</td>
+</tr>
+</table>
+
+### SK T-Store
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Value</th>
+</tr>
+<tr>
+  <td>Registration URL</td>
+  <td><a href="http://dev.tstore.co.kr/devpoc/main/main.omp">http://dev.tstore.co.kr/devpoc/main/main.omp</a></td>
+</tr>
+<tr>
+  <td>Distribution agreement URL</td>
+  <td>Public link cannot be found</a></td>
+</tr>
+<tr>
+  <td>AppDF ID</td>
+  <td>tstore</td>
+</tr>
+<tr>
+  <td>Registration fee</td>
+  <td>free</td>
+</tr>
+<tr>
+  <td>Content premoderation</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>Client Application</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>In-App Purchase Support</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>License verification support</td>
+  <td>[To be supplied.]</td>
 </tr>
 </table>
 

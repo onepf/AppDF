@@ -394,6 +394,7 @@
       <xsd:element name="google-android-content-guidelines" type="type-attr-yesno" minOccurs="0" />
       <xsd:element name="us-export-laws" type="type-attr-yesno" minOccurs="0" />
       <xsd:element name="slideme-agreement" type="type-attr-yesno" minOccurs="0" />
+      <xsd:element name="free-from-third-party-copytighted-content" type="type-attr-yesno" minOccurs="0" />
     </xsd:sequence>
   </xsd:complexType>
   
