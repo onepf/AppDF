@@ -172,17 +172,19 @@ function l(k, s) {
 }
 output("=======HTML======\n");
 output("<table>");
-output("<th>\n");
-output("  <td>" + "AppDF" + "</td>\n");
-output("  <td>" + "Google Play" + "</td>\n");
-output("  <td>" + "Amazon AppStore" + "</td>\n");
-output("  <td>" + "Opera Mobile Store" + "</td>\n");
-output("  <td>" + "Samsung Apps" + "</td>\n");
-output("  <td>" + "Yandex.Store" + "</td>\n");
-output("</th>\n");
+output("<tr>\n");
+output("  <th>" + "AppDF Code" + "</th>\n");
+output("  <th>" + "AppDF Name" + "</th>\n");
+output("  <th>" + "Google Play" + "</th>\n");
+output("  <th>" + "Amazon AppStore" + "</th>\n");
+output("  <th>" + "Opera Mobile Store" + "</th>\n");
+output("  <th>" + "Samsung Apps" + "</th>\n");
+output("  <th>" + "Yandex.Store" + "</th>\n");
+output("</tr>\n");
 for (k in allLanguages) {
 	if (allLanguages[k]["matched"]) {
 		output("<tr>\n");
+		output("  <td>" + k + "</td>\n");
 		output("  <td>" + l(k, "appdf") + "</td>\n");
 		output("  <td>" + l(k, "google") + "</td>\n");
 		output("  <td>" + l(k, "amazon") + "</td>\n");

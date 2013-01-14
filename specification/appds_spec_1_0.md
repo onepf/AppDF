@@ -5760,9 +5760,9 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   </tr>
 </table>
 
-<table>
-<tr>
-  <th>AppDF</th>
+<table><tr>
+  <th>AppDF Code</th>
+  <th>AppDF Name</th>
   <th>Google Play</th>
   <th>Amazon AppStore</th>
   <th>Opera Mobile Store</th>
@@ -5770,6 +5770,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <th>Yandex.Store</th>
 </tr>
 <tr>
+  <td>af</td>
   <td>Afrikaans</td>
   <td>Afrikaans</td>
   <td></td>
@@ -5778,6 +5779,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>am</td>
   <td>Amharic</td>
   <td>Amharic</td>
   <td></td>
@@ -5786,6 +5788,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>ar</td>
   <td>Arabic</td>
   <td>Arabic</td>
   <td></td>
@@ -5794,6 +5797,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Arabic</td>
 </tr>
 <tr>
+  <td>be</td>
   <td>Belarusian</td>
   <td>Belarusian</td>
   <td></td>
@@ -5802,6 +5806,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>bn</td>
   <td>Bengali</td>
   <td></td>
   <td></td>
@@ -5810,6 +5815,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Bengali</td>
 </tr>
 <tr>
+  <td>bg</td>
   <td>Bulgarian</td>
   <td>Bulgarian</td>
   <td></td>
@@ -5818,6 +5824,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>ca</td>
   <td>Catalan</td>
   <td>Catalan</td>
   <td></td>
@@ -5826,6 +5833,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>zh</td>
   <td>Chinese</td>
   <td></td>
   <td></td>
@@ -5834,6 +5842,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Chinese</td>
 </tr>
 <tr>
+  <td>zh_cn</td>
   <td>Chinese (PRC)</td>
   <td>Chinese (Simplified)</td>
   <td>Chinese (Simplified)</td>
@@ -5842,6 +5851,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>zh_tw</td>
   <td>Chinese (Taiwan)</td>
   <td>Chinese (Traditional)</td>
   <td></td>
@@ -5850,6 +5860,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>hr</td>
   <td>Croatian</td>
   <td>Croatian</td>
   <td></td>
@@ -5858,6 +5869,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>cs</td>
   <td>Czech</td>
   <td>Czech</td>
   <td></td>
@@ -5866,6 +5878,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Czech</td>
 </tr>
 <tr>
+  <td>da</td>
   <td>Danish</td>
   <td>Danish</td>
   <td></td>
@@ -5874,6 +5887,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Danish</td>
 </tr>
 <tr>
+  <td>nl</td>
   <td>Dutch</td>
   <td>Dutch</td>
   <td></td>
@@ -5882,6 +5896,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Dutch</td>
 </tr>
 <tr>
+  <td>en</td>
   <td>English</td>
   <td></td>
   <td></td>
@@ -5890,6 +5905,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>English</td>
 </tr>
 <tr>
+  <td>en_us</td>
   <td>English (US)</td>
   <td>English (United States)</td>
   <td></td>
@@ -5898,6 +5914,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>en_gb</td>
   <td>English (Britain)</td>
   <td>English (United Kingdom)</td>
   <td>English (U.K.)</td>
@@ -5906,6 +5923,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>et</td>
   <td>Estonian</td>
   <td>Estonian</td>
   <td></td>
@@ -5914,6 +5932,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>fo</td>
   <td>Faroese</td>
   <td></td>
   <td></td>
@@ -5922,6 +5941,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Farsi</td>
 </tr>
 <tr>
+  <td>fi</td>
   <td>Finnish</td>
   <td>Finnish</td>
   <td></td>
@@ -5930,6 +5950,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>fr</td>
   <td>French</td>
   <td>French</td>
   <td>French</td>
@@ -5938,6 +5959,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>French</td>
 </tr>
 <tr>
+  <td>de</td>
   <td>German</td>
   <td>German</td>
   <td>German</td>
@@ -5946,6 +5968,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>German</td>
 </tr>
 <tr>
+  <td>el</td>
   <td>Greek</td>
   <td>Greek</td>
   <td></td>
@@ -5954,6 +5977,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Greek</td>
 </tr>
 <tr>
+  <td>he</td>
   <td>Hebrew</td>
   <td>Hebrew</td>
   <td></td>
@@ -5962,6 +5986,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>hi</td>
   <td>Hindi</td>
   <td>Hindi</td>
   <td></td>
@@ -5970,6 +5995,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>hu</td>
   <td>Hungarian</td>
   <td>Hungarian</td>
   <td></td>
@@ -5978,6 +6004,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Hungarian</td>
 </tr>
 <tr>
+  <td>id</td>
   <td>Indonesian</td>
   <td></td>
   <td></td>
@@ -5986,6 +6013,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Indonesia</td>
 </tr>
 <tr>
+  <td>it</td>
   <td>Italian</td>
   <td>Italian</td>
   <td>Italian</td>
@@ -5994,6 +6022,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Italian</td>
 </tr>
 <tr>
+  <td>ja</td>
   <td>Japanese</td>
   <td>Japanese</td>
   <td>Japanese</td>
@@ -6002,6 +6031,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Japanese</td>
 </tr>
 <tr>
+  <td>kk</td>
   <td>Kazakh</td>
   <td></td>
   <td></td>
@@ -6010,6 +6040,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>ko</td>
   <td>Korean</td>
   <td>Korean (South Korea)</td>
   <td></td>
@@ -6018,6 +6049,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Korean</td>
 </tr>
 <tr>
+  <td>lt</td>
   <td>Lithuanian</td>
   <td>Lithuanian</td>
   <td></td>
@@ -6026,6 +6058,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>lv</td>
   <td>Latvian</td>
   <td>Latvian</td>
   <td></td>
@@ -6034,6 +6067,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>ms</td>
   <td>Malay</td>
   <td>Malay</td>
   <td></td>
@@ -6042,6 +6076,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Malay</td>
 </tr>
 <tr>
+  <td>ne</td>
   <td>Nepali</td>
   <td></td>
   <td></td>
@@ -6050,6 +6085,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Nepalese</td>
 </tr>
 <tr>
+  <td>no</td>
   <td>Norwegian</td>
   <td>Norwegian</td>
   <td></td>
@@ -6058,6 +6094,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Norway</td>
 </tr>
 <tr>
+  <td>fa</td>
   <td>Persian</td>
   <td>Persian</td>
   <td></td>
@@ -6066,6 +6103,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>pl</td>
   <td>Polish</td>
   <td>Polish</td>
   <td></td>
@@ -6074,6 +6112,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Polish</td>
 </tr>
 <tr>
+  <td>pt</td>
   <td>Portuguese</td>
   <td></td>
   <td></td>
@@ -6082,6 +6121,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Portuguese</td>
 </tr>
 <tr>
+  <td>pt_br</td>
   <td>Portuguese (Brazil)</td>
   <td>Portuguese (Brazil)</td>
   <td></td>
@@ -6090,6 +6130,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>pt_pt</td>
   <td>Portuguese (Portugal)</td>
   <td>Portuguese (Portugal)</td>
   <td></td>
@@ -6098,6 +6139,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>rm</td>
   <td>Romansh</td>
   <td>Romansh</td>
   <td></td>
@@ -6106,6 +6148,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>ro</td>
   <td>Romanian</td>
   <td>Romanian</td>
   <td></td>
@@ -6114,6 +6157,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Romanian</td>
 </tr>
 <tr>
+  <td>ru</td>
   <td>Russian</td>
   <td>Russian</td>
   <td></td>
@@ -6122,6 +6166,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Russian</td>
 </tr>
 <tr>
+  <td>sr</td>
   <td>Serbian</td>
   <td>Serbian</td>
   <td></td>
@@ -6130,6 +6175,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>gd</td>
   <td>Gaelic</td>
   <td></td>
   <td></td>
@@ -6138,6 +6184,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>sk</td>
   <td>Slovak</td>
   <td>Slovak</td>
   <td></td>
@@ -6146,6 +6193,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Slovak</td>
 </tr>
 <tr>
+  <td>sl</td>
   <td>Slovene</td>
   <td>Slovenian</td>
   <td></td>
@@ -6154,6 +6202,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>es</td>
   <td>Spanish</td>
   <td></td>
   <td>Spanish</td>
@@ -6162,6 +6211,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Spanish</td>
 </tr>
 <tr>
+  <td>es_es</td>
   <td>Spanish (Spain)</td>
   <td>Spanish (Spain)</td>
   <td></td>
@@ -6170,6 +6220,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>es_us</td>
   <td>Spanish (US)</td>
   <td>Spanish (United States)</td>
   <td></td>
@@ -6178,6 +6229,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>es_la</td>
   <td>Spanish (Latin America)</td>
   <td>Spanish (Latin America)</td>
   <td></td>
@@ -6186,6 +6238,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>sw</td>
   <td>Swahili</td>
   <td>Swahili</td>
   <td></td>
@@ -6194,6 +6247,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>sv</td>
   <td>Swedish</td>
   <td>Swedish</td>
   <td></td>
@@ -6202,6 +6256,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Swedish</td>
 </tr>
 <tr>
+  <td>th</td>
   <td>Thai</td>
   <td>Thai</td>
   <td></td>
@@ -6210,6 +6265,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Thai</td>
 </tr>
 <tr>
+  <td>tl</td>
   <td>Tagalog</td>
   <td>Filipino</td>
   <td></td>
@@ -6218,6 +6274,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Tagalog</td>
 </tr>
 <tr>
+  <td>tr</td>
   <td>Turkish</td>
   <td>Turkish</td>
   <td></td>
@@ -6226,6 +6283,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Turkish</td>
 </tr>
 <tr>
+  <td>uk</td>
   <td>Ukrainian</td>
   <td>Ukrainian</td>
   <td></td>
@@ -6234,6 +6292,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td></td>
 </tr>
 <tr>
+  <td>vi</td>
   <td>Vietnamese</td>
   <td>Vietnamese</td>
   <td></td>
@@ -6242,6 +6301,7 @@ AppDF supports localization to all the languages. Nevertheless not all languages
   <td>Vietnamese</td>
 </tr>
 <tr>
+  <td>zu</td>
   <td>Zulu</td>
   <td>Zulu</td>
   <td></td>
