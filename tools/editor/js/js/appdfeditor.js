@@ -286,7 +286,7 @@ function fillLanguages(element) {
 			<label class="control-label"  for="description-texts-title-more">Longer title</label> \
 			<div class="controls"> \
 				<div class="input-append"> \
-					<input type="text" id="description-texts-title-more"> \
+					<input type="text" id="description-texts-title-more" class="input-xxlarge"> \
 					<button class="btn" type="button" onclick="removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
 				</div> \
 				<p class="help-block">Enter longer title and it will be used by those stores that support longer titles.</p> \
@@ -304,7 +304,7 @@ function addMoreShortDescriptions(e) {
 			<label class="control-label"  for="description-texts-shortdescription-more">Longer short description</label> \
 			<div class="controls"> \
 				<div class="input-append"> \
-					<input type="text" id="description-texts-shortdescription-more"> \
+					<input type="text" id="description-texts-shortdescription-more" class="input-xxlarge"> \
 					<button class="btn" type="button" onclick="removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
 				</div> \
 				<p class="help-block">Enter longer short description and it will be used by those stores that support longer short descriptions.</p> \
@@ -317,12 +317,12 @@ function addMoreShortDescriptions(e) {
 function addMoreKeywords(e) {
 	var parent = $(e).closest(".input-append");
 	var strHtml = ' \
-		<p class="additional-input"> \
-			<div class="input-append"> \
+		<div class="keyword-countainer"> \
+				<div class="input-append"> \
 				<input type="text" id="description-texts-keywords-more"> \
 				<button class="btn" type="button" onclick="removeKeyword(this); return false;"><i class="icon-remove"></i></button> \
 			</div> \
-		</p> \
+		</div> \
 	';
  	parent.after($(strHtml));
  }
@@ -332,7 +332,7 @@ function removeControlGroup(e) {
 }
 
 function removeKeyword(e) {
-	$(e).closest(".additional-input").remove()
+	$(e).closest(".keyword-countainer").remove();
 }
 
 
