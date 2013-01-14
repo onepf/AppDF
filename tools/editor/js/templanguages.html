@@ -192,16 +192,10 @@ for (k in allLanguages) {
 		output("</tr>\n");
 	}
 };
+output("</table>");
 for (k in allLanguages) {
 	if (!allLanguages[k]["matched"]) {
-		output("<tr>\n");
-		output("  <td>" + l(k, "appdf") + "</td>\n");
-		output("  <td>" + l(k, "google") + "</td>\n");
-		output("  <td>" + l(k, "amazon") + "</td>\n");
-		output("  <td>" + l(k, "opera") + "</td>\n");
-		output("  <td>" + l(k, "samsung") + "</td>\n");
-		output("  <td>" + l(k, "yandex") + "</td>\n");
-		output("</tr>\n");
+		output("* " + l(k, "appdf") + "\n");
 	}
 };
 
