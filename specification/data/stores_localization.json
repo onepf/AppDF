@@ -1,0 +1,276 @@
+{
+  "af" : {
+    "google" : "Afrikaans"
+  },
+  "am" : {
+    "google" : "Amharic"
+  },
+  "ar" : {
+    "google" : "Arabic",
+    "opera" : "ARABIC",
+    "samsung" : "Arabic",
+    "yandex" : "Arabic"
+  },
+  "be" : {
+    "google" : "Belarusian"
+  },
+  "bn" : {
+    "opera" : "BENGALI",
+    "yandex" : "Bengali"
+  },
+  "bg" : {
+    "google" : "Bulgarian",
+    "samsung" : "Bulgarian"
+  },
+  "ca" : {
+    "google" : "Catalan"
+  },
+  "zh" : {
+    "opera" : "CHINESE",
+    "yandex" : "Chinese"
+  },
+  "zh_cn" : {
+    "google" : "Chinese (Simplified)",
+    "amazon" : "Chinese (Simplified)",
+    "samsung" : "Simplified Chinese"
+  },
+  "zh_tw" : {
+    "google" : "Chinese (Traditional)",
+    "samsung" : "Traditional Chinese"
+  },
+  "hr" : {
+    "google" : "Croatian",
+    "samsung" : "Croatian"
+  },
+  "cs" : {
+    "google" : "Czech",
+    "opera" : "CZECH",
+    "samsung" : "Czech",
+    "yandex" : "Czech"
+  },
+  "da" : {
+    "google" : "Danish",
+    "opera" : "DANISH",
+    "samsung" : "Danish",
+    "yandex" : "Danish"
+  },
+  "nl" : {
+    "google" : "Dutch",
+    "opera" : "DUTCH",
+    "samsung" : "Dutch",
+    "yandex" : "Dutch"
+  },
+  "en" : {
+    "opera" : "ENGLISH",
+    "yandex" : "English"
+  },
+  "en_us" : {
+    "google" : "English (United States)"
+  },
+  "en_gb" : {
+    "google" : "English (United Kingdom)",
+    "amazon" : "English (U.K.)"
+  },
+  "et" : {
+    "google" : "Estonian",
+    "samsung" : "Estonian"
+  },
+  "fo" : {
+    "opera" : "FARSI",
+    "yandex" : "Farsi"
+  },
+  "fi" : {
+    "google" : "Finnish",
+    "samsung" : "Finnish"
+  },
+  "fr" : {
+    "google" : "French",
+    "amazon" : "French",
+    "opera" : "FRENCH",
+    "samsung" : "French",
+    "yandex" : "French"
+  },
+  "de" : {
+    "google" : "German",
+    "amazon" : "German",
+    "opera" : "GERMAN",
+    "samsung" : "German",
+    "yandex" : "German"
+  },
+  "el" : {
+    "google" : "Greek",
+    "opera" : "GREEK",
+    "samsung" : "Greek",
+    "yandex" : "Greek"
+  },
+  "he" : {
+    "google" : "Hebrew",
+    "samsung" : "Hebrew"
+  },
+  "hi" : {
+    "google" : "Hindi"
+  },
+  "hu" : {
+    "google" : "Hungarian",
+    "opera" : "HUNGARIAN",
+    "samsung" : "Hungarian",
+    "yandex" : "Hungarian"
+  },
+  "id" : {
+    "opera" : "INDONESIA",
+    "samsung" : "Indonesian",
+    "yandex" : "Indonesia"
+  },
+  "it" : {
+    "google" : "Italian",
+    "amazon" : "Italian",
+    "opera" : "ITALIAN",
+    "samsung" : "Italian",
+    "yandex" : "Italian"
+  },
+  "ja" : {
+    "google" : "Japanese",
+    "amazon" : "Japanese",
+    "opera" : "JAPANESE",
+    "samsung" : "Japanese",
+    "yandex" : "Japanese"
+  },
+  "kk" : {
+    "samsung" : "Kazakh"
+  },
+  "ko" : {
+    "google" : "Korean (South Korea)",
+    "opera" : "KOREAN",
+    "samsung" : "Korean",
+    "yandex" : "Korean"
+  },
+  "lt" : {
+    "google" : "Lithuanian",
+    "samsung" : "Lithuanian"
+  },
+  "lv" : {
+    "google" : "Latvian",
+    "samsung" : "Latvian"
+  },
+  "ms" : {
+    "google" : "Malay",
+    "opera" : "MALAY",
+    "yandex" : "Malay"
+  },
+  "ne" : {
+    "opera" : "NEPALESE",
+    "yandex" : "Nepalese"
+  },
+  "no" : {
+    "google" : "Norwegian",
+    "opera" : "NORWAY",
+    "samsung" : "Norwegian",
+    "yandex" : "Norway"
+  },
+  "fa" : {
+    "google" : "Persian",
+    "samsung" : "Persian"
+  },
+  "pl" : {
+    "google" : "Polish",
+    "opera" : "POLISH",
+    "samsung" : "Polish",
+    "yandex" : "Polish"
+  },
+  "pt" : {
+    "opera" : "PORTUGUESE",
+    "samsung" : "Portuguese",
+    "yandex" : "Portuguese"
+  },
+  "pt_br" : {
+    "google" : "Portuguese (Brazil)"
+  },
+  "pt_pt" : {
+    "google" : "Portuguese (Portugal)"
+  },
+  "rm" : {
+    "google" : "Romansh"
+  },
+  "ro" : {
+    "google" : "Romanian",
+    "opera" : "ROMANIAN",
+    "samsung" : "Romanian",
+    "yandex" : "Romanian"
+  },
+  "ru" : {
+    "google" : "Russian",
+    "opera" : "RUSSIAN",
+    "samsung" : "Russian",
+    "yandex" : "Russian"
+  },
+  "sr" : {
+    "google" : "Serbian",
+    "samsung" : "Serbian"
+  },
+  "gd" : {
+    "samsung" : "Gaelic"
+  },
+  "sk" : {
+    "google" : "Slovak",
+    "opera" : "SLOVAK",
+    "samsung" : "Slovak",
+    "yandex" : "Slovak"
+  },
+  "sl" : {
+    "google" : "Slovenian"
+  },
+  "es" : {
+    "amazon" : "Spanish",
+    "opera" : "SPANISH",
+    "samsung" : "Spanish",
+    "yandex" : "Spanish"
+  },
+  "es_es" : {
+    "google" : "Spanish (Spain)"
+  },
+  "es_us" : {
+    "google" : "Spanish (United States)"
+  },
+  "es_la" : {
+    "google" : "Spanish (Latin America)"
+  },
+  "sw" : {
+    "google" : "Swahili"
+  },
+  "sv" : {
+    "google" : "Swedish",
+    "opera" : "SWEDISH",
+    "samsung" : "Swedish",
+    "yandex" : "Swedish"
+  },
+  "th" : {
+    "google" : "Thai",
+    "opera" : "THAI",
+    "samsung" : "Thai",
+    "yandex" : "Thai"
+  },
+  "tl" : {
+    "google" : "Filipino",
+    "opera" : "TAGALOG",
+    "yandex" : "Tagalog"
+  },
+  "tr" : {
+    "google" : "Turkish",
+    "opera" : "TURKISH",
+    "samsung" : "Turkish",
+    "yandex" : "Turkish"
+  },
+  "uk" : {
+    "google" : "Ukrainian",
+    "samsung" : "Ukrainian"
+  },
+  "vi" : {
+    "google" : "Vietnamese",
+    "opera" : "VIETNAMESE",
+    "samsung" : "Vietnamese",
+    "yandex" : "Vietnamese"
+  },
+  "zu" : {
+    "google" : "Zulu"
+  }
+}
