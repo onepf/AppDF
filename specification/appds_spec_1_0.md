@@ -3918,7 +3918,7 @@ Category List
 -------------
 AppDF provides universal category list that could be matched to any appstore category list. When we chose categories for the AppDF we tried to create the most detailed list to archive unambiguous mapping for any appstore.
 
-The AppDF category list is available as [JSON](data/categories.json) or [XML](data/categories.xml). You can also download a proposal mapping of the AppDF category list to some application stores as [JSON](data/stores_categories.json) or [XML](data/stores_categories.xml).
+The AppDF category list is available as [JSON](data/categories.json) or [XML](data/categories.xml). You can also download a proposal mapping of the AppDF category list to some application stores as [JSON](data/store_categories.json) or [XML](data/store_categories.xml).
 
 ### Application Categories
 

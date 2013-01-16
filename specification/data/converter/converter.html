@@ -6,6 +6,16 @@
 <body>
 	<h1>AppDF Data Converter (from JSON)</h1>
 	<p>It is a technical page that converts JSON data (original format) to HTML and XML</p>
+	<p>
+		The following files in the data folder are originals:
+		<ul>
+			<li>languages.json</li>
+			<li>stores.json</li>
+			<li>stores_localization.json</li>
+			<li>store_categories.json</li>
+		</ul>
+		other are generated.
+	</p>
 	<h2>All Languages XML</h2>
 	<textarea rows="5" cols="60" id="textarea-all-anguages-xml"></textarea>
 	<h2>Store Localizations XML</h2>
@@ -14,6 +24,8 @@
 	<textarea rows="5" cols="60" id="store-localizations-html"></textarea>
 	<h2>Categories XML</h2>
 	<textarea rows="5" cols="60" id="categories-xml"></textarea>
+	<h2>Categories JSON</h2>
+	<textarea rows="5" cols="60" id="categories-json"></textarea>
 	<h2>Stores Categories XML</h2>
 	<textarea rows="5" cols="60" id="stores-categories-xml"></textarea>
 <script>
@@ -28,7 +40,7 @@ $.getJSON("../languages.json", function(data_languages) {
 		stores = data_stores;
 		$.getJSON("../stores_localization.json", function(data_storeLocalization) {
 			storeLocalization = data_storeLocalization;
-			$.getJSON("../stores_categories.json", function(data_stirecategories) {
+			$.getJSON("../store_categories.json", function(data_stirecategories) {
 				storeCategories = data_stirecategories;
 
 				//When everything is loaded populate all <textarea> elements
@@ -36,6 +48,7 @@ $.getJSON("../languages.json", function(data_languages) {
 				document.getElementById("store-localizations-xml").innerHTML = generateStoreLocalizationXML();
 				document.getElementById("store-localizations-html").innerHTML = generateStoreLocalizationHTML();
 				document.getElementById("categories-xml").innerHTML = generateCategoriesXML();
+				document.getElementById("categories-json").innerHTML = generateCategoriesJSON();
 				document.getElementById("stores-categories-xml").innerHTML = generateStoresCategoriesXML();
 			})
 		})
@@ -67,40 +80,72 @@ function generateStoreLocalizationXML() {
 
 function generateCategoriesXML() {
 	var s = "<categories>\n"
-	for (firstCategory in storeCategories) {
-		var anyNonEmptySubcategory = false;
-		for (secondCategory in storeCategories[firstCategory]) {
-			if (secondCategory!="") {
-				anyNonEmptySubcategory = true;
-			} 
-		}
-
-		if (anyNonEmptySubcategory) {
-			s += "  <category code=\"" + firstCategory + "\">\n";
-			for (secondCategory in storeCategories[firstCategory]) {
-				s += "    <subcategory code=\"" + secondCategory + "\"/>\n";
+	for (t in storeCategories) {
+		s += "  <type code=\"" + t + "\">\n";
+		for (firstCategory in storeCategories[t]) {
+			var anyNonEmptySubcategory = false;
+			for (secondCategory in storeCategories[t][firstCategory]) {
+				if (secondCategory!="") {
+					anyNonEmptySubcategory = true;
+				} 
 			}
-			s += "  </category>\n";
-		} else {
-			s += "  <category code=\"" + firstCategory + "\"/>\n";			
+
+			if (anyNonEmptySubcategory) {
+				s += "    <category code=\"" + firstCategory + "\">\n";
+				for (secondCategory in storeCategories[t][firstCategory]) {
+					s += "      <subcategory code=\"" + secondCategory + "\"/>\n";
+				}
+				s += "    </category>\n";
+			} else {
+				s += "    <category code=\"" + firstCategory + "\"/>\n";			
+			}
 		}
+		s += "  </type>\n";
 	}
 	s += "</categories>";
 	return s;
 } 
 
+function generateCategoriesJSON() {
+	var s = "{\n"
+	for (t in storeCategories) {
+		s += "  \"" + t + "\" : {\n";
+		for (firstCategory in storeCategories[t]) {
+			s += "    \"" + firstCategory + "\" : [";
+			var first = true;
+			for (secondCategory in storeCategories[t][firstCategory]) {
+				if (first) {
+					first = false;
+					s += "\n";
+				} else {
+					s += ",\n";					
+				}
+				s += "      \"" + secondCategory + "\"";
+			}
+			s += "\n    ],\n";
+		}
+		s += "  },\n";
+	}
+	s += "}";
+	return s;
+} 
+
 function generateStoresCategoriesXML() {
 	var s = "<categories>\n"
-	for (firstCategory in storeCategories) {
-		s += "  <category code=\"" + firstCategory + "\">\n";
-		for (secondCategory in storeCategories[firstCategory]) {
-			s += "    <subcategory code=\"" + secondCategory + "\">\n";
-			for (store in storeCategories[firstCategory][secondCategory]) {
-				s += "      <store id=\"" + store + "\">" + storeCategories[firstCategory][secondCategory][store] + "</store>\n";
+	for (t in storeCategories) {
+		s += "  <type code=\"" + t + "\">\n";
+		for (firstCategory in storeCategories[t]) {
+			s += "    <category code=\"" + firstCategory + "\">\n";
+			for (secondCategory in storeCategories[t][firstCategory]) {
+				s += "      <subcategory code=\"" + secondCategory + "\">\n";
+				for (store in storeCategories[t][firstCategory][secondCategory]) {
+					s += "        <store id=\"" + store + "\">" + storeCategories[t][firstCategory][secondCategory][store] + "</store>\n";
+				}
+				s += "      </subcategory>\n";
 			}
-			s += "    </subcategory>\n";
+			s += "    </category>\n";
 		}
-		s += "  </category>\n";
+		s += "  </type>\n";
 	}
 	s += "</categories>";
 	return s;
