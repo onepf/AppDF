@@ -482,7 +482,7 @@ Required. No attributes. Value could be either `application` or `game`.
 
 #### categorization/category
 
-Required. No attributes. AppDF format has its own list of categories for both games and applications. This category list is developed to be easily mapped to any of the application store category lists.
+Required. No attributes. AppDF format has its own list of categories for both games and applications. This [category list](#category-list) is developed to be easily mapped to any of the application store category lists.
 
 <table>
   <tr>
@@ -528,7 +528,7 @@ Required. No attributes. AppDF format has its own list of categories for both ga
 Optional. 
 No attributes. 
 
-Although some stores don't use subcategories AppDF includes as detailed category information as possible. It is always easy to broaden detailed AppDF category+subcategory information to a less detailed particular store category list.
+Although some stores don't use subcategories AppDF includes as detailed category information as possible. It is always easy to broaden detailed AppDF category+subcategory information to a less detailed particular store category list. More information in the [category list](#category-list) section.
 
 <table>
   <tr>
@@ -3917,6 +3917,8 @@ Application Store Support
 Category List
 -------------
 AppDF provides universal category list that could be matched to any appstore category list. When we chose categories for the AppDF we tried to create the most detailed list to archive unambiguous mapping for any appstore.
+
+The AppDF category list is available as [JSON](data/categories.json) or [XML](data/categories.xml). You can also download a proposal mapping of the AppDF category list to some application stores as [JSON](data/stores_categories.json) or [XML](data/stores_categories.xml).
 
 ### Application Categories
 
