@@ -358,6 +358,8 @@ Sample Description.xml File
 Description.xml Structure
 -------------
 
+[XML Schema (XSD)](Formal appdf-description.xsd description) of Description.xml file structure.
+
 List of Tags:
 * [categorization](#categorization)
 	* [type](#categorizationtype)
@@ -6479,14 +6481,14 @@ The following languages are currently not support by any of the stores:
 
 Status
 -------------
-Specification version: 0.93
-Current status: draft
-Last update: January 16, 2013
+Current status: draft  
+Specification version: 0.93  
+Last update: January 16, 2013  
 
 License
 -------------
-This file is licensed under the Creative Commons Attribution 2.5 license:
+This file is licensed under the Creative Commons Attribution 2.5 license:  
 http://creativecommons.org/licenses/by/2.5/
 
-Source code is licensed under Apache License, Version 2.0:
+Source code is licensed under Apache License, Version 2.0:  
 http://www.apache.org/licenses/LICENSE-2.0.html
