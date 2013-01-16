@@ -1,3 +1,18 @@
+Summary
+-------------
+
+Uploading Android application to several appstores could be time consuming. AppDF format is designed to simplify this process. A developer describes an Android application once by creating a simple AppDF archive that includes the XML description, APK file(s), screenshots, app icon, promo images, etc and just upload this AppDF file to all the stores that support AppDF uploading.
+
+Table of Contents:
+* [AppDF File Structure](#appdf-file-structure)
+* [Sample Description.xml File](#sample-descriptionxml-file)
+* [Description.xml Structure](#descriptionxml-structure)
+* [Application Store Support](#application-store-support)
+* [Category List](#category-list)
+* [Localization Support](#localization-support)
+* [Status](#status)
+* [License](#license)
+
 AppDF File Structure
 -------------
 
@@ -343,7 +358,7 @@ Sample Description.xml File
 Description.xml Structure
 -------------
 
-Table of Contents:
+List of Tags:
 * [categorization](#categorization)
 	* [type](#categorizationtype)
 	* [category](#categorizationcategory)
@@ -3897,8 +3912,6 @@ Application Store Support
 </table>
 
 
-### Application Categories
-
 Category List
 -------------
 AppDF provides universal category list that could be matched to any appstore category list. When we chose categories for the AppDF we tried to create the most detailed list to archive unambiguous mapping for any appstore.
@@ -6464,7 +6477,16 @@ The following languages are currently not support by any of the stores:
 * Yoruba
 * Zhuang
 
+Status
+-------------
+Specification version: 0.93
+Current status: draft
+Last update: January 16, 2013
+
 License
 -------------
 This file is licensed under the Creative Commons Attribution 2.5 license:
 http://creativecommons.org/licenses/by/2.5/
+
+Source code is licensed under Apache License, Version 2.0:
+http://www.apache.org/licenses/LICENSE-2.0.html
