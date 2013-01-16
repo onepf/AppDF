@@ -358,7 +358,7 @@ Sample Description.xml File
 Description.xml Structure
 -------------
 
-[XML Schema (XSD)](Formal appdf-description.xsd description) of Description.xml file structure.
+[Formal  XML Schema (XSD) description](appdf-description.xsd) of Description.xml file structure.
 
 List of Tags:
 * [categorization](#categorization)
