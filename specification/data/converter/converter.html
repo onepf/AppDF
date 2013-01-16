@@ -12,526 +12,36 @@
 	<textarea rows="5" cols="60" id="store-localizations-xml"></textarea>
 	<h2>Store Localizations HTML (for the specification)</h2>
 	<textarea rows="5" cols="60" id="store-localizations-html"></textarea>
+	<h2>Categories XML</h2>
+	<textarea rows="5" cols="60" id="categories-xml"></textarea>
+	<h2>Stores Categories XML</h2>
+	<textarea rows="5" cols="60" id="stores-categories-xml"></textarea>
 <script>
-function loadLanguagesHash() {
-	//Todo: replace with languages.json loading
-	return {
-		  "ab" : "Abkhaz",
-		  "aa" : "Afar",
-		  "af" : "Afrikaans",
-		  "ak" : "Akan",
-		  "sq" : "Albanian",
-		  "am" : "Amharic",
-		  "ar" : "Arabic",
-		  "ar_eg" : "Arabic (Egypt)",
-		  "ar_il" : "Arabic (Israel)",
-		  "an" : "Aragonese",
-		  "hy" : "Armenian",
-		  "as" : "Assamese",
-		  "av" : "Avaric",
-		  "ae" : "Avestan",
-		  "ay" : "Aymara",
-		  "az" : "Azerbaijani",
-		  "bm" : "Bambara",
-		  "ba" : "Bashkir",
-		  "eu" : "Basque",
-		  "be" : "Belarusian",
-		  "bn" : "Bengali",
-		  "bh" : "Bihari",
-		  "bi" : "Bislama",
-		  "bs" : "Bosnian",
-		  "br" : "Breton",
-		  "bg" : "Bulgarian",
-		  "my" : "Burmese",
-		  "ca" : "Catalan",
-		  "ch" : "Chamorro",
-		  "ce" : "Chechen",
-		  "ny" : "Chichewa",
-		  "zh" : "Chinese",
-		  "zh_cn" : "Chinese (PRC)",
-		  "zh_tw" : "Chinese (Taiwan)",
-		  "cv" : "Chuvash",
-		  "kw" : "Cornish",
-		  "co" : "Corsican",
-		  "cr" : "Cree",
-		  "hr" : "Croatian",
-		  "cs" : "Czech",
-		  "da" : "Danish",
-		  "dv" : "Divehi",
-		  "nl" : "Dutch",
-		  "nl_be" : "Dutch (Belgium)",
-		  "nl_nl" : "Dutch (Netherlands)",
-		  "dz" : "Dzongkha",
-		  "en" : "English",
-		  "en_us" : "English (US)",
-		  "en_au" : "English (Australia)",
-		  "en_gb" : "English (Britain)",
-		  "en_cz" : "English (Canada)",
-		  "en_nz" : "English (New Zealand)",
-		  "en_sg" : "English (Singapore)",
-		  "en_cd" : "English (Canada)",
-		  "eo" : "Esperanto",
-		  "et" : "Estonian",
-		  "ee" : "Ewe",
-		  "fo" : "Faroese",
-		  "fj" : "Fijian",
-		  "fi" : "Finnish",
-		  "fr" : "French",
-		  "fr_be" : "French (Belgium)",
-		  "fr_ca" : "French (Canada)",
-		  "fr_fr" : "French (France)",
-		  "fr_ch" : "French (Switzerland)",
-		  "ff" : "Fula",
-		  "gl" : "Galician",
-		  "ka" : "Georgian",
-		  "de" : "German",
-		  "de_at" : "German (Austria)",
-		  "de_de" : "German (Germany)",
-		  "de_li" : "German (Liechtenstein)",
-		  "de_ch" : "German (Switzerland)",
-		  "el" : "Greek",
-		  "gn" : "GuaranГ­",
-		  "gu" : "Gujarati",
-		  "ht" : "Haitian",
-		  "ha" : "Hausa",
-		  "he" : "Hebrew",
-		  "hz" : "Herero",
-		  "hi" : "Hindi",
-		  "ho" : "Hiri Motu",
-		  "hu" : "Hungarian",
-		  "ia" : "Interlingua",
-		  "id" : "Indonesian",
-		  "ie" : "Interlingue",
-		  "ga" : "Irish",
-		  "ig" : "Igbo",
-		  "ik" : "Inupiaq",
-		  "io" : "Ido",
-		  "is" : "Icelandic",
-		  "it" : "Italian",
-		  "it_it" : "Italian (Italy)",
-		  "it_ch" : "Italian (Switzerland)",
-		  "iu" : "Inuktitut",
-		  "ja" : "Japanese",
-		  "jv" : "Javanese",
-		  "kl" : "Kalaallisut",
-		  "kn" : "Kannada",
-		  "kr" : "Kanuri",
-		  "ks" : "Kashmiri",
-		  "kk" : "Kazakh",
-		  "km" : "Khmer",
-		  "ki" : "Kikuyu",
-		  "rw" : "Kinyarwanda",
-		  "ky" : "Kyrgyz",
-		  "kv" : "Komi",
-		  "kg" : "Kongo",
-		  "ko" : "Korean",
-		  "ku" : "Kurdish",
-		  "kj" : "Kwanyama",
-		  "la" : "Latin",
-		  "lb" : "Luxembourgish",
-		  "lg" : "Ganda",
-		  "li" : "Limburgish",
-		  "ln" : "Lingala",
-		  "lo" : "Lao",
-		  "lt" : "Lithuanian",
-		  "lu" : "Luba-Katanga",
-		  "lv" : "Latvian",
-		  "gv" : "Manx",
-		  "mk" : "Macedonian",
-		  "mg" : "Malagasy",
-		  "ms" : "Malay",
-		  "ml" : "Malayalam",
-		  "mt" : "Maltese",
-		  "mi" : "Maori",
-		  "mr" : "Marathi",
-		  "mh" : "Marshallese",
-		  "mn" : "Mongolian",
-		  "na" : "Nauru",
-		  "nv" : "Navajo",
-		  "nb" : "Norwegian BokmГҐl",
-		  "nd" : "North Ndebele",
-		  "ne" : "Nepali",
-		  "ng" : "Ndonga",
-		  "nn" : "Norwegian Nynorsk",
-		  "no" : "Norwegian",
-		  "ii" : "Nuosu",
-		  "nr" : "South Ndebele",
-		  "oc" : "Occitan",
-		  "oj" : "Ojibwe",
-		  "om" : "Oromo",
-		  "or" : "Oriya",
-		  "os" : "Ossetian",
-		  "pa" : "Panjabi",
-		  "pi" : "PДЃli",
-		  "fa" : "Persian",
-		  "pl" : "Polish",
-		  "ps" : "Pashto",
-		  "pt" : "Portuguese",
-		  "pt_br" : "Portuguese (Brazil)",
-		  "pt_pt" : "Portuguese (Portugal)",
-		  "qu" : "Quechua",
-		  "rm" : "Romansh",
-		  "rn" : "Kirundi",
-		  "ro" : "Romanian",
-		  "ru" : "Russian",
-		  "sa" : "Sanskrit",
-		  "sc" : "Sardinian",
-		  "sd" : "Sindhi",
-		  "se" : "Northern Sami",
-		  "sm" : "Samoan",
-		  "sg" : "Sango",
-		  "sr" : "Serbian",
-		  "gd" : "Gaelic",
-		  "sn" : "Shona",
-		  "si" : "Sinhala",
-		  "sk" : "Slovak",
-		  "sl" : "Slovene",
-		  "so" : "Somali",
-		  "st" : "Southern Sotho",
-		  "es" : "Spanish",
-		  "es_es" : "Spanish (Spain)",
-		  "es_us" : "Spanish (US)",
-		  "es_la" : "Spanish (Latin America)",
-		  "su" : "Sundanese",
-		  "sw" : "Swahili",
-		  "ss" : "Swati",
-		  "sv" : "Swedish",
-		  "ta" : "Tamil",
-		  "te" : "Telugu",
-		  "tg" : "Tajik",
-		  "th" : "Thai",
-		  "ti" : "Tigrinya",
-		  "bo" : "Tibetan Standard",
-		  "tk" : "Turkmen",
-		  "tl" : "Tagalog",
-		  "tn" : "Tswana",
-		  "to" : "Tonga",
-		  "tr" : "Turkish",
-		  "ts" : "Tsonga",
-		  "tt" : "Tatar",
-		  "tw" : "Twi",
-		  "ty" : "Tahitian",
-		  "ug" : "Uighur",
-		  "uk" : "Ukrainian",
-		  "ur" : "Urdu",
-		  "uz" : "Uzbek",
-		  "ve" : "Venda",
-		  "vi" : "Vietnamese",
-		  "vo" : "VolapГјk",
-		  "wa" : "Walloon",
-		  "cy" : "Welsh",
-		  "wo" : "Wolof",
-		  "fy" : "Western Frisian",
-		  "xh" : "Xhosa",
-		  "yi" : "Yiddish",
-		  "yo" : "Yoruba",
-		  "za" : "Zhuang",
-		  "zu" : "Zulu"
-		};
-}
+var languages = {};
+var storeLocalization = {};
+var stores = {};
+var storeCategories = {};
 
-function loadStoreLocalizationHash() {
-	//Todo: replace with store_localization.json loading
-	return {
-	  "af" : {
-	    "google" : "Afrikaans"
-	  },
-	  "am" : {
-	    "google" : "Amharic"
-	  },
-	  "ar" : {
-	    "google" : "Arabic",
-	    "opera" : "ARABIC",
-	    "samsung" : "Arabic",
-	    "yandex" : "Arabic"
-	  },
-	  "be" : {
-	    "google" : "Belarusian"
-	  },
-	  "bn" : {
-	    "opera" : "BENGALI",
-	    "yandex" : "Bengali"
-	  },
-	  "bg" : {
-	    "google" : "Bulgarian",
-	    "samsung" : "Bulgarian"
-	  },
-	  "ca" : {
-	    "google" : "Catalan"
-	  },
-	  "zh" : {
-	    "opera" : "CHINESE",
-	    "yandex" : "Chinese"
-	  },
-	  "zh_cn" : {
-	    "google" : "Chinese (Simplified)",
-	    "amazon" : "Chinese (Simplified)",
-	    "samsung" : "Simplified Chinese"
-	  },
-	  "zh_tw" : {
-	    "google" : "Chinese (Traditional)",
-	    "samsung" : "Traditional Chinese"
-	  },
-	  "hr" : {
-	    "google" : "Croatian",
-	    "samsung" : "Croatian"
-	  },
-	  "cs" : {
-	    "google" : "Czech",
-	    "opera" : "CZECH",
-	    "samsung" : "Czech",
-	    "yandex" : "Czech"
-	  },
-	  "da" : {
-	    "google" : "Danish",
-	    "opera" : "DANISH",
-	    "samsung" : "Danish",
-	    "yandex" : "Danish"
-	  },
-	  "nl" : {
-	    "google" : "Dutch",
-	    "opera" : "DUTCH",
-	    "samsung" : "Dutch",
-	    "yandex" : "Dutch"
-	  },
-	  "en" : {
-	    "opera" : "ENGLISH",
-	    "yandex" : "English"
-	  },
-	  "en_us" : {
-	    "google" : "English (United States)"
-	  },
-	  "en_gb" : {
-	    "google" : "English (United Kingdom)",
-	    "amazon" : "English (U.K.)"
-	  },
-	  "et" : {
-	    "google" : "Estonian",
-	    "samsung" : "Estonian"
-	  },
-	  "fo" : {
-	    "opera" : "FARSI",
-	    "yandex" : "Farsi"
-	  },
-	  "fi" : {
-	    "google" : "Finnish",
-	    "samsung" : "Finnish"
-	  },
-	  "fr" : {
-	    "google" : "French",
-	    "amazon" : "French",
-	    "opera" : "FRENCH",
-	    "samsung" : "French",
-	    "yandex" : "French"
-	  },
-	  "de" : {
-	    "google" : "German",
-	    "amazon" : "German",
-	    "opera" : "GERMAN",
-	    "samsung" : "German",
-	    "yandex" : "German"
-	  },
-	  "el" : {
-	    "google" : "Greek",
-	    "opera" : "GREEK",
-	    "samsung" : "Greek",
-	    "yandex" : "Greek"
-	  },
-	  "he" : {
-	    "google" : "Hebrew",
-	    "samsung" : "Hebrew"
-	  },
-	  "hi" : {
-	    "google" : "Hindi"
-	  },
-	  "hu" : {
-	    "google" : "Hungarian",
-	    "opera" : "HUNGARIAN",
-	    "samsung" : "Hungarian",
-	    "yandex" : "Hungarian"
-	  },
-	  "id" : {
-	    "opera" : "INDONESIA",
-	    "samsung" : "Indonesian",
-	    "yandex" : "Indonesia"
-	  },
-	  "it" : {
-	    "google" : "Italian",
-	    "amazon" : "Italian",
-	    "opera" : "ITALIAN",
-	    "samsung" : "Italian",
-	    "yandex" : "Italian"
-	  },
-	  "ja" : {
-	    "google" : "Japanese",
-	    "amazon" : "Japanese",
-	    "opera" : "JAPANESE",
-	    "samsung" : "Japanese",
-	    "yandex" : "Japanese"
-	  },
-	  "kk" : {
-	    "samsung" : "Kazakh"
-	  },
-	  "ko" : {
-	    "google" : "Korean (South Korea)",
-	    "opera" : "KOREAN",
-	    "samsung" : "Korean",
-	    "yandex" : "Korean"
-	  },
-	  "lt" : {
-	    "google" : "Lithuanian",
-	    "samsung" : "Lithuanian"
-	  },
-	  "lv" : {
-	    "google" : "Latvian",
-	    "samsung" : "Latvian"
-	  },
-	  "ms" : {
-	    "google" : "Malay",
-	    "opera" : "MALAY",
-	    "yandex" : "Malay"
-	  },
-	  "ne" : {
-	    "opera" : "NEPALESE",
-	    "yandex" : "Nepalese"
-	  },
-	  "no" : {
-	    "google" : "Norwegian",
-	    "opera" : "NORWAY",
-	    "samsung" : "Norwegian",
-	    "yandex" : "Norway"
-	  },
-	  "fa" : {
-	    "google" : "Persian",
-	    "samsung" : "Persian"
-	  },
-	  "pl" : {
-	    "google" : "Polish",
-	    "opera" : "POLISH",
-	    "samsung" : "Polish",
-	    "yandex" : "Polish"
-	  },
-	  "pt" : {
-	    "opera" : "PORTUGUESE",
-	    "samsung" : "Portuguese",
-	    "yandex" : "Portuguese"
-	  },
-	  "pt_br" : {
-	    "google" : "Portuguese (Brazil)"
-	  },
-	  "pt_pt" : {
-	    "google" : "Portuguese (Portugal)"
-	  },
-	  "rm" : {
-	    "google" : "Romansh"
-	  },
-	  "ro" : {
-	    "google" : "Romanian",
-	    "opera" : "ROMANIAN",
-	    "samsung" : "Romanian",
-	    "yandex" : "Romanian"
-	  },
-	  "ru" : {
-	    "google" : "Russian",
-	    "opera" : "RUSSIAN",
-	    "samsung" : "Russian",
-	    "yandex" : "Russian"
-	  },
-	  "sr" : {
-	    "google" : "Serbian",
-	    "samsung" : "Serbian"
-	  },
-	  "gd" : {
-	    "samsung" : "Gaelic"
-	  },
-	  "sk" : {
-	    "google" : "Slovak",
-	    "opera" : "SLOVAK",
-	    "samsung" : "Slovak",
-	    "yandex" : "Slovak"
-	  },
-	  "sl" : {
-	    "google" : "Slovenian"
-	  },
-	  "es" : {
-	    "amazon" : "Spanish",
-	    "opera" : "SPANISH",
-	    "samsung" : "Spanish",
-	    "yandex" : "Spanish"
-	  },
-	  "es_es" : {
-	    "google" : "Spanish (Spain)"
-	  },
-	  "es_us" : {
-	    "google" : "Spanish (United States)"
-	  },
-	  "es_la" : {
-	    "google" : "Spanish (Latin America)"
-	  },
-	  "sw" : {
-	    "google" : "Swahili"
-	  },
-	  "sv" : {
-	    "google" : "Swedish",
-	    "opera" : "SWEDISH",
-	    "samsung" : "Swedish",
-	    "yandex" : "Swedish"
-	  },
-	  "th" : {
-	    "google" : "Thai",
-	    "opera" : "THAI",
-	    "samsung" : "Thai",
-	    "yandex" : "Thai"
-	  },
-	  "tl" : {
-	    "google" : "Filipino",
-	    "opera" : "TAGALOG",
-	    "yandex" : "Tagalog"
-	  },
-	  "tr" : {
-	    "google" : "Turkish",
-	    "opera" : "TURKISH",
-	    "samsung" : "Turkish",
-	    "yandex" : "Turkish"
-	  },
-	  "uk" : {
-	    "google" : "Ukrainian",
-	    "samsung" : "Ukrainian"
-	  },
-	  "vi" : {
-	    "google" : "Vietnamese",
-	    "opera" : "VIETNAMESE",
-	    "samsung" : "Vietnamese",
-	    "yandex" : "Vietnamese"
-	  },
-	  "zu" : {
-	    "google" : "Zulu"
-	  }
-	};
-}
+$.getJSON("../languages.json", function(data_languages) {
+	languages = data_languages;
+	$.getJSON("../stores.json", function(data_stores) {
+		stores = data_stores;
+		$.getJSON("../stores_localization.json", function(data_storeLocalization) {
+			storeLocalization = data_storeLocalization;
+			$.getJSON("../stores_categories.json", function(data_stirecategories) {
+				storeCategories = data_stirecategories;
 
-function loadStoresHash() {
-	//Todo: replace with stores.json loading
-	return {
-	  "google" : "Google Play",	
-	  "amazon" : "Amazon AppStore",	
-	  "opera" : "Opera Mobile Store",
-	  "yandex" : "Yandex.Store",	
-	  "slideme" : "SlideME", 	
-	  "samsung" : "Samsung Apps",
-	  "tstore" : "SK T-Store",
-	  "nook" : "NOOK apps"
-	};
-}
-
-$.getJSON("../stores.json", function(data) {
-	alert("sss");
-	alert(data);  
+				//When everything is loaded populate all <textarea> elements
+				document.getElementById("textarea-all-anguages-xml").innerHTML = generateAllLanguagesXML();
+				document.getElementById("store-localizations-xml").innerHTML = generateStoreLocalizationXML();
+				document.getElementById("store-localizations-html").innerHTML = generateStoreLocalizationHTML();
+				document.getElementById("categories-xml").innerHTML = generateCategoriesXML();
+				document.getElementById("stores-categories-xml").innerHTML = generateStoresCategoriesXML();
+			})
+		})
+	})
 });
 
-var languages = loadLanguagesHash();
-var storeLocalization = loadStoreLocalizationHash();
-var stores = loadStoresHash();
 
 function generateAllLanguagesXML() {
 	var s = "<languages>\n"
@@ -552,6 +62,47 @@ function generateStoreLocalizationXML() {
 		s += "  </language>\n";
 	}
 	s += "</store-localizations>";
+	return s;
+} 
+
+function generateCategoriesXML() {
+	var s = "<categories>\n"
+	for (firstCategory in storeCategories) {
+		var anyNonEmptySubcategory = false;
+		for (secondCategory in storeCategories[firstCategory]) {
+			if (secondCategory!="") {
+				anyNonEmptySubcategory = true;
+			} 
+		}
+
+		if (anyNonEmptySubcategory) {
+			s += "  <category code=\"" + firstCategory + "\">\n";
+			for (secondCategory in storeCategories[firstCategory]) {
+				s += "    <subcategory code=\"" + secondCategory + "\"/>\n";
+			}
+			s += "  </category>\n";
+		} else {
+			s += "  <category code=\"" + firstCategory + "\"/>\n";			
+		}
+	}
+	s += "</categories>";
+	return s;
+} 
+
+function generateStoresCategoriesXML() {
+	var s = "<categories>\n"
+	for (firstCategory in storeCategories) {
+		s += "  <category code=\"" + firstCategory + "\">\n";
+		for (secondCategory in storeCategories[firstCategory]) {
+			s += "    <subcategory code=\"" + secondCategory + "\">\n";
+			for (store in storeCategories[firstCategory][secondCategory]) {
+				s += "      <store id=\"" + store + "\">" + storeCategories[firstCategory][secondCategory][store] + "</store>\n";
+			}
+			s += "    </subcategory>\n";
+		}
+		s += "  </category>\n";
+	}
+	s += "</categories>";
 	return s;
 } 
 
@@ -590,11 +141,6 @@ function generateStoreLocalizationHTML() {
 	s += "</table>";
 	return s;
 } 
-
-//Populate all <textarea> elements
-document.getElementById("textarea-all-anguages-xml").innerHTML = generateAllLanguagesXML();
-document.getElementById("store-localizations-xml").innerHTML = generateStoreLocalizationXML();
-document.getElementById("store-localizations-html").innerHTML = generateStoreLocalizationHTML();
 
 </script>
 
