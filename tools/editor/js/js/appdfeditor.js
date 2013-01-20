@@ -10,10 +10,10 @@ function getUniqueId() {
 	return globalUnigueCounter++;
 }
 
-$.getJSON("../data/categories.json", function(loadedCategories) {
-$.getJSON("../data/store_categories.json", function(loadedStoreCategories) {
-$.getJSON("../data/languages.json", function(loadedLanguages) {
-$.getJSON("../data/stores.json", function(loadedStores) {
+$.getJSON("data/categories.json", function(loadedCategories) {
+$.getJSON("data/store_categories.json", function(loadedStoreCategories) {
+$.getJSON("data/languages.json", function(loadedLanguages) {
+$.getJSON("data/stores.json", function(loadedStores) {
 	allCategories = loadedCategories;
 	storeCategories = loadedStoreCategories;
 	allLanguages = loadedLanguages;
