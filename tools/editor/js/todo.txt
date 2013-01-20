@@ -1,175 +1,18 @@
+completeXMLstringAt - convert to array with Join
+return error message from ApkParser
+add all needed comments
+remove all unneeded logs
+add copyright
+
+add price validation to be a number
+limit file extension in APK input to .apk
+Change local price style to append from both sides
+make file input field read only
+make APK file required
+split JS file to several logical JS files (ZIP logic, XMLWriter logic, etc)
+show building progress
+make that Build link act like a submit button in form validation, forbid building until all validations are OK
 implement add language
 add good subtitles to all the existing fields
-check the stores about supported languages in descriptions
-add more short-descriptins
 tabs for description (with HTML, without, with features withour)
 add correct validation to all the elements
-change header
-
-
-
-* Google Play - English US default (cannot be changed)
-English (United States)
-Afrikaans
-Amharic
-Arabic
-Belarusian
-Bulgarian
-Catalan
-Chinese (Simplified)
-Chinese (Traditional)
-Croatian
-Czech
-Danish
-Dutch
-English (United Kingdom)
-Estonian
-Filipino
-Finnish
-French
-German
-Greek
-Hebrew
-Hindi
-Hungarian
-Italian
-Japanese
-Korean (South Korea)
-Latvian
-Lithuanian
-Malay
-Norwegian
-Persian
-Polish
-Portuguese (Brazil)
-Portuguese (Portugal)
-Romanian
-Romansh
-Russian
-Serbian
-Slovak
-Slovenian
-Spanish (Latin America)
-Spanish (Spain)
-Spanish (United States)
-Swahili
-Swedish
-Thai
-Turkish
-Ukrainian
-Vietnamese
-Zulu
-
-Amazon AppStore - English US default (cannot be changed)
-English (U.K.)
-French
-German
-Italian
-Spanish
-Japanese
-Chinese (Simplified)
-
-Opera Mobile Store - English is default (cannot be changed)
-ENGLISH 
-RUSSIAN 
-GERMAN 
-ITALIAN 
-FRENCH 
-SPANISH 
-DUTCH 
-TURKISH 
-SWEDISH 
-DANISH 
-CHINESE 
-GREEK 
-PORTUGUESE 
-CZECH 
-SLOVAK 
-POLISH 
-INDONESIA 
-VIETNAMESE 
-NORWAY 
-BENGALI 
-FARSI 
-HUNGARIAN 
-JAPANESE 
-KOREAN 
-MALAY 
-NEPALESE 
-ROMANIAN 
-TAGALOG 
-THAI 
-ARABIC
-
-* Yandex.Store - no default language (could be any combination)
-English
-Russian
-German
-Italian
-French
-Spanish
-Dutch
-Turkish
-Swedish
-Danish
-Chinese
-Greek
-Portuguese
-Czech
-Slovak
-Polish
-Indonesia
-Vietnamese
-Norway
-Bengali
-Farsi
-Hungarian
-Japanese
-Korean
-Malay
-Nepalese
-Romanian
-Tagalog
-Thai
-Arabic
-
-* SlideME - English only, no other languages supported
-
-* Samsung Apps - English is default and cannot be changed
-Arabic 
-Bulgarian 
-Croatian 
-Czech
-Danish 
-Dutch 
-Estonian 
-Finnish
-French 
-Gaelic 
-German 
-Greek
-Hebrew 
-Hungarian 
-Indonesian 
-Italian
-Japanese 
-Kazakh 
-Korean 
-Latvian
-Lithuanian 
-Norwegian 
-Persian 
-Polish
-Portuguese 
-Romanian 
-Russian   
-Serbian
-Simplified Chinese 
-Slovak 
-Spanish 
-Swedish
-Thai 
-Traditional Chinese 
-Turkish 
-Ukrainian
-Vietnamese
