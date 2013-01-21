@@ -1,0 +1,1538 @@
+<categories>
+  <category code="Alarms &amp; Clocks">
+    <subcategory code="">
+      <store id="google">Tools</store>
+      <store id="amazon">Utilities / Alarms &amp; Clocks</store>
+      <store id="opera">Utilities</store>
+      <store id="yandex">Utilities</store>
+      <store id="samsung">Utilities</store>
+      <store id="slideme">Tools &amp; Utilities / Other</store>
+    </subcategory>
+  </category>
+  <category code="Battery Savers">
+    <subcategory code="">
+      <store id="google">Tools</store>
+      <store id="amazon">Utilities / Battery Savers</store>
+      <store id="opera">Utilities</store>
+      <store id="yandex">Utilities</store>
+      <store id="samsung">Utilities</store>
+      <store id="slideme">Tools &amp; Utilities / Other</store>
+    </subcategory>
+  </category>
+  <category code="Books">
+    <subcategory code="">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">Books &amp; Comic / Other</store>
+      <store id="opera">eBooks</store>
+      <store id="yandex">eBooks</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Publications / E-books</store>
+    </subcategory>
+  </category>
+  <category code="Books &amp; Readers">
+    <subcategory code="">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">Books &amp; Comic / Books &amp; Readers</store>
+      <store id="opera">eBooks</store>
+      <store id="yandex">eBooks</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Publications / E-book readers</store>
+    </subcategory>
+  </category>
+  <category code="Business">
+    <subcategory code="">
+      <store id="google">Business</store>
+      <store id="amazon">Finance / Other</store>
+      <store id="opera">Business &amp; Finance</store>
+      <store id="yandex">Business &amp; FinanceBusiness</store>
+      <store id="samsung">Business</store>
+      <store id="slideme">Finance / Other</store>
+    </subcategory>
+  </category>
+  <category code="Calculators">
+    <subcategory code="">
+      <store id="google">Tools</store>
+      <store id="amazon">Utilities / Calculators</store>
+      <store id="opera">Utilities</store>
+      <store id="yandex">Utilities</store>
+      <store id="samsung">Utilities</store>
+      <store id="slideme">Tools &amp; Utilities / Other</store>
+    </subcategory>
+  </category>
+  <category code="Calendars">
+    <subcategory code="">
+      <store id="google">Tools</store>
+      <store id="amazon">Utilities / Calendars</store>
+      <store id="opera">Organizers</store>
+      <store id="yandex">Organizers</store>
+      <store id="samsung">Utilities</store>
+      <store id="slideme">Tools &amp; Utilities / Other</store>
+    </subcategory>
+  </category>
+  <category code="Children's Books">
+    <subcategory code="">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">Books &amp; Comic / ChildrenвЂ™s Books</store>
+      <store id="opera">eBooks</store>
+      <store id="yandex">eBooks</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Publications</store>
+    </subcategory>
+  </category>
+  <category code="City Info">
+    <subcategory code="">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / Other</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / City Guides</store>
+    </subcategory>
+    <subcategory code="Boston">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / Boston</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / City Guides</store>
+    </subcategory>
+    <subcategory code="Chicago">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / Chicago</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / City Guides</store>
+    </subcategory>
+    <subcategory code="Dallas">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / Dallas</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / City Guides</store>
+    </subcategory>
+    <subcategory code="Los Angeles">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / Los Angeles</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / City Guides</store>
+    </subcategory>
+    <subcategory code="Miami">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / Miami</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / City Guides</store>
+    </subcategory>
+    <subcategory code="New York">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / New York</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / City Guides</store>
+    </subcategory>
+    <subcategory code="Philadelphia">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / Philadelphia</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / City Guides</store>
+    </subcategory>
+    <subcategory code="Phoenix">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / Phoenix</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / City Guides</store>
+    </subcategory>
+    <subcategory code="San Francisco">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / San Francisco</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / City Guides</store>
+    </subcategory>
+    <subcategory code="Seattle">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / Seattle</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / City Guides</store>
+    </subcategory>
+  </category>
+  <category code="Comics">
+    <subcategory code="">
+      <store id="google">Comics</store>
+      <store id="amazon">Books &amp; Comic / Comic Strips</store>
+      <store id="opera">eBooks</store>
+      <store id="yandex">eBooks</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Publications / Comics</store>
+    </subcategory>
+  </category>
+  <category code="Communication">
+    <subcategory code="">
+      <store id="google">Communication</store>
+      <store id="amazon">Communication</store>
+      <store id="opera">Communication</store>
+      <store id="yandex">Communication</store>
+      <store id="samsung">Social Networking</store>
+      <store id="slideme">Communication</store>
+    </subcategory>
+    <subcategory code="E-mail">
+      <store id="google">Communication</store>
+      <store id="amazon">Communication</store>
+      <store id="opera">Communication</store>
+      <store id="yandex">Communication</store>
+      <store id="samsung">Social Networking</store>
+      <store id="slideme">Communication / E-mail</store>
+    </subcategory>
+    <subcategory code="Instant Messaging">
+      <store id="google">Communication</store>
+      <store id="amazon">Communication</store>
+      <store id="opera">Communication</store>
+      <store id="yandex">Communication</store>
+      <store id="samsung">Social Networking</store>
+      <store id="slideme">Communication / Instant Messaging</store>
+    </subcategory>
+    <subcategory code="SMS">
+      <store id="google">Communication</store>
+      <store id="amazon">Communication</store>
+      <store id="opera">Communication</store>
+      <store id="yandex">Communication</store>
+      <store id="samsung">Social Networking</store>
+      <store id="slideme">Communication / SMS</store>
+    </subcategory>
+    <subcategory code="Other">
+      <store id="google">Communication</store>
+      <store id="amazon">Communication</store>
+      <store id="opera">Communication</store>
+      <store id="yandex">Communication</store>
+      <store id="samsung">Social Networking</store>
+      <store id="slideme">Communication / Other</store>
+    </subcategory>
+  </category>
+  <category code="Cooking">
+    <subcategory code="">
+      <store id="google">Health &amp; Fitness</store>
+      <store id="amazon">Cooking</store>
+      <store id="opera">Health</store>
+      <store id="yandex">Health</store>
+      <store id="samsung">Health/Fitness</store>
+      <store id="slideme">Home &amp; Hobby / Cooking</store>
+    </subcategory>
+  </category>
+  <category code="Country Guides">
+    <subcategory code="">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">City Info / Other</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Reference</store>
+      <store id="slideme">Travel &amp; Locality / Country Guides</store>
+    </subcategory>
+  </category>
+  <category code="Diet &amp; Weight Loss">
+    <subcategory code="">
+      <store id="google">Health &amp; Fitness</store>
+      <store id="amazon">Health &amp; Fitness / Diet &amp; Weight Loss</store>
+      <store id="opera">Health</store>
+      <store id="yandex">Health</store>
+      <store id="samsung">Health/Fitness</store>
+      <store id="slideme">Health &amp; Fitness / Calorie calculators</store>
+    </subcategory>
+  </category>
+  <category code="Education">
+    <subcategory code="">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Education</store>
+    </subcategory>
+    <subcategory code="Higher">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Education / Higher</store>
+    </subcategory>
+    <subcategory code="Primary">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Education / Primary</store>
+    </subcategory>
+    <subcategory code="Secondary">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Education / Secondary</store>
+    </subcategory>
+    <subcategory code="History">
+      <store id="google">Education</store>
+      <store id="amazon">Education / History</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Education / Other</store>
+    </subcategory>
+    <subcategory code="Math">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Math</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Education / Other</store>
+    </subcategory>
+    <subcategory code="Reading">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Reading</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Education / Other</store>
+    </subcategory>
+    <subcategory code="Science">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Science</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Education / Other</store>
+    </subcategory>
+    <subcategory code="Test Guides">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Test Guides</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Education / Other</store>
+    </subcategory>
+    <subcategory code="Writing">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Writing</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Education / Other</store>
+    </subcategory>
+    <subcategory code="Language">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Language</store>
+      <store id="opera">Languages &amp; Translators</store>
+      <store id="yandex">Languages &amp; Translators</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Languages</store>
+    </subcategory>
+    <subcategory code="Dictionaries">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Language</store>
+      <store id="opera">Languages &amp; Translators</store>
+      <store id="yandex">Languages &amp; Translators</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Languages / Dictionaries</store>
+    </subcategory>
+    <subcategory code="Language learning">
+      <store id="google">Education</store>
+      <store id="amazon">Education / Language</store>
+      <store id="opera">Languages &amp; Translators</store>
+      <store id="yandex">Languages &amp; Translators</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Languages / Language learning</store>
+    </subcategory>
+  </category>
+  <category code="Entertainment">
+    <subcategory code="">
+      <store id="google">Entertainment</store>
+      <store id="amazon">Entertainment</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Entertainment</store>
+      <store id="slideme">Entertainment</store>
+    </subcategory>
+    <subcategory code="Comedy">
+      <store id="google">Entertainment</store>
+      <store id="amazon">Entertainment</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Entertainment</store>
+      <store id="slideme">Entertainment / Comedy</store>
+    </subcategory>
+    <subcategory code="Music">
+      <store id="google">Entertainment</store>
+      <store id="amazon">Entertainment</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Entertainment</store>
+      <store id="slideme">Entertainment / Music</store>
+    </subcategory>
+    <subcategory code="Sports">
+      <store id="google">Entertainment</store>
+      <store id="amazon">Entertainment</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Entertainment</store>
+      <store id="slideme">Entertainment / Sports</store>
+    </subcategory>
+    <subcategory code="Theatre">
+      <store id="google">Entertainment</store>
+      <store id="amazon">Entertainment</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Entertainment</store>
+      <store id="slideme">Entertainment / Theatre</store>
+    </subcategory>
+    <subcategory code="Other">
+      <store id="google">Entertainment</store>
+      <store id="amazon">Entertainment</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Entertainment</store>
+      <store id="slideme">Entertainment / Other</store>
+    </subcategory>
+  </category>
+  <category code="Finance">
+    <subcategory code="">
+      <store id="google">Finance</store>
+      <store id="amazon">Finance / Other</store>
+      <store id="opera">Business &amp; Finance</store>
+      <store id="yandex">Business &amp; Finance</store>
+      <store id="samsung">Finance</store>
+      <store id="slideme">Finance</store>
+    </subcategory>
+    <subcategory code="Corporate">
+      <store id="google">Finance</store>
+      <store id="amazon">Finance / Other</store>
+      <store id="opera">Business &amp; Finance</store>
+      <store id="yandex">Business &amp; Finance</store>
+      <store id="samsung">Finance</store>
+      <store id="slideme">Finance / Corporate</store>
+    </subcategory>
+    <subcategory code="Other">
+      <store id="google">Finance</store>
+      <store id="amazon">Finance / Other</store>
+      <store id="opera">Business &amp; Finance</store>
+      <store id="yandex">Business &amp; Finance</store>
+      <store id="samsung">Finance</store>
+      <store id="slideme">Finance / Other</store>
+    </subcategory>
+    <subcategory code="Accounting">
+      <store id="google">Finance</store>
+      <store id="amazon">Finance / Accounting</store>
+      <store id="opera">Business &amp; Finance</store>
+      <store id="yandex">Business &amp; Finance</store>
+      <store id="samsung">Finance</store>
+      <store id="slideme">Finance</store>
+    </subcategory>
+    <subcategory code="Banking">
+      <store id="google">Finance</store>
+      <store id="amazon">Finance / Banking</store>
+      <store id="opera">Business &amp; Finance</store>
+      <store id="yandex">Business &amp; Finance</store>
+      <store id="samsung">Finance</store>
+      <store id="slideme">Finance</store>
+    </subcategory>
+    <subcategory code="Investing">
+      <store id="google">Finance</store>
+      <store id="amazon">Finance / Investing</store>
+      <store id="opera">Business &amp; Finance</store>
+      <store id="yandex">Business &amp; Finance</store>
+      <store id="samsung">Finance</store>
+      <store id="slideme">Finance</store>
+    </subcategory>
+    <subcategory code="Money &amp; Currency">
+      <store id="google">Finance</store>
+      <store id="amazon">Finance / Money &amp; Currency</store>
+      <store id="opera">Business &amp; Finance</store>
+      <store id="yandex">Business &amp; Finance</store>
+      <store id="samsung">Finance</store>
+      <store id="slideme">Finance</store>
+    </subcategory>
+  </category>
+  <category code="Graphic Novels">
+    <subcategory code="">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">Books &amp; Comic / Graphic Novels</store>
+      <store id="opera">eBooks</store>
+      <store id="yandex">eBooks</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Publications</store>
+    </subcategory>
+  </category>
+  <category code="Health">
+    <subcategory code="Exercise">
+      <store id="google">Health &amp; Fitness</store>
+      <store id="amazon">Health &amp; Fitness / Exercise &amp; Fitness</store>
+      <store id="opera">Health</store>
+      <store id="yandex">Health</store>
+      <store id="samsung">Health/Fitness</store>
+      <store id="slideme">Health &amp; Fitness / Fitness</store>
+    </subcategory>
+    <subcategory code="Medical">
+      <store id="google">Health &amp; Fitness</store>
+      <store id="amazon">Health &amp; Fitness / Medical</store>
+      <store id="opera">Health</store>
+      <store id="yandex">Health</store>
+      <store id="samsung">Health/Fitness</store>
+      <store id="slideme">Health &amp; Fitness / Other</store>
+    </subcategory>
+    <subcategory code="Meditation">
+      <store id="google">Health &amp; Fitness</store>
+      <store id="amazon">Health &amp; Fitness / Meditation</store>
+      <store id="opera">Health</store>
+      <store id="yandex">Health</store>
+      <store id="samsung">Health/Fitness</store>
+      <store id="slideme">Health &amp; Fitness / Other</store>
+    </subcategory>
+    <subcategory code="Pregnancy">
+      <store id="google">Health &amp; Fitness</store>
+      <store id="amazon">Health &amp; Fitness / Pregnancy</store>
+      <store id="opera">Health</store>
+      <store id="yandex">Health</store>
+      <store id="samsung">Health/Fitness</store>
+      <store id="slideme">Health &amp; Fitness / Family Planning</store>
+    </subcategory>
+    <subcategory code="Sleep Trackers">
+      <store id="google">Health &amp; Fitness</store>
+      <store id="amazon">Health &amp; Fitness / Sleep Trackers</store>
+      <store id="opera">Health</store>
+      <store id="yandex">Health</store>
+      <store id="samsung">Health/Fitness</store>
+      <store id="slideme">Health &amp; Fitness / Other</store>
+    </subcategory>
+  </category>
+  <category code="Health &amp; Fitness">
+    <subcategory code="">
+      <store id="google">Health &amp; Fitness</store>
+      <store id="amazon">Health &amp; Fitness / Other</store>
+      <store id="opera">Health</store>
+      <store id="yandex">Health</store>
+      <store id="samsung">Health/Fitness</store>
+      <store id="slideme">Health &amp; Fitness</store>
+    </subcategory>
+  </category>
+  <category code="Home &amp; Hobby">
+    <subcategory code="">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Home &amp; Hobby</store>
+    </subcategory>
+    <subcategory code="Other">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Home &amp; Hobby / Other</store>
+    </subcategory>
+    <subcategory code="Budgeting">
+      <store id="google">Finance</store>
+      <store id="amazon">Finance / Personal Finance</store>
+      <store id="opera">Business &amp; Finance</store>
+      <store id="yandex">Business &amp; Finance</store>
+      <store id="samsung">Finance</store>
+      <store id="slideme">Home &amp; Hobby / Budgeting</store>
+    </subcategory>
+  </category>
+  <category code="Kids">
+    <subcategory code="">
+      <store id="google">Education</store>
+      <store id="amazon">Kids / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Kids / All</store>
+      <store id="slideme">Education / Early Childhood</store>
+    </subcategory>
+    <subcategory code="Alphabet">
+      <store id="google">Education</store>
+      <store id="amazon">Kids / Alphabet</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Kids / Edutainment</store>
+      <store id="slideme">Education / Early Childhood</store>
+    </subcategory>
+    <subcategory code="Animals">
+      <store id="google">Education</store>
+      <store id="amazon">Kids / Animals</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Kids / Edutainment</store>
+      <store id="slideme">Education / Early Childhood</store>
+    </subcategory>
+    <subcategory code="History">
+      <store id="google">Education</store>
+      <store id="amazon">Kids / History</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Kids / Edutainment</store>
+      <store id="slideme">Education / Early Childhood</store>
+    </subcategory>
+    <subcategory code="Language">
+      <store id="google">Education</store>
+      <store id="amazon">Kids / Language</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Kids / Edutainment</store>
+      <store id="slideme">Education / Early Childhood</store>
+    </subcategory>
+    <subcategory code="Math">
+      <store id="google">Education</store>
+      <store id="amazon">Kids / Math</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Kids / Edutainment</store>
+      <store id="slideme">Education / Early Childhood</store>
+    </subcategory>
+    <subcategory code="Popular Characters">
+      <store id="google">Education</store>
+      <store id="amazon">Kids / Popular Characters</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Kids / Edutainmenttd></store>
+      <store id="slideme">Education / Early Childhood</store>
+    </subcategory>
+    <subcategory code="Reading">
+      <store id="google">Education</store>
+      <store id="amazon">Kids / Reading</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Kids / Edutainment</store>
+      <store id="slideme">Education / Early Childhood</store>
+    </subcategory>
+    <subcategory code="Science">
+      <store id="google">Education</store>
+      <store id="amazon">Kids / Science</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Kids / Edutainment</store>
+      <store id="slideme">Education / Early Childhood</store>
+    </subcategory>
+    <subcategory code="Writing">
+      <store id="google">Education</store>
+      <store id="amazon">Kids / Writing</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Kids / Edutainment</store>
+      <store id="slideme">Education / Early Childhood</store>
+    </subcategory>
+  </category>
+  <category code="Lifestyle">
+    <subcategory code="">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle</store>
+    </subcategory>
+    <subcategory code="Advice">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Advice</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Other</store>
+    </subcategory>
+    <subcategory code="Astrology">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Astrology</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Other</store>
+    </subcategory>
+    <subcategory code="Celebrity">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Celebrity</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Celebrities</store>
+    </subcategory>
+    <subcategory code="Culture">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Celebrity</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Culture</store>
+    </subcategory>
+    <subcategory code="Design">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Celebrity</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Design</store>
+    </subcategory>
+    <subcategory code="Fashion">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Celebrity</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Fashion</store>
+    </subcategory>
+    <subcategory code="Living">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Celebrity</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Living</store>
+    </subcategory>
+    <subcategory code="Hair &amp; Beauty">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Hair &amp; Beauty</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Other</store>
+    </subcategory>
+    <subcategory code="Home &amp; Garden">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Home &amp; Garden</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Other</store>
+    </subcategory>
+    <subcategory code="Parenting">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Parenting</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Other</store>
+    </subcategory>
+    <subcategory code="Quizzes &amp; Games">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Quizzes &amp; Games</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Other</store>
+    </subcategory>
+    <subcategory code="Relationships">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Relationships</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Other</store>
+    </subcategory>
+    <subcategory code="Self Improvement">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Self Improvement</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Lifestyle / Other</store>
+    </subcategory>
+  </category>
+  <category code="Live Wallpapers">
+    <subcategory code="">
+      <store id="google">Personalization</store>
+      <store id="amazon">Themes</store>
+      <store id="opera">Themes &amp; Skins</store>
+      <store id="yandex">Themes &amp; Skins</store>
+      <store id="samsung">Theme</store>
+      <store id="slideme">Themes / Live Wallpapers</store>
+    </subcategory>
+  </category>
+  <category code="Magazines">
+    <subcategory code="">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">Magazines</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">Publications / Magazines</store>
+    </subcategory>
+  </category>
+  <category code="Music">
+    <subcategory code="">
+      <store id="google">Music &amp; Audio</store>
+      <store id="amazon">Music / Other</store>
+      <store id="opera">Multimedia</store>
+      <store id="yandex">Multimedia</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Music</store>
+    </subcategory>
+    <subcategory code="Artists">
+      <store id="google">Music &amp; Audio</store>
+      <store id="amazon">Music / Artists</store>
+      <store id="opera">Multimedia</store>
+      <store id="yandex">Multimedia</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Music / Other</store>
+    </subcategory>
+    <subcategory code="Instruments">
+      <store id="google">Music &amp; Audio</store>
+      <store id="amazon">Music / Instruments</store>
+      <store id="opera">Multimedia</store>
+      <store id="yandex">Multimedia</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Music / Instruments</store>
+    </subcategory>
+    <subcategory code="Songbooks">
+      <store id="google">Music &amp; Audio</store>
+      <store id="amazon">Music / Songbooks</store>
+      <store id="opera">Multimedia</store>
+      <store id="yandex">Multimedia</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Music / Other</store>
+    </subcategory>
+  </category>
+  <category code="Music Players">
+    <subcategory code="">
+      <store id="google">Music &amp; Audio</store>
+      <store id="amazon">Music / Music Players</store>
+      <store id="opera">Multimedia</store>
+      <store id="yandex">Multimedia</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Music / Music players</store>
+    </subcategory>
+  </category>
+  <category code="Navigation">
+    <subcategory code="">
+      <store id="google">Travel &amp; Local</store>
+      <store id="amazon">Navigation</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Navigation</store>
+      <store id="slideme">Travel &amp; Locality / Navigation</store>
+    </subcategory>
+  </category>
+  <category code="News">
+    <subcategory code="">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather / News</store>
+    </subcategory>
+    <subcategory code="Regional News">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather / Regional News</store>
+    </subcategory>
+    <subcategory code="Other">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather / Other</store>
+    </subcategory>
+    <subcategory code="Weather">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather</store>
+    </subcategory>
+    <subcategory code="Business">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / Business</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather / News</store>
+    </subcategory>
+    <subcategory code="Entertainment">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / Entertainment</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather / News</store>
+    </subcategory>
+    <subcategory code="Health">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / Health</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather / News</store>
+    </subcategory>
+    <subcategory code="Politics">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / Politics</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather / News</store>
+    </subcategory>
+    <subcategory code="Science &amp; Tech">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / Science &amp; Tech</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather / News</store>
+    </subcategory>
+    <subcategory code="Sports">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / Sports</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather / News</store>
+    </subcategory>
+    <subcategory code="US">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / US</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather / News</store>
+    </subcategory>
+    <subcategory code="World">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">News &amp; Weather / World</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">News &amp; Weather / News</store>
+    </subcategory>
+  </category>
+  <category code="Newspapers">
+    <subcategory code="">
+      <store id="google">News &amp; Magazines</store>
+      <store id="amazon">Newspapers</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">News/Magazine</store>
+      <store id="slideme">Publications</store>
+    </subcategory>
+  </category>
+  <category code="Notes">
+    <subcategory code="">
+      <store id="google">Tools</store>
+      <store id="amazon">Utilities / Notes</store>
+      <store id="opera">Organizers</store>
+      <store id="yandex">Organizers</store>
+      <store id="samsung">Utilities</store>
+      <store id="slideme">Tools &amp; Utilities / Other</store>
+    </subcategory>
+  </category>
+  <category code="Novelty">
+    <subcategory code="">
+      <store id="google">Entertainment</store>
+      <store id="amazon">Novelty</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Entertainment</store>
+      <store id="slideme">Entertainment</store>
+    </subcategory>
+  </category>
+  <category code="Personal Finance">
+    <subcategory code="">
+      <store id="google">Finance</store>
+      <store id="amazon">Finance / Personal Finance</store>
+      <store id="opera">Business &amp; Finance</store>
+      <store id="yandex">Business &amp; Finance</store>
+      <store id="samsung">Finance</store>
+      <store id="slideme">Finance / Personal</store>
+    </subcategory>
+  </category>
+  <category code="Personalization">
+    <subcategory code="">
+      <store id="google">Personalization</store>
+      <store id="amazon">Themes</store>
+      <store id="opera">Themes &amp; Skins</store>
+      <store id="yandex">Themes &amp; Skins</store>
+      <store id="samsung">Theme</store>
+      <store id="slideme">Themes</store>
+    </subcategory>
+  </category>
+  <category code="Photography">
+    <subcategory code="">
+      <store id="google">Photography</store>
+      <store id="amazon">Photography</store>
+      <store id="opera">Multimedia</store>
+      <store id="yandex">Multimedia</store>
+      <store id="samsung">Photo</store>
+      <store id="slideme">Photography</store>
+    </subcategory>
+    <subcategory code="Camera">
+      <store id="google">Photography</store>
+      <store id="amazon">Photography</store>
+      <store id="opera">Multimedia</store>
+      <store id="yandex">Multimedia</store>
+      <store id="samsung">Photo</store>
+      <store id="slideme">Photography / Camera</store>
+    </subcategory>
+    <subcategory code="Editing">
+      <store id="google">Photography</store>
+      <store id="amazon">Photography</store>
+      <store id="opera">Multimedia</store>
+      <store id="yandex">Multimedia</store>
+      <store id="samsung">Photo</store>
+      <store id="slideme">Photography / Editing</store>
+    </subcategory>
+    <subcategory code="Gallery">
+      <store id="google">Photography</store>
+      <store id="amazon">Photography</store>
+      <store id="opera">Multimedia</store>
+      <store id="yandex">Multimedia</store>
+      <store id="samsung">Photo</store>
+      <store id="slideme">Photography / Gallery</store>
+    </subcategory>
+    <subcategory code="Sharing">
+      <store id="google">Photography</store>
+      <store id="amazon">Photography</store>
+      <store id="opera">Multimedia</store>
+      <store id="yandex">Multimedia</store>
+      <store id="samsung">Photo</store>
+      <store id="slideme">Photography / Sharing</store>
+    </subcategory>
+  </category>
+  <category code="Podcasts">
+    <subcategory code="">
+      <store id="google">Entertainment</store>
+      <store id="amazon">Podcasts</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Entertainment</store>
+      <store id="slideme">Entertainment</store>
+    </subcategory>
+  </category>
+  <category code="Productivity">
+    <subcategory code="">
+      <store id="google">Productivity</store>
+      <store id="amazon">Productivity</store>
+      <store id="opera">Organizers</store>
+      <store id="yandex">Organizers</store>
+      <store id="samsung">Productivity</store>
+      <store id="slideme">Productivity</store>
+    </subcategory>
+  </category>
+  <category code="Publications">
+    <subcategory code="">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">Books &amp; Comic / Other</store>
+      <store id="opera">eBooks</store>
+      <store id="yandex">eBooks</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Publications</store>
+    </subcategory>
+  </category>
+  <category code="Radio">
+    <subcategory code="">
+      <store id="google">Music &amp; Audio</store>
+      <store id="amazon">Music / Radio</store>
+      <store id="opera">Multimedia</store>
+      <store id="yandex">Multimedia</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Music / Radio</store>
+    </subcategory>
+  </category>
+  <category code="Real Estate">
+    <subcategory code="">
+      <store id="google">Business</store>
+      <store id="amazon">Real Estate</store>
+      <store id="opera">Business &amp; Finance</store>
+      <store id="yandex">Business &amp; Finance</store>
+      <store id="samsung">Business</store>
+      <store id="slideme">Finance / Other</store>
+    </subcategory>
+  </category>
+  <category code="Reference">
+    <subcategory code="">
+      <store id="google">Books &amp; Reference</store>
+      <store id="amazon">Reference</store>
+      <store id="opera">eBooks</store>
+      <store id="yandex">eBooks</store>
+      <store id="samsung">Education/E-Book</store>
+      <store id="slideme">Publications</store>
+    </subcategory>
+  </category>
+  <category code="Religion">
+    <subcategory code="">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Religion</store>
+    </subcategory>
+    <subcategory code="Buddhism">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Religion / Buddhism</store>
+    </subcategory>
+    <subcategory code="Chinese folk">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Religion / Chinese folk</store>
+    </subcategory>
+    <subcategory code="Christianity">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Religion / Christianity</store>
+    </subcategory>
+    <subcategory code="Hinduism">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Religion / Hinduism</store>
+    </subcategory>
+    <subcategory code="Islam">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Religion / Islam</store>
+    </subcategory>
+    <subcategory code="Other">
+      <store id="google">Lifestyle</store>
+      <store id="amazon">Lifestyle / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Lifestyle</store>
+      <store id="slideme">Religion / Other</store>
+    </subcategory>
+  </category>
+  <category code="Ringtones">
+    <subcategory code="">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Other</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Christian">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Christian</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Classical">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Classical</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Collegiate">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Collegiate</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Comedy">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Comedy</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Country">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Country</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Dance &amp; Electronic">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Dance &amp; Electronic</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Jazz &amp; Standards">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Jazz &amp; Standards</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Latin">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Latin</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Pop">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Pop</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Rap">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Rap</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Rock">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Rock</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Sound Effects">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Sound Effects</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Soundtracks">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Soundtracks</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Sports">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Sports</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="TV">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / TV</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+    <subcategory code="Voicetones">
+      <store id="google">Personalization</store>
+      <store id="amazon">Ringtones / Voicetones</store>
+      <store id="opera">Ringtones</store>
+      <store id="yandex">Ringtones</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Themes / Ringtones</store>
+    </subcategory>
+  </category>
+  <category code="Shopping">
+    <subcategory code="">
+      <store id="google">Shopping</store>
+      <store id="amazon">Shopping</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Entertainment</store>
+      <store id="slideme">Home &amp; Hobby / Shopping</store>
+    </subcategory>
+  </category>
+  <category code="Social">
+    <subcategory code="">
+      <store id="google">Social</store>
+      <store id="amazon">Social Networking</store>
+      <store id="opera">Communication</store>
+      <store id="yandex">Communication</store>
+      <store id="samsung">Social Networking</store>
+      <store id="slideme">Communication / Social Networking</store>
+    </subcategory>
+  </category>
+  <category code="Sports">
+    <subcategory code="">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports</store>
+    </subcategory>
+    <subcategory code="Athletic">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Athletic</store>
+    </subcategory>
+    <subcategory code="Disabled">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Disabled</store>
+    </subcategory>
+    <subcategory code="Extreme">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Extreme</store>
+    </subcategory>
+    <subcategory code="Motor">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Other</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Motor</store>
+    </subcategory>
+    <subcategory code="Baseball">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Baseball</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Other</store>
+    </subcategory>
+    <subcategory code="Basketball">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Basketball</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Other</store>
+    </subcategory>
+    <subcategory code="Boxing">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Boxing</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Other</store>
+    </subcategory>
+    <subcategory code="Football">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Football</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Other</store>
+    </subcategory>
+    <subcategory code="Golf">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Golf</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Other</store>
+    </subcategory>
+    <subcategory code="Hockey">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Hockey</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Other</store>
+    </subcategory>
+    <subcategory code="NCAA">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / NCAA</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Other</store>
+    </subcategory>
+    <subcategory code="Soccer">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Soccer</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Other</store>
+    </subcategory>
+    <subcategory code="Tennis">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / Tennis</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Other</store>
+    </subcategory>
+    <subcategory code="UFC">
+      <store id="google">Sports</store>
+      <store id="amazon">Sports / UFC</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Sports</store>
+      <store id="slideme">Sports / Other</store>
+    </subcategory>
+  </category>
+  <category code="Travel">
+    <subcategory code="Transportation">
+      <store id="google">Transportation</store>
+      <store id="amazon">Travel / Transportation</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Travel</store>
+      <store id="slideme">Travel &amp; Locality / Other</store>
+    </subcategory>
+    <subcategory code="">
+      <store id="google">Travel &amp; Local</store>
+      <store id="amazon">Travel / Other</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Travel</store>
+      <store id="slideme">Travel &amp; Locality</store>
+    </subcategory>
+    <subcategory code="Auto Rental">
+      <store id="google">Travel &amp; Local</store>
+      <store id="amazon">Travel / Auto Rental</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Travel</store>
+      <store id="slideme">Travel &amp; Locality / Other</store>
+    </subcategory>
+    <subcategory code="Flight">
+      <store id="google">Travel &amp; Local</store>
+      <store id="amazon">Travel / Flight</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Travel</store>
+      <store id="slideme">Travel &amp; Locality / Other</store>
+    </subcategory>
+    <subcategory code="Hotel">
+      <store id="google">Travel &amp; Local</store>
+      <store id="amazon">Travel / Hotel</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Travel</store>
+      <store id="slideme">Travel &amp; Locality / Other</store>
+    </subcategory>
+    <subcategory code="Trip Planner">
+      <store id="google">Travel &amp; Local</store>
+      <store id="amazon">Travel / Trip Planner</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Travel</store>
+      <store id="slideme">Travel &amp; Locality / Other</store>
+    </subcategory>
+  </category>
+  <category code="Utilities">
+    <subcategory code="">
+      <store id="google">Libraries &amp; Demo</store>
+      <store id="amazon">Utilities / Other</store>
+      <store id="opera">Utilities</store>
+      <store id="yandex">Utilities</store>
+      <store id="samsung">Utilities</store>
+      <store id="slideme">Tools &amp; Utilities</store>
+    </subcategory>
+    <subcategory code="Developer">
+      <store id="google">Libraries &amp; Demo</store>
+      <store id="amazon">Utilities / Other</store>
+      <store id="opera">Utilities</store>
+      <store id="yandex">Utilities</store>
+      <store id="samsung">Utilities</store>
+      <store id="slideme">Tools &amp; Utilities / Developer вЂ“ Programmer</store>
+    </subcategory>
+    <subcategory code="Other">
+      <store id="google">Libraries &amp; Demo</store>
+      <store id="amazon">Utilities / Other</store>
+      <store id="opera">Utilities</store>
+      <store id="yandex">Utilities</store>
+      <store id="samsung">Utilities</store>
+      <store id="slideme">Tools &amp; Utilities / Other</store>
+    </subcategory>
+    <subcategory code="Security">
+      <store id="google">Libraries &amp; Demo</store>
+      <store id="amazon">Utilities / Other</store>
+      <store id="opera">Utilities</store>
+      <store id="yandex">Utilities</store>
+      <store id="samsung">Utilities</store>
+      <store id="slideme">Tools &amp; Utilities / Security</store>
+    </subcategory>
+  </category>
+  <category code="Video">
+    <subcategory code="">
+      <store id="google">Media &amp; Video</store>
+      <store id="amazon">Entertainment</store>
+      <store id="opera">Entertainment</store>
+      <store id="yandex">Entertainment</store>
+      <store id="samsung">Music/Video</store>
+      <store id="slideme">Entertainment / Film</store>
+    </subcategory>
+  </category>
+  <category code="Wallpapers">
+    <subcategory code="">
+      <store id="google">Personalization</store>
+      <store id="amazon">Themes</store>
+      <store id="opera">Themes &amp; Skins</store>
+      <store id="yandex">Themes &amp; Skins</store>
+      <store id="samsung">Theme</store>
+      <store id="slideme">Themes / Wallpapers</store>
+    </subcategory>
+  </category>
+  <category code="Weather">
+    <subcategory code="">
+      <store id="google">Weather</store>
+      <store id="amazon">News &amp; Weather / Weather</store>
+      <store id="opera">Travel &amp; Maps</store>
+      <store id="yandex">Travel &amp; Maps</store>
+      <store id="samsung">Weather</store>
+      <store id="slideme">News &amp; Weather / Weather</store>
+    </subcategory>
+  </category>
+  <category code="Web Browsers">
+    <subcategory code="">
+      <store id="google">Communication</store>
+      <store id="amazon">Web Browsers</store>
+      <store id="opera">Communication</store>
+      <store id="yandex">Communication</store>
+      <store id="samsung">Social Networking</store>
+      <store id="slideme">Tools &amp; Utilities / Browsers</store>
+    </subcategory>
+  </category>
+</categories>
