@@ -1,3 +1,18 @@
+Summary
+-------------
+
+Uploading Android application to several appstores could be time consuming. AppDF format is designed to simplify this process. A developer describes an Android application once by creating a simple AppDF archive that includes the XML description, APK file(s), screenshots, app icon, promo images, etc and just upload this AppDF file to all the stores that support AppDF uploading.
+
+Table of Contents:
+* [AppDF File Structure](#appdf-file-structure)
+* [Sample Description.xml File](#sample-descriptionxml-file)
+* [Description.xml Structure](#descriptionxml-structure)
+* [Application Store Support](#application-store-support)
+* [Category List](#category-list)
+* [Localization Support](#localization-support)
+* [Status](#status)
+* [License](#license)
+
 AppDF File Structure
 -------------
 
@@ -343,7 +358,9 @@ Sample Description.xml File
 Description.xml Structure
 -------------
 
-Table of Contents:
+[Formal  XML Schema (XSD) description](appdf-description.xsd) of Description.xml file structure.
+
+List of Tags:
 * [categorization](#categorization)
 	* [type](#categorizationtype)
 	* [category](#categorizationcategory)
@@ -465,7 +482,7 @@ Required. No attributes. Value could be either `application` or `game`.
 
 #### categorization/category
 
-Required. No attributes. AppDF format has its own list of categories for both games and applications. This category list is developed to be easily mapped to any of the application store category lists.
+Required. No attributes. AppDF format has its own list of categories for both games and applications. This [category list](#category-list) is developed to be easily mapped to any of the application store category lists.
 
 <table>
   <tr>
@@ -511,7 +528,7 @@ Required. No attributes. AppDF format has its own list of categories for both ga
 Optional. 
 No attributes. 
 
-Although some stores don't use subcategories AppDF includes as detailed category information as possible. It is always easy to broaden detailed AppDF category+subcategory information to a less detailed particular store category list.
+Although some stores don't use subcategories AppDF includes as detailed category information as possible. It is always easy to broaden detailed AppDF category+subcategory information to a less detailed particular store category list. More information in the [category list](#category-list) section.
 
 <table>
   <tr>
@@ -3897,11 +3914,11 @@ Application Store Support
 </table>
 
 
-### Application Categories
-
 Category List
 -------------
 AppDF provides universal category list that could be matched to any appstore category list. When we chose categories for the AppDF we tried to create the most detailed list to archive unambiguous mapping for any appstore.
+
+The AppDF category list is available as [JSON](data/categories.json) or [XML](data/categories.xml). You can also download a proposal mapping of the AppDF category list to some application stores as [JSON](data/store_categories.json) or [XML](data/store_categories.xml).
 
 ### Application Categories
 
@@ -5718,7 +5735,762 @@ AppDF provides universal category list that could be matched to any appstore cat
 </tr>
 </table>
 
+Localization Support
+-------------
+AppDF supports localization to all the languages. Nevertheless not all languages supported by all the stores. The following tables contain information about current language support status (updated January 14, 2013).
+
+<table>
+  <tr>
+    <th>Application Store</th>
+    <th>Supports Localization?</th>
+    <th>Default Language</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>English US default (cannot be changed)</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>English US default (cannot be changed)</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>English is default (cannot be changed)</td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>No default language (could be any combination)</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td>No localization</td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>English is default and cannot be changed</td>
+  </tr>
+</table>
+
+<table><tr>
+  <th>AppDF Code</th>
+  <th>AppDF Name</th>
+  <th>Google Play</th>
+  <th>Amazon AppStore</th>
+  <th>Opera Mobile Store</th>
+  <th>Samsung Apps</th>
+  <th>Yandex.Store</th>
+</tr>
+<tr>
+  <td>af</td>
+  <td>Afrikaans</td>
+  <td>Afrikaans</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>am</td>
+  <td>Amharic</td>
+  <td>Amharic</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>ar</td>
+  <td>Arabic</td>
+  <td>Arabic</td>
+  <td></td>
+  <td>ARABIC</td>
+  <td>Arabic</td>
+  <td>Arabic</td>
+</tr>
+<tr>
+  <td>be</td>
+  <td>Belarusian</td>
+  <td>Belarusian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>bn</td>
+  <td>Bengali</td>
+  <td></td>
+  <td></td>
+  <td>BENGALI</td>
+  <td></td>
+  <td>Bengali</td>
+</tr>
+<tr>
+  <td>bg</td>
+  <td>Bulgarian</td>
+  <td>Bulgarian</td>
+  <td></td>
+  <td></td>
+  <td>Bulgarian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>ca</td>
+  <td>Catalan</td>
+  <td>Catalan</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>zh</td>
+  <td>Chinese</td>
+  <td></td>
+  <td></td>
+  <td>CHINESE</td>
+  <td></td>
+  <td>Chinese</td>
+</tr>
+<tr>
+  <td>zh_cn</td>
+  <td>Chinese (PRC)</td>
+  <td>Chinese (Simplified)</td>
+  <td>Chinese (Simplified)</td>
+  <td></td>
+  <td>Simplified Chinese</td>
+  <td></td>
+</tr>
+<tr>
+  <td>zh_tw</td>
+  <td>Chinese (Taiwan)</td>
+  <td>Chinese (Traditional)</td>
+  <td></td>
+  <td></td>
+  <td>Traditional Chinese</td>
+  <td></td>
+</tr>
+<tr>
+  <td>hr</td>
+  <td>Croatian</td>
+  <td>Croatian</td>
+  <td></td>
+  <td></td>
+  <td>Croatian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>cs</td>
+  <td>Czech</td>
+  <td>Czech</td>
+  <td></td>
+  <td>CZECH</td>
+  <td>Czech</td>
+  <td>Czech</td>
+</tr>
+<tr>
+  <td>da</td>
+  <td>Danish</td>
+  <td>Danish</td>
+  <td></td>
+  <td>DANISH</td>
+  <td>Danish</td>
+  <td>Danish</td>
+</tr>
+<tr>
+  <td>nl</td>
+  <td>Dutch</td>
+  <td>Dutch</td>
+  <td></td>
+  <td>DUTCH</td>
+  <td>Dutch</td>
+  <td>Dutch</td>
+</tr>
+<tr>
+  <td>en</td>
+  <td>English</td>
+  <td></td>
+  <td></td>
+  <td>ENGLISH</td>
+  <td></td>
+  <td>English</td>
+</tr>
+<tr>
+  <td>en_us</td>
+  <td>English (US)</td>
+  <td>English (United States)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>en_gb</td>
+  <td>English (Britain)</td>
+  <td>English (United Kingdom)</td>
+  <td>English (U.K.)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>et</td>
+  <td>Estonian</td>
+  <td>Estonian</td>
+  <td></td>
+  <td></td>
+  <td>Estonian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>fo</td>
+  <td>Faroese</td>
+  <td></td>
+  <td></td>
+  <td>FARSI</td>
+  <td></td>
+  <td>Farsi</td>
+</tr>
+<tr>
+  <td>fi</td>
+  <td>Finnish</td>
+  <td>Finnish</td>
+  <td></td>
+  <td></td>
+  <td>Finnish</td>
+  <td></td>
+</tr>
+<tr>
+  <td>fr</td>
+  <td>French</td>
+  <td>French</td>
+  <td>French</td>
+  <td>FRENCH</td>
+  <td>French</td>
+  <td>French</td>
+</tr>
+<tr>
+  <td>de</td>
+  <td>German</td>
+  <td>German</td>
+  <td>German</td>
+  <td>GERMAN</td>
+  <td>German</td>
+  <td>German</td>
+</tr>
+<tr>
+  <td>el</td>
+  <td>Greek</td>
+  <td>Greek</td>
+  <td></td>
+  <td>GREEK</td>
+  <td>Greek</td>
+  <td>Greek</td>
+</tr>
+<tr>
+  <td>he</td>
+  <td>Hebrew</td>
+  <td>Hebrew</td>
+  <td></td>
+  <td></td>
+  <td>Hebrew</td>
+  <td></td>
+</tr>
+<tr>
+  <td>hi</td>
+  <td>Hindi</td>
+  <td>Hindi</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>hu</td>
+  <td>Hungarian</td>
+  <td>Hungarian</td>
+  <td></td>
+  <td>HUNGARIAN</td>
+  <td>Hungarian</td>
+  <td>Hungarian</td>
+</tr>
+<tr>
+  <td>id</td>
+  <td>Indonesian</td>
+  <td></td>
+  <td></td>
+  <td>INDONESIA</td>
+  <td>Indonesian</td>
+  <td>Indonesia</td>
+</tr>
+<tr>
+  <td>it</td>
+  <td>Italian</td>
+  <td>Italian</td>
+  <td>Italian</td>
+  <td>ITALIAN</td>
+  <td>Italian</td>
+  <td>Italian</td>
+</tr>
+<tr>
+  <td>ja</td>
+  <td>Japanese</td>
+  <td>Japanese</td>
+  <td>Japanese</td>
+  <td>JAPANESE</td>
+  <td>Japanese</td>
+  <td>Japanese</td>
+</tr>
+<tr>
+  <td>kk</td>
+  <td>Kazakh</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Kazakh</td>
+  <td></td>
+</tr>
+<tr>
+  <td>ko</td>
+  <td>Korean</td>
+  <td>Korean (South Korea)</td>
+  <td></td>
+  <td>KOREAN</td>
+  <td>Korean</td>
+  <td>Korean</td>
+</tr>
+<tr>
+  <td>lt</td>
+  <td>Lithuanian</td>
+  <td>Lithuanian</td>
+  <td></td>
+  <td></td>
+  <td>Lithuanian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>lv</td>
+  <td>Latvian</td>
+  <td>Latvian</td>
+  <td></td>
+  <td></td>
+  <td>Latvian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>ms</td>
+  <td>Malay</td>
+  <td>Malay</td>
+  <td></td>
+  <td>MALAY</td>
+  <td></td>
+  <td>Malay</td>
+</tr>
+<tr>
+  <td>ne</td>
+  <td>Nepali</td>
+  <td></td>
+  <td></td>
+  <td>NEPALESE</td>
+  <td></td>
+  <td>Nepalese</td>
+</tr>
+<tr>
+  <td>no</td>
+  <td>Norwegian</td>
+  <td>Norwegian</td>
+  <td></td>
+  <td>NORWAY</td>
+  <td>Norwegian</td>
+  <td>Norway</td>
+</tr>
+<tr>
+  <td>fa</td>
+  <td>Persian</td>
+  <td>Persian</td>
+  <td></td>
+  <td></td>
+  <td>Persian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>pl</td>
+  <td>Polish</td>
+  <td>Polish</td>
+  <td></td>
+  <td>POLISH</td>
+  <td>Polish</td>
+  <td>Polish</td>
+</tr>
+<tr>
+  <td>pt</td>
+  <td>Portuguese</td>
+  <td></td>
+  <td></td>
+  <td>PORTUGUESE</td>
+  <td>Portuguese</td>
+  <td>Portuguese</td>
+</tr>
+<tr>
+  <td>pt_br</td>
+  <td>Portuguese (Brazil)</td>
+  <td>Portuguese (Brazil)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>pt_pt</td>
+  <td>Portuguese (Portugal)</td>
+  <td>Portuguese (Portugal)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>rm</td>
+  <td>Romansh</td>
+  <td>Romansh</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>ro</td>
+  <td>Romanian</td>
+  <td>Romanian</td>
+  <td></td>
+  <td>ROMANIAN</td>
+  <td>Romanian</td>
+  <td>Romanian</td>
+</tr>
+<tr>
+  <td>ru</td>
+  <td>Russian</td>
+  <td>Russian</td>
+  <td></td>
+  <td>RUSSIAN</td>
+  <td>Russian</td>
+  <td>Russian</td>
+</tr>
+<tr>
+  <td>sr</td>
+  <td>Serbian</td>
+  <td>Serbian</td>
+  <td></td>
+  <td></td>
+  <td>Serbian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>gd</td>
+  <td>Gaelic</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Gaelic</td>
+  <td></td>
+</tr>
+<tr>
+  <td>sk</td>
+  <td>Slovak</td>
+  <td>Slovak</td>
+  <td></td>
+  <td>SLOVAK</td>
+  <td>Slovak</td>
+  <td>Slovak</td>
+</tr>
+<tr>
+  <td>sl</td>
+  <td>Slovene</td>
+  <td>Slovenian</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>es</td>
+  <td>Spanish</td>
+  <td></td>
+  <td>Spanish</td>
+  <td>SPANISH</td>
+  <td>Spanish</td>
+  <td>Spanish</td>
+</tr>
+<tr>
+  <td>es_es</td>
+  <td>Spanish (Spain)</td>
+  <td>Spanish (Spain)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>es_us</td>
+  <td>Spanish (US)</td>
+  <td>Spanish (United States)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>es_la</td>
+  <td>Spanish (Latin America)</td>
+  <td>Spanish (Latin America)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>sw</td>
+  <td>Swahili</td>
+  <td>Swahili</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>sv</td>
+  <td>Swedish</td>
+  <td>Swedish</td>
+  <td></td>
+  <td>SWEDISH</td>
+  <td>Swedish</td>
+  <td>Swedish</td>
+</tr>
+<tr>
+  <td>th</td>
+  <td>Thai</td>
+  <td>Thai</td>
+  <td></td>
+  <td>THAI</td>
+  <td>Thai</td>
+  <td>Thai</td>
+</tr>
+<tr>
+  <td>tl</td>
+  <td>Tagalog</td>
+  <td>Filipino</td>
+  <td></td>
+  <td>TAGALOG</td>
+  <td></td>
+  <td>Tagalog</td>
+</tr>
+<tr>
+  <td>tr</td>
+  <td>Turkish</td>
+  <td>Turkish</td>
+  <td></td>
+  <td>TURKISH</td>
+  <td>Turkish</td>
+  <td>Turkish</td>
+</tr>
+<tr>
+  <td>uk</td>
+  <td>Ukrainian</td>
+  <td>Ukrainian</td>
+  <td></td>
+  <td></td>
+  <td>Ukrainian</td>
+  <td></td>
+</tr>
+<tr>
+  <td>vi</td>
+  <td>Vietnamese</td>
+  <td>Vietnamese</td>
+  <td></td>
+  <td>VIETNAMESE</td>
+  <td>Vietnamese</td>
+  <td>Vietnamese</td>
+</tr>
+<tr>
+  <td>zu</td>
+  <td>Zulu</td>
+  <td>Zulu</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</table>
+
+The following languages are currently not support by any of the stores:
+* Abkhaz
+* Afar
+* Akan
+* Albanian
+* Arabic (Egypt)
+* Arabic (Israel)
+* Aragonese
+* Armenian
+* Assamese
+* Avaric
+* Avestan
+* Aymara
+* Azerbaijani
+* Bambara
+* Bashkir
+* Basque
+* Bihari
+* Bislama
+* Bosnian
+* Breton
+* Burmese
+* Chamorro
+* Chechen
+* Chichewa
+* Chuvash
+* Cornish
+* Corsican
+* Cree
+* Divehi
+* Dutch (Belgium)
+* Dutch (Netherlands)
+* Dzongkha
+* English (Australia)
+* English (Canada)
+* English (New Zealand)
+* English (Singapore)
+* English (Canada)
+* Esperanto
+* Ewe
+* Fijian
+* French (Belgium)
+* French (Canada)
+* French (France)
+* French (Switzerland)
+* Fula
+* Galician
+* Georgian
+* German (Austria)
+* German (Germany)
+* German (Liechtenstein)
+* German (Switzerland)
+* GuaranГ­
+* Gujarati
+* Haitian
+* Hausa
+* Herero
+* Hiri Motu
+* Interlingua
+* Interlingue
+* Irish
+* Igbo
+* Inupiaq
+* Ido
+* Icelandic
+* Italian (Italy)
+* Italian (Switzerland)
+* Inuktitut
+* Javanese
+* Kalaallisut
+* Kannada
+* Kanuri
+* Kashmiri
+* Khmer
+* Kikuyu
+* Kinyarwanda
+* Kyrgyz
+* Komi
+* Kongo
+* Kurdish
+* Kwanyama
+* Latin
+* Luxembourgish
+* Ganda
+* Limburgish
+* Lingala
+* Lao
+* Luba-Katanga
+* Manx
+* Macedonian
+* Malagasy
+* Malayalam
+* Maltese
+* Maori
+* Marathi
+* Marshallese
+* Mongolian
+* Nauru
+* Navajo
+* Norwegian BokmГҐl
+* North Ndebele
+* Ndonga
+* Norwegian Nynorsk
+* Nuosu
+* South Ndebele
+* Occitan
+* Ojibwe
+* Oromo
+* Oriya
+* Ossetian
+* Panjabi
+* PДЃli
+* Pashto
+* Quechua
+* Kirundi
+* Sanskrit
+* Sardinian
+* Sindhi
+* Northern Sami
+* Samoan
+* Sango
+* Shona
+* Sinhala
+* Somali
+* Southern Sotho
+* Sundanese
+* Swati
+* Tamil
+* Telugu
+* Tajik
+* Tigrinya
+* Tibetan Standard
+* Turkmen
+* Tswana
+* Tonga
+* Tsonga
+* Tatar
+* Twi
+* Tahitian
+* Uighur
+* Urdu
+* Uzbek
+* Venda
+* VolapГјk
+* Walloon
+* Welsh
+* Wolof
+* Western Frisian
+* Xhosa
+* Yiddish
+* Yoruba
+* Zhuang
+
+Status
+-------------
+Current status: draft  
+Specification version: 0.93  
+Last update: January 16, 2013  
+
 License
 -------------
-This file is licensed under the Creative Commons Attribution 2.5 license:
+This file is licensed under the Creative Commons Attribution 2.5 license:  
 http://creativecommons.org/licenses/by/2.5/
+
+Source code is licensed under Apache License, Version 2.0:  
+http://www.apache.org/licenses/LICENSE-2.0.html

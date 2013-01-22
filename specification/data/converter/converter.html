@@ -1,0 +1,193 @@
+<html>
+<head>
+	<title>AppDF Data Converter (from JSON)</title>
+	<script src="jquery.js"></script>
+</head>
+<body>
+	<h1>AppDF Data Converter (from JSON)</h1>
+	<p>It is a technical page that converts JSON data (original format) to HTML and XML</p>
+	<p>
+		The following files in the data folder are originals:
+		<ul>
+			<li>languages.json</li>
+			<li>stores.json</li>
+			<li>stores_localization.json</li>
+			<li>store_categories.json</li>
+		</ul>
+		other are generated.
+	</p>
+	<h2>All Languages XML</h2>
+	<textarea rows="5" cols="60" id="textarea-all-anguages-xml"></textarea>
+	<h2>Store Localizations XML</h2>
+	<textarea rows="5" cols="60" id="store-localizations-xml"></textarea>
+	<h2>Store Localizations HTML (for the specification)</h2>
+	<textarea rows="5" cols="60" id="store-localizations-html"></textarea>
+	<h2>Categories XML</h2>
+	<textarea rows="5" cols="60" id="categories-xml"></textarea>
+	<h2>Categories JSON</h2>
+	<textarea rows="5" cols="60" id="categories-json"></textarea>
+	<h2>Stores Categories XML</h2>
+	<textarea rows="5" cols="60" id="stores-categories-xml"></textarea>
+<script>
+var languages = {};
+var storeLocalization = {};
+var stores = {};
+var storeCategories = {};
+
+$.getJSON("../languages.json", function(data_languages) {
+	languages = data_languages;
+	$.getJSON("../stores.json", function(data_stores) {
+		stores = data_stores;
+		$.getJSON("../stores_localization.json", function(data_storeLocalization) {
+			storeLocalization = data_storeLocalization;
+			$.getJSON("../store_categories.json", function(data_stirecategories) {
+				storeCategories = data_stirecategories;
+
+				//When everything is loaded populate all <textarea> elements
+				document.getElementById("textarea-all-anguages-xml").innerHTML = generateAllLanguagesXML();
+				document.getElementById("store-localizations-xml").innerHTML = generateStoreLocalizationXML();
+				document.getElementById("store-localizations-html").innerHTML = generateStoreLocalizationHTML();
+				document.getElementById("categories-xml").innerHTML = generateCategoriesXML();
+				document.getElementById("categories-json").innerHTML = generateCategoriesJSON();
+				document.getElementById("stores-categories-xml").innerHTML = generateStoresCategoriesXML();
+			})
+		})
+	})
+});
+
+
+function generateAllLanguagesXML() {
+	var s = "<languages>\n"
+	for (langCode in languages) {
+		s += "  <language code=\"" + langCode + "\">" + languages[langCode] + "</language>\n";
+	}
+	s += "</languages>";
+	return s;
+} 
+
+function generateStoreLocalizationXML() {
+	var s = "<store-localizations>\n"
+	for (langCode in storeLocalization) {
+		s += "  <language code=\"" + langCode + "\">\n";
+		for (store in storeLocalization[langCode]) {
+			s += "    <store id=\"" + store + "\">" + storeLocalization[langCode][store] + "</store>\n";
+		}
+		s += "  </language>\n";
+	}
+	s += "</store-localizations>";
+	return s;
+} 
+
+function generateCategoriesXML() {
+	var s = "<categories>\n"
+	for (t in storeCategories) {
+		s += "  <type code=\"" + t + "\">\n";
+		for (firstCategory in storeCategories[t]) {
+			var anyNonEmptySubcategory = false;
+			for (secondCategory in storeCategories[t][firstCategory]) {
+				if (secondCategory!="") {
+					anyNonEmptySubcategory = true;
+				} 
+			}
+
+			if (anyNonEmptySubcategory) {
+				s += "    <category code=\"" + firstCategory + "\">\n";
+				for (secondCategory in storeCategories[t][firstCategory]) {
+					s += "      <subcategory code=\"" + secondCategory + "\"/>\n";
+				}
+				s += "    </category>\n";
+			} else {
+				s += "    <category code=\"" + firstCategory + "\"/>\n";			
+			}
+		}
+		s += "  </type>\n";
+	}
+	s += "</categories>";
+	return s;
+} 
+
+function generateCategoriesJSON() {
+	var s = "{\n"
+	for (t in storeCategories) {
+		s += "  \"" + t + "\" : {\n";
+		for (firstCategory in storeCategories[t]) {
+			s += "    \"" + firstCategory + "\" : [";
+			var first = true;
+			for (secondCategory in storeCategories[t][firstCategory]) {
+				if (first) {
+					first = false;
+					s += "\n";
+				} else {
+					s += ",\n";					
+				}
+				s += "      \"" + secondCategory + "\"";
+			}
+			s += "\n    ],\n";
+		}
+		s += "  },\n";
+	}
+	s += "}";
+	return s;
+} 
+
+function generateStoresCategoriesXML() {
+	var s = "<categories>\n"
+	for (t in storeCategories) {
+		s += "  <type code=\"" + t + "\">\n";
+		for (firstCategory in storeCategories[t]) {
+			s += "    <category code=\"" + firstCategory + "\">\n";
+			for (secondCategory in storeCategories[t][firstCategory]) {
+				s += "      <subcategory code=\"" + secondCategory + "\">\n";
+				for (store in storeCategories[t][firstCategory][secondCategory]) {
+					s += "        <store id=\"" + store + "\">" + storeCategories[t][firstCategory][secondCategory][store] + "</store>\n";
+				}
+				s += "      </subcategory>\n";
+			}
+			s += "    </category>\n";
+		}
+		s += "  </type>\n";
+	}
+	s += "</categories>";
+	return s;
+} 
+
+function generateStoreLocalizationHTML() {
+	//First we collect information about all stores mentioned in storeLocalization 
+	var usedStores = {};
+	for (langCode in storeLocalization) {
+		for (store in storeLocalization[langCode]) {
+			usedStores[store] = true;
+		}
+	}
+
+	//Generate header
+	var s = "<table>\n"
+	s += "  <tr>\n";
+	s += "    <th>AppDF Code</th>\n";
+	s += "    <th>AppDF Name</th>\n";
+	for (store in usedStores) {
+		s += "    <th>" + stores[store] + "</th>\n";
+	}
+	s += "  </tr>\n";
+
+	for (langCode in storeLocalization) {
+		s += "  <tr>\n";
+		s += "    <td>" + langCode + "</td>\n";
+		s += "    <td>" + languages[langCode] + "</td>\n";
+		for (store in usedStores) {
+			var storeLanguage = storeLocalization[langCode][store];
+			if (!storeLanguage) {
+				storeLanguage = "";
+			}
+			s += "    <td>" + storeLanguage + "</td>\n";
+		}
+		s += "  </tr>\n";
+	}
+	s += "</table>";
+	return s;
+} 
+
+</script>
+
+</body>
+</html>

@@ -75,10 +75,14 @@
 							</div>
 							<div class="control-group">
 								<!-- Username -->
-								<label class="control-label"  for="username">Username</label>
+								<label class="control-label"  for="username">APK File</label>
 								<div class="controls">
-									<input type="text" id="username" name="username" placeholder="" class="input-xlarge">
-									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
+									<input type="file" name="apk-file" id="apk-file" class="hide ie_show" accept="application/vnd.android.package-archive"/>
+									<div class="input-append ie_hide">
+										<input id="pretty-apk-file" class="input-large" type="text" onclick="prettyFileInputClick('apk-file');">
+										<a class="btn" onclick="prettyFileInputClick('apk-file');">Browse</a>
+									</div>
+									<p class="help-block">You can add extensions for your APK file or submit more APK files for your application</p>
 								</div>
 							</div>
 						</fieldset>
@@ -120,6 +124,19 @@
 									<p class="help-block">Please provide your E-mail</p>
 								</div>
 							</div><!--control-group-->
+
+							 <div class="controls" id="store-categories-info">
+							 	<table>
+							 		<tr>
+							 			<th>Store</th>
+							 			<th>Category</th>
+							 		</tr>
+							 		<tr>
+							 			<td>Google Play</td>
+							 			<td>My Game</td>
+							 		</tr>
+							 	</table>
+							</div><!--div#store-categories-info-->
 						</fieldset>
 					</section>
 
@@ -201,6 +218,102 @@
 					  </fieldset>
 					</section>
 
+					<section id="price">
+						<fieldset>
+							<div id="legend">
+								<legend class="">Price</legend>
+							</div>
+							<div class="tabbable"> <!-- Only required for left/right tabs -->
+								<ul class="nav nav-pills">
+									<li class="active"><a href="#tab-price-free" data-toggle="tab">Free</a></li>
+									<li><a href="#tab-price-paid" data-toggle="tab">Paid</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab-price-free">
+										<div class="control-group">
+											<!-- description/texts/title -->
+											<label class="control-label"  for="description-texts-title">Title</label>
+											<div class="controls">
+												<input type="text" id="description-texts-title" 
+													required 
+													data-validation-required-message="Title is required" 
+													maxlength="30"
+												>
+												<p class="help-block">Different stores have different maximum title length requirements. The first title should be shorter then 30 symbols. You can <button class="btn" onclick="addMoreTitles(this); return false;">add longer title</button> for the stores that support long titles.</p>
+											</div>
+										</div><!--./control-group -->
+									 
+										<div class="control-group">
+											<!-- description/texts/short-description -->
+											<label class="control-label" for="description-texts-shortdescription">Short description</label>
+											<div class="controls">
+												<input type="text" id="description-texts-shortdescription"
+													required 
+													data-validation-required-message="Short description is required" 
+													maxlength="80"
+												>
+												<p class="help-block">Different stores have different maximum short description length requirements. The first short-description should be shorter then 80 symbols. You can <button class="btn" onclick="addMoreShortDescriptions(this); return false;">add longer short description</button> for the stores that support longer ones.</p>
+											</div>
+										</div><!--./control-group -->
+									 
+										<div class="control-group">
+											<!-- description/texts/full-description -->
+											<label class="control-label" for="description-texts-fulldescription">Full description</label>
+											<div class="controls">
+												<textarea class="input-xxlarge" rows="5" id="description-texts-fulldescription"></textarea>
+												<p class="help-block">Please provide your E-mail</p>
+											</div>
+										</div><!--./control-group -->
+
+										<div class="control-group">
+											<!-- description/texts/keywords -->
+											<label class="control-label" for="description-texts-keywords">Keywords</label>
+											<div class="controls">
+												<div class="input-append"> 
+													<input type="text" id="description-texts-keywords"> 
+													<button class="btn" type="button" onclick="addMoreKeywords(this); return false;"><i class=" icon-plus-sign"></i></button>
+												</div> 
+												<p class="help-block">Please provide keywords that describe your application</p>
+											</div>
+										</div><!--./control-group -->
+									</div><!--./tab-pane -->
+									<div class="tab-pane" id="tab-price-paid">
+										<div class="control-group">
+											<!-- price/base-price -->
+											<label class="control-label" for="price-baseprice">Price (USD)</label>
+											<div class="controls">
+												<input type="text" id="price-baseprice" 
+												>
+												<p class="help-block">Default product price in USD. Price for other currencies will be automatically converted by the stores from USD. If you want manual control you can specify local prices.</p>
+											</div>
+										</div><!--./control-group -->
+									 
+										<div class="control-group">
+											<!-- price/local-price -->
+											<label class="control-label" for="price-baseprice">Local price</label>
+											<div class="controls">
+												<div>
+													<button class="btn">Add Local Price</button>
+												</div>
+												<select id="">
+													<option>Germany</option>
+													<option>Russian</option>
+												</select> 
+												<input type="text" id="price-localprice" 
+												>
+												<select id="">
+													<option>EUR</option>
+													<option>RUB</option>
+												</select> 
+												<p class="help-block">If you </p>
+											</div>
+										</div><!--./control-group -->
+									</div><!--./tab-pane -->
+								</div><!--./tab-content -->
+							</div><!--./tabbable -->	
+						</fieldset>
+					</section><!--price-->
+
 					<section id="customer-support">
 						<fieldset>
 							<div id="legend">
@@ -224,10 +337,10 @@
 								<!-- customer-support/email -->
 								<label class="control-label"  for="customersupport-email">Email</label>
 								<div class="controls">
-							      	<input id="customersupport-email" type="email" 
-							      		required 
-							      		data-validation-required-message="Customer support email is required" 
-							      		data-validation-email-message="Must be a valid email address"
+									<input id="customersupport-email" type="email" 
+										required 
+										data-validation-required-message="Customer support email is required" 
+										data-validation-email-message="Must be a valid email address"
 							      	>
 									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
 								</div>
@@ -237,18 +350,19 @@
 								<!-- customer-support/website -->
 								<label class="control-label"  for="customersupport-website">Website</label>
 								<div class="controls">
-							      	<input id="customersupport-website" type="text" 
-							      		required 
-							      		data-validation-required-message="Customer support website is required" 
-							      	>
+									<input id="customersupport-website" type="text" 
+										required 
+										data-validation-required-message="Customer support website is required" 
+									>
 									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
 								</div>
 							</div><!--control-group-->
 						</fieldset>
-					</section>
+					</section><!--customer-support-->
 
 				<div class="form-actions">
-					<button type="submit" class="btn btn-primary">Generate APK File</button>
+<!--					<button type="submit" class="btn btn-primary" id="generate-appdf-file">Generate AppDF File</button>-->
+					<a href="#" id="build-appdf-file" class="btn btn-primary">Build AppDF File</a>
 				</div>
 			</form>
         </div><!--/span-->
@@ -266,6 +380,9 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/jqBootstrapValidation.js"></script>    
+	<script src="js/xmlgenerator.js"></script>    
+	<script src="js/zip/zip.js"></script>
 	<script src="js/appdfeditor.js"></script>
+	<script src="js/apkreader.js"></script>
   </body>
 </html>
