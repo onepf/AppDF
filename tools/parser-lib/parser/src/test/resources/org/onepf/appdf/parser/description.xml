@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<application-description-file version="1"
+                              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                              xsi:noNamespaceSchemaLocation="../../../specification/appdf-description.xsd">
+
+    <application package="ru.yandex.shell">
+
+        <categorization>
+            <type>application</type>
+            <category>personalization</category>
+            <subcategory>personalization</subcategory>
+        </categorization>
+
+        <description language="en">
+            <texts>
+                <title>Yandex.Shell</title>
+                <keywords>yandex, shell, home, screen, launcher, 3d, widget, panel, dialer</keywords>
+                <short-description>Yandex.Shell is an intuitive interface that makes using Android devices a breeze.</short-description>
+                <full-description>Yandex.Shell is an intuitive interface that makes using Android devices a breeze. It only takes a second to customise the various screens, while the interface automatically sorts your apps and widgets. Simply use the 3D carousel to switch between screens. 
+                You can place all your most frequently used widgets on the same screen to keep up-to-date with all the latest local news, weather and traffic. The built-in app search tool will help you easily find an app on your phone or online.
+                
+                The Yandex.Shell address book also doubles as a business directory. For example, if you search for “restaurant” the app will show you the address and telephone number of restaurants in the area.
+                
+                If you receive a missed call from an unknown number, Shell will automatically check the business directory for this number and show you the name in your call history if possible.
+                
+                Yandex.Shell is available as a free download for users in Russia, Ukraine, Belarus, Kazakhstan and Turkey.
+
+                Please familiarize yourself with the terms and conditions of the License Agreement before installing the app:
+                http://legal.yandex.ru/shell_mobile_agreement/
+                </full-description>
+                <features>
+                    <feature>Home screen</feature>
+                    <feature>3D interface</feature>
+                    <feature>Dialer</feature>
+                </features>
+                <recent-changes>New version (2.0) is available only for smartphones.
+                - An option to filter contacts by groups and accounts added
+                - Several two-SIM devices support added
+                - Other improvements and fixes
+                </recent-changes>
+                <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
+            </texts>
+
+            <images>
+                <app-icon size="512">appicon.png</app-icon>
+                <large-promo>promo.jpg</large-promo>
+                <screenshots>
+                    <screenshot>screenshot01_en.png</screenshot>
+                    <screenshot>screenshot02_en.png</screenshot>
+                    <screenshot>screenshot03_en.png</screenshot>
+                    <screenshot>screenshot04_en.png</screenshot>
+                    <screenshot>screenshot05_en.png</screenshot>
+                    <screenshot>screenshot06_en.png</screenshot>
+                    <screenshot>screenshot07_en.png</screenshot>
+                </screenshots>
+            </images>
+
+            <videos>
+                <youtube-video>KLifvLiobu0</youtube-video>
+            </videos>
+
+        </description>
+
+         <description-localization language="ru">
+            <texts>
+                <title>Яндекс.Shell</title>
+                <keywords>Яндекс.Шелл, Yandex.Shell, SPB Shell 3D, домашний экран, лончер, виджеты, home screen, launcher, widgets, dialer, address book, телефон, адресная книга</keywords>
+                <short-description>Удобный и наглядный интерфейс, который делает проще и приятнее работу с устройством на базе Android.</short-description>
+                <full-description>Удобный и наглядный интерфейс, который делает проще и приятнее работу с устройством на базе Android. Чтобы настроить экраны, вам потребуется совсем немного времени. Интерфейс умеет автоматически распределять по экранам виджеты и программы. Переключаться между экранами помогает трехмерная карусель.
+                Полезные и нужные вам виджеты можно расположить на одном экране – вам будет достаточно одного взгляда, чтобы быть в курсе актуальных городских событий, погоды и ситуации на дорогах.
+                
+                Поиск программ ищет не только по данным телефона и установленным приложениям, но и в магазине приложений.
+                
+                В адресной книге Яндекс.Shell есть телефоны организаций. Просто задайте запрос – например «ресторан» – и встроенный поиск покажет телефон и адрес ресторана поблизости. Если вам позвонят с незнакомого номера, то Шелл проверит наличие этого номера в базе. И если этот номер принадлежит организации, то вы увидите в журнале звонков её название.
+                
+                Яндекс.Shell распространяется бесплатно для пользователей из России, Украины, Беларуси, Казахстана и Турции.
+
+                Перед установкой и использованием программы, пожалуйста, ознакомьтесь с условиями лицензионного соглашения: http://legal.yandex.ru/shell_mobile_agreement/
+                Пожалуйста, отправляйте ваши вопросы, отзывы и комментарии о программе на support@mobshell.yandex.ru
+                </full-description>
+                <features>
+                    <feature>Домашний экран</feature>
+                    <feature>Телефон</feature>
+                    <feature>Виджеты</feature>
+                </features>
+                <recent-changes>В настоящее время новая версия (2.0) доступна только для пользователей смартфонов.
+                - Фильтрация списка контактов по группам и учетным записям
+                - Добавлена поддержка некоторых телефонов с двумя сим-картами
+                - Другие исправления и улучшения
+                </recent-changes>
+            </texts>
+        </description-localization>
+
+            
+
+        <content-description>
+            <content-rating>3</content-rating>
+            <rating-certificates>
+                <rating-certificate type="PEGI">3</rating-certificate>
+                <rating-certificate type="ESRB">3</rating-certificate>
+                <rating-certificate type="GRB">all</rating-certificate>
+                <rating-certificate type="CERO">all</rating-certificate>
+                <rating-certificate type="DEJUS">l</rating-certificate>
+                <rating-certificate type="FSK">0</rating-certificate>
+            </rating-certificates>
+            <content-descriptors>
+                <cartoon-violence>no</cartoon-violence>
+                <realistic-violence>no</realistic-violence>
+                <bad-language>no</bad-language>
+                <fear>no</fear>
+                <sexual-content>no</sexual-content>
+                <drugs>no</drugs>
+                <gambling-refference>no</gambling-refference>
+                <alcohol>no</alcohol>
+                <smoking>strong</smoking>
+                <discrimination>no</discrimination>
+            </content-descriptors>
+            <included-activities>
+                <in-app-billing>no</in-app-billing>
+                <gambling>no</gambling>
+                <advertising>no</advertising>
+                <user-generated-content>no</user-generated-content>
+                <user-to-user-communications>no</user-to-user-communications>
+                <account-creation>no</account-creation>
+                <personal-information-collection>no</personal-information-collection>
+            </included-activities>
+        </content-description>
+
+        <availability>
+            <countries>
+                <include>ru</include>
+                <exclude>ua</exclude>
+                <exclude>kz</exclude>
+                <exclude>by</exclude>
+                <exclude>tr</exclude>
+            </countries>
+        </availability>
+
+    
+        <price free="yes">
+        </price>
+
+        <apk-files>
+            <apk-file>yandexshell1.apk</apk-file>
+            <apk-file>yandexshell2.apk</apk-file>
+            <apk-file>yandexshell3.apk</apk-file>
+            <apk-file>yandexshell4.apk</apk-file>
+            <apk-file>yandexshell5.apk</apk-file>
+        </apk-files>
+
+        <requirements>
+            <supported-devices>
+                <exclude>sholes</exclude>
+                <exclude>umts_sholes</exclude>
+                <exclude>SPH-M920</exclude>
+                <exclude>GT-I5700</exclude>
+                <exclude>GT-I5700L</exclude>
+                <exclude>GT-I5800D</exclude>
+                <exclude>GT-I5510</exclude>
+                <exclude>GT-I5510L</exclude>
+                <exclude>SCH-I100</exclude>
+            </supported-devices>
+        </requirements>
+
+        <testing-instructions></testing-instructions>
+        
+        <consent>
+            <google-android-content-guidelines>yes</google-android-content-guidelines>
+            <us-export-laws>yes</us-export-laws>
+            <slideme-agreement>yes</slideme-agreement>
+            <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+        </consent>
+
+        <customer-support>
+            <phone>+7 (812) 3356993</phone>
+            <email>support@mobshell.yandex.ru</email>
+            <website>http://www.yandex.ru</website>
+        </customer-support>
+
+        <store-specific>
+            <amazon>
+                <form-factor>all</form-factor>
+                <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
+                <apply-amazon-drm>yes</apply-amazon-drm>
+                <kindle-support>
+                    <kindle-fire-first-generation>yes</kindle-fire-first-generation>
+                    <kindle-fire>yes</kindle-fire>
+                    <kindle-fire-hd>yes</kindle-fire-hd>
+                    <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
+                </kindle-support>
+                <binary-alias>Version 2.04</binary-alias>
+            </amazon>
+            <samsung>
+                <form-factor>phone,tablet</form-factor>
+                <tags>
+                    <tag>Phone Theme / Personalization</tag>
+                    <tag>Utility / Launcher</tag>
+                    <tag>Utility / Widget</tag>
+                </tags>
+            </samsung>
+           
+        </store-specific>
+
+    </application>
+
+</application-description-file>
