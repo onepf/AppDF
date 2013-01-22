@@ -1,0 +1,50 @@
+<!-- Extracted description tag from Life app sample for testing purposes-->
+<description language="en">
+            <texts>
+                <title>Yandex.Shell</title>
+                <keywords>yandex, shell, home, screen, launcher, 3d, widget, panel, dialer</keywords>
+                <short-description>Yandex.Shell is an intuitive interface that makes using Android devices a breeze.</short-description>
+                <full-description>Yandex.Shell is an intuitive interface that makes using Android devices a breeze. It only takes a second to customise the various screens, while the interface automatically sorts your apps and widgets. Simply use the 3D carousel to switch between screens. 
+                You can place all your most frequently used widgets on the same screen to keep up-to-date with all the latest local news, weather and traffic. The built-in app search tool will help you easily find an app on your phone or online.
+                
+                The Yandex.Shell address book also doubles as a business directory. For example, if you search for “restaurant” the app will show you the address and telephone number of restaurants in the area.
+                
+                If you receive a missed call from an unknown number, Shell will automatically check the business directory for this number and show you the name in your call history if possible.
+                
+                Yandex.Shell is available as a free download for users in Russia, Ukraine, Belarus, Kazakhstan and Turkey.
+
+                Please familiarize yourself with the terms and conditions of the License Agreement before installing the app:
+                http://legal.yandex.ru/shell_mobile_agreement/
+                </full-description>
+                <features>
+                    <feature>Home screen</feature>
+                    <feature>3D interface</feature>
+                    <feature>Dialer</feature>
+                </features>
+                <recent-changes>New version (2.0) is available only for smartphones.
+                - An option to filter contacts by groups and accounts added
+                - Several two-SIM devices support added
+                - Other improvements and fixes
+                </recent-changes>
+                <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
+            </texts>
+
+            <images>
+                <app-icon size="512">appicon.png</app-icon>
+                <large-promo>promo.jpg</large-promo>
+                <screenshots>
+                    <screenshot>screenshot01_en.png</screenshot>
+                    <screenshot>screenshot02_en.png</screenshot>
+                    <screenshot>screenshot03_en.png</screenshot>
+                    <screenshot>screenshot04_en.png</screenshot>
+                    <screenshot>screenshot05_en.png</screenshot>
+                    <screenshot>screenshot06_en.png</screenshot>
+                    <screenshot>screenshot07_en.png</screenshot>
+                </screenshots>
+            </images>
+
+            <videos>
+                <youtube-video>KLifvLiobu0</youtube-video>
+            </videos>
+
+        </description>
