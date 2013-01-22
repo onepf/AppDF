@@ -1,5 +1,6 @@
 zip.workerScriptsPath = "js/zip/";
 
+var apkFiles = {};
 var allCategories = {};
 var storeCategories = {};
 var allLanguages = {};
@@ -44,25 +45,38 @@ $("#categorization-subcategory").change(function() {
 	fillCategoryStoresInfo();
 });
 
-$("#apk-file").change(function() {
-	var fileInputEntry = document.getElementById("apk-file");
-	var error = ApkParser.parseApkFile(fileInputEntry.files[0], fileInputEntry.value, function(apkData) {
-		$('#pretty-apk-file').val($("#apk-file").val().replace("C:\\fakepath\\", ""));
-		alert("package = " + apkData.package);
-	}, function (error) {
-		fileInputEntry.value = '';
-		alert("Error APK File Parsing: " + error);
-	});
-});
+// $("#apk-file").change(function() {
+// 	var fileInputEntry = document.getElementById("apk-file");
+// 	var apkFileName = fileInputEntry.value.replace("C:\\fakepath\\", "");
+// 	ApkParser.parseApkFile(fileInputEntry.files[0], apkFileName, function(apkData) {
+// 		$('#pretty-apk-file').val(apkFileName);
+// 		apkFiles["apk-file"] = apkData;
+// 		fillApkFileInfo(apkData);
+// 	}, function (error) {
+// 		fileInputEntry.value = '';
+// 		alert("Error APK File Parsing: " + error);
+// 	});
+// });
+
+function fillApkFileInfo(apkData) {
+	$("#apk-file-info").empty();
+
+	if (apkData) {
+		var table = $("<table class='table table-striped table-bordered'/>");
+		table.append($("<tr><td>Package</td><td>" + apkData.package + "</td></tr>"));
+		$("#apk-file-info").append(table);
+	};
+};
+
 
 function prettyFileInputClick(id) {
 	$('input[id=' + id + ']').click();
 };
 
 function generateAppDFFile(onend) {
+
 	var descriptionXML = generateDescriptionFileXML(); 
 	console.log(descriptionXML);
-	return;
 
 	var URL = window.webkitURL || window.mozURL || window.URL;
 	var apkFile = document.getElementById("apk-file");
@@ -82,14 +96,22 @@ function generateAppDFFile(onend) {
 };
 
 $("#build-appdf-file").click(function(event) {
+	var $barDiv = $("#build-appdf-file-progress");
+	var $bar = $("#build-appdf-file-progress .bar");
+	$bar.css("width", "0%");
+	$barDiv.show();
+
+	console.log("onclick");
 	var downloadLink = document.getElementById("build-appdf-file");
 	if (!downloadLink.download) {
 		generateAppDFFile(function(url) {
 			var clickEvent = document.createEvent("MouseEvent");
+			console.log("url = " + url);
 			downloadLink.href = url;
 			downloadLink.download = "test.zip";
 			clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
 			downloadLink.dispatchEvent(clickEvent);
+			$barDiv.hide();
 		});
 		event.preventDefault();
 		return false;
@@ -239,14 +261,26 @@ function generateCustomerSupportXML(xml) {
 	});
 };
 
+function isCheckboxChecked(id) {
+	return document.getElementById(id).checked ? "yes" : "no";
+}
+
+function generateConsentXML(xml) {
+	xml.addTag("<consent>", function() {
+		xml.addTag("<google-android-content-guidelines>", isCheckboxChecked("consent-googleandroidcontentguidelines"));
+		xml.addTag("<us-export-laws>", isCheckboxChecked("consent-usexportlaws"));
+	});
+};
+
 function generateDescriptionFileXML() {
 	var xml = new XMLGenerator();
 	xml.addLine('<?xml version="1.0" encoding="UTF-8"?>');
 	xml.addTag('<application-description-file version="1">', function() {
-		xml.addTag('<application package="ru.yandex.shell">', function() {
+		xml.addTag('<application package="' + apkFiles["apk-file"].package + '">', function() {
 			generateCategorizationXML(xml);
 			generateDescriptionXML(xml);
 			generateCustomerSupportXML(xml);
+			generateConsentXML(xml);
 		});
 	});
 	return xml.getXmlText();
@@ -308,5 +342,31 @@ function addDescriptionAndFilesToZipWriter(zipWriter, descriptionXml, files, onp
 };
 
 function onProgress(current, total) {
+	var $bar = $("#build-appdf-file-progress .bar");
 	console.log("progress total=" + total + ", current=" + current);
+	var percentage = "" + Math.round(100.0 * current / total) + "%";
+	console.log(percentage);
+	$bar.css("width", percentage);
+	$bar.text(percentage);
+};
+
+function validationCallbackApkFile($el, value, callback) {
+	var fileInputEntry = document.getElementById("apk-file");
+	var apkFileName = fileInputEntry.value.replace("C:\\fakepath\\", "");
+	$('#pretty-apk-file').val(apkFileName);
+	ApkParser.parseApkFile(fileInputEntry.files[0], apkFileName, function(apkData) {
+		apkFiles["apk-file"] = apkData;
+		fillApkFileInfo(apkData);
+		callback({
+			value: value,
+			valid: true
+		});
+	}, function (error) {
+		fillApkFileInfo(null);
+		callback({
+			value: value,
+			valid: false,
+			message: error
+		});
+	});
 };

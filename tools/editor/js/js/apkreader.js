@@ -43,13 +43,18 @@ var ApkParser = {
         zip.createReader(new zip.BlobReader(file), function(reader) {
             reader.getEntries(function(entries) {
                 for (var i=0; i<entries.length; i++) {
+                    var manifestFound = false;
                     if (entries[i].filename == "AndroidManifest.xml") {
+                        manifestFound = true;
                         entries[i].getData(new zip.BlobWriter(), function(blob) {
                             ApkParser.parseAndroidManifest(blob, onend, onerror);
                             reader.close(function() {});
                         }, function(current, total) {
                             console.log("onprogress current=" + current + ", total=" + total);
                         });
+                    };
+                    if (!manifestFound) {
+                        onerror("Bad APK file formar. AndroidManifest.xml file is not found inside APK archive.");
                     }
                 }
             });

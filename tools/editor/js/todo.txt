@@ -1,8 +1,21 @@
+Add APK file validator: manifest (exist, parsable, needed fields are there)
+Add APK extensions
+Add more APK files
+Validate that package name of all APK files is the same
+MAke that all APK files and extensions are added to the AppDF file
+Move progress bar sligtly down
+
 completeXMLstringAt - convert to array with Join
 return error message from ApkParser
 add all needed comments
 remove all unneeded logs
 add copyright
+make that store info section for category appears by default after page is loaded
+make that page
+keyword: move new created on top
+keyword: move focus to just created field
+clear download field of Build button after file is downloaded
+fix progress bar 
 
 add price validation to be a number
 limit file extension in APK input to .apk

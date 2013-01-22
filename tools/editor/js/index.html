@@ -60,6 +60,7 @@
 						<li><a href="#categorization">Category</a></li>
 						<li><a href="#description">Description</a></li>
 						<li><a href="#customer-support">Customer Support</a></li>
+						<li><a href="#consent">Consent</a></li>
 					</ul>
 				</div><!--/.well -->
 			</div><!--/span-->
@@ -77,14 +78,20 @@
 								<!-- Username -->
 								<label class="control-label"  for="username">APK File</label>
 								<div class="controls">
-									<input type="file" name="apk-file" id="apk-file" class="hide ie_show" accept="application/vnd.android.package-archive"/>
+									<input type="file" name="apk-file" id="apk-file" class="hide ie_show" accept="application/vnd.android.package-archive"
+										data-validation-callback-callback="validationCallbackApkFile"
+									/>
 									<div class="input-append ie_hide">
-										<input id="pretty-apk-file" class="input-large" type="text" onclick="prettyFileInputClick('apk-file');">
+										<input id="pretty-apk-file" class="input-large" type="text" readonly="readonly" onclick="prettyFileInputClick('apk-file');" 
+											
+										>
 										<a class="btn" onclick="prettyFileInputClick('apk-file');">Browse</a>
 									</div>
 									<p class="help-block">You can add extensions for your APK file or submit more APK files for your application</p>
 								</div>
 							</div>
+							<div class="controls" id="apk-file-info">
+							</div><!--div#apk-file-info-->
 						</fieldset>
 					</section>
 
@@ -125,17 +132,7 @@
 								</div>
 							</div><!--control-group-->
 
-							 <div class="controls" id="store-categories-info">
-							 	<table>
-							 		<tr>
-							 			<th>Store</th>
-							 			<th>Category</th>
-							 		</tr>
-							 		<tr>
-							 			<td>Google Play</td>
-							 			<td>My Game</td>
-							 		</tr>
-							 	</table>
+							<div class="controls" id="store-categories-info">
 							</div><!--div#store-categories-info-->
 						</fieldset>
 					</section>
@@ -215,7 +212,7 @@
 									</div><!--./tab-pane -->
 								</div><!--./tab-content -->
 							</div><!--./tabbable -->			    
-					  </fieldset>
+						</fieldset>
 					</section>
 
 					<section id="price">
@@ -360,21 +357,47 @@
 						</fieldset>
 					</section><!--customer-support-->
 
-				<div class="form-actions">
-<!--					<button type="submit" class="btn btn-primary" id="generate-appdf-file">Generate AppDF File</button>-->
-					<a href="#" id="build-appdf-file" class="btn btn-primary">Build AppDF File</a>
-				</div>
-			</form>
-        </div><!--/span-->
-      </div><!--/row-->
+					<section id="consent">
+						<fieldset>
+							<div id="legend">
+								<legend class="">Consent</legend>
+							</div>
 
-      <hr>
+							<div class="control-group">
+								<div class="controls">
+									<label class="checkbox">
+										<input type="checkbox" value="" id="consent-googleandroidcontentguidelines">
+										<a href="http://play.google.com/about/developer-content-policy.html">Google Android content guidelines</a>
+									</label>							
 
-      <footer>
-        <p>&copy; <a href="http://www.onepf.org">One Platform Foundation</a> 2012</p>
-      </footer>
+									<label class="checkbox">
+										<input type="checkbox" value="" id="consent-usexportlaws">
+										<a href="https://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=113770">US export laws</a>
+									</label>							
+								</div>
+							</div><!--control-group-->
 
-    </div><!--/.fluid-container-->
+						</fieldset>
+					</section><!--consent-->
+
+					<div class="form-actions">
+	<!--					<button type="submit" class="btn btn-primary" id="generate-appdf-file">Generate AppDF File</button>-->
+						<a href="#" id="build-appdf-file" class="btn btn-primary">Build AppDF File</a>
+						<div class="progress hide" id="build-appdf-file-progress">
+							<div class="bar" style="width: 0%;"></div>
+						</div>
+					</div>
+				</form>
+			</div><!--/span-->
+		</div><!--/row-->
+
+		<hr>
+
+		<footer>
+			<p>&copy; <a href="http://www.onepf.org">One Platform Foundation</a> 2012</p>
+		</footer>
+
+	</div><!--/.fluid-container-->
 
     <!-- Placed at the end of the document so the pages load faster -->
 	<script src="js/jquery.js"></script>

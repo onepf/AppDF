@@ -31,6 +31,13 @@ XMLGenerator.prototype.decreaseIndent = function () {
 	this.indent -= 1;
 };
 
+XMLGenerator.prototype.escapeForXml = function (s) {
+    return s.replace(/\"/g, '&quot;')
+            .replace(/>/g, '&gt;')
+            .replace(/</g, '&lt;')
+            .replace(/&/g, '&amp;');
+};
+
 XMLGenerator.prototype.addTag = function(tagText, next) {
 	this.addIndent();
 	this.addString(tagText);
@@ -42,14 +49,14 @@ XMLGenerator.prototype.addTag = function(tagText, next) {
 			this.decreaseIndent();
 			this.addIndent();
 		} else {
-			this.addString("" + next);
+			this.addString("" + this.escapeForXml(next));
 		}
 	}
 	this.addString("</" + tagText.split(/[ >]/)[0].substr(1) + ">");
 	this.addNewLine();
 };
 
-XMLGenerator.prototype.getXMLGenerator = function () {
+XMLGenerator.prototype.getXmlText = function () {
 	return this.xml;
 };
 
