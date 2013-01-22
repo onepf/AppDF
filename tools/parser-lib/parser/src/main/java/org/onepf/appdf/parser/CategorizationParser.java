@@ -10,6 +10,7 @@ import org.w3c.dom.Node;
 
 public class CategorizationParser {
 
+	private static final String SUBCATEGORY_TAG = "subcategory";
 	private static final String CATEGORY_TAG = "category";
 	private static final String TYPE_TAG = "type";
 
@@ -34,7 +35,7 @@ public class CategorizationParser {
 					throw new ParsingException("Multiple categories set");
 				}
 				categorisation.setCategory(category);
-			}else if ( "subcategory".equals(nodeName)){
+			}else if ( SUBCATEGORY_TAG.equals(nodeName)){
 				String subcategory = n.getTextContent();
 				if ( categorisation.getSubCategory() != null ){
 					throw new ParsingException("Subcategory allready set");					
