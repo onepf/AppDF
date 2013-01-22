@@ -15,7 +15,17 @@ public enum TopLevelTag {
 			(new CategorizationParser()).parse(node, application);
 		}
 		
-	};
+	},
+	DESCRIPTION{
+
+		@Override
+		public void parseNode(Node node, Application application,
+				ZipFile zipFile) throws ParsingException {
+			(new DescriptionParser()).parse(node, application);			
+		}
+		
+	}
+	;
 	
 	
 	public abstract void parseNode(Node node,Application application,ZipFile zipFile) throws ParsingException;
