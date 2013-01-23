@@ -1,4 +1,8 @@
-add maximum file size validation to APK files
+add modal window for description localization adding
+add logic for deleting current localization
+add logic for not-deleting default English
+add logic for showing some localization in top tabs and some in drop-down
+
 remove APK file extensions from the specification
 
 completeXMLstringAt - convert to array with Join
@@ -11,7 +15,6 @@ make that page
 keyword: move new created on top
 keyword: move focus to just created field
 clear download field of Build button after file is downloaded
-fix progress bar 
 
 add price validation to be a number
 limit file extension in APK input to .apk
