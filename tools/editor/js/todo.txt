@@ -1,9 +1,5 @@
-Add APK file validator: manifest (exist, parsable, needed fields are there)
-Add APK extensions
-Add more APK files
-Validate that package name of all APK files is the same
-MAke that all APK files and extensions are added to the AppDF file
-Move progress bar sligtly down
+add maximum file size validation to APK files
+remove APK file extensions from the specification
 
 completeXMLstringAt - convert to array with Join
 return error message from ApkParser

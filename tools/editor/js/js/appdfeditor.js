@@ -1,76 +1,57 @@
+var MAXIMUM_APK_FILE_SIZE = 50000000;
 zip.workerScriptsPath = "js/zip/";
 
-var apkFiles = {};
-var allCategories = {};
-var storeCategories = {};
-var allLanguages = {};
-var allStores = {};
+var firstApkFileData = {};
+
 
 var globalUnigueCounter = 0;
 function getUniqueId() {
 	return globalUnigueCounter++;
 }
 
-$.getJSON("data/categories.json", function(loadedCategories) {
-$.getJSON("data/store_categories.json", function(loadedStoreCategories) {
-$.getJSON("data/languages.json", function(loadedLanguages) {
-$.getJSON("data/stores.json", function(loadedStores) {
-	allCategories = loadedCategories;
-	storeCategories = loadedStoreCategories;
-	allLanguages = loadedLanguages;
-	allStores = loadedStores;
+$(document).ready(function() {
 	initialFilling();
-})
-})
-})			
-})
+	addValidationToElements($("input,textarea,select"));
+	$("#build-appdf-file").click(function(event) {
+		return buildAppdDFFile(event);
+	});
 
-$('#myTab a').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
+	$('#myTab a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
+
+	$("#categorization-type").change(function() {
+		fillCategories();
+		fillSubcategories();
+		fillCategoryStoresInfo();
+	});
+
+	$("#categorization-category").change(function() {
+		fillSubcategories();
+		fillCategoryStoresInfo();
+	});
+
+	$("#categorization-subcategory").change(function() {
+		fillCategoryStoresInfo();
+	});
 });
 
-$("#categorization-type").change(function() {
-	fillCategories();
-	fillSubcategories();
-	fillCategoryStoresInfo();
-});
-
-$("#categorization-category").change(function() {
-	fillSubcategories();
-	fillCategoryStoresInfo();
-});
-
-$("#categorization-subcategory").change(function() {
-	fillCategoryStoresInfo();
-});
-
-// $("#apk-file").change(function() {
-// 	var fileInputEntry = document.getElementById("apk-file");
-// 	var apkFileName = fileInputEntry.value.replace("C:\\fakepath\\", "");
-// 	ApkParser.parseApkFile(fileInputEntry.files[0], apkFileName, function(apkData) {
-// 		$('#pretty-apk-file').val(apkFileName);
-// 		apkFiles["apk-file"] = apkData;
-// 		fillApkFileInfo(apkData);
-// 	}, function (error) {
-// 		fileInputEntry.value = '';
-// 		alert("Error APK File Parsing: " + error);
-// 	});
-// });
-
-function fillApkFileInfo(apkData) {
-	$("#apk-file-info").empty();
+function fillApkFileInfo($el, apkData) {
+	var $info = $el.closest(".control-group").find(".apk-file-info");
+	$info.empty();
 
 	if (apkData) {
-		var table = $("<table class='table table-striped table-bordered'/>");
-		table.append($("<tr><td>Package</td><td>" + apkData.package + "</td></tr>"));
-		$("#apk-file-info").append(table);
+		var $table = $("<table class='table table-striped table-bordered'/>");
+		$table.append($("<tr><td>Package</td><td>" + apkData.package + "</td></tr>"));
+		$info.append($table);
 	};
 };
 
 
-function prettyFileInputClick(id) {
-	$('input[id=' + id + ']').click();
+function prettyFileInputClick(e) {
+	console.log("prettyFileInputClick");
+	$(e).closest(".controls").children("input").click();
 };
 
 function generateAppDFFile(onend) {
@@ -79,11 +60,20 @@ function generateAppDFFile(onend) {
 	console.log(descriptionXML);
 
 	var URL = window.webkitURL || window.mozURL || window.URL;
+
+	var files = [];
+	//Add all APK files
+	$("section#apk-files").find("input:file").each(function() {
+		console.log("next APK file element");
+		console.log(this);
+		files.push($(this)[0].files[0]);
+	});
+
 	var apkFile = document.getElementById("apk-file");
 
 	zip.createWriter(new zip.BlobWriter(), function(writer) {
 
-		addDescriptionAndFilesToZipWriter(writer, descriptionXML, [apkFile.files], onProgress, function() {
+		addDescriptionAndFilesToZipWriter(writer, descriptionXML, files, onProgress, function() {
 			writer.close(function(blob) {
 				var url = URL.createObjectURL(blob);
 				onend(url);
@@ -95,7 +85,8 @@ function generateAppDFFile(onend) {
 	});
 };
 
-$("#build-appdf-file").click(function(event) {
+function buildAppdDFFile(event) {
+	console.log("BbuildAppdDFFile");
 	var $barDiv = $("#build-appdf-file-progress");
 	var $bar = $("#build-appdf-file-progress .bar");
 	$bar.css("width", "0%");
@@ -115,17 +106,17 @@ $("#build-appdf-file").click(function(event) {
 		});
 		event.preventDefault();
 		return false;
-	}
-});
+	};
+};
 
 function fillLanguages(element) {
 	for (var code in allLanguages) {
- 		element.append($("<option />").val(code).text(allLanguages[code]));
- 	}
- 	element.val("en");
- }
+		element.append($("<option />").val(code).text(allLanguages[code]));
+	}
+	element.val("en");
+};
 
- function fillCategories() {
+function fillCategories() {
 	var selectedType = $("#categorization-type").find(":selected").val();
 	var categories = $("#categorization-category");
 	var categoryHash = allCategories[selectedType];
@@ -150,7 +141,7 @@ function fillLanguages(element) {
 	} else {
 		subcategories.closest(".control-group").show();			
 	}
- }
+};
 
 function fillCategoryStoresInfo() {
 	var table = $("<table class='table table-striped table-bordered'/>");
@@ -168,11 +159,38 @@ function fillCategoryStoresInfo() {
 
 	$("#store-categories-info").empty();
 	$("#store-categories-info").append(table);
-}
+};
 
- function addMoreTitles(e) {
- 	var parent = $(e).closest(".control-group");
- 	var strHtml = ' \
+function addValidationToElements($elements) {
+	$elements.jqBootstrapValidation(
+		{
+			preventSubmit: true,
+			submitError: function($form, event, errors) {
+				console.log("submitError");
+				console.log(event);
+				console.log(errors);
+				// Here I do nothing, but you could do something like display 
+				// the error messages to the user, log, etc.
+			},
+			submitSuccess: function($form, event) {
+				alert("OK");
+				event.preventDefault();
+			},
+			filter: function() {
+				return $(this).is(":visible");
+			}
+		}
+	);
+};
+
+function addValidationToLastControlGroup($fieldset) {
+	var $lastControlGroup = $fieldset.children(".control-group").last();
+	addValidationToElements($lastControlGroup.find("input,textarea,select"));
+};
+
+function addMoreTitles(e) {
+	var $parent = $(e).closest(".control-group");
+	var strHtml = ' \
 		<div class="control-group"> \
 			<!-- description/texts/title --> \
 			<label class="control-label"  for="description-texts-title-more">Longer title</label> \
@@ -185,11 +203,11 @@ function fillCategoryStoresInfo() {
 			</div> \
 		</div><!--./control-group --> \
 	';
- 	parent.after($(strHtml));
+ 	$parent.after($(strHtml));
  }
 
 function addMoreShortDescriptions(e) {
-	var parent = $(e).closest(".control-group");
+	var $parent = $(e).closest(".control-group");
 	var strHtml = ' \
 		<div class="control-group"> \
 			<!-- description/texts/title --> \
@@ -203,11 +221,11 @@ function addMoreShortDescriptions(e) {
 			</div> \
 		</div><!--./control-group --> \
 	';
- 	parent.after($(strHtml));
+ 	$parent.after($(strHtml));
  }
 
 function addMoreKeywords(e) {
-	var parent = $(e).closest(".input-append");
+	var $parent = $(e).closest(".input-append");
 	var strHtml = ' \
 		<div class="keyword-countainer"> \
 				<div class="input-append"> \
@@ -216,23 +234,49 @@ function addMoreKeywords(e) {
 			</div> \
 		</div> \
 	';
- 	parent.after($(strHtml));
+	$parent.after($(strHtml));
  }
+
+function addApkFile(e) {
+	console.log("addApkFile");
+	var $parent = $(e).closest(".control-group");
+	var strHtml = ' \
+		<div class="control-group"> \
+			<label class="control-label" for="pretty-apk-file">APK File</label> \
+			<div class="controls"> \
+				<input type="file" name="apk-file" class="hide ie_show" accept="application/vnd.android.package-archive" \
+					data-validation-callback-callback="validationCallbackApkFileMore" \
+				/> \
+				<div class="input-append ie_hide"> \
+					<input id="pretty-apk-file" class="input-large" type="text" readonly="readonly" onclick="prettyFileInputClick(this);"> \
+						<a class="btn" onclick="prettyFileInputClick(this);">Browse</a> \
+						<a class="btn" onclick="removeControlGroup(this);"><i class="icon-remove"></i></a> \
+				</div> \
+				<p class="help-block">Submit additional APK files if your application uses more than one APK file</p> \
+			</div> \
+			<div class="controls"> \
+				<div class="apk-file-info"></div> \
+			</div> \
+		</div> \
+	';
+	$parent.after($(strHtml));
+	$controlGroup = $($parent.closest("fieldset").children("div.control-group")[1]);
+	addValidationToElements($controlGroup.find("input,textarea,select"));
+};
 
 function removeControlGroup(e) {
 	$(e).closest(".control-group").remove();
-}
+};
 
 function removeKeyword(e) {
 	$(e).closest(".keyword-countainer").remove();
-}
+};
 
-//Initial filling
 function initialFilling() {
 	fillLanguages($("#description-attrlanguage"));
 	fillCategories();
 	fillSubcategories();
-}
+};
 
 function generateCategorizationXML(xml) {
 	xml.addTag("<categorization>", function() {
@@ -272,37 +316,28 @@ function generateConsentXML(xml) {
 	});
 };
 
+function generateApkFilesXML(xml) {
+	xml.addTag("<apk-files>", function() {
+		$("section#apk-files").find("input:file").each(function() {
+			xml.addTag("<apk-file>", normalizeInputFileName($(this).val()));
+		});
+	});
+};
+
 function generateDescriptionFileXML() {
 	var xml = new XMLGenerator();
 	xml.addLine('<?xml version="1.0" encoding="UTF-8"?>');
 	xml.addTag('<application-description-file version="1">', function() {
-		xml.addTag('<application package="' + apkFiles["apk-file"].package + '">', function() {
+		xml.addTag('<application package="' + firstApkFileData.package + '">', function() {
 			generateCategorizationXML(xml);
 			generateDescriptionXML(xml);
+			generateApkFilesXML(xml);
 			generateCustomerSupportXML(xml);
 			generateConsentXML(xml);
 		});
 	});
 	return xml.getXmlText();
 };
-
-//Add validations
-$("input,textarea,select").jqBootstrapValidation(
-    {
-        preventSubmit: true,
-        submitError: function($form, event, errors) {
-            // Here I do nothing, but you could do something like display 
-            // the error messages to the user, log, etc.
-        },
-        submitSuccess: function($form, event) {
-            alert("OK");
-            event.preventDefault();
-        },
-        filter: function() {
-            return $(this).is(":visible");
-        }
-    }
-);
 
 function flatten(array) {
     var flat = [];
@@ -323,9 +358,18 @@ function addDescriptionAndFilesToZipWriter(zipWriter, descriptionXml, files, onp
 	var addIndex = 0;
 
 	var flattenedFiles = flatten(files);
+	var totalSizeOfAllFiles = 0;
+	$.each(flattenedFiles, function() { 
+		totalSizeOfAllFiles += this.size;
+	});
+
+	var sizeOfAlreadyZippedFilesIncludingCurrent = 0;
 
 	function addNextFile() {
 		var file = flattenedFiles[addIndex];
+		console.log("file");
+		console.log(file);
+		sizeOfAlreadyZippedFilesIncludingCurrent += file.size;
 		zipWriter.add(file.name, new zip.BlobReader(file), function() {
 			addIndex++;
 			if (addIndex < flattenedFiles.length) {
@@ -333,12 +377,16 @@ function addDescriptionAndFilesToZipWriter(zipWriter, descriptionXml, files, onp
 			} else {
 				onend();
 			}
-		}, onprogress);
+		}, function(current, total) {
+			onprogress(sizeOfAlreadyZippedFilesIncludingCurrent - total + current, totalSizeOfAllFiles)
+		});
 	};
 
 	zipWriter.add("description.xml", new zip.TextReader(descriptionXml), function() {
 		addNextFile();
-	}, onprogress);
+	}, function(current, total) {
+		onprogress(totalSizeOfAllFiles, totalSizeOfAllFiles);
+	});
 };
 
 function onProgress(current, total) {
@@ -350,23 +398,59 @@ function onProgress(current, total) {
 	$bar.text(percentage);
 };
 
-function validationCallbackApkFile($el, value, callback) {
-	var fileInputEntry = document.getElementById("apk-file");
-	var apkFileName = fileInputEntry.value.replace("C:\\fakepath\\", "");
-	$('#pretty-apk-file').val(apkFileName);
-	ApkParser.parseApkFile(fileInputEntry.files[0], apkFileName, function(apkData) {
-		apkFiles["apk-file"] = apkData;
-		fillApkFileInfo(apkData);
+function normalizeInputFileName(fileName) {
+	return fileName.replace("C:\\fakepath\\", "");
+};
+
+function validationCallbackApkFile($el, value, callback, first) {
+	console.log("validationCallbackApkFile");
+	var apkFileName = normalizeInputFileName($el.val());
+	$el.closest(".controls").find("input:text").val(apkFileName);
+	var file = $el[0].files[0];
+
+	if (file.size>MAXIMUM_APK_FILE_SIZE) {
 		callback({
 			value: value,
-			valid: true
+			valid: false,
+			message: "APK file size cannot exceed 50M"
 		});
+		return;
+	};
+
+	ApkParser.parseApkFile(file, apkFileName, function(apkData) {
+		console.log("validationCallbackApkFile read OK");
+		fillApkFileInfo($el, apkData);
+		var data = {
+			value: value,
+			valid: true
+		};
+
+		if (first) {
+			firstApkFileData = apkData;
+		} else {
+			if (firstApkFileData.package!=apkData.package) {
+				data.valid = false;
+				data.message = "APK file package names do not match";
+			};
+		};
+		callback(data);
 	}, function (error) {
-		fillApkFileInfo(null);
+		console.log("validationCallbackApkFile read error" + error);
+		fillApkFileInfo($el, null);
 		callback({
 			value: value,
 			valid: false,
 			message: error
 		});
 	});
+};
+
+function validationCallbackApkFileFirst($el, value, callback) {
+	console.log("validationCallbackApkFileFirst");
+	validationCallbackApkFile($el, value, callback, true);
+};
+
+function validationCallbackApkFileMore($el, value, callback) {
+	console.log("validationCallbackApkFileMore");
+	validationCallbackApkFile($el, value, callback, false);
 };

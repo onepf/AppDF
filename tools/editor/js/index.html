@@ -22,6 +22,18 @@
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/appdfeditor.css" rel="stylesheet">
 
+	<script type="text/javascript" src="data/categories.js"></script>
+	<script type="text/javascript" src="data/store_categories.js"></script>
+	<script type="text/javascript" src="data/stores.js"></script>
+	<script type="text/javascript" src="data/languages.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jqBootstrapValidation.js"></script>    
+	<script type="text/javascript" src="js/xmlgenerator.js"></script>    
+	<script type="text/javascript" src="js/zip/zip.js"></script>
+	<script type="text/javascript" src="js/appdfeditor.js"></script>
+	<script type="text/javascript" src="js/apkreader.js"></script>
+
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -75,23 +87,22 @@
 								<legend class="">APK File(s)</legend>
 							</div>
 							<div class="control-group">
-								<!-- Username -->
-								<label class="control-label"  for="username">APK File</label>
+								<!-- apk-files/apk-file -->
+								<label class="control-label" for="pretty-apk-file">APK File</label>
 								<div class="controls">
-									<input type="file" name="apk-file" id="apk-file" class="hide ie_show" accept="application/vnd.android.package-archive"
-										data-validation-callback-callback="validationCallbackApkFile"
+									<input type="file" name="apk-file" class="hide ie_show" accept="application/vnd.android.package-archive"
+										data-validation-callback-callback="validationCallbackApkFileFirst"
 									/>
 									<div class="input-append ie_hide">
-										<input id="pretty-apk-file" class="input-large" type="text" readonly="readonly" onclick="prettyFileInputClick('apk-file');" 
-											
-										>
-										<a class="btn" onclick="prettyFileInputClick('apk-file');">Browse</a>
+										<input id="pretty-apk-file" class="input-large" type="text" readonly="readonly" onclick="prettyFileInputClick(this);">
+										<a class="btn" onclick="prettyFileInputClick(this);">Browse</a>
 									</div>
-									<p class="help-block">You can add extensions for your APK file or submit more APK files for your application</p>
+									<p class="help-block">You can <button class="btn" onclick="addApkFile(this); return false;">add more APK files</button> for your application</p>
+								</div>
+								<div class="controls">
+									<div class="apk-file-info"></div>
 								</div>
 							</div>
-							<div class="controls" id="apk-file-info">
-							</div><!--div#apk-file-info-->
 						</fieldset>
 					</section>
 
@@ -381,7 +392,6 @@
 					</section><!--consent-->
 
 					<div class="form-actions">
-	<!--					<button type="submit" class="btn btn-primary" id="generate-appdf-file">Generate AppDF File</button>-->
 						<a href="#" id="build-appdf-file" class="btn btn-primary">Build AppDF File</a>
 						<div class="progress hide" id="build-appdf-file-progress">
 							<div class="bar" style="width: 0%;"></div>
@@ -399,13 +409,5 @@
 
 	</div><!--/.fluid-container-->
 
-    <!-- Placed at the end of the document so the pages load faster -->
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/jqBootstrapValidation.js"></script>    
-	<script src="js/xmlgenerator.js"></script>    
-	<script src="js/zip/zip.js"></script>
-	<script src="js/appdfeditor.js"></script>
-	<script src="js/apkreader.js"></script>
   </body>
 </html>

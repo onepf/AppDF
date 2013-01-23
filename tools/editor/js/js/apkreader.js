@@ -42,8 +42,8 @@ var ApkParser = {
 
         zip.createReader(new zip.BlobReader(file), function(reader) {
             reader.getEntries(function(entries) {
+                var manifestFound = false;
                 for (var i=0; i<entries.length; i++) {
-                    var manifestFound = false;
                     if (entries[i].filename == "AndroidManifest.xml") {
                         manifestFound = true;
                         entries[i].getData(new zip.BlobWriter(), function(blob) {
@@ -53,9 +53,9 @@ var ApkParser = {
                             console.log("onprogress current=" + current + ", total=" + total);
                         });
                     };
-                    if (!manifestFound) {
-                        onerror("Bad APK file formar. AndroidManifest.xml file is not found inside APK archive.");
-                    }
+                }
+                if (!manifestFound) {
+                    onerror("Bad APK file format. AndroidManifest.xml file is not found inside APK archive.");
                 }
             });
         }, onerror);
