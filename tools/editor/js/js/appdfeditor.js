@@ -1,4 +1,5 @@
 var MAXIMUM_APK_FILE_SIZE = 50000000;
+var MAX_LOCALIZATION_TABS = 10;
 zip.workerScriptsPath = "js/zip/";
 
 var firstApkFileData = {};
@@ -36,6 +37,90 @@ $(document).ready(function() {
 		fillCategoryStoresInfo();
 	});
 });
+
+// function getDescriptionLanguages() {
+// 	var langs = [];
+// 	var re = /#tab-(default|[a-z][a-z]_[a-z][a-z]|[a-z][a-z])/g;  
+// 	$("#description-tab-header").children("li").children("a").each(function() {
+// 		var strHref = $(this).attr("href");
+// 		var res = re.exec(strHref.toLowerCase()); 
+// 		console.log(">>" + strHref + "<<");
+// 		console.log(res);
+// 		if (res) {
+// 			langs.push(res[1]);
+// 		};
+// 	});
+// 	return langs;
+// };
+
+function getDescriptionLanguages() {
+	var langs = [];
+	$("#description-tab-header").children("li").children("a").each(function() {
+		var strHref = $(this).attr("href").toLowerCase();
+		if (strHref.indexOf("#tab-")==0) {
+			langs.push(strHref.substr(5));
+		};
+	});
+	return langs;
+};
+
+function selectLanguage(languageCode) {
+	var $tabHeader = $("#description-tab-header");
+	$tabHeader.find('a[href="#tab-' + languageCode + '"]').tab('show');
+};
+
+function addLocalization(languageCode, languageName) {
+	console.log("addLocalization langaugeCode=" + languageCode + ", languageName=" + languageName);
+	var descriptionLangs = getDescriptionLanguages();
+	if (descriptionLangs.indexOf(languageCode)>=0) {
+		console.log("Language already exist, just select it");
+		return;
+	};
+
+	var strHtmlHeader = '<li><a href="#tab-' + languageCode + '" data-toggle="tab">' + languageName + '</a></li>';
+
+	var $tabHeader = $("#description-tab-header");
+	if ($tabHeader.children().length<MAX_LOCALIZATION_TABS) {
+		$tabHeader.children("li:last").before($(strHtmlHeader));
+		$tabHeader.find('a[href="#tab-' + languageCode + '"]').tab('show');
+		$tabHeader.find('a[href="#tab-' + languageCode + '"]').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+	}
+
+	var strHtmlContent = '<div class="tab-pane" id="tab-' + languageCode + '"></div>';
+	$("#description-tab-content").append($(strHtmlContent));
+
+	var strHtmlClone = $("#description-tab-content").children("div#tab-default").html();
+	$("#description-tab-content").children().last().append($(strHtmlClone));
+};
+
+function removeSelectedLocalization() {
+	var $tabHeader = $("#description-tab-header");
+	var $tabContent = $("#description-tab-content");
+	var strHref = $tabHeader.find(".active").children("a").attr("href");
+	if (strHref!="#tab-default") {
+		$tabHeader.find(".active").remove();
+		$tabContent.children("div" + strHref).remove();
+		selectLanguage("default");
+	} else {
+		alert("Cannot remove default (English) localization");
+	};
+};
+
+function showAllLocalizationDialog() {
+	var $modal = $("#add-localization-modal");
+	var $okButton = $modal.find(".btn-primary");
+	$okButton.click(function(event) {
+		event.preventDefault();
+		console.log("OKButton Click");
+		$modal.modal('hide');
+		addLocalization($("#add-localization-modal-language").val(), $("#add-localization-modal-language").children(":selected").text());
+	});
+
+	$modal.modal("show");
+};
 
 function fillApkFileInfo($el, apkData) {
 	var $info = $el.closest(".control-group").find(".apk-file-info");
@@ -111,8 +196,10 @@ function buildAppdDFFile(event) {
 
 function fillLanguages(element) {
 	for (var code in allLanguages) {
-		element.append($("<option />").val(code).text(allLanguages[code]));
-	}
+		if (code.toLowerCase()!="en_us") {
+			element.append($("<option />").val(code).text(allLanguages[code]));
+		};
+	};
 	element.val("en");
 };
 
@@ -273,7 +360,7 @@ function removeKeyword(e) {
 };
 
 function initialFilling() {
-	fillLanguages($("#description-attrlanguage"));
+	fillLanguages($("#add-localization-modal-language"));	
 	fillCategories();
 	fillSubcategories();
 };

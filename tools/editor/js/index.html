@@ -149,19 +149,34 @@
 					</section>
 
 					<section id="description">
+						<div id="add-localization-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="add-localization-modal-label" aria-hidden="true">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h3 id="add-localization-modal-label">Add Localization</h3>
+							</div>
+							<div class="modal-body">
+								<p>Language: 
+									<select id="add-localization-modal-language">
+									</select>
+								</p>
+							</div>
+							<div class="modal-footer">
+								<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+								<button class="btn btn-primary">Add Localization</button>
+							</div>
+						</div><!--Model-->						
 						<fieldset>
 							<div id="legend">
 								<legend class="">Description</legend>
 							</div>
 							<div class="tabbable"> <!-- Only required for left/right tabs -->
-								<ul class="nav nav-tabs">
+								<ul class="nav nav-tabs" id="description-tab-header">
 									<li class="active"><a href="#tab-default" data-toggle="tab">English US (Default)</a></li>
-									<li><a href="#tab-ru" data-toggle="tab">Russian</a></li>
 									<li class="dropdown">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#">More <b class="caret"></b></a>
 										<ul class="dropdown-menu">
-											<li><a href="#">Add Localization</a></li>
-											<li><a href="#">Remove Selected Localization</a></li>
+											<li><a onclick="showAllLocalizationDialog(); return false;" href="#">Add Localization</a></li>
+											<li><a onclick="removeSelectedLocalization(); return false;" href="#">Remove Selected Localization</a></li>
 											<li class="divider"></li>
 											<li><a href="#">German</a></li>
 											<li><a href="#">Italian</a></li>
@@ -169,7 +184,7 @@
 										</ul>
 									</li>
 								</ul>
-								<div class="tab-content">
+								<div class="tab-content" id="description-tab-content">
 									<div class="tab-pane active" id="tab-default">
 										<div class="control-group">
 											<!-- description/texts/title -->
@@ -217,9 +232,6 @@
 												<p class="help-block">Please provide keywords that describe your application</p>
 											</div>
 										</div><!--./control-group -->
-									</div><!--./tab-pane -->
-									<div class="tab-pane" id="tab-ru">
-										<p>Howdy, I'm in Section 2.</p>
 									</div><!--./tab-pane -->
 								</div><!--./tab-content -->
 							</div><!--./tabbable -->			    

@@ -1,7 +1,5 @@
-add modal window for description localization adding
-add logic for deleting current localization
-add logic for not-deleting default English
 add logic for showing some localization in top tabs and some in drop-down
+move all localization logic to a separate file
 
 remove APK file extensions from the specification
 
