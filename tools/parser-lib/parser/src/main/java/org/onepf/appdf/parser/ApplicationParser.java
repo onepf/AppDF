@@ -64,10 +64,9 @@ public class ApplicationParser {
 				}
 				String childTagName = child.getNodeName();
 				boolean found = false;
-				System.out.println("Tag:" + childTagName);
 				for ( TopLevelTag tag : TopLevelTag.values()){
 					if ( childTagName.equalsIgnoreCase(tag.name())){
-						tag.parseNode(child, application, zipFile);
+						tag.parse(child, application);
 						found = true;
 						break;
 					}
