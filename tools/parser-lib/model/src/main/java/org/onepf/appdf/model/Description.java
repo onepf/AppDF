@@ -1,5 +1,6 @@
 package org.onepf.appdf.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -9,7 +10,7 @@ public class Description implements ModelElement {
 	
 	private boolean isDefault;
 	
-	private String title;
+	private List<String> titles;
 	
 	private List<String> keywords;
 	
@@ -47,14 +48,27 @@ public class Description implements ModelElement {
 		this.isDefault = isDefault;
 	}
 
-	public String getTitle() {
-		return title;
+	public List<String> getTitles() {
+		return titles;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTitles(List<String> title) {
+		this.titles = title;
+	}
+	
+	public void addTitle(String title){
+		if ( titles == null ){
+			titles = new ArrayList<String>();
+		}
+		this.titles.add(title);
 	}
 
+	
+	public void removeTitle(String title){
+		if ( titles != null ){
+			titles.remove(title);
+		}
+	}
 	public List<String> getKeywords() {
 		return keywords;
 	}
@@ -133,6 +147,37 @@ public class Description implements ModelElement {
 
 	public void setVideo(String video) {
 		this.video = video;
+	}
+
+	public void addKeyword(String keyWord) {
+		if (keywords == null ){
+			keywords = new ArrayList<String>();
+		}
+		keywords.add(keyWord);
+		
+	}
+
+	public void addShortDescription(String textContent) {
+		if ( shortDescriptions == null ){
+			shortDescriptions = new ArrayList<String>();
+		}
+		shortDescriptions.add(textContent);
+		
+	}
+	
+	public void addFullDescription(FullDescription fullDescription){
+		if ( fullDescriptions == null ){
+			fullDescriptions = new ArrayList<FullDescription>();
+		}
+		fullDescriptions.add(fullDescription);
+	}
+
+	public void addFeature(String feature) {
+		if ( features == null ){
+			features = new ArrayList<String>();
+		}
+		features.add(feature);
+		
 	}
 	
 }
