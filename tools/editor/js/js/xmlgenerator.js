@@ -32,10 +32,10 @@ XMLGenerator.prototype.decreaseIndent = function () {
 };
 
 XMLGenerator.prototype.escapeForXml = function (s) {
-    return s.replace(/\"/g, '&quot;')
+    return s.replace(/&/g, '&amp;')
             .replace(/>/g, '&gt;')
             .replace(/</g, '&lt;')
-            .replace(/&/g, '&amp;');
+            .replace(/\"/g, '&quot;');
 };
 
 XMLGenerator.prototype.addTag = function(tagText, next) {
@@ -54,6 +54,14 @@ XMLGenerator.prototype.addTag = function(tagText, next) {
 	}
 	this.addString("</" + tagText.split(/[ >]/)[0].substr(1) + ">");
 	this.addNewLine();
+};
+
+XMLGenerator.prototype.addNonEmptyTextTag = function(tagText, text) {
+	if (!text || text=="") {
+		return;
+	};
+
+	this.addTag(tagText, text);
 };
 
 XMLGenerator.prototype.getXmlText = function () {

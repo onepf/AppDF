@@ -1,7 +1,22 @@
-add logic for showing some localization in top tabs and some in drop-down
-move all localization logic to a separate file
+mark all invalid fields as red when press build button
+show one block with all errors
+add feature count validation
+create good names for consents
+move langs from drop-down to main tabs when a tab is deleted
+chgeck that full description does not contain html tags
+add good "full description" description
+move all tracing to console.info
+add privacy policy
+add EULA
+mark required fields in some way in HTML (*?)
+when add big APK file or several APK files write which stores support it
+make sure that already added descriptions are added to description.xml
+add limitation of 4000 symbols to full description
+add tabs to full description (plain, feature less, html)
+keyword: move new created on top
+keyword: move focus to just created field
 
-remove APK file extensions from the specification
+IMAGES
 
 completeXMLstringAt - convert to array with Join
 return error message from ApkParser
@@ -10,19 +25,18 @@ remove all unneeded logs
 add copyright
 make that store info section for category appears by default after page is loaded
 make that page
-keyword: move new created on top
-keyword: move focus to just created field
 clear download field of Build button after file is downloaded
+store all fields in cookies
 
 add price validation to be a number
 limit file extension in APK input to .apk
 Change local price style to append from both sides
 make file input field read only
-make APK file required
+make APK file required, disable everything else until APK is added
 split JS file to several logical JS files (ZIP logic, XMLWriter logic, etc)
-show building progress
 make that Build link act like a submit button in form validation, forbid building until all validations are OK
-implement add language
-add good subtitles to all the existing fields
-tabs for description (with HTML, without, with features withour)
-add correct validation to all the elements
+
+SPECIFICATION
+remove APK file extensions from the specification
+add tags like in Samsung and Naver
+

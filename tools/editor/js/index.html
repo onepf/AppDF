@@ -31,8 +31,9 @@
 	<script type="text/javascript" src="js/jqBootstrapValidation.js"></script>    
 	<script type="text/javascript" src="js/xmlgenerator.js"></script>    
 	<script type="text/javascript" src="js/zip/zip.js"></script>
-	<script type="text/javascript" src="js/appdfeditor.js"></script>
+	<script type="text/javascript" src="js/appdflocalization.js"></script>
 	<script type="text/javascript" src="js/apkreader.js"></script>
+	<script type="text/javascript" src="js/appdfeditor.js"></script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -90,7 +91,9 @@
 								<!-- apk-files/apk-file -->
 								<label class="control-label" for="pretty-apk-file">APK File</label>
 								<div class="controls">
-									<input type="file" name="apk-file" class="hide ie_show" accept="application/vnd.android.package-archive"
+									<input type="file" id="apk-file" class="hide ie_show" 
+										name="apk-file" 
+										accept="application/vnd.android.package-archive"
 										data-validation-callback-callback="validationCallbackApkFileFirst"
 									/>
 									<div class="input-append ie_hide">
@@ -115,7 +118,7 @@
 								<!-- categorization/type -->
 								<label class="control-label"  for="categorization-type">Application type</label>
 								<div class="controls">
-									<select id="categorization-type">
+									<select id="categorization-type" name="categorization-type">
 										<option value="application">Application</option>
 										<option value="game">Game</option>
 									</select>
@@ -127,7 +130,7 @@
 								<!-- categorization/category -->
 								<label class="control-label" for="categorization-category">Category</label>
 								<div class="controls">
-									<select id="categorization-category">
+									<select id="categorization-category" name="categorization-category">
 									</select>
 									<p class="help-block">Please provide your E-mail</p>
 								</div>
@@ -171,26 +174,23 @@
 							</div>
 							<div class="tabbable"> <!-- Only required for left/right tabs -->
 								<ul class="nav nav-tabs" id="description-tab-header">
-									<li class="active"><a href="#tab-default" data-toggle="tab">English US (Default)</a></li>
+									<li class="active"><a href="#localization-tab-default" data-toggle="tab">English US (Default)</a></li>
 									<li class="dropdown">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#">More <b class="caret"></b></a>
 										<ul class="dropdown-menu">
 											<li><a onclick="showAllLocalizationDialog(); return false;" href="#">Add Localization</a></li>
 											<li><a onclick="removeSelectedLocalization(); return false;" href="#">Remove Selected Localization</a></li>
 											<li class="divider"></li>
-											<li><a href="#">German</a></li>
-											<li><a href="#">Italian</a></li>
-											<li><a href="#">French</a></li>
 										</ul>
 									</li>
 								</ul>
 								<div class="tab-content" id="description-tab-content">
-									<div class="tab-pane active" id="tab-default">
+									<div class="tab-pane active" id="localization-tab-default">
 										<div class="control-group">
 											<!-- description/texts/title -->
 											<label class="control-label"  for="description-texts-title">Title</label>
 											<div class="controls">
-												<input type="text" id="description-texts-title" 
+												<input type="text" id="description-texts-title" name="description-texts-title"
 													required 
 													data-validation-required-message="Title is required" 
 													maxlength="30"
@@ -203,7 +203,7 @@
 											<!-- description/texts/short-description -->
 											<label class="control-label" for="description-texts-shortdescription">Short description</label>
 											<div class="controls">
-												<input type="text" id="description-texts-shortdescription"
+												<input type="text" id="description-texts-shortdescription" name="description-texts-shortdescription"
 													required 
 													data-validation-required-message="Short description is required" 
 													maxlength="80"
@@ -216,8 +216,64 @@
 											<!-- description/texts/full-description -->
 											<label class="control-label" for="description-texts-fulldescription">Full description</label>
 											<div class="controls">
-												<textarea class="input-xxlarge" rows="5" id="description-texts-fulldescription"></textarea>
-												<p class="help-block">Please provide your E-mail</p>
+												<textarea class="input-xxlarge" rows="5" id="description-texts-fulldescription" 
+													name="description-texts-fulldescription"
+													required
+													data-validation-required-message="Full description is required"
+													maxlength="4000"
+													data-validation-maxlength-message="Full description must be shorter than 4000 symbols"
+												></textarea>
+												<p class="help-block">Please provide full application description that will be shown on the product page. Maximum length: 4000 symbols.</p>
+											</div>
+										</div><!--./control-group -->
+
+										<div class="control-group">
+											<!-- description/texts/features -->
+											<label class="control-label" for="description-texts-features">Features</label>
+											<div class="controls">
+												<div class="keyword-countainer">
+													<div class="input-prepend">
+														<span class="add-on">1.</span>
+														<input type="text" id="description-texts-features-1"  
+															name="description-texts-features-1"
+															required 
+															data-validation-required-message="Minimum three features are required"
+														> 
+													</div>							
+												</div>					
+												<div class="keyword-countainer">
+													<div class="input-prepend blockedmargined" style="display: block">
+														<span class="add-on">2.</span>
+														<input type="text" id="description-texts-features-2" 
+															name="description-texts-features-2"
+															required 
+															data-validation-required-message="Minimum three features are required"
+														> 
+													</div>					
+												</div>											
+												<div class="keyword-countainer">
+													<div class="input-prepend blockedmargined" style="display: block">
+														<span class="add-on">3.</span>
+														<input type="text" id="description-texts-features-3" 
+															name="description-texts-features-3"
+															required 
+															data-validation-required-message="Minimum three features are required"
+														> 
+													</div>					
+												</div>												
+												<div class="keyword-countainer">
+													<div class="input-prepend blockedmargined" style="display: block">
+														<span class="add-on">4.</span>
+														<input type="text" id="description-texts-features-4"> 
+													</div>					
+												</div>												
+												<div class="keyword-countainer">
+													<div class="input-prepend blockedmargined" style="display: block">
+														<span class="add-on">5.</span>
+														<input type="text" id="description-texts-features-5"> 
+													</div>					
+												</div>												
+												<p class="help-block">Add three to five features of your application</p>
 											</div>
 										</div><!--./control-group -->
 
@@ -232,6 +288,19 @@
 												<p class="help-block">Please provide keywords that describe your application</p>
 											</div>
 										</div><!--./control-group -->
+
+										<div class="control-group">
+											<!-- description/texts/recent-changes -->
+											<label class="control-label" for="description-texts-recentchanges">Recent changes</label>
+											<div class="controls">
+												<textarea class="input-xxlarge" rows="5" id="description-texts-recentchanges"
+													maxlength="500"
+													data-validation-maxlength-message="Recent changes must be shorter than 500 symbols"
+												></textarea>
+												<p class="help-block">What was changed in the latest version comparing to the previous one. Maximum length: 500 symbols.</p>
+											</div>
+										</div><!--./control-group -->
+
 									</div><!--./tab-pane -->
 								</div><!--./tab-content -->
 							</div><!--./tabbable -->			    
@@ -344,6 +413,7 @@
 								<label class="control-label"  for="customersupport-phone">Phone</label>
 								<div class="controls">
 									<input id="customersupport-phone" type="text" 
+										name="customersupport-phone" 
 										required 
 										data-validation-required-message="Customer support phone is required" 
 										data-validation-regex-regex="[0-9]*" 
@@ -358,9 +428,10 @@
 								<label class="control-label"  for="customersupport-email">Email</label>
 								<div class="controls">
 									<input id="customersupport-email" type="email" 
+										name="customersupport-email"
 										required 
 										data-validation-required-message="Customer support email is required" 
-										data-validation-email-message="Must be a valid email address"
+										data-validation-email-message="Customer support email must be a valid email address"
 							      	>
 									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
 								</div>
@@ -371,6 +442,7 @@
 								<label class="control-label"  for="customersupport-website">Website</label>
 								<div class="controls">
 									<input id="customersupport-website" type="text" 
+										name="customersupport-website"
 										required 
 										data-validation-required-message="Customer support website is required" 
 									>
@@ -404,6 +476,11 @@
 					</section><!--consent-->
 
 					<div class="form-actions">
+						<div class="alert alert-error hide" id="form-errors">
+							<b>Errors:</b>
+							<ul>
+							</ul>							
+						</div>
 						<a href="#" id="build-appdf-file" class="btn btn-primary">Build AppDF File</a>
 						<div class="progress hide" id="build-appdf-file-progress">
 							<div class="bar" style="width: 0%;"></div>

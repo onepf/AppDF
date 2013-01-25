@@ -9,3 +9,8 @@ div.apk-file-info {
 #build-appdf-file-progress {
 	margin-top: 10px;
 }
+
+.blockedmargined {
+	display: block;
+	padding-top: 5px;
+}

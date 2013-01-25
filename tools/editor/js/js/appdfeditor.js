@@ -1,5 +1,4 @@
 var MAXIMUM_APK_FILE_SIZE = 50000000;
-var MAX_LOCALIZATION_TABS = 10;
 zip.workerScriptsPath = "js/zip/";
 
 var firstApkFileData = {};
@@ -17,10 +16,10 @@ $(document).ready(function() {
 		return buildAppdDFFile(event);
 	});
 
-	$('#myTab a').click(function (e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
+	// $('#myTab a').click(function (e) {
+	// 	e.preventDefault();
+	// 	$(this).tab('show');
+	// });
 
 	$("#categorization-type").change(function() {
 		fillCategories();
@@ -37,90 +36,6 @@ $(document).ready(function() {
 		fillCategoryStoresInfo();
 	});
 });
-
-// function getDescriptionLanguages() {
-// 	var langs = [];
-// 	var re = /#tab-(default|[a-z][a-z]_[a-z][a-z]|[a-z][a-z])/g;  
-// 	$("#description-tab-header").children("li").children("a").each(function() {
-// 		var strHref = $(this).attr("href");
-// 		var res = re.exec(strHref.toLowerCase()); 
-// 		console.log(">>" + strHref + "<<");
-// 		console.log(res);
-// 		if (res) {
-// 			langs.push(res[1]);
-// 		};
-// 	});
-// 	return langs;
-// };
-
-function getDescriptionLanguages() {
-	var langs = [];
-	$("#description-tab-header").children("li").children("a").each(function() {
-		var strHref = $(this).attr("href").toLowerCase();
-		if (strHref.indexOf("#tab-")==0) {
-			langs.push(strHref.substr(5));
-		};
-	});
-	return langs;
-};
-
-function selectLanguage(languageCode) {
-	var $tabHeader = $("#description-tab-header");
-	$tabHeader.find('a[href="#tab-' + languageCode + '"]').tab('show');
-};
-
-function addLocalization(languageCode, languageName) {
-	console.log("addLocalization langaugeCode=" + languageCode + ", languageName=" + languageName);
-	var descriptionLangs = getDescriptionLanguages();
-	if (descriptionLangs.indexOf(languageCode)>=0) {
-		console.log("Language already exist, just select it");
-		return;
-	};
-
-	var strHtmlHeader = '<li><a href="#tab-' + languageCode + '" data-toggle="tab">' + languageName + '</a></li>';
-
-	var $tabHeader = $("#description-tab-header");
-	if ($tabHeader.children().length<MAX_LOCALIZATION_TABS) {
-		$tabHeader.children("li:last").before($(strHtmlHeader));
-		$tabHeader.find('a[href="#tab-' + languageCode + '"]').tab('show');
-		$tabHeader.find('a[href="#tab-' + languageCode + '"]').click(function (e) {
-			e.preventDefault();
-			$(this).tab('show');
-		});
-	}
-
-	var strHtmlContent = '<div class="tab-pane" id="tab-' + languageCode + '"></div>';
-	$("#description-tab-content").append($(strHtmlContent));
-
-	var strHtmlClone = $("#description-tab-content").children("div#tab-default").html();
-	$("#description-tab-content").children().last().append($(strHtmlClone));
-};
-
-function removeSelectedLocalization() {
-	var $tabHeader = $("#description-tab-header");
-	var $tabContent = $("#description-tab-content");
-	var strHref = $tabHeader.find(".active").children("a").attr("href");
-	if (strHref!="#tab-default") {
-		$tabHeader.find(".active").remove();
-		$tabContent.children("div" + strHref).remove();
-		selectLanguage("default");
-	} else {
-		alert("Cannot remove default (English) localization");
-	};
-};
-
-function showAllLocalizationDialog() {
-	var $modal = $("#add-localization-modal");
-	var $okButton = $modal.find(".btn-primary");
-	$okButton.click(function(event) {
-		event.preventDefault();
-		console.log("OKButton Click");
-		$modal.modal('hide');
-		addLocalization($("#add-localization-modal-language").val(), $("#add-localization-modal-language").children(":selected").text());
-	});
-
-	$modal.modal("show");
-};
 
 function fillApkFileInfo($el, apkData) {
 	var $info = $el.closest(".control-group").find(".apk-file-info");
@@ -170,8 +85,60 @@ function generateAppDFFile(onend) {
 	});
 };
 
+function collectBuildErrors() {
+	var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
+	console.log(errors);
+	var errorArray = [];
+	for (field in errors) {
+		if (name!=undefined) {
+			var fieldErrors = errors[field];
+			for (var i=0; i<fieldErrors.length; i++) {
+				var error = fieldErrors[i];
+				if (errorArray.indexOf(error) == -1) {
+					errorArray.push(error);
+				};
+			};
+		};
+	};
+
+	validationCallbackApkFileFirst($("#apk-file"), $("#apk-file").val(), function(data) {
+		console.log(data);
+		if (!data.valid) {
+			errorArray.push(data.message);
+		};
+	});
+
+	return errorArray;
+};
+
+function showBuildErrors(errors) {
+	//First trigger showing error messages inside control helpers
+	$("input,select,textarea").trigger("submit.validation").trigger("validationLostFocus.validation");
+
+	var $list = $("#form-errors").find("ul");
+
+	//Then we clear all the previous errors from the error lost
+	$list.find("li").remove();
+
+	//Now we make sure the error list is visible and add all the errors there
+	$("#form-errors").show();
+	for (var i=0; i<errors.length; i++) {
+		$list.append($("<li>"+errors[i]+"</li>"))
+	};
+};
+
 function buildAppdDFFile(event) {
 	console.log("BbuildAppdDFFile");
+	var errors = collectBuildErrors();
+	console.log(errors);
+	if (errors.length>0) {
+		event.preventDefault();
+		showBuildErrors(errors);
+	} else {
+		$("#form-errors").find("ul").hide();
+	};
+	return;
+	//todo - remove return
 	var $barDiv = $("#build-appdf-file-progress");
 	var $bar = $("#build-appdf-file-progress .bar");
 	$bar.css("width", "0%");
@@ -301,7 +268,7 @@ function addMoreShortDescriptions(e) {
 			<label class="control-label"  for="description-texts-shortdescription-more">Longer short description</label> \
 			<div class="controls"> \
 				<div class="input-append"> \
-					<input type="text" id="description-texts-shortdescription-more" class="input-xxlarge"> \
+					<input type="text" id="description-texts-shortdescription-more-' + getUniqueId() + '" class="input-xxlarge"> \
 					<button class="btn" type="button" onclick="removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
 				</div> \
 				<p class="help-block">Enter longer short description and it will be used by those stores that support longer short descriptions.</p> \
@@ -315,8 +282,8 @@ function addMoreKeywords(e) {
 	var $parent = $(e).closest(".input-append");
 	var strHtml = ' \
 		<div class="keyword-countainer"> \
-				<div class="input-append"> \
-				<input type="text" id="description-texts-keywords-more"> \
+			<div class="input-append"> \
+				<input type="text" id="description-texts-keywords-more-' + getUniqueId() + '"> \
 				<button class="btn" type="button" onclick="removeKeyword(this); return false;"><i class="icon-remove"></i></button> \
 			</div> \
 		</div> \
@@ -373,15 +340,62 @@ function generateCategorizationXML(xml) {
 	});
 };
 
+function generateOneLanguageDescription(languageCode, xml) {
+	$parent = $("#localization-tab-" + languageCode);
+
+	xml.addTag("<texts>", function() {
+		//Title
+		xml.addNonEmptyTextTag("<title>", $parent.find("#description-texts-title").val());
+		console.log($parent.find("input[id^=description-texts-title-more-]"));
+		$parent.find("input[id^=description-texts-title-more-]").each(function() {
+			xml.addNonEmptyTextTag("<title>", $(this).val());
+		});
+
+		//Keywords
+		var keywords = [];
+		keywords.push($parent.find("#description-texts-keywords").val());
+		$parent.find("input[id^=description-texts-keywords-more-]").each(function() {
+			keywords.push($(this).val());
+		});
+		xml.addNonEmptyTextTag("<keywords>", keywords.join(","));
+
+		//Short description
+		xml.addNonEmptyTextTag("<short-description>", $parent.find("#description-texts-shortdescription").val());
+		$parent.find("input[id^=description-texts-shortdescription-more-]").each(function() {
+			xml.addNonEmptyTextTag("<short-description>", $(this).val());
+		});
+
+		//Full description
+		xml.addNonEmptyTextTag("<full-description>", $parent.find("#description-texts-fulldescription").val());
+
+		//Features
+		xml.addTag("<features>", function() {
+			$parent.find("input[id^=description-texts-features-]").each(function() {
+				xml.addNonEmptyTextTag("<feature>", $(this).val());
+			});
+		});
+
+		//Recent changes
+		xml.addNonEmptyTextTag("<recent-changes>", $parent.find("#description-texts-recentchanges").val());		
+	});		
+};
+
 function generateDescriptionXML(xml) {
 	xml.addTag("<description>", function() {
-		xml.addTag("<texts>", function() {
-			xml.addTag("<title>", $("#description-texts-title").val());
-			$("section#description input[id^=description-texts-title-more-]").each(function() {
-				xml.addTag("<title>", $(this).val());
-			});
-		});		
+		generateOneLanguageDescription("default", xml);
 	});
+};
+
+function generateDescriptionLocalizationsXML(xml) {
+	var languages = getDescriptionLanguages();
+	for (var i=0; i<languages.length; i++) {
+		var languageCode = languages[i];
+		if (languageCode!="default") {
+			xml.addTag("<description-localization language=\"" + languageCode + "\">", function() {
+				generateOneLanguageDescription(languageCode, xml);
+			});
+		};
+	};
 };
 
 function generateCustomerSupportXML(xml) {
@@ -418,6 +432,7 @@ function generateDescriptionFileXML() {
 		xml.addTag('<application package="' + firstApkFileData.package + '">', function() {
 			generateCategorizationXML(xml);
 			generateDescriptionXML(xml);
+			generateDescriptionLocalizationsXML(xml);
 			generateApkFilesXML(xml);
 			generateCustomerSupportXML(xml);
 			generateConsentXML(xml);
@@ -491,8 +506,19 @@ function normalizeInputFileName(fileName) {
 
 function validationCallbackApkFile($el, value, callback, first) {
 	console.log("validationCallbackApkFile");
+	console.log($el[0].files);
 	var apkFileName = normalizeInputFileName($el.val());
 	$el.closest(".controls").find("input:text").val(apkFileName);
+
+	if (first && $el[0].files.length==0) {
+		callback({
+			value: value,
+			valid: false,
+			message: "APK file is required"
+		});
+		return;
+	};
+	
 	var file = $el[0].files[0];
 
 	if (file.size>MAXIMUM_APK_FILE_SIZE) {
