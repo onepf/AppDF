@@ -9,8 +9,20 @@ import org.onepf.appdf.parser.util.XmlUtil;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
-public class DescriptionParser {
-
+public class DescriptionParser implements NodeParser<Application> {
+	
+	
+	private static final String LANGUAGE_ATTR_NAME = "language";
+	
+	private enum DescriptionTag {
+		TEXTS{
+			@Override
+			NodeParser<Description> getParser() {
+				return new TextsParser();
+			}
+		};
+		abstract NodeParser<Description> getParser();
+	}
 	public DescriptionParser() {	
 	}
 	
@@ -18,7 +30,7 @@ public class DescriptionParser {
 	public void parse(Node node,Application application){
 		Description description = new Description();
 		NamedNodeMap attributes = node.getAttributes();
-		Node languageAttr = attributes.getNamedItem("language");
+		Node languageAttr = attributes.getNamedItem(LANGUAGE_ATTR_NAME);
 		if (  languageAttr == null ){
 			throw new ParsingException("Required language attribute is missing");
 		}
@@ -35,6 +47,12 @@ public class DescriptionParser {
 		for ( Node childNode : childNodes ){
 			String tagName = childNode.getNodeName();
 			System.out.println("tag:" + tagName);
+			try {
+				DescriptionTag tag = DescriptionTag.valueOf(tagName.toUpperCase());			
+				tag.getParser().parse(childNode, description);
+			} catch (IllegalArgumentException e) {
+				throw new ParsingException("Unexpected tag:" + tagName);
+			}
 		}
 	}
 
