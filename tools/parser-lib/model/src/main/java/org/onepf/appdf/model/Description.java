@@ -3,7 +3,7 @@ package org.onepf.appdf.model;
 import java.util.List;
 import java.util.Locale;
 
-public class Description {
+public class Description implements ModelElement {
 	
 	private Locale language;
 	
