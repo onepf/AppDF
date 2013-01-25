@@ -37,20 +37,25 @@ var ApkParser = {
         var fileNameUpperCase = fileName.toUpperCase();
         var suffix = ".APK";
         if (fileNameUpperCase.indexOf(suffix, fileNameUpperCase.length - suffix.length) < 0) {
-            onerror("Wrong file extension. File extension must be .APK");
+            onerror("APK file should have .apk file extension");
         }
 
         zip.createReader(new zip.BlobReader(file), function(reader) {
             reader.getEntries(function(entries) {
+                var manifestFound = false;
                 for (var i=0; i<entries.length; i++) {
                     if (entries[i].filename == "AndroidManifest.xml") {
+                        manifestFound = true;
                         entries[i].getData(new zip.BlobWriter(), function(blob) {
                             ApkParser.parseAndroidManifest(blob, onend, onerror);
                             reader.close(function() {});
                         }, function(current, total) {
                             console.log("onprogress current=" + current + ", total=" + total);
                         });
-                    }
+                    };
+                }
+                if (!manifestFound) {
+                    onerror("Bad APK file format: AndroidManifest.xml file is not found inside APK archive");
                 }
             });
         }, onerror);
