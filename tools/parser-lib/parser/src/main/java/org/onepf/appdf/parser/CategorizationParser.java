@@ -8,7 +8,7 @@ import org.onepf.appdf.model.Categorisation.ApplicationType;
 import org.onepf.appdf.parser.util.XmlUtil;
 import org.w3c.dom.Node;
 
-public class CategorizationParser {
+public class CategorizationParser implements NodeParser<Application> {
 
 	private static final String SUBCATEGORY_TAG = "subcategory";
 	private static final String CATEGORY_TAG = "category";
