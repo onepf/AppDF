@@ -6,11 +6,6 @@ div.apk-file-info {
 	padding-top: 10px;
 }
 
-#build-appdf-file-progress {
-	margin-top: 10px;
-}
-
-.blockedmargined {
-	display: block;
+.marginedinput {
 	padding-top: 5px;
 }

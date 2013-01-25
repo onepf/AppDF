@@ -242,7 +242,7 @@
 													</div>							
 												</div>					
 												<div class="keyword-countainer">
-													<div class="input-prepend blockedmargined" style="display: block">
+													<div class="input-prepend marginedinput" style="display: block">
 														<span class="add-on">2.</span>
 														<input type="text" id="description-texts-features-2" 
 															name="description-texts-features-2"
@@ -252,7 +252,7 @@
 													</div>					
 												</div>											
 												<div class="keyword-countainer">
-													<div class="input-prepend blockedmargined" style="display: block">
+													<div class="input-prepend marginedinput" style="display: block">
 														<span class="add-on">3.</span>
 														<input type="text" id="description-texts-features-3" 
 															name="description-texts-features-3"
@@ -262,13 +262,13 @@
 													</div>					
 												</div>												
 												<div class="keyword-countainer">
-													<div class="input-prepend blockedmargined" style="display: block">
+													<div class="input-prepend marginedinput" style="display: block">
 														<span class="add-on">4.</span>
 														<input type="text" id="description-texts-features-4"> 
 													</div>					
 												</div>												
 												<div class="keyword-countainer">
-													<div class="input-prepend blockedmargined" style="display: block">
+													<div class="input-prepend marginedinput" style="display: block">
 														<span class="add-on">5.</span>
 														<input type="text" id="description-texts-features-5"> 
 													</div>					
@@ -481,10 +481,13 @@
 							<ul>
 							</ul>							
 						</div>
-						<a href="#" id="build-appdf-file" class="btn btn-primary">Build AppDF File</a>
-						<div class="progress hide" id="build-appdf-file-progress">
-							<div class="bar" style="width: 0%;"></div>
+						<div class="alert alert-success hide" id="build-appdf-status">
+							<b>Build progress:</b><br>
+							<div class="progress">
+								<div id="build-appdf-progressbar" class="bar" style="width: 0%;"></div>
+							</div>
 						</div>
+						<a href="#" id="build-appdf-file" class="btn btn-primary">Build AppDF File</a>
 					</div>
 				</form>
 			</div><!--/span-->

@@ -104,7 +104,9 @@ function collectBuildErrors() {
 	validationCallbackApkFileFirst($("#apk-file"), $("#apk-file").val(), function(data) {
 		console.log(data);
 		if (!data.valid) {
-			errorArray.push(data.message);
+			if (errorArray.indexOf(data.message) == -1) {
+				errorArray.push(data.message);
+			};
 		};
 	});
 
@@ -129,36 +131,45 @@ function showBuildErrors(errors) {
 
 function buildAppdDFFile(event) {
 	console.log("BbuildAppdDFFile");
-	var errors = collectBuildErrors();
-	console.log(errors);
-	if (errors.length>0) {
-		event.preventDefault();
-		showBuildErrors(errors);
-	} else {
-		$("#form-errors").find("ul").hide();
-	};
-	return;
-	//todo - remove return
-	var $barDiv = $("#build-appdf-file-progress");
-	var $bar = $("#build-appdf-file-progress .bar");
-	$bar.css("width", "0%");
-	$barDiv.show();
 
-	console.log("onclick");
+	//First we check if there is already built file, if so we return to a standard download handler
 	var downloadLink = document.getElementById("build-appdf-file");
-	if (!downloadLink.download) {
-		generateAppDFFile(function(url) {
-			var clickEvent = document.createEvent("MouseEvent");
-			console.log("url = " + url);
-			downloadLink.href = url;
-			downloadLink.download = "test.zip";
-			clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-			downloadLink.dispatchEvent(clickEvent);
-			$barDiv.hide();
-		});
-		event.preventDefault();
+	if (downloadLink.download) {
+		return true;
+	}
+
+	//If not we start the checking and building process.
+	//First we collect all the errors and check if there are any
+	var errors = collectBuildErrors();
+	if (errors.length>0) {
+		//If there are errors we just show the errors and return
+		showBuildErrors(errors);
 		return false;
-	};
+	} 
+
+	//If there are not errors, we hide the error block and show the progress block
+	$("#form-errors").hide();
+	$("#build-appdf-progressbarr").css("width", "0%");
+	$("#build-appdf-status").show();
+
+	generateAppDFFile(function(url) {
+		var clickEvent = document.createEvent("MouseEvent");
+		console.log("url = " + url);
+		downloadLink.href = url;
+		downloadLink.download = "test.zip"; //todo - rename file to .appdf with good name
+		clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		downloadLink.dispatchEvent(clickEvent);
+		$("#build-appdf-status").hide();
+		setTimeout(clearBuildedAppdfFile, 1);
+	});
+
+	return false;
+};
+
+function clearBuildedAppdfFile() {
+	console.log("clearBuildedAppdfFile");
+	var downloadLink = document.getElementById("build-appdf-file");
+	downloadLink.download = null;
 };
 
 function fillLanguages(element) {
@@ -492,8 +503,9 @@ function addDescriptionAndFilesToZipWriter(zipWriter, descriptionXml, files, onp
 };
 
 function onProgress(current, total) {
-	var $bar = $("#build-appdf-file-progress .bar");
+	var $bar = $("#build-appdf-progressbar");
 	console.log("progress total=" + total + ", current=" + current);
+	console.log($bar);
 	var percentage = "" + Math.round(100.0 * current / total) + "%";
 	console.log(percentage);
 	$bar.css("width", percentage);

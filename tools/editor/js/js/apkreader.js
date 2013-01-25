@@ -37,7 +37,7 @@ var ApkParser = {
         var fileNameUpperCase = fileName.toUpperCase();
         var suffix = ".APK";
         if (fileNameUpperCase.indexOf(suffix, fileNameUpperCase.length - suffix.length) < 0) {
-            onerror("Wrong file extension. File extension must be .APK");
+            onerror("APK file should have .apk file extension");
         }
 
         zip.createReader(new zip.BlobReader(file), function(reader) {
@@ -55,7 +55,7 @@ var ApkParser = {
                     };
                 }
                 if (!manifestFound) {
-                    onerror("Bad APK file format. AndroidManifest.xml file is not found inside APK archive.");
+                    onerror("Bad APK file format: AndroidManifest.xml file is not found inside APK archive");
                 }
             });
         }, onerror);
