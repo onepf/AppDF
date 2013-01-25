@@ -9,12 +9,16 @@ import org.w3c.dom.Node;
 public final class TextsParser implements NodeParser<Description>{
 	public static final String TAG = "texts";
 	
-	private enum TextsTags{
-		
-	}
-
 	@Override
 	public void parse(Node node, Description description) {
-		List<Node> childNodes = XmlUtil.extractChildElements(node);		
+		List<Node> nodes = XmlUtil.extractChildElements(node);
+		for (Node innerNode : nodes){
+			String tagName = innerNode.getNodeName();
+			try{
+				TextsTags.valueOf(tagName.toUpperCase().replace('-', '_')).parse(innerNode, description);
+			}catch(IllegalArgumentException e){
+				throw new ParsingException("Unexpected tag:" + tagName);
+			}
+		}
 	}
 }
