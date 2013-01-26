@@ -30,7 +30,7 @@ public class Description implements ModelElement {
 	
 	private String youTubeVideo;
 	
-	private String video;
+	private List<String> videos;
 
 	public Locale getLanguage() {
 		return language;
@@ -141,12 +141,19 @@ public class Description implements ModelElement {
 		this.youTubeVideo = youTubeVideo;
 	}
 
-	public String getVideo() {
-		return video;
+	public List<String> getVideos() {
+		return videos;
 	}
 
-	public void setVideo(String video) {
-		this.video = video;
+	public void setVideo(List<String> videos) {
+		this.videos = videos;
+	}
+	
+	public void addVideo(String video){
+	    if ( videos == null ){
+	        videos = new ArrayList<String>();
+	    }
+	    videos.add(video);
 	}
 
 	public void addKeyword(String keyWord) {
