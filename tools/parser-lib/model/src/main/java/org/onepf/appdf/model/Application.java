@@ -1,5 +1,6 @@
 package org.onepf.appdf.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ public class Application implements ModelElement {
 	
 	private String packageName;
 	private Categorisation categorisation;
-	private List<Description> descriptions;
+	private Description mainDescription;
+	private List<Description> descriptionLocalisations;
 	private ContentDescription contentDescription;
 	private Avalability avalability;
 	private ApkFilesInfo filesInfo;
@@ -38,11 +40,11 @@ public class Application implements ModelElement {
 	}
 
 	public List<Description> getDescriptions() {
-		return descriptions;
+		return descriptionLocalisations;
 	}
 
 	public void setDescriptions(List<Description> descriptions) {
-		this.descriptions = descriptions;
+		this.descriptionLocalisations = descriptions;
 	}
 
 	public ContentDescription getContentDescription() {
@@ -100,5 +102,20 @@ public class Application implements ModelElement {
 	public void setConsent(Consent consent) {
 		this.consent = consent;
 	}
+	
+	public void addDescriptionLocalisation(Description description){
+	    if ( descriptionLocalisations == null ){
+	        descriptionLocalisations = new ArrayList<Description>();
+	    }
+	    descriptionLocalisations.add(description);
+	}
+
+    public Description getMainDescription() {
+        return mainDescription;
+    }
+
+    public void setMainDescription(Description mainDescription) {
+        this.mainDescription = mainDescription;
+    }
 
 }
