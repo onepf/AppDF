@@ -79,7 +79,7 @@ public class ContentDescriptor {
         return gamblingReference;
     }
 
-    public void setGamblingReference(DescriptorValue gamblingReference) {
+    public void setGamblingRefference(DescriptorValue gamblingReference) {
         this.gamblingReference = gamblingReference;
     }
 
