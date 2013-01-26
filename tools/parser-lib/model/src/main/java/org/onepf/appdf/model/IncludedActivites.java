@@ -10,7 +10,7 @@ public class IncludedActivites {
 	
 	private boolean userGeneratedContent;
 	
-	private boolean userToUserCommunucation;
+	private boolean userToUserCommunications;
 	
 	private boolean accountCreation;
 	
@@ -47,15 +47,16 @@ public class IncludedActivites {
 	public void setUserGeneratedContent(boolean userGeneratedContent) {
 		this.userGeneratedContent = userGeneratedContent;
 	}
-
-	public boolean isUserToUserCommunucation() {
-		return userToUserCommunucation;
+	                
+	public boolean isUserToUserCommunications() {
+		return userToUserCommunications;
 	}
 
-	public void setUserToUserCommunucation(boolean userToUserCommunucation) {
-		this.userToUserCommunucation = userToUserCommunucation;
+	public void setUserToUserCommunications(boolean userToUserCommunucation) {
+		this.userToUserCommunications = userToUserCommunucation;
 	}
 
+	
 	public boolean isAccountCreation() {
 		return accountCreation;
 	}
