@@ -40,7 +40,7 @@ public class DescriptionParser implements NodeParser<Application> {
 			System.out.println("tag:" + tagName);
 			try {
 				DescriptionTag tag = DescriptionTag.valueOf(tagName.toUpperCase());			
-				tag.getParser().parse(childNode, description);
+				tag.parse(childNode, description);
 			} catch (IllegalArgumentException e) {
 				throw new ParsingException("Unexpected tag:" + tagName);
 			}
