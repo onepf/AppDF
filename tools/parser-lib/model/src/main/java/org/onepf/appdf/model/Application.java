@@ -8,7 +8,7 @@ import java.util.List;
  *
  */
 
-public class Application {
+public class Application implements ModelElement {
 	
 	private String packageName;
 	private Categorisation categorisation;
