@@ -41,4 +41,11 @@ public class ImagesDescription implements ModelElement {
 	    appIcons.add(appIcon);
 	}
 	
+	public void addScreenshot(String screenshot){
+	    if ( screenShots == null ){
+	        screenShots = new ArrayList<String>();
+	    }
+	    screenShots.add(screenshot);
+	}
+	
 }
