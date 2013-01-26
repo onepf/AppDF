@@ -62,10 +62,10 @@ public class ApplicationParser {
 				if ( child.getNodeType() != Node.ELEMENT_NODE){
 					continue;
 				}
-				String childTagName = child.getNodeName();
+				String childTagName = child.getNodeName().toUpperCase().replace('-', '_');
 				boolean found = false;
 				for ( TopLevelTag tag : TopLevelTag.values()){
-					if ( childTagName.equalsIgnoreCase(tag.name())){
+					if ( childTagName.equals(tag.name())){
 						tag.parse(child, application);
 						found = true;
 						break;
