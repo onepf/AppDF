@@ -17,9 +17,16 @@ public enum TopLevelTag implements NodeParser<Application> {
 
 		@Override
 		public void parse(Node node, Application application) throws ParsingException {
-			(new DescriptionParser()).parse(node, application);			
+			(new DescriptionParser(true)).parse(node, application);			
 		}
 		
+	},
+	DESCRIPTION_LOCALIZATION{
+	    @Override
+        public void parse(Node node, Application application) throws ParsingException {
+            (new DescriptionParser(false)).parse(node, application);         
+        }
+        
 	}
 	;		
 }

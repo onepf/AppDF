@@ -19,8 +19,10 @@ public class DescriptionParser  implements NodeParser<Application> {
     }
     
 	private static final String LANGUAGE_ATTR_NAME = "language";
+	private final boolean isMain;
 	
-	public DescriptionParser() {		
+	public DescriptionParser(boolean isMain) {
+	    this.isMain = isMain;
 	}
 	
 	
@@ -41,6 +43,11 @@ public class DescriptionParser  implements NodeParser<Application> {
 		}
 		description.setLanguage(locale);				
 		(new InnerTagsParser()).parse(node, description);
+		if(isMain){
+		    application.setMainDescription(description);
+		}else{
+		    application.addDescriptionLocalisation(description);
+		}
 	}
 
 }
