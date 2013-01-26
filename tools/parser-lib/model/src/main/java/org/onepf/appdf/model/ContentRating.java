@@ -24,4 +24,13 @@ public enum ContentRating {
 	private ContentRating(int value) {
 		this.value = value;
 	}
+	
+	public static ContentRating getByDigital(int value){
+	    for ( ContentRating cr : values()){	        
+	        if ( cr.value == value ){
+	            return cr;
+	        }
+	    }
+	    return null;
+	}
 }
