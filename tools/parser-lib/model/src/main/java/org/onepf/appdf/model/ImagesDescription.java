@@ -1,8 +1,9 @@
 package org.onepf.appdf.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ImagesDescription {
+public class ImagesDescription implements ModelElement {
 
 	private List<AppIcon> appIcons;
 	private String largePromo;
@@ -33,5 +34,11 @@ public class ImagesDescription {
 		this.screenShots = screenShots;
 	}
 	
+	public void addAppIcon(AppIcon appIcon){
+	    if ( appIcons == null ){
+	        appIcons = new ArrayList<AppIcon>();
+	    }
+	    appIcons.add(appIcon);
+	}
 	
 }
