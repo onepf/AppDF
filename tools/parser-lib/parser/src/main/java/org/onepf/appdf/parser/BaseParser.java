@@ -34,7 +34,7 @@ public abstract class BaseParser<T extends ModelElement, E extends Enum<E> & Nod
             String tagName = childNode.getNodeName();
             try {
                 E.valueOf(enumClass, tagName.toUpperCase().replace('-', '_'))
-                        .parse(node, element);
+                        .parse(childNode, element);
             } catch (IllegalArgumentException iae) {
                 throw new ParsingException("Unsupported tag:" + tagName
                         + " inside of " + enclosingTagName);
