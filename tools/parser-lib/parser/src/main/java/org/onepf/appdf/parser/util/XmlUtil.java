@@ -3,6 +3,7 @@ package org.onepf.appdf.parser.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -22,5 +23,17 @@ public class XmlUtil {
 		}
 		return result;
 	}
+	
+	
 
+	
+	public static String getOptionalAttributeValue(NamedNodeMap attrs,String name) {
+	
+	    Node namedItem = attrs.getNamedItem(name);
+        if (namedItem == null) {
+            return "";
+        }else{
+            return namedItem.getTextContent();
+        }
+	}
 }
