@@ -14,15 +14,6 @@ public class DescriptionParser implements NodeParser<Application> {
 	
 	private static final String LANGUAGE_ATTR_NAME = "language";
 	
-	private enum DescriptionTag {
-		TEXTS{
-			@Override
-			NodeParser<Description> getParser() {
-				return new TextsParser();
-			}
-		};
-		abstract NodeParser<Description> getParser();
-	}
 	public DescriptionParser() {	
 	}
 	
