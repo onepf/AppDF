@@ -2,109 +2,108 @@ package org.onepf.appdf.model;
 
 public class ContentDescriptor {
 
-	public enum DescriptorValue {
-		NO,
-		LIGHT,
-		STRONG
-	}
-	
-	private DescriptorValue cartoonViolence;
-	
-	private DescriptorValue realisticViolence;
-	
-	private DescriptorValue badLanguage;
-	
-	private DescriptorValue fear;
-	
-	private DescriptorValue sexualContent;
-	
-	private DescriptorValue drugs;
-	
-	private DescriptorValue gamblingReference;
-	
-	private DescriptorValue alcohol;
-	
-	private DescriptorValue smoking;
-	
-	private DescriptorValue discrimination;
+    public enum DescriptorValue {
+        NO, LIGHT, STRONG
+    }
 
-	public DescriptorValue getCartoonViolence() {
-		return cartoonViolence;
-	}
+   
+    private DescriptorValue cartoonViolence;
 
-	public void setCartoonViolence(DescriptorValue cartoonViolence) {
-		this.cartoonViolence = cartoonViolence;
-	}
+    private DescriptorValue realisticViolence;
 
-	public DescriptorValue getRealisticViolence() {
-		return realisticViolence;
-	}
+    private DescriptorValue badLanguage;
 
-	public void setRealisticViolence(DescriptorValue realisticViolence) {
-		this.realisticViolence = realisticViolence;
-	}
+    private DescriptorValue fear;
 
-	public DescriptorValue getBadLanguage() {
-		return badLanguage;
-	}
+    private DescriptorValue sexualContent;
 
-	public void setBadLanguage(DescriptorValue badLanguage) {
-		this.badLanguage = badLanguage;
-	}
+    private DescriptorValue drugs;
 
-	public DescriptorValue getFear() {
-		return fear;
-	}
+    private DescriptorValue gamblingReference;
 
-	public void setFear(DescriptorValue fear) {
-		this.fear = fear;
-	}
+    private DescriptorValue alcohol;
 
-	public DescriptorValue getSexualContent() {
-		return sexualContent;
-	}
+    private DescriptorValue smoking;
 
-	public void setSexualContent(DescriptorValue sexualContent) {
-		this.sexualContent = sexualContent;
-	}
+    private DescriptorValue discrimination;
 
-	public DescriptorValue getDrugs() {
-		return drugs;
-	}
+    public DescriptorValue getCartoonViolence() {
+        return cartoonViolence;
+    }
 
-	public void setDrugs(DescriptorValue drugs) {
-		this.drugs = drugs;
-	}
+    public void setCartoonViolence(DescriptorValue cartoonViolence) {
+        this.cartoonViolence = cartoonViolence;
+    }
 
-	public DescriptorValue getGamblingReference() {
-		return gamblingReference;
-	}
+    public DescriptorValue getRealisticViolence() {
+        return realisticViolence;
+    }
 
-	public void setGamblingReference(DescriptorValue gamblingReference) {
-		this.gamblingReference = gamblingReference;
-	}
+    public void setRealisticViolence(DescriptorValue realisticViolence) {
+        this.realisticViolence = realisticViolence;
+    }
 
-	public DescriptorValue getAlcohol() {
-		return alcohol;
-	}
+    public DescriptorValue getBadLanguage() {
+        return badLanguage;
+    }
 
-	public void setAlcohol(DescriptorValue alcohol) {
-		this.alcohol = alcohol;
-	}
+    public void setBadLanguage(DescriptorValue badLanguage) {
+        this.badLanguage = badLanguage;
+    }
 
-	public DescriptorValue getSmoking() {
-		return smoking;
-	}
+    public DescriptorValue getFear() {
+        return fear;
+    }
 
-	public void setSmoking(DescriptorValue smoking) {
-		this.smoking = smoking;
-	}
+    public void setFear(DescriptorValue fear) {
+        this.fear = fear;
+    }
 
-	public DescriptorValue getDiscrimination() {
-		return discrimination;
-	}
+    public DescriptorValue getSexualContent() {
+        return sexualContent;
+    }
 
-	public void setDiscrimination(DescriptorValue discrimination) {
-		this.discrimination = discrimination;
-	}
+    public void setSexualContent(DescriptorValue sexualContent) {
+        this.sexualContent = sexualContent;
+    }
+
+    public DescriptorValue getDrugs() {
+        return drugs;
+    }
+
+    public void setDrugs(DescriptorValue drugs) {
+        this.drugs = drugs;
+    }
+
+    public DescriptorValue getGamblingRefference() {
+        return gamblingReference;
+    }
+
+    public void setGamblingReference(DescriptorValue gamblingReference) {
+        this.gamblingReference = gamblingReference;
+    }
+
+    public DescriptorValue getAlcohol() {
+        return alcohol;
+    }
+
+    public void setAlcohol(DescriptorValue alcohol) {
+        this.alcohol = alcohol;
+    }
+
+    public DescriptorValue getSmoking() {
+        return smoking;
+    }
+
+    public void setSmoking(DescriptorValue smoking) {
+        this.smoking = smoking;
+    }
+
+    public DescriptorValue getDiscrimination() {
+        return discrimination;
+    }
+
+    public void setDiscrimination(DescriptorValue discrimination) {
+        this.discrimination = discrimination;
+    }
 }
