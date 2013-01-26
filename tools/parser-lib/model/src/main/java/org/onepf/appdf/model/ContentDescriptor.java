@@ -106,4 +106,14 @@ public class ContentDescriptor {
     public void setDiscrimination(DescriptorValue discrimination) {
         this.discrimination = discrimination;
     }
+
+    @Override
+    public String toString() {
+        return "ContentDescriptor [cartoonViolence=" + cartoonViolence
+                + ", realisticViolence=" + realisticViolence + ", badLanguage="
+                + badLanguage + ", fear=" + fear + ", sexualContent="
+                + sexualContent + ", drugs=" + drugs + ", gamblingReference="
+                + gamblingReference + ", alcohol=" + alcohol + ", smoking="
+                + smoking + ", discrimination=" + discrimination + "]";
+    }
 }
