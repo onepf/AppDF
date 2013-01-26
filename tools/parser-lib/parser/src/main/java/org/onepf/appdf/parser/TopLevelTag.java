@@ -1,6 +1,7 @@
 package org.onepf.appdf.parser;
 
 import org.onepf.appdf.model.Application;
+import org.onepf.appdf.model.ContentDescription;
 import org.w3c.dom.Node;
 
 public enum TopLevelTag implements NodeParser<Application> {
@@ -27,6 +28,17 @@ public enum TopLevelTag implements NodeParser<Application> {
             (new DescriptionParser(false)).parse(node, application);         
         }
         
+	},
+	CONTENT_DESCRIPTION{
+
+        @Override
+        public void parse(Node node, Application element)
+                throws ParsingException {
+           ContentDescription contentDescription = new ContentDescription();
+           (new ContentDescriptionParser()).parse(node, contentDescription);
+           element.setContentDescription(contentDescription);
+        }
+	    
 	}
 	;		
 }
