@@ -36,4 +36,18 @@ public class XmlUtil {
             return namedItem.getTextContent();
         }
 	}
+
+    public static String tagNameToFieldName(String tagName) {
+        int minusIndex = tagName.indexOf('-');
+        while ( minusIndex != -1){
+            char nextChar = tagName.charAt(minusIndex + 1);
+            char upper = Character.toUpperCase(nextChar);
+            StringBuilder sb = new StringBuilder(tagName);
+            sb.replace(minusIndex + 1, minusIndex + 2, new String(new char[]{upper}));
+            sb.replace(minusIndex, minusIndex + 1, "");
+            tagName = sb.toString();
+            minusIndex = tagName.indexOf('-');
+        }
+        return tagName;
+    }
 }
