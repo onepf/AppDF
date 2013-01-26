@@ -9,6 +9,7 @@ public class RatingCertificate {
 	private String value;
 	private String certificate;
 	private String mark;
+	private CertificateType type;
 
 	public String getValue() {
 		return value;
@@ -33,4 +34,12 @@ public class RatingCertificate {
 	public void setMark(String mark) {
 		this.mark = mark;
 	}
+
+    public CertificateType getType() {
+        return type;
+    }
+
+    public void setType(CertificateType type) {
+        this.type = type;
+    }
 }
