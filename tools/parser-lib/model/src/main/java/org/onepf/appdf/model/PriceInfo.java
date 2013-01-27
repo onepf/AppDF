@@ -2,7 +2,7 @@ package org.onepf.appdf.model;
 
 import java.util.List;
 
-public class PriceInfo {
+public class PriceInfo implements ModelElement{
 
 	public static class Price {
 		private String currencyCode;
