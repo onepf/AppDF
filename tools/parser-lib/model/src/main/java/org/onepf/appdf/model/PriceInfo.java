@@ -15,6 +15,7 @@
  ******************************************************************************/
 package org.onepf.appdf.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PriceInfo implements ModelElement{
@@ -85,6 +86,13 @@ public class PriceInfo implements ModelElement{
 
 	public void setFullVersionPackage(String fullVersionPackage) {
 		this.fullVersionPackage = fullVersionPackage;
+	}
+	
+	public void addLocalPrice(Price price){
+	    if ( localPrices == null ){
+	        localPrices = new ArrayList<Price>();
+	    }
+	    localPrices.add(price);
 	}
 
 }
