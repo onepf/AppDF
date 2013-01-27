@@ -1,5 +1,6 @@
 package org.onepf.appdf.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Availability implements ModelElement{
@@ -34,25 +35,39 @@ public class Availability implements ModelElement{
 		}
 	}
 
-	private List<String> includeContries;
-	private List<String> excludeContries;
+	private List<String> includeCountries;
+	private List<String> excludeCountries;
 	private Period since;
 	private Period until;
+	
+	public void addIncludeCountry(String country){
+	    if ( includeCountries == null ){
+	        includeCountries = new ArrayList<String>();
+	    }
+	    includeCountries.add(country);
+	}
+	
+	public void addExcludeCountry(String country){
+	    if ( excludeCountries == null ){
+	        excludeCountries = new ArrayList<String>();
+	    }
+	    excludeCountries.add(country);
+	}
 
 	public List<String> getIncludeContries() {
-		return includeContries;
+		return includeCountries;
 	}
 
 	public void setIncludeContries(List<String> includeContries) {
-		this.includeContries = includeContries;
+		this.includeCountries = includeContries;
 	}
 
 	public List<String> getExcludeContries() {
-		return excludeContries;
+		return excludeCountries;
 	}
 
 	public void setExcludeContries(List<String> excludeContries) {
-		this.excludeContries = excludeContries;
+		this.excludeCountries = excludeContries;
 	}
 
 	public Period getSince() {
