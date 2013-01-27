@@ -16,7 +16,7 @@ public class Application implements ModelElement {
 	private Description mainDescription;
 	private List<Description> descriptionLocalisations;
 	private ContentDescription contentDescription;
-	private Avalability avalability;
+	private Availability avalability;
 	private ApkFilesInfo filesInfo;
 	private Requirments requirments;
 	private List<StoreSpecificInfo> storeSpecific;
@@ -55,11 +55,11 @@ public class Application implements ModelElement {
 		this.contentDescription = contentDescription;
 	}
 
-	public Avalability getAvalability() {
+	public Availability getAvalability() {
 		return avalability;
 	}
 
-	public void setAvalability(Avalability avalability) {
+	public void setAvalability(Availability avalability) {
 		this.avalability = avalability;
 	}
 
