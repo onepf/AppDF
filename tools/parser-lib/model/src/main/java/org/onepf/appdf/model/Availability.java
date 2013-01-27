@@ -2,7 +2,7 @@ package org.onepf.appdf.model;
 
 import java.util.List;
 
-public class Avalability implements ModelElement{
+public class Availability implements ModelElement{
 
 	public static class Period {
 		private int year;
