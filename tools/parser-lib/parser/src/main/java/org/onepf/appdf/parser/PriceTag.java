@@ -16,15 +16,59 @@
 package org.onepf.appdf.parser;
 
 import org.onepf.appdf.model.PriceInfo;
+import org.onepf.appdf.model.PriceInfo.Price;
+import org.onepf.appdf.parser.util.XmlUtil;
+
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
-public enum PriceTag implements NodeParser<PriceInfo>{
+public enum PriceTag implements NodeParser<PriceInfo> {
 
-    BASE_PRICE{
+    BASE_PRICE {
 
         @Override
         public void parse(Node node, PriceInfo element) throws ParsingException {
-            // TODO Auto-generated method stub
-            
-        }};
+            String priceValue = node.getTextContent();
+            Price price = new Price();
+            price.setCurrencyCode("usd");
+            price.setPrice(priceValue);
+            element.setBasePrice(price);
+        }
+    },
+    LOCAL_PRICE {
+
+        @Override
+        public void parse(Node node, PriceInfo element) throws ParsingException {
+            NamedNodeMap attrs = node.getAttributes();
+            String countryCode = XmlUtil.getOptionalAttributeValue(attrs,
+                    "country");
+            String currencyCode = XmlUtil.getOptionalAttributeValue(attrs,
+                    "currency");
+            if (countryCode == null) {
+                throw new ParsingException("Country code missing");
+            }
+            if (currencyCode == null) {
+                throw new ParsingException("Currency code missing");
+            }
+            Price p = new Price();
+            p.setCountryCode(countryCode);
+            p.setCurrencyCode(currencyCode);
+            p.setPrice(node.getTextContent());
+            element.addLocalPrice(p);
+        }
+
+    },
+    TRIAL_VERSION {
+
+        @Override
+        public void parse(Node node, PriceInfo element) throws ParsingException {
+            String fullVersionPackage = XmlUtil.getOptionalAttributeValue(node.getAttributes(), "full-version");
+            if ( fullVersionPackage == null ){
+                throw new ParsingException("Full version package attribute is missing");
+            }
+            element.setFullVersionPackage(fullVersionPackage);
+        }
+        
+    }
+    ;
 }
