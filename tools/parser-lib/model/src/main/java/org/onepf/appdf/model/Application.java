@@ -22,6 +22,7 @@ public class Application implements ModelElement {
 	private List<StoreSpecificInfo> storeSpecific;
 	private String testingInstructions;
 	private Consent consent;
+	private PriceInfo priceInfo;
 
 	public String getPackageName() {
 		return packageName;
@@ -116,6 +117,18 @@ public class Application implements ModelElement {
 
     public void setMainDescription(Description mainDescription) {
         this.mainDescription = mainDescription;
+    }
+
+    public PriceInfo getPriceInfo() {
+        return priceInfo;
+    }
+
+    public void setPriceInfo(PriceInfo priceInfo) {
+        this.priceInfo = priceInfo;
+    }
+
+    public List<Description> getDescriptionLocalisations() {
+        return descriptionLocalisations;
     }
 
 }
