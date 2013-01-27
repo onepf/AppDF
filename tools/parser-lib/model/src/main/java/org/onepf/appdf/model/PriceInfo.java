@@ -22,7 +22,7 @@ public class PriceInfo implements ModelElement{
 	public static class Price {
 		private String currencyCode;
 		private String price;
-		private String contryCode;
+		private String countryCode;
 
 		public String getCurrencyCode() {
 			return currencyCode;
@@ -41,11 +41,11 @@ public class PriceInfo implements ModelElement{
 		}
 
 		public String getContryCode() {
-			return contryCode;
+			return countryCode;
 		}
 
-		public void setContryCode(String contryCode) {
-			this.contryCode = contryCode;
+		public void setCountryCode(String contryCode) {
+			this.countryCode = contryCode;
 		}
 	}
 
