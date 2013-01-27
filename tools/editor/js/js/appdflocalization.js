@@ -54,21 +54,34 @@ function addLocalization(languageCode, languageName) {
 	});
 };
 
+function removeAllLocalizations() {
+	console.log("removeAllLocalizations");
+	var $tabHeader = $("#description-tab-header");
+	var $tabContent = $("#description-tab-content");
+
+	$tabHeader.find("a").each(function() {
+		var strHref = $(this).attr("href");
+		console.log("href");
+		console.log(strHref);
+		if (strHref!="#localization-tab-default" && strHref!="#") {
+			$(this).closest("li").remove();
+			$tabContent.children("div" + strHref).remove();
+		};
+	});
+};
+
 function removeSelectedLocalization() {
 	var $tabHeader = $("#description-tab-header");
 	var $tabContent = $("#description-tab-content");
 	var strHref = $tabHeader.find(".active").children("a").attr("href");
-	console.log("strHref");
-	console.log(strHref);
 
-	if (strHref=="#tab-default") {
+	if (strHref=="#localization-tab-default") {
 		alert("Cannot remove default (English) localization");
 		return;
 	};
 
 	//First we check if "More" is selected
 	if (strHref=="#") {
-		console.log($tabHeader.find(".active").find(".active"));
 		strHref = $tabHeader.find(".active").find(".active").children("a").attr("href");
 		$tabHeader.find(".active").find(".active").remove();
 		$tabContent.children("div" + strHref).remove();

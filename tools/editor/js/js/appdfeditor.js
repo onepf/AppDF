@@ -16,10 +16,28 @@ $(document).ready(function() {
 		return buildAppdDFFile(event);
 	});
 
-	// $('#myTab a').click(function (e) {
-	// 	e.preventDefault();
-	// 	$(this).tab('show');
-	// });
+	$("#show-import-description-xml").click(function(event) {
+		var $modal = $("#import-description-xml-modal");
+		var $importButton = $modal.find(".btn-primary");
+		$("#load-errors").hide();
+		$modal.on('shown', function () {
+			$("#description-xml-to-import").focus();
+		});
+		$importButton.click(function(event) {
+			event.preventDefault();
+			var xml = $("#description-xml-to-import").val();
+			loadDescriptionXML(xml, function() {
+				$modal.modal('hide');
+			}, function(error) {
+				console.log("Import error: " + error);
+				$("#load-errors").show();
+				$("#load-errors-message").text(error);
+			});
+			return false;
+		});
+		$modal.modal("show");
+		return false;
+	});
 
 	$("#categorization-type").change(function() {
 		fillCategories();
@@ -55,9 +73,8 @@ function prettyFileInputClick(e) {
 };
 
 function generateAppDFFile(onend) {
-
 	var descriptionXML = generateDescriptionFileXML(); 
-	console.log(descriptionXML);
+	localStorage.setItem(firstApkFileData.package, descriptionXML);
 
 	var URL = window.webkitURL || window.mozURL || window.URL;
 
@@ -128,6 +145,19 @@ function showBuildErrors(errors) {
 		$list.append($("<li>"+errors[i]+"</li>"))
 	};
 };
+
+// function loadTestDescriptionXml() {
+// 	console.log("loadTestDescriptionXml");
+// 	var xml = $("#descriptionxml").val();
+// 	console.log(xml);
+// 	parseDescriptionXML(xml, function(data) {
+// 		console.log("Load success");
+// 		console.log(data);
+// 	}, function (error) {
+// 		console.log("Load error");
+// 		console.log(error);
+// 	});
+// };
 
 function buildAppdDFFile(event) {
 	console.log("BbuildAppdDFFile");
@@ -253,7 +283,7 @@ function addValidationToLastControlGroup($fieldset) {
 	addValidationToElements($lastControlGroup.find("input,textarea,select"));
 };
 
-function addMoreTitles(e) {
+function addMoreTitles(e, value) {
 	var $parent = $(e).closest(".control-group");
 	var strHtml = ' \
 		<div class="control-group"> \
@@ -261,7 +291,7 @@ function addMoreTitles(e) {
 			<label class="control-label"  for="description-texts-title-more">Longer title</label> \
 			<div class="controls"> \
 				<div class="input-append"> \
-					<input type="text" id="description-texts-title-more-' + getUniqueId() + ' class="input-xxlarge"> \
+					<input type="text" id="description-texts-title-more-' + getUniqueId() + ' class="input-xxlarge" value="' + value + '"> \
 					<button class="btn" type="button" onclick="removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
 				</div> \
 				<p class="help-block">Enter longer title and it will be used by those stores that support longer titles.</p> \
@@ -271,7 +301,7 @@ function addMoreTitles(e) {
  	$parent.after($(strHtml));
  }
 
-function addMoreShortDescriptions(e) {
+function addMoreShortDescriptions(e, value) {
 	var $parent = $(e).closest(".control-group");
 	var strHtml = ' \
 		<div class="control-group"> \
@@ -279,7 +309,7 @@ function addMoreShortDescriptions(e) {
 			<label class="control-label"  for="description-texts-shortdescription-more">Longer short description</label> \
 			<div class="controls"> \
 				<div class="input-append"> \
-					<input type="text" id="description-texts-shortdescription-more-' + getUniqueId() + '" class="input-xxlarge"> \
+					<input type="text" id="description-texts-shortdescription-more-' + getUniqueId() + '" class="input-xxlarge" value="' + value + '"> \
 					<button class="btn" type="button" onclick="removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
 				</div> \
 				<p class="help-block">Enter longer short description and it will be used by those stores that support longer short descriptions.</p> \
@@ -289,12 +319,12 @@ function addMoreShortDescriptions(e) {
  	$parent.after($(strHtml));
  }
 
-function addMoreKeywords(e) {
+function addMoreKeywords(e, value) {
 	var $parent = $(e).closest(".input-append");
 	var strHtml = ' \
 		<div class="keyword-countainer"> \
 			<div class="input-append"> \
-				<input type="text" id="description-texts-keywords-more-' + getUniqueId() + '"> \
+				<input type="text" id="description-texts-keywords-more-' + getUniqueId() + '" value="' + value + '"> \
 				<button class="btn" type="button" onclick="removeKeyword(this); return false;"><i class="icon-remove"></i></button> \
 			</div> \
 		</div> \
@@ -572,10 +602,107 @@ function validationCallbackApkFile($el, value, callback, first) {
 
 function validationCallbackApkFileFirst($el, value, callback) {
 	console.log("validationCallbackApkFileFirst");
-	validationCallbackApkFile($el, value, callback, true);
+	validationCallbackApkFile($el, value, function(data) {
+		if (data.valid) {
+			loadDescriptionXML(localStorage.getItem(firstApkFileData.package), function(){}, function(error){});
+		};
+		callback(data);
+	}, true);
 };
 
 function validationCallbackApkFileMore($el, value, callback) {
 	console.log("validationCallbackApkFileMore");
 	validationCallbackApkFile($el, value, callback, false);
+};
+
+function showImportingError(error) {
+	$("#load-errors").show();
+	$("#load-errors-message").html(error);
+};
+
+function loadDescriptionLocalizationSection(languageCode, data) {
+	var $container = $("#localization-tab-" + languageCode);
+
+	$container.find("input[id^=description-texts-title-more-]").closest(".control-group").remove();
+	var titles = data["texts"]["title"];
+	for (var i=0; i<titles.length; i++) {
+		var title = titles[i];
+		if (i==0) {
+			$container.find("#description-texts-title").val(title);
+		} else {
+			addMoreTitles($container.find("#description-texts-title"), title);
+		};
+	};	
+
+	$container.find("input[id^=description-texts-keywords-more-]").closest(".keyword-countainer").remove();
+	var keywords = data["texts"]["keywords"];
+	console.log("keywords for lang="+languageCode);
+	console.log(keywords);
+	for (var i=0; i<keywords.length; i++) {
+		var keyword = keywords[i];
+		if (i==0) {
+			$container.find("#description-texts-keywords").val(keyword);
+		} else {
+			addMoreKeywords($container.find("#description-texts-keywords"), keyword);
+		};
+	};	
+
+	$container.find("input[id^=description-texts-shortdescription-more-]").closest(".control-group").remove();
+	var shoftDescriptions = data["texts"]["short-description"];
+	for (var i=0; i<shoftDescriptions.length; i++) {
+		var shortDescription = shoftDescriptions[i];
+		if (i==0) {
+			$container.find("#description-texts-shortdescription").val(shortDescription);
+		} else {
+			addMoreShortDescriptions($container.find("#description-texts-shortdescription"), shortDescription);
+		};
+	};	
+
+	$container.find("#description-texts-fulldescription").val(data["texts"]["full-description"]);
+
+	$container.find("input[id^=description-texts-features-]").val("");
+	var features = data["texts"]["features"];
+	for (var i=0; i<features.length; i++) {
+		var feature = features[i];
+		if (i<5) {
+			$container.find("#description-texts-features-" + (i+1)).val(feature);
+			console.log($container.find("#description-texts-features-" + (i+1)));
+		};
+	};	
+
+	console.log(data["texts"]["recent-changes"]);
+	if (data["texts"]["recent-changes"]) {
+		console.log("recent changes are not null");
+		$container.find("#description-texts-recentchanges").val(data["texts"]["recent-changes"]);
+	} else {
+		$container.find("#description-texts-recentchanges").val("");		
+	};
+};
+
+function loadDescriptionXML(xml, onend, onerror) {
+	parseDescriptionXML(xml, function(data) {
+		console.log("Description.XML is parsed");
+		console.log(data);
+
+		//Set control values in the categorization section
+		$("#categorization-type").val(data["categorization"]["type"]);
+		fillCategories();
+
+		$("#categorization-category").val(data["categorization"]["category"]);
+		fillSubcategories();
+
+		$("#categorization-subcategory").val(data["categorization"]["subcategory"]);
+		fillCategoryStoresInfo();
+
+		//Set control values in the description/texts
+		removeAllLocalizations();
+		for (languageCode in data["description"]) {
+			if (languageCode!="default") {
+				addLocalization(languageCode, allLanguages[languageCode]);
+			};
+			loadDescriptionLocalizationSection(languageCode, data["description"][languageCode]);
+		};
+
+		onend();
+	}, onerror);
 };

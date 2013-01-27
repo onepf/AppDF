@@ -33,6 +33,7 @@
 	<script type="text/javascript" src="js/zip/zip.js"></script>
 	<script type="text/javascript" src="js/appdflocalization.js"></script>
 	<script type="text/javascript" src="js/apkreader.js"></script>
+	<script type="text/javascript" src="js/appdfparser.js"></script>
 	<script type="text/javascript" src="js/appdfeditor.js"></script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -80,7 +81,29 @@
 			<div class="span10">
 				<div class="hero-unit">
 					<p>Uploading Android application to several appstores could be time consuming. AppDF format is designed to simplify this process. You describe your Android application once, create a simple AppDF file that includes description, APK file(s), screenshots, app icon, promo images, etc and just upload this AppDF file to all the stores that support AppDF uploading.</p>
+					<p>
+						<a href="#" id="show-import-description-xml" class="btn btn-primary">Import Description.xml</a>
+						<a href="#" id="load-appdf-file" class="btn btn-primary disabled">Load AppDF File</a>
+					</p>
 				</div>
+				<div id="import-description-xml-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="add-localization-modal-label" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3 id="add-localization-modal-label">Import Description.XML</h3>
+					</div>
+					<div class="modal-body">
+						<textarea id="description-xml-to-import" class="input-xxlarge" rows="5"></textarea><br>
+						<div class="alert alert-error hide" id="load-errors">
+							<b>Import errors:</b>
+							<div id="load-errors-message"></div>
+						</div>				
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+						<button class="btn btn-primary">Import</button>
+					</div>
+				</div><!--Model-->						
+
 				<form class="form-horizontal" action='' method="POST" novalidate>
 					<section id="apk-files">
 						<fieldset>
@@ -122,7 +145,7 @@
 										<option value="application">Application</option>
 										<option value="game">Game</option>
 									</select>
-									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
+									<p class="help-block">Select if your program is a game</p>
 								</div>
 							</div><!--control-group-->
 					 
@@ -132,7 +155,7 @@
 								<div class="controls">
 									<select id="categorization-category" name="categorization-category">
 									</select>
-									<p class="help-block">Please provide your E-mail</p>
+									<p class="help-block">Select primary category, if not sure check how this category will be mapped to application stores categories</p>
 								</div>
 							</div><!--control-group-->
 					 
@@ -142,7 +165,7 @@
 								<div class="controls">
 									<select id="categorization-subcategory">
 									</select>
-									<p class="help-block">Please provide your E-mail</p>
+									<p class="help-block">For this category you can also select a subcategory (can be empty), if not sure check how this subcategory will be mapped to application stores categories</p>
 								</div>
 							</div><!--control-group-->
 
@@ -195,7 +218,7 @@
 													data-validation-required-message="Title is required" 
 													maxlength="30"
 												>
-												<p class="help-block">Different stores have different maximum title length requirements. The first title should be shorter then 30 symbols. You can <button class="btn" onclick="addMoreTitles(this); return false;">add longer title</button> for the stores that support long titles.</p>
+												<p class="help-block">Different stores have different maximum title length requirements. The first title should be shorter then 30 symbols. You can <button class="btn" onclick="addMoreTitles(this, ""); return false;">add longer title</button> for the stores that support long titles.</p>
 											</div>
 										</div><!--./control-group -->
 									 
@@ -208,7 +231,7 @@
 													data-validation-required-message="Short description is required" 
 													maxlength="80"
 												>
-												<p class="help-block">Different stores have different maximum short description length requirements. The first short-description should be shorter then 80 symbols. You can <button class="btn" onclick="addMoreShortDescriptions(this); return false;">add longer short description</button> for the stores that support longer ones.</p>
+												<p class="help-block">Different stores have different maximum short description length requirements. The first short-description should be shorter then 80 symbols. You can <button class="btn" onclick="addMoreShortDescriptions(this, ""); return false;">add longer short description</button> for the stores that support longer ones.</p>
 											</div>
 										</div><!--./control-group -->
 									 
@@ -231,7 +254,7 @@
 											<!-- description/texts/features -->
 											<label class="control-label" for="description-texts-features">Features</label>
 											<div class="controls">
-												<div class="keyword-countainer">
+												<div class="feature-countainer">
 													<div class="input-prepend">
 														<span class="add-on">1.</span>
 														<input type="text" id="description-texts-features-1"  
@@ -241,7 +264,7 @@
 														> 
 													</div>							
 												</div>					
-												<div class="keyword-countainer">
+												<div class="feature-countainer">
 													<div class="input-prepend marginedinput" style="display: block">
 														<span class="add-on">2.</span>
 														<input type="text" id="description-texts-features-2" 
@@ -251,7 +274,7 @@
 														> 
 													</div>					
 												</div>											
-												<div class="keyword-countainer">
+												<div class="feature-countainer">
 													<div class="input-prepend marginedinput" style="display: block">
 														<span class="add-on">3.</span>
 														<input type="text" id="description-texts-features-3" 
@@ -261,13 +284,13 @@
 														> 
 													</div>					
 												</div>												
-												<div class="keyword-countainer">
+												<div class="feature-countainer">
 													<div class="input-prepend marginedinput" style="display: block">
 														<span class="add-on">4.</span>
 														<input type="text" id="description-texts-features-4"> 
 													</div>					
 												</div>												
-												<div class="keyword-countainer">
+												<div class="feature-countainer">
 													<div class="input-prepend marginedinput" style="display: block">
 														<span class="add-on">5.</span>
 														<input type="text" id="description-texts-features-5"> 
@@ -283,7 +306,7 @@
 											<div class="controls">
 												<div class="input-append"> 
 													<input type="text" id="description-texts-keywords"> 
-													<button class="btn" type="button" onclick="addMoreKeywords(this); return false;"><i class=" icon-plus-sign"></i></button>
+													<button class="btn" type="button" onclick="addMoreKeywords(this, ""); return false;"><i class=" icon-plus-sign"></i></button>
 												</div> 
 												<p class="help-block">Please provide keywords that describe your application</p>
 											</div>
@@ -328,7 +351,7 @@
 													data-validation-required-message="Title is required" 
 													maxlength="30"
 												>
-												<p class="help-block">Different stores have different maximum title length requirements. The first title should be shorter then 30 symbols. You can <button class="btn" onclick="addMoreTitles(this); return false;">add longer title</button> for the stores that support long titles.</p>
+												<p class="help-block">Different stores have different maximum title length requirements. The first title should be shorter then 30 symbols. You can <button class="btn" onclick="addMoreTitles(this, ""); return false;">add longer title</button> for the stores that support long titles.</p>
 											</div>
 										</div><!--./control-group -->
 									 
@@ -341,7 +364,7 @@
 													data-validation-required-message="Short description is required" 
 													maxlength="80"
 												>
-												<p class="help-block">Different stores have different maximum short description length requirements. The first short-description should be shorter then 80 symbols. You can <button class="btn" onclick="addMoreShortDescriptions(this); return false;">add longer short description</button> for the stores that support longer ones.</p>
+												<p class="help-block">Different stores have different maximum short description length requirements. The first short-description should be shorter then 80 symbols. You can <button class="btn" onclick="addMoreShortDescriptions(this, ""); return false;">add longer short description</button> for the stores that support longer ones.</p>
 											</div>
 										</div><!--./control-group -->
 									 
@@ -360,7 +383,7 @@
 											<div class="controls">
 												<div class="input-append"> 
 													<input type="text" id="description-texts-keywords"> 
-													<button class="btn" type="button" onclick="addMoreKeywords(this); return false;"><i class=" icon-plus-sign"></i></button>
+													<button class="btn" type="button" onclick="addMoreKeywords(this, ""); return false;"><i class=" icon-plus-sign"></i></button>
 												</div> 
 												<p class="help-block">Please provide keywords that describe your application</p>
 											</div>
