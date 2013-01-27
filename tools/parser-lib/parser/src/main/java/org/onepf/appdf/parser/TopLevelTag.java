@@ -76,6 +76,11 @@ public enum TopLevelTag implements NodeParser<Application> {
         public void parse(Node node, Application element)
                 throws ParsingException {
             PriceInfo priceInfo = new PriceInfo();
+            Node freeAttr = node.getAttributes().getNamedItem("free");
+            if ( freeAttr == null ){
+                throw new ParsingException("Required attribute free is missing inside price tag");
+            }
+            priceInfo.setFree("yes".equalsIgnoreCase(freeAttr.getTextContent()));
             (new PriceParser()).parse(node, priceInfo);
             element.setPriceInfo(priceInfo);
         }
