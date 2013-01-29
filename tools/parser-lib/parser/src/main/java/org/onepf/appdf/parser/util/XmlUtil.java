@@ -33,7 +33,9 @@ import org.w3c.dom.NodeList;
 
 public class XmlUtil {
 
-	private XmlUtil() { 
+	public static final String YES = "yes";
+
+    private XmlUtil() { 
 	}
 	
 	public static List<Node> extractChildElements(Node parent){
@@ -87,7 +89,7 @@ public class XmlUtil {
                 PropertyDescriptor pd  = new PropertyDescriptor(tagName, beanClass);
                 Method writeMethod = pd.getWriteMethod();
                 
-                boolean boolValue = "yes".equalsIgnoreCase(childValue);
+                boolean boolValue = YES.equalsIgnoreCase(childValue);
                 writeMethod.invoke(bean, boolValue);
             } catch (IntrospectionException e) {
                throw new ParsingException("Unexpected descriptor:" + originalTagName); 
