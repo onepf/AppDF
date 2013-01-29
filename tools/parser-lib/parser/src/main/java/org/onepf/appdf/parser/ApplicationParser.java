@@ -24,6 +24,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.onepf.appdf.model.Application;
+import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -65,33 +66,36 @@ public class ApplicationParser {
 		NodeList applicationNodeList = document.getElementsByTagName(APPLICATION_TAG);
 		if ( applicationNodeList.getLength() == 0 ){
 			throw new ParsingException("Application elem is missing");
-		}else if ( applicationNodeList.getLength() > 1 ){
-			throw new ParsingException("More than one application elem in description.xml");
 		}else{
 			Node applicationNode = applicationNodeList.item(0);
 			
-			NodeList childNodes = applicationNode.getChildNodes();
-			
-			for ( int i = 0 ; i < childNodes.getLength() ; i++ ){
-				Node child = childNodes.item(i);
-				if ( child.getNodeType() != Node.ELEMENT_NODE){
-					continue;
-				}
-				String childTagName = child.getNodeName().toUpperCase().replace('-', '_');
-				boolean found = false;
-				for ( TopLevelTag tag : TopLevelTag.values()){
-					if ( childTagName.equals(tag.name())){
-						tag.parse(child, application);
-						found = true;
-						break;
-					}
-				
-				}
-				if ( !found ){
-					throw new ParsingException("Unexpected tag:" + childTagName + " node.text=" + child.getTextContent());
-				}
-			}				
+			parseApplicationNode(application, applicationNode);				
 		}
 	}
+
+    public void parseApplicationNode(Application application,
+            Node applicationNode) throws ParsingException, DOMException {
+        NodeList childNodes = applicationNode.getChildNodes();
+        
+        for ( int i = 0 ; i < childNodes.getLength() ; i++ ){
+        	Node child = childNodes.item(i);
+        	if ( child.getNodeType() != Node.ELEMENT_NODE){
+        		continue;
+        	}
+        	String childTagName = child.getNodeName().toUpperCase().replace('-', '_');
+        	boolean found = false;
+        	for ( TopLevelTag tag : TopLevelTag.values()){
+        		if ( childTagName.equals(tag.name())){
+        			tag.parse(child, application);
+        			found = true;
+        			break;
+        		}
+        	
+        	}
+        	if ( !found ){
+        		throw new ParsingException("Unexpected tag:" + childTagName + " node.text=" + child.getTextContent());
+        	}
+        }
+    }
 
 }
