@@ -24,8 +24,8 @@ public class AmazonInfo extends StoreSpecificInfo {
 	public static class KindleSupport {
 		private boolean kindleFireFirstGen;
 		private boolean kindleFire;
-		private boolean kindleFireHD;
-		private boolean kindleFireHD89;
+		private boolean kindleFireHd;
+		private boolean kindleFireHd89;
 
 		public boolean isKindleFireFirstGen() {
 			return kindleFireFirstGen;
@@ -43,20 +43,20 @@ public class AmazonInfo extends StoreSpecificInfo {
 			this.kindleFire = kindleFire;
 		}
 
-		public boolean isKindleFireHD() {
-			return kindleFireHD;
+		public boolean isKindleFireHd() {
+			return kindleFireHd;
 		}
 
-		public void setKindleFireHD(boolean kindleFireHD) {
-			this.kindleFireHD = kindleFireHD;
+		public void setKindleFireHd(boolean kindleFireHD) {
+			this.kindleFireHd = kindleFireHD;
 		}
 
-		public boolean isKindleFireHD89() {
-			return kindleFireHD89;
+		public boolean isKindleFireHd89() {
+			return kindleFireHd89;
 		}
 
-		public void setKindleFireHD89(boolean kindleFireHD89) {
-			this.kindleFireHD89 = kindleFireHD89;
+		public void setKindleFireHd89(boolean kindleFireHD89) {
+			this.kindleFireHd89 = kindleFireHD89;
 		}
 	}
 
