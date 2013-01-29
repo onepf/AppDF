@@ -27,11 +27,11 @@ public class AmazonInfo extends StoreSpecificInfo {
 		private boolean kindleFireHd;
 		private boolean kindleFireHd89;
 
-		public boolean isKindleFireFirstGen() {
+		public boolean isKindleFireFirstGeneration() {
 			return kindleFireFirstGen;
 		}
 
-		public void setKindleFireFirstGen(boolean kindleFireFirstGen) {
+		public void setKindleFireFirstGeneration(boolean kindleFireFirstGen) {
 			this.kindleFireFirstGen = kindleFireFirstGen;
 		}
 
