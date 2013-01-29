@@ -15,9 +15,15 @@
  ******************************************************************************/
 package org.onepf.appdf.parser.util;
 
+import java.beans.IntrospectionException;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.onepf.appdf.parser.ParsingException;
+import org.w3c.dom.DOMException;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -64,5 +70,31 @@ public class XmlUtil {
             minusIndex = tagName.indexOf('-');
         }
         return tagName;
+    }
+    
+    public static <T> void mapBooleanChildsToBean(Node node,Class<T> beanClass,T bean)
+            throws DOMException, ParsingException {
+        List<Node> childNodes = extractChildElements(node);
+        for(Node child : childNodes){
+            String tagName = child.getNodeName();
+            String originalTagName = tagName;
+            tagName = tagNameToFieldName(tagName);
+            String childValue = child.getTextContent();
+            try {
+                PropertyDescriptor pd  = new PropertyDescriptor(tagName, beanClass);
+                Method writeMethod = pd.getWriteMethod();
+                
+                boolean boolValue = "yes".equalsIgnoreCase(childValue);
+                writeMethod.invoke(bean, boolValue);
+            } catch (IntrospectionException e) {
+               throw new ParsingException("Unexpected descriptor:" + originalTagName); 
+            } catch (IllegalArgumentException iae){
+                throw new ParsingException("Illegal descriptor value:" + childValue);
+            } catch (IllegalAccessException e) {
+                throw new ParsingException(e);
+            } catch (InvocationTargetException e) {
+                throw new ParsingException(e);
+            }
+        }
     }
 }
