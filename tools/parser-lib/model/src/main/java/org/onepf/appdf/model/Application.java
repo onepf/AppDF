@@ -38,6 +38,7 @@ public class Application implements ModelElement {
 	private String testingInstructions;
 	private Consent consent;
 	private PriceInfo priceInfo;
+	private CustomerSupport customerSupport;
 
 	public String getPackageName() {
 		return packageName;
@@ -144,6 +145,14 @@ public class Application implements ModelElement {
 
     public List<Description> getDescriptionLocalisations() {
         return descriptionLocalisations;
+    }
+
+    public CustomerSupport getCustomerSupport() {
+        return customerSupport;
+    }
+
+    public void setCustomerSupport(CustomerSupport customerSupport) {
+        this.customerSupport = customerSupport;
     }
 
 }
