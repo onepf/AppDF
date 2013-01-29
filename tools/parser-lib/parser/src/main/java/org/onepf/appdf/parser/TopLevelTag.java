@@ -15,11 +15,14 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
+import java.beans.PropertyDescriptor;
+
 import org.onepf.appdf.model.ApkFilesInfo;
 import org.onepf.appdf.model.Application;
 import org.onepf.appdf.model.Availability;
 import org.onepf.appdf.model.Consent;
 import org.onepf.appdf.model.ContentDescription;
+import org.onepf.appdf.model.CustomerSupport;
 import org.onepf.appdf.model.PriceInfo;
 import org.onepf.appdf.model.Requirments;
 import org.onepf.appdf.parser.util.XmlUtil;
@@ -147,5 +150,24 @@ public enum TopLevelTag implements NodeParser<Application> {
             XmlUtil.mapBooleanChildsToBean(node, Consent.class, consent);
             element.setConsent(consent);
         }
+    },
+
+    CUSTOMER_SUPPORT {
+
+        @Override
+        public void parse(Node node, Application element)
+                throws ParsingException {
+            CustomerSupport customerSupport = new CustomerSupport();
+            for ( Node child : XmlUtil.extractChildElements(node)){
+                try {
+                    PropertyDescriptor pd = new PropertyDescriptor(child.getNodeName(),CustomerSupport.class);
+                    pd.getWriteMethod().invoke(customerSupport, child.getTextContent());
+                }catch (Exception e) {//litlle to generic catch block
+                    throw new ParsingException(e);
+                }
+            }
+            element.setCustomerSupport(customerSupport);
+        }
+
     };
 }
