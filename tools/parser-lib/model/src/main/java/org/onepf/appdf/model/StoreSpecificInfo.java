@@ -15,7 +15,7 @@
  ******************************************************************************/
 package org.onepf.appdf.model;
 
-public abstract class StoreSpecificInfo {
+public abstract class StoreSpecificInfo implements ModelElement {
 
     private Description description;
 
