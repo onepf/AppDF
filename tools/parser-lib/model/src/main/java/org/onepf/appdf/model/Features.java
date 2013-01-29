@@ -15,11 +15,13 @@
  ******************************************************************************/
 package org.onepf.appdf.model;
 
-public class Features {
+public class Features implements ModelElement{
 
 	private boolean gms;
 	
 	private boolean root;
+	
+	private boolean online;
 
 	public boolean isGms() {
 		return gms;
@@ -36,4 +38,12 @@ public class Features {
 	public void setRoot(boolean root) {
 		this.root = root;
 	}
+
+    public boolean isOnline() {
+        return online;
+    }
+
+    public void setOnline(boolean online) {
+        this.online = online;
+    }
 }
