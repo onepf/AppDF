@@ -17,22 +17,43 @@ package org.onepf.appdf.model;
 
 public class Consent {
 
-	private boolean androidContentGuidelines;
-	private boolean usExportLaw;
+    private boolean googleAndroidContentGuidelines;
+    private boolean usExportLaws;
+    private boolean slidemeAgreement;
+    private boolean freeFromThirdPartyCopytightedContent;
 
-	public boolean isAndroidContentGuidelines() {
-		return androidContentGuidelines;
-	}
+    public boolean isGoogleAndroidContentGuidelines() {
+        return googleAndroidContentGuidelines;
+    }
 
-	public void setAndroidContentGuidelines(boolean androidContentGuidelines) {
-		this.androidContentGuidelines = androidContentGuidelines;
-	}
+    public void setGoogleAndroidContentGuidelines(
+            boolean googleAndroidContentGuidelines) {
+        this.googleAndroidContentGuidelines = googleAndroidContentGuidelines;
+    }
 
-	public boolean isUsExportLaw() {
-		return usExportLaw;
-	}
+    public boolean isUsExportLaws() {
+        return usExportLaws;
+    }
 
-	public void setUsExportLaw(boolean usExportLaw) {
-		this.usExportLaw = usExportLaw;
-	}
+    public void setUsExportLaws(boolean usExportLaws) {
+        this.usExportLaws = usExportLaws;
+    }
+
+    public boolean isSlidemeAgreement() {
+        return slidemeAgreement;
+    }
+
+    public void setSlidemeAgreement(boolean slidemeAgreement) {
+        this.slidemeAgreement = slidemeAgreement;
+    }
+
+    public boolean isFreeFromThirdPartyCopytightedContent() {
+        return freeFromThirdPartyCopytightedContent;
+    }
+
+    public void setFreeFromThirdPartyCopytightedContent(
+            boolean freeFromThirdPartyCopytightedContent) {
+        this.freeFromThirdPartyCopytightedContent = freeFromThirdPartyCopytightedContent;
+    }
+
 }
