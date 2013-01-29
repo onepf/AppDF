@@ -17,4 +17,13 @@ package org.onepf.appdf.model;
 
 public abstract class StoreSpecificInfo {
 
+    private Description description;
+
+    public Description getDescription() {
+        return description;
+    }
+
+    public void setDescription(Description description) {
+        this.description = description;
+    }
 }
