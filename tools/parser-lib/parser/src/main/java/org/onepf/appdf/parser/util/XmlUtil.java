@@ -21,6 +21,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -87,9 +89,20 @@ public class XmlUtil {
      */
     public static <T> void mapChildsToBean(Node node, Class<T> beanClass, T bean)
             throws DOMException, ParsingException {
+        mapChildsToBean(node, beanClass, bean,Collections.EMPTY_LIST);
+    }
+    @SuppressWarnings("unchecked")
+    public static <T> List<Node> mapChildsToBean(Node node, Class<T> beanClass, T bean,Collection<String> skipped)
+            throws DOMException, ParsingException {
         List<Node> childNodes = extractChildElements(node);
+        List<Node> skippedNodes = new ArrayList<Node>();
+        boolean checkSkip = !skipped.isEmpty();
         for (Node child : childNodes) {
             String tagName = child.getNodeName();
+            if ( checkSkip && skipped.contains(tagName)){
+                skippedNodes.add(child);
+                continue;
+            }
             String originalTagName = tagName;
             tagName = tagNameToFieldName(tagName);
             String childValue = child.getTextContent();
@@ -104,13 +117,14 @@ public class XmlUtil {
                     boolean boolValue = YES.equalsIgnoreCase(childValue);
                     param = boolValue ? Boolean.TRUE : Boolean.FALSE;
                 } else if (int.class.equals(propertyType)) {
-                    param = Integer.parseInt(child.getTextContent());
+                    param = Integer.parseInt(childValue);
                 } else if (String.class.equals(propertyType)) {
-                    param = child.getTextContent();
+                    param = childValue;
                 } else if (propertyType.isEnum()) {
                     param = Enum.valueOf(propertyType.asSubclass(Enum.class),
-                            child.getTextContent().toUpperCase());
-                } else {
+                            childValue.toUpperCase());
+                } 
+                else {
                     throw new ParsingException("Unsupported property type:"
                             + propertyType);
                 }
@@ -121,13 +135,13 @@ public class XmlUtil {
             } catch (IllegalArgumentException iae) {
                 throw new ParsingException("Illegal descriptor value:"
                         + childValue);
-            } catch (IllegalAccessException e) {
-                throw new ParsingException(e);
-            } catch (InvocationTargetException e) {
+            } catch (InvocationTargetException | IllegalAccessException e) {
                 throw new ParsingException(e);
             }
         }
+        return skippedNodes;
     }
+
 
     public static List<String> collectNodeValues(Node node,
             String... acceptedTags) throws ParsingException {
