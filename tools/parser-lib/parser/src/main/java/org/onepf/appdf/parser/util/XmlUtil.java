@@ -77,6 +77,14 @@ public class XmlUtil {
     }
 
     @SuppressWarnings("unchecked")
+    /**
+     * currently only allready used types are supported:integers,bools,strings and enums
+     * @param node
+     * @param beanClass
+     * @param bean
+     * @throws DOMException
+     * @throws ParsingException
+     */
     public static <T> void mapChildsToBean(Node node, Class<T> beanClass, T bean)
             throws DOMException, ParsingException {
         List<Node> childNodes = extractChildElements(node);
