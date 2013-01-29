@@ -77,16 +77,8 @@ public enum TextsTags implements NodeParser<Description> {
 
         @Override
         public void parse(Node node, Description element) {
-            List<Node> childNodes = XmlUtil.extractChildElements(node);
-            for (Node child : childNodes) {
-                if (!child.getNodeName().equalsIgnoreCase("feature")) {
-                    throw new ParsingException(
-                            "Unexpected tag inside \"features\""
-                                    + child.getNodeName());
-                }
-                element.addFeature(child.getTextContent());
-            }
-
+            List<String> features = XmlUtil.collectNodeValues(node, FEATURE_TAG);
+            element.addFeatures(features);
         }
 
     },
@@ -111,4 +103,6 @@ public enum TextsTags implements NodeParser<Description> {
             description.setEula(node.getTextContent());
         }
     };
+
+    private static final String FEATURE_TAG = "feature";
 }

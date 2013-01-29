@@ -15,13 +15,12 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import java.util.List;
-
 import org.onepf.appdf.model.ApkFilesInfo;
 import org.onepf.appdf.model.Application;
 import org.onepf.appdf.model.Availability;
 import org.onepf.appdf.model.ContentDescription;
 import org.onepf.appdf.model.PriceInfo;
+import org.onepf.appdf.model.Requirments;
 import org.onepf.appdf.parser.util.XmlUtil;
 import org.w3c.dom.Node;
 
@@ -81,40 +80,50 @@ public enum TopLevelTag implements NodeParser<Application> {
                 throws ParsingException {
             PriceInfo priceInfo = new PriceInfo();
             Node freeAttr = node.getAttributes().getNamedItem("free");
-            if ( freeAttr == null ){
-                throw new ParsingException("Required attribute free is missing inside price tag");
+            if (freeAttr == null) {
+                throw new ParsingException(
+                        "Required attribute free is missing inside price tag");
             }
-            priceInfo.setFree("yes".equalsIgnoreCase(freeAttr.getTextContent()));
+            priceInfo
+                    .setFree("yes".equalsIgnoreCase(freeAttr.getTextContent()));
             (new PriceParser()).parse(node, priceInfo);
             element.setPriceInfo(priceInfo);
         }
 
     },
     /**
-     * Apk files with extensions currently not supported since it's gonna be removed from spec
+     * Apk files with extensions currently not supported since it's gonna be
+     * removed from spec
      */
-    APK_FILES{
+    APK_FILES {
 
         private final static String APK_FILE_TAG = "apk-file";
-        
+
+        @Override
+        public void parse(Node node, Application element)
+                throws ParsingException {           
+            for (String fileName : XmlUtil.collectNodeValues(node, APK_FILE_TAG)) {
+                ApkFilesInfo filesInfo = element.getFilesInfo();
+                if (filesInfo == null) {
+                    filesInfo = new ApkFilesInfo();
+                    element.setFilesInfo(filesInfo);
+                }
+                ApkFilesInfo.ApkFile apkFile = new ApkFilesInfo.ApkFile();
+                apkFile.setFileName(fileName);
+                filesInfo.addApkFile(apkFile);
+               
+            }
+
+        }
+
+    },
+    REQUIREMENTS{
+
         @Override
         public void parse(Node node, Application element)
                 throws ParsingException {
-                List<Node> children = XmlUtil.extractChildElements(node);
-                for ( Node child : children){
-                    String tagName = child.getNodeName();
-                    if ( ! APK_FILE_TAG.equals(tagName)){
-                        throw new ParsingException("Unsupported tag:" + tagName);
-                    }
-                    ApkFilesInfo filesInfo = element.getFilesInfo();
-                    if ( filesInfo == null){
-                        filesInfo = new ApkFilesInfo();
-                    }
-                    ApkFilesInfo.ApkFile apkFile = new ApkFilesInfo.ApkFile();
-                    apkFile.setFileName(node.getTextContent());
-                    filesInfo.addApkFile(apkFile);
-                }
-            
+            Requirments requirments = new Requirments();
+            (new RequirmentsParser()).parse(node, requirments);
         }
         
     }
