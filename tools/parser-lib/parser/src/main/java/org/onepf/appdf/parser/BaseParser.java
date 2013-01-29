@@ -47,6 +47,9 @@ public abstract class BaseParser<T extends ModelElement, E extends Enum<E> & Nod
         List<Node> childNodes = XmlUtil.extractChildElements(node);
         for (Node childNode : childNodes) {
             String tagName = childNode.getNodeName();
+            if ( specialTag(tagName, element)){
+                continue;
+            }
             try {
                 Enum.valueOf(enumClass, tagName.toUpperCase().replace('-', '_'))
                         .parse(childNode, element);
@@ -55,6 +58,10 @@ public abstract class BaseParser<T extends ModelElement, E extends Enum<E> & Nod
                         + " inside of " + enclosingTagName);
             }
         }
+    }
+    
+    protected boolean specialTag(String tagName,T element){
+        return false;
     }
 
 }

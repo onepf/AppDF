@@ -15,8 +15,6 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import java.beans.PropertyDescriptor;
-
 import org.onepf.appdf.model.ApkFilesInfo;
 import org.onepf.appdf.model.Application;
 import org.onepf.appdf.model.Availability;
@@ -147,7 +145,7 @@ public enum TopLevelTag implements NodeParser<Application> {
         public void parse(Node node, Application element)
                 throws ParsingException {
             Consent consent = new Consent();
-            XmlUtil.mapBooleanChildsToBean(node, Consent.class, consent);
+            XmlUtil.mapChildsToBean(node, Consent.class, consent);
             element.setConsent(consent);
         }
     },
@@ -158,16 +156,16 @@ public enum TopLevelTag implements NodeParser<Application> {
         public void parse(Node node, Application element)
                 throws ParsingException {
             CustomerSupport customerSupport = new CustomerSupport();
-            for ( Node child : XmlUtil.extractChildElements(node)){
-                try {
-                    PropertyDescriptor pd = new PropertyDescriptor(child.getNodeName(),CustomerSupport.class);
-                    pd.getWriteMethod().invoke(customerSupport, child.getTextContent());
-                }catch (Exception e) {//litlle to generic catch block
-                    throw new ParsingException(e);
-                }
-            }
+            XmlUtil.mapChildsToBean(node, CustomerSupport.class, customerSupport);
             element.setCustomerSupport(customerSupport);
         }
 
-    };
+    },
+    STORE_SPECIFIC{
+        public void parse(Node node, Application element)
+                throws ParsingException {
+            (new StoreSpecificParser()).parse(node, element);
+        }
+    }
+    ;
 }
