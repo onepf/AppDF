@@ -18,6 +18,7 @@ package org.onepf.appdf.parser;
 import org.onepf.appdf.model.ApkFilesInfo;
 import org.onepf.appdf.model.Application;
 import org.onepf.appdf.model.Availability;
+import org.onepf.appdf.model.Consent;
 import org.onepf.appdf.model.ContentDescription;
 import org.onepf.appdf.model.PriceInfo;
 import org.onepf.appdf.model.Requirments;
@@ -101,8 +102,9 @@ public enum TopLevelTag implements NodeParser<Application> {
 
         @Override
         public void parse(Node node, Application element)
-                throws ParsingException {           
-            for (String fileName : XmlUtil.collectNodeValues(node, APK_FILE_TAG)) {
+                throws ParsingException {
+            for (String fileName : XmlUtil
+                    .collectNodeValues(node, APK_FILE_TAG)) {
                 ApkFilesInfo filesInfo = element.getFilesInfo();
                 if (filesInfo == null) {
                     filesInfo = new ApkFilesInfo();
@@ -111,13 +113,13 @@ public enum TopLevelTag implements NodeParser<Application> {
                 ApkFilesInfo.ApkFile apkFile = new ApkFilesInfo.ApkFile();
                 apkFile.setFileName(fileName);
                 filesInfo.addApkFile(apkFile);
-               
+
             }
 
         }
 
     },
-    REQUIREMENTS{
+    REQUIREMENTS {
 
         @Override
         public void parse(Node node, Application element)
@@ -125,17 +127,25 @@ public enum TopLevelTag implements NodeParser<Application> {
             Requirments requirments = new Requirments();
             (new RequirmentsParser()).parse(node, requirments);
         }
-        
+
     },
-    TESTING_INSTRUCTIONS{
+    TESTING_INSTRUCTIONS {
 
         @Override
         public void parse(Node node, Application element)
                 throws ParsingException {
             element.setTestingInstructions(node.getTextContent());
-            
+
         }
-        
-    }
-    ;
+    },
+    CONSENT {
+
+        @Override
+        public void parse(Node node, Application element)
+                throws ParsingException {
+            Consent consent = new Consent();
+            XmlUtil.mapBooleanChildsToBean(node, Consent.class, consent);
+            element.setConsent(consent);
+        }
+    };
 }
