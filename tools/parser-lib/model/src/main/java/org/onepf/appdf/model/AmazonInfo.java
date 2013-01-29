@@ -62,7 +62,7 @@ public class AmazonInfo extends StoreSpecificInfo {
 
 	private FormFactor formFactor;
 	private boolean freeAppOfTheDayEligibility;
-	private boolean applyDrm;
+	private boolean applyAmazonDrm;
 	private KindleSupport kindleSupport;
 	private String binaryAlias;
 
@@ -82,12 +82,12 @@ public class AmazonInfo extends StoreSpecificInfo {
 		this.freeAppOfTheDayEligibility = freeAppOfTheDayEligibility;
 	}
 
-	public boolean isApplyDrm() {
-		return applyDrm;
+	public boolean isApplyAmazonDrm() {
+		return applyAmazonDrm;
 	}
 
-	public void setApplyDrm(boolean applyDrm) {
-		this.applyDrm = applyDrm;
+	public void setApplyAmazonDrm(boolean applyDrm) {
+		this.applyAmazonDrm = applyDrm;
 	}
 
 	public KindleSupport getKindleSupport() {
