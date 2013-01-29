@@ -17,6 +17,7 @@ package org.onepf.appdf.parser;
 
 import static org.onepf.appdf.parser.util.XmlUtil.extractChildElements;
 import static org.onepf.appdf.parser.util.XmlUtil.getOptionalAttributeValue;
+import static org.onepf.appdf.parser.util.XmlUtil.mapBooleanChildsToBean;
 import static org.onepf.appdf.parser.util.XmlUtil.tagNameToFieldName;
 
 import java.beans.IntrospectionException;
@@ -131,30 +132,12 @@ public enum ContentDescriptionTag implements NodeParser<ContentDescription> {
         public void parse(Node node, ContentDescription element)
                 throws ParsingException {
             IncludedActivites activites = new IncludedActivites();
-            List<Node> childNodes = extractChildElements(node);
-            for(Node child : childNodes){
-                String tagName = child.getNodeName();
-                String originalTagName = tagName;
-                tagName = tagNameToFieldName(tagName);
-                String childValue = child.getTextContent();
-                try {
-                    PropertyDescriptor pd  = new PropertyDescriptor(tagName, IncludedActivites.class);
-                    Method writeMethod = pd.getWriteMethod();
-                    boolean boolValue = "yes".equalsIgnoreCase(childValue);
-                    writeMethod.invoke(activites, boolValue);
-                } catch (IntrospectionException e) {
-                    e.printStackTrace();
-                   throw new ParsingException("Unexpected descriptor:" + originalTagName); 
-                } catch (IllegalArgumentException iae){
-                    throw new ParsingException("Illegal descriptor value:" + childValue);
-                } catch (IllegalAccessException e) {
-                    throw new ParsingException(e);
-                } catch (InvocationTargetException e) {
-                    throw new ParsingException(e);
-                }
-            }
+            mapBooleanChildsToBean(node,IncludedActivites.class, activites);
+            element.setIncludedActivites(activites);
         }
         
-    }
+    };
+
+ 
     
 }
