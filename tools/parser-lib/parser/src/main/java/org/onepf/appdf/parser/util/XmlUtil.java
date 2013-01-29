@@ -78,7 +78,7 @@ public class XmlUtil {
         return tagName;
     }
 
-    @SuppressWarnings("unchecked")
+   
     /**
      * currently only allready used types are supported:integers,bools,strings and enums
      * @param node
@@ -87,6 +87,7 @@ public class XmlUtil {
      * @throws DOMException
      * @throws ParsingException
      */
+    @SuppressWarnings("unchecked")
     public static <T> void mapChildsToBean(Node node, Class<T> beanClass, T bean)
             throws DOMException, ParsingException {
         mapChildsToBean(node, beanClass, bean,Collections.EMPTY_LIST);
