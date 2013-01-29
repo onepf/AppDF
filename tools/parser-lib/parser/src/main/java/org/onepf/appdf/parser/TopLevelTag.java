@@ -15,10 +15,14 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
+import java.util.List;
+
+import org.onepf.appdf.model.ApkFilesInfo;
 import org.onepf.appdf.model.Application;
 import org.onepf.appdf.model.Availability;
 import org.onepf.appdf.model.ContentDescription;
 import org.onepf.appdf.model.PriceInfo;
+import org.onepf.appdf.parser.util.XmlUtil;
 import org.w3c.dom.Node;
 
 public enum TopLevelTag implements NodeParser<Application> {
@@ -85,5 +89,34 @@ public enum TopLevelTag implements NodeParser<Application> {
             element.setPriceInfo(priceInfo);
         }
 
-    };
+    },
+    /**
+     * Apk files with extensions currently not supported since it's gonna be removed from spec
+     */
+    APK_FILES{
+
+        private final static String APK_FILE_TAG = "apk-file";
+        
+        @Override
+        public void parse(Node node, Application element)
+                throws ParsingException {
+                List<Node> children = XmlUtil.extractChildElements(node);
+                for ( Node child : children){
+                    String tagName = child.getNodeName();
+                    if ( ! APK_FILE_TAG.equals(tagName)){
+                        throw new ParsingException("Unsupported tag:" + tagName);
+                    }
+                    ApkFilesInfo filesInfo = element.getFilesInfo();
+                    if ( filesInfo == null){
+                        filesInfo = new ApkFilesInfo();
+                    }
+                    ApkFilesInfo.ApkFile apkFile = new ApkFilesInfo.ApkFile();
+                    apkFile.setFileName(node.getTextContent());
+                    filesInfo.addApkFile(apkFile);
+                }
+            
+        }
+        
+    }
+    ;
 }
