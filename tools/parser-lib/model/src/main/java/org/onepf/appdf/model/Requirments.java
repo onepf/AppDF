@@ -15,6 +15,7 @@
  ******************************************************************************/
 package org.onepf.appdf.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Requirments implements ModelElement{
@@ -39,6 +40,13 @@ public class Requirments implements ModelElement{
 
 	public List<String> getSupportedLanguages() {
 		return supportedLanguages;
+	}
+	
+	public void addSupportedLanguage(String lang){
+	    if ( supportedLanguages == null ){
+	        supportedLanguages = new ArrayList<String>();
+	    }
+	    supportedLanguages.add(lang);
 	}
 
 	public void setSupportedLanguages(List<String> supportedLanguages) {
@@ -68,4 +76,22 @@ public class Requirments implements ModelElement{
 	public void setExcludedResolutions(List<Resolution> excludedResolutions) {
 		this.excludedResolutions = excludedResolutions;
 	}
+
+    public void addSupportedLanguages(List<String> langs) {
+       if ( this.supportedLanguages == null ){
+           this.supportedLanguages = new ArrayList<String>(langs);
+       }else{
+          this.supportedLanguages.addAll(langs); 
+       }
+        
+    }
+
+    public void addExcludedDevices(List<String> excludedDevices) {
+        if ( this.excludedDevices == null ){
+            this.excludedDevices = new ArrayList<String>(excludedDevices);
+        }else{
+            this.excludedDevices.addAll(excludedDevices);
+        }
+        
+    }
 }
