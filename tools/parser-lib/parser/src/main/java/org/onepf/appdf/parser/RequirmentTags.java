@@ -15,7 +15,8 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import static org.onepf.appdf.parser.util.XmlUtil.*;
+import static org.onepf.appdf.parser.util.XmlUtil.collectNodeValues;
+import static org.onepf.appdf.parser.util.XmlUtil.mapChildsToBean;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public enum RequirmentTags implements NodeParser<Requirments>{
         public void parse(Node node, Requirments element)
                 throws ParsingException {
             Features features = new Features();
-            mapBooleanChildsToBean(node, Features.class,features);
+            mapChildsToBean(node, Features.class,features);
             element.setFeatures(features);
         }
         

@@ -15,20 +15,13 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import static org.onepf.appdf.parser.util.XmlUtil.extractChildElements;
 import static org.onepf.appdf.parser.util.XmlUtil.getOptionalAttributeValue;
-import static org.onepf.appdf.parser.util.XmlUtil.mapBooleanChildsToBean;
-import static org.onepf.appdf.parser.util.XmlUtil.tagNameToFieldName;
+import static org.onepf.appdf.parser.util.XmlUtil.mapChildsToBean;
 
-import java.beans.IntrospectionException;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 
 import org.onepf.appdf.model.ContentDescription;
 import org.onepf.appdf.model.ContentDescriptor;
-import org.onepf.appdf.model.ContentDescriptor.DescriptorValue;
 import org.onepf.appdf.model.ContentRating;
 import org.onepf.appdf.model.IncludedActivites;
 import org.onepf.appdf.model.RatingCertificate;
@@ -101,27 +94,7 @@ public enum ContentDescriptionTag implements NodeParser<ContentDescription> {
         public void parse(Node node, ContentDescription element)
                 throws ParsingException {
             ContentDescriptor descriptor = new ContentDescriptor();
-            List<Node> childNodes = extractChildElements(node);
-            for(Node child : childNodes){
-                String tagName = child.getNodeName();
-                String originalTagName = tagName;
-                tagName = tagNameToFieldName(tagName);
-                String childValue = child.getTextContent();
-                try {
-                    PropertyDescriptor pd  = new PropertyDescriptor(tagName, ContentDescriptor.class);
-                    DescriptorValue value = DescriptorValue.valueOf(childValue.toUpperCase());
-                    Method writeMethod = pd.getWriteMethod();
-                    writeMethod.invoke(descriptor, value);
-                } catch (IntrospectionException e) {                 
-                   throw new ParsingException("Unexpected descriptor:" + originalTagName); 
-                } catch (IllegalArgumentException iae){
-                    throw new ParsingException("Illegal descriptor value:" + childValue);
-                } catch (IllegalAccessException e) {
-                    throw new ParsingException(e);
-                } catch (InvocationTargetException e) {
-                    throw new ParsingException(e);
-                }
-            }
+            mapChildsToBean(node,ContentDescriptor.class,descriptor);
             element.setContentDescriptor(descriptor);
         }
     },
@@ -132,7 +105,7 @@ public enum ContentDescriptionTag implements NodeParser<ContentDescription> {
         public void parse(Node node, ContentDescription element)
                 throws ParsingException {
             IncludedActivites activites = new IncludedActivites();
-            mapBooleanChildsToBean(node,IncludedActivites.class, activites);
+            mapChildsToBean(node,IncludedActivites.class, activites);
             element.setIncludedActivites(activites);
         }
         
