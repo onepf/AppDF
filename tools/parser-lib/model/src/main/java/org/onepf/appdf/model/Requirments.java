@@ -17,7 +17,7 @@ package org.onepf.appdf.model;
 
 import java.util.List;
 
-public class Requirments {
+public class Requirments implements ModelElement{
 
 	private Features features;
 	
