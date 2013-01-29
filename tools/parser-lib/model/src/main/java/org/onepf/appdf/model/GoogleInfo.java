@@ -15,7 +15,7 @@
  ******************************************************************************/
 package org.onepf.appdf.model;
 
-public class GoogleInfo {
+public class GoogleInfo extends StoreSpecificInfo{
 
     public GoogleInfo() {
     }
