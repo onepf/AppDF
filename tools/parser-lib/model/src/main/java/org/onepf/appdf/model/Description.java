@@ -201,5 +201,14 @@ public class Description implements ModelElement {
 		features.add(feature);
 		
 	}
+
+    public void addFeatures(List<String> features) {
+        if ( this.features == null ){
+            this.features = new ArrayList<>(features);
+        }else{
+            this.features.addAll(features);
+        }
+        
+    }
 	
 }
