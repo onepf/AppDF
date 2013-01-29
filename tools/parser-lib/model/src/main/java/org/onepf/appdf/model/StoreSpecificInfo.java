@@ -17,13 +17,15 @@ package org.onepf.appdf.model;
 
 public abstract class StoreSpecificInfo implements ModelElement {
 
-    private Description description;
+    private Application application;
 
-    public Description getDescription() {
-        return description;
+    public Application getApplication() {
+        return application;
     }
 
-    public void setDescription(Description description) {
-        this.description = description;
+    public void setApplication(Application application) {
+        this.application = application;
     }
+
+    
 }
