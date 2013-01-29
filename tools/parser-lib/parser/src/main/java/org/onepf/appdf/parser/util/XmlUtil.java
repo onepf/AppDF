@@ -20,7 +20,10 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.onepf.appdf.parser.ParsingException;
 import org.w3c.dom.DOMException;
@@ -96,5 +99,19 @@ public class XmlUtil {
                 throw new ParsingException(e);
             }
         }
+    }
+    
+    public static List<String> collectNodeValues(Node node,String... acceptedTags) throws ParsingException{
+        List<Node> children = extractChildElements(node);
+        Set<String> set = new HashSet<>(Arrays.asList(acceptedTags));
+        ArrayList<String> result = new ArrayList<String>();
+        for ( Node child : children  ){
+            String tag = child.getNodeName();
+            if ( !set.contains(tag)){
+                throw new ParsingException("Unsupported tag:" + tag);
+            }
+            result.add(child.getTextContent());
+        }        
+        return result;
     }
 }
