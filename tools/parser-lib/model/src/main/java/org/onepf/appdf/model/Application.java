@@ -155,4 +155,10 @@ public class Application implements ModelElement {
         this.customerSupport = customerSupport;
     }
 
+    public void addStoreSpecificInfo(StoreSpecificInfo info){
+        if ( storeSpecific == null ){
+            storeSpecific = new ArrayList<StoreSpecificInfo>();
+        }
+        storeSpecific.add(info);
+    }
 }
