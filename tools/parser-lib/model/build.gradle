@@ -5,6 +5,7 @@ processResources.dependsOn 'copyXml'
 cleanProcessResources.dependsOn 'cleanCopyXml'
 
 task('copyXml',type:Copy) {
+    	setIncludeEmptyDirs(false)
 	from('../../../specification/data'){
 		include '**/*.xml'
 	}	 
