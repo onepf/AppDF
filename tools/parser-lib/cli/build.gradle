@@ -1,0 +1,9 @@
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+jar {
+    manifest {
+        attributes("Implementation-Title": "Gradle", "Implementation-Version": version, "Main-Class": "org.onepf.appdf.cli.Starter")
+    }
+}
+
