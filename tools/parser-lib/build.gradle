@@ -18,6 +18,16 @@ subprojects {
 
 project(':parser') {
     dependencies {
+	compile project(':model')
+        runtime project(':model')
+    }
+}
+
+project(':cli') {
+ dependencies {
         compile project(':model')
+        runtime project(':model')
+	compile project(':parser')
+	runtime project(':parser')
     }
 }
