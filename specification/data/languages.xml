@@ -33,6 +33,7 @@
   <language code="zh">Chinese</language>
   <language code="zh_cn">Chinese (PRC)</language>
   <language code="zh_tw">Chinese (Taiwan)</language>
+  <language code="zh_hk">Chinese (HK)</language>
   <language code="cv">Chuvash</language>
   <language code="kw">Cornish</language>
   <language code="co">Corsican</language>
@@ -49,7 +50,7 @@
   <language code="en_us">English (US)</language>
   <language code="en_au">English (Australia)</language>
   <language code="en_gb">English (Britain)</language>
-  <language code="en_cz">English (Canada)</language>
+  <language code="en_ca">English (Canada)</language>
   <language code="en_nz">English (New Zealand)</language>
   <language code="en_sg">English (Singapore)</language>
   <language code="en_cd">English (Canada)</language>
@@ -73,7 +74,7 @@
   <language code="de_li">German (Liechtenstein)</language>
   <language code="de_ch">German (Switzerland)</language>
   <language code="el">Greek</language>
-  <language code="gn">GuaranР“В­</language>
+  <language code="gn">GuaranГ­</language>
   <language code="gu">Gujarati</language>
   <language code="ht">Haitian</language>
   <language code="ha">Hausa</language>
@@ -131,7 +132,7 @@
   <language code="mn">Mongolian</language>
   <language code="na">Nauru</language>
   <language code="nv">Navajo</language>
-  <language code="nb">Norwegian BokmР“Тђl</language>
+  <language code="nb">Norwegian BokmГҐl</language>
   <language code="nd">North Ndebele</language>
   <language code="ne">Nepali</language>
   <language code="ng">Ndonga</language>
@@ -145,7 +146,7 @@
   <language code="or">Oriya</language>
   <language code="os">Ossetian</language>
   <language code="pa">Panjabi</language>
-  <language code="pi">PР”Рѓli</language>
+  <language code="pi">PДЃli</language>
   <language code="fa">Persian</language>
   <language code="pl">Polish</language>
   <language code="ps">Pashto</language>
@@ -200,7 +201,7 @@
   <language code="uz">Uzbek</language>
   <language code="ve">Venda</language>
   <language code="vi">Vietnamese</language>
-  <language code="vo">VolapР“Сk</language>
+  <language code="vo">VolapГјk</language>
   <language code="wa">Walloon</language>
   <language code="cy">Welsh</language>
   <language code="wo">Wolof</language>

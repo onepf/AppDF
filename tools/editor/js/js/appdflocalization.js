@@ -1,3 +1,26 @@
+/*******************************************************************************
+ * Copyright 2012 Vassili Philippov <vassiliphilippov@onepf.org>
+ * Copyright 2012 One Platform Foundation <www.onepf.org>
+ * Copyright 2012 Yandex <www.yandex.com>
+ * 
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ * 
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ ******************************************************************************/
+
+/**
+ * Localization related logic of AppDF Editor
+ * Depends on: jquery.js, appdfedior.js, bootstrap.js,
+ */
+
 var MAX_LOCALIZATION_TABS = 5;
 
 function getDescriptionLanguages() {
@@ -17,13 +40,10 @@ function selectLanguage(languageCode) {
 };
 
 function addLocalization(languageCode, languageName) {
-	console.log("addLocalization langaugeCode=" + languageCode + ", languageName=" + languageName);
 	var descriptionLangs = getDescriptionLanguages();
-	console.log(descriptionLangs);
 
 	//Preventing adding one language twice
 	if (descriptionLangs.indexOf(languageCode)>=0) {
-		console.log("Language already exist, just select it");
 		return;
 	};
 
@@ -55,14 +75,11 @@ function addLocalization(languageCode, languageName) {
 };
 
 function removeAllLocalizations() {
-	console.log("removeAllLocalizations");
 	var $tabHeader = $("#description-tab-header");
 	var $tabContent = $("#description-tab-content");
 
 	$tabHeader.find("a").each(function() {
 		var strHref = $(this).attr("href");
-		console.log("href");
-		console.log(strHref);
 		if (strHref!="#localization-tab-default" && strHref!="#") {
 			$(this).closest("li").remove();
 			$tabContent.children("div" + strHref).remove();
@@ -98,7 +115,6 @@ function showAllLocalizationDialog() {
 	var $okButton = $modal.find(".btn-primary");
 	$okButton.click(function(event) {
 		event.preventDefault();
-		console.log("OKButton Click");
 		$modal.modal('hide');
 		addLocalization($("#add-localization-modal-language").val(), $("#add-localization-modal-language").children(":selected").text());
 	});

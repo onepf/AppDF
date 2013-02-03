@@ -1,3 +1,15 @@
+/**
+ * Parsing and validating description.xml XML and generating JSON
+ * Depends on: jquery.js
+ * 
+ * Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0.html
+ *
+ * Copyright (c) 2012 Vassili Philippov <vassiliphilippov@onepf.org>
+ * Copyright (c) 2012 One Platform Foundation <www.onepf.org>
+ * Copyright (c) 2012 Yandex <www.yandex.com>
+ */
+
 function getTagPath($xml) {
 	var s = "<" + $xml[0].tagName + ">";
 	var $cur = $xml.parent();
@@ -10,36 +22,35 @@ function getTagPath($xml) {
 	return s;
 };
 
-function parseXMLTag($xml, tagName, onerror, onend) {
+function parseXMLTag($xml, tagName, optional, onerror, onend) {
 	var $tags = $xml.children(tagName);
 	if ($tags.length<1) {
-		onerror("<" + tagName + "> tag is missed in " + getTagPath($xml));
+		if (optional) {
+			onend($(""));
+		} else {
+			onerror("<" + tagName + "> tag is missed in " + getTagPath($xml));
+		};
 	} else {
 		onend($($tags[0]));
 	};
 };
 
-function parseXMLTextTag($xml, tagName, onerror, onend) {
+function parseXMLTextTag($xml, tagName, optional, onerror, onend) {
 	var $tags = $xml.children(tagName);
 	if ($tags.length<1) {
-		onerror("<" + tagName + "> tag is missed in " + getTagPath($xml));
+		if (optional) {
+			onend(null);
+		} else {
+			onerror("<" + tagName + "> tag is missed in " + getTagPath($xml));
+		};
 	} else {
 		onend($($tags[0]).text());
 	};
 };
 
-function parseXMLTextTagOptional($xml, tagName, onerror, onend) {
+function parseXMLTextTags($xml, tagName, optional, onerror, onend) {
 	var $tags = $xml.children(tagName);
-	if ($tags.length<1) {
-		onend(null);
-	} else {
-		onend($($tags[0]).text());
-	};
-};
-
-function parseXMLTextTags($xml, tagName, onerror, onend) {
-	var $tags = $xml.children(tagName);
-	if ($tags.length<1) {
+	if ($tags.length<1 && !optional) {
 		onerror("<" + tagName + "> tag is missed in " + getTagPath($xml));
 	} else {
 		var values = [];
@@ -62,10 +73,10 @@ function parseXMLAttribute($xml, attributeName, onerror, onend) {
 
 function parseCategorizationSection($xml, onerror, onend) {
 	var data = {};
-	parseXMLTag($xml, "categorization", onerror, function($categorization) {
-		parseXMLTextTag($categorization, "type", onerror, function(type) {
-		parseXMLTextTag($categorization, "category", onerror, function(category) {
-		parseXMLTextTag($categorization, "subcategory", onerror, function(subcategory) {
+	parseXMLTag($xml, "categorization", false, onerror, function($categorization) {
+		parseXMLTextTag($categorization, "type", false, onerror, function(type) {
+		parseXMLTextTag($categorization, "category", false, onerror, function(category) {
+		parseXMLTextTag($categorization, "subcategory", false, onerror, function(subcategory) {
 			data["type"] = type;
 			data["category"] = category;
 			data["subcategory"] = subcategory;
@@ -88,48 +99,64 @@ function parseCategorizationSection($xml, onerror, onend) {
 	});
 };
 
-function parseDescriptionTextsSections($xml, onerror, onend) {
+function parseDescriptionTextsSections($xml, optionalFields, onerror, onend) {
 	var data = {};
-	parseXMLTag($xml, "texts", onerror, function($texts) {
-		parseXMLTextTags($texts, "title", onerror, function(titles) {
-		parseXMLTextTag($texts, "keywords", onerror, function(keywords) {
-		parseXMLTextTags($texts, "short-description", onerror, function(shortDescriptions) {
-		parseXMLTextTag($texts, "full-description", onerror, function(fullDescription) {
-		parseXMLTextTagOptional($texts, "recent-changes", onerror, function(recentChanges) {
-		parseXMLTag($texts, "features", onerror, function($features) {
-			parseXMLTextTags($features, "feature", onerror, function(features) {
-				data["title"] = titles;
+	parseXMLTag($xml, "texts", optionalFields, onerror, function($texts) {
+		parseXMLTextTags($texts, "title", optionalFields, onerror, function(titles) {
+		parseXMLTextTag($texts, "keywords", optionalFields, onerror, function(keywords) {
+		parseXMLTextTags($texts, "short-description", optionalFields, onerror, function(shortDescriptions) {
+		parseXMLTextTag($texts, "full-description", optionalFields, onerror, function(fullDescription) {
+		parseXMLTextTag($texts, "recent-changes", true, onerror, function(recentChanges) {
+		parseXMLTextTag($texts, "privacy-policy", true, onerror, function(privacyPolicy) {
+		parseXMLTextTag($texts, "eula", true, onerror, function(eula) {
+		parseXMLTag($texts, "features", optionalFields, onerror, function($features) {
+			parseXMLTextTags($features, "feature", optionalFields, onerror, function(features) {
+				if (titles) {
+					data["title"] = titles;
+					if (titles[0] && titles[0].length>30) {
+						onerror("The first title must be shorter than 30 symbols (in " + getTagPath($texts) + ")");
+						return;
+					};
+				};
 				data["keywords"] = keywords.split(/\s*,\s*/);
-				data["short-description"] = shortDescriptions;
-				data["full-description"] = fullDescription;
-				data["features"] = features;
+				if (shortDescriptions) {
+					data["short-description"] = shortDescriptions;
+					if (shortDescriptions[0].length>80) {
+						onerror("The first short description must be shorter than 80 symbols (in " + getTagPath($texts) + ")");
+						return;
+					};
+				};
+				if (fullDescription) {
+					data["full-description"] = fullDescription;
+					if (fullDescription.length>4000) {
+						onerror("The full description must be shorter than 80 symbols (in " + getTagPath($texts) + ")");
+						return;
+					};
+				};
+				if (features) {
+					data["features"] = features;
+					if (features.length>5) {
+						onerror("More than five features (in " + getTagPath($features) + ")");
+						return;
+					};
+					if (features.length<3) {
+						onerror("There must be at least three features (in " + getTagPath($features) + ")");
+						return;
+					};
+				};
 				if (recentChanges) {
 					data["recent-changes"] = recentChanges;
+					if (recentChanges.length>500) {
+						onerror("Recent changes must be shorted than 500 symbols (in " + getTagPath($features) + ")");
+						return;
+					};
 				}
-				if (titles[0].length>30) {
-					onerror("The first title must be shorter than 30 symbols (in " + getTagPath($texts) + ")");
-					return;
-				};
-				if (shortDescriptions[0].length>80) {
-					onerror("The first short description must be shorter than 80 symbols (in " + getTagPath($texts) + ")");
-					return;
-				};
-				if (fullDescription.length>4000) {
-					onerror("The full description must be shorter than 80 symbols (in " + getTagPath($texts) + ")");
-					return;
-				};
-				if (features.length<3) {
-					onerror("There must be at least three features (in " + getTagPath($features) + ")");
-					return;
-				};
-				if (features.length>5) {
-					onerror("More than five features (in " + getTagPath($features) + ")");
-					return;
-				};
-				if (recentChanges && recentChanges.length>500) {
-					onerror("Recent changes must be shorted than 500 symbols (in " + getTagPath($features) + ")");
-					return;
-				};
+				if (privacyPolicy) {
+					data["privacy-policy"] = privacyPolicy;
+				}
+				if (eula) {
+					data["eula"] = eula;
+				}
 				onend(data);
 			});
 		});
@@ -138,12 +165,14 @@ function parseDescriptionTextsSections($xml, onerror, onend) {
 		});
 		});
 		});
+		});
+		});
 	});
 };
 
-function parseOneLanguageDescriptionSection($xml, onerror, onend) {
+function parseOneLanguageDescriptionSection($xml, optionalFields, onerror, onend) {
 	var data = {};
-	parseDescriptionTextsSections($xml, onerror, function(dataTexts) {
+	parseDescriptionTextsSections($xml, optionalFields, onerror, function(dataTexts) {
 		data["texts"] = dataTexts;
 		onend(data);
 	});
@@ -151,12 +180,10 @@ function parseOneLanguageDescriptionSection($xml, onerror, onend) {
 
 function parseDescriptionSections($xml, onerror, onend) {
 	var data = {};
-	parseXMLTag($xml, "description", onerror, function($description) {
-		parseOneLanguageDescriptionSection($description, onerror, function(dataDescription) {
+	parseXMLTag($xml, "description", false, onerror, function($description) {
+		parseOneLanguageDescriptionSection($description, false, onerror, function(dataDescription) {
 			data["default"] = dataDescription;
 			var $localizations = $xml.children("description-localization");
-			console.log("$localizations");
-			console.log($localizations);
 			var anyError = false;
 			$localizations.each(function() {
 				if (anyError) return;
@@ -167,7 +194,7 @@ function parseDescriptionSections($xml, onerror, onend) {
 					return;
 				};
 
-				parseOneLanguageDescriptionSection($(this), function(error) {
+				parseOneLanguageDescriptionSection($(this), true, function(error) {
 					anyError = true;
 					onerror(error);
 				}, function(dataLocalizedDescription) {
@@ -193,15 +220,13 @@ function parseApplicationSection($xml, onerror, onend) {
 };
 
 function parseDescriptionXML(xmlText, onend, onerror) {
-	console.log("loadDescriptionXML");
-	console.log(xmlText);
 	data = {};
 	var $xml = $($.parseXML(xmlText));
 
-	parseXMLTag($xml, "application-description-file", onerror, function($appdfFile) {
+	parseXMLTag($xml, "application-description-file", false, onerror, function($appdfFile) {
 		parseXMLAttribute($appdfFile, "version", onerror, function(appdfFileVersion) {
 			data["version"] = appdfFileVersion;
-			parseXMLTag($appdfFile, "application", onerror, function($application) {
+			parseXMLTag($appdfFile, "application", false, onerror, function($application) {
 				parseXMLAttribute($application, "package", onerror, function(applicationPackage) {
 					data["package"] = applicationPackage;
 					parseApplicationSection($application, onerror, function(dataApplication) {

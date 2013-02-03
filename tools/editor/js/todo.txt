@@ -1,10 +1,25 @@
-move loading and saving to separate files
-store all fields in cookies
+separate move group functionality to a separate function
+add price validation
+generate XML for added JSONs (currency, countries)
+add country languages JSON and XML
+refactor appdfeditor.js to be a class per section
+add checking еthat XML tag exist
+add optional and required loading
+make localization optional loading while default language required where needed
+make last "/"" symbol not needed in data path
+make sure that all $ elements are started with $ in names
+find how to get $ of just added element and use it in all addMore...
+Add attributes and multiple full description loading, convert full description to array and support it in 
+OR
+Create one field for full description with set of rules of converting it
+
+
+add validation that keywords cannot be empty
+rename parent to peer in addMore...
+make that all tags are optional in description-localization
 create good names for consents
 move langs from drop-down to main tabs when a tab is deleted
 chgeck that full description does not contain html tags
-add privacy policy
-add EULA
 mark required fields in some way in HTML (*?)
 when add big APK file or several APK files write which stores support it
 add tabs to full description (plain, feature less, html)
@@ -13,11 +28,10 @@ keyword: move focus to just created field
 
 IMAGES
 
+run jslint on all the files
 completeXMLstringAt - convert to array with Join
 return error message from ApkParser
 add all needed comments
-remove all unneeded logs
-add copyright
 make that store info section for category appears by default after page is loaded
 
 add price validation to be a number
@@ -26,7 +40,12 @@ make file input field read only
 make APK file required, disable everything else until APK is added
 
 SPECIFICATION
+add XML for just created JSON
 remove APK file extensions from the specification
 add tags like in Samsung and Naver
 Maximum length: at least one tag should be shorter than 30 symbols. -> first title should be shorter than 30 symbols
-
+Remove additional files, make one XML file only
+local price includes country only, no currency code
+add link to country JSON and XML 
+??change price to be either <free> or <paid> with corresponding allowed subtags
+in the big sample show case of paid app and show in comments free case

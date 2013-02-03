@@ -1,3 +1,15 @@
+/**
+ * A simple library for generating XML files
+ * Depends on: nothing - it is very simple ;)
+ * 
+ * Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0.html
+ *
+ * Copyright (c) 2012 Vassili Philippov <vassiliphilippov@onepf.org>
+ * Copyright (c) 2012 One Platform Foundation <www.onepf.org>
+ * Copyright (c) 2012 Yandex <www.yandex.com>
+ */
+
 function XMLGenerator() {
 	this.xml = "";
 	this.indent = 0;

@@ -1,5 +1,12 @@
-
 <!DOCTYPE html>
+<!--
+Apache License, Version 2.0
+http://www.apache.org/licenses/LICENSE-2.0.html
+
+Copyright (c) 2012 Vassili Philippov <vassiliphilippov@onepf.org>
+Copyright (c) 2012 One Platform Foundation <www.onepf.org>
+Copyright (c) 2012 Yandex <www.yandex.com>
+-->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -26,6 +33,8 @@
 	<script type="text/javascript" src="data/store_categories.js"></script>
 	<script type="text/javascript" src="data/stores.js"></script>
 	<script type="text/javascript" src="data/languages.js"></script>
+	<script type="text/javascript" src="data/countries.js"></script>
+	<script type="text/javascript" src="data/country_currencies.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/jqBootstrapValidation.js"></script>    
@@ -33,7 +42,9 @@
 	<script type="text/javascript" src="js/zip/zip.js"></script>
 	<script type="text/javascript" src="js/appdflocalization.js"></script>
 	<script type="text/javascript" src="js/apkreader.js"></script>
-	<script type="text/javascript" src="js/appdfparser.js"></script>
+	<script type="text/javascript" src="js/appdfparser3.js"></script>
+	<script type="text/javascript" src="js/appdfxmlsaving.js"></script>
+	<script type="text/javascript" src="js/appdfxmlloading.js"></script>
 	<script type="text/javascript" src="js/appdfeditor.js"></script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -73,6 +84,7 @@
 						<li><a href="#apk-files">APK File(s)</a></li>
 						<li><a href="#categorization">Category</a></li>
 						<li><a href="#description">Description</a></li>
+						<li><a href="#price">Price</a></li>
 						<li><a href="#customer-support">Customer Support</a></li>
 						<li><a href="#consent">Consent</a></li>
 					</ul>
@@ -95,7 +107,7 @@
 						<textarea id="description-xml-to-import" class="input-xxlarge" rows="5"></textarea><br>
 						<div class="alert alert-error hide" id="load-errors">
 							<b>Import errors:</b>
-							<div id="load-errors-message"></div>
+							<ul></ul>
 						</div>				
 					</div>
 					<div class="modal-footer">
@@ -218,7 +230,7 @@
 													data-validation-required-message="Title is required" 
 													maxlength="30"
 												>
-												<p class="help-block">Different stores have different maximum title length requirements. The first title should be shorter then 30 symbols. You can <button class="btn" onclick="addMoreTitles(this, ""); return false;">add longer title</button> for the stores that support long titles.</p>
+												<p class="help-block">Different stores have different maximum title length requirements. The first title should be shorter then 30 symbols. You can <button class="btn" onclick="addMoreTitles(this, ''); return false;">add longer title</button> for the stores that support long titles.</p>
 											</div>
 										</div><!--./control-group -->
 									 
@@ -231,7 +243,7 @@
 													data-validation-required-message="Short description is required" 
 													maxlength="80"
 												>
-												<p class="help-block">Different stores have different maximum short description length requirements. The first short-description should be shorter then 80 symbols. You can <button class="btn" onclick="addMoreShortDescriptions(this, ""); return false;">add longer short description</button> for the stores that support longer ones.</p>
+												<p class="help-block">Different stores have different maximum short description length requirements. The first short-description should be shorter then 80 symbols. You can <button class="btn" onclick="addMoreShortDescriptions(this, ''); return false;">add longer short description</button> for the stores that support longer ones.</p>
 											</div>
 										</div><!--./control-group -->
 									 
@@ -306,7 +318,7 @@
 											<div class="controls">
 												<div class="input-append"> 
 													<input type="text" id="description-texts-keywords"> 
-													<button class="btn" type="button" onclick="addMoreKeywords(this, ""); return false;"><i class=" icon-plus-sign"></i></button>
+													<button class="btn" type="button" onclick="addMoreKeywords(this, ''); return false;"><i class=" icon-plus-sign"></i></button>
 												</div> 
 												<p class="help-block">Please provide keywords that describe your application</p>
 											</div>
@@ -324,6 +336,26 @@
 											</div>
 										</div><!--./control-group -->
 
+										<div class="control-group">
+											<!-- description/texts/privacy-policy -->
+											<label class="control-label" for="description-texts-privacypolicy">Privacy policy</label>
+											<div class="controls">
+												<input type="text" id="description-texts-privacypolicy" name="description-texts-privacypolicy"
+												>
+												<p class="help-block">Link to privacy policy document for this application, required if your application collect personal data</p>
+											</div>
+										</div><!--./control-group -->
+									 
+										<div class="control-group">
+											<!-- description/texts/eula -->
+											<label class="control-label" for="description-texts-eula">End user license agreement</label>
+											<div class="controls">
+												<input type="text" id="description-texts-eula" name="description-texts-eula"
+												>
+												<p class="help-block">If you want you can provide a link to your End User License Agreement (EULA)</p>
+											</div>
+										</div><!--./control-group -->
+									 
 									</div><!--./tab-pane -->
 								</div><!--./tab-content -->
 							</div><!--./tabbable -->			    
@@ -342,82 +374,34 @@
 								</ul>
 								<div class="tab-content">
 									<div class="tab-pane active" id="tab-price-free">
-										<div class="control-group">
-											<!-- description/texts/title -->
-											<label class="control-label"  for="description-texts-title">Title</label>
+									 	<div class="control-group">
 											<div class="controls">
-												<input type="text" id="description-texts-title" 
-													required 
-													data-validation-required-message="Title is required" 
-													maxlength="30"
-												>
-												<p class="help-block">Different stores have different maximum title length requirements. The first title should be shorter then 30 symbols. You can <button class="btn" onclick="addMoreTitles(this, ""); return false;">add longer title</button> for the stores that support long titles.</p>
+												<label class="checkbox">
+													<input type="checkbox" value="" id="price-free-trialversion">
+													This free application is a trial version
+												</label>							
 											</div>
-										</div><!--./control-group -->
-									 
+										</div><!--control-group-->
 										<div class="control-group">
-											<!-- description/texts/short-description -->
-											<label class="control-label" for="description-texts-shortdescription">Short description</label>
+											<!-- price/free/full-version -->
+											<label class="control-label" for="price-free-full-version">Full version</label>
 											<div class="controls">
-												<input type="text" id="description-texts-shortdescription"
-													required 
-													data-validation-required-message="Short description is required" 
-													maxlength="80"
-												>
-												<p class="help-block">Different stores have different maximum short description length requirements. The first short-description should be shorter then 80 symbols. You can <button class="btn" onclick="addMoreShortDescriptions(this, ""); return false;">add longer short description</button> for the stores that support longer ones.</p>
-											</div>
-										</div><!--./control-group -->
-									 
-										<div class="control-group">
-											<!-- description/texts/full-description -->
-											<label class="control-label" for="description-texts-fulldescription">Full description</label>
-											<div class="controls">
-												<textarea class="input-xxlarge" rows="5" id="description-texts-fulldescription"></textarea>
-												<p class="help-block">Please provide your E-mail</p>
-											</div>
-										</div><!--./control-group -->
-
-										<div class="control-group">
-											<!-- description/texts/keywords -->
-											<label class="control-label" for="description-texts-keywords">Keywords</label>
-											<div class="controls">
-												<div class="input-append"> 
-													<input type="text" id="description-texts-keywords"> 
-													<button class="btn" type="button" onclick="addMoreKeywords(this, ""); return false;"><i class=" icon-plus-sign"></i></button>
-												</div> 
-												<p class="help-block">Please provide keywords that describe your application</p>
+												<input type="text" class="input-large" id="price-free-fullversion" name="price-free-fullversion" disabled>
+												<p class="help-block">If there is another app which is a full version of your app you can enter its package name here</p>
 											</div>
 										</div><!--./control-group -->
 									</div><!--./tab-pane -->
 									<div class="tab-pane" id="tab-price-paid">
 										<div class="control-group">
 											<!-- price/base-price -->
-											<label class="control-label" for="price-baseprice">Price (USD)</label>
+											<label class="control-label" for="price-baseprice">Price</label>
 											<div class="controls">
-												<input type="text" id="price-baseprice" 
-												>
-												<p class="help-block">Default product price in USD. Price for other currencies will be automatically converted by the stores from USD. If you want manual control you can specify local prices.</p>
-											</div>
-										</div><!--./control-group -->
-									 
-										<div class="control-group">
-											<!-- price/local-price -->
-											<label class="control-label" for="price-baseprice">Local price</label>
-											<div class="controls">
-												<div>
-													<button class="btn">Add Local Price</button>
+												<div class="input-prepend">
+													<span class="add-on">USD</span>
+													<input type="text" id="price-baseprice" class="input-small"
+													>
 												</div>
-												<select id="">
-													<option>Germany</option>
-													<option>Russian</option>
-												</select> 
-												<input type="text" id="price-localprice" 
-												>
-												<select id="">
-													<option>EUR</option>
-													<option>RUB</option>
-												</select> 
-												<p class="help-block">If you </p>
+												<p class="help-block">Default product price in USD. Price for other currencies will be automatically converted by the stores from USD. If you want manual control you can <button onclick="addMoreLocalPrice(this, '', ''); return false;"; class="btn">add local prices</button>.</p>
 											</div>
 										</div><!--./control-group -->
 									</div><!--./tab-pane -->
