@@ -1,0 +1,827 @@
+<country-languages>
+  <country code="AF">
+    <language>fa</language>
+    <language>ps</language>
+  </country>
+  <country code="AX">
+    <language>sv</language>
+  </country>
+  <country code="AL">
+    <language>sq</language>
+  </country>
+  <country code="DZ">
+    <language>ar</language>
+  </country>
+  <country code="AS">
+    <language>en</language>
+    <language>sm</language>
+  </country>
+  <country code="AD">
+    <language>ca</language>
+  </country>
+  <country code="AO">
+    <language>pt</language>
+  </country>
+  <country code="AI">
+    <language>en</language>
+  </country>
+  <country code="AG">
+    <language>en</language>
+  </country>
+  <country code="AR">
+    <language>es</language>
+  </country>
+  <country code="AM">
+    <language>hy</language>
+  </country>
+  <country code="AW">
+    <language>nl</language>
+  </country>
+  <country code="AU">
+    <language>en</language>
+  </country>
+  <country code="AT">
+    <language>de</language>
+  </country>
+  <country code="AZ">
+    <language>az</language>
+  </country>
+  <country code="BS">
+    <language>en</language>
+  </country>
+  <country code="BH">
+    <language>ar</language>
+  </country>
+  <country code="BD">
+    <language>bn</language>
+  </country>
+  <country code="BB">
+    <language>en</language>
+  </country>
+  <country code="BY">
+    <language>be</language>
+    <language>ru</language>
+  </country>
+  <country code="BE">
+    <language>nl</language>
+    <language>fr</language>
+    <language>de</language>
+  </country>
+  <country code="BZ">
+    <language>en</language>
+  </country>
+  <country code="BJ">
+    <language>fr</language>
+  </country>
+  <country code="BM">
+    <language>en</language>
+  </country>
+  <country code="BT">
+    <language>dz</language>
+  </country>
+  <country code="BO">
+    <language>es</language>
+    <language>qu</language>
+    <language>ay</language>
+  </country>
+  <country code="BQ">
+    <language>nl</language>
+    <language>en</language>
+  </country>
+  <country code="BA">
+    <language>bs</language>
+    <language>hr</language>
+  </country>
+  <country code="BW">
+    <language>en</language>
+  </country>
+  <country code="BR">
+    <language>pt</language>
+  </country>
+  <country code="IO">
+    <language>en</language>
+  </country>
+  <country code="BN">
+    <language>ms</language>
+  </country>
+  <country code="BG">
+    <language>bg</language>
+  </country>
+  <country code="BF">
+    <language>fr</language>
+  </country>
+  <country code="BI">
+    <language>rn</language>
+    <language>fr</language>
+  </country>
+  <country code="KH">
+    <language>km</language>
+  </country>
+  <country code="CM">
+    <language>en</language>
+    <language>fr</language>
+  </country>
+  <country code="CA">
+    <language>en</language>
+    <language>fr</language>
+  </country>
+  <country code="CV">
+    <language>pt</language>
+  </country>
+  <country code="KY">
+    <language>en</language>
+  </country>
+  <country code="CF">
+    <language>fr</language>
+  </country>
+  <country code="TD">
+    <language>fr</language>
+    <language>ar</language>
+  </country>
+  <country code="CL">
+    <language>es</language>
+  </country>
+  <country code="CN">
+    <language>zh</language>
+  </country>
+  <country code="CX">
+    <language>en</language>
+  </country>
+  <country code="CC">
+    <language>ms</language>
+    <language>en</language>
+  </country>
+  <country code="CO">
+    <language>es</language>
+  </country>
+  <country code="KM">
+    <language>ar</language>
+    <language>fr</language>
+  </country>
+  <country code="CG">
+    <language>fr</language>
+  </country>
+  <country code="CD">
+    <language>fr</language>
+  </country>
+  <country code="CK">
+    <language>en</language>
+  </country>
+  <country code="CR">
+    <language>es</language>
+  </country>
+  <country code="CI">
+    <language>fr</language>
+  </country>
+  <country code="HR">
+    <language>hr</language>
+  </country>
+  <country code="CU">
+    <language>es</language>
+  </country>
+  <country code="CW">
+    <language>nl</language>
+  </country>
+  <country code="CY">
+    <language>el</language>
+    <language>tr</language>
+  </country>
+  <country code="CZ">
+    <language>cs</language>
+  </country>
+  <country code="DK">
+    <language>da</language>
+  </country>
+  <country code="DJ">
+    <language>fr</language>
+    <language>ar</language>
+  </country>
+  <country code="DM">
+    <language>en</language>
+  </country>
+  <country code="DO">
+    <language>es</language>
+  </country>
+  <country code="EC">
+    <language>es</language>
+  </country>
+  <country code="EG">
+    <language>ar</language>
+  </country>
+  <country code="SV">
+    <language>es</language>
+  </country>
+  <country code="GQ">
+    <language>es</language>
+    <language>fr</language>
+  </country>
+  <country code="ER">
+    <language>ti</language>
+    <language>ar</language>
+    <language>en</language>
+  </country>
+  <country code="EE">
+    <language>et</language>
+  </country>
+  <country code="ET">
+    <language>am</language>
+    <language>en</language>
+    <language>ar</language>
+    <language>ti</language>
+    <language>om</language>
+  </country>
+  <country code="FK">
+    <language>en</language>
+  </country>
+  <country code="FO">
+    <language>fo</language>
+    <language>da</language>
+  </country>
+  <country code="FJ">
+    <language>en</language>
+    <language>fj</language>
+  </country>
+  <country code="FI">
+    <language>fi</language>
+    <language>sv</language>
+  </country>
+  <country code="FR">
+    <language>fr</language>
+  </country>
+  <country code="GF">
+    <language>fr</language>
+  </country>
+  <country code="PF">
+    <language>fr</language>
+    <language>ty</language>
+  </country>
+  <country code="TF">
+    <language>fr</language>
+  </country>
+  <country code="GA">
+    <language>fr</language>
+  </country>
+  <country code="GM">
+    <language>en</language>
+  </country>
+  <country code="GE">
+    <language>ka</language>
+  </country>
+  <country code="DE">
+    <language>de</language>
+  </country>
+  <country code="GH">
+    <language>en</language>
+  </country>
+  <country code="GI">
+    <language>en</language>
+  </country>
+  <country code="GR">
+    <language>el</language>
+  </country>
+  <country code="GL">
+    <language>kl</language>
+    <language>da</language>
+  </country>
+  <country code="GD">
+    <language>en</language>
+  </country>
+  <country code="GP">
+    <language>fr</language>
+  </country>
+  <country code="GU">
+    <language>en</language>
+    <language>ch</language>
+  </country>
+  <country code="GT">
+    <language>es</language>
+  </country>
+  <country code="GG">
+    <language>en</language>
+    <language>fr</language>
+  </country>
+  <country code="GN">
+    <language>fr</language>
+  </country>
+  <country code="GW">
+    <language>pt</language>
+  </country>
+  <country code="GY">
+    <language>en</language>
+  </country>
+  <country code="HT">
+    <language>fr</language>
+    <language>ht</language>
+  </country>
+  <country code="VA">
+    <language>it</language>
+    <language>la</language>
+    <language>fr</language>
+  </country>
+  <country code="HN">
+    <language>es</language>
+  </country>
+  <country code="HK">
+    <language>en</language>
+    <language>zh</language>
+  </country>
+  <country code="HU">
+    <language>hu</language>
+  </country>
+  <country code="IS">
+    <language>is</language>
+  </country>
+  <country code="IN">
+    <language>hi</language>
+    <language>en</language>
+  </country>
+  <country code="ID">
+    <language>ms</language>
+  </country>
+  <country code="IR">
+    <language>fa</language>
+  </country>
+  <country code="IQ">
+    <language>ar</language>
+  </country>
+  <country code="IE">
+    <language>en</language>
+    <language>ga</language>
+    <language>gd</language>
+  </country>
+  <country code="IM">
+    <language>en</language>
+  </country>
+  <country code="IL">
+    <language>he</language>
+  </country>
+  <country code="IT">
+    <language>it</language>
+  </country>
+  <country code="JM">
+    <language>en</language>
+  </country>
+  <country code="JP">
+    <language>ja</language>
+  </country>
+  <country code="JE">
+    <language>en</language>
+  </country>
+  <country code="JO">
+    <language>ar</language>
+  </country>
+  <country code="KZ">
+    <language>ru</language>
+    <language>kk</language>
+  </country>
+  <country code="KE">
+    <language>en</language>
+    <language>sw</language>
+  </country>
+  <country code="KI">
+    <language>en</language>
+  </country>
+  <country code="KP">
+    <language>ko</language>
+  </country>
+  <country code="KR">
+    <language>ko</language>
+  </country>
+  <country code="KW">
+    <language>ar</language>
+  </country>
+  <country code="KG">
+    <language>ky</language>
+    <language>ru</language>
+  </country>
+  <country code="LA">
+    <language>lo</language>
+  </country>
+  <country code="LV">
+    <language>lv</language>
+  </country>
+  <country code="LB">
+    <language>ar</language>
+  </country>
+  <country code="LS">
+    <language>en</language>
+  </country>
+  <country code="LR">
+    <language>en</language>
+  </country>
+  <country code="LY">
+    <language>ar</language>
+  </country>
+  <country code="LI">
+    <language>de</language>
+  </country>
+  <country code="LT">
+    <language>lt</language>
+  </country>
+  <country code="LU">
+    <language>lb</language>
+    <language>de</language>
+    <language>fr</language>
+  </country>
+  <country code="MO">
+    <language>zh</language>
+    <language>pt</language>
+  </country>
+  <country code="MK">
+    <language>mk</language>
+    <language>sq</language>
+  </country>
+  <country code="MG">
+    <language>fr</language>
+    <language>mg</language>
+  </country>
+  <country code="MW">
+    <language>ny</language>
+  </country>
+  <country code="MY">
+    <language>ms</language>
+  </country>
+  <country code="MV">
+    <language>dv</language>
+  </country>
+  <country code="ML">
+    <language>fr</language>
+  </country>
+  <country code="MT">
+    <language>mt</language>
+    <language>en</language>
+  </country>
+  <country code="MH">
+    <language>mh</language>
+    <language>en</language>
+  </country>
+  <country code="MQ">
+    <language>fr</language>
+  </country>
+  <country code="MR">
+    <language>ar</language>
+  </country>
+  <country code="MU">
+    <language>en</language>
+  </country>
+  <country code="YT">
+    <language>fr</language>
+  </country>
+  <country code="MX">
+    <language>es</language>
+  </country>
+  <country code="FM">
+    <language>en</language>
+  </country>
+  <country code="MD">
+    <language>ro</language>
+  </country>
+  <country code="MC">
+    <language>fr</language>
+  </country>
+  <country code="MN">
+    <language>mn</language>
+  </country>
+  <country code="ME">
+    <language>sr</language>
+  </country>
+  <country code="MS">
+    <language>en</language>
+  </country>
+  <country code="MA">
+    <language>ar</language>
+  </country>
+  <country code="MZ">
+    <language>pt</language>
+  </country>
+  <country code="MM">
+    <language>my</language>
+  </country>
+  <country code="NA">
+    <language>en</language>
+  </country>
+  <country code="NR">
+    <language>na</language>
+  </country>
+  <country code="NP">
+    <language>ne</language>
+  </country>
+  <country code="NL">
+    <language>nl</language>
+    <language>fr</language>
+  </country>
+  <country code="NC">
+    <language>fr</language>
+  </country>
+  <country code="NZ">
+    <language>en</language>
+    <language>mi</language>
+  </country>
+  <country code="NI">
+    <language>es</language>
+  </country>
+  <country code="NE">
+    <language>fr</language>
+  </country>
+  <country code="NG">
+    <language>en</language>
+  </country>
+  <country code="NU">
+    <language>en</language>
+  </country>
+  <country code="NF">
+    <language>en</language>
+  </country>
+  <country code="MP">
+    <language>en</language>
+    <language>ch</language>
+  </country>
+  <country code="NO">
+    <language>no</language>
+    <language>nn</language>
+    <language>nb</language>
+  </country>
+  <country code="PS">
+    <language>ar</language>
+    <language>en</language>
+    <language>he</language>
+  </country>
+  <country code="OM">
+    <language>ar</language>
+  </country>
+  <country code="PK">
+    <language>ur</language>
+    <language>en</language>
+  </country>
+  <country code="PW">
+    <language>en</language>
+  </country>
+  <country code="PA">
+    <language>es</language>
+  </country>
+  <country code="PG">
+    <language>en</language>
+    <language>ho</language>
+  </country>
+  <country code="PY">
+    <language>es</language>
+    <language>gn</language>
+  </country>
+  <country code="PE">
+    <language>es</language>
+    <language>qu</language>
+  </country>
+  <country code="PH">
+    <language>en</language>
+  </country>
+  <country code="PN">
+    <language>en</language>
+  </country>
+  <country code="PL">
+    <language>pl</language>
+  </country>
+  <country code="PT">
+    <language>pt</language>
+  </country>
+  <country code="PR">
+    <language>es</language>
+    <language>en</language>
+  </country>
+  <country code="QA">
+    <language>ar</language>
+  </country>
+  <country code="RE">
+    <language>fr</language>
+  </country>
+  <country code="RO">
+    <language>ro</language>
+  </country>
+  <country code="RU">
+    <language>ru</language>
+  </country>
+  <country code="RW">
+    <language>rw</language>
+    <language>fr</language>
+    <language>en</language>
+  </country>
+  <country code="BL">
+    <language>fr</language>
+  </country>
+  <country code="BV">
+    <language>no</language>
+  </country>
+  <country code="HM">
+    <language>en</language>
+  </country>
+  <country code="SH">
+    <language>en</language>
+  </country>
+  <country code="KN">
+    <language>en</language>
+  </country>
+  <country code="LC">
+    <language>en</language>
+  </country>
+  <country code="MF">
+    <language>fr</language>
+  </country>
+  <country code="PM">
+    <language>fr</language>
+  </country>
+  <country code="VC">
+    <language>en</language>
+  </country>
+  <country code="WS">
+    <language>sm</language>
+  </country>
+  <country code="SM">
+    <language>it</language>
+  </country>
+  <country code="ST">
+    <language>pt</language>
+  </country>
+  <country code="SA">
+    <language>ar</language>
+  </country>
+  <country code="SN">
+    <language>fr</language>
+  </country>
+  <country code="RS">
+    <language>sr</language>
+  </country>
+  <country code="SC">
+    <language>en</language>
+  </country>
+  <country code="SL">
+    <language>en</language>
+  </country>
+  <country code="SG">
+    <language>zh</language>
+    <language>en</language>
+    <language>ms</language>
+  </country>
+  <country code="SX">
+    <language>en</language>
+    <language>nl</language>
+  </country>
+  <country code="SK">
+    <language>sk</language>
+  </country>
+  <country code="SI">
+    <language>sl</language>
+    <language>it</language>
+    <language>hu</language>
+  </country>
+  <country code="SB">
+    <language>en</language>
+  </country>
+  <country code="SO">
+    <language>so</language>
+  </country>
+  <country code="ZA">
+    <language>xh</language>
+    <language>zu</language>
+    <language>af</language>
+    <language>en</language>
+  </country>
+  <country code="SS">
+    <language>en</language>
+  </country>
+  <country code="ES">
+    <language>es</language>
+  </country>
+  <country code="LK">
+    <language>si</language>
+  </country>
+  <country code="SD">
+    <language>ar</language>
+    <language>en</language>
+  </country>
+  <country code="SR">
+    <language>nl</language>
+  </country>
+  <country code="SJ">
+    <language>nn</language>
+    <language>ru</language>
+  </country>
+  <country code="SZ">
+    <language>en</language>
+    <language>ss</language>
+  </country>
+  <country code="SE">
+    <language>sv</language>
+  </country>
+  <country code="CH">
+    <language>de</language>
+    <language>fr</language>
+    <language>it</language>
+  </country>
+  <country code="SY">
+    <language>ar</language>
+  </country>
+  <country code="TW">
+    <language>zh</language>
+  </country>
+  <country code="TJ">
+    <language>tg</language>
+  </country>
+  <country code="TZ">
+    <language>sw</language>
+    <language>en</language>
+  </country>
+  <country code="TH">
+    <language>th</language>
+  </country>
+  <country code="TL">
+    <language>pt</language>
+  </country>
+  <country code="TG">
+    <language>fr</language>
+  </country>
+  <country code="TK">
+    <language>en</language>
+  </country>
+  <country code="TO">
+    <language>to</language>
+    <language>en</language>
+  </country>
+  <country code="TT">
+    <language>en</language>
+  </country>
+  <country code="TN">
+    <language>ar</language>
+  </country>
+  <country code="TR">
+    <language>tr</language>
+  </country>
+  <country code="TM">
+    <language>tk</language>
+  </country>
+  <country code="TC">
+    <language>en</language>
+  </country>
+  <country code="TV">
+    <language>en</language>
+  </country>
+  <country code="UG">
+    <language>en</language>
+  </country>
+  <country code="UA">
+    <language>uk</language>
+  </country>
+  <country code="AE">
+    <language>ar</language>
+  </country>
+  <country code="GB">
+    <language>en</language>
+    <language>cy</language>
+    <language>ga</language>
+  </country>
+  <country code="GS">
+    <language>en</language>
+  </country>
+  <country code="US">
+    <language>en</language>
+  </country>
+  <country code="UM">
+    <language>en</language>
+  </country>
+  <country code="UY">
+    <language>es</language>
+  </country>
+  <country code="UZ">
+    <language>uz</language>
+  </country>
+  <country code="VU">
+    <language>en</language>
+    <language>fr</language>
+  </country>
+  <country code="VE">
+    <language>es</language>
+  </country>
+  <country code="VN">
+    <language>vi</language>
+  </country>
+  <country code="VG">
+    <language>en</language>
+  </country>
+  <country code="VI">
+    <language>en</language>
+  </country>
+  <country code="WF">
+    <language>fr</language>
+  </country>
+  <country code="EH">
+    <language>ar</language>
+  </country>
+  <country code="YE">
+    <language>ar</language>
+  </country>
+  <country code="ZM">
+    <language>ny</language>
+    <language>en</language>
+  </country>
+  <country code="ZW">
+    <language>en</language>
+  </country>
+</country-languages>
