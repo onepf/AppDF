@@ -42,7 +42,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 	<script type="text/javascript" src="js/zip/zip.js"></script>
 	<script type="text/javascript" src="js/appdflocalization.js"></script>
 	<script type="text/javascript" src="js/apkreader.js"></script>
-	<script type="text/javascript" src="js/appdfparser3.js"></script>
+	<script type="text/javascript" src="js/section_customersupport.js"></script>
+	<script type="text/javascript" src="js/appdfparser.js"></script>
 	<script type="text/javascript" src="js/appdfxmlsaving.js"></script>
 	<script type="text/javascript" src="js/appdfxmlloading.js"></script>
 	<script type="text/javascript" src="js/appdfeditor.js"></script>
@@ -386,7 +387,10 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 											<!-- price/free/full-version -->
 											<label class="control-label" for="price-free-full-version">Full version</label>
 											<div class="controls">
-												<input type="text" class="input-large" id="price-free-fullversion" name="price-free-fullversion" disabled>
+												<input type="text" class="input-large" id="price-free-fullversion" name="price-free-fullversion" disabled
+													pattern="^([a-zA-Z0-9\-]+\.)+[a-zA-Z0-9\-]+$"
+													data-validation-pattern-message="Wrong package name format. Must be a valid Android package name like 'org.wikimedia.wikipedia'"
+												>
 												<p class="help-block">If there is another app which is a full version of your app you can enter its package name here</p>
 											</div>
 										</div><!--./control-group -->
@@ -399,6 +403,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 												<div class="input-prepend">
 													<span class="add-on">USD</span>
 													<input type="text" id="price-baseprice" class="input-small"
+														pattern="^\d+\.\d+$|^\d+$"
+														data-validation-pattern-message="Wrong price value. Must be a valid number like '15.95'."
 													>
 												</div>
 												<p class="help-block">Default product price in USD. Price for other currencies will be automatically converted by the stores from USD. If you want manual control you can <button onclick="addMoreLocalPrice(this, '', ''); return false;"; class="btn">add local prices</button>.</p>
@@ -423,10 +429,10 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 										name="customersupport-phone" 
 										required 
 										data-validation-required-message="Customer support phone is required" 
-										data-validation-regex-regex="[0-9]*" 
-										data-validation-regex-message="Phone can contain only ditis" 
+										data-validation-regex-regex="^\+(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$" 
+										data-validation-regex-message="Wrong phone format, only digits, brackets, spaces and dashes are allowed. Must be in international format like +1 (555) 123-45-67." 
 							      	>
-									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
+									<p class="help-block">Customer support phone number. Must be in international format (ex. +1 (555) 123-45-67).</p>
 								</div>
 							</div><!--control-group-->
 					 
@@ -440,7 +446,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 										data-validation-required-message="Customer support email is required" 
 										data-validation-email-message="Customer support email must be a valid email address"
 							      	>
-									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
+									<p class="help-block">Customer support email for this application. Must be a valid email address.</p>
 								</div>
 							</div><!--control-group-->
 					 
@@ -451,9 +457,11 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 									<input id="customersupport-website" type="text" 
 										name="customersupport-website"
 										required 
-										data-validation-required-message="Customer support website is required" 
+										data-validation-regex-regex="^((http|https):\/\/)?[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?$"; 
+										data-validation-required-message="Customer support website is required"
+										data-validation-regex-message="Wrong customer support webpage format. Must be a valid URL."										 
 									>
-									<p class="help-block">Username can contain any letters or numbers, without spaces</p>
+									<p class="help-block">Webpage with customer support information. Must be a valid URL.</p>
 								</div>
 							</div><!--control-group-->
 						</fieldset>

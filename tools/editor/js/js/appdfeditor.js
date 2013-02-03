@@ -360,8 +360,6 @@ function addMoreTitles(e, value) {
 		</div><!--./control-group --> \
 	');
  	$parent.after($controlGroup);
-	// $controlGroup = $($parent.closest("fieldset").children("div.control-group")[1]);
-	// addValidationToElements($controlGroup.find("input"));
 };
 
 function addMoreShortDescriptions(e, value) {
@@ -380,8 +378,6 @@ function addMoreShortDescriptions(e, value) {
 		</div><!--./control-group --> \
 	');
  	$parent.after($controlGroup);
-	// $controlGroup = $($parent.closest("fieldset").children("div.control-group")[1]);
-	// addValidationToElements($controlGroup.find("input"));
 };
 
 function addMoreKeywords(e, value) {
@@ -434,7 +430,10 @@ function addMoreLocalPrice(e, value, country) {
 					<select id="price-localprice-country-' + getUniqueId() + '" style="margin-right: 10px;"> \
 					</select> \
 					<span class="add-on"></span> \
-					<input class="span2" type="text" id="price-localprice-' + getUniqueId() + '" value="' + value + '"> \
+					<input class="span2" type="text" id="price-localprice-' + getUniqueId() + '" value="' + value + '" \
+						pattern="^\\d+\\.\\d+$|^\\d+$" \
+						data-validation-pattern-message="Wrong price value. Must be a valid number like 15.95." \
+					> \
 					<button class="btn" type="button" onclick="removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
 				</div> \
 				<p class="help-block"></p> \
@@ -443,7 +442,7 @@ function addMoreLocalPrice(e, value, country) {
 	');
 	$parent.after($controlGroup);
 	fillCountries($controlGroup.find("select"), country);
-//	addValidationToElements($controlGroup.find("input,textarea,select"));
+	addValidationToElements($controlGroup.find("input"));
 };
 
 function removeControlGroup(e) {

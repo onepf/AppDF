@@ -1,271 +1,356 @@
-/**
- * Parsing and validating description.xml XML and generating JSON
- * Depends on: jquery.js
+/*******************************************************************************
+ * Copyright 2012 Vassili Philippov <vassiliphilippov@onepf.org>
+ * Copyright 2012 One Platform Foundation <www.onepf.org>
+ * Copyright 2012 Yandex <www.yandex.com>
  * 
- * Apache License, Version 2.0
- * http://www.apache.org/licenses/LICENSE-2.0.html
- *
- * Copyright (c) 2012 Vassili Philippov <vassiliphilippov@onepf.org>
- * Copyright (c) 2012 One Platform Foundation <www.onepf.org>
- * Copyright (c) 2012 Yandex <www.yandex.com>
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ * 
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ ******************************************************************************/
+
+/**
+ * Depends on: jquery.js
  */
 
-function getTagPath($xml) {
-	var s = "<" + $xml[0].tagName + ">";
-	var $cur = $xml.parent();
-	while ($cur.length>0) {
-		if ($cur[0].tagName) {
-			s = "<" + $cur[0].tagName + "> / " + s; 
-		};	
-		$cur = $cur.parent();
-	};
-	return s;
+function isDefined(x) {
+	return (typeof x != "undefined");
 };
 
-function parseXMLTag($xml, tagName, optional, onerror, onend) {
-	var $tags = $xml.children(tagName);
-	if ($tags.length<1) {
-		if (optional) {
-			onend($(""));
-		} else {
-			onerror("<" + tagName + "> tag is missed in " + getTagPath($xml));
-		};
-	} else {
-		onend($($tags[0]));
-	};
-};
-
-function parseXMLTextTag($xml, tagName, optional, onerror, onend) {
-	var $tags = $xml.children(tagName);
-	if ($tags.length<1) {
-		if (optional) {
-			onend(null);
-		} else {
-			onerror("<" + tagName + "> tag is missed in " + getTagPath($xml));
-		};
-	} else {
-		onend($($tags[0]).text());
-	};
-};
-
-function parseXMLTextTags($xml, tagName, optional, onerror, onend) {
-	var $tags = $xml.children(tagName);
-	if ($tags.length<1 && !optional) {
-		onerror("<" + tagName + "> tag is missed in " + getTagPath($xml));
-	} else {
-		var values = [];
-		$tags.each(function() {
-			values.push($(this).text());
-		});
-		onend(values);
-	};
-};
-
-function parseXMLAttribute($xml, attributeName, onerror, onend) {
-	var attributeValue = $xml.attr(attributeName);
-	if (!attributeValue) {
-		onerror("\"" + attributeName + "\" attribute is missed in " + getTagPath($xml));
-		return;
-	} else {
-		onend(attributeValue);
-	};
-};
-
-function parseCategorizationSection($xml, onerror, onend) {
-	var data = {};
-	parseXMLTag($xml, "categorization", false, onerror, function($categorization) {
-		parseXMLTextTag($categorization, "type", false, onerror, function(type) {
-		parseXMLTextTag($categorization, "category", false, onerror, function(category) {
-		parseXMLTextTag($categorization, "subcategory", false, onerror, function(subcategory) {
-			data["type"] = type;
-			data["category"] = category;
-			data["subcategory"] = subcategory;
-			if (!allCategories[type]) {
-				onerror("Unknown type \"" + type + "\"");
-				return;
-			};
-			if (!allCategories[type][category]) {
-				onerror("Unknown category \"" + category + "\" for type \"" + type + "\"");
-				return;
-			};
-			if (allCategories[type][category].indexOf(subcategory)==-1) {
-				onerror("Unknown subcategory \"" + subcategory + "\" for category \"" + category + "\"");
-				return;
-			};
-			onend(data);
-		});
-		});
-		});
-	});
-};
-
-function parseDescriptionTextsSections($xml, optionalFields, onerror, onend) {
-	var data = {};
-	parseXMLTag($xml, "texts", optionalFields, onerror, function($texts) {
-		parseXMLTextTags($texts, "title", optionalFields, onerror, function(titles) {
-		parseXMLTextTag($texts, "keywords", optionalFields, onerror, function(keywords) {
-		parseXMLTextTags($texts, "short-description", optionalFields, onerror, function(shortDescriptions) {
-		parseXMLTextTag($texts, "full-description", optionalFields, onerror, function(fullDescription) {
-		parseXMLTextTag($texts, "recent-changes", true, onerror, function(recentChanges) {
-		parseXMLTextTag($texts, "privacy-policy", true, onerror, function(privacyPolicy) {
-		parseXMLTextTag($texts, "eula", true, onerror, function(eula) {
-		parseXMLTag($texts, "features", optionalFields, onerror, function($features) {
-			parseXMLTextTags($features, "feature", optionalFields, onerror, function(features) {
-				if (titles) {
-					data["title"] = titles;
-					if (titles[0] && titles[0].length>30) {
-						onerror("The first title must be shorter than 30 symbols (in " + getTagPath($texts) + ")");
-						return;
-					};
-				};
-				data["keywords"] = keywords.split(/\s*,\s*/);
-				if (shortDescriptions) {
-					data["short-description"] = shortDescriptions;
-					if (shortDescriptions[0].length>80) {
-						onerror("The first short description must be shorter than 80 symbols (in " + getTagPath($texts) + ")");
-						return;
-					};
-				};
-				if (fullDescription) {
-					data["full-description"] = fullDescription;
-					if (fullDescription.length>4000) {
-						onerror("The full description must be shorter than 80 symbols (in " + getTagPath($texts) + ")");
-						return;
-					};
-				};
-				if (features) {
-					data["features"] = features;
-					if (features.length>5) {
-						onerror("More than five features (in " + getTagPath($features) + ")");
-						return;
-					};
-					if (features.length<3) {
-						onerror("There must be at least three features (in " + getTagPath($features) + ")");
-						return;
-					};
-				};
-				if (recentChanges) {
-					data["recent-changes"] = recentChanges;
-					if (recentChanges.length>500) {
-						onerror("Recent changes must be shorted than 500 symbols (in " + getTagPath($features) + ")");
-						return;
-					};
-				}
-				if (privacyPolicy) {
-					data["privacy-policy"] = privacyPolicy;
-				}
-				if (eula) {
-					data["eula"] = eula;
-				}
-				onend(data);
-			});
-		});
-		});
-		});
-		});
-		});
-		});
-		});
-		});
-	});
-};
-
-function parseOneLanguageDescriptionSection($xml, optionalFields, onerror, onend) {
-	var data = {};
-	parseDescriptionTextsSections($xml, optionalFields, onerror, function(dataTexts) {
-		data["texts"] = dataTexts;
-		onend(data);
-	});
-};
-
-function parseDescriptionSections($xml, onerror, onend) {
-	var data = {};
-	parseXMLTag($xml, "description", false, onerror, function($description) {
-		parseOneLanguageDescriptionSection($description, false, onerror, function(dataDescription) {
-			data["default"] = dataDescription;
-			var $localizations = $xml.children("description-localization");
-			var anyError = false;
-			$localizations.each(function() {
-				if (anyError) return;
-
-				var languageCode = $(this).attr("language");
-				if (!allLanguages[languageCode]) {
-					onerror("Unknown language \"" + languageCode + "\" in &lt;description-localization&gt; tag attribute");
-					return;
-				};
-
-				parseOneLanguageDescriptionSection($(this), true, function(error) {
-					anyError = true;
-					onerror(error);
-				}, function(dataLocalizedDescription) {
-					data[languageCode] = dataLocalizedDescription;
-				});
-			});
-			if (!anyError) {
-				onend(data);
-			}
-		});
-	});
-};
-
-function parseApplicationSection($xml, onerror, onend) {
-	var data = {};
-	parseCategorizationSection($xml, onerror, function(dataCategorization) {
-	parseDescriptionSections($xml, onerror, function(dataDescriptions) {
-		data["categorization"] = dataCategorization;
-		data["description"] = dataDescriptions;
-		onend(data);
-	});
-	});
+function isUndefined(x) {
+	return (typeof x === "undefined");
 };
 
 function parseDescriptionXML(xmlText, onend, onerror) {
 	data = {};
 	var $xml = $($.parseXML(xmlText));
 
-	parseXMLTag($xml, "application-description-file", false, onerror, function($appdfFile) {
-		parseXMLAttribute($appdfFile, "version", onerror, function(appdfFileVersion) {
-			data["version"] = appdfFileVersion;
-			parseXMLTag($appdfFile, "application", false, onerror, function($application) {
-				parseXMLAttribute($application, "package", onerror, function(applicationPackage) {
-					data["package"] = applicationPackage;
-					parseApplicationSection($application, onerror, function(dataApplication) {
-						for (key in dataApplication) {
-							data[key] = dataApplication[key];
-						};
-						onend(data);
-					});
-				});
+	var errors = [];
+	var curDataPath = "";
+	var $curXml = $xml;
+
+	function getElementsByPath($x, xmlPath) {
+		var $cx = $x;
+		var xmlPathElements = xmlPath.split("/");
+	
+		for (var i=0; i<xmlPathElements.length; i++) {
+			if (xmlPathElements[i]!="") {
+				$cx = $cx.children(xmlPathElements[i]);
+			};
+		};
+
+		return $cx;
+	};
+
+	//Load helpder
+	function loadHelper(dataPath, xmlPath, onsuccess) {
+		if (isUndefined(xmlPath)) {
+			xmlPath = dataPath;
+		};
+		var dataPathElements = (curDataPath+dataPath).split("/");
+
+		var curData = data;
+		for (var i=0; i<dataPathElements.length-1; i++) {
+			if (isUndefined(curData[dataPathElements[i]])) {
+				curData[dataPathElements[i]] = {};
+			};
+			curData = curData[dataPathElements[i]];
+		};
+
+		var $e = getElementsByPath($curXml, xmlPath);
+		onsuccess(curData, dataPathElements[dataPathElements.length-1], $e);
+	};
+
+	//Load text
+	function loadText(dataPath, xmlPath) {
+		loadHelper(dataPath, xmlPath, function(d, name, $e) {
+			if ($e.length>0) {
+				d[name] = $e.text();
+			};
+		});
+	};
+
+	//Load array
+	function loadArray(dataPath, xmlPath) {
+		loadHelper(dataPath, xmlPath, function(d, name, $e) {
+			d[name] = [];
+			$e.each(function() {
+				d[name].push($(this).text());
 			});
+		});
+	};
+
+	//Load sttribute
+	function loadBooleanAttribute(dataPath, xmlPath, attributeName) {
+		loadHelper(dataPath, xmlPath, function(d, name, $e) {
+			if ($e.length>0) {
+				var attributeValue = $e.attr(attributeName);
+				if (attributeValue=="yes") {
+					d[name] = true;
+				} else if (attributeValue=="no") {
+					d[name] = false;
+				} else {
+					errors.push("Wrong attribute value \"" + attributeValue + "\" in tag <" + $e[0].tagName + ">. Must be \"yes\" or \"no\".");
+				};
+			};
+		});
+	};
+
+	function section(dataPath, xmlPath, onsection) {
+		function isString(o) {
+			return typeof o == "string" || (typeof o == "object" && o.constructor === String);
+		};
+		var saveCurDataPath = curDataPath;
+		var $saveCurXml = $curXml;
+		curDataPath += dataPath;
+		if (curDataPath[curDataPath.length-1]!="/") {
+			curDataPath += "/";
+		};
+		if (isString(xmlPath)) {
+			$curXml = getElementsByPath($curXml, xmlPath);
+		} else {
+			$curXml = xmlPath;			
+		};
+		onsection();
+		curDataPath = saveCurDataPath;
+		$curXml = $saveCurXml;
+	};
+
+	$curXml = getElementsByPath($xml, "application-description-file/application");
+
+	//Categorization 
+	section("categorization", "categorization", function() {
+		loadText("type");
+		loadText("category");
+		loadText("subcategory");
+	});
+
+	function loadOneLanguageDescription() {
+		section("texts/", "texts", function() {
+			loadArray("title", "title");
+			loadHelper("keywords", "keywords", function(d, name, $e) {
+				d[name] = $e.text().split(/\s*,\s*/);
+			});
+			loadArray("short-description", "short-description");
+			loadText("full-description", "full-description");
+			loadArray("features", "features/feature");
+			loadText("recent-changes", "recent-changes");
+			loadText("privacy-policy", "privacy-policy");
+			loadText("eula", "eula");
+		});
+	};
+
+	//Description
+	section("description/default", "description", function() {
+		loadOneLanguageDescription();
+	});
+
+	//Description localization
+	var $dl = getElementsByPath($curXml, "description-localization");
+	$dl.each(function() {
+		var languageCode = $(this).attr("language");
+		section("description/" + languageCode + "/", $(this), function() {
+			loadOneLanguageDescription();
 		});
 	});
 
-	// var appdfFileVersion = $appdfFile.attr("version");
-	// if (!appdfFileVersion) {
-	// 	onerror("\"version\" attribute is missed in <application-description-file> tag");
-	// 	return;
-	// } else {
-	// 	data["version"] = appdfFileVersion;
-	// };
+	//Price
+	section("price", "price", function() {
+		loadBooleanAttribute("free", "", "free");
+		if (data["price"]["free"]) {
+			loadHelper("trial-version", "trial-version", function(d, name, $e) {
+				data["price"]["trial-version"] = ($e.length>0);
+				var fullVersion = $e.attr("full-version");
+				if (fullVersion) {
+					data["price"]["full-version"] = fullVersion;
+				};
+			});
+		} else {
+			loadText("base-price", "base-price");
 
-	// var $applications = $appdfFile.children("application");
-	// if ($applications.length<1) {
-	// 	onerror("<application> tag is missed");
-	// 	return;
-	// };
+			//Load local prices
+			loadHelper("local-price", "local-price", function(d, name, $e) {
+				d[name] = {};
+				$e.each(function() {
+					var countryCode = $(this).attr("country");
+					d[name][countryCode] = $(this).text();
+				});
+			});
+		};
+	});
 
-	// var $application = $($applications[0]);
-	// var applicationPackage = $applications.attr("package");
-	// if (!applicationPackage) {
-	// 	onerror("\"package\" attribute is missed in <application> tag");
-	// 	return;
-	// } else {
-	// 	data["package"] = applicationPackage;
+	//Customer Support
+	section("customer-support", "customer-support", function() {
+		loadText("phone");
+		loadText("email");
+		loadText("website");
+	});
 
-	// };
+	errors.append(validateDescriptionXMLData(data));
+	console.log(errors);
 
-	// console.log($application);
-
-	// onend(data);
+	if (errors.length==0) {
+		onend(data);
+	} else {
+		onerror(errors);
+	};
 };
 
+Array.prototype.append = function(a) {
+	for (var i=0; i<a.length; i++) {
+		this.push(a[i]);
+	};
+};
+
+function validateDescriptionXMLData(data) {
+	console.log("validateDescriptionXMLData");
+	console.log(data);
+	var errors = [];
+
+	errors.append(validateCategorization(data.categorization));
+	errors.append(validateDescriptionTexts("default", data.description.default.texts));
+	errors.append(validatePrice(data.price));
+	errors.append(validateCustomerSupport(data["customer-support"]));
+
+	console.log("errors");
+	console.log(errors);
+	return errors;
+};
+
+function validateCategorization(data) {
+	var errors = [];
+
+	if (isUndefined(allCategories[data.type])) {
+		errors.push("Unknown type \"" + data.type + "\"");
+		return errors;
+	};
+
+	if (isUndefined(allCategories[data.type][data.category])) {
+		errors.push("Unknown category \"" + data.category + "\" for type \"" + data.type + "\"");
+		return errors;
+	};
+
+	if (allCategories[data.type][data.category].indexOf(data.subcategory)==-1) {
+		errors.push("Unknown subcategory \"" + data.subcategory + "\" for category \"" + data.category + "\"");
+		return errors;
+	};
+
+	return errors;
+};
+
+function validateDescriptionTexts(languageCode, data) {
+	console.log("validateDescriptionTexts");
+	console.log(data);
+	var errors = [];
+
+	if (isDefined(data["title"]) && data["title"][0].length>30) {
+		errors.push("The first title must be shorter than 30 symbols (for language \"" + languageCode + "\")");
+	};
+
+	if (isDefined(data["short-description"]) && data["short-description"][0].length>80) {
+		errors.push("The first short description must be shorter than 80 symbols (for language \"" + languageCode + "\")");
+	};
+
+	if (isDefined(data["full-description"]) && data["full-description"].length>4000) {
+		errors.push("The full description must be shorter than 4000 symbols (for language \"" + languageCode + "\")");
+	};
+
+	if (isDefined(data.features)) {
+		if (data.features.length>5) {
+			errors.push("More than five features (for language \"" + languageCode + "\")");
+		};
+		if (data.features.length<3) {
+			errors.push("There must be at least three features (for language \"" + languageCode + "\")");
+		};
+	};
+
+	if (isDefined(data["privacy-policy"]) && data["privacy-policy"].length>500) {
+		errors.push("Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")");
+	};
+
+	return errors;
+};
+
+function validateNumber(value, errorMessage) {
+	var patt = /^\d+\.\d+$|^\d+$/g;
+	if (!patt.test(value)) {
+		return [errorMessage];
+	};
+	return [];
+};
+
+function validatePackageName(value, errorMessage) {
+	var patt = /^([a-zA-Z0-9\-]+\.)+[a-zA-Z0-9\-]+$/g;
+	if (!patt.test(value)) {
+		return [errorMessage];
+	};
+	return [];
+};
+
+function validatePhoneNumber(value, errorMessage) {
+	var patt = /^\+(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/g;
+	if (!patt.test(value)) {
+		return [errorMessage];
+	};
+	return [];
+};
+
+function validateEmail(value, errorMessage) {
+	var patt = /^.*@.*$/g;
+	if (!patt.test(value)) {
+		return [errorMessage];
+	};
+	return [];
+};
+
+function validateURL(value, errorMessage) {
+	var patt = /^((http|https):\/\/)?[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:\/~\+#]*[\w\-\@?^=%&amp;\/~\+#])?$/g;
+
+	if (!patt.test(value)) {
+		return [errorMessage];
+	};
+	return [];
+};
+
+function validatePrice(data) {
+	var errors = [];
+
+	if (data["free"]) {
+		if (isDefined(data["full-version"])) {
+			errors.append(validatePackageName(data["full-version"], "Wrong package name format \"" + data["full-version"] + "\" in full version attribute"));	
+		};
+	} else {
+		if (isUndefined(data["base-price"])) {
+			errors.push("Required base price value is missing for paid product");
+		} else {
+			errors.append(validateNumber(data["base-price"], "Wrong price value \"" + data["base-price"] + "\". Must be a valid number like \"15.95\"."));	
+		};
+
+		var localPrices = data["local-price"];
+		for (countryCode in localPrices) {
+			if (isUndefined(allCountries[countryCode])) {
+				errors.push("Unknown country code \"" + countryCode + "\" in local prices");
+			};	
+			errors.append(validateNumber(localPrices[countryCode], "Wrong local price value \"" + localPrices[countryCode] + "\". Must be a valid number like \"15.95\"."));	
+		};
+	};
+
+	return errors;	
+};
+
+function validateCustomerSupport(data) {
+	var errors = [];
+
+	errors.append(validatePhoneNumber(data["phone"], "Wrong customer support phone number format. Only digits, brackets, spaces and dashes are allowed. Must be in international format like +1 (555) 123-45-67."));	
+	errors.append(validateEmail(data["email"], "Wrong customer support email format. Must be a valid email address."));	
+	errors.append(validateURL(data["website"], "Wrong customer support webpage format. Must be a valid URL."));	
+
+	return errors;	
+};

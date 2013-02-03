@@ -138,6 +138,11 @@ function loadDescriptionXML(xml, onend, onerror) {
 			};
 		};
 
+		//Customer support
+		$("#customersupport-phone").val(data["customer-support"]["phone"]);
+		$("#customersupport-email").val(data["customer-support"]["email"]);
+		$("#customersupport-website").val(data["customer-support"]["website"]);
+
 		onend();
 	}, onerror);
 };

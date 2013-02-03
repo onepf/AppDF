@@ -15,14 +15,7 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  ******************************************************************************/
- 
-var allStores = {
-  "google" : "Google Play",	
-  "amazon" : "Amazon AppStore",	
-  "opera" : "Opera Mobile Store",
-  "yandex" : "Yandex.Store",	
-  "slideme" : "SlideME", 	
-  "samsung" : "Samsung Apps",
-  "tstore" : "SK T-Store",
-  "nook" : "NOOK apps"
-}	
+
+ var sectionCustomerSupport = {
+
+ };
