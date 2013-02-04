@@ -130,10 +130,10 @@
         <availability>
             <countries>
                 <include>ru</include>
-                <exclude>ua</exclude>
-                <exclude>kz</exclude>
-                <exclude>by</exclude>
-                <exclude>tr</exclude>
+                <include>ua</include>
+                <include>kz</include>
+                <include>by</include>
+                <include>tr</include>
             </countries>
         </availability>
 

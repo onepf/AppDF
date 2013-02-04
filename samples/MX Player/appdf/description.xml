@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<application-description-file version="1"
+                              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                              xsi:noNamespaceSchemaLocation="../../../specification/appdf-description.xsd">
+
+    <application package="com.mxtech.videoplayer.ad">
+
+        <categorization>
+            <type>application</type>
+            <category>video</category>
+            <subcategory>video</subcategory>
+        </categorization>
+
+        <description language="en">
+            <texts>
+                <title>MX Player</title>
+                <keywords>video, player, movie, media, play</keywords>
+                <short-description>MX Player - The best way to enjoy your movies.</short-description>
+                <full-description>MX Player - The best way to enjoy your movies.
+
+                a) HARDWARE DECODING - With new h/w decoder, more videos can take benefit from hardware acceleration.
+                b) MULTI-CORE DECODING - MX Player is the first Android video player that performs multi-core decoding. According to the test results on dual-core devices, it shows up to 70% performance improvement than single-core devices.
+                c) PINCH TO ZOOM - Easily zoom in and out by pinching and swiping across screen.
+                d) SUBTITLE SCROLL - Scroll on subtitle text and playback position will be adjusted to match previous or next subtitle timing.
+                e) KIDS LOCK - Keep your kids entertained without having to worry about making calls or touching other apps. (plugin required)
+                f) ANDROID 4.1 - Fully supports Android 4.1 Jelly Bean.
+
+                Subtitle formats:
+                - DVD, DVB, SSA/ASS Subtitle tracks.
+                - SubStation Alpha(.ssa/.ass) with full styling.
+                - SAMI(.smi/.sami) with ruby tag support.
+                - SubRip(.srt)
+                - MicroDVD(.sub/.txt)
+                - SubViewer2.0(.sub)
+                - MPL2(.mpl/.txt)
+                - PowerDivX(.psb/.txt)
+                - TMPlayer(.txt)
+                ******
+                About "System Tools - display system-level alerts" permission: this permissions is required to block HOME button when input blocking is activated on video playback screen.
+                ******
+                </full-description>
+                <features>
+                    <feature>Hardware Decoding</feature>
+                    <feature>Multi-core Decoding</feature>
+                    <feature>Pinch to Zoom</feature>
+                    <feature>Subtitle Scroll</feature>
+                </features>
+                <recent-changes>
+                Fixed not automatically advancing to next video/audio when screen is locked.
+                Fixed broken Tegra3 s/w video playback.
+                Fixed broken MIPS s/w audio playback.
+                </recent-changes>
+            </texts>
+
+            <images>
+                <app-icon size="512">appicon.png</app-icon>
+                <large-promo>promo.png</large-promo>
+                <screenshots>
+                    <screenshot>screenshot01_en.png</screenshot>
+                    <screenshot>screenshot02_en.png</screenshot>
+                    <screenshot>screenshot03_en.png</screenshot>
+                    <screenshot>screenshot04_en.png</screenshot>
+                    <screenshot>screenshot05_en.png</screenshot>
+                </screenshots>
+            </images>
+
+            <videos>
+                <youtube-video>B-vkwtQJC8U</youtube-video>
+            </videos>
+
+        </description>
+
+        <description-localization language="de">
+            <texts>
+                <title>MX Player</title>
+                <keywords>video, videoplayer, medien, film</keywords>
+                <short-description>MX Player - Die beste Art seine Filme zu genießen.</short-description>
+                <full-description>
+                    MX Player - Die beste Art seine Filme zu genießen.
+
+                    a) HARDWARE DECODING - Mit dem neuen H/W Decoder können noch mehr Videos von der Hardware-Beschleunigung profitieren.
+                    b) Multi-Kern-DECODING - MX Player ist der erste Android-Video-Player, der Multi-Core-Dekodierung ausführt. Laut der Testergebnisse auf Dualcore-Geräten zeigt es eine Leistungssteigerung bis zu 70 % gegenüber Geräten mit nur einem Prozessorkern.
+                    c) PINCH TO ZOOM - Leichtes Ein-und Auszoomen durch Kneifen der Finger auf dem Bildschirm.
+                    d) UNTERTITEL SCROLLEN - Durch das scrollen der Untertitel Texte wird die Wiedergabe-Position angepasst, um die vorherigen oder nächsten Untertitel im Timing anzupassen.
+                    e) Kindersicherung-Kinder können nicht zu anderen APPs wechseln oder Anrufe tätigen. (Plugin erforderlich)
+                    f) ANDROID 4,1 - volle Unterstützung von Android 4.1 Jelly Bean.
+
+                    Untertitel Formate:
+                    - DVD, DVB, SSA/ASS Untertitel Track.
+                    - SubStation Alpha(.ssa/.ass) mit vollen Styling.
+                    - SAMI(.smi/.sami) mit Ruby Tag Unterstützung.
+                    - SubRip(.srt)
+                    - MicroDVD(.sub/.txt)
+                    - SubViewer2.0(.sub)
+                    - MPL2(.mpl/.txt)
+                    - PowerDivX(.psb/.txt)
+                    - TMPlayer(.txt)
+                    ******
+                    Über die Berechtigung "SYSTEM-TOOLS: WARNUNGEN AUF SYSTEMEBENE ANZEIGEN": Diese Berechtigungen wird benötigt, um die Home-Taste blockieren zu können, wenn die Eingabeblockierung während der Video-Wiedergabe aktiviert ist.
+                    ******
+                </full-description>
+                <features>
+                    <feature>Hardware decoding</feature>
+                    <feature>Multi-Kern decoding</feature>
+                    <feature>Pinch to zoom</feature>
+                    <feature>Untertitel scrollen</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+         <description-localization language="ru">
+            <texts>
+                <title>MX Player</title>
+                <keywords>видео, фильм, плеер, проигрыватель, медиа</keywords>
+                <short-description>MX Player - лучший плеер для просмотра ваших фильмов.</short-description>
+                <full-description>
+                    MX Player - лучший плеер для просмотра ваших фильмов.
+
+                    a) АППАРАТНОЕ ДЕКОДИРОВАНИЕ - теперь поддерживается большее количество форматов видео с новым аппаратным декодером.
+                    b) МНОГОЯДЕРНОЕ ДЕКОДИРОВАНИЕ - MX Player является первым проигрывателем видео на Android, который выполняет многоядерное декодирование. По результатам испытаний на двухъядерных устройствах, он показывает до 70% повышения производительности, в отличие от одноядерных устройств.
+                    c) МАСШТАБИРОВАНИЕ ЩИПКОМ - масштабирование при помощи щипка и свайпа.
+                    d) ПРОКРУТКА СУБТИТРОВ - при прокрутке позиция воспроизведения автоматически синхронизируется с текстом субтитров.
+                    e) УМНАЯ БЛОКИРОВКА - не беспокойтесь о случайных вызовах или запусках других приложений, сделанных вашими увлеченными детьми. (Требуется плагин)
+                    f) ANDROID 4.1 - полная поддержка Android 4.1 Jelly Bean.
+
+                    Форматы субтитров:
+                    - DVD, DVB, SSA/ASS дорожка субтитров
+                    - SubStation Alpha(.ssa/.ass) с полным стилем.
+                    - SAMI(.smi/.sami) с поддержка тегов ruby.
+                    - SubRip(.srt)
+                    - MicroDVD(.sub/.txt)
+                    - SubViewer2.0(.sub)
+                    - MPL2(.mpl/.txt)
+                    - PowerDivX(.psb/.txt)
+                    - TMPlayer(.txt)
+                    ******
+                    О разрешении "Системные инструменты - отображение системных предупреждений": эти разрешения требуются для блокировки кнопки HOME, если эта функция активирована при воспроизведении видео.
+                    ******
+                </full-description>
+                <features>
+                    <feature>Аппаратное декодирование</feature>
+                    <feature>Многоядерное декодирование</feature>
+                    <feature>Масштабирование щипком</feature>
+                    <feature>Прокрутка субтитров</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+            
+
+        <content-description>
+            <content-rating>3</content-rating>
+            <rating-certificates>
+                <rating-certificate type="PEGI">3</rating-certificate>
+                <rating-certificate type="ESRB">3</rating-certificate>
+                <rating-certificate type="GRB">all</rating-certificate>
+                <rating-certificate type="CERO">all</rating-certificate>
+                <rating-certificate type="DEJUS">l</rating-certificate>
+                <rating-certificate type="FSK">0</rating-certificate>
+            </rating-certificates>
+            <content-descriptors>
+                <cartoon-violence>no</cartoon-violence>
+                <realistic-violence>no</realistic-violence>
+                <bad-language>no</bad-language>
+                <fear>no</fear>
+                <sexual-content>no</sexual-content>
+                <drugs>no</drugs>
+                <gambling-refference>no</gambling-refference>
+                <alcohol>no</alcohol>
+                <smoking>strong</smoking>
+                <discrimination>no</discrimination>
+            </content-descriptors>
+            <included-activities>
+                <in-app-billing>no</in-app-billing>
+                <gambling>no</gambling>
+                <advertising>no</advertising>
+                <user-generated-content>no</user-generated-content>
+                <user-to-user-communications>no</user-to-user-communications>
+                <account-creation>no</account-creation>
+                <personal-information-collection>no</personal-information-collection>
+            </included-activities>
+        </content-description>
+    
+        <price free="yes">
+        </price>
+
+        <apk-files>
+            <apk-file>mxplayer.apk</apk-file>
+        </apk-files>
+
+        <testing-instructions></testing-instructions>
+        
+        <consent>
+            <google-android-content-guidelines>yes</google-android-content-guidelines>
+            <us-export-laws>yes</us-export-laws>
+            <slideme-agreement>yes</slideme-agreement>
+            <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+        </consent>
+
+        <customer-support>
+            <phone>+1 (555) 1234-56-78</phone>
+            <email>mxtechs.hq@gmail.com</email>
+            <website>https://sites.google.com/site/mxvpen/</website>
+        </customer-support>
+
+        <store-specific>
+            <amazon>
+                <form-factor>all</form-factor>
+                <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
+                <apply-amazon-drm>yes</apply-amazon-drm>
+                <kindle-support>
+                    <kindle-fire-first-generation>yes</kindle-fire-first-generation>
+                    <kindle-fire>yes</kindle-fire>
+                    <kindle-fire-hd>yes</kindle-fire-hd>
+                    <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
+                </kindle-support>
+                <binary-alias>Version 1.7.10</binary-alias>
+            </amazon>
+            
+           
+        </store-specific>
+
+    </application>
+
+</application-description-file>
