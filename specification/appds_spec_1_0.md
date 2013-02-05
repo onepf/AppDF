@@ -898,7 +898,7 @@ The full application description is shown on the product page. You can include s
   <tr>
     <td>&lt;features&gt;</td>
     <td>Features</td>
-    <td>This tag must be removed by the store in any way. The content of the tag is either included (if the store does not support a separate feature list) or ignored</td>
+    <td>This tag must be removed by the store, its content is either included (if the store does not support a separate feature list) or ignored</td>
   </tr>
 </table>
 
