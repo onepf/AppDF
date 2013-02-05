@@ -6508,7 +6508,7 @@ Last update: February 05, 2013
 
 Change History
 -------------
-### 0.94 February 05, 2013
+### Version 0.94 (February 05, 2013)
 
 * Option to have multiple description.xml files inside one AppDF archive for localization purposes is removed. All localizations must be included in the main `description.xml` file.
 * APK file extension support is removed because only Google Play supports this technology today and any application that uses APK extension files will not work in any of the alternative Android application stores.
