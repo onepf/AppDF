@@ -33,15 +33,13 @@ make that store info section for category appears by default after page is loade
 make APK file required, disable everything else until APK is added
 
 SPECIFICATION
-remove APK file extensions from the specification
 add tags like in Samsung and Naver
-Maximum length: at least one tag should be shorter than 30 symbols. -> first title should be shorter than 30 symbols
-Remove additional files, make one XML file only
-local price includes country only, no currency code
-add link to country JSON and XML 
-in the big sample show case of paid app and show in comments free case
-remove wrong comment from sample that custom-support is an optional section <!--Optional tag, if missed customer support info from the account is used-->
-allow full description to contain markup tags. special tags for <features>. enumerate allowed markup and how to remove it
 add consent importexport for Amazon (before I thought Amazon is us_export, but it is not)
-fix missprinting in "reference" (see email)
 Ask Yevgeniy to change 
+XSD for full-description clearly describe which tags are allowed
+    
+    <xsd:complexType mixed="true">
+      <xsd:choice minOccurs="1" maxOccurs="unbounded">
+        <xsd:element name="apk-file" type="type-attr-localfile" />
+      </xsd:choice>
+    </xs:complexType>
