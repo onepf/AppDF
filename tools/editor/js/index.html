@@ -36,6 +36,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 	<script type="text/javascript" src="data/countries.js"></script>
 	<script type="text/javascript" src="data/country_currencies.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/holder.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/jqBootstrapValidation.js"></script>    
 	<script type="text/javascript" src="js/xmlgenerator.js"></script>    
@@ -357,6 +358,65 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 											</div>
 										</div><!--./control-group -->
 									 
+										<div class="control-group">
+											<!-- description/images/app-icon -->
+											<label class="control-label" for="description-images-appicon">Application icon</label>
+											<div class="controls">
+												<div class="todoimage-input-group">
+													<input type="file" id="description-images-appicon" class="hide ie_show" 
+														name="description-images-appicon" 
+														accept="image/png"
+														data-validation-callback-callback="validationCallbackAppIconFirst"
+													/>
+													<a href="#" onclick="appiconClick(this); return false;" ><img data-src="holder.js/128x128/text:Click to choose image" id="description-images-appicon-img" width="128" height="128"></a>
+													<p class="image-input-name"></p>
+												</div>
+												<p class="help-block">512x512 PNG file with application icon shown in the application list</p>
+											</div>
+										</div><!--./control-group -->
+
+										<div class="control-group">
+											<!-- description/images/screenshots -->
+											<label class="control-label" for="description-images-screenshots">Screenshots</label>
+											<div class="controls">
+												<div style="clear: both;">
+													<div class="screenshot-container">
+														<input type="file" id="description-images-screenshots-1" class="hide ie_show" 
+															name="description-images-screenshots-1" 
+															accept="image/png"
+															data-validation-callback-callback="validationCallbackScreenshotRequired"
+														/>
+														<img src="http://www.spb.com/templates/site/images/main/header_logo.gif?100" onclick="screenshotClick(this);" id="description-images-screenshots-img-1" width="128" height="220">
+													</div>
+													<div class="screenshot-container">
+														<input type="file" id="description-images-screenshots-2" class="hide ie_show" 
+															name="description-images-screenshots-2" 
+															accept="image/png"
+															data-validation-callback-callback="validationCallbackScreenshotRequired"
+														/>
+														<img src="http://www.spb.com/templates/site/images/main/header_logo.gif?100" onclick="screenshotClick(this);" id="description-images-screenshots-img-2" width="128" height="220">
+													</div>
+													<div class="screenshot-container">
+														<input type="file" id="description-images-screenshots-3" class="hide ie_show" 
+															name="description-images-screenshots-3" 
+															accept="image/png"
+															data-validation-callback-callback="validationCallbackScreenshotRequired"
+														/>
+														<img src="http://www.spb.com/templates/site/images/main/header_logo.gif?100" onclick="screenshotClick(this);" id="description-images-screenshots-img-3" width="128" height="220">
+													</div>
+													<div class="screenshot-container">
+														<input type="file" id="description-images-screenshots-4" class="hide ie_show" 
+															name="description-images-screenshots-4" 
+															accept="image/png"
+															data-validation-callback-callback="validationCallbackScreenshotRequired"
+														/>
+														<img src="http://www.spb.com/templates/site/images/main/header_logo.gif?100" onclick="screenshotClick(this);" id="description-images-screenshots-img-4" width="128" height="220">
+													</div>
+												</div>
+												<p class="help-block">512x512 PNG file with application icon that is shown in the application list</p>
+											</div>
+										</div><!--./control-group -->
+
 									</div><!--./tab-pane -->
 								</div><!--./tab-content -->
 							</div><!--./tabbable -->			    
@@ -402,12 +462,12 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 											<div class="controls">
 												<div class="input-prepend">
 													<span class="add-on">USD</span>
-													<input type="text" id="price-baseprice" class="input-small"
+													<input type="text" id="price-baseprice" class="input-small" value="0"
 														pattern="^\d+\.\d+$|^\d+$"
 														data-validation-pattern-message="Wrong price value. Must be a valid number like '15.95'."
 													>
 												</div>
-												<p class="help-block">Default product price in USD. Price for other currencies will be automatically converted by the stores from USD. If you want manual control you can <button onclick="addMoreLocalPrice(this, '', ''); return false;"; class="btn">add local prices</button>.</p>
+												<p class="help-block">Default product price in USD. Price for other currencies will be automatically converted by the stores from USD. If you want manual control you can <button onclick="addMoreLocalPrice(this, '', ''); return false;" class="btn">add local prices</button>.</p>
 											</div>
 										</div><!--./control-group -->
 									</div><!--./tab-pane -->
@@ -457,7 +517,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 									<input id="customersupport-website" type="text" 
 										name="customersupport-website"
 										required 
-										data-validation-regex-regex="^((http|https):\/\/)?[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?$"; 
+										data-validation-regex-regex="^((http|https):\/\/)?[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?$"
 										data-validation-required-message="Customer support website is required"
 										data-validation-regex-message="Wrong customer support webpage format. Must be a valid URL."										 
 									>
@@ -477,12 +537,17 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 								<div class="controls">
 									<label class="checkbox">
 										<input type="checkbox" value="" id="consent-googleandroidcontentguidelines">
-										<a href="http://play.google.com/about/developer-content-policy.html">Google Android content guidelines</a>
+										This application meets <a href="http://play.google.com/about/developer-content-policy.html">Android Content Guidelines</a>
 									</label>							
 
 									<label class="checkbox">
 										<input type="checkbox" value="" id="consent-usexportlaws">
-										<a href="https://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=113770">US export laws</a>
+										I acknowledge that this application may be subject to United States export laws, regardless of my location or nationality. I agree that I have complied with all such laws, including any requirements for software with encryption functions. I hereby certify that my application is authorized for export from the United States under these laws. <a href="https://support.google.com/googleplay/android-developer/support/bin/answer.py?answer=113770">More...</a>										
+									</label>							
+
+									<label class="checkbox">
+										<input type="checkbox" value="" id="consent-importexportlaws">
+										I certify that this application may be imported to and exported from any country in which you've authorized sales to end users (without the need for the stores to obtain any license or clearance or take any other action) and is in full compliance with all applicable laws and regulations governing imports and exports, including those applicable to software that makes use of encryption technology. 
 									</label>							
 								</div>
 							</div><!--control-group-->

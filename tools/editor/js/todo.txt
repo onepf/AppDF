@@ -1,14 +1,17 @@
+add image placeholders
+When build error highlight APK or AppIcon sections
+make special class for div that wrapps invisible input=file + image. rewrite functions to pair input and image via this div
+Make end validation waiting for the callbacks (for example image size)
 separate remove group functionality to a separate function
-refactor appdfeditor.js to be a class per section
 add checking еthat XML tag exist
+remove JavaScript code from HTML (add handlers for IDs in JavaScript)
 add optional and required loading
+check that there are no files with the same name. show error or automatically rename the files
 make localization optional loading while default language required where needed
-make last "/"" symbol not needed in data path
 make sure that all $ elements are started with $ in names
-Add attributes and multiple full description loading, convert full description to array and support it in 
+NEW WAY - allow markup - Add attributes and multiple full description loading, convert full description to array and support it in 
 OR
 Create one field for full description with set of rules of converting it
-
 
 add validation that keywords cannot be empty
 rename parent to peer in addMore...
@@ -22,17 +25,11 @@ add tabs to full description (plain, feature less, html)
 keyword: move new created on top
 keyword: move focus to just created field
 
-IMAGES
-
 run jslint on all the files
 completeXMLstringAt - convert to array with Join
 return error message from ApkParser
 add all needed comments
 make that store info section for category appears by default after page is loaded
-
-add price validation to be a number
-Change local price style to append from both sides
-make file input field read only
 make APK file required, disable everything else until APK is added
 
 SPECIFICATION
@@ -44,3 +41,7 @@ local price includes country only, no currency code
 add link to country JSON and XML 
 in the big sample show case of paid app and show in comments free case
 remove wrong comment from sample that custom-support is an optional section <!--Optional tag, if missed customer support info from the account is used-->
+allow full description to contain markup tags. special tags for <features>. enumerate allowed markup and how to remove it
+add consent importexport for Amazon (before I thought Amazon is us_export, but it is not)
+fix missprinting in "reference" (see email)
+Ask Yevgeniy to change 

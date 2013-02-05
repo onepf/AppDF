@@ -13,3 +13,10 @@ div.apk-file-info {
 .marginedinput {
 	padding-top: 5px;
 }
+
+.screenshot-container {
+	float: left;
+	border: 1px solid gray;
+	padding: 5px;
+	margin: 10px;
+}

@@ -165,12 +165,20 @@ function collectBuildErrors() {
 		};
 	});
 
+	validationCallbackAppIconFirst($("#description-images-appicon"), $("#description-images-appicon").val(), function(data) {
+		if (!data.valid) {
+			if (errorArray.indexOf(data.message) == -1) {
+				errorArray.push(data.message);
+			};
+		};
+	});
+
 	return errorArray;
 };
 
 function showBuildErrors(errors) {
 	//First trigger showing error messages inside control helpers
-//	$("input,select,textarea").trigger("submit.validation").trigger("validationLostFocus.validation");
+	$("input,select,textarea").trigger("submit.validation").trigger("validationLostFocus.validation");
 
 	var $list = $("#form-errors").find("ul");
 
@@ -210,7 +218,7 @@ function buildAppdDFFile(event) {
 	if (errors.length>0) {
 		//If there are errors we just show the errors and return
 		showBuildErrors(errors);
-//todo:temp trick		return false;
+		return false;
 	} 
 
 	//If there are not errors, we hide the error block and show the progress block
@@ -385,7 +393,10 @@ function addMoreKeywords(e, value) {
 	var $controlGroup = $(' \
 		<div class="keyword-countainer"> \
 			<div class="input-append"> \
-				<input type="text" id="description-texts-keywords-more-' + getUniqueId() + '" value="' + value + '"> \
+				<input type="text" id="description-texts-keywords-more-' + getUniqueId() + '" value="' + value + '" \
+				required \
+				data-validation-required-message="Keyword cannot be empty. Remove keyword input if you do not need it." \
+				> \
 				<button class="btn" type="button" onclick="removeKeyword(this); return false;"><i class="icon-remove"></i></button> \
 			</div> \
 		</div> \
@@ -590,4 +601,99 @@ function validationCallbackApkFileMore($el, value, callback) {
 // 	$("#load-errors-message").html(error);
 // };
 
+function getImgSize(imgSrc, onsize) {
+	var newImg = new Image();
+	newImg.onload = function() {
+		var width = newImg.width;
+		var height = newImg.height;
+		onsize(width, height);
+	};
+	newImg.src = imgSrc; // this must be done AFTER setting onload
+};
 
+function validationCallbackAppIconFirst($el, value, callback) {
+	console.log("validationCallbackAppIconFirst");
+	var imageFileName = normalizeInputFileName($el.val());
+
+	if ($el[0].files.length==0) {
+		callback({
+			value: value,
+			valid: false,
+			message: "Application icon is required"
+		});
+		return;
+	};
+	
+	var file = $el[0].files[0];
+
+	var URL = window.webkitURL || window.mozURL || window.URL;	
+	var imgUrl = URL.createObjectURL(file);
+
+	console.log($el);
+	$el.closest(".image-input-group").find("img").attr("src", imgUrl);
+	$el.closest(".image-input-group").find("p").text(imageFileName);
+	console.log($el.closest(".image-input-group"));
+
+	getImgSize(imgUrl, function(width, height) {
+		if (width==512 && height==512) {
+			callback({
+				value: value,
+				valid: true
+			});
+		} else {
+			callback({
+				value: value,
+				valid: false,
+				message: "Application icon size must be 512x512"
+			});
+		};
+	});
+};
+
+function validationCallbackScreenshotRequired($el, value, callback) {
+	console.log("validationCallbackScreenshotRequired");
+	var imageFileName = normalizeInputFileName($el.val());
+
+	if ($el[0].files.length==0) {
+		callback({
+			value: value,
+			valid: false,
+			message: "Four screenshot images are required"
+		});
+		return;
+	};
+	
+	var file = $el[0].files[0];
+
+	var URL = window.webkitURL || window.mozURL || window.URL;	
+	var imgUrl = URL.createObjectURL(file);
+
+	console.log($el);
+	$el.closest(".image-input-group").find("img").attr("src", imgUrl);
+	$el.closest(".image-input-group").find("p").text(imageFileName);
+	console.log($el.closest(".image-input-group"));
+
+	getImgSize(imgUrl, function(width, height) {
+		if (true /*todo: add some size checking*/) {
+			callback({
+				value: value,
+				valid: true
+			});
+		} else {
+			callback({
+				value: value,
+				valid: false,
+				message: "Wrong screenshot size" //todo: better error message
+			});
+		};
+	});
+};
+
+function appiconClick(e) {
+	$(e).closest(".controls").children("input").click();
+};
+
+function screenshotClick(e) {
+	console.log("screenshotClick");
+	$(e).closest(".screenshot-container").children("input").click();
+};
