@@ -2568,7 +2568,7 @@ Reference country list in [JSON](data/countries.json) and [XML](data/countries.x
 
 Reference currency list in [JSON](data/currencies.json) and [XML](data/currencies.xml) formats.
 
-Currencies used in different countries in [JSON](data/country_currencies.json) and [XML](data/country_currencies.xml) formats. One currency per country. If there are several official currencies in a country one is selected. Local prices are defines in a currency defined according to this table. 
+Currencies used in different countries in [JSON](data/country_currencies.json) and [XML](data/country_currencies.xml) formats. One currency per country. If there are several official currencies in a country one is selected. Local prices are set in a currency defined according to this table. 
 
 <table>
   <tr>
@@ -2579,7 +2579,7 @@ Currencies used in different countries in [JSON](data/country_currencies.json) a
   </tr>
   <tr>
     <td>country</td>
-    <td>two letter ISO 3166-1 country code, see the list in [JSON](data/countries.json) or [XML](data/countries.xml) formats</td>
+    <td>two letter ISO 3166-1 country code, see the list in <a href="data/countries.json">JSON</a> or <a href="data/countries.xml">XML</a> formats</td>
     <td>required</td>
     <td></td>
   </tr>
