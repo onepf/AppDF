@@ -5756,7 +5756,11 @@ The AppDF category list is available as [JSON](data/categories.json) or [XML](da
 
 Localization Support
 -------------
-AppDF supports localization to all the languages. Nevertheless not all languages supported by all the stores. The following tables contain information about current language support status (updated January 14, 2013).
+AppDF supports localization to all the languages. Nevertheless not all languages supported by all the stores. 
+
+Reference language list in [JSON](data/languages.json) and [XML](data/languages.xml) formats.
+
+The following tables contain information about current language support status (updated January 14, 2013).
 
 <table>
   <tr>
