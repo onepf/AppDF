@@ -1723,7 +1723,7 @@ Reference country list in [JSON](data/countries.json) and [XML](data/countries.x
   </tr>
   <tr>
     <td>language</td>
-    <td>two letter ISO 639-1 language code (like "en", full language list in [JSON](data/languages.json) and [XML](data/languages.xml) formats) or two letters language code + two letter ISO 3166‑1 country code (like "en-us", full country list in [JSON](data/countries.json) and [XML](data/countries.xml) formats)</td>
+    <td>two letter ISO 639-1 language code (like "en", full language list in <a href="data/languages.json">JSON</a> and <a href="data/languages.xml">XML</a> formats) or two letters language code + two letter ISO 3166‑1 country code (like "en-us", full country list in <a href="data/countries.json">JSON</a> and <a href="data/countries.xml">XML</a> formats)</td>
     <td>required tag</td>
   </tr>
 </table>
