@@ -86,8 +86,8 @@ Sample Description.xml File
     <subcategory>investing</subcategory>
   </categorization>
 
-  <!--Language is set in two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")-->
-  <description language="en">
+  <!--Application description in English (English US)-->
+  <description>
     <texts>
       <!-- The first title must be 30 symbols or shorter, longer titles will be used by the stores that support longer titles -->
       <title>Yandex.Shell</title>
@@ -146,7 +146,7 @@ Sample Description.xml File
   </description>
 
   <!--Description can be localized to other languages using this tag-->
-  <!--Language is set in two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")-->
+  <!--Language is set in two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-au")-->
   <!--This tag has the same structure as description but all subtags are optional-->
   <!--If some subtags are missed they are taken from the default language description-->
   <description-localization language="ru">
@@ -576,26 +576,12 @@ Although some stores don't use subcategories AppDF includes as detailed category
 
 ### description 
 Required.
-Attributes: `language`. 
 
-This section contains product description in text form as well as pictures and videos. A part of the main `<description>` tag there could be several `<description-localization>` tags for different languages. If some information is missing in the localized `<description-localization>` tag it will be taken from the default `<description>` section.
-
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Possible values</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td>language</td>
-    <td>two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")</td>
-    <td>required tag</td>
-  </tr>
-</table>
+This section contains product description in text form as well as pictures and videos in English US language. A part of the main `<description>` tag there could be several `<description-localization>` tags for different languages. If some information is missing in the localized `<description-localization>` tag it will be taken from the default `<description>` section.
 
 Example:
 ```xml
-<description language="en">
+<description>
   <texts>
     <title>Yandex.Shell</title>
     <title>Yandex.Shell - Free Launcher + Dialer + Widgets</title>
@@ -3500,7 +3486,7 @@ Each store subtag can replace any of the parameters from the entire description.
 <store-specific>
   <amazon>
     <application>
-      <description language="en">
+      <description>
         <images>
           <large-promo>promo_amazon.png</large-promo>
         </images> 
@@ -6526,6 +6512,7 @@ Change History
 * Only one copy of `<full-description>` tag can be presented (before it was possible to have multiple `<full-description>` tags).
 * A special `<features>` section is added as an option inside the `<full-description>` tag to allow product description that contain the feature list but do not duplicate it on the stores that have a separate feature list.
 * `<import-export>` tag is added to the `<consent>` section in order to support Amazon AppStore.
+* `language` attribute is removed from the `<description>` tag. Now default description is always in English US.
 
 License
 -------------
