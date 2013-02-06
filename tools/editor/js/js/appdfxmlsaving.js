@@ -135,8 +135,6 @@ function generatePriceXML(xml) {
 				xml.addTag("<local-price country=\"" + countryCode + "\">", $(this).val());
 			});
 		};
-		// xml.addTag("<google-android-content-guidelines>", isCheckboxChecked("consent-googleandroidcontentguidelines"));
-		// xml.addTag("<us-export-laws>", isCheckboxChecked("consent-usexportlaws"));
 	});
 };
 

@@ -362,14 +362,16 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 											<!-- description/images/app-icon -->
 											<label class="control-label" for="description-images-appicon">Application icon</label>
 											<div class="controls">
-												<div class="todoimage-input-group">
-													<input type="file" id="description-images-appicon" class="hide ie_show" 
-														name="description-images-appicon" 
-														accept="image/png"
-														data-validation-callback-callback="validationCallbackAppIconFirst"
-													/>
-													<a href="#" onclick="appiconClick(this); return false;" ><img data-src="holder.js/128x128/text:Click to choose image" id="description-images-appicon-img" width="128" height="128"></a>
-													<p class="image-input-name"></p>
+												<div class="image-group">
+													<div class="image-input-group">
+														<input type="file" id="description-images-appicon" class="hide ie_show" 
+															name="description-images-appicon" 
+															accept="image/png"
+															data-validation-callback-callback="validationCallbackAppIconFirst"
+														/>
+														<img data-src="holder.js/128x128/text:Click to choose image" id="description-images-appicon-img" width="128" height="128">
+														<p class="image-input-name"></p>
+													</div>
 												</div>
 												<p class="help-block">512x512 PNG file with application icon shown in the application list</p>
 											</div>
@@ -379,14 +381,14 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 											<!-- description/images/screenshots -->
 											<label class="control-label" for="description-images-screenshots">Screenshots</label>
 											<div class="controls">
-												<div style="clear: both;">
-													<div class="screenshot-container">
+												<div>
+													<div class="image-input-group">
 														<input type="file" id="description-images-screenshots-1" class="hide ie_show" 
 															name="description-images-screenshots-1" 
 															accept="image/png"
 															data-validation-callback-callback="validationCallbackScreenshotRequired"
 														/>
-														<img src="http://www.spb.com/templates/site/images/main/header_logo.gif?100" onclick="screenshotClick(this);" id="description-images-screenshots-img-1" width="128" height="220">
+														<img data-src="holder.js/128x220/text:Screenshot #1" width="128" height="220">
 													</div>
 													<div class="screenshot-container">
 														<input type="file" id="description-images-screenshots-2" class="hide ie_show" 
@@ -394,7 +396,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 															accept="image/png"
 															data-validation-callback-callback="validationCallbackScreenshotRequired"
 														/>
-														<img src="http://www.spb.com/templates/site/images/main/header_logo.gif?100" onclick="screenshotClick(this);" id="description-images-screenshots-img-2" width="128" height="220">
+														<img data-src="http://www.spb.com/templates/site/images/main/header_logo.gif?100" onclick="screenshotClick(this);" id="description-images-screenshots-img-2" width="128" height="220">
 													</div>
 													<div class="screenshot-container">
 														<input type="file" id="description-images-screenshots-3" class="hide ie_show" 
@@ -402,7 +404,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 															accept="image/png"
 															data-validation-callback-callback="validationCallbackScreenshotRequired"
 														/>
-														<img src="http://www.spb.com/templates/site/images/main/header_logo.gif?100" onclick="screenshotClick(this);" id="description-images-screenshots-img-3" width="128" height="220">
+														<img data-src="http://www.spb.com/templates/site/images/main/header_logo.gif?100" onclick="screenshotClick(this);" id="description-images-screenshots-img-3" width="128" height="220">
 													</div>
 													<div class="screenshot-container">
 														<input type="file" id="description-images-screenshots-4" class="hide ie_show" 
@@ -410,7 +412,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 															accept="image/png"
 															data-validation-callback-callback="validationCallbackScreenshotRequired"
 														/>
-														<img src="http://www.spb.com/templates/site/images/main/header_logo.gif?100" onclick="screenshotClick(this);" id="description-images-screenshots-img-4" width="128" height="220">
+														<img data-src="http://www.spb.com/templates/site/images/main/header_logo.gif?100" onclick="screenshotClick(this);" id="description-images-screenshots-img-4" width="128" height="220">
 													</div>
 												</div>
 												<p class="help-block">512x512 PNG file with application icon that is shown in the application list</p>
