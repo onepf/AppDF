@@ -110,6 +110,21 @@ $(document).ready(function() {
             return false;
         };
     });
+
+    $('body').on('change', '.image-input', function(e) {
+        if (e.target.files.length === 0) {
+            return;
+        };
+        
+        var $el = $(e.target);
+        var imageFileName = normalizeInputFileName($el.val());
+        var URL = window.webkitURL || window.mozURL || window.URL;    
+        var file = e.target.files[0];
+        var imgUrl = URL.createObjectURL(file);
+
+        $el.closest(".image-input-group").find("img").attr("src", imgUrl);
+        addMoreAppIcon($el);
+    });
 });
 
 function fillApkFileInfo($el, apkData) {
@@ -654,7 +669,6 @@ function getImgSize(imgSrc, onsize) {
 
 function validationCallbackAppIconFirst($el, value, callback) {
     console.log("validationCallbackAppIconFirst");
-    var imageFileName = normalizeInputFileName($el.val());
 
     if ($el[0].files.length === 0) {
         callback({
@@ -665,14 +679,13 @@ function validationCallbackAppIconFirst($el, value, callback) {
         return;
     };
     
+    var imageFileName = normalizeInputFileName($el.val());
     var file = $el[0].files[0];
-
     var URL = window.webkitURL || window.mozURL || window.URL;    
     var imgUrl = URL.createObjectURL(file);
 
-    $el.closest(".image-input-group").find("img").attr("src", imgUrl);
-
-    addMoreAppIcon($el[0]);
+//    $el.closest(".image-input-group").find("img").attr("src", imgUrl);
+//    addMoreAppIcon($el[0]);
 
     getImgSize(imgUrl, function(width, height) {
         $el.closest(".image-input-group").find(".image-input-name").text(imageFileName + " " + width + "x" + height);

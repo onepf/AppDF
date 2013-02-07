@@ -46,11 +46,20 @@ function generateOneLanguageTextDescription(languageCode, xml) {
 		xml.addNonEmptyTextTag("<full-description>", $parent.find("#description-texts-fulldescription").val());
 
 		//Features
-		xml.addTag("<features>", function() {
-			$parent.find("input[id^=description-texts-features-]").each(function() {
-				xml.addNonEmptyTextTag("<feature>", $(this).val());
-			});
+		var $features = $parent.find("input[id^=description-texts-features-]");
+		var anyNonEmptyFeature = false;
+		$features.each(function() {
+			if ($(this).val()!="") {
+				anyNonEmptyFeature = true;
+			};
 		});
+		if (anyNonEmptyFeature) {
+			xml.addTag("<features>", function() {
+				$features.each(function() {
+					xml.addNonEmptyTextTag("<feature>", $(this).val());
+				});
+			});
+		};
 
 		//Recent changes
 		var strRecentChanges = $parent.find("#description-texts-recentchanges").val();

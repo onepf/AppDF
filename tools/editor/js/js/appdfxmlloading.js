@@ -138,6 +138,13 @@ function loadDescriptionXML(xml, onend, onerror) {
 			};
 		};
 
+		//Consent
+		$("#consent-googleandroidcontentguidelines").attr("checked", data["consent"]["google-android-content-guidelines"]);
+		$("#consent-usexportlaws").attr("checked", data["consent"]["us-export-laws"]);
+		$("#consent-importexportlaws").attr("checked", data["consent"]["us-export-laws"]);
+		$("#consent-slidemeagreement").attr("checked", data["consent"]["slideme-agreement"]);
+		$("#consent-freefromthirdpartycopytightedcontent").attr("checked", data["consent"]["free-from-third-party-copytighted-content"]);
+
 		//Customer support
 		$("#customersupport-phone").val(data["customer-support"]["phone"]);
 		$("#customersupport-email").val(data["customer-support"]["email"]);

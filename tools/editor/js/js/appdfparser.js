@@ -87,7 +87,7 @@ function parseDescriptionXML(xmlText, onend, onerror) {
 		});
 	};
 
-	//Load sttribute
+	//Load yes/no attribute
 	function loadBooleanAttribute(dataPath, xmlPath, attributeName) {
 		loadHelper(dataPath, xmlPath, function(d, name, $e) {
 			if ($e.length>0) {
@@ -98,6 +98,25 @@ function parseDescriptionXML(xmlText, onend, onerror) {
 					d[name] = false;
 				} else {
 					errors.push("Wrong attribute value \"" + attributeValue + "\" in tag <" + $e[0].tagName + ">. Must be \"yes\" or \"no\".");
+				};
+			};
+		});
+	};
+
+	//Load yes/no tag
+	function loadBoolean(dataPath, xmlPath) {
+		loadHelper(dataPath, xmlPath, function(d, name, $e) {
+			if ($e.length>0) {
+				d[name] = $e.text();
+			};
+			if ($e.length>0) {
+				var tagValue = $e.text();
+				if (tagValue=="yes") {
+					d[name] = true;
+				} else if (tagValue=="no") {
+					d[name] = false;
+				} else {
+					errors.push("Wrong value in tag <" + $e[0].tagName + ">. Must be \"yes\" or \"no\".");
 				};
 			};
 		});
@@ -186,6 +205,15 @@ function parseDescriptionXML(xmlText, onend, onerror) {
 		};
 	});
 
+	//Consent
+	section("consent", "consent", function() {
+		loadBoolean("google-android-content-guidelines");
+		loadBoolean("us-export-laws");
+		loadBoolean("slideme-agreement");
+		loadBoolean("free-from-third-party-copytighted-content");
+		loadBoolean("import-export");
+	});
+
 	//Customer Support
 	section("customer-support", "customer-support", function() {
 		loadText("phone");
@@ -217,6 +245,7 @@ function validateDescriptionXMLData(data) {
 	errors.append(validateCategorization(data.categorization));
 	errors.append(validateDescriptionTexts("default", data.description.default.texts));
 	errors.append(validatePrice(data.price));
+	errors.append(validateConsent(data["consent"]));
 	errors.append(validateCustomerSupport(data["customer-support"]));
 
 	console.log("errors");
@@ -276,6 +305,32 @@ function validateDescriptionTexts(languageCode, data) {
 	};
 
 	return errors;
+};
+
+function validateConsent(data) {
+	var errors = [];
+
+	if (isUndefined(data["google-android-content-guidelines"])) {
+		errors.push("Required <google-android-content-guidelines> tag in <consent> section is missing");
+	};
+
+	if (isUndefined(data["us-export-laws"])) {
+		errors.push("Required <us-export-laws> tag in <consent> section is missing");
+	};
+
+	if (isUndefined(data["slideme-agreement"])) {
+		errors.push("Required <slideme-agreement> tag in <consent> section is missing");
+	};
+
+	if (isUndefined(data["free-from-third-party-copytighted-content"])) {
+		errors.push("Required <free-from-third-party-copytighted-content> tag in <consent> section is missing");
+	};
+
+	if (isUndefined(data["import-export"])) {
+		errors.push("Required <import-export> tag in <consent> section is missing");
+	};
+
+	return errors;	
 };
 
 function validateNumber(value, errorMessage) {

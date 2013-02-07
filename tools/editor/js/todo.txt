@@ -1,6 +1,7 @@
-remove <features> from localization if there are no features
 Localization appIcon is clickable but image is not set
 Show (remove) only after image is added
+change specification to clearly describe country availabilities, include/exclude behavour
+make app icon removable in localization
 Center image labels
 Change screenshot design
 Allow emptry package name for full version field 

@@ -364,7 +364,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 											<div class="controls">
 												<div class="image-group">
 													<div class="image-input-group">
-														<input type="file" id="description-images-appicon" class="hide ie_show" 
+														<input type="file" id="description-images-appicon" class="hide ie_show image-input" 
 															name="description-images-appicon" 
 															accept="image/png"
 															data-validation-callback-callback="validationCallbackAppIconFirst"
@@ -450,7 +450,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 											<label class="control-label" for="price-free-full-version">Full version</label>
 											<div class="controls">
 												<input type="text" class="input-large" id="price-free-fullversion" name="price-free-fullversion" disabled
-													pattern="^([a-zA-Z0-9\-]+\.)+[a-zA-Z0-9\-]+$"
+													pattern="^$|^([a-zA-Z0-9\-]+\.)+[a-zA-Z0-9\-]+$"
 													data-validation-pattern-message="Wrong package name format. Must be a valid Android package name like 'org.wikimedia.wikipedia'"
 												>
 												<p class="help-block">If there is another app which is a full version of your app you can enter its package name here</p>
