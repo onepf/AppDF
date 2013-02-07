@@ -18,7 +18,7 @@ function generateCategorizationXML(xml) {
 	});
 };
 
-function generateOneLanguageDescription(languageCode, xml) {
+function generateOneLanguageTextDescription(languageCode, xml) {
 	$parent = $("#localization-tab-" + languageCode);
 
 	xml.addTag("<texts>", function() {
@@ -67,7 +67,24 @@ function generateOneLanguageDescription(languageCode, xml) {
 		if (strEULA!="") {
 			xml.addNonEmptyTextTag("<eula>", strEULA);		
 		};
-	});		
+	});	
+};
+
+function generateOneLanguageImageDescription(languageCode, xml) {
+	$parent = $("#localization-tab-" + languageCode);
+
+	xml.addTag("<images>", function() {
+		//Application icon
+
+		$parent.find("input[id^=description-images-appicon]").each(function() {
+			xml.addNonEmptyTextTag("<app-icon>", normalizeInputFileName($(this).val()));
+		});
+	});	
+};
+
+function generateOneLanguageDescription(languageCode, xml) {
+	generateOneLanguageTextDescription(languageCode, xml);
+	generateOneLanguageImageDescription(languageCode, xml);
 };
 
 function generateDescriptionXML(xml) {
@@ -103,7 +120,10 @@ function isCheckboxChecked(id) {
 function generateConsentXML(xml) {
 	xml.addTag("<consent>", function() {
 		xml.addTag("<google-android-content-guidelines>", isCheckboxChecked("consent-googleandroidcontentguidelines"));
+		xml.addTag("<slideme-agreement>", isCheckboxChecked("consent-slidemeagreement"));
 		xml.addTag("<us-export-laws>", isCheckboxChecked("consent-usexportlaws"));
+		xml.addTag("<free-from-third-party-copytighted-content>", isCheckboxChecked("consent-freefromthirdpartycopytightedcontent"));
+		xml.addTag("<import-export>", isCheckboxChecked("consent-importexportlaws"));
 	});
 };
 

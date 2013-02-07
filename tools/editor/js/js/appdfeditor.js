@@ -100,6 +100,14 @@ $(document).ready(function() {
     $('body').on('click', '.image-input-group', function(e) {
         if (e.target.tagName.toLowerCase() === "img") {
             $(e.target).closest(".image-input-group").children("input").click();
+            return false;
+        };
+    });
+
+    $('body').on('click', '.image-input-remove', function(e) {
+        if (e.target.tagName.toLowerCase() === "a") {
+            $(e.target).closest(".image-input-group").remove();
+            return false;
         };
     });
 });
@@ -132,7 +140,13 @@ function generateAppDFFile(onend) {
         files.push($(this)[0].files[0]);
     });
 
-    var apkFile = document.getElementById("apk-file");
+    //Add all application icons
+    $("input[id^=description-images-appicon]").each(function() {
+        if ($(this)[0].files[0]) {
+            //check if the file is already in the list then do not push it
+            files.push($(this)[0].files[0]);
+        };
+    });
 
     zip.createWriter(new zip.BlobWriter(), function(writer) {
 
@@ -474,8 +488,8 @@ function addMoreAppIcon(e) {
             accept="image/png" \
             data-validation-callback-callback="validationCallbackAppIconFirst" \
         /> \
-        <img src="https://si0.twimg.com/profile_images/422104348/DSC_0206-sm_normal.jpg" width="128" height="128"> \
-        <p class="image-input-name"></p> \
+        <img src="img/appicon_placeholder.png" width="128" height="128"> \
+        <p><span class="image-input-name"></span> (<a href="#" class="image-input-remove">remove</a>)</p> \
     </div> \
     ');
     $parent.append($controlGroup);
@@ -611,7 +625,8 @@ function validationCallbackApkFileFirst($el, value, callback) {
         if (data.valid) {
             var descriptionXML = localStorage.getItem(firstApkFileData.package);
             if (descriptionXML && descriptionXML!="") {
-                loadDescriptionXML(descriptionXML, function(){}, function(error){});
+//todo: handle carefully that we set it only if page is empty
+//                loadDescriptionXML(descriptionXML, function(){}, function(error){});
             };
         };
         callback(data);
@@ -655,13 +670,12 @@ function validationCallbackAppIconFirst($el, value, callback) {
     var URL = window.webkitURL || window.mozURL || window.URL;    
     var imgUrl = URL.createObjectURL(file);
 
-    console.log($el.closest(".image-input-group"));
     $el.closest(".image-input-group").find("img").attr("src", imgUrl);
-    $el.closest(".image-input-group").find("p").text(imageFileName);
 
     addMoreAppIcon($el[0]);
 
     getImgSize(imgUrl, function(width, height) {
+        $el.closest(".image-input-group").find(".image-input-name").text(imageFileName + " " + width + "x" + height);
         if (width===512 && height===512) {
             callback({
                 value: value,

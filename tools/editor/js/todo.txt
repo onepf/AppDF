@@ -1,22 +1,24 @@
-add image placeholders
-When build error highlight APK or AppIcon sections
-make special class for div that wrapps invisible input=file + image. rewrite functions to pair input and image via this div
+remove <features> from localization if there are no features
+Localization appIcon is clickable but image is not set
+Show (remove) only after image is added
+Center image labels
+Change screenshot design
+Allow emptry package name for full version field 
+When build error highlight APK or AppIcon sections (if there is error there, now these sections are not highlighted)
 Make end validation waiting for the callbacks (for example image size)
 separate remove group functionality to a separate function
-add checking еthat XML tag exist
+add checking еthat XML tag exist when loading description.xml
 remove JavaScript code from HTML (add handlers for IDs in JavaScript)
 add optional and required loading
+refactor the libratries to modules (avoid global variables)
 check that there are no files with the same name. show error or automatically rename the files
 make localization optional loading while default language required where needed
-make sure that all $ elements are started with $ in names
 NEW WAY - allow markup - Add attributes and multiple full description loading, convert full description to array and support it in 
 OR
 Create one field for full description with set of rules of converting it
 
 add validation that keywords cannot be empty
-rename parent to peer in addMore...
 make that all tags are optional in description-localization
-create good names for consents
 move langs from drop-down to main tabs when a tab is deleted
 chgeck that full description does not contain html tags
 mark required fields in some way in HTML (*?)
@@ -25,10 +27,8 @@ add tabs to full description (plain, feature less, html)
 keyword: move new created on top
 keyword: move focus to just created field
 
-run jslint on all the files
 completeXMLstringAt - convert to array with Join
 return error message from ApkParser
-add all needed comments
 make that store info section for category appears by default after page is loaded
 make APK file required, disable everything else until APK is added
 

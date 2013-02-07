@@ -20,3 +20,12 @@ div.apk-file-info {
 	padding: 5px;
 	margin: 10px;
 }
+
+.image-input-group {
+    position: relative;
+}
+.image-input-delete {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
