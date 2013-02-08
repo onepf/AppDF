@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<application-description-file version="1"
+                              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                              xsi:noNamespaceSchemaLocation="../../../specification/appdf-description.xsd">
+
+    <application package="com.softspb.flashcards.sv">
+
+        <categorization>
+            <type>application</type>
+            <category>education</category>
+            <subcategory>language learning</subcategory>
+        </categorization>
+
+        <description>
+            <texts>
+                <title>SPB Swedish Cards</title>
+                <title>SPB Swedish Cards - Learn by Heart!</title>
+                <keywords>spb, language, learn, word, flash cards, swedish</keywords>
+                <short-description>Traditional flash cards for learning Swedish language.</short-description>
+                <full-description>
+                    Traditional flash cards for learning Swedish language enhanced with smartphone technologies like photos, native speakers' dubbing, learning progress visualization, smart adaptive algorithm, and detailed statistics. The program helps you to skip the stage of translating a word into your mother tongue first, but memorizing a direct match of a subject and a foreign word instead.
+
+                    <features>
+                        <feature>1000+ words and 65+ categories</feature>
+                        <feature>Explicit photos for all words</feature>
+                        <feature>Voice records by native speakers</feature>
+                        <feature>5 different learning modes</feature>
+                        <feature>Track your learning progress with detailed statistics</feature>
+                    </features>
+
+                </full-description>
+                <features>
+                    <feature>1000+ words and 65+ categories</feature>
+                    <feature>Explicit photos for all words</feature>
+                    <feature>Voice records by native speakers</feature>
+                    <feature>5 different learning modes</feature>
+                    <feature>Track your learning progress with detailed statistics</feature>
+                </features>
+                
+            </texts>
+
+            <images>
+                <app-icon size="512">appicon.png</app-icon>
+                <screenshots>
+                    <screenshot>screenshot01_en.png</screenshot>
+                    <screenshot>screenshot02_en.png</screenshot>
+                    <screenshot>screenshot03_en.png</screenshot>
+                    <screenshot>screenshot04_en.png</screenshot>
+                    <screenshot>screenshot05_en.png</screenshot>
+                    <screenshot>screenshot06_en.png</screenshot>
+                    <screenshot>screenshot07_en.png</screenshot>
+                    <screenshot>screenshot08_en.png</screenshot>
+                    <screenshot>screenshot09_en.png</screenshot>
+                    <screenshot>screenshot10_en.png</screenshot>
+                </screenshots>
+            </images>
+
+            <videos>
+                <youtube-video>0DVlazE9Fr0</youtube-video>
+            </videos>
+
+        </description>
+
+         <description-localization language="ru">
+            <texts>
+                <title>SPB Swedish Cards</title>
+                <title>SPB Swedish Cards - Выучи наизусть!</title>
+                <keywords>spb, карточки, слова, язык, учить, перевод, шведский</keywords>
+                <short-description>Традиционный способ запоминания слов — двусторонние карточки со словами.</short-description>
+                <full-description>Традиционный способ запоминания слов — двусторонние карточки со словами — теперь воплощен на мобильных устройствах и предлагает такие дополнительные функции, как изображения, голосовое озвучивание носителями языка, визуализация процесса обучения, «умный» адаптирующийся алгоритм обучения и подробная статистика.
+                </full-description>
+                <features>
+                    <feature>Свыше 1000 слов и 65 категорий</feature>
+                    <feature>Понятные изображения для всех слов</feature>
+                    <feature>Голосовые записи носителей языка</feature>
+                    <feature>5 уровней обучения</feature>
+                    <feature>Следите за собственным прогрессом с помощью подробной статистики</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="jp">
+            <texts>
+                <title>SPB Swedish Cards</title>
+                <title>SPB Swedish Cards - 単語を丸暗記!</title>
+                <keywords>SPB、言語、学習、単語、カード、スウェーデン語と</keywords>
+                <short-description>SPB Swedish Cards - 単語を丸暗記!</short-description>
+                <full-description>スマートフォンの技術 (画像、ネイティブスピーカーによる単語の録音、学習の進み具合を視覚的に確認、スマートな適合アルゴリズム、学習の統計表示) によって強化された外国語学習用のフラッシュカード(単語帳)です。SPB Flash Cardsでは、単語をユーザの母国語に翻訳する段階をスキップすることができ、単語をすぐに記憶できるようになっています。
+                </full-description>
+                <features>
+                    <feature>1000単語以上を収録</feature>
+                    <feature>65以上のカテゴリ</feature>
+                    <feature>一目で分かる画像</feature>
+                    <feature>ネイティブスピーカーによる音声録音</feature>
+                    <feature>詳しく分析して学習進捗を把握</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="pt">
+            <texts>
+                <title>SPB Swedish Cards</title>
+                <title>SPB Swedish Cards - Aprenda segundo a sua Intuição!</title>
+                <keywords>spb, idioma, aprender, palavra, cartões, sueco</keywords>
+                <short-description>Flash cards tradicionais para aprender línguas estrangeiras.</short-description>
+                <full-description>Flash cards tradicionais para aprender línguas estrangeiras melhorado com tecnologias smartphone como fotos, narração de falantes nativos, visualização do processo de aprendizagem, algoritmo inteligente adaptativo e estatísticas detalhadas. O programa ajuda-o a evitar a fase de trradução da palavra para a sua lingua nativa, memorizando apenas a associação do objecto com a palavra estrangeira.
+                </full-description>
+                <features>
+                    <feature>Mais de 1000 palavras e mais de 65 categorias</feature>
+                    <feature>Fotos explicativas para todas as palavras</feature>
+                    <feature>Registos de voz de falantes nativos</feature>
+                    <feature>5 modos de aprendizagem diferentes</feature>
+                    <feature>Acompanhe o seu processo de aprendizagem com estatísticas detalhadas</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="it">
+            <texts>
+                <title>SPB Swedish Cards</title>
+                <title>SPB Swedish Cards - Impara a memoria!</title>
+                <keywords>spb, lingua, imparare, parola, carte, svedese</keywords>
+                <short-description>SPB Swedish Cards - Impara a memoria!</short-description>
+                <full-description>
+                SPB Swedish Cards e un programma vocale che ti aiutera ad imparare lingua svedese.
+                </full-description>
+                <features>
+                    <feature>1000 e più parole, 65 e più categorie</feature>
+                    <feature>Foto esplicite per tutte le parole</feature>
+                    <feature>5 diverse modalità di apprendimento</feature>
+                    <feature>3 dimensioni di memorizzazione: visiva, uditiva e testuale</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+
+        <description-localization language="fr">
+            <texts>
+                <title>SPB Swedish Cards</title>
+                <title>SPB Swedish Cards - Apprenez par coeur !</title>
+                <keywords>spb, langue, apprendre, mot, cartes, suédois</keywords>
+                <short-description>Cartes traditionnelles pour apprendre les langues étrangères.</short-description>
+                <full-description>Cartes traditionnelles pour apprendre les langues étrangères en utilisants les technologies des smartphones comme les photos, le doublage par des personnes natives, la visualisation de la progression d'apprentissage, l'algorithme adaptatif et les statistiques détaillées. Le programme vous permet de sauter l'étape de traduction d'un mot dans votre langue maternelle d'abord en mémorisant une correspondance directe entre un sujet et un mot étranger à la place.
+                </full-description>
+                <features>
+                    <feature>Plus de 1000 mots et plus de 65 catégories</feature>
+                    <feature>Photo explicites pour tous les mots</feature>
+                    <feature>Voix enregistrée par des orateurs natifs</feature>
+                    <feature>5 modes d'apprentissages différents</feature>
+                    <feature>Suivez votre preocessus d'apprentissage avec des statistiques détaillées</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="de">
+            <texts>
+                <title>SPB Swedish Cards</title>
+                <title>SPB Swedish Cards - Lernen durch hören!</title>
+                <keywords>spb, Sprache, lernen, Wort, Flash-Karten, schwedisch</keywords>
+                <short-description>Traditionelles Lernen mit Karteikarten.</short-description>
+                <full-description>Traditionelles Lernen mit Karteikarten, in kombination mit moderner Smartphone-Technologie wie Bilder, vertonte Aussprache und Statistiken des Lernprozesses. Dieses Programm hilft Ihnen beim Erlernen einer fremden Sprache, durch die Förderung der Aufnahme ihres Gedächnisses.
+                </full-description>
+                <features>
+                    <feature>Über 1000+ Wörter und 65+ Kategorien</feature>
+                    <feature>Bilder zu jedem Wort</feature>
+                    <feature>Von Muttersprachlern vertont</feature>
+                    <feature>5 unterschiedliche Lern-Modi</feature>
+                    <feature>Überwachen Sie Ihren Lernprozess mit detaillierten Statistiken</feature>
+                </features>
+            </texts>
+        </description-localization>           
+
+        <content-description>
+            <content-rating>3</content-rating>
+            <rating-certificates>
+                <rating-certificate type="PEGI">3</rating-certificate>
+                <rating-certificate type="ESRB">3</rating-certificate>
+                <rating-certificate type="GRB">all</rating-certificate>
+                <rating-certificate type="CERO">all</rating-certificate>
+                <rating-certificate type="DEJUS">l</rating-certificate>
+                <rating-certificate type="FSK">0</rating-certificate>
+            </rating-certificates>
+            <content-descriptors>
+                <cartoon-violence>no</cartoon-violence>
+                <realistic-violence>no</realistic-violence>
+                <bad-language>no</bad-language>
+                <fear>no</fear>
+                <sexual-content>no</sexual-content>
+                <drugs>no</drugs>
+                <gambling-reference>no</gambling-reference>
+                <alcohol>no</alcohol>
+                <smoking>strong</smoking>
+                <discrimination>no</discrimination>
+            </content-descriptors>
+            <included-activities>
+                <in-app-billing>no</in-app-billing>
+                <gambling>no</gambling>
+                <advertising>no</advertising>
+                <user-generated-content>no</user-generated-content>
+                <user-to-user-communications>no</user-to-user-communications>
+                <account-creation>no</account-creation>
+                <personal-information-collection>no</personal-information-collection>
+            </included-activities>
+        </content-description>
+    
+        <price free="no">
+            <base-price>4.95</base-price>
+            <local-price country="au">4.95</local-price>
+            <local-price country="at">3.45</local-price>
+            <local-price country="be">3.45</local-price>
+            <local-price country="br">9.95</local-price>
+            <local-price country="ca">4.45</local-price>
+            <local-price country="cz">92.95</local-price>
+            <local-price country="dk">26.45</local-price>
+            <local-price country="ee">3.45</local-price>
+            <local-price country="fi">3.45</local-price>
+            <local-price country="fr">3.45</local-price>
+            <local-price country="de">3.45</local-price>
+            <local-price country="gr">3.45</local-price>
+            <local-price country="hk">38.45</local-price>
+            <local-price country="in">261.95</local-price>
+            <local-price country="ie">3.45</local-price>
+            <local-price country="il">18.45</local-price>
+            <local-price country="it">3.45</local-price>
+            <local-price country="jp">399</local-price>
+            <local-price country="lu">3.45</local-price>
+            <local-price country="mx">64.45</local-price>
+            <local-price country="nl">3.45</local-price>
+            <local-price country="nz">6.45</local-price>
+            <local-price country="no">27.45</local-price>
+            <local-price country="pl">15.45</local-price>
+            <local-price country="pt">3.45</local-price>
+            <local-price country="ru">140</local-price>
+            <local-price country="sg">5.95</local-price>
+            <local-price country="sk">3.45</local-price>
+            <local-price country="si">3.45</local-price>
+            <local-price country="kr">5000</local-price>
+            <local-price country="es">3.45</local-price>
+            <local-price country="se">31.45</local-price>
+            <local-price country="ch">4.45</local-price>
+            <local-price country="gb">2.95</local-price>
+        </price>
+
+        <apk-files>
+            <apk-file>spbswedishcards.apk</apk-file>
+        </apk-files>
+
+        <testing-instructions>
+        </testing-instructions>
+        
+        <consent>
+            <google-android-content-guidelines>yes</google-android-content-guidelines>
+            <us-export-laws>yes</us-export-laws>
+            <slideme-agreement>yes</slideme-agreement>
+            <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+            <import-export>yes</import-export>
+        </consent>
+
+        <customer-support>
+            <phone>+7 (812) 3356993</phone>
+            <email>support@spband.yandex.ru</email>
+            <website>http://www.yandex.ru</website>
+        </customer-support>
+
+        <store-specific>
+            <amazon>
+                <form-factor>all</form-factor>
+                <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
+                <apply-amazon-drm>yes</apply-amazon-drm>
+                <kindle-support>
+                    <kindle-fire-first-generation>yes</kindle-fire-first-generation>
+                    <kindle-fire>yes</kindle-fire>
+                    <kindle-fire-hd>yes</kindle-fire-hd>
+                    <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
+                </kindle-support>
+                <binary-alias>Version 1.1</binary-alias>
+            </amazon>
+            <samsung>
+                <form-factor>phone,tablet</form-factor>
+            </samsung>
+           
+        </store-specific>
+
+    </application>
+
+</application-description-file>

@@ -12,7 +12,7 @@
             <subcategory>video</subcategory>
         </categorization>
 
-        <description language="en">
+        <description>
             <texts>
                 <title>MX Player</title>
                 <keywords>video, player, movie, media, play</keywords>
@@ -166,7 +166,7 @@
                 <fear>no</fear>
                 <sexual-content>no</sexual-content>
                 <drugs>no</drugs>
-                <gambling-refference>no</gambling-refference>
+                <gambling-reference>no</gambling-reference>
                 <alcohol>no</alcohol>
                 <smoking>strong</smoking>
                 <discrimination>no</discrimination>
@@ -196,6 +196,7 @@
             <us-export-laws>yes</us-export-laws>
             <slideme-agreement>yes</slideme-agreement>
             <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+            <import-export>yes</import-export>
         </consent>
 
         <customer-support>
