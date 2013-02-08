@@ -12,11 +12,11 @@
             <subcategory>personalization</subcategory>
         </categorization>
 
-        <description language="en">
+        <description>
             <texts>
                 <title>Yandex.Shell</title>
                 <keywords>yandex, shell, home, screen, launcher, 3d, widget, panel, dialer</keywords>
-                <short-description>Yandex.Shell is an intuitive interface that makes using Android devices a breeze.</short-description>
+                <short-description>An intuitive interface that makes using Android devices a breeze.</short-description>
                 <full-description>Yandex.Shell is an intuitive interface that makes using Android devices a breeze. It only takes a second to customise the various screens, while the interface automatically sorts your apps and widgets. Simply use the 3D carousel to switch between screens. 
                 You can place all your most frequently used widgets on the same screen to keep up-to-date with all the latest local news, weather and traffic. The built-in app search tool will help you easily find an app on your phone or online.
                 
@@ -66,6 +66,7 @@
             <texts>
                 <title>Яндекс.Shell</title>
                 <keywords>Яндекс.Шелл, Yandex.Shell, SPB Shell 3D, домашний экран, лончер, виджеты, home screen, launcher, widgets, dialer, address book, телефон, адресная книга</keywords>
+                <short-description>Удобный и наглядный интерфейс для устройств на базе Android.</short-description>
                 <short-description>Удобный и наглядный интерфейс, который делает проще и приятнее работу с устройством на базе Android.</short-description>
                 <full-description>Удобный и наглядный интерфейс, который делает проще и приятнее работу с устройством на базе Android. Чтобы настроить экраны, вам потребуется совсем немного времени. Интерфейс умеет автоматически распределять по экранам виджеты и программы. Переключаться между экранами помогает трехмерная карусель.
                 Полезные и нужные вам виджеты можно расположить на одном экране – вам будет достаточно одного взгляда, чтобы быть в курсе актуальных городских событий, погоды и ситуации на дорогах.
@@ -111,7 +112,7 @@
                 <fear>no</fear>
                 <sexual-content>no</sexual-content>
                 <drugs>no</drugs>
-                <gambling-refference>no</gambling-refference>
+                <gambling-reference>no</gambling-reference>
                 <alcohol>no</alcohol>
                 <smoking>strong</smoking>
                 <discrimination>no</discrimination>
@@ -170,6 +171,7 @@
             <us-export-laws>yes</us-export-laws>
             <slideme-agreement>yes</slideme-agreement>
             <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+            <import-export>yes</import-export>
         </consent>
 
         <customer-support>
