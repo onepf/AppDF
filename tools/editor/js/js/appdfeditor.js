@@ -112,6 +112,7 @@ $(document).ready(function() {
     });
 
     $('body').on('change', '.image-input', function(e) {
+        console.log("on image-input change");
         if (e.target.files.length === 0) {
             return;
         };
@@ -123,9 +124,29 @@ $(document).ready(function() {
         var imgUrl = URL.createObjectURL(file);
 
         $el.closest(".image-input-group").find("img").attr("src", imgUrl);
+        if (isDefaultLanguage($el)) { //todo: change logic to advanced one
+            $el.closest(".image-input-group").find(".image-input-label").html('<span class="image-input-name"></span> (<a href="#" class="image-input-remove">remove</a>)');
+        } else {
+            $el.closest(".image-input-group").find(".image-input-label").html('<span class="image-input-name"></span>');
+        };
+        getImgSize(imgUrl, function(width, height) {
+            console.log("size ready width:" + width);
+            $el.closest(".image-input-group").find(".image-input-name").text(imageFileName + " " + width + "x" + height);
+        });
+
         addMoreAppIcon($el);
     });
 });
+
+//Checks does the given element from the description belong to default language or one of optional localizations
+function isDefaultLanguage($el) {
+    console.log("isDefaultLanguage");
+    var $tab = $el.closest(".tab-pane");
+    var tabId = $tab.attr('id')
+    var result = (tabId==="localization-tab-default");
+    console.log(result);
+    return result;
+};
 
 function fillApkFileInfo($el, apkData) {
     var $info = $el.closest(".control-group").find(".apk-file-info");
@@ -498,13 +519,13 @@ function addMoreAppIcon(e) {
     console.log($parent);
     var $controlGroup = $(' \
     <div class="image-input-group"> \
-        <input type="file" id="description-images-appicon-' + getUniqueId() + '" class="hide ie_show" \
+        <input type="file" id="description-images-appicon-' + getUniqueId() + '" class="hide ie_show image-input" \
             name="description-images-appicon" \
             accept="image/png" \
             data-validation-callback-callback="validationCallbackAppIconFirst" \
         /> \
         <img src="img/appicon_placeholder.png" width="128" height="128"> \
-        <p><span class="image-input-name"></span> (<a href="#" class="image-input-remove">remove</a>)</p> \
+        <p class="image-input-label"></p> \
     </div> \
     ');
     $parent.append($controlGroup);
@@ -688,7 +709,6 @@ function validationCallbackAppIconFirst($el, value, callback) {
 //    addMoreAppIcon($el[0]);
 
     getImgSize(imgUrl, function(width, height) {
-        $el.closest(".image-input-group").find(".image-input-name").text(imageFileName + " " + width + "x" + height);
         if (width===512 && height===512) {
             callback({
                 value: value,
