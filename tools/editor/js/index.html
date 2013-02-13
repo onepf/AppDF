@@ -28,6 +28,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
     </style>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/appdfeditor.css" rel="stylesheet">
+    <link href="css/bsdocs.css" rel="stylesheet">
 
 	<script type="text/javascript" src="data/categories.js"></script>
 	<script type="text/javascript" src="data/store_categories.js"></script>
@@ -49,6 +50,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 	<script type="text/javascript" src="js/appdfxmlsaving.js"></script>
 	<script type="text/javascript" src="js/appdfxmlloading.js"></script>
 	<script type="text/javascript" src="js/appdfeditor.js"></script>
+	<script type="text/javascript" src="js/appdfeditor2.js"></script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -80,25 +82,24 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 
 	<div class="container-fluid">
 		<div class="row-fluid">
-			<div class="span2">
-				<div class="well sidebar-nav">
-					<ul class="nav nav-list">
-						<li class="nav-header">Sections</li>
-						<li><a href="#apk-files">APK File(s)</a></li>
-						<li><a href="#categorization">Category</a></li>
-						<li><a href="#description">Description</a></li>
-						<li><a href="#price">Price</a></li>
-						<li><a href="#customer-support">Customer Support</a></li>
-						<li><a href="#consent">Consent</a></li>
-						<li><a href="#content-description">Content Rating and Descriptors</a></li>
-						<li><a href="#availability">Availability</a></li>
-						<li><a href="#requirements">Requirements</a></li>
-						<li><a href="#testing-instructions">Testing Instructions</a></li>
-						<li><a href="#store-specific">Store Specific</a></li>
+			<div class="span3">
+				<div class="bs-docs-sidebar">
+					<ul class="nav nav-list bs-docs-sidenav">
+						<li><a href="#section-apk-files"><i class="icon-chevron-right"></i> APK File(s)</a></li>
+						<li><a href="#section-categorization"><i class="icon-chevron-right"></i> Category</a></li>
+						<li><a href="#section-description"><i class="icon-chevron-right"></i> Description</a></li>
+						<li><a href="#section-price"><i class="icon-chevron-right"></i> Price</a></li>
+						<li><a href="#section-customer-support"><i class="icon-chevron-right"></i> Customer Support</a></li>
+						<li><a href="#section-consent"><i class="icon-chevron-right"></i> Consent</a></li>
+						<li><a href="#section-content-description"><i class="icon-chevron-right"></i> Content Rating and Descriptors</a></li>
+						<li><a href="#section-availability"><i class="icon-chevron-right"></i> Availability</a></li>
+						<li><a href="#section-requirements"><i class="icon-chevron-right"></i> Requirements</a></li>
+						<li><a href="#section-testing-instructions"><i class="icon-chevron-right"></i> Testing Instructions</a></li>
+						<li><a href="#section-store-specific"><i class="icon-chevron-right"></i> Store Specific</a></li>
 					</ul>
 				</div><!--/.well -->
 			</div><!--/span-->
-			<div class="span10">
+			<div class="span9">
 				<div class="hero-unit">
 					<p>Uploading Android application to several appstores could be time consuming. AppDF format is designed to simplify this process. You describe your Android application once, create a simple AppDF file that includes description, APK file(s), screenshots, app icon, promo images, etc and just upload this AppDF file to all the stores that support AppDF uploading.</p>
 					<p>
@@ -125,7 +126,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 				</div><!--Model-->						
 
 				<form class="form-horizontal" action='' method="POST" novalidate>
-					<section id="apk-files">
+					<section id="section-apk-files">
 						<fieldset>
 							<div id="legend">
 								<legend class="">APK File(s)</legend>
@@ -152,7 +153,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						</fieldset>
 					</section>
 
-					<section id="categorization">
+					<section id="section-categorization">
 						<fieldset>
 							<div id="legend">
 								<legend class="">Category</legend>
@@ -194,7 +195,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						</fieldset>
 					</section>
 
-					<section id="description">
+					<section id="section-description">
 						<div id="add-localization-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="add-localization-modal-label" aria-hidden="true">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -485,7 +486,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						</fieldset>
 					</section>
 
-					<section id="price">
+					<section id="section-price">
 						<fieldset>
 							<div id="legend">
 								<legend class="">Price</legend>
@@ -538,7 +539,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						</fieldset>
 					</section><!--price-->
 
-					<section id="customer-support">
+					<section id="section-customer-support">
 						<fieldset>
 							<div id="legend">
 								<legend class="">Customer Support</legend>
@@ -589,7 +590,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						</fieldset>
 					</section><!--customer-support-->
 
-					<section id="consent">
+					<section id="section-consent">
 						<fieldset>
 							<div id="legend">
 								<legend class="">Consent</legend>
@@ -627,7 +628,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						</fieldset>
 					</section><!--consent-->
 
-					<section id="content-description">
+					<section id="section-content-description">
 						<fieldset>
 							<div id="legend">
 								<legend class="">Content Rating and Descriptors</legend>
@@ -644,7 +645,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						</fieldset>
 					</section><!--content-description-->
 
-					<section id="availability">
+					<section id="section-availability">
 						<fieldset>
 							<div id="legend">
 								<legend class="">Availability</legend>
@@ -661,7 +662,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						</fieldset>
 					</section><!--content-description-->
 
-					<section id="requirements">
+					<section id="section-requirements">
 						<fieldset>
 							<div id="legend">
 								<legend class="">Requirements</legend>
@@ -678,7 +679,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						</fieldset>
 					</section><!--content-description-->
 
-					<section id="testing-instructions">
+					<section id="section-testing-instructions">
 						<fieldset>
 							<div id="legend">
 								<legend class="">Testing Instructions</legend>
@@ -695,7 +696,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						</fieldset>
 					</section><!--content-description-->
 
-					<section id="store-specific">
+					<section id="section-store-specific">
 						<fieldset>
 							<div id="legend">
 								<legend class="">Store Specific</legend>
