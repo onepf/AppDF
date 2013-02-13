@@ -20,6 +20,7 @@
  * Depends on: categories.js, store_categories.js, stores.js, languages.js, jquery.js, bootstrap.js, jqBootstrapValidation.js,
  *             xmlgenerator.js, zip.js, appdflocalization.js, apkreader.js, appdfparser.js, appdfxmlsaving.js, appdfxmlloading.js
  */
+
 var MAXIMUM_APK_FILE_SIZE = 50000000;
 var firstApkFileData = {};
 var globalUnigueCounter = 0;
@@ -105,46 +106,97 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.image-input-remove', function(e) {
-        if (e.target.tagName.toLowerCase() === "a") {
-            $(e.target).closest(".image-input-group").remove();
-            return false;
-        };
+        onInputImageRemove(e);
+        return false;
     });
 
-    $('body').on('change', '.image-input', function(e) {
-        console.log("on image-input change");
-        if (e.target.files.length === 0) {
-            return;
-        };
-        
-        var $el = $(e.target);
-        var imageFileName = normalizeInputFileName($el.val());
-        var URL = window.webkitURL || window.mozURL || window.URL;    
-        var file = e.target.files[0];
-        var imgUrl = URL.createObjectURL(file);
-
-        $el.closest(".image-input-group").find("img").attr("src", imgUrl);
-        if (isDefaultLanguage($el)) { //todo: change logic to advanced one
-            $el.closest(".image-input-group").find(".image-input-label").html('<span class="image-input-name"></span> (<a href="#" class="image-input-remove">remove</a>)');
-        } else {
-            $el.closest(".image-input-group").find(".image-input-label").html('<span class="image-input-name"></span>');
-        };
-        getImgSize(imgUrl, function(width, height) {
-            console.log("size ready width:" + width);
-            $el.closest(".image-input-group").find(".image-input-name").text(imageFileName + " " + width + "x" + height);
-        });
-
-        addMoreAppIcon($el);
-    });
+    $('body').on('change', '.appicon-input', onAppIconImageInputChange);
+    $('body').on('change', '.screenshot-input', onScreenshotImageInputChange);
+    $('body').on('change', '.image-input', onImageInputChange);
 });
+
+function onInputImageRemove(e) {
+    $(e.target).closest(".image-input-group").remove();
+    return false;
+};
+
+function onScreenshoutRemove(e) {
+    onInputImageRemove(e);
+    return false;
+};
+
+function onAppIconImageInputChange(e) {
+    onImageInputChange(e);
+
+    var $el = $(e.target);
+    var imageFileName = normalizeInputFileName($el.val());
+
+    var $group = $el.closest(".image-input-group");
+    var firstImage = $group.is(':first-child');
+
+    if (!isDefaultLanguage($el) || !firstImage) {
+        $group.find(".image-input-label").append($('<span> (<a href="#" class="image-input-remove">remove</a>)</span>'));
+    };
+
+    if ($group.parent().find("input.empty-image").length===0) {
+        addMoreAppIcon($el);
+    };    
+
+    return "AAAA";
+    return false;
+};
+
+function onScreenshotImageInputChange(e) {
+    onImageInputChange(e);
+
+    var $el = $(e.target);
+    var imageFileName = normalizeInputFileName($el.val());
+
+    var $group = $el.closest(".image-input-group");
+
+    $group.find(".image-input-label").append($('<span> (<a href="#" class="image-input-remove">remove</a> | <a href="#" class="image-input-moveup">move up</a> | <a href="#" class="image-input-movedown">move down</a>)</span>'));
+    $group.find("a.image-input-remove").click(function (e) {
+        onScreenshoutRemove(e);
+        return false;
+    });
+
+    if ($group.parent().find("input.empty-image").length===0) {
+        addMoreScreenshots($el);
+    };   
+
+    return false; 
+};
+
+function onImageInputChange(e) {
+    if (e.target.files.length === 0) {
+        return false;
+    };
+    
+    var $el = $(e.target);
+    var imageFileName = normalizeInputFileName($el.val());
+    var URL = window.webkitURL || window.mozURL || window.URL;    
+    var file = e.target.files[0];
+    var imgUrl = URL.createObjectURL(file);
+
+    var $group = $el.closest(".image-input-group");
+    $group.find("img").attr("src", imgUrl);
+
+    $group.find("input").removeClass("empty-image");
+    $group.find(".image-input-label").html('<span class="image-input-name"></span>');
+
+    var imgUrl = $group.find("img").attr("src");
+    getImgSize(imgUrl, function(width, height) {
+        $group.find(".image-input-name").text(imageFileName + " " + width + "x" + height);
+    });
+
+    return false;
+};
 
 //Checks does the given element from the description belong to default language or one of optional localizations
 function isDefaultLanguage($el) {
-    console.log("isDefaultLanguage");
     var $tab = $el.closest(".tab-pane");
     var tabId = $tab.attr('id')
     var result = (tabId==="localization-tab-default");
-    console.log(result);
     return result;
 };
 
@@ -171,18 +223,23 @@ function generateAppDFFile(onend) {
     var URL = window.webkitURL || window.mozURL || window.URL;
 
     var files = [];
-    //Add all APK files
-    $("section#apk-files").find("input:file").each(function() {
-        files.push($(this)[0].files[0]);
-    });
-
-    //Add all application icons
-    $("input[id^=description-images-appicon]").each(function() {
-        if ($(this)[0].files[0]) {
+    function addInputFiles($el) {
+        $el.each(function() {
             //check if the file is already in the list then do not push it
-            files.push($(this)[0].files[0]);
-        };
-    });
+            if ($(this)[0].files.length>0 && $(this)[0].files[0]) {
+                files.push($(this)[0].files[0]);
+            };
+        });
+    };
+
+    //Add all APK files
+    addInputFiles($("section#apk-files").find("input:file"));
+
+    //Add all the images
+    addInputFiles($("input[id^=description-images-appicon]"));
+    addInputFiles($("input[id^=description-images-screenshot]"));
+    addInputFiles($("input[id^=description-images-smallpromo]"));
+    addInputFiles($("input[id^=description-images-largepromo]"));
 
     zip.createWriter(new zip.BlobWriter(), function(writer) {
 
@@ -247,19 +304,6 @@ function showBuildErrors(errors) {
         $list.append($("<li>"+errors[i]+"</li>"))
     };
 };
-
-// function loadTestDescriptionXml() {
-//     console.log("loadTestDescriptionXml");
-//     var xml = $("#descriptionxml").val();
-//     console.log(xml);
-//     parseDescriptionXML(xml, function(data) {
-//         console.log("Load success");
-//         console.log(data);
-//     }, function (error) {
-//         console.log("Load error");
-//         console.log(error);
-//     });
-// };
 
 function buildAppdDFFile(event) {
     //First we check if there is already built file, if so we return to a standard download handler
@@ -445,7 +489,7 @@ function addMoreShortDescriptions(e, value) {
 };
 
 function addMoreKeywords(e, value) {
-    var $parent = $(e).closest(".input-append");
+    var $parent = $(e).closest(".input-append").parent();
     var $controlGroup = $(' \
         <div class="keyword-countainer"> \
             <div class="input-append"> \
@@ -457,7 +501,8 @@ function addMoreKeywords(e, value) {
             </div> \
         </div> \
     ');
-    $parent.after($controlGroup);
+    $parent.find("p.help-block").before($controlGroup);
+    $controlGroup.find("input").focus();
     addValidationToElements($controlGroup.find("input"));
 };
 
@@ -513,18 +558,32 @@ function addMoreLocalPrice(e, value, country) {
 };
 
 function addMoreAppIcon(e) {
-    console.log("addMoreAppIcon");
-    console.log(e);
     var $parent = $(e).closest(".image-group");
-    console.log($parent);
     var $controlGroup = $(' \
     <div class="image-input-group"> \
-        <input type="file" id="description-images-appicon-' + getUniqueId() + '" class="hide ie_show image-input" \
-            name="description-images-appicon" \
+        <input type="file" id="description-images-appicon-' + getUniqueId() + '" class="hide ie_show appicon-input empty-image" \
+            name="description-images-appicon-' + getUniqueId() + '" \
             accept="image/png" \
             data-validation-callback-callback="validationCallbackAppIconFirst" \
         /> \
         <img src="img/appicon_placeholder.png" width="128" height="128"> \
+        <p class="image-input-label"></p> \
+    </div> \
+    ');
+    $parent.append($controlGroup);
+    addValidationToElements($controlGroup.find("input"));
+};
+
+function addMoreScreenshots(e) {
+    var $parent = $(e).closest(".image-group");
+    var $controlGroup = $(' \
+    <div class="image-input-group"> \
+        <input type="file" id="description-images-screenshot-' + getUniqueId() + '" class="hide ie_show screenshot-input empty-image" \
+            name="description-images-screenshot-' + getUniqueId() + '" \
+            accept="image/png" \
+            data-validation-callback-callback="validationCallbackScreenshotRequired" \
+        /> \
+        <img src="img/screenshot_placeholder.png" width="132" height="220"> \
         <p class="image-input-label"></p> \
     </div> \
     ');
@@ -562,6 +621,7 @@ function flatten(array) {
 };
 
 function addDescriptionAndFilesToZipWriter(zipWriter, descriptionXml, files, onprogress, onend) {
+    console.log("Description.xml");
     console.log(descriptionXml);
     var addIndex = 0;
 
@@ -689,8 +749,6 @@ function getImgSize(imgSrc, onsize) {
 };
 
 function validationCallbackAppIconFirst($el, value, callback) {
-    console.log("validationCallbackAppIconFirst");
-
     if ($el[0].files.length === 0) {
         callback({
             value: value,
@@ -704,9 +762,6 @@ function validationCallbackAppIconFirst($el, value, callback) {
     var file = $el[0].files[0];
     var URL = window.webkitURL || window.mozURL || window.URL;    
     var imgUrl = URL.createObjectURL(file);
-
-//    $el.closest(".image-input-group").find("img").attr("src", imgUrl);
-//    addMoreAppIcon($el[0]);
 
     getImgSize(imgUrl, function(width, height) {
         if (width===512 && height===512) {
@@ -725,27 +780,10 @@ function validationCallbackAppIconFirst($el, value, callback) {
 };
 
 function validationCallbackScreenshotRequired($el, value, callback) {
-    console.log("validationCallbackScreenshotRequired");
     var imageFileName = normalizeInputFileName($el.val());
-
-    if ($el[0].files.length === 0) {
-        callback({
-            value: value,
-            valid: false,
-            message: "Four screenshot images are required"
-        });
-        return;
-    };
-    
     var file = $el[0].files[0];
-
     var URL = window.webkitURL || window.mozURL || window.URL;    
     var imgUrl = URL.createObjectURL(file);
-
-    console.log($el);
-    $el.closest(".image-input-group").find("img").attr("src", imgUrl);
-    $el.closest(".image-input-group").find("p").text(imageFileName);
-    console.log($el.closest(".image-input-group"));
 
     getImgSize(imgUrl, function(width, height) {
         if (true /*todo: add some size checking*/) {
@@ -764,6 +802,5 @@ function validationCallbackScreenshotRequired($el, value, callback) {
 };
 
 function screenshotClick(e) {
-    console.log("screenshotClick");
     $(e).closest(".screenshot-container").children("input").click();
 };

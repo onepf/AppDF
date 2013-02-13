@@ -105,7 +105,7 @@
   
   <xsd:complexType name="type-description-videos">
     <xsd:sequence>
-      <xsd:element name="youtube-video" type="xsd:string" minOccurs="0" />
+      <xsd:element name="youtube-video" type="type-attr-youtubeid" minOccurs="0" />
       <xsd:element name="video-file" type="type-attr-localfile" minOccurs="0" maxOccurs="unbounded" />
     </xsd:sequence>
   </xsd:complexType>
@@ -125,6 +125,12 @@
   <xsd:simpleType name="type-attr-localfile">
     <xsd:restriction base="xsd:string">
       <xsd:pattern value="[_ a-zA-Z0-9\-\./]*"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+  
+  <xsd:simpleType name="type-attr-youtubeid">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[a-zA-Z0-9\-]{11}"/>
     </xsd:restriction>
   </xsd:simpleType>  
   

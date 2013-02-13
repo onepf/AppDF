@@ -85,6 +85,12 @@ function loadDescriptionLocalizationSection(languageCode, data) {
 	} else {
 		$container.find("#description-texts-eula").val("");		
 	};
+
+	if (data["videos"]["youtube-video"]) {
+		$container.find("#description-videos-youtubevideo").val(data["videos"]["youtube-video"]);
+	} else {
+		$container.find("#description-videos-youtubevideo").val("");
+	};
 };
 
 function loadDescriptionXML(xml, onend, onerror) {
@@ -110,6 +116,9 @@ function loadDescriptionXML(xml, onend, onerror) {
 			};
 			loadDescriptionLocalizationSection(languageCode, data["description"][languageCode]);
 		};
+
+		//Select default language as open tab
+		selectLanguage("default");
 
 		//Price
 		$("input[id^=price-localprice-]").closest(".control-group").remove();
@@ -149,6 +158,13 @@ function loadDescriptionXML(xml, onend, onerror) {
 		$("#customersupport-phone").val(data["customer-support"]["phone"]);
 		$("#customersupport-email").val(data["customer-support"]["email"]);
 		$("#customersupport-website").val(data["customer-support"]["website"]);
+
+		//Todo: temporary work with XML
+		$("#contentdescription").val(data["content-description"]);
+		$("#availability").val(data["availability"]);
+		$("#requirements").val(data["requirements"]);
+		$("#testinginstructions").val(data["testing-instructions"]);
+		$("#storespecific").val(data["store-specific"]);
 
 		onend();
 	}, onerror);

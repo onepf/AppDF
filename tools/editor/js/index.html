@@ -42,6 +42,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 	<script type="text/javascript" src="js/xmlgenerator.js"></script>    
 	<script type="text/javascript" src="js/zip/zip.js"></script>
 	<script type="text/javascript" src="js/appdflocalization.js"></script>
+	<script type="text/javascript" src="js/appdfimages.js"></script>
 	<script type="text/javascript" src="js/apkreader.js"></script>
 	<script type="text/javascript" src="js/section_customersupport.js"></script>
 	<script type="text/javascript" src="js/appdfparser.js"></script>
@@ -89,6 +90,11 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						<li><a href="#price">Price</a></li>
 						<li><a href="#customer-support">Customer Support</a></li>
 						<li><a href="#consent">Consent</a></li>
+						<li><a href="#content-description">Content Rating and Descriptors</a></li>
+						<li><a href="#availability">Availability</a></li>
+						<li><a href="#requirements">Requirements</a></li>
+						<li><a href="#testing-instructions">Testing Instructions</a></li>
+						<li><a href="#store-specific">Store Specific</a></li>
 					</ul>
 				</div><!--/.well -->
 			</div><!--/span-->
@@ -126,7 +132,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 							</div>
 							<div class="control-group">
 								<!-- apk-files/apk-file -->
-								<label class="control-label" for="pretty-apk-file">APK File</label>
+								<label class="control-label" for="pretty-apk-file">APK File <span class="required-mark">*</span></label>
 								<div class="controls">
 									<input type="file" id="apk-file" class="hide ie_show" 
 										name="apk-file" 
@@ -153,7 +159,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 							</div>
 							<div class="control-group">
 								<!-- categorization/type -->
-								<label class="control-label"  for="categorization-type">Application type</label>
+								<label class="control-label"  for="categorization-type">Application type <span class="required-mark">*</span></label>
 								<div class="controls">
 									<select id="categorization-type" name="categorization-type">
 										<option value="application">Application</option>
@@ -165,7 +171,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 					 
 							<div class="control-group">
 								<!-- categorization/category -->
-								<label class="control-label" for="categorization-category">Category</label>
+								<label class="control-label" for="categorization-category">Category <span class="required-mark">*</span></label>
 								<div class="controls">
 									<select id="categorization-category" name="categorization-category">
 									</select>
@@ -225,7 +231,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 									<div class="tab-pane active" id="localization-tab-default">
 										<div class="control-group">
 											<!-- description/texts/title -->
-											<label class="control-label"  for="description-texts-title">Title</label>
+											<label class="control-label"  for="description-texts-title">Title <span class="required-mark">*</span></label>
 											<div class="controls">
 												<input type="text" id="description-texts-title" name="description-texts-title"
 													required 
@@ -238,7 +244,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 									 
 										<div class="control-group">
 											<!-- description/texts/short-description -->
-											<label class="control-label" for="description-texts-shortdescription">Short description</label>
+											<label class="control-label" for="description-texts-shortdescription">Short description <span class="required-mark">*</span></label>
 											<div class="controls">
 												<input type="text" id="description-texts-shortdescription" name="description-texts-shortdescription"
 													required 
@@ -251,7 +257,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 									 
 										<div class="control-group">
 											<!-- description/texts/full-description -->
-											<label class="control-label" for="description-texts-fulldescription">Full description</label>
+											<label class="control-label" for="description-texts-fulldescription">Full description <span class="required-mark">*</span></label>
 											<div class="controls">
 												<textarea class="input-xxlarge" rows="5" id="description-texts-fulldescription" 
 													name="description-texts-fulldescription"
@@ -266,7 +272,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 
 										<div class="control-group">
 											<!-- description/texts/features -->
-											<label class="control-label" for="description-texts-features">Features</label>
+											<label class="control-label" for="description-texts-features">Features <span class="required-mark">*</span></label>
 											<div class="controls">
 												<div class="feature-countainer">
 													<div class="input-prepend">
@@ -316,7 +322,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 
 										<div class="control-group">
 											<!-- description/texts/keywords -->
-											<label class="control-label" for="description-texts-keywords">Keywords</label>
+											<label class="control-label" for="description-texts-keywords">Keywords <span class="required-mark">*</span></label>
 											<div class="controls">
 												<div class="input-append"> 
 													<input type="text" id="description-texts-keywords"> 
@@ -360,17 +366,17 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 									 
 										<div class="control-group">
 											<!-- description/images/app-icon -->
-											<label class="control-label" for="description-images-appicon">Application icon</label>
+											<label class="control-label" for="description-images-appicon">Application icon <span class="required-mark">*</span></label>
 											<div class="controls">
 												<div class="image-group">
 													<div class="image-input-group">
-														<input type="file" id="description-images-appicon" class="hide ie_show image-input" 
+														<input type="file" id="description-images-appicon" class="hide ie_show appicon-input empty-image" 
 															name="description-images-appicon" 
 															accept="image/png"
 															data-validation-callback-callback="validationCallbackAppIconFirst"
 														/>
 														<img data-src="holder.js/128x128/text:Click to choose image" id="description-images-appicon-img" width="128" height="128">
-														<p class="image-input-label"></p>
+														<p class="image-input-label">&nbsp;</p>
 													</div>
 												</div>
 												<p class="help-block">512x512 PNG file with application icon shown in the application list</p>
@@ -379,46 +385,100 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 
 										<div class="control-group">
 											<!-- description/images/screenshots -->
-											<label class="control-label" for="description-images-screenshots">Screenshots</label>
+											<label class="control-label" for="description-images-screenshots">Screenshots <span class="required-mark">*</span></label>
 											<div class="controls">
-												<div>
+												<div class="image-group">
 													<div class="image-input-group">
-														<input type="file" id="description-images-screenshots-1" class="hide ie_show" 
-															name="description-images-screenshots-1" 
+														<input type="file" id="description-images-screenshot-1" class="hide ie_show screenshot-input empty-image" 
+															name="description-images-screenshot-1" 
 															accept="image/png"
 															data-validation-callback-callback="validationCallbackScreenshotRequired"
 														/>
-														<img data-src="holder.js/128x220/text:Screenshot #1" width="128" height="220">
+														<img data-src="holder.js/132x220/text:Screenshot #1" width="132" height="220">
+														<p class="image-input-label">&nbsp;</p>
 													</div>
 													<div class="image-input-group">
-														<input type="file" id="description-images-screenshots-2" class="hide ie_show" 
-															name="description-images-screenshots-2" 
+														<input type="file" id="description-images-screenshot-2" class="hide ie_show screenshot-input empty-image" 
+															name="description-images-screenshot-2" 
 															accept="image/png"
 															data-validation-callback-callback="validationCallbackScreenshotRequired"
 														/>
-														<img data-src="holder.js/128x220/text:Screenshot #2" width="128" height="220">
+														<img data-src="holder.js/132x220/text:Screenshot #2" width="132" height="220">
+														<p class="image-input-label">&nbsp;</p>
 													</div>
 													<div class="image-input-group">
-														<input type="file" id="description-images-screenshots-3" class="hide ie_show" 
-															name="description-images-screenshots-3" 
+														<input type="file" id="description-images-screenshot-3" class="hide ie_show screenshot-input empty-image" 
+															name="description-images-screenshot-3" 
 															accept="image/png"
 															data-validation-callback-callback="validationCallbackScreenshotRequired"
 														/>
-														<img data-src="holder.js/128x220/text:Screenshot #3" width="128" height="220">
+														<img data-src="holder.js/132x220/text:Screenshot #3" width="132" height="220">
+														<p class="image-input-label">&nbsp;</p>
 													</div>
 													<div class="image-input-group">
-														<input type="file" id="description-images-screenshots-4" class="hide ie_show" 
-															name="description-images-screenshots-4" 
+														<input type="file" id="description-images-screenshot-4" class="hide ie_show screenshot-input empty-image" 
+															name="description-images-screenshot-4" 
 															accept="image/png"
 															data-validation-callback-callback="validationCallbackScreenshotRequired"
 														/>
-														<img data-src="holder.js/128x220/text:Screenshot #4" width="128" height="220">
+														<img data-src="holder.js/132x220/text:Screenshot #4" width="132" height="220">
+														<p class="image-input-label">&nbsp;</p>
 													</div>
 												</div>
-												<p class="help-block">512x512 PNG file with application icon that is shown in the application list</p>
+												<p class="help-block">At least four 480x800 PNG screenshots are required</p>
 											</div>
 										</div><!--./control-group -->
 
+										<div class="control-group description-images-largepromo">
+											<!-- description/images/large-promo -->
+											<label class="control-label" for="description-images-largepromo">Large promotion image</label>
+											<div class="controls">
+												<div class="image-group">
+													<div class="image-input-group">
+														<input type="file" id="description-images-largepromo" class="hide ie_show image-input empty-image" 
+															name="description-images-largepromo" 
+															accept="image/png"
+															data-validation-callback-callback="validationCallbackLargePromo"
+														/>
+														<img data-src="holder.js/256x125/text:Click to choose image" id="description-images-largepromo-img" width="256" height="125">
+														<p class="image-input-label"></p>
+													</div>
+												</div>
+												<p class="help-block">1024x500 PNG file which is usually used by the stores on the PC websites</p>
+											</div>
+										</div><!--./control-group -->
+
+										<div class="control-group">
+											<!-- description/images/small-promo -->
+											<label class="control-label" for="description-images-smallpromo">Small promotion image</label>
+											<div class="controls">
+												<div class="image-group">
+													<div class="image-input-group">
+														<input type="file" id="description-images-smallpromo" class="hide ie_show image-input empty-image" 
+															name="description-images-smallpromo" 
+															accept="image/png"
+															data-validation-callback-callback="validationCallbackSmallPromo"
+														/>
+														<img data-src="holder.js/180x120/text:Click to choose image" id="description-images-largepromo-img" width="180" height="120">
+														<p class="image-input-label"></p>
+													</div>
+												</div>
+												<p class="help-block">180x120 PNG file which is usually used in a mobile appstore for features apps</p>
+											</div>
+										</div><!--./control-group -->
+
+										<div class="control-group">
+											<!-- description/videos/youtube-video -->
+											<label class="control-label" for="description-videos-youtubevideo">YouTube video</label>
+											<div class="controls">
+												<input type="text" id="description-videos-youtubevideo" name="description-videos-youtubevideo"
+													data-validation-regex-regex="^[0-9a-zA-Z\-\_]{11}$" 
+													data-validation-regex-message="Wrong YouTube video ID format. Do not place entire URL but just ID (which is usualy written in URL after 'v='" 												
+												>
+												<p class="help-block">Please include only ID not the entire URL. For example if your YouTube video URL is www.youtube.com/watch?v=4YcBHQ2fCDE then enter 4YcBHQ2fCDE</p>
+											</div>
+										</div><!--./control-group -->
+									 
 									</div><!--./tab-pane -->
 								</div><!--./tab-content -->
 							</div><!--./tabbable -->			    
@@ -460,7 +520,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 									<div class="tab-pane" id="tab-price-paid">
 										<div class="control-group">
 											<!-- price/base-price -->
-											<label class="control-label" for="price-baseprice">Price</label>
+											<label class="control-label" for="price-baseprice">Price <span class="required-mark">*</span></label>
 											<div class="controls">
 												<div class="input-prepend">
 													<span class="add-on">USD</span>
@@ -485,7 +545,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 							</div>
 							<div class="control-group">
 								<!-- customer-support/phone -->
-								<label class="control-label"  for="customersupport-phone">Phone</label>
+								<label class="control-label"  for="customersupport-phone">Phone <span class="required-mark">*</span></label>
 								<div class="controls">
 									<input id="customersupport-phone" type="text" 
 										name="customersupport-phone" 
@@ -500,7 +560,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 					 
 							<div class="control-group">
 								<!-- customer-support/email -->
-								<label class="control-label"  for="customersupport-email">Email</label>
+								<label class="control-label"  for="customersupport-email">Email <span class="required-mark">*</span></label>
 								<div class="controls">
 									<input id="customersupport-email" type="email" 
 										name="customersupport-email"
@@ -514,7 +574,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 					 
 							<div class="control-group">
 								<!-- customer-support/website -->
-								<label class="control-label"  for="customersupport-website">Website</label>
+								<label class="control-label"  for="customersupport-website">Website <span class="required-mark">*</span></label>
 								<div class="controls">
 									<input id="customersupport-website" type="text" 
 										name="customersupport-website"
@@ -566,6 +626,91 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 
 						</fieldset>
 					</section><!--consent-->
+
+					<section id="content-description">
+						<fieldset>
+							<div id="legend">
+								<legend class="">Content Rating and Descriptors</legend>
+							</div>
+							<div class="control-group">
+								<!-- content-description -->
+								<label class="control-label"  for="contentdescription">Content Rating and Descriptors <span class="required-mark">*</span></label>
+								<div class="controls">
+									<textarea class="input-xxlarge" rows="10" id="contentdescription"
+									></textarea>
+									<p class="help-block">Under construction. Just post XML here. Later this section will be replaced with a set of fields.</p>
+								</div>
+							</div><!--control-group-->					 
+						</fieldset>
+					</section><!--content-description-->
+
+					<section id="availability">
+						<fieldset>
+							<div id="legend">
+								<legend class="">Availability</legend>
+							</div>
+							<div class="control-group">
+								<!-- content-description -->
+								<label class="control-label"  for="availability">Availability</label>
+								<div class="controls">
+									<textarea class="input-xxlarge" rows="10" id="availability"
+									></textarea>
+									<p class="help-block">Under construction. Just post XML here. Later this section will be replaced with a set of fields.</p>
+								</div>
+							</div><!--control-group-->					 
+						</fieldset>
+					</section><!--content-description-->
+
+					<section id="requirements">
+						<fieldset>
+							<div id="legend">
+								<legend class="">Requirements</legend>
+							</div>
+							<div class="control-group">
+								<!-- content-description -->
+								<label class="control-label"  for="requirements">Requirements</label>
+								<div class="controls">
+									<textarea class="input-xxlarge" rows="10" id="requirements"
+									></textarea>
+									<p class="help-block">Under construction. Just post XML here. Later this section will be replaced with a set of fields.</p>
+								</div>
+							</div><!--control-group-->					 
+						</fieldset>
+					</section><!--content-description-->
+
+					<section id="testing-instructions">
+						<fieldset>
+							<div id="legend">
+								<legend class="">Testing Instructions</legend>
+							</div>
+							<div class="control-group">
+								<!-- content-description -->
+								<label class="control-label"  for="testinginstructions">Testing Instructions</label>
+								<div class="controls">
+									<textarea class="input-xxlarge" rows="10" id="testinginstructions"
+									></textarea>
+									<p class="help-block">Under construction. Just post XML here. Later this section will be replaced with a set of fields.</p>
+								</div>
+							</div><!--control-group-->					 
+						</fieldset>
+					</section><!--content-description-->
+
+					<section id="store-specific">
+						<fieldset>
+							<div id="legend">
+								<legend class="">Store Specific</legend>
+							</div>
+							<div class="control-group">
+								<!-- content-description -->
+								<label class="control-label"  for="storespecific">Store Specific</label>
+								<div class="controls">
+									<textarea class="input-xxlarge" rows="10" id="storespecific"
+									></textarea>
+									<p class="help-block">Under construction. Just post XML here. Later this section will be replaced with a set of fields.</p>
+								</div>
+							</div><!--control-group-->					 
+						</fieldset>
+					</section><!--content-description-->					
 
 					<div class="form-actions">
 						<div class="alert alert-error hide" id="form-errors">

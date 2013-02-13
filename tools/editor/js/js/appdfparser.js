@@ -68,6 +68,20 @@ function parseDescriptionXML(xmlText, onend, onerror) {
 		onsuccess(curData, dataPathElements[dataPathElements.length-1], $e);
 	};
 
+	//Load xml
+	function loadXml(dataPath, xmlPath) {
+		loadHelper(dataPath, xmlPath, function(d, name, $e) {
+			if ($e.length>0) {
+				console.log("$e");
+				console.log($e);
+				console.log($e.contents());
+				var serializer = new XMLSerializer(); 
+				var xmlString = serializer.serializeToString($e[0]);
+				d[name] = xmlString;
+			};
+		});
+	};
+
 	//Load text
 	function loadText(dataPath, xmlPath) {
 		loadHelper(dataPath, xmlPath, function(d, name, $e) {
@@ -164,6 +178,24 @@ function parseDescriptionXML(xmlText, onend, onerror) {
 			loadText("privacy-policy", "privacy-policy");
 			loadText("eula", "eula");
 		});
+		section("images/", "images", function() {
+			loadHelper("app-icon", "app-icon", function(d, name, $e) {
+				d[name] = [];
+				$e.each(function() {
+					var size = $(this).attr("size");
+					d[name].push({
+						"name" : $(this).text(),
+						"size" : size
+					});
+				});
+			});
+			loadText("large-promo", "large-promo");
+			loadText("small-promo", "small-promo");
+			loadArray("screenshots", "screenshots/screenshot");
+		});
+		section("videos/", "videos", function() {
+			loadText("youtube-video", "youtube-video");
+		});
 	};
 
 	//Description
@@ -221,6 +253,13 @@ function parseDescriptionXML(xmlText, onend, onerror) {
 		loadText("website");
 	});
 
+	//Todo: temporary XML loading instead of parsing content
+	loadXml("content-description", "content-description");
+	loadXml("availability", "availability");
+	loadXml("requirements", "requirements");
+	loadXml("testing-instructions", "testing-instructions");
+	loadXml("store-specific", "store-specific");
+
 	errors.append(validateDescriptionXMLData(data));
 	console.log(errors);
 
@@ -244,6 +283,8 @@ function validateDescriptionXMLData(data) {
 
 	errors.append(validateCategorization(data.categorization));
 	errors.append(validateDescriptionTexts("default", data.description.default.texts));
+	errors.append(validateDescriptionImages("default", data.description.default.images));
+	errors.append(validateDescriptionVideos("default", data.description.default.videos));
 	errors.append(validatePrice(data.price));
 	errors.append(validateConsent(data["consent"]));
 	errors.append(validateCustomerSupport(data["customer-support"]));
@@ -271,6 +312,20 @@ function validateCategorization(data) {
 		return errors;
 	};
 
+	return errors;
+};
+
+function validateDescriptionImages(languageCode, data) {
+	console.log("validateDescriptionImages");
+	console.log(data);
+	var errors = [];
+	return errors;
+};
+
+function validateDescriptionVideos(languageCode, data) {
+	console.log("validateDescriptionVideos");
+	console.log(data);
+	var errors = [];
 	return errors;
 };
 

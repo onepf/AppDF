@@ -30,9 +30,11 @@ function generateOneLanguageTextDescription(languageCode, xml) {
 
 		//Keywords
 		var keywords = [];
-		keywords.push($parent.find("#description-texts-keywords").val());
-		$parent.find("input[id^=description-texts-keywords-more-]").each(function() {
-			keywords.push($(this).val());
+//		keywords.push($parent.find("#description-texts-keywords").val());
+		$parent.find("input[id^=description-texts-keywords]").each(function() {
+			if ($(this).val() !== "") {
+				keywords.push($(this).val());
+			};
 		});
 		xml.addNonEmptyTextTag("<keywords>", keywords.join(","));
 
@@ -83,17 +85,33 @@ function generateOneLanguageImageDescription(languageCode, xml) {
 	$parent = $("#localization-tab-" + languageCode);
 
 	xml.addTag("<images>", function() {
-		//Application icon
-
 		$parent.find("input[id^=description-images-appicon]").each(function() {
 			xml.addNonEmptyTextTag("<app-icon>", normalizeInputFileName($(this).val()));
 		});
+
+		xml.addNonEmptyTextTag("<large-promo>", normalizeInputFileName($parent.find("#description-images-largepromo").val()));
+		xml.addNonEmptyTextTag("<small-promo>", normalizeInputFileName($parent.find("#description-images-smallpromo").val()));
+
+		xml.addTag("<screenshots>", function() {
+			$parent.find("input[id^=description-images-screenshot]").each(function() {
+				xml.addNonEmptyTextTag("<sccreenshot>", normalizeInputFileName($(this).val()));
+			});
+		});
+	});	
+};
+
+function generateOneLanguageVideoDescription(languageCode, xml) {
+	$parent = $("#localization-tab-" + languageCode);
+
+	xml.addTag("<videos>", function() {
+		xml.addNonEmptyTextTag("<youtube-video>", $parent.find("#description-videos-youtubevideo").val());
 	});	
 };
 
 function generateOneLanguageDescription(languageCode, xml) {
 	generateOneLanguageTextDescription(languageCode, xml);
 	generateOneLanguageImageDescription(languageCode, xml);
+	generateOneLanguageVideoDescription(languageCode, xml);
 };
 
 function generateDescriptionXML(xml) {
@@ -129,8 +147,8 @@ function isCheckboxChecked(id) {
 function generateConsentXML(xml) {
 	xml.addTag("<consent>", function() {
 		xml.addTag("<google-android-content-guidelines>", isCheckboxChecked("consent-googleandroidcontentguidelines"));
-		xml.addTag("<slideme-agreement>", isCheckboxChecked("consent-slidemeagreement"));
 		xml.addTag("<us-export-laws>", isCheckboxChecked("consent-usexportlaws"));
+		xml.addTag("<slideme-agreement>", isCheckboxChecked("consent-slidemeagreement"));
 		xml.addTag("<free-from-third-party-copytighted-content>", isCheckboxChecked("consent-freefromthirdpartycopytightedcontent"));
 		xml.addTag("<import-export>", isCheckboxChecked("consent-importexportlaws"));
 	});
@@ -167,6 +185,26 @@ function generatePriceXML(xml) {
 	});
 };
 
+function generateContentDescriptionXML(xml) {
+	xml.addString($("#contentdescription").val());
+};
+
+function generateAvailabilityXML(xml) {
+	xml.addString($("#availability").val());
+};
+
+function generateRequirementsXML(xml) {
+	xml.addString($("#requirements").val());
+};
+
+function generateTestingInstructionsXML(xml) {
+	xml.addString($("#testinginstructions").val());
+};
+
+function generateStoreSpecificXML(xml) {
+	xml.addString($("#storespecific").val());
+};
+
 function generateDescriptionFileXML() {
 	var xml = new XMLGenerator();
 	xml.addLine('<?xml version="1.0" encoding="UTF-8"?>');
@@ -175,10 +213,15 @@ function generateDescriptionFileXML() {
 			generateCategorizationXML(xml);
 			generateDescriptionXML(xml);
 			generateDescriptionLocalizationsXML(xml);
+			generateContentDescriptionXML(xml);
+			generateAvailabilityXML(xml);
 			generatePriceXML(xml);
 			generateApkFilesXML(xml);
-			generateCustomerSupportXML(xml);
+			generateRequirementsXML(xml);
+			generateTestingInstructionsXML(xml);
 			generateConsentXML(xml);
+			generateCustomerSupportXML(xml);
+			generateStoreSpecificXML(xml);
 		});
 	});
 	return xml.getXmlText();

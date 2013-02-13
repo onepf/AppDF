@@ -24,100 +24,110 @@
 var MAX_LOCALIZATION_TABS = 5;
 
 function getDescriptionLanguages() {
-	var langs = [];
-	$("#description-tab-header").find("a").each(function() {
-		var strHref = $(this).attr("href").toLowerCase();
-		if (strHref.indexOf("#localization-tab-")==0) {
-			langs.push(strHref.substr(18));
-		};
-	});
-	return langs;
+    var langs = [];
+    $("#description-tab-header").find("a").each(function() {
+        var strHref = $(this).attr("href").toLowerCase();
+        if (strHref.indexOf("#localization-tab-")==0) {
+            langs.push(strHref.substr(18));
+        };
+    });
+    return langs;
 };
 
 function selectLanguage(languageCode) {
-	var $tabHeader = $("#description-tab-header");
-	$tabHeader.find('a[href="#localization-tab-' + languageCode + '"]').tab('show');
+    var $tabHeader = $("#description-tab-header");
+    $tabHeader.find('a[href="#localization-tab-' + languageCode + '"]').tab('show');
 };
 
 function addLocalization(languageCode, languageName) {
-	var descriptionLangs = getDescriptionLanguages();
+    var descriptionLangs = getDescriptionLanguages();
 
-	//Preventing adding one language twice
-	if (descriptionLangs.indexOf(languageCode)>=0) {
-		return;
-	};
+    //Preventing adding one language twice
+    if (descriptionLangs.indexOf(languageCode)>=0) {
+        return;
+    };
 
-	var strHtmlHeader = '<li><a href="#localization-tab-' + languageCode + '" data-toggle="tab">' + languageName + '</a></li>';
+    var strHtmlHeader = '<li><a href="#localization-tab-' + languageCode + '" data-toggle="tab">' + languageName + '</a></li>';
 
-	var $tabHeader = $("#description-tab-header");
+    var $tabHeader = $("#description-tab-header");
 
-	//We do not allow more than MAX_LOCALIZATION_TABS tabs, if more we add it to the "More" tab
-	if ($tabHeader.children().length<MAX_LOCALIZATION_TABS) {
-		$tabHeader.children("li:last").before($(strHtmlHeader));
-	} else {
-		$tabHeader.find('ul.dropdown-menu').append($(strHtmlHeader));
-	};
+    //We do not allow more than MAX_LOCALIZATION_TABS tabs, if more we add it to the "More" tab
+    if ($tabHeader.children().length<MAX_LOCALIZATION_TABS) {
+        $tabHeader.children("li:last").before($(strHtmlHeader));
+    } else {
+        $tabHeader.find('ul.dropdown-menu').append($(strHtmlHeader));
+    };
 
-	//Create new tab content container
-	var strHtmlContent = '<div class="tab-pane" id="localization-tab-' + languageCode + '"></div>';
-	$("#description-tab-content").append($(strHtmlContent));
+    //Create new tab content container
+    var strHtmlContent = '<div class="tab-pane" id="localization-tab-' + languageCode + '"></div>';
+    $("#description-tab-content").append($(strHtmlContent));
 
-	//Add copy of default langauge content to just created container 
-	var strHtmlClone = $("#description-tab-content").children("div#localization-tab-default").html();
-	$("#description-tab-content").children().last().append($(strHtmlClone));
+    //Add copy of default langauge content to just created container 
+    var strHtmlClone = $("#description-tab-content").children("div#localization-tab-default").html();
+    var $localizedDescription = $(strHtmlClone);
+    prepareJustCopiedDescription($localizedDescription);
+    $("#description-tab-content").children().last().append($localizedDescription);
 
-	//Open just created tab and create a handler 
-	$tabHeader.find('a[href="#localization-tab-' + languageCode + '"]').tab('show');
-	$tabHeader.find('a[href="#localization-tab-' + languageCode + '"]').click(function (e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
+    //Open just created tab and create a handler 
+    $tabHeader.find('a[href="#localization-tab-' + languageCode + '"]').tab('show');
+    $tabHeader.find('a[href="#localization-tab-' + languageCode + '"]').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+};
+
+function prepareJustCopiedDescription($e) {
+	//Remove image fields that were non-empty in the default language
+	$e.find(".image-input-group").find("input.image-input").not(".empty-image").closest(".image-input-group").remove();
+	$e.find(".image-input-group").find("input.screenshot-input").not(".empty-image").closest(".image-input-group").remove();
+	$e.find(".image-input-group").find("input.appicon-input").not(".empty-image").closest(".image-input-group").remove();
+	$e.find(".required-mark").remove();
 };
 
 function removeAllLocalizations() {
-	var $tabHeader = $("#description-tab-header");
-	var $tabContent = $("#description-tab-content");
+    var $tabHeader = $("#description-tab-header");
+    var $tabContent = $("#description-tab-content");
 
-	$tabHeader.find("a").each(function() {
-		var strHref = $(this).attr("href");
-		if (strHref!="#localization-tab-default" && strHref!="#") {
-			$(this).closest("li").remove();
-			$tabContent.children("div" + strHref).remove();
-		};
-	});
+    $tabHeader.find("a").each(function() {
+        var strHref = $(this).attr("href");
+        if (strHref!="#localization-tab-default" && strHref!="#") {
+            $(this).closest("li").remove();
+            $tabContent.children("div" + strHref).remove();
+        };
+    });
 };
 
 function removeSelectedLocalization() {
-	var $tabHeader = $("#description-tab-header");
-	var $tabContent = $("#description-tab-content");
-	var strHref = $tabHeader.find(".active").children("a").attr("href");
+    var $tabHeader = $("#description-tab-header");
+    var $tabContent = $("#description-tab-content");
+    var strHref = $tabHeader.find(".active").children("a").attr("href");
 
-	if (strHref=="#localization-tab-default") {
-		alert("Cannot remove default (English) localization");
-		return;
-	};
+    if (strHref=="#localization-tab-default") {
+        alert("Cannot remove default (English) localization");
+        return;
+    };
 
-	//First we check if "More" is selected
-	if (strHref=="#") {
-		strHref = $tabHeader.find(".active").find(".active").children("a").attr("href");
-		$tabHeader.find(".active").find(".active").remove();
-		$tabContent.children("div" + strHref).remove();
-	} else {
-		$tabHeader.find(".active").remove();
-		$tabContent.children("div" + strHref).remove();
-	};
+    //First we check if "More" is selected
+    if (strHref=="#") {
+        strHref = $tabHeader.find(".active").find(".active").children("a").attr("href");
+        $tabHeader.find(".active").find(".active").remove();
+        $tabContent.children("div" + strHref).remove();
+    } else {
+        $tabHeader.find(".active").remove();
+        $tabContent.children("div" + strHref).remove();
+    };
 
-	selectLanguage("default");
+    selectLanguage("default");
 };
 
 function showAllLocalizationDialog() {
-	var $modal = $("#add-localization-modal");
-	var $okButton = $modal.find(".btn-primary");
-	$okButton.click(function(event) {
-		event.preventDefault();
-		$modal.modal('hide');
-		addLocalization($("#add-localization-modal-language").val(), $("#add-localization-modal-language").children(":selected").text());
-	});
+    var $modal = $("#add-localization-modal");
+    var $okButton = $modal.find(".btn-primary");
+    $okButton.click(function(event) {
+        event.preventDefault();
+        $modal.modal('hide');
+        addLocalization($("#add-localization-modal-language").val(), $("#add-localization-modal-language").children(":selected").text());
+    });
 
-	$modal.modal("show");
+    $modal.modal("show");
 };
