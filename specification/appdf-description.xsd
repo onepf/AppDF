@@ -30,7 +30,8 @@
       <xsd:element name="customer-support" type="type-customersupport" />
       <xsd:element name="store-specific" type="type-storespecific" minOccurs="0" />
     </xsd:sequence>
-    <xsd:attribute name="package" type="xsd:string" use="required"/>
+    <xsd:attribute name="platform" type="type-application-attr-platform" use="required"/>
+    <xsd:attribute name="package" type="type-attr-package" use="required"/>
   </xsd:complexType>
   
   <xsd:complexType name="type-categorization">
@@ -110,9 +111,21 @@
     </xsd:sequence>
   </xsd:complexType>
   
+  <xsd:simpleType name="type-application-attr-platform">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="android|tizen"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+  
+  <xsd:simpleType name="type-attr-package">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([a-zA-Z0-9\-]+\.)+[a-zA-Z0-9\-]+"/>
+    </xsd:restriction>
+  </xsd:simpleType>  
+  
   <xsd:simpleType name="type-description-attr-language">
     <xsd:restriction base="xsd:string">
-      <xsd:pattern value="[a-z][a-z]|[a-z][a-z]\-[a-z][a-z]"/>
+      <xsd:pattern value="[a-z][a-z]|[a-z][a-z]\-[A-Z][A-Z]"/>
     </xsd:restriction>
   </xsd:simpleType>  
   
@@ -254,6 +267,7 @@
       <xsd:element name="include" type="type-attr-country" minOccurs="0" maxOccurs="unbounded" />
       <xsd:element name="exclude" type="type-attr-country" minOccurs="0" maxOccurs="unbounded" />
     </xsd:sequence>
+    <xsd:attribute name="only-listed" type="type-attr-yesno" />
   </xsd:complexType>
   
   <xsd:complexType name="type-availability-period">
@@ -265,7 +279,7 @@
   
   <xsd:simpleType name="type-attr-country">
     <xsd:restriction base="xsd:string">
-      <xsd:pattern value="[a-z][a-z]"/>
+      <xsd:pattern value="[A-Z][A-Z]"/>
     </xsd:restriction>
   </xsd:simpleType>  
   
@@ -319,7 +333,7 @@
   </xsd:simpleType>  
   
   <xsd:complexType name="type-price-trialversion">
-    <xsd:attribute name="full-version" type="xsd:string" />
+    <xsd:attribute name="full-version" type="type-attr-package" />
   </xsd:complexType>
   
   <xsd:complexType name="type-apkfiles">

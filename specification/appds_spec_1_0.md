@@ -76,7 +76,7 @@ Sample Description.xml File
 
 <application-description-file version="1">
 
-<application package="ru.yandex.shell">
+<application platform="android" package="ru.yandex.shell">
 
   <categorization>
     <!--Options: application, game-->
@@ -138,7 +138,7 @@ Sample Description.xml File
     </images>
 
     <videos>
-      <youtube-video>x8723jw2KL</youtube-video>
+      <youtube-video>x8723jw2KKL</youtube-video>
       <video-file>video1.mp4</video-file>
       <video-file>video2.mp4</video-file>
     </videos>
@@ -218,12 +218,22 @@ Sample Description.xml File
 
   <availability>
     <!--Optional tag, if missed all the countries are included-->
-    <countries>
-      <!--Two symbol ISO 3166-1 country code -->
-      <include>en</include>
-      <include>ru</include>
-      <exclude>de</exclude>
+    <!--If attribute only-listed="yes" then this tag contains the list of countries in which the application is available-->
+    <!--If attribute only-listed="yes" the application is available in all the countries except the listed-->
+    <countries only-listed="yes">
+      <!--Two symbol ISO 3166-1 country code (upper case) -->
+      <include>US</include>
+      <include>GB</include>
+      <include>DE</include>
     </countries>
+
+    <!-- Example of countries tag the application is available in all the countries except the listed -->
+    <!--
+    <countries only-listed="no">
+      <exclude>CU</exclude>
+      <exclude>IM</exclude>
+    </countries>
+    -->
 
     <!--Optional tag, if missed the app become available immediatly without experiation date-->
     <period>
@@ -232,7 +242,7 @@ Sample Description.xml File
       <!--Optional tag, if missed the app is without experiation date-->    
       <until year="2013" month="12" day="23"/>
     </period>
-  </availability>	
+  </availability>   
 
   <!--If free attribute is set to "yes" then all the subtags except <trial-version> are ignored. -->
   <!--If app is not free then "base-price" is required -->
@@ -242,9 +252,9 @@ Sample Description.xml File
   <price free="no">
     <!-- Base price is defined in USD -->
     <base-price>4.95</base-price>
-    <local-price country="de">3.95</local-price>
-    <local-price country="fr">3.95</local-price>
-    <local-price country="ru">99</local-price>
+    <local-price country="DE">3.95</local-price>
+    <local-price country="FR">3.95</local-price>
+    <local-price country="RU">99</local-price>
   </price>
 
   <!-- Example of price tag for a free app -->
@@ -1723,7 +1733,7 @@ Reference country list in [JSON](data/countries.json) and [XML](data/countries.x
   </tr>
   <tr>
     <td>language</td>
-    <td>two letter ISO 639-1 language code (like "en", full language list in <a href="data/languages.json">JSON</a> and <a href="data/languages.xml">XML</a> formats) or two letters language code + two letter ISO 3166‑1 country code (like "en-us", full country list in <a href="data/countries.json">JSON</a> and <a href="data/countries.xml">XML</a> formats)</td>
+    <td>two letter ISO 639-1 language code (like "en", full language list in <a href="data/languages.json">JSON</a> and <a href="data/languages.xml">XML</a> formats) or two letters language code + two upper case letter ISO 3166‑1 country code (like "en-US", full country list in <a href="data/countries.json">JSON</a> and <a href="data/countries.xml">XML</a> formats)</td>
     <td>required tag</td>
   </tr>
 </table>
@@ -2241,14 +2251,14 @@ No attributes.
 
 You can define country list of period of time where/when you application is distributed. By default your application is distributed to all the countries where language support allows.
 
-Example:
+Example 1:
 ```xml
 <availability>
-  <countries>
-    <include>en</include>
-    <include>ru</include>
-    <exclude>de</exclude>
-  <countries>
+  <countries only-listed="no">
+    <include>US</include>
+    <include>GB</include>
+    <include>DE</include>
+  </countries>
 
   <period>
     <since year="2012" month="12" day="23"/>
@@ -2257,11 +2267,55 @@ Example:
 </availability>
 ```
 
+Example 2:
+```xml
+<availability>
+  <countries only-listed="yes">
+    <exclude>CU</exclude>
+    <exclude>IM</exclude>
+  </countries>
+</availability>
+```
+
 #### availability/countries
 Optional.
-No attributed.
+Attributes: `only-listed`. 
 
-Use `<include>` and `<exclude>` subtags to define list of the countries where your application is distributed.
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>Required</th>
+    <th>How it works</th>
+  </tr>
+  <tr>
+    <td>only-listed</td>
+    <td>yes, no</td>
+    <td>required</td>
+    <td>If value is "yes" then only &lt;include&gt; subtags could be included, if "no" then only &lt;exclude&gt; subtags could be included</td>
+  </tr>
+</table>
+
+Use either `<include>` or `<exclude>` (depending on the `only-listed` attribute value) subtags to define list of the countries where your application is distributed. Subtag value should be a two upper case symbol ISO 3166‑1 country code. Here is the country list in [JSON](data/countries.json) and [XML](data/countries.xml) formats.
+
+Example 1:
+```xml
+<countries only-listed="no">
+  <include>US</include>
+  <include>GB</include>
+  <include>DE</include>
+</countries>
+```
+
+Example 2:
+```xml
+<availability only-listed="yes">
+  <countries>
+    <exclude>CU</exclude>
+    <exclude>IM</exclude>
+  </countries>
+</availability>
+```
 
 <table>
   <tr>
@@ -6493,11 +6547,17 @@ The following languages are currently not support by any of the stores:
 Status
 -------------
 Current status: draft  
-Specification version: 0.94  
-Last update: February 05, 2013  
+Specification version: 0.95
+Last update: February 14, 2013  
 
 Change History
 -------------
+### Version 0.95 (February 14, 2013)
+
+* `platform` attribute is added to the `<application>` tag to potentially support other mobile platforms. 
+* `only-listed` attribute is added to the `<countries>` tag to make it clear that either `<include>` or `<exclude>` subtags could be included but not both. 
+* Country code should be written in upper case not in lower case. 
+
 ### Version 0.94 (February 05, 2013)
 
 * Option to have multiple description.xml files inside one AppDF archive for localization purposes is removed. All localizations must be included in the main `description.xml` file.

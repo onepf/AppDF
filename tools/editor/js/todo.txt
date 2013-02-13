@@ -1,5 +1,6 @@
 Add Beta label on the top of the page + short list of what is not finished yet
 
+Do not insert <screenshots> and <images> sections if they are emptry (add this functionality to XML lib)
 allow JPG images in small and large promos
 
 check browser compatibility and show unsupported message
@@ -36,11 +37,7 @@ make that store info section for category appears by default after page is loade
 make APK file required, disable everything else until APK is added
 
 SPECIFICATION
-change specification to clearly describe country availabilities, include/exclude behavour
-change country code from small letters to capital ones
 add tags like in Samsung and Naver
-add consent importexport for Amazon (before I thought Amazon is us_export, but it is not)
-Ask Yevgeniy to change 
 XSD for full-description clearly describe which tags are allowed
     
     <xsd:complexType mixed="true">
