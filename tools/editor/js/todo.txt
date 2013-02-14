@@ -1,5 +1,6 @@
 Add Beta label on the top of the page + short list of what is not finished yet
-
+Update the parser to 0.95 spec
+Send email to all the people (Kim, Opera, Y.Store) about the spec change
 Do not insert <screenshots> and <images> sections if they are emptry (add this functionality to XML lib)
 allow JPG images in small and large promos
 
@@ -37,6 +38,8 @@ make that store info section for category appears by default after page is loade
 make APK file required, disable everything else until APK is added
 
 SPECIFICATION
+Add text to EULA tag
+This what to do with NOOK that have free trial in the same app as full version
 add tags like in Samsung and Naver
 XSD for full-description clearly describe which tags are allowed
     

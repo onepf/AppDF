@@ -634,6 +634,191 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 								<legend class="">Content Rating and Descriptors</legend>
 							</div>
 							<div class="control-group">
+								<!-- content-description/content-rating -->
+								<label class="control-label" for="contentdescription-contentrating">Content rating <span class="required-mark">*</span></label>
+								<div class="controls">
+									<select id="contentdescription-contentrating" name="contentdescription-contentrating">
+										<option value="3">3</option>
+										<option value="6">6</option>
+										<option value="10">10</option>
+										<option value="13">13</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+									</select>
+									<p class="help-block">Minimum age allowance according to the <a href="http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board">ESRB standard</a></p>
+								</div>
+							</div><!--control-group-->
+					 
+							<div class="control-group">
+								<label class="control-label">Content descriptors <span class="required-mark">*</span></label>
+								<div class="controls">
+									<table class="table span8">
+										<tr>
+											<td>
+												<abbr title="Violent actions involving cartoon-like situations and characters. May include violence where a character is unharmed after the action has been inflicted">Cartoon violence</abbr>
+											</td>
+											<td>
+												<select id="contentdescription-contentdescriptors-cartoonviolence" class="input-small">
+													<option value="no">No</option>
+													<option value="light">Light</option>
+													<option value="strong">Strong</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<abbr title="May contain scenes of people getting injured or dying, often by use of weapons. Also may contain gore and blood-letting.">Realistic violence</abbr>
+											</td>
+											<td>
+												<select id="contentdescription-contentdescriptors-realisticviolence" class="input-small">
+													<option value="no">No</option>
+													<option value="light">Light</option>
+													<option value="strong">Strong</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<abbr title="May contain profanity, sexual innuendo, threats, and all manner of slurs and epithets.">Bad language</abbr>
+											</td>
+											<td>
+												<select id="contentdescription-contentdescriptors-badlanguage" class="input-small">
+													<option value="no">No</option>
+													<option value="light">Light</option>
+													<option value="strong">Strong</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<abbr title="May contain scenes that are considered too disturbing or frightening to younger or more emotionally vulnerable players.">Fear</abbr>
+											</td>
+											<td>
+												<select id="contentdescription-contentdescriptors-fear" class="input-small">
+													<option value="no">No</option>
+													<option value="light">Light</option>
+													<option value="strong">Strong</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<abbr title="May contain references to sexual attraction or sexual intercourse. Also may contain nudity and characters dressed in suggestive clothing.">Sexual content</abbr>
+											</td>
+											<td>
+												<select id="contentdescription-contentdescriptors-sexualcontent" class="input-small">
+													<option value="no">No</option>
+													<option value="light">Light</option>
+													<option value="strong">Strong</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<abbr title="May contain references to illegal drugs or a fictional substance that has parallels to real-life illegal drugs (in use, possession, or sale).">Drugs</abbr>
+											</td>
+											<td>
+												<select id="contentdescription-contentdescriptors-drugs" class="input-small">
+													<option value="no">No</option>
+													<option value="light">Light</option>
+													<option value="strong">Strong</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<abbr title="May contain elements that encourage or teach gambling.">Gambling reference</abbr>
+											</td>
+											<td>
+												<select id="contentdescription-contentdescriptors-gamblingreference" class="input-small">
+													<option value="no">No</option>
+													<option value="light">Light</option>
+													<option value="strong">Strong</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<abbr title="The consumption of alcoholic beverages or references to and/or images or alcoholic beverages">Alcohol</abbr>
+											</td>
+											<td>
+												<select id="contentdescription-contentdescriptors-alcohol" class="input-small">
+													<option value="no">No</option>
+													<option value="light">Light</option>
+													<option value="strong">Strong</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<abbr title="References to and/or images of tobacco products">Smoking</abbr>
+											</td>
+											<td>
+												<select id="contentdescription-contentdescriptors-smoking" class="input-small">
+													<option value="no">No</option>
+													<option value="light">Light</option>
+													<option value="strong">Strong</option>
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<abbr title="May contain cruelty or harassment based on race, ethnicity, gender, or sexual preferences.">Discrimination</abbr>
+											</td>
+											<td>
+												<select id="contentdescription-contentdescriptors-discrimination" class="input-small">
+													<option value="no">No</option>
+													<option value="light">Light</option>
+													<option value="strong">Strong</option>
+												</select>
+											</td>
+										</tr>
+									</table>
+
+								</div>
+							</div><!--control-group-->
+
+							<div class="control-group">
+								<label class="control-label">Included activities <span class="required-mark">*</span></label>
+								<div class="controls">
+									<label class="checkbox">
+										<input type="checkbox" value="" id="contentdescription-includedactivities-inappbilling">
+										In App billing - either standard or custom in-app billing (aka In-App Purchases)
+									</label>							
+
+									<label class="checkbox">
+										<input type="checkbox" value="" id="contentdescription-includedactivities-gambling">
+										Gambling - any form of gambling in your application
+									</label>							
+
+									<label class="checkbox">
+										<input type="checkbox" value="" id="contentdescription-includedactivities-advertising">
+										Advertising - any form of advertising including banner or AirPush-like advertising
+									</label>							
+
+									<label class="checkbox">
+										<input type="checkbox" value="" id="contentdescription-includedactivities-usergeneratedcontent">
+										User generated content 	
+									</label>							
+
+									<label class="checkbox">
+										<input type="checkbox" value="" id="contentdescription-includedactivities-usertousercommunications">
+										User to user communications
+									</label>							
+
+									<label class="checkbox">
+										<input type="checkbox" value="" id="contentdescription-includedactivities-accountcreation">
+										Account creation
+									</label>							
+
+									<label class="checkbox">
+										<input type="checkbox" value="" id="contentdescription-includedactivities-personalinformationcollection">
+										Personal information collection - your application transfers to the server or collects locally on the device any personal information
+									</label>							
+								</div>
+							</div><!--control-group-->
+
+							<div class="control-group">
 								<!-- content-description -->
 								<label class="control-label"  for="contentdescription">Content Rating and Descriptors <span class="required-mark">*</span></label>
 								<div class="controls">
