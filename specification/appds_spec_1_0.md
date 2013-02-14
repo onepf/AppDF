@@ -505,36 +505,49 @@ Required. No attributes. AppDF format has its own list of categories for both ga
     <th>Supported</th>
     <th>Name</th>
     <th>Required</th>
+    <th>Comments</th>
   </tr>
   <tr>
     <td>Google Play</td>
     <td>Yes</td>
     <td>Store Listing / Categorization / Category</td>
     <td>Yes</td>
+    <td></td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>General Information / Category</td>
     <td>Yes</td>
+    <td></td>
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
     <td>Yes</td>
     <td>Category</td>
     <td>Yes</td>
+    <td></td>
   </tr>
   <tr>
     <td>Samsung App</td>
     <td>Yes</td>
     <td>Category / Category / Primary</td>
     <td>Yes</td>
+    <td></td>
   </tr>
   <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Category</td>
     <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Keywords &amp; Category / Categories</td>
+    <td>Yes</td>
+    <td>Supports multiple categories</td>
   </tr>
 </table>
 
@@ -581,6 +594,12 @@ Although some stores don't use subcategories AppDF includes as detailed category
     <td>No</td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Keywords &amp; Category / Categories</td>
+    <td>Yes</td>
   </tr>
 </table>
 
@@ -720,6 +739,14 @@ The application name is shown in the application list. As everything inside the 
     <td></td>
   </tr>
   <tr>
+    <td>NOOK aps</td>
+    <td>Yes</td>
+    <td>Basic / Application Name</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>100</td>
+  </tr>   
+  <tr>
     <td>SK T-Store</td>
     <td>Yes</td>
     <td>Basic Information / App Title</td>
@@ -790,6 +817,15 @@ Comma separated the list of keywords. As everything inside the `<description>` t
     <td>No</td>
     <td>Unlimited</td>
     <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Keywords &amp; Category / Keywords</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>Unlimited number, maximum 50 symbols each</td>
+    <td>Not one string but a list of keywords</td>
   </tr>
 </table>
 
@@ -965,6 +1001,15 @@ The full application description is shown on the product page. You can include s
     <td>Yes</td>
     <td>No</td>
     <td>Unlimited</td>
+    <td>Some HTML subset</td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Description / Application Description</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>2500</td>
     <td>Some HTML subset</td>
   </tr>
   <tr>
@@ -1220,6 +1265,14 @@ Link to a webpage with your End User License Agreement for this application. As 
     <td>No</td>
     <td>Only text, not URL option</td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Description / End User License Agreement</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Only text, no URL option, maximum 5000 symbols</td>
+  </tr>
 </table>
 
 #### description/images
@@ -1323,6 +1376,15 @@ High resolution application icon. Different stores require different resolutions
     <td>No</td>
     <td>150x150 - 500x500 for Icon, 512x512 for High resolution icon</td>
     <td>PNG, JPG, GIF</td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Icons &amp; Screenshots / Icon</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>300x300</td>
+    <td>PNG, to transparency</td>
   </tr>
   <tr>
     <td>SK T-Store</td>
@@ -1543,14 +1605,24 @@ Example:
     <td>1-3</td>
   </tr>
   <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Icons &amp; Screenshots / Screenshots</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>600x1024 or 1024x600</td>
+    <td>PNG</td>
+    <td>1-4</td>
+  </tr>
+  <tr>
     <td>SK T-Store</td>
     <td>Yes</td>
     <td>App Image / Screenshots</td>
     <td>Yes</td>
     <td>No</td>
-    <td>no information</td>
-    <td>JPG</td>
-    <td>4</td>
+    <td>240x180 - 640x480</td>
+    <td>JPG, PNG, GIF</td>
+    <td>1-3</td>
   </tr>
 </table>
 
@@ -1628,6 +1700,14 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
     <td>SlideME</td>
     <td>Yes</td>
     <td>Promotion / Video</td>
+    <td>No</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Video URL</td>
     <td>No</td>
     <td>No</td>
     <td></td>
@@ -1843,6 +1923,12 @@ Each application must be labeled with a minimum age allowance according to [ESRB
     <td>Application / Parental Rating</td>
     <td>Yes</td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Age Range</td>
+    <td>Yes</td>
+  </tr>
 </table>
 
 There is no universal content rating system (aka parental control rating, aka minimum age). Different stores use different systems. AppDF uses ESRB standard but the more important thing is how this information is mapped out to the systems used in the appstores. The following table is used by AppDF to convert the rating to the systems of all the main application stores.
@@ -1855,6 +1941,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <th>Opera Mobile Store</th>
     <th>Samsung Apps</th>
     <th>SlideME</th>
+    <th>NOOK apps</th>
   </tr>
   <tr>
     <td>3</td>
@@ -1863,6 +1950,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 0</td>
     <td>G: General Audiences (for all ages)</td>
+    <td>Ages 0-4</td>
   </tr>
   <tr>
     <td>6</td>
@@ -1871,6 +1959,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 4</td>
     <td>G: General Audiences (for all ages)</td>
+    <td>6+</td>
   </tr>
   <tr>
     <td>10</td>
@@ -1879,6 +1968,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 12</td>
     <td>PG: Parental Guidance Suggested (may not be suitable for children)</td>
+    <td>10+</td>
   </tr>
   <tr>
     <td>13</td>
@@ -1887,6 +1977,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 16</td>
     <td>PG-13: Parents Strongly Cautioned (may not be suitable for children under 13)</td>
+    <td>13+</td>
   </tr>
   <tr>
     <td>17</td>
@@ -1895,6 +1986,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 18</td>
     <td>R: Restricted (under 17 requires accompanying adult guardian)</td>
+    <td>17+</td>
   </tr>
   <tr>
     <td>18</td>
@@ -1903,6 +1995,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 18</td>
     <td>NC-17: Not allowed for 17 and under</td>
+    <td>18+</td>
   </tr>
 </table>
 
@@ -2240,6 +2333,13 @@ Example:
     <td>SlideME</td>
     <td>Yes</td>
     <td>Application / "In-App" billing, With advertisements</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / "Does your app invite a user to input personal...", </td>
     <td></td>
     <td></td>
   </tr>
@@ -2809,6 +2909,14 @@ Example:
     <td>No</td>
     <td>No</td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Application &amp; Trial/ Application APK</td>
+    <td>100M</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
 </table>
 
 ### requirements
@@ -3202,6 +3310,13 @@ Please detail any special requirements to test your app.
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Testing / Release Notes</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
 </table>
 
 ### consent
@@ -3292,6 +3407,12 @@ Example:
     <td>&lt;slideme-agreement&gt;</td>
   </tr>
   <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / "This application does not contain export encryption</td>
+    <td>&lt;slideme-agreement&gt;</td>
+  </tr>
+  <tr>
     <td>SK T-Store</td>
     <td>Yes</td>
     <td>Basic Information / Intellectual property rights</td>
@@ -3359,6 +3480,13 @@ No attributes.
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Support Phone</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
 </table>
 
 #### customer-support/email
@@ -3407,6 +3535,13 @@ No attributes.
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Support Email</td>
+    <td>Yes</td>
+    <td>No</td>
   </tr>
 </table>
 
@@ -3457,6 +3592,13 @@ No attributes.
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Support URL</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
 </table>
 
 ### store-specific
@@ -3492,6 +3634,14 @@ Example:
   <slideme>
     <license-type>apache2</license-type>
   </slideme>
+  <nook>
+    <supported-platforms>
+      <nook-color>yes</nook-color>
+      <nook-tablet>yes</nook-tablet>
+      <nook-hd>yes</nook-hd>
+      <nook-hd-plus>yes</nook-hd-plus>
+    </supported-platforms>
+  </nook>
   <tstore>
     <seller-name>Yandex</seller-name>
   </tstore>
