@@ -253,6 +253,23 @@ function parseDescriptionXML(xmlText, onend, onerror) {
 		loadText("website");
 	});
 
+	//Content Description
+	section("content-description", "content-description", function() {
+		loadText("content-rating");
+		section("content-descriptors", "content-descriptors", function() {
+			loadText("cartoon-violence");
+			loadText("realistic-violence");
+			loadText("bad-language");
+			loadText("fear");
+			loadText("sexual-content");
+			loadText("drugs");
+			loadText("gambling-reference");
+			loadText("alcohol");
+			loadText("smoking");
+			loadText("discrimination");
+		});
+	});
+
 	//Todo: temporary XML loading instead of parsing content
 	loadXml("content-description", "content-description");
 	loadXml("availability", "availability");
@@ -288,6 +305,7 @@ function validateDescriptionXMLData(data) {
 	errors.append(validatePrice(data.price));
 	errors.append(validateConsent(data["consent"]));
 	errors.append(validateCustomerSupport(data["customer-support"]));
+	errors.append(validateContentDescription(data["content-description"]));
 
 	console.log("errors");
 	console.log(errors);
@@ -459,6 +477,16 @@ function validateCustomerSupport(data) {
 	var errors = [];
 
 	errors.append(validatePhoneNumber(data["phone"], "Wrong customer support phone number format. Only digits, brackets, spaces and dashes are allowed. Must be in international format like +1 (555) 123-45-67."));	
+	errors.append(validateEmail(data["email"], "Wrong customer support email format. Must be a valid email address."));	
+	errors.append(validateURL(data["website"], "Wrong customer support webpage format. Must be a valid URL."));	
+
+	return errors;	
+};
+
+function validateContentDescription(data) {
+	var errors = [];
+
+	errors.append(validateEnum(data["content-rating"], "Content rating", [3,6,10,13,17,18]));	
 	errors.append(validateEmail(data["email"], "Wrong customer support email format. Must be a valid email address."));	
 	errors.append(validateURL(data["website"], "Wrong customer support webpage format. Must be a valid URL."));	
 
