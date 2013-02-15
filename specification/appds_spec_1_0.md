@@ -493,6 +493,13 @@ Required. No attributes. Value could be either `application` or `game`.
     <td>Yes</td>
     <td>Games is one item in the application category list</td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>Yes</td>
+    <td>Application Category</td>
+    <td>Yes</td>
+    <td>Games is one item in the application category list</td>
+  </tr>
 </table>
 
 #### categorization/category
@@ -539,6 +546,13 @@ Required. No attributes. AppDF format has its own list of categories for both ga
     <td>SlideME</td>
     <td>Yes</td>
     <td>Category</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>Yes</td>
+    <td>Application Category</td>
     <td>Yes</td>
     <td></td>
   </tr>
@@ -591,6 +605,12 @@ Although some stores don't use subcategories AppDF includes as detailed category
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -739,6 +759,14 @@ The application name is shown in the application list. As everything inside the 
     <td></td>
   </tr>
   <tr>
+    <td>AppsLib</td>
+    <td>Yes</td>
+    <td>Application Name</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>Unlimited</td>
+  </tr>
+  <tr>
     <td>NOOK aps</td>
     <td>Yes</td>
     <td>Basic / Application Name</td>
@@ -819,6 +847,15 @@ Comma separated the list of keywords. As everything inside the `<description>` t
     <td></td>
   </tr>
   <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>NOOK apps</td>
     <td>Yes</td>
     <td>Keywords &amp; Category / Keywords</td>
@@ -891,6 +928,15 @@ Short application description is used in the app lists next to the app title. So
     <td>No</td>
     <td>500</td>
     <td>Shown in the list of the apps on the "big" website</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>SK T-Store</td>
@@ -1004,6 +1050,15 @@ The full application description is shown on the product page. You can include s
     <td>Some HTML subset</td>
   </tr>
   <tr>
+    <td>AppsLib</td>
+    <td>Yes</td>
+    <td>Application Description</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>Unlimited</td>
+    <td>Some HTML subset</td>
+  </tr>
+  <tr>
     <td>NOOK apps</td>
     <td>Yes</td>
     <td>Description / Application Description</td>
@@ -1087,6 +1142,14 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 ##### description/texts/recent-changes
@@ -1150,6 +1213,15 @@ Maximum length: 500.
     <td>Unlimited</td>
     <td>This information will go in the application's changelog and can not be changed</td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>Yes</td>
+    <td>Upload APK file / Release Description</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>Unlimited</td>
+    <td></td>
+  </tr>
 </table>
 
 ##### description/texts/privacy-policy
@@ -1206,6 +1278,14 @@ Link to a webpage with your privacy policy for this application. As everything i
     <td>No</td>
     <td>No</td>
     <td>Only full privacy policy text is supported (no URL option)</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
@@ -1264,6 +1344,14 @@ Link to a webpage with your End User License Agreement for this application. As 
     <td>No</td>
     <td>No</td>
     <td>Only text, not URL option</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>NOOK apps</td>
@@ -1378,6 +1466,15 @@ High resolution application icon. Different stores require different resolutions
     <td>PNG, JPG, GIF</td>
   </tr>
   <tr>
+    <td>AppsLib</td>
+    <td>Yes</td>
+    <td>Application icon</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Any</td>
+    <td>PNG</td>
+  </tr>
+  <tr>
     <td>NOOK apps</td>
     <td>Yes</td>
     <td>Icons &amp; Screenshots / Icon</td>
@@ -1459,6 +1556,15 @@ Large promotion picture usually used by the stores on the PC websites.
     <td>1024x500</td>
     <td>PNG or JPG</td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 ##### description/images/small-promo
@@ -1523,6 +1629,15 @@ A small promotion picture is usually used by the stores on a mobile device for p
     <td>No</td>
     <td>180x120</td>
     <td>PNG or JPG</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
@@ -1602,6 +1717,16 @@ Example:
     <td>No</td>
     <td>240x180 - 640x480</td>
     <td>JPG, PNG, GIF</td>
+    <td>1-3</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>Yes</td>
+    <td>Screenshots</td>
+    <td>No</td>
+    <td>No</td>
+    <td>320x240,480x854</td>
+    <td>JPG, PNG</td>
     <td>1-3</td>
   </tr>
   <tr>
@@ -1705,6 +1830,14 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
     <td></td>
   </tr>
   <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>NOOK apps</td>
     <td>Yes</td>
     <td>Basic / Video URL</td>
@@ -1776,6 +1909,15 @@ Some stores don't support including of YouTube videos but do support uploaded vi
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -1922,6 +2064,12 @@ Each application must be labeled with a minimum age allowance according to [ESRB
     <td>Yes</td>
     <td>Application / Parental Rating</td>
     <td>Yes</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>NOOK apps</td>
@@ -2122,6 +2270,13 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### content-description/content-descriptors
@@ -2237,6 +2392,13 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>Yes</td>
+    <td>Adult Content</td>
+    <td>No</td>
+    <td>Adult Content is one of the categories</td>
+  </tr>
 </table>
 
 #### content-description/included-activities
@@ -2333,6 +2495,13 @@ Example:
     <td>SlideME</td>
     <td>Yes</td>
     <td>Application / "In-App" billing, With advertisements</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
     <td></td>
     <td></td>
   </tr>
@@ -2460,6 +2629,13 @@ Example 2:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### availability/period/since
@@ -2528,6 +2704,12 @@ If presented this tag defines a date from which the application can be distribut
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2601,6 +2783,12 @@ If presented this tag defines a final date of application distribution. Stores t
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2703,6 +2891,14 @@ This tag is ignored for free apps.
     <td></td>
   </tr>
   <tr>
+    <td>AppsLib</td>
+    <td>Yes</td>
+    <td>Application Price</td>
+    <td>USD, other</td>
+    <td>Yes</td>
+    <td>20 currencies can be set as base one</td>
+  </tr>
+  <tr>
     <td>SK T-Store</td>
     <td>Yes</td>
     <td>App Information / Price</td>
@@ -2782,6 +2978,13 @@ Currencies used in different countries in [JSON](data/country_currencies.json) a
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### price/trial-version
@@ -2843,6 +3046,12 @@ This tag is ignored for paid apps.
     <td>Yes</td>
     <td>Application / Trial version</td>
     <td>There is no support for full version package name</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
@@ -2906,6 +3115,14 @@ Example:
     <td>Yes</td>
     <td>Application / Application file</td>
     <td>66M</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>Yes</td>
+    <td>Upload APK file / APK File</td>
+    <td>Not indicated</td>
     <td>No</td>
     <td>No</td>
   </tr>
@@ -3009,6 +3226,12 @@ Set value of this tag to `yes` if your application requires root access for work
     <td>Requirements / Requires 'rooted' device</td>
     <td></td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 
@@ -3055,6 +3278,12 @@ Set value of this tag to `yes` if your application requires Google Play to be in
     <td>Requirements / Requires Google Play and/or account</td>
     <td></td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 
@@ -3097,6 +3326,12 @@ Set value of this tag to `yes` if your application requires internet connection 
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -3158,6 +3393,12 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 
@@ -3213,6 +3454,12 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>Yes</td>
+    <td>All Your Applications / Published/Unpublished</td>
+    <td></td>
+  </tr>
 </table>
 
 
@@ -3255,6 +3502,12 @@ Most of the stores take this information from the APK file. Some stores also sup
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -3305,6 +3558,13 @@ Please detail any special requirements to test your app.
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -3407,6 +3667,12 @@ Example:
     <td>&lt;slideme-agreement&gt;</td>
   </tr>
   <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>NOOK apps</td>
     <td>Yes</td>
     <td>Basic / "This application does not contain export encryption</td>
@@ -3481,6 +3747,13 @@ No attributes.
     <td></td>
   </tr>
   <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>NOOK apps</td>
     <td>Yes</td>
     <td>Basic / Support Phone</td>
@@ -3537,6 +3810,13 @@ No attributes.
     <td></td>
   </tr>
   <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>NOOK apps</td>
     <td>Yes</td>
     <td>Basic / Support Email</td>
@@ -3587,6 +3867,13 @@ No attributes.
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -3678,6 +3965,10 @@ Top level subtags correspond to the application AppDF ids from the following tab
   <tr>
     <td>Samsung Apps</td>
     <td>samsung</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>appslib</td>
   </tr>
   <tr>
     <td>NOOK apps</td>
@@ -4078,6 +4369,47 @@ Application Store Support
 <tr>
   <td>License verification support</td>
   <td>Samsung DRM</td>
+</tr>
+</table>
+
+### AppsLib
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Value</th>
+</tr>
+<tr>
+  <td>Registration URL</td>
+  <td><a href="http://appslib.com/developers/create_account.html">http://appslib.com/developers/create_account.html</a></td>
+</tr>
+<tr>
+  <td>Distribution agreement URL</td>
+  <td><a href="http://appslib.com/developers/create_account.html">http://appslib.com/developers/create_account.html</a></td>
+</tr>
+<tr>
+  <td>AppDF ID</td>
+  <td>appslib</td>
+</tr>
+<tr>
+  <td>Registration fee</td>
+  <td>free</td>
+</tr>
+<tr>
+  <td>Content premoderation</td>
+  <td>Yes (for paid apps)</td>
+</tr>
+<tr>
+  <td>Client Application</td>
+  <td>Yes</td>
+</tr>
+<tr>
+  <td>In-App Purchase Support</td>
+  <td>No</td>
+</tr>
+<tr>
+  <td>License verification support</td>
+  <td>Yes</td>
 </tr>
 </table>
 
@@ -5980,6 +6312,11 @@ The following tables contain information about current language support status (
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td>No localization</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
     <td>No</td>
     <td>No localization</td>
   </tr>
