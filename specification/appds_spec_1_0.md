@@ -493,6 +493,13 @@ Required. No attributes. Value could be either `application` or `game`.
     <td>Yes</td>
     <td>Games is one item in the application category list</td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Keywords &amp; Category / Categories</td>
+    <td>Yes</td>
+    <td>Games is one item in the application category list</td>
+  </tr>
 </table>
 
 #### categorization/category
@@ -893,6 +900,15 @@ Short application description is used in the app lists next to the app title. So
     <td>Shown in the list of the apps on the "big" website</td>
   </tr>
   <tr>
+    <td>NOOK apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SK T-Store</td>
     <td>Yes</td>
     <td>App Detail / Summary</td>
@@ -1010,7 +1026,7 @@ The full application description is shown on the product page. You can include s
     <td>Yes</td>
     <td>No</td>
     <td>2500</td>
-    <td>Some HTML subset</td>
+    <td>Plain text</td>
   </tr>
   <tr>
     <td>SK T-Store</td>
@@ -1081,6 +1097,14 @@ Example:
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -1206,6 +1230,14 @@ Link to a webpage with your privacy policy for this application. As everything i
     <td>No</td>
     <td>No</td>
     <td>Only full privacy policy text is supported (no URL option)</td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
@@ -1459,6 +1491,15 @@ Large promotion picture usually used by the stores on the PC websites.
     <td>1024x500</td>
     <td>PNG or JPG</td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 ##### description/images/small-promo
@@ -1523,6 +1564,15 @@ A small promotion picture is usually used by the stores on a mobile device for p
     <td>No</td>
     <td>180x120</td>
     <td>PNG or JPG</td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
@@ -1776,6 +1826,15 @@ Some stores don't support including of YouTube videos but do support uploaded vi
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2122,6 +2181,13 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 #### content-description/content-descriptors
@@ -2232,6 +2298,13 @@ Example:
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2460,6 +2533,13 @@ Example 2:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td>Supports only US and UK today</td>
+  </tr>
 </table>
 
 #### availability/period/since
@@ -2528,6 +2608,12 @@ If presented this tag defines a date from which the application can be distribut
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2601,6 +2687,12 @@ If presented this tag defines a final date of application distribution. Stores t
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2703,6 +2795,14 @@ This tag is ignored for free apps.
     <td></td>
   </tr>
   <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Application Price</td>
+    <td>USD</td>
+    <td>?</td>
+    <td></td>
+  </tr>
+  <tr>
     <td>SK T-Store</td>
     <td>Yes</td>
     <td>App Information / Price</td>
@@ -2781,6 +2881,13 @@ Currencies used in different countries in [JSON](data/country_currencies.json) a
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Application Price</td>
+    <td>?</td>
+    <td>Only UK price in GBP is supported now</td>
   </tr>
 </table>
 
@@ -3009,6 +3116,12 @@ Set value of this tag to `yes` if your application requires root access for work
     <td>Requirements / Requires 'rooted' device</td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 
@@ -3055,6 +3168,12 @@ Set value of this tag to `yes` if your application requires Google Play to be in
     <td>Requirements / Requires Google Play and/or account</td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 
@@ -3097,6 +3216,12 @@ Set value of this tag to `yes` if your application requires internet connection 
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -3158,6 +3283,12 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>No</td>
+    <td></td>
+    <td>Does not support other languages but Enlish</td>
+  </tr>
 </table>
 
 
@@ -3193,7 +3324,7 @@ Example:
     <td>Amazon AppStore</td>
     <td>No</td>
     <td></td>
-    <td></td>
+    <td>Have separate flags for Amazon Kidle models support in the store-specific section</td>
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
@@ -3212,6 +3343,12 @@ Example:
     <td>No</td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>No</td>
+    <td></td>
+    <td>Have separate flags for NOOK models support in the store-specific section</td>
   </tr>
 </table>
 
@@ -3255,6 +3392,12 @@ Most of the stores take this information from the APK file. Some stores also sup
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
     <td>No</td>
     <td></td>
     <td></td>
