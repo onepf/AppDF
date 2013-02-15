@@ -1220,7 +1220,7 @@ Maximum length: 500.
     <td>Yes</td>
     <td>No</td>
     <td>Unlimited</td>
-    <td>This information will go in the application's changelog and can not be changed</td>
+    <td></td>
   </tr>
 </table>
 
@@ -4397,7 +4397,7 @@ Application Store Support
 </tr>
 <tr>
   <td>Content premoderation</td>
-  <td>Yes</td>
+  <td>Yes (for paid apps)</td>
 </tr>
 <tr>
   <td>Client Application</td>
