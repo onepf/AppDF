@@ -11,6 +11,7 @@ Table of Contents:
 * [Category List](#category-list)
 * [Localization Support](#localization-support)
 * [Status](#status)
+* [Change History](#change-history)
 * [License](#license)
 
 AppDF File Structure
@@ -32,9 +33,6 @@ As you see there are just few files: APK file, application icon, screenshot and 
 Let's consider more advanced example of AppDF package:
 ```
 description.xml
-description_fr.xml
-description_de.xml
-description_kr.xml
 Life_ics.apk
 Life_fro.apk
 images/icon114x114.png
@@ -66,9 +64,9 @@ images/en/largepromo_kr.png
 images/en/smallpromo_kr.png
 ```
 
-As you can see the application could include several APK files, the images and description could suif pport localization and different stores require different resolution for the app icon.If you want fine tuning you could opt to include several sizes for the images though the AppDF will automatically rescale your images to the needed format.
+As you can see the application could include several APK files, the images for different localizations and stores (different stores require different resolution for the app icon and screenshots).If you want fine tuning you could opt to include several sizes for the images though the AppDF will automatically rescale your images to the needed format.
 
-The only naming convention for the files inside AppDF package is that the description XML file should be called `description.xml`. You can include all localizations to the `description.xml` file or place them into separate files whose name should have the form of `description_XXXX.xml`. Where XXXX could be any suffix. These additional files should have `<description>` as a root tag. The system will automatically merge all such files into one. Using these additional files is optional, you can easily include all the localizations in one `description.xml` file. All other files could have any names supported by ZIP, could be placed in the top folder or in any of the subfolders. The names of the additional files are defined in the `description.xml` file.
+The only naming convention for the files inside AppDF package is that the description XML file should be called `description.xml`. All other files could have any names supported by ZIP, could be placed in the top folder or in any of the subfolders. The names of the additional files are defined in the `description.xml` file.
 
 Sample Description.xml File
 -------------
@@ -78,7 +76,7 @@ Sample Description.xml File
 
 <application-description-file version="1">
 
-<application package="ru.yandex.shell">
+<application platform="android" package="ru.yandex.shell">
 
   <categorization>
     <!--Options: application, game-->
@@ -88,23 +86,25 @@ Sample Description.xml File
     <subcategory>investing</subcategory>
   </categorization>
 
-  <!--Language is set in two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")-->
-  <description language="en">
+  <!--Application description in English (English US)-->
+  <description>
     <texts>
-      <!-- Maximum length of title: 30 symbols-->
+      <!-- The first title must be 30 symbols or shorter, longer titles will be used by the stores that support longer titles -->
       <title>Yandex.Shell</title>
       <title>Yandex.Shell - Free Launcher + Dialer + Widgets</title>
       <keywords>shell, homescreen, launcher</keywords>
-      <!--If several versions of short-description tag are presented the store will take the longest-->
+      <!--If several versions of short-description tag are presented the store will take the longest supported-->
       <short-description>My short description</short-description>
       <short-description>Slightly longer version of my short description</short-description>
       <short-description>Even more longer version of my short description text</short-description>
-      <full-description>My full description here</full-description>
-      <!--Optional tag. You can include full description with HTML markup for those stores that support such description-->
-      <full-description html="yes">My full description here</full-description>
-	  <!--Optional tag. You can include full description without list of feeatures. It will be used by those stores that support separate feature list tag-->
-      <full-description featureless="yes">My full description here</full-description>
-	  <!--Will be used only be some stores, most of the stores do not use this tag-->
+      <full-description>
+        My full description here, some <b>bold text</b> or <a href="http://www.yahoo.com">a link</a> could be included.
+        <features>
+          You can optionally include a section that will be removed by the stores that support feature list.
+          So you can dublicate features here and they will be shown in the product description but will not dublicate the feature list.
+        </features>
+      </full-description>
+      <!--Will be used only be some stores, most of the stores do not use this tag-->
       <features>
         <feature>New dialer</feature>
         <feature>Home screen</feature>
@@ -120,15 +120,15 @@ Sample Description.xml File
     </texts>
 
     <images>
-	  <!--Appp icon should have 512x512 size-->
+      <!--Appp icon should have 512x512 size-->
       <app-icon size="512">icon.png</app-icon>
-	  <!--Optionally you could include application icon in different sizes. If missed AppDF will automatically resize your icon-->
+      <!--Optionally you could include application icon in different sizes. If missed AppDF will automatically resize your icon-->
       <app-icon size="135">icon_135x135.png</app-icon>
       <app-icon size="144">icon_144x144.png</app-icon>
       <large-promo>promo.png</large-promo>
       <small-promo>feature.png</small-promo>
       <!--Minimum two screenshots should be presented-->
-	  <screenshots>
+      <screenshots>
         <screenshot>screenshot01_en.png</screenshot>
         <screenshot>screenshot02_en.png</screenshot>
         <screenshot>screenshot03_en.png</screenshot>
@@ -138,7 +138,7 @@ Sample Description.xml File
     </images>
 
     <videos>
-      <youtube-video>x8723jw2KL</youtube-video>
+      <youtube-video>x8723jw2KKL</youtube-video>
       <video-file>video1.mp4</video-file>
       <video-file>video2.mp4</video-file>
     </videos>
@@ -146,7 +146,7 @@ Sample Description.xml File
   </description>
 
   <!--Description can be localized to other languages using this tag-->
-  <!--Language is set in two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")-->
+  <!--Language is set in two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-au")-->
   <!--This tag has the same structure as description but all subtags are optional-->
   <!--If some subtags are missed they are taken from the default language description-->
   <description-localization language="ru">
@@ -155,12 +155,12 @@ Sample Description.xml File
     </texts>
 
     <images>
-	  <screenshots>
+      <screenshots>
         <screenshot>screenshot01_ru.png</screenshot>
         <screenshot>screenshot02_ru.png</screenshot>
         <screenshot>screenshot03_ru.png</screenshot>
         <screenshot>screenshot04_ru.png</screenshot>
-	  </screenshots>
+      </screenshots>
     </images>
 
   </description-localization>
@@ -168,7 +168,7 @@ Sample Description.xml File
 
   <content-description>
     <!--Minimum age according to ESRB rating system--> 
-    <content-rating>12</content-rating>
+    <content-rating>13</content-rating>
 
     <rating-certificates>
       <!--Possible values are 3, 7, 12, 16, 18. "certificate" attribute is optional-->
@@ -197,7 +197,7 @@ Sample Description.xml File
       <!--May contain references to illegal drugs or a fictional substance that has parallels to real-life illegal drugs (in use, possession, or sale).-->
       <drugs>no</drugs>
       <!--May contain elements that encourage or teach gambling.-->
-      <gambling-refference>no</gambling-refference>
+      <gambling-reference>no</gambling-reference>
       <!--May contain references to alcohol-->
       <alcohol>no</alcohol>
       <!--May contain references to smoking or tobacco-->
@@ -205,7 +205,7 @@ Sample Description.xml File
       <!--May contain cruelty or harassment based on race, ethnicity, gender, or sexual preferences.-->
       <discrimination>no</discrimination>
     </content-descriptors>
-	<included-activities>
+    <included-activities>
       <in-app-billing>no</in-app-billing>
       <gambling>no</gambling>
       <advertising>no</advertising>
@@ -213,17 +213,27 @@ Sample Description.xml File
       <user-to-user-communications>no</user-to-user-communications>
       <account-creation>no</account-creation>
       <personal-information-collection>no</personal-information-collection>
-	</included-activities>
+    </included-activities>
   </content-description>
 
   <availability>
     <!--Optional tag, if missed all the countries are included-->
-    <countries>
-      <!--Two symbol ISO 3166-1 country code -->
-      <include>en</include>
-      <include>ru</include>
-      <exclude>de</exclude>
+    <!--If attribute only-listed="yes" then this tag contains the list of countries in which the application is available-->
+    <!--If attribute only-listed="yes" the application is available in all the countries except the listed-->
+    <countries only-listed="yes">
+      <!--Two symbol ISO 3166-1 country code (upper case) -->
+      <include>US</include>
+      <include>GB</include>
+      <include>DE</include>
     </countries>
+
+    <!-- Example of countries tag the application is available in all the countries except the listed -->
+    <!--
+    <countries only-listed="no">
+      <exclude>CU</exclude>
+      <exclude>IM</exclude>
+    </countries>
+    -->
 
     <!--Optional tag, if missed the app become available immediatly without experiation date-->
     <period>
@@ -232,29 +242,32 @@ Sample Description.xml File
       <!--Optional tag, if missed the app is without experiation date-->    
       <until year="2013" month="12" day="23"/>
     </period>
-  </availability>	
+  </availability>   
 
   <!--If free attribute is set to "yes" then all the subtags except <trial-version> are ignored. -->
   <!--If app is not free then "base-price" is required -->
-  <!--local-price tags are optional, if set they define local prices. Country is set in two letter ISO 3166-1 country code, currency is set in three cappital letter ISO 4217 currency code-->
+  <!--local-price tags are optional, if set they define local prices. Country is set in two letter ISO 3166-1 country code-->
+  <!--Local prices are defined in local currency, see the documentation for list of country currencies -->
   <!--Dot not comma should be used as decimal dilimiter symbol-->
-  <price free="yes">
+  <price free="no">
     <!-- Base price is defined in USD -->
     <base-price>4.95</base-price>
-    <local-price country="de" currency="EUR">3.95</local-price>
-    <local-price country="fr" currency="EUR">3.95</local-price>
-    <local-price country="ru" currency="RUB">99</local-price>
-    <!--Available for free apps only. Set to "yes" if this application is a trial version of another application. Optional attribute full-version defines package name of the corresponding full version-->
+    <local-price country="DE">3.95</local-price>
+    <local-price country="FR">3.95</local-price>
+    <local-price country="RU">99</local-price>
+  </price>
+
+  <!-- Example of price tag for a free app -->
+  <!--Trial version subtag is available for free apps only. Set to "yes" if this application is a trial version of another application. Optional attribute full-version defines package name of the corresponding full version-->
+  <!--
+  <price free="yes">
     <trial-version full-version="com.yandex.shellfullversion"/>
   </price>
+  -->
 
   <apk-files>
     <apk-file>yandexshell2.apk</apk-file>
     <apk-file>yandexshell3.apk</apk-file>
-    <apk-file-with-extnsion>
-	  <apk-file>yandexshell4.apk</apk-file>
-	  <extension>extensionfile.zip</extension>
-	</apk-file-with-extnsion>
   </apk-files>
 
   <!--Optional tag, add it if the application has some special requirements-->
@@ -304,9 +317,11 @@ Sample Description.xml File
     <slideme-agreement>yes</slideme-agreement>
     <!--If your app uses third party copyrighted images, sounds, databases or other information--> 
     <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+    <!--You confirm that you have all the rights for your application to import to and export from all the supported countries--> 
+    <import-export>yes</import-export>
   </consent>
 
-  <!--Optional tag, if missed customer support info from the account is used-->
+  <!--Required. Customer support information-->
   <customer-support>
     <phone>+1 (555) 1234-56-78</phone>
     <email>support@yandex-team.ru</email>
@@ -346,7 +361,7 @@ Sample Description.xml File
     </samsung>
     <slideme>
       <!--Optional tag, if missed the license is considered as proprietary-->
-	  <license-type>apache2</license-type>
+      <license-type>apache2</license-type>
     </slideme>
   </store-specific>
 
@@ -490,36 +505,49 @@ Required. No attributes. AppDF format has its own list of categories for both ga
     <th>Supported</th>
     <th>Name</th>
     <th>Required</th>
+    <th>Comments</th>
   </tr>
   <tr>
     <td>Google Play</td>
     <td>Yes</td>
     <td>Store Listing / Categorization / Category</td>
     <td>Yes</td>
+    <td></td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>General Information / Category</td>
     <td>Yes</td>
+    <td></td>
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
     <td>Yes</td>
     <td>Category</td>
     <td>Yes</td>
+    <td></td>
   </tr>
   <tr>
     <td>Samsung App</td>
     <td>Yes</td>
     <td>Category / Category / Primary</td>
     <td>Yes</td>
+    <td></td>
   </tr>
   <tr>
     <td>SlideME</td>
     <td>Yes</td>
     <td>Category</td>
     <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Keywords &amp; Category / Categories</td>
+    <td>Yes</td>
+    <td>Supports multiple categories</td>
   </tr>
 </table>
 
@@ -567,30 +595,22 @@ Although some stores don't use subcategories AppDF includes as detailed category
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Keywords &amp; Category / Categories</td>
+    <td>Yes</td>
+  </tr>
 </table>
 
 ### description 
 Required.
-Attributes: `language`. 
 
-This section contains product description in text form as well as pictures and videos. A part of the main `<description>` tag there could be several `<description-localization>` tags for different languages. If some information is missing in the localized `<description-localization>` tag it will be taken from the default `<description>` section.
-
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Possible values</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td>language</td>
-    <td>two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")</td>
-    <td>required tag</td>
-  </tr>
-</table>
+This section contains product description in text form as well as pictures and videos in English US language. A part of the main `<description>` tag there could be several `<description-localization>` tags for different languages. If some information is missing in the localized `<description-localization>` tag it will be taken from the default `<description>` section.
 
 Example:
 ```xml
-<description language="en">
+<description>
   <texts>
     <title>Yandex.Shell</title>
     <title>Yandex.Shell - Free Launcher + Dialer + Widgets</title>
@@ -599,8 +619,6 @@ Example:
     <short-description>Slightly longer version of my short description</short-description>
     <short-description>Even more longer version of my short description text</short-description>
     <full-description>My full description here</full-description>
-    <full-description html="yes">My full description here</full-description>
-    <full-description featureless="yes">My full description here</full-description>
     <features>
       <feature>New dialer</feature>
       <feature>Home screen</feature>
@@ -652,8 +670,6 @@ Example:
   <short-description>Slightly longer version of my short description</short-description>
   <short-description>Even more longer version of my short description text</short-description>
   <full-description>My full description here</full-description>
-  <full-description html="yes">My full description here</full-description>
-  <full-description featureless="yes">My full description here</full-description>
   <features>
     <feature>New dialer</feature>
     <feature>Home screen</feature>
@@ -669,9 +685,9 @@ Example:
 
 Required. 
 No attributes. 
-Maximum length: at least one tag should be shorter than 30 symbols.
+Maximum length: the first tag must be 30 symbols or shorter.
 
-The application name is shown in the application list. As everything inside the `<description>` tag can be localized using `<description-localization>` section. Different stores have different requirements for maximum title length. In order to have flexibility to get the best from each of the stores you can include several copies of title tag. The store will take the longest one that is fits in its maximum size.
+The application name is shown in the application list. As everything inside the `<description>` tag can be localized using `<description-localization>` section. Different stores have different requirements for maximum title length. In order to have flexibility to get the best from each of the stores you can include several copies of title tag. The store will take the longest one that is fits in its maximum size. The first title must be 30 symbols or shorter in order to be supported by all the stores.
 
 <table>
   <tr>
@@ -722,6 +738,14 @@ The application name is shown in the application list. As everything inside the 
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK aps</td>
+    <td>Yes</td>
+    <td>Basic / Application Name</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>100</td>
+  </tr>   
   <tr>
     <td>SK T-Store</td>
     <td>Yes</td>
@@ -794,15 +818,24 @@ Comma separated the list of keywords. As everything inside the `<description>` t
     <td>Unlimited</td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Keywords &amp; Category / Keywords</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>Unlimited number, maximum 50 symbols each</td>
+    <td>Not one string but a list of keywords</td>
+  </tr>
 </table>
 
 ##### description/texts/short-description
 
 Required. 
 No attributes. 
-Maximum length: at least one tag should be shorter than 80 symbols.
+Maximum length: the first tag should be 80 symbols or shorter.
 
-Short application description is used in the app lists next to the app title. Some stores include such short description to the lists, some do not. Different stores have different requirements for maximum short description length. In order to have flexibility to get the best from each of the stores you can include several copies of short description tag. The store will take the longest one that fits in its maximum size. As everything inside the `<description>` tag can be localized using `<description-localization>` section.
+Short application description is used in the app lists next to the app title. Some stores include such short description to the lists, some do not. Different stores have different requirements for maximum short description length. In order to have flexibility to get the best from each of the stores you can include several copies of short description tag. The store will take the longest one that fits in its maximum size. As everything inside the `<description>` tag can be localized using `<description-localization>` section. The first short description must be 80 symbols or shorter in order to be supported by all the stores.
 
 <table>
   <tr>
@@ -873,30 +906,45 @@ Short application description is used in the app lists next to the app title. So
 ##### description/texts/full-description
 
 Required. 
-Attributes: `html`, `featureless`. 
 Maximum length: 4000.
 
-
-The full application description is shown on the product page. You can include several copies of your application description, one with HTML markup and one without. The stores will use one of these descriptions depending on do they support HTML in the description field or not. In the same way you can include description with included feature list and one without. The one without will be used for the stores that use a separate feature list (to avoid feature list duplication). As everything inside the `<description>` tag can be localized using `<description-localization>` section.
+The full application description is shown on the product page. You can include simple HTML subset tags described below. Most stores support plain text full description only so they will ignore your markup. You can also include a special subtag `<features>`. Everything inside the `<features>` subtag will be shown only by the stores that do not support feature list. It is needed to avoid feature list duplication. As everything inside the `<description>` tag can be localized using `<description-localization>` section.
 
 <table>
   <tr>
-    <th>Attribute</th>
-    <th>Possible values</th>
-    <th>Default</th>
-    <th>How it works</th>
+    <th>Supported markup tag</th>
+    <th>Description</th>
+    <th>Behaviour if unsupported</th>
   </tr>
   <tr>
-    <td>html</td>
-    <td>yes,no</td>
-    <td>no</td>
-    <td></td>
+    <td>&lt;b&gt;</td>
+    <td>Bold (like in HTML)</td>
+    <td>Simply ignored</td>
   </tr>
   <tr>
-    <td>featureless</td>
-    <td>yes, no</td>
-    <td>no</td>
-    <td></td>
+    <td>&lt;i&gt;</td>
+    <td>Italic (like in HTML)</td>
+    <td>Simply ignored</td>
+  </tr>
+  <tr>
+    <td>&lt;ul&gt;</td>
+    <td>Unordered list (like in HTML)</td>
+    <td>Simply ignored</td>
+  </tr>
+  <tr>
+    <td>&lt;li&gt;</td>
+    <td>List item (like in HTML)</td>
+    <td>Replaced with '*' symbol</td>
+  </tr>
+  <tr>
+    <td>&lt;a&gt;</td>
+    <td>Link (like in HTML)</td>
+    <td>&lt;a href="http://wwww.yahoo.com"&gt;Yahoo&lt;/a&gt; is replaced with Yahoo (http://wwww.yahoo.com)</td>
+  </tr>
+  <tr>
+    <td>&lt;features&gt;</td>
+    <td>Features</td>
+    <td>This tag must be removed by the store, its content is either included (if the store does not support a separate feature list) or ignored</td>
   </tr>
 </table>
 
@@ -953,6 +1001,15 @@ The full application description is shown on the product page. You can include s
     <td>Yes</td>
     <td>No</td>
     <td>Unlimited</td>
+    <td>Some HTML subset</td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Description / Application Description</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>2500</td>
     <td>Some HTML subset</td>
   </tr>
   <tr>
@@ -1208,6 +1265,14 @@ Link to a webpage with your End User License Agreement for this application. As 
     <td>No</td>
     <td>Only text, not URL option</td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Description / End User License Agreement</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Only text, no URL option, maximum 5000 symbols</td>
+  </tr>
 </table>
 
 #### description/images
@@ -1311,6 +1376,15 @@ High resolution application icon. Different stores require different resolutions
     <td>No</td>
     <td>150x150 - 500x500 for Icon, 512x512 for High resolution icon</td>
     <td>PNG, JPG, GIF</td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Icons &amp; Screenshots / Icon</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>300x300</td>
+    <td>PNG, to transparency</td>
   </tr>
   <tr>
     <td>SK T-Store</td>
@@ -1531,14 +1605,24 @@ Example:
     <td>1-3</td>
   </tr>
   <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Icons &amp; Screenshots / Screenshots</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>600x1024 or 1024x600</td>
+    <td>PNG</td>
+    <td>1-4</td>
+  </tr>
+  <tr>
     <td>SK T-Store</td>
     <td>Yes</td>
     <td>App Image / Screenshots</td>
     <td>Yes</td>
     <td>No</td>
-    <td>no information</td>
-    <td>JPG</td>
-    <td>4</td>
+    <td>240x180 - 640x480</td>
+    <td>JPG, PNG, GIF</td>
+    <td>1-3</td>
   </tr>
 </table>
 
@@ -1616,6 +1700,14 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
     <td>SlideME</td>
     <td>Yes</td>
     <td>Promotion / Video</td>
+    <td>No</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Video URL</td>
     <td>No</td>
     <td>No</td>
     <td></td>
@@ -1708,6 +1800,11 @@ Attributes: `language`.
 
 You can use `<description-localization>` section to localize texts, images and videos in product description. This tag has the same structure as `<description>` but all subtags are optional. If some information is missing in the `<description-localization>` section it will be taken from the  `<description>` section.
 
+Reference language list in [JSON](data/languages.json) and [XML](data/languages.xml) formats.
+
+Reference country list in [JSON](data/countries.json) and [XML](data/countries.xml) formats.
+
+
 <table>
   <tr>
     <th>Attribute</th>
@@ -1716,7 +1813,7 @@ You can use `<description-localization>` section to localize texts, images and v
   </tr>
   <tr>
     <td>language</td>
-    <td>two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-us")</td>
+    <td>two letter ISO 639-1 language code (like "en", full language list in <a href="data/languages.json">JSON</a> and <a href="data/languages.xml">XML</a> formats) or two letters language code + two upper case letter ISO 3166‑1 country code (like "en-US", full country list in <a href="data/countries.json">JSON</a> and <a href="data/countries.xml">XML</a> formats)</td>
     <td>required tag</td>
   </tr>
 </table>
@@ -1750,7 +1847,7 @@ This section describes what activities that could be considered questionable the
 Example:
 ```xml
 <content-description>
-  <content-rating>12</content-rating>
+  <content-rating>13</content-rating>
   <rating-certificates>
     <rating-certificate type="PEGI" certificate="whirl-pegi.pdf">7</rating-certificate>
     <rating-certificate type="ESRB" certificate="whirl-esrb.pdf">7</rating-certificate>
@@ -1766,7 +1863,7 @@ Example:
     <fear>light</fear>
     <sexual-content>no</sexual-content>
     <drugs>no</drugs>
-    <gambling-refference>no</gambling-refference>
+    <gambling-reference>no</gambling-reference>
     <alcohol>no</alcohol>
     <smoking>strong</smoking>
     <discrimination>no</discrimination>
@@ -1826,6 +1923,12 @@ Each application must be labeled with a minimum age allowance according to [ESRB
     <td>Application / Parental Rating</td>
     <td>Yes</td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Age Range</td>
+    <td>Yes</td>
+  </tr>
 </table>
 
 There is no universal content rating system (aka parental control rating, aka minimum age). Different stores use different systems. AppDF uses ESRB standard but the more important thing is how this information is mapped out to the systems used in the appstores. The following table is used by AppDF to convert the rating to the systems of all the main application stores.
@@ -1838,6 +1941,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <th>Opera Mobile Store</th>
     <th>Samsung Apps</th>
     <th>SlideME</th>
+    <th>NOOK apps</th>
   </tr>
   <tr>
     <td>3</td>
@@ -1846,6 +1950,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 0</td>
     <td>G: General Audiences (for all ages)</td>
+    <td>Ages 0-4</td>
   </tr>
   <tr>
     <td>6</td>
@@ -1854,6 +1959,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 4</td>
     <td>G: General Audiences (for all ages)</td>
+    <td>6+</td>
   </tr>
   <tr>
     <td>10</td>
@@ -1862,6 +1968,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 12</td>
     <td>PG: Parental Guidance Suggested (may not be suitable for children)</td>
+    <td>10+</td>
   </tr>
   <tr>
     <td>13</td>
@@ -1870,6 +1977,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 16</td>
     <td>PG-13: Parents Strongly Cautioned (may not be suitable for children under 13)</td>
+    <td>13+</td>
   </tr>
   <tr>
     <td>17</td>
@@ -1878,6 +1986,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 18</td>
     <td>R: Restricted (under 17 requires accompanying adult guardian)</td>
+    <td>17+</td>
   </tr>
   <tr>
     <td>18</td>
@@ -1886,6 +1995,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>n/a</td>
     <td>Over age 18</td>
     <td>NC-17: Not allowed for 17 and under</td>
+    <td>18+</td>
   </tr>
 </table>
 
@@ -1920,7 +2030,7 @@ Here you can find more detailed information about content rating definitions use
 </table>
 
 ##### Notes:
-1. Amaz doesn't have one field for application rating but uses several parameters (nudity, violation, etc)
+1. Amazon doesn't have one field for application rating but uses several parameters (nudity, violation, etc)
 2. Opera doesn't support content rating (except "Is Adult?" question)
 3. Samsung uses minimum age parameter along with several other attributes that define application rating according to the standard certification systems (PEGI, ESRB, etc)
 
@@ -2030,7 +2140,7 @@ Example:
   <fear>light</fear>
   <sexual-content>no</sexual-content>
   <drugs>no</drugs>
-  <gambling-refference>no</gambling-refference>
+  <gambling-reference>no</gambling-reference>
   <alcohol>no</alcohol>
   <smoking>strong</smoking>
   <discrimination>no</discrimination>
@@ -2063,7 +2173,7 @@ Example:
     <td>May contain references to illegal drugs or a fictional substance that has parallels to real-life illegal drugs (in use, possession, or sale).</td>
   </tr>
   <tr>
-    <td>gambling-refference</td>
+    <td>gambling-reference</td>
     <td>May contain elements that encourage or teach gambling.</td>
   </tr>
   <tr>
@@ -2226,6 +2336,13 @@ Example:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / "Does your app invite a user to input personal...", </td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 ### availability
@@ -2234,14 +2351,14 @@ No attributes.
 
 You can define country list of period of time where/when you application is distributed. By default your application is distributed to all the countries where language support allows.
 
-Example:
+Example 1:
 ```xml
 <availability>
-  <countries>
-    <include>en</include>
-    <include>ru</include>
-    <exclude>de</exclude>
-  <countries>
+  <countries only-listed="no">
+    <include>US</include>
+    <include>GB</include>
+    <include>DE</include>
+  </countries>
 
   <period>
     <since year="2012" month="12" day="23"/>
@@ -2250,11 +2367,55 @@ Example:
 </availability>
 ```
 
+Example 2:
+```xml
+<availability>
+  <countries only-listed="yes">
+    <exclude>CU</exclude>
+    <exclude>IM</exclude>
+  </countries>
+</availability>
+```
+
 #### availability/countries
 Optional.
-No attributed.
+Attributes: `only-listed`. 
 
-Use `<include>` and `<exclude>` subtags to define list of the countries where your application is distributed.
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>Required</th>
+    <th>How it works</th>
+  </tr>
+  <tr>
+    <td>only-listed</td>
+    <td>yes, no</td>
+    <td>required</td>
+    <td>If value is "yes" then only &lt;include&gt; subtags could be included, if "no" then only &lt;exclude&gt; subtags could be included</td>
+  </tr>
+</table>
+
+Use either `<include>` or `<exclude>` (depending on the `only-listed` attribute value) subtags to define list of the countries where your application is distributed. Subtag value should be a two upper case symbol ISO 3166‑1 country code. Here is the country list in [JSON](data/countries.json) and [XML](data/countries.xml) formats.
+
+Example 1:
+```xml
+<countries only-listed="no">
+  <include>US</include>
+  <include>GB</include>
+  <include>DE</include>
+</countries>
+```
+
+Example 2:
+```xml
+<availability only-listed="yes">
+  <countries>
+    <exclude>CU</exclude>
+    <exclude>IM</exclude>
+  </countries>
+</availability>
+```
 
 <table>
   <tr>
@@ -2463,9 +2624,9 @@ Example 2:
 ```xml
 <price free="no">
   <base-price>4.95</base-price>
-  <local-price country="de" currency="EUR">3.95</local-price>
-  <local-price country="fr" currency="EUR">3.95</local-price>
-  <local-price country="ru" currency="RUB">99</local-price>
+  <local-price country="DE">3.95</local-price>
+  <local-price country="FR">3.95</local-price>
+  <local-price country="RU">99</local-price>
 </price>
 ```
 
@@ -2553,11 +2714,15 @@ This tag is ignored for free apps.
 
 #### price/local-price
 Optional.
-Attributes: `country`, `currency`. 
+Attributes: `country`. 
 
 The stores will use your default price defined in the `<base-price>` tag to automatically generate prices for other currencies and other countries. Nevertheless you can use `<local-price>` tags to manually define price for some countries. Tag value should be a dot-separated number.
 
-This tag is ignored for free apps.
+Reference country list in [JSON](data/countries.json) and [XML](data/countries.xml) formats.
+
+Reference currency list in [JSON](data/currencies.json) and [XML](data/currencies.xml) formats.
+
+Currencies used in different countries in [JSON](data/country_currencies.json) and [XML](data/country_currencies.xml) formats. One currency per country. If there are several official currencies in a country one is selected. Local prices are set in a currency defined according to this table. 
 
 <table>
   <tr>
@@ -2568,13 +2733,7 @@ This tag is ignored for free apps.
   </tr>
   <tr>
     <td>country</td>
-    <td>two letter ISO 3166-1 country code</td>
-    <td>required</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>currency</td>
-    <td>Three capital letter ISO 4217 currency code</td>
+    <td>two letter ISO 3166-1 country code, see the list in <a href="data/countries.json">JSON</a> or <a href="data/countries.xml">XML</a> formats</td>
     <td>required</td>
     <td></td>
   </tr>
@@ -2691,19 +2850,13 @@ This tag is ignored for paid apps.
 Required.
 No attributes.
 
-In this section you list your APK. Each application could consist of several APK files. Google Play (and may be other stores in future) also supports APK extension files. The subtags should be either `<apk-file>` for normal APK files or `<apk-file-with-extnsion>` for APK files with extension(s). 
-
-Please note that today the only application store supporting APK file with extensions is Google Play. So by using `<apk-file-with-extnsion>` tag you limit your application to Google Play only today.
+In this section you list your APK. Each application could consist of several APK files.  
 
 Example:
 ```xml
 <apk-files>
   <apk-file>yandexshell2.apk</apk-file>
   <apk-file>yandexshell3.apk</apk-file>
-  <apk-file-with-extnsion>
-    <apk-file>yandexshell4.apk</apk-file>
-    <extension>extensionfile.zip</extension>
-  </apk-file-with-extnsion>
 </apk-files>
 ```
 
@@ -2753,6 +2906,14 @@ Example:
     <td>Yes</td>
     <td>Application / Application file</td>
     <td>66M</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Application &amp; Trial/ Application APK</td>
+    <td>100M</td>
     <td>No</td>
     <td>No</td>
   </tr>
@@ -3149,6 +3310,13 @@ Please detail any special requirements to test your app.
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Testing / Release Notes</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
 </table>
 
 ### consent
@@ -3164,6 +3332,7 @@ Example:
   <slideme-agreement>yes</slideme-agreement>
   <us-export-laws>yes</us-export-laws>
   <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+  <import-export>yes</import-export>
 </consent>
 ```
 
@@ -3193,6 +3362,11 @@ Example:
     <td>You confirm that your application is free from third-party copyrighted picture, sounds, database or other types of information</td>
     <td>Used by SK T-Store, more: http://dev.tstore.co.kr/devpoc/iprCenter/iprCenterInfo.omp</td>
   </tr>
+  <tr>
+    <td>&lt;import-export&gt;</td>
+    <td>You confirm that you have all the right for your application to import to and export from all the supported countries</td>
+    <td>Used by Amazon AppStore. Amazon describes this as "I certify this App may be imported to and exported from the United States and all other countries in which we operate our program or in which you've authorized sales to end users (without the need for us to obtain any license or clearance or take any other action) and is in full compliance with all applicable laws and regulations governing imports and exports, including those applicable to software that makes use of encryption technology."</td>
+  </tr>
 </table>
 
 <table>
@@ -3212,7 +3386,7 @@ Example:
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Binary File(s) / Export Compliance</td>
-    <td>&lt;us-export-laws&gt;</td>
+    <td>&lt;import-export&gt;</td>
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
@@ -3230,6 +3404,12 @@ Example:
     <td>SlideME</td>
     <td>Yes</td>
     <td>Agreement</td>
+    <td>&lt;slideme-agreement&gt;</td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / "This application does not contain export encryption</td>
     <td>&lt;slideme-agreement&gt;</td>
   </tr>
   <tr>
@@ -3300,6 +3480,13 @@ No attributes.
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Support Phone</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
 </table>
 
 #### customer-support/email
@@ -3348,6 +3535,13 @@ No attributes.
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Support Email</td>
+    <td>Yes</td>
+    <td>No</td>
   </tr>
 </table>
 
@@ -3398,6 +3592,13 @@ No attributes.
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Support URL</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
 </table>
 
 ### store-specific
@@ -3433,6 +3634,14 @@ Example:
   <slideme>
     <license-type>apache2</license-type>
   </slideme>
+  <nook>
+    <supported-platforms>
+      <nook-color>yes</nook-color>
+      <nook-tablet>yes</nook-tablet>
+      <nook-hd>yes</nook-hd>
+      <nook-hd-plus>yes</nook-hd-plus>
+    </supported-platforms>
+  </nook>
   <tstore>
     <seller-name>Yandex</seller-name>
   </tstore>
@@ -3481,7 +3690,7 @@ Each store subtag can replace any of the parameters from the entire description.
 <store-specific>
   <amazon>
     <application>
-      <description language="en">
+      <description>
         <images>
           <large-promo>promo_amazon.png</large-promo>
         </images> 
@@ -5737,7 +5946,11 @@ The AppDF category list is available as [JSON](data/categories.json) or [XML](da
 
 Localization Support
 -------------
-AppDF supports localization to all the languages. Nevertheless not all languages supported by all the stores. The following tables contain information about current language support status (updated January 14, 2013).
+AppDF supports localization to all the languages. Nevertheless not all languages supported by all the stores. 
+
+Reference language list in [JSON](data/languages.json) and [XML](data/languages.xml) formats.
+
+The following tables contain information about current language support status (updated January 14, 2013).
 
 <table>
   <tr>
@@ -6484,8 +6697,32 @@ The following languages are currently not support by any of the stores:
 Status
 -------------
 Current status: draft  
-Specification version: 0.93  
-Last update: January 16, 2013  
+Specification version: 0.95
+Last update: February 14, 2013  
+
+Change History
+-------------
+### Version 0.95 (February 14, 2013)
+
+* `platform` attribute is added to the `<application>` tag to potentially support other mobile platforms. 
+* `only-listed` attribute is added to the `<countries>` tag to make it clear that either `<include>` or `<exclude>` subtags could be included but not both. 
+* Country code should be written in upper case not in lower case. 
+
+### Version 0.94 (February 05, 2013)
+
+* Option to have multiple description.xml files inside one AppDF archive for localization purposes is removed. All localizations must be included in the main `description.xml` file.
+* APK file extension support is removed because only Google Play supports this technology today and any application that uses APK extension files will not work in any of the alternative Android application stores.
+* Now it is required for the first title to be 30 symbols or shorter (before requirement was that some of the titles is 30 symbols or shorter).
+* Now it is required for the first short description to be 80 symbols or shorter (before requirement was that some of the short description is 80 symbols or shorter).
+* Currency attribute is removed from the `description.xml` tag, now only country is defined in XML and currency is automatically detected using the predefined country currencies table.
+* Links to the country and currency lists are added to the local price description section. 
+* `<gambling-refference>` tag is renamed to `<gambling-reference>` (misstype in tag name is fixed).
+* Links to the country and language lists are added to the description localization section. 
+* `html` and `featureless` attributes are removed from the `<full-description>` tag.
+* Only one copy of `<full-description>` tag can be presented (before it was possible to have multiple `<full-description>` tags).
+* A special `<features>` section is added as an option inside the `<full-description>` tag to allow product description that contain the feature list but do not duplicate it on the stores that have a separate feature list.
+* `<import-export>` tag is added to the `<consent>` section in order to support Amazon AppStore.
+* `language` attribute is removed from the `<description>` tag. Now default description is always in English US.
 
 License
 -------------

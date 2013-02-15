@@ -13,6 +13,10 @@
 			<li>stores.json</li>
 			<li>stores_localization.json</li>
 			<li>store_categories.json</li>
+			<li>countries.json</li>
+      <li>currencies.json</li>
+      <li>country_currencies.json</li>
+      <li>country_languages.json</li>
 		</ul>
 		other are generated.
 	</p>
@@ -28,31 +32,70 @@
 	<textarea rows="5" cols="60" id="categories-json"></textarea>
 	<h2>Stores Categories XML</h2>
 	<textarea rows="5" cols="60" id="stores-categories-xml"></textarea>
+	<h2>Countries XML</h2>
+	<textarea rows="5" cols="60" id="countries-xml"></textarea>
+  <h2>Currencies XML</h2>
+  <textarea rows="5" cols="60" id="currencies-xml"></textarea>
+  <h2>Country Currencies XML</h2>
+  <textarea rows="5" cols="60" id="country-currencies-xml"></textarea>
+  <h2>Country Languages XML</h2>
+  <textarea rows="5" cols="60" id="country-languages-xml"></textarea>
+
 <script>
 var languages = {};
 var storeLocalization = {};
 var stores = {};
 var storeCategories = {};
+var countries = {};
+var currencies = {};
+var countryCurrencies = {};
+var countryLanguages = {};
+
+var temp = [];
 
 $.getJSON("../languages.json", function(data_languages) {
-	languages = data_languages;
-	$.getJSON("../stores.json", function(data_stores) {
-		stores = data_stores;
-		$.getJSON("../stores_localization.json", function(data_storeLocalization) {
-			storeLocalization = data_storeLocalization;
-			$.getJSON("../store_categories.json", function(data_stirecategories) {
-				storeCategories = data_stirecategories;
+languages = data_languages;
+	
+$.getJSON("../stores.json", function(data_stores) {
+stores = data_stores;
 
-				//When everything is loaded populate all <textarea> elements
-				document.getElementById("textarea-all-anguages-xml").innerHTML = generateAllLanguagesXML();
-				document.getElementById("store-localizations-xml").innerHTML = generateStoreLocalizationXML();
-				document.getElementById("store-localizations-html").innerHTML = generateStoreLocalizationHTML();
-				document.getElementById("categories-xml").innerHTML = generateCategoriesXML();
-				document.getElementById("categories-json").innerHTML = generateCategoriesJSON();
-				document.getElementById("stores-categories-xml").innerHTML = generateStoresCategoriesXML();
-			})
-		})
-	})
+$.getJSON("../stores_localization.json", function(data_storeLocalization) {
+storeLocalization = data_storeLocalization;
+
+$.getJSON("../store_categories.json", function(data_stirecategories) {
+storeCategories = data_stirecategories;
+
+$.getJSON("../countries.json", function(data_countries) {
+countries = data_countries;
+
+$.getJSON("../currencies.json", function(data_currencies) {
+currencies = data_currencies;
+
+$.getJSON("../country_currencies.json", function(data_countryCurrencies) {
+countryCurrencies = data_countryCurrencies;
+
+$.getJSON("../country_languages.json", function(data_countryLanguages) {
+countryLanguages = data_countryLanguages;
+
+//When everything is loaded populate all <textarea> elements
+document.getElementById("textarea-all-anguages-xml").innerHTML = generateAllLanguagesXML();
+document.getElementById("store-localizations-xml").innerHTML = generateStoreLocalizationXML();
+document.getElementById("store-localizations-html").innerHTML = generateStoreLocalizationHTML();
+document.getElementById("categories-xml").innerHTML = generateCategoriesXML();
+document.getElementById("categories-json").innerHTML = generateCategoriesJSON();
+document.getElementById("stores-categories-xml").innerHTML = generateStoresCategoriesXML();
+document.getElementById("countries-xml").innerHTML = generateCountriesXML();
+document.getElementById("currencies-xml").innerHTML = generateCurrenciesXML();
+document.getElementById("country-currencies-xml").innerHTML = generateCountryCurrenciesXML();
+document.getElementById("country-languages-xml").innerHTML = generateCountryLanguagesXML();
+
+})
+})
+})
+})
+})
+})
+})
 });
 
 
@@ -63,6 +106,46 @@ function generateAllLanguagesXML() {
 	}
 	s += "</languages>";
 	return s;
+} 
+
+function generateCountriesXML() {
+	var s = "<countries>\n"
+	for (countryCode in countries) {
+		s += "  <country code=\"" + countryCode + "\">" + countries[countryCode] + "</country>\n";
+	}
+	s += "</countries>";
+	return s;
+} 
+
+function generateCurrenciesXML() {
+  var s = "<currencies>\n"
+  for (currencyCode in currencies) {
+    s += "  <currency code=\"" + currencyCode + "\">" + currencies[currencyCode] + "</currency>\n";
+  }
+  s += "</currencies>";
+  return s;
+} 
+
+function generateCountryCurrenciesXML() {
+  var s = "<country-currencies>\n"
+  for (countryCode in countryCurrencies) {
+    s += "  <country-currency country=\"" + countryCode + "\" currency=\"" + countryCurrencies[countryCode] + "\"/>\n";
+  }
+  s += "</country-currencies>";
+  return s;
+} 
+
+function generateCountryLanguagesXML() {
+  var s = "<country-languages>\n"
+  for (countryCode in countryLanguages) {
+    s += "  <country code=\"" + countryCode + "\">\n";
+    for (var i=0; i<countryLanguages[countryCode].length; i++) {
+        s += "    <language>" + countryLanguages[countryCode][i] + "</language>\n";
+    };
+    s += "  </country>\n";
+  }
+  s += "</country-languages>";
+  return s;
 } 
 
 function generateStoreLocalizationXML() {

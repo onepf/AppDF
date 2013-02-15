@@ -2,10 +2,40 @@ div.keyword-countainer {
 	padding-top: 5px;
 }
 
+div.feature-countainer {
+	padding-top: 5px;
+}
+
 div.apk-file-info {
 	padding-top: 10px;
 }
 
 .marginedinput {
 	padding-top: 5px;
+}
+
+.screenshot-container {
+	float: left;
+	border: 1px solid gray;
+	padding: 5px;
+	margin: 10px;
+}
+
+.image-input-group {
+    position: relative;
+}
+
+.image-input-delete {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.contentdescriptors-group select {
+    margin-right: 5px;
+}
+
+.contentdescriptors-group {
+    padding-top: 3px;
+    padding-bottom: 3px;
 }

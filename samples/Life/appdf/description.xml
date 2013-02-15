@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <application-description-file version="1">
 
@@ -28,9 +28,9 @@ Don't be fooled by these simple rules, they create many different life forms inc
     <promo>images/promo.png</promo>
     <feature>images/feature.png</feature>
     <!--Minimum two screenshots should be presented-->
-    <screenshot>images/screenshot01_en.png</screenshot>
-    <screenshot>images/screenshot02_en.png</screenshot>
-    <screenshot>images/screenshot03_en.png</screenshot>
+    <screenshot>screenshot01_en.png</screenshot>
+    <screenshot>screenshot02_en.png</screenshot>
+    <screenshot>screenshot03_en.png</screenshot>
   </images>
 
   <!--All sub-tags are required, possible options are "no", "light", "strong"-->
@@ -48,7 +48,7 @@ Don't be fooled by these simple rules, they create many different life forms inc
     <content-properties>
       <cartoon-violence>no</cartoon-violence>
       <realistic-violence>no</realistic-violence>
-      <bad-language>no</<bad-language>
+      <bad-language>no</bad-language>
       <fear>no</fear>
       <sexual-content>no</sexual-content>
       <drugs>no</drugs>
@@ -71,5 +71,3 @@ Don't be fooled by these simple rules, they create many different life forms inc
   </consent>
 
 </application>
-
-</application-description-file>

@@ -1,42 +1,68 @@
-mark all invalid fields as red when press build button
-show one block with all errors
-add feature count validation
-create good names for consents
-move langs from drop-down to main tabs when a tab is deleted
-chgeck that full description does not contain html tags
-add good "full description" description
-move all tracing to console.info
-add privacy policy
-add EULA
-mark required fields in some way in HTML (*?)
-when add big APK file or several APK files write which stores support it
-make sure that already added descriptions are added to description.xml
-add limitation of 4000 symbols to full description
-add tabs to full description (plain, feature less, html)
-keyword: move new created on top
-keyword: move focus to just created field
+Add Beta label on the top of the page + short list of what is not finished yet
+Update the parser to 0.95 spec
+Send email to all the people (Kim, Opera, Y.Store) about the spec change
+Do not insert <screenshots> and <images> sections if they are emptry (add this functionality to XML lib)
+allow JPG images in small and large promos
 
-IMAGES
+check browser compatibility and show unsupported message
+Move all image logic to a separate module - good module
+Add checking that appicon is a square
+add validation about screenshot image size while saving
+Add button to enter YouTube URL and corresponding window with code from: http://stackoverflow.com/questions/5830387/how-to-find-all-youtube-video-ids-in-a-string-using-a-regex
+
+Add video files
+
+Add XSD checking during import
+Allow emptry package name for full version field 
+When build error highlight APK or AppIcon sections (if there is error there, now these sections are not highlighted)
+Make end validation waiting for the callbacks (for example image size)
+separate remove group functionality to a separate function
+add checking еthat XML tag exist when loading description.xml
+remove JavaScript code from HTML (add handlers for IDs in JavaScript)
+add optional and required loading
+refactor the libratries to modules (avoid global variables)
+check that there are no files with the same name. show error or automatically rename the files
+make localization optional loading while default language required where needed
+NEW WAY - allow markup - Add attributes and multiple full description loading, convert full description to array and support it in 
+OR
+Create one field for full description with set of rules of converting it
+
+add validation that keywords cannot be empty
+make that all tags are optional in description-localization
+move langs from drop-down to main tabs when a tab is deleted
+when add big APK file or several APK files write which stores support it
 
 completeXMLstringAt - convert to array with Join
 return error message from ApkParser
-add all needed comments
-remove all unneeded logs
-add copyright
 make that store info section for category appears by default after page is loaded
-make that page
-clear download field of Build button after file is downloaded
-store all fields in cookies
-
-add price validation to be a number
-limit file extension in APK input to .apk
-Change local price style to append from both sides
-make file input field read only
 make APK file required, disable everything else until APK is added
-split JS file to several logical JS files (ZIP logic, XMLWriter logic, etc)
-make that Build link act like a submit button in form validation, forbid building until all validations are OK
 
 SPECIFICATION
-remove APK file extensions from the specification
+Add text to EULA tag
+This what to do with NOOK that have free trial in the same app as full version
 add tags like in Samsung and Naver
+XSD for full-description clearly describe which tags are allowed
+    
+    <xsd:complexType mixed="true">
+      <xsd:choice minOccurs="1" maxOccurs="unbounded">
+        <xsd:element name="apk-file" type="type-attr-localfile" />
+      </xsd:choice>
+    </xs:complexType>
 
+=====
+
+In-app purchase Lib
+In-app purchase SDK
+Licensing
+Advertising - reference id
+Marketing API (App Annie, Distimo)
+Search API (Google, Yandex, etc)
+Central repository of apps
+Roading agreement technology: feed format, standard agreement, etc
+
+=====
+
+Add AppDF Editor to onepf.org
+Add klyatva to onepf.org
+Add description of future projects
+Add list of Stores that already commited

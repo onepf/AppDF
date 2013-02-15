@@ -1,0 +1,12 @@
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+processResources.dependsOn 'copyXml'
+cleanProcessResources.dependsOn 'cleanCopyXml'
+
+task('copyXml',type:Copy) {
+	from('../../../specification/data'){
+		include '**/*.xml'
+	}	 
+	into('src/main/resources/org/onepf/appdf/model/')
+}

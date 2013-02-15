@@ -1,8 +1,14 @@
 /**
+ * Parsing APK file and AndroidManifest.xml
+ * Depends on: jquery.js, zip.js
+ * Original implementation in Java can be found here: http://pastebin.com/c53DuqMt
+ * Original implementation in JavaScript for Node.js can be found here: https://github.com/peters/manifestparser
+ * 
  * (The MIT License)
  *
  * Copyright (c) 2012 Peter Sunde <peter.sunde@gmail.com>
  * Copyright (c) 2012 Vassili Philippov <vassiliphilippov@onepf.org>
+ * Copyright (c) 2012 One Platform Foundation <www.onepf.org>
  * Copyright (c) 2012 Yandex <www.yandex.com>
  *
  * Permission is hereby granted, free of charge, to any person
@@ -26,12 +32,6 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/**
- * Extract parsed android manifest from apk files. 
- * Depends on zip.js
- * Original implementation in Java can be found here: http://pastebin.com/c53DuqMt
- * Original implementation in JavaScript for Node.js can be found here: https://github.com/peters/manifestparser
- */
 var ApkParser = {
     parseApkFile : function (file, fileName, onend, onerror) {
         var fileNameUpperCase = fileName.toUpperCase();
@@ -50,7 +50,8 @@ var ApkParser = {
                             ApkParser.parseAndroidManifest(blob, onend, onerror);
                             reader.close(function() {});
                         }, function(current, total) {
-                            console.log("onprogress current=" + current + ", total=" + total);
+                            //On progress - we show no progress because reading APK file seems to be fast
+                            //You can show some progress if it become slow
                         });
                     };
                 }
