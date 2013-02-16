@@ -233,7 +233,7 @@ function generateAppDFFile(onend) {
     };
 
     //Add all APK files
-    addInputFiles($("section#apk-files").find("input:file"));
+    addInputFiles($("section#section-apk-files").find("input:file"));
 
     //Add all the images
     addInputFiles($("input[id^=description-images-appicon]"));

@@ -158,9 +158,37 @@ function loadDescriptionXML(xml, onend, onerror) {
 		$("#customersupport-phone").val(data["customer-support"]["phone"]);
 		$("#customersupport-email").val(data["customer-support"]["email"]);
 		$("#customersupport-website").val(data["customer-support"]["website"]);
+		
+
+		//Content description / content rating
+		$("#contentdescription-contentrating").val(data["content-description"]["content-rating"]);
+
+		//Content description / content descriptors
+		var dcd = data["content-description"]["content-descriptors"];
+		var scd = "#contentdescription-contentdescriptors-"
+		$(scd + "cartoonviolence").val(dcd["cartoon-violence"]);
+		$(scd + "realisticviolence").val(dcd["realistic-violence"]);
+		$(scd + "badlanguage").val(dcd["bad-language"]);
+		$(scd + "fear").val(dcd["fear"]);
+		$(scd + "sexualcontent").val(dcd["sexual-content"]);
+		$(scd + "drugs").val(dcd["drugs"]);
+		$(scd + "gamblingreference").val(dcd["gambling-reference"]);
+		$(scd + "alcohol").val(dcd["alcohol"]);
+		$(scd + "smoking").val(dcd["smoking"]);
+		$(scd + "discrimination").val(dcd["discrimination"]);
+
+		//Content description / included-activities
+		var dia = data["content-description"]["included-activities"];
+		var sia = "#contentdescription-includedactivities-"
+		$(sia + "inappbilling").attr("checked", dia["in-app-billing"]);
+		$(sia + "gambling").attr("checked", dia["gambling"]);
+		$(sia + "advertising").attr("checked", dia["advertising"]);
+		$(sia + "usergeneratedcontent").attr("checked", dia["user-generated-content"]);
+		$(sia + "usertousercommunications").attr("checked", dia["user-to-user-communications"]);
+		$(sia + "accountcreation").attr("checked", dia["account-creation"]);
+		$(sia + "personalinformationcollection").attr("checked", dia["personal-information-collection"]);
 
 		//Todo: temporary work with XML
-		$("#contentdescription").val(data["content-description"]);
 		$("#availability").val(data["availability"]);
 		$("#requirements").val(data["requirements"]);
 		$("#testinginstructions").val(data["testing-instructions"]);

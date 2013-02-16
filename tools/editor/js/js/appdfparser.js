@@ -72,9 +72,6 @@ function parseDescriptionXML(xmlText, onend, onerror) {
 	function loadXml(dataPath, xmlPath) {
 		loadHelper(dataPath, xmlPath, function(d, name, $e) {
 			if ($e.length>0) {
-				console.log("$e");
-				console.log($e);
-				console.log($e.contents());
 				var serializer = new XMLSerializer(); 
 				var xmlString = serializer.serializeToString($e[0]);
 				d[name] = xmlString;
@@ -268,17 +265,24 @@ function parseDescriptionXML(xmlText, onend, onerror) {
 			loadText("smoking");
 			loadText("discrimination");
 		});
+		section("included-activities", "included-activities", function() {
+			loadBoolean("in-app-billing");
+			loadBoolean("gambling");
+			loadBoolean("advertising");
+			loadBoolean("user-generated-content");
+			loadBoolean("user-to-user-communications");
+			loadBoolean("account-creation");
+			loadBoolean("personal-information-collection");
+		});
 	});
 
 	//Todo: temporary XML loading instead of parsing content
-	loadXml("content-description", "content-description");
 	loadXml("availability", "availability");
 	loadXml("requirements", "requirements");
 	loadXml("testing-instructions", "testing-instructions");
 	loadXml("store-specific", "store-specific");
 
 	errors.append(validateDescriptionXMLData(data));
-	console.log(errors);
 
 	if (errors.length==0) {
 		onend(data);
@@ -294,8 +298,6 @@ Array.prototype.append = function(a) {
 };
 
 function validateDescriptionXMLData(data) {
-	console.log("validateDescriptionXMLData");
-	console.log(data);
 	var errors = [];
 
 	errors.append(validateCategorization(data.categorization));
@@ -307,8 +309,6 @@ function validateDescriptionXMLData(data) {
 	errors.append(validateCustomerSupport(data["customer-support"]));
 	errors.append(validateContentDescription(data["content-description"]));
 
-	console.log("errors");
-	console.log(errors);
 	return errors;
 };
 
@@ -334,22 +334,16 @@ function validateCategorization(data) {
 };
 
 function validateDescriptionImages(languageCode, data) {
-	console.log("validateDescriptionImages");
-	console.log(data);
 	var errors = [];
 	return errors;
 };
 
 function validateDescriptionVideos(languageCode, data) {
-	console.log("validateDescriptionVideos");
-	console.log(data);
 	var errors = [];
 	return errors;
 };
 
 function validateDescriptionTexts(languageCode, data) {
-	console.log("validateDescriptionTexts");
-	console.log(data);
 	var errors = [];
 
 	if (isDefined(data["title"]) && data["title"][0].length>30) {
@@ -447,6 +441,20 @@ function validateURL(value, errorMessage) {
 	return [];
 };
 
+function validateEnum(value, fieldName, enumArray) {
+	var index = -1;
+	for (var i=0; i<enumArray.length; i++) {
+		if (enumArray[i]==value) {
+			index = i;
+		};
+	};
+	if (index<0) {
+		return ["Wrong " + fieldName + " value. Must be one of " + enumArray.join(", ")];
+	} else {
+		return [];
+	};
+};
+
 function validatePrice(data) {
 	var errors = [];
 
@@ -487,8 +495,17 @@ function validateContentDescription(data) {
 	var errors = [];
 
 	errors.append(validateEnum(data["content-rating"], "Content rating", [3,6,10,13,17,18]));	
-	errors.append(validateEmail(data["email"], "Wrong customer support email format. Must be a valid email address."));	
-	errors.append(validateURL(data["website"], "Wrong customer support webpage format. Must be a valid URL."));	
+	var yes_light_strong = ["no", "light", "strong"];
+	errors.append(validateEnum(data["content-descriptors"]["cartoon-violence"], "cartoon violence", yes_light_strong));	
+	errors.append(validateEnum(data["content-descriptors"]["realistic-violence"], "realistic violence", yes_light_strong));	
+	errors.append(validateEnum(data["content-descriptors"]["bad-language"], "bad language", yes_light_strong));	
+	errors.append(validateEnum(data["content-descriptors"]["fear"], "fear", yes_light_strong));	
+	errors.append(validateEnum(data["content-descriptors"]["sexual-content"], "sexual content", yes_light_strong));	
+	errors.append(validateEnum(data["content-descriptors"]["drugs"], "drugs", yes_light_strong));	
+	errors.append(validateEnum(data["content-descriptors"]["gambling-reference"], "gambling reference", yes_light_strong));	
+	errors.append(validateEnum(data["content-descriptors"]["alcohol"], "alcohol", yes_light_strong));	
+	errors.append(validateEnum(data["content-descriptors"]["smoking"], "smoking", yes_light_strong));	
+	errors.append(validateEnum(data["content-descriptors"]["discrimination"], "discrimination", yes_light_strong));	
 
 	return errors;	
 };

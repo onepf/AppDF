@@ -83,29 +83,53 @@ function generateOneLanguageTextDescription(languageCode, xml) {
 
 function generateOneLanguageImageDescription(languageCode, xml) {
 	$parent = $("#localization-tab-" + languageCode);
+	var $screenshots = $parent.find("input[id^=description-images-screenshot]").not('[value=]');
 
-	xml.addTag("<images>", function() {
-		$parent.find("input[id^=description-images-appicon]").each(function() {
-			xml.addNonEmptyTextTag("<app-icon>", normalizeInputFileName($(this).val()));
-		});
+	//We calculate total number of images to check if this section is empty
+	var numberOfImages = 0;
+	numberOfImages += $screenshots.length;
+	if ($parent.find("input[id^=description-images-appicon]").val()) {
+		numberOfImages += 1;
+	};
+	if ($parent.find("#description-images-largepromo").val()) {
+		numberOfImages += 1;
+	};
+	if ($parent.find("#description-images-smallpromo").val()) {
+		numberOfImages += 1;
+	};
 
-		xml.addNonEmptyTextTag("<large-promo>", normalizeInputFileName($parent.find("#description-images-largepromo").val()));
-		xml.addNonEmptyTextTag("<small-promo>", normalizeInputFileName($parent.find("#description-images-smallpromo").val()));
-
-		xml.addTag("<screenshots>", function() {
-			$parent.find("input[id^=description-images-screenshot]").each(function() {
-				xml.addNonEmptyTextTag("<sccreenshot>", normalizeInputFileName($(this).val()));
+	if (numberOfImages>0) {
+		xml.addTag("<images>", function() {
+			$parent.find("input[id^=description-images-appicon]").each(function() {
+				xml.addNonEmptyTextTag("<app-icon>", normalizeInputFileName($(this).val()));
 			});
-		});
-	});	
+
+			xml.addNonEmptyTextTag("<large-promo>", normalizeInputFileName($parent.find("#description-images-largepromo").val()));
+			xml.addNonEmptyTextTag("<small-promo>", normalizeInputFileName($parent.find("#description-images-smallpromo").val()));
+
+			if ($screenshots.length>0) {
+				xml.addTag("<screenshots>", function() {
+					$screenshots.each(function() {
+						xml.addNonEmptyTextTag("<sccreenshot>", normalizeInputFileName($(this).val()));
+					});
+				});
+			};
+		});	
+	};
 };
 
 function generateOneLanguageVideoDescription(languageCode, xml) {
 	$parent = $("#localization-tab-" + languageCode);
 
-	xml.addTag("<videos>", function() {
-		xml.addNonEmptyTextTag("<youtube-video>", $parent.find("#description-videos-youtubevideo").val());
-	});	
+	var numberOfVideos = 0;
+	if ($parent.find("#description-videos-youtubevideo").val()) {
+		numberOfVideos += 1;
+	};
+	if (numberOfVideos>0) {
+		xml.addTag("<videos>", function() {
+			xml.addNonEmptyTextTag("<youtube-video>", $parent.find("#description-videos-youtubevideo").val());
+		});	
+	};
 };
 
 function generateOneLanguageDescription(languageCode, xml) {
@@ -156,14 +180,14 @@ function generateConsentXML(xml) {
 
 function generateApkFilesXML(xml) {
 	xml.addTag("<apk-files>", function() {
-		$("section#apk-files").find("input:file").each(function() {
+		$("section#section-apk-files").find("input:file").each(function() {
 			xml.addTag("<apk-file>", normalizeInputFileName($(this).val()));
 		});
 	});
 };
 
 function generatePriceXML(xml) {
-	var free = $("section#price").find("li.active").find("a").attr("href") == "#tab-price-free";
+	var free = $("section#section-price").find("li.active").find("a").attr("href") == "#tab-price-free";
 	var freeAttribute = free ? "yes" : "no";
 	xml.addTag("<price free=\"" + freeAttribute + "\">", function() {
 		if (free) {
@@ -177,7 +201,7 @@ function generatePriceXML(xml) {
 			};
 		} else {
 			xml.addTag("<base-price>", $("#price-baseprice").val())
-			$("section#price").find("input[id^=price-localprice-]").each(function() {
+			$("section#section-price").find("input[id^=price-localprice-]").each(function() {
 				var countryCode = $(this).closest("div.control-group").find("select").val();
 				xml.addTag("<local-price country=\"" + countryCode + "\">", $(this).val());
 			});
@@ -186,7 +210,30 @@ function generatePriceXML(xml) {
 };
 
 function generateContentDescriptionXML(xml) {
-	xml.addString($("#contentdescription").val());
+	xml.addTag("<content-description>", function() {
+		xml.addTag("<content-rating>", $("#contentdescription-contentrating").val());
+		xml.addTag("<content-descriptors>", function() {
+			xml.addTag("<cartoon-violence>", $("#contentdescription-contentdescriptors-cartoonviolence").val());
+			xml.addTag("<realistic-violence>", $("#contentdescription-contentdescriptors-realisticviolence").val());
+			xml.addTag("<bad-language>", $("#contentdescription-contentdescriptors-badlanguage").val());
+			xml.addTag("<fear>", $("#contentdescription-contentdescriptors-fear").val());
+			xml.addTag("<sexual-content>", $("#contentdescription-contentdescriptors-sexualcontent").val());
+			xml.addTag("<drugs>", $("#contentdescription-contentdescriptors-drugs").val());
+			xml.addTag("<gambling-reference>", $("#contentdescription-contentdescriptors-gamblingreference").val());
+			xml.addTag("<alcohol>", $("#contentdescription-contentdescriptors-alcohol").val());
+			xml.addTag("<smoking>", $("#contentdescription-contentdescriptors-smoking").val());
+			xml.addTag("<discrimination>", $("#contentdescription-contentdescriptors-discrimination").val());
+		});
+		xml.addTag("<included-activities>", function() {
+			xml.addTag("<in-app-billing>", isCheckboxChecked("contentdescription-includedactivities-inappbilling"));
+			xml.addTag("<gambling>", isCheckboxChecked("contentdescription-includedactivities-gambling"));
+			xml.addTag("<advertising>", isCheckboxChecked("contentdescription-includedactivities-advertising"));
+			xml.addTag("<user-generated-content>", isCheckboxChecked("contentdescription-includedactivities-usergeneratedcontent"));
+			xml.addTag("<user-to-user-communications>", isCheckboxChecked("contentdescription-includedactivities-usertousercommunications"));
+			xml.addTag("<account-creation>", isCheckboxChecked("contentdescription-includedactivities-accountcreation"));
+			xml.addTag("<personal-information-collection>", isCheckboxChecked("contentdescription-includedactivities-personalinformationcollection"));
+		});
+	});
 };
 
 function generateAvailabilityXML(xml) {
