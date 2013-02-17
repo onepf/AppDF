@@ -23,6 +23,7 @@
  */
 
 $(function() {
+
     function initMenuStickToTop() {
         var $window = $(window);
 
@@ -78,7 +79,24 @@ $(function() {
         });
     };
 
+    function initRatingCertificate() {
+        $('body').on('click', '.pretty-file-input', function(e) {
+            $(e.target).closest(".file-input-group").find(".pretty-file-file").click();
+        });
+
+        $('body').on('click', '.pretty-file-button', function(e) {
+            $(e.target).closest(".file-input-group").find(".pretty-file-file").click();
+        });
+
+        $('body').on('change', '.pretty-file-file', function(e) {
+            var fileName = $(e.target).val();
+            fileName = fileName.replace("C:\\fakepath\\", "");
+            $(e.target).closest(".file-input-group").find(".pretty-file-input").val(fileName);
+        });
+    };
+
     function init() {
+        initRatingCertificate();
         initMenuStickToTop();
         initScrollspy();
     };

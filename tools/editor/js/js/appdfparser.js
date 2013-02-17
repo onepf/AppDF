@@ -253,6 +253,22 @@ function parseDescriptionXML(xmlText, onend, onerror) {
 	//Content Description
 	section("content-description", "content-description", function() {
 		loadText("content-rating");
+		loadHelper("rating-certificates", "rating-certificates/rating-certificate", function(d, name, $e) {
+			d[name] = [];
+			$e.each(function() {
+				var ratingCertificate = {
+					"rating" : $(this).text(),
+					"type" : $(this).attr("type")
+				};
+				if ($(this).attr("certificate")) {
+					ratingCertificate["certificate"] = $(this).attr("certificate");
+				};
+				if ($(this).attr("mark")) {
+					ratingCertificate["mark"] = $(this).attr("mark");
+				};
+				d[name].push(ratingCertificate);
+			});
+		});
 		section("content-descriptors", "content-descriptors", function() {
 			loadText("cartoon-violence");
 			loadText("realistic-violence");
@@ -449,7 +465,7 @@ function validateEnum(value, fieldName, enumArray) {
 		};
 	};
 	if (index<0) {
-		return ["Wrong " + fieldName + " value. Must be one of " + enumArray.join(", ")];
+		return ["Wrong " + fieldName + " value \"" + value + "\". Must be one of " + enumArray.join(", ")];
 	} else {
 		return [];
 	};
@@ -507,5 +523,30 @@ function validateContentDescription(data) {
 	errors.append(validateEnum(data["content-descriptors"]["smoking"], "smoking", yes_light_strong));	
 	errors.append(validateEnum(data["content-descriptors"]["discrimination"], "discrimination", yes_light_strong));	
 
+	for (var i=0; i<data["rating-certificates"].length; i++) {
+		var ratingCertificate = data["rating-certificates"][i];
+		switch(ratingCertificate["type"]) {
+			case "PEGI":
+				errors.append(validateEnum(ratingCertificate["rating"], "PEGI rating certificate", ["3", "7", "12", "16", "18"]));
+				break;
+			case "ESRB":
+				errors.append(validateEnum(ratingCertificate["rating"], "ESRB rating certificate", ["3", "6", "10", "13", "17", "18"]));
+				break;
+			case "GRB":
+				errors.append(validateEnum(ratingCertificate["rating"], "GRB rating certificate", ["0", "12", "15", "18"]));
+				break;
+			case "CERO":
+				errors.append(validateEnum(ratingCertificate["rating"], "CERO rating certificate", ["0", "12", "15", "17", "18"]));
+				break;
+			case "DEJUS":
+				errors.append(validateEnum(ratingCertificate["rating"], "DEJUS rating certificate", ["0", "10", "12", "14", "16", "18"]));
+				break;
+			case "FSK":
+				errors.append(validateEnum(ratingCertificate["rating"], "FSK rating certificate", ["0", "6", "12", "16", "18"]));
+				break;
+			default:
+				errors.push("Wrong rating certificate type value \"" + ratingCertificate["type"] + "\". Must be one of 'PEGI', 'ESRB', 'GRB', 'CERO', 'DEJUS', 'FSK'");
+		};
+	};
 	return errors;	
 };

@@ -1,11 +1,8 @@
 Add Beta label on the top of the page + short list of what is not finished yet
 Update the parser to 0.95 spec
-Send email to all the people (Kim, Opera, Y.Store) about the spec change
-Do not insert <screenshots> and <images> sections if they are emptry (add this functionality to XML lib)
 allow JPG images in small and large promos
 
 check browser compatibility and show unsupported message
-Move all image logic to a separate module - good module
 Add checking that appicon is a square
 add validation about screenshot image size while saving
 Add button to enter YouTube URL and corresponding window with code from: http://stackoverflow.com/questions/5830387/how-to-find-all-youtube-video-ids-in-a-string-using-a-regex
@@ -13,7 +10,7 @@ Add button to enter YouTube URL and corresponding window with code from: http://
 Add video files
 
 Add XSD checking during import
-Allow emptry package name for full version field 
+Allow empty package name for full version field 
 When build error highlight APK or AppIcon sections (if there is error there, now these sections are not highlighted)
 Make end validation waiting for the callbacks (for example image size)
 separate remove group functionality to a separate function
@@ -42,6 +39,7 @@ Add text to EULA tag
 This what to do with NOOK that have free trial in the same app as full version
 add tags like in Samsung and Naver
 XSD for full-description clearly describe which tags are allowed
+Add tags to specification
     
     <xsd:complexType mixed="true">
       <xsd:choice minOccurs="1" maxOccurs="unbounded">

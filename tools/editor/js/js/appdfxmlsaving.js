@@ -30,7 +30,6 @@ function generateOneLanguageTextDescription(languageCode, xml) {
 
 		//Keywords
 		var keywords = [];
-//		keywords.push($parent.find("#description-texts-keywords").val());
 		$parent.find("input[id^=description-texts-keywords]").each(function() {
 			if ($(this).val() !== "") {
 				keywords.push($(this).val());
@@ -212,6 +211,34 @@ function generatePriceXML(xml) {
 function generateContentDescriptionXML(xml) {
 	xml.addTag("<content-description>", function() {
 		xml.addTag("<content-rating>", $("#contentdescription-contentrating").val());
+
+		var $certificateRatings = $("#contentdescription-ratingcertificates").find("select[id^=contentdescription-ratingcertificates-rating-]");
+		var anyCertificate = false;
+		$certificateRatings.each(function() {
+			if ($(this).val()) {
+				anyCertificate = true;
+			};
+		});		
+		if (anyCertificate) {
+			xml.addTag("<rating-certificates>", function() {
+				$certificateRatings.each(function() {
+					if ($(this).val()) {
+						var $tr = $(this).closest("tr");
+						var attributes = " type=\"" + $tr.find("a.contentdescription-ratingcertificates-type").text() + "\"";
+						var $certificate = $tr.find("input[id^=contentdescription-ratingcertificates-certificate-]");
+						if ($certificate.val()) {
+							attributes += " certificate=\"" + normalizeInputFileName($certificate.val()) + "\"";
+						};
+						var $mark = $tr.find("input[id^=contentdescription-ratingcertificates-mark-]");
+						if ($mark.val()) {
+							attributes += " mark=\"" + normalizeInputFileName($mark.val()) + "\"";
+						};
+						xml.addTag("<rating-certificate" + attributes + ">", $(this).val());
+					};
+				});
+			});
+		};
+
 		xml.addTag("<content-descriptors>", function() {
 			xml.addTag("<cartoon-violence>", $("#contentdescription-contentdescriptors-cartoonviolence").val());
 			xml.addTag("<realistic-violence>", $("#contentdescription-contentdescriptors-realisticviolence").val());
@@ -224,6 +251,7 @@ function generateContentDescriptionXML(xml) {
 			xml.addTag("<smoking>", $("#contentdescription-contentdescriptors-smoking").val());
 			xml.addTag("<discrimination>", $("#contentdescription-contentdescriptors-discrimination").val());
 		});
+
 		xml.addTag("<included-activities>", function() {
 			xml.addTag("<in-app-billing>", isCheckboxChecked("contentdescription-includedactivities-inappbilling"));
 			xml.addTag("<gambling>", isCheckboxChecked("contentdescription-includedactivities-gambling"));

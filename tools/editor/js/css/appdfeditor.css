@@ -39,3 +39,7 @@ div.apk-file-info {
     padding-top: 3px;
     padding-bottom: 3px;
 }
+
+.file-input-group {
+    display: inline;
+}

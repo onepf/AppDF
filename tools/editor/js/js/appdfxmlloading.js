@@ -188,6 +188,14 @@ function loadDescriptionXML(xml, onend, onerror) {
 		$(sia + "accountcreation").attr("checked", dia["account-creation"]);
 		$(sia + "personalinformationcollection").attr("checked", dia["personal-information-collection"]);
 
+		//Content description / rating-certificates
+		var certificates = data["content-description"]["rating-certificates"];
+		var sc = "#contentdescription-ratingcertificates-rating-"
+		for (var i=0; i<certificates.length; i++) {
+			var typeId = certificates[i]["type"].toLowerCase();
+			$(sc + typeId).val(certificates[i]["rating"]);
+		};
+
 		//Todo: temporary work with XML
 		$("#availability").val(data["availability"]);
 		$("#requirements").val(data["requirements"]);

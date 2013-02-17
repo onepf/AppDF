@@ -240,6 +240,8 @@ function generateAppDFFile(onend) {
     addInputFiles($("input[id^=description-images-screenshot]"));
     addInputFiles($("input[id^=description-images-smallpromo]"));
     addInputFiles($("input[id^=description-images-largepromo]"));
+    addInputFiles($("input[id^=contentdescription-ratingcertificates-certificate-]"));
+    addInputFiles($("input[id^=contentdescription-ratingcertificates-mark-]"));
 
     zip.createWriter(new zip.BlobWriter(), function(writer) {
 
@@ -437,7 +439,6 @@ function addValidationToElements($elements) {
                 // the error messages to the user, log, etc.
             },
             submitSuccess: function($form, event) {
-                alert("OK");
                 event.preventDefault();
             },
             filter: function() {
