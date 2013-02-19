@@ -1,4 +1,3 @@
-Add Beta label on the top of the page + short list of what is not finished yet
 Update the parser to 0.95 spec
 allow JPG images in small and large promos
 
@@ -35,6 +34,7 @@ make that store info section for category appears by default after page is loade
 make APK file required, disable everything else until APK is added
 
 SPECIFICATION
+Describe rating certificate possible values
 Add text to EULA tag
 This what to do with NOOK that have free trial in the same app as full version
 add tags like in Samsung and Naver

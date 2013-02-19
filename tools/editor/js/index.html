@@ -1051,11 +1051,15 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 							</div>
 							<div class="control-group">
 								<!-- content-description -->
-								<label class="control-label"  for="testinginstructions">Testing Instructions</label>
+								<label class="control-label"  for="testinginstructions">Testing Instructions <span class="required-mark">*</span></label>
 								<div class="controls">
-									<textarea class="input-xxlarge" rows="10" id="testinginstructions"
+									<textarea class="input-xxlarge" rows="5" id="testinginstructions" name="testinginstructions"
+										required
+										data-validation-required-message="Testing instructions are required"
+										maxlength="4000"
+										data-validation-maxlength-message="Testing instructions text must be shorter than 4000 symbols"
 									></textarea>
-									<p class="help-block">Under construction. Just post XML here. Later this section will be replaced with a set of fields.</p>
+									<p class="help-block">Instructions for people in the appstores who will test your application. If your application requires an account to use it please provide testing account information. Maximum length: 4000 symbols.</p>
 								</div>
 							</div><!--control-group-->					 
 						</fieldset>
