@@ -64,12 +64,16 @@ var ApkParser = {
 
 
     parseAndroidManifest : function (blob, onend, onerror) {
+        console.log("parseAndroidManifest");
         var fileReader = new FileReader();
         fileReader.onloadend = function(e) {
             var byteArray = new Int8Array(this.result);
             var xmlDoc = ApkParser.parseManifestFileContent(byteArray);
+            console.log("APK package");
+            console.log(xmlDoc);
             var apkData = {
                 "package" : $(xmlDoc).find("manifest").attr("package"),
+                "version" : $(xmlDoc).find("manifest").attr("versionName")
             };
             onend(apkData);
         };

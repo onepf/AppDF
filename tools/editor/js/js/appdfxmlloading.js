@@ -196,10 +196,12 @@ function loadDescriptionXML(xml, onend, onerror) {
 			$(sc + typeId).val(certificates[i]["rating"]);
 		};
 
+		//Testing instructions
+		$("#testinginstructions").val(data["testing-instructions"]);
+
 		//Todo: temporary work with XML
 		$("#availability").val(data["availability"]);
 		$("#requirements").val(data["requirements"]);
-		$("#testinginstructions").val(data["testing-instructions"]);
 		$("#storespecific").val(data["store-specific"]);
 
 		onend();

@@ -273,7 +273,7 @@ function generateRequirementsXML(xml) {
 };
 
 function generateTestingInstructionsXML(xml) {
-	xml.addString($("#testinginstructions").val());
+	xml.addTag("<testing-instructions>", $("#testinginstructions").val());
 };
 
 function generateStoreSpecificXML(xml) {

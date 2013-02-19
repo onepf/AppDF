@@ -292,10 +292,13 @@ function parseDescriptionXML(xmlText, onend, onerror) {
 		});
 	});
 
+	//Testing Instructions
+	loadText("testing-instructions", "testing-instructions");
+
 	//Todo: temporary XML loading instead of parsing content
 	loadXml("availability", "availability");
 	loadXml("requirements", "requirements");
-	loadXml("testing-instructions", "testing-instructions");
+	loadText("testing-instructions", "testing-instructions");
 	loadXml("store-specific", "store-specific");
 
 	errors.append(validateDescriptionXMLData(data));
@@ -324,6 +327,7 @@ function validateDescriptionXMLData(data) {
 	errors.append(validateConsent(data["consent"]));
 	errors.append(validateCustomerSupport(data["customer-support"]));
 	errors.append(validateContentDescription(data["content-description"]));
+	errors.append(validateTestingInstructions(data["testing-instructions"]));
 
 	return errors;
 };
@@ -550,3 +554,19 @@ function validateContentDescription(data) {
 	};
 	return errors;	
 };
+
+function validateTestingInstructions(data) {
+	var errors = [];
+
+	if (isUndefined(data)) {
+		errors.push("Required <testing-instructions> tag is missing");
+	} else { 
+		if (data.length>4000) {
+			errors.push("The testing instruction text must be shorter than 4000 symbols");
+		};
+	};
+
+	return errors;	
+};
+
+

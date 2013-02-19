@@ -206,7 +206,8 @@ function fillApkFileInfo($el, apkData) {
 
     if (apkData) {
         var $table = $("<table class='table table-striped table-bordered'/>");
-        $table.append($("<tr><td>Package</td><td>" + apkData.package + "</td></tr>"));
+        $table.append($("<tr><td>Package</td><td>" + apkData["package"] + "</td></tr>"));
+        $table.append($("<tr><td>Version</td><td>" + apkData["version"] + "</td></tr>"));
         $info.append($table);
     };
 };
@@ -331,7 +332,11 @@ function buildAppdDFFile(event) {
     generateAppDFFile(function(url) {
         var clickEvent = document.createEvent("MouseEvent");
         downloadLink.href = url;
-        downloadLink.download = "test.zip"; //todo - rename file to .appdf with good name
+        if (firstApkFileData) {
+            downloadLink.download = firstApkFileData["package"] + ".zip"; //todo: rename extension to ".appdf" when debugging finished;
+        } else {
+            downloadLink.download = "untitled.appdf";
+        };
         clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
         downloadLink.dispatchEvent(clickEvent);
         $("#build-appdf-status").hide();
