@@ -172,15 +172,15 @@ Sample Description.xml File
 
     <rating-certificates>
       <!--Possible values are 3, 7, 12, 16, 18. "certificate" attribute is optional-->
-      <rating-certificate type="PEGI" certificate="whirl-pegi.pdf">7</rating-certificate>
+      <rating-certificate type="PEGI" certificate="whirl-pegi.pdf">3</rating-certificate>
       <!--Possible values are 3, 6, 10, 13, 17, 18. "certificate" attribute is optional-->
-      <rating-certificate type="ESRB" certificate="whirl-esrb.pdf">7</rating-certificate>
-      <!--Possible values are "all", 12 15, 18. "certificate" attribute is optional-->
-      <rating-certificate type="GRB" certificate="whirl-gbr.pdf">all</rating-certificate>
-      <!--Possible values are "all", 12, 15, 17, 18. "certificate" attribute is optional-->
-      <rating-certificate type="CERO" certificate="whirl-cero.pdf">all</rating-certificate>
-      <!--Possible values are "l", 10, 12, 14, 16, 18. "certificate" attribute is optional-->
-      <rating-certificate type="DEJUS" certificate="whirl-dejus.pdf" mark="dejus_mark.jpg">l</rating-certificate>
+      <rating-certificate type="ESRB" certificate="whirl-esrb.pdf">3</rating-certificate>
+      <!--Possible values are 0, 12, 15, 18. "certificate" attribute is optional-->
+      <rating-certificate type="GRB" certificate="whirl-gbr.pdf">0</rating-certificate>
+      <!--Possible values are 0, 12, 15, 17, 18. "certificate" attribute is optional-->
+      <rating-certificate type="CERO" certificate="whirl-cero.pdf">0</rating-certificate>
+      <!--Possible values are 0, 10, 12, 14, 16, 18. "certificate" attribute is optional-->
+      <rating-certificate type="DEJUS" certificate="whirl-dejus.pdf" mark="dejus_mark.jpg">0</rating-certificate>
       <!--Possible values are 0, 6, 12, 16, 18. "certificate" attribute is optional-->
       <rating-certificate type="FSK" certificate="whirl-fsk.pdf">0</rating-certificate>
     </rating-certificates>
@@ -1908,11 +1908,11 @@ Example:
 <content-description>
   <content-rating>13</content-rating>
   <rating-certificates>
-    <rating-certificate type="PEGI" certificate="whirl-pegi.pdf">7</rating-certificate>
-    <rating-certificate type="ESRB" certificate="whirl-esrb.pdf">7</rating-certificate>
-    <rating-certificate type="GRB" certificate="whirl-grb.pdf">all</rating-certificate>
-    <rating-certificate type="CERO" certificate="whirl-cero.pdf">all</rating-certificate>
-    <rating-certificate type="DEJUS" certificate="whirl-dejus.pdf" mark="dejus_mark.jpg">l</rating-certificate>
+    <rating-certificate type="PEGI" certificate="whirl-pegi.pdf">3</rating-certificate>
+    <rating-certificate type="ESRB" certificate="whirl-esrb.pdf">3</rating-certificate>
+    <rating-certificate type="GRB" certificate="whirl-grb.pdf">0</rating-certificate>
+    <rating-certificate type="CERO" certificate="whirl-cero.pdf">0</rating-certificate>
+    <rating-certificate type="DEJUS" certificate="whirl-dejus.pdf" mark="dejus_mark.jpg">0</rating-certificate>
     <rating-certificate type="FSK" certificate="whirl-fsk.pdf">0</rating-certificate>
   </rating-certificates>
   <content-descriptors>
@@ -2135,6 +2135,37 @@ Example:
     <td>File name from the AppDF package</td>
     <td>optional</td>
     <td>If you have a special label you can add it there</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Possible rating values</th>
+  </tr>
+  <tr>
+    <td>PEGI</td>
+    <td>3, 7, 12, 16, 18</td>
+  </tr>
+  <tr>
+    <td>ESRB</td>
+    <td>3, 6, 10, 13, 17, 18</td>
+  </tr>
+  <tr>
+    <td>GRB</td>
+    <td>0, 12, 15, 18</td>
+  </tr>
+  <tr>
+    <td>CERO</td>
+    <td>0, 12, 15, 17, 18</td>
+  </tr>
+  <tr>
+    <td>DEJUS</td>
+    <td>0, 10, 12, 14, 16, 18</td>
+  </tr>
+  <tr>
+    <td>FSK</td>
+    <td>0, 6, 12, 16, 18</td>
   </tr>
 </table>
 
@@ -3405,10 +3436,11 @@ Most of the stores take this information from the APK file. Some stores also sup
 </table>
 
 ### testing-instructions
-Optional.
+Required.
 No attributes.
+Maximum length: 4000.
 
-Please detail any special requirements to test your app.
+Please detail any special requirements to test your app. If your application requires an account to use it please provide testing account information.
 
 <table>
   <tr>
@@ -6845,6 +6877,12 @@ Last update: February 14, 2013
 
 Change History
 -------------
+### Version 0.96 (February 18, 2013)
+
+* `testing-instructions` tag is made required because many stores require this information. 
+* Maximum length requirements is added for the `testing-instructions` tag (4000 symbols). 
+* Possible values for rating certificate depending on its type are added to the specification. 
+
 ### Version 0.95 (February 14, 2013)
 
 * `platform` attribute is added to the `<application>` tag to potentially support other mobile platforms. 
