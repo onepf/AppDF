@@ -144,7 +144,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 										<input id="pretty-apk-file" class="input-large" type="text" readonly="readonly" onclick="prettyFileInputClick(this);">
 										<a class="btn" onclick="prettyFileInputClick(this);">Browse</a>
 									</div>
-									<p class="help-block">You can <button class="btn" onclick="addApkFile(this); return false;">add more APK files</button> for your application</p>
+									<p class="help-block">You can <button class="btn apk-file-addmore">add more APK files</button> for your application</p>
 								</div>
 								<div class="controls">
 									<div class="apk-file-info"></div>
@@ -326,8 +326,11 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 											<label class="control-label" for="description-texts-keywords">Keywords <span class="required-mark">*</span></label>
 											<div class="controls">
 												<div class="input-append"> 
-													<input type="text" id="description-texts-keywords"> 
-													<button class="btn" type="button" onclick="addMoreKeywords(this, ''); return false;"><i class=" icon-plus-sign"></i></button>
+													<input type="text" id="description-texts-keywords"
+														required
+														data-validation-required-message="At least one keyword is required"
+													> 
+													<button class="btn description-texts-keywords-addmore" type="button"><i class=" icon-plus-sign"></i></button>
 												</div> 
 												<p class="help-block">Please provide keywords that describe your application</p>
 											</div>
@@ -530,7 +533,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 														data-validation-pattern-message="Wrong price value. Must be a valid number like '15.95'."
 													>
 												</div>
-												<p class="help-block">Default product price in USD. Price for other currencies will be automatically converted by the stores from USD. If you want manual control you can <button onclick="addMoreLocalPrice(this, '', ''); return false;" class="btn">add local prices</button>.</p>
+												<p class="help-block">Default product price in USD. Price for other currencies will be automatically converted by the stores from USD. If you want manual control you can <button class="btn price-localprice-add">add local prices</button>.</p>
 											</div>
 										</div><!--./control-group -->
 									</div><!--./tab-pane -->

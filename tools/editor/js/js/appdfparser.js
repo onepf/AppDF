@@ -491,7 +491,7 @@ function validatePrice(data) {
 
 		var localPrices = data["local-price"];
 		for (countryCode in localPrices) {
-			if (isUndefined(allCountries[countryCode])) {
+			if (isUndefined(dataCountries[countryCode])) {
 				errors.push("Unknown country code \"" + countryCode + "\" in local prices");
 			};	
 			errors.append(validateNumber(localPrices[countryCode], "Wrong local price value \"" + localPrices[countryCode] + "\". Must be a valid number like \"15.95\"."));	

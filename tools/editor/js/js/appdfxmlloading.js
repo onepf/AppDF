@@ -42,7 +42,7 @@ function loadDescriptionLocalizationSection(languageCode, data) {
 		if (i==0) {
 			$container.find("#description-texts-keywords").val(keyword);
 		} else {
-			addMoreKeywords($container.find("#description-texts-keywords"), keyword);
+			appdfEditor.addMoreKeywords($container.find("#description-texts-keywords"), keyword);
 		};
 	};	
 

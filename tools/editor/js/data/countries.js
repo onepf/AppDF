@@ -16,9 +16,9 @@
  *    limitations under the License.
  ******************************************************************************/
 
-var allCountries = {
+var dataCountries = {
   "AF" : "Afghanistan", 
-  "AX" : "Åland Islands", 
+  "AX" : "Aland Islands", 
   "AL" : "Albania", 
   "DZ" : "Algeria", 
   "AS" : "American Samoa", 
@@ -70,7 +70,7 @@ var allCountries = {
   "CD" : "Congo, the Democratic Republic of the", 
   "CK" : "Cook Islands", 
   "CR" : "Costa Rica", 
-  "CI" : "Côte d'Ivoire", 
+  "CI" : "Cote d'Ivoire", 
   "HR" : "Croatia", 
   "CU" : "Cuba", 
   "CW" : "Curaçao", 

@@ -1,12 +1,13 @@
-Update the parser to 0.95 spec
 allow JPG images in small and large promos
 
 check browser compatibility and show unsupported message
 Add checking that appicon is a square
 add validation about screenshot image size while saving
 Add button to enter YouTube URL and corresponding window with code from: http://stackoverflow.com/questions/5830387/how-to-find-all-youtube-video-ids-in-a-string-using-a-regex
-
+remove all non-validation logic from validation code
 Add video files
+
+SPEED UP!
 
 Add XSD checking during import
 Allow empty package name for full version field 
@@ -16,15 +17,12 @@ separate remove group functionality to a separate function
 add checking еthat XML tag exist when loading description.xml
 remove JavaScript code from HTML (add handlers for IDs in JavaScript)
 add optional and required loading
-refactor the libratries to modules (avoid global variables)
 check that there are no files with the same name. show error or automatically rename the files
 make localization optional loading while default language required where needed
 NEW WAY - allow markup - Add attributes and multiple full description loading, convert full description to array and support it in 
 OR
 Create one field for full description with set of rules of converting it
 
-add validation that keywords cannot be empty
-make that all tags are optional in description-localization
 move langs from drop-down to main tabs when a tab is deleted
 when add big APK file or several APK files write which stores support it
 
