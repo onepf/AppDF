@@ -871,7 +871,7 @@ Comma separated the list of keywords. As everything inside the `<description>` t
     <td></td>
     <td></td>
   </tr>
-  </table>
+</table>
 
 ##### description/texts/short-description
 
@@ -7168,8 +7168,8 @@ The following languages are currently not support by any of the stores:
 Status
 -------------
 Current status: draft  
-Specification version: 0.95
-Last update: February 14, 2013  
+Specification version: 0.96
+Last update: February 18, 2013  
 
 Change History
 -------------
