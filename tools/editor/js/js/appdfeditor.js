@@ -203,7 +203,7 @@ function buildAppdDFFile(event) {
         var clickEvent = document.createEvent("MouseEvent");
         downloadLink.href = url;
         if (firstApkFileData) {
-            downloadLink.download = firstApkFileData["package"] + ".zip"; //todo: rename extension to ".appdf" when debugging finished;
+            downloadLink.download = firstApkFileData["package"] + ".appdf";
         } else {
             downloadLink.download = "untitled.appdf";
         };
