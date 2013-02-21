@@ -38,17 +38,14 @@ This what to do with NOOK that have free trial in the same app as full version
 add tags like in Samsung and Naver
 XSD for full-description clearly describe which tags are allowed
 Add tags to specification
+Add tags (where to use the apps, for whom is the app) like in Samsung Apps and SK T-Store to the specification
     
-    <xsd:complexType mixed="true">
-      <xsd:choice minOccurs="1" maxOccurs="unbounded">
-        <xsd:element name="apk-file" type="type-attr-localfile" />
-      </xsd:choice>
-    </xs:complexType>
-
 =====
 
+Submitter tool
+Google Play submitter
 In-app purchase Lib
-In-app purchase SDK
+In-app purchase API
 Licensing
 Advertising - reference id
 Marketing API (App Annie, Distimo)

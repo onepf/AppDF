@@ -40,40 +40,6 @@ $(document).ready(function() {
         return buildAppdDFFile(event);
     });
 
-    $("#show-import-description-xml").click(function(event) {
-        var $modal = $("#import-description-xml-modal");
-        var $importButton = $modal.find(".btn-primary");
-        $("#load-errors").hide();
-        $modal.on('shown', function () {
-            $("#description-xml-to-import").focus();
-        });
-        $importButton.click(function(event) {
-            event.preventDefault();
-            var xml = $("#description-xml-to-import").val();
-            loadDescriptionXML(xml, function() {
-                $modal.modal('hide');
-            }, function(errors) {
-                console.log("Import errors");
-                console.log(errors);
-
-                var $list = $("#load-errors").find("ul");
-
-                //Then we clear all the previous errors from the error lost
-                $list.find("li").remove();
-
-                //Now we make sure the error list is visible and add all the errors there
-                $("#load-errors").show();
-                for (var i=0; i<errors.length; i++) {
-                    $list.append( $("<li>").text(errors[i]) );
-                };
-
-            });
-            return false;
-        });
-        $modal.modal("show");
-        return false;
-    });
-
     $("#categorization-type").change(function() {
         fillCategories();
         fillSubcategories();
@@ -120,10 +86,6 @@ function fillApkFileInfo($el, apkData) {
     };
 };
 
-
-function prettyFileInputClick(e) {
-    $(e).closest(".controls").children("input").click();
-};
 
 function generateAppDFFile(onend) {
     var descriptionXML = generateDescriptionFileXML(); 
@@ -473,12 +435,8 @@ function onProgress(current, total) {
     $bar.text(percentage);
 };
 
-function normalizeInputFileName(fileName) {
-    return fileName.replace("C:\\fakepath\\", "");
-};
-
 function validationCallbackApkFile($el, value, callback, first) {
-    var apkFileName = normalizeInputFileName($el.val());
+    var apkFileName = appdfEditor.normalizeInputFileName($el.val());
     $el.closest(".controls").find("input:text").val(apkFileName);
 
     if (first && $el[0].files.length === 0) {
@@ -564,7 +522,7 @@ function validationCallbackAppIconFirst($el, value, callback) {
         return;
     };
     
-    var imageFileName = normalizeInputFileName($el.val());
+    var imageFileName = appdfEditor.normalizeInputFileName($el.val());
     var file = $el[0].files[0];
     var URL = window.webkitURL || window.mozURL || window.URL;    
     var imgUrl = URL.createObjectURL(file);
@@ -586,7 +544,7 @@ function validationCallbackAppIconFirst($el, value, callback) {
 };
 
 function validationCallbackScreenshotRequired($el, value, callback) {
-    var imageFileName = normalizeInputFileName($el.val());
+    var imageFileName = appdfEditor.normalizeInputFileName($el.val());
     var file = $el[0].files[0];
     var URL = window.webkitURL || window.mozURL || window.URL;    
     var imgUrl = URL.createObjectURL(file);

@@ -103,10 +103,11 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 				<div class="hero-unit">
 					<p>Uploading Android application to several appstores could be time consuming. AppDF format is designed to simplify this process. You describe your Android application once, create a simple AppDF file that includes description, APK file(s), screenshots, app icon, promo images, etc and just upload this AppDF file to all the stores that support AppDF uploading.</p>
 					<p>
-						<a href="#" id="show-import-description-xml" class="btn btn-primary">Import Description.xml</a>
-						<a href="#" id="load-appdf-file" class="btn btn-primary disabled">Load AppDF File</a>
+						<button class="btn btn-primary show-import-description-xml">Import Description.xml</button>
+						<button class="btn btn-primary load-appdf-file">Open AppDF File</button>
 					</p>
 				</div>
+
 				<div id="import-description-xml-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="add-localization-modal-label" aria-hidden="true">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -123,7 +124,54 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 						<button class="btn btn-primary">Import</button>
 					</div>
-				</div><!--Model-->						
+				</div><!--Modal-->		
+
+				<div id="load-appdf-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="load-appdf-modal-label" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3 id="load-appdf-modal-label">Open AppDF File</h3>
+					</div>
+					<div class="modal-body">
+						<div>
+							<input type="file" id="load-appdf-modal-file" class="hide ie_show" name="appdf-file" />
+							<div class="input-append ie_hide">
+								<input id="load-appdf-modal-prettyfile" class="input-xlarge" type="text" readonly="readonly" onclick="prettyFileInputClick(this);">
+								<button class="btn load-appdf-modal-browse">Browse</button>
+							</div>
+						</div>
+						<div class="alert alert-error hide" id="load-appdf-modal-errors">
+							<b>Import errors:</b>
+							<ul></ul>
+						</div>				
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+						<button class="btn btn-primary">Open</button>
+					</div>
+				</div><!--Modal-->		
+
+				<div id="description-videos-youtubevideo-dialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="description-videos-youtubevideo-dialog-label" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3 id="description-videos-youtubevideo-dialog-label">YouTube Video</h3>
+					</div>
+					<div class="modal-body">
+						URL: 
+						<div class="input-append ie_hide">
+							<input id="description-videos-youtubevideo-dialog-url" class="input-xlarge" type="text">
+							<button class="btn description-videos-youtubevideo-dialog-check">Check</button>
+						</div>
+						<p id="description-videos-youtubevideo-dialog-info">
+							Copy/pase YouTube video URL into the edit field and press the "Check" button to make sure that URL is correct.  
+						</p>
+						<iframe width="420" height="315" id="description-videos-youtubevideo-dialog-video" src="" frameborder="0" allowfullscreen class="hide"></iframe>
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+						<button class="btn btn-primary">OK</button>
+					</div>
+				</div><!--Modal-->						
+
 
 				<form class="form-horizontal" action='' method="POST" novalidate>
 					<section id="section-apk-files">
@@ -141,8 +189,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 										data-validation-callback-callback="validationCallbackApkFileFirst"
 									/>
 									<div class="input-append ie_hide">
-										<input id="pretty-apk-file" class="input-large" type="text" readonly="readonly" onclick="prettyFileInputClick(this);">
-										<a class="btn" onclick="prettyFileInputClick(this);">Browse</a>
+										<input id="pretty-apk-file" class="input-large apkfile-pretty-browse" type="text" readonly="readonly">
+										<button class="btn apkfile-pretty-browse">Browse</button>
 									</div>
 									<p class="help-block">You can <button class="btn apk-file-addmore">add more APK files</button> for your application</p>
 								</div>
@@ -475,10 +523,14 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 											<!-- description/videos/youtube-video -->
 											<label class="control-label" for="description-videos-youtubevideo">YouTube video</label>
 											<div class="controls">
-												<input type="text" id="description-videos-youtubevideo" name="description-videos-youtubevideo"
-													data-validation-regex-regex="^[0-9a-zA-Z\-\_]{11}$" 
-													data-validation-regex-message="Wrong YouTube video ID format. Do not place entire URL but just ID (which is usualy written in URL after 'v='" 												
-												>
+												<div class="input-append"> 
+													<input type="text" id="description-videos-youtubevideo" name="description-videos-youtubevideo"
+														data-validation-regex-regex="^[0-9a-zA-Z\-\_]{11}$" 
+														data-validation-regex-message="Wrong YouTube video ID format. Do not place entire URL but just ID (which is usualy written in URL after 'v='" 												
+													>
+													<button class="btn description-videos-youtubevideo-browse" type="button">Browse</button>
+												</div> 
+
 												<p class="help-block">Please include only ID not the entire URL. For example if your YouTube video URL is www.youtube.com/watch?v=4YcBHQ2fCDE then enter 4YcBHQ2fCDE</p>
 											</div>
 										</div><!--./control-group -->

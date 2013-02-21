@@ -100,16 +100,16 @@ function generateOneLanguageImageDescription(languageCode, xml) {
 	if (numberOfImages>0) {
 		xml.addTag("<images>", function() {
 			$parent.find("input[id^=description-images-appicon]").each(function() {
-				xml.addNonEmptyTextTag("<app-icon>", normalizeInputFileName($(this).val()));
+				xml.addNonEmptyTextTag("<app-icon>", appdfEditor.normalizeInputFileName($(this).val()));
 			});
 
-			xml.addNonEmptyTextTag("<large-promo>", normalizeInputFileName($parent.find("#description-images-largepromo").val()));
-			xml.addNonEmptyTextTag("<small-promo>", normalizeInputFileName($parent.find("#description-images-smallpromo").val()));
+			xml.addNonEmptyTextTag("<large-promo>", appdfEditor.normalizeInputFileName($parent.find("#description-images-largepromo").val()));
+			xml.addNonEmptyTextTag("<small-promo>", appdfEditor.normalizeInputFileName($parent.find("#description-images-smallpromo").val()));
 
 			if ($screenshots.length>0) {
 				xml.addTag("<screenshots>", function() {
 					$screenshots.each(function() {
-						xml.addNonEmptyTextTag("<sccreenshot>", normalizeInputFileName($(this).val()));
+						xml.addNonEmptyTextTag("<sccreenshot>", appdfEditor.normalizeInputFileName($(this).val()));
 					});
 				});
 			};
@@ -180,7 +180,7 @@ function generateConsentXML(xml) {
 function generateApkFilesXML(xml) {
 	xml.addTag("<apk-files>", function() {
 		$("section#section-apk-files").find("input:file").each(function() {
-			xml.addTag("<apk-file>", normalizeInputFileName($(this).val()));
+			xml.addTag("<apk-file>", appdfEditor.normalizeInputFileName($(this).val()));
 		});
 	});
 };
@@ -227,11 +227,11 @@ function generateContentDescriptionXML(xml) {
 						var attributes = " type=\"" + $tr.find("a.contentdescription-ratingcertificates-type").text() + "\"";
 						var $certificate = $tr.find("input[id^=contentdescription-ratingcertificates-certificate-]");
 						if ($certificate.val()) {
-							attributes += " certificate=\"" + normalizeInputFileName($certificate.val()) + "\"";
+							attributes += " certificate=\"" + appdfEditor.normalizeInputFileName($certificate.val()) + "\"";
 						};
 						var $mark = $tr.find("input[id^=contentdescription-ratingcertificates-mark-]");
 						if ($mark.val()) {
-							attributes += " mark=\"" + normalizeInputFileName($mark.val()) + "\"";
+							attributes += " mark=\"" + appdfEditor.normalizeInputFileName($mark.val()) + "\"";
 						};
 						xml.addTag("<rating-certificate" + attributes + ">", $(this).val());
 					};

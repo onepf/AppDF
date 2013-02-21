@@ -143,7 +143,7 @@ function loadDescriptionXML(xml, onend, onerror) {
 			$("#price-free-fullversion").attr('disabled', 'disabled');
 
 			for (countryCode in data["price"]["local-price"]) {
-				addMoreLocalPrice($("#price-baseprice"), data["price"]["local-price"][countryCode], countryCode);
+				appdfEditor.addMoreLocalPrice($("#price-baseprice"), data["price"]["local-price"][countryCode], countryCode);
 			};
 		};
 
@@ -206,4 +206,43 @@ function loadDescriptionXML(xml, onend, onerror) {
 
 		onend();
 	}, onerror);
+};
+
+function loadAppdfFile(file, onend, onerror) {
+	var requestFileSystem = window.webkitRequestFileSystem || window.mozRequestFileSystem || window.requestFileSystem;
+	var fileReader = new FileReader();
+
+	zip.createReader(new zip.BlobReader(file), function(zipReader) {
+		zipReader.getEntries(function(entries) {
+			var appdfEntries = {};
+			entries.forEach(function(entry) {
+				appdfEntries[entry.filename] = entry;
+			});
+			var writer = new zip.BlobWriter();
+			var descriptionXmlEntry = appdfEntries["description.xml"];
+			if (descriptionXmlEntry) {
+				descriptionXmlEntry.getData(writer, function(blob) {
+            		fileReader.onload = function(event) {
+						var contents = event.target.result;
+						loadDescriptionXML(contents, onend, onerror);
+					};
+
+					fileReader.onerror = function(event) {
+						onerror(["description.xml file could not be read. Code " + event.target.error.code]);
+					};
+
+            		fileReader.readAsText(blob);
+				}, function() {
+					//On progress
+				});
+			} else {
+				onerror(["description.xml file is not found inside AppDF container"]);
+			};
+		});
+	}, onerror);
+
+	if (!file) {
+		onerror(["Please select AppDF file"]);
+		return;
+	};
 };

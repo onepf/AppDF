@@ -54,7 +54,7 @@
         onImageInputChange(e);
 
         var $el = $(e.target);
-        var imageFileName = normalizeInputFileName($el.val());
+        var imageFileName = appdfEditor.normalizeInputFileName($el.val());
 
         var $group = $el.closest(".image-input-group");
         var firstImage = $group.is(':first-child');
@@ -74,7 +74,7 @@
         onImageInputChange(e);
 
         var $el = $(e.target);
-        var imageFileName = normalizeInputFileName($el.val());
+        var imageFileName = appdfEditor.normalizeInputFileName($el.val());
 
         var $group = $el.closest(".image-input-group");
 
@@ -97,7 +97,7 @@
         };
         
         var $el = $(e.target);
-        var imageFileName = normalizeInputFileName($el.val());
+        var imageFileName = appdfEditor.normalizeInputFileName($el.val());
         var URL = window.webkitURL || window.mozURL || window.URL;    
         var file = e.target.files[0];
         var imgUrl = URL.createObjectURL(file);

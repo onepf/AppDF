@@ -47,6 +47,10 @@ var appdfEditor = (function() {
         };
     };
 
+    function normalizeInputFileName(fileName) {
+        return fileName.replace("C:\\fakepath\\", "");
+    };
+
     function addMoreKeywords(e, value) {
         var $parent = $(e).closest(".input-append").parent();
         var $controlGroup = $(' \
@@ -190,6 +194,159 @@ var appdfEditor = (function() {
         });
     };
 
+    function showImportDescriptionXMLDialog() {
+        var $modal = $("#import-description-xml-modal");
+        var $importButton = $modal.find(".btn-primary");
+
+        $("#load-errors").hide();
+
+        $modal.on('shown', function () {
+            $("#description-xml-to-import").focus();
+        });
+
+        $importButton.click(function(event) {
+            event.preventDefault();
+            var xml = $("#description-xml-to-import").val();
+            loadDescriptionXML(xml, function() {
+                $modal.modal('hide');
+            }, function(errors) {
+                console.log("Import errors");
+                console.log(errors);
+
+                var $list = $("#load-errors").find("ul");
+
+                //Then we clear all the previous errors from the error lost
+                $list.find("li").remove();
+
+                //Now we make sure the error list is visible and add all the errors there
+                $("#load-errors").show();
+                for (var i=0; i<errors.length; i++) {
+                    $list.append( $("<li>").text(errors[i]) );
+                };
+
+            });
+            return false;
+        });
+
+        $modal.modal("show");
+    };
+
+    function showLoadAppdfDialog() {
+        var $modal = $("#load-appdf-modal");
+        var $browseButton = $modal.find(".load-appdf-modal-browse")
+        var $openButton = $modal.find(".btn-primary");
+        var $file = $modal.find("#load-appdf-modal-file");
+        $("#load-appdf-modal-errors").hide();
+
+        $browseButton.click(function(event) {
+            event.preventDefault();
+            $file.click();
+        });
+
+        $file.change(function(event) {
+            $("#load-appdf-modal-prettyfile").val(appdfEditor.normalizeInputFileName($file.val()));
+        });
+
+        $openButton.click(function(event) {
+            event.preventDefault();
+            loadAppdfFile($file[0].files[0], function() {
+                $modal.modal('hide');
+            }, function(errors) {
+                console.log("Import errors");
+                console.log(errors);
+
+                var $list = $("#load-appdf-modal-errors").find("ul");
+
+                //Then we clear all the previous errors from the error lost
+                $list.find("li").remove();
+
+                //Now we make sure the error list is visible and add all the errors there
+                $("#load-appdf-modal-errors").show();
+                for (var i=0; i<errors.length; i++) {
+                    $list.append( $("<li>").text(errors[i]) );
+                };
+
+            });
+            return false;
+        });
+
+        $modal.modal("show");
+    };
+
+    function showYouTubeBorwseDialog(e) {
+        var $original = $(e).closest(".input-append").find("input");
+        var $modal = $("#description-videos-youtubevideo-dialog");
+        var $video = $modal.find("#description-videos-youtubevideo-dialog-video");
+        var $input = $modal.find("#description-videos-youtubevideo-dialog-url");
+        var $info = $modal.find("#description-videos-youtubevideo-dialog-info");
+        var $okButton = $modal.find(".btn-primary");
+
+        var videoId = "";
+
+        function getVideoId() {
+            var youtubeRegex = /(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/user\/\S+|\/ytscreeningroom\?v=|\/sandalsResorts#\w\/\w\/.*\/))([^\/&]{10,12})/
+            var youtubeRegex2 = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
+            var matched = $input.val().match(youtubeRegex); 
+            var matched2 = $input.val().match(youtubeRegex2);
+
+            videoId = "";
+            if (matched && matched.length>0) {
+                videoId = matched[1];
+            };
+            if (!videoId && matched2 && matched2.length>0) {
+                videoId = matched2[1];
+            };
+        };
+
+        function init() {
+            if ($original.val()) {
+                videoId = $original.val();
+                $input.val("http://www.youtube.com/watch?v=" + videoId);
+                $video.attr("src" , "http://www.youtube.com/embed/" + videoId + "?rel=0");
+                $video.show();
+            } else {
+                $info.text("Copy/pase YouTube video URL into the edit field and press the \"Check\" button to make sure that URL is correct.");
+                $video.hide();
+                $input.val("");
+            };
+        };
+
+        $modal.find(".description-videos-youtubevideo-dialog-check").click(function(event) {
+            event.preventDefault();
+            getVideoId();
+
+            if (videoId) {
+                $info.text("YouTube ID = " + videoId);
+                $video.attr("src" , "http://www.youtube.com/embed/" + videoId + "?rel=0");
+                $video.show();
+            } else {
+                $info.text("Error: unrecognized YouTube URL format");
+                $video.hide();
+            };
+        });
+
+        $okButton.click(function(event) {
+            event.preventDefault();
+            getVideoId();
+            if (videoId) {
+                $modal.modal('hide');
+                $original.val(videoId);
+            };
+        });
+
+        $modal.on('shown', function () {
+            $input.focus();
+        });
+
+        $modal.on('hidden', function () {
+            //To stop playing video in background after the modal dialog is closed
+            $video.attr("src" , "");
+        });
+
+        init();
+        $modal.modal("show");
+    };
+
     function addClickHandlers() {
         $('body').on('click', '.description-texts-keywords-addmore', function(e) {
             addMoreKeywords(e.target, "");
@@ -215,6 +372,26 @@ var appdfEditor = (function() {
             addApkFile(e.target);
             return false;
         });
+
+        $('body').on('click', '.show-import-description-xml', function(event) {
+            showImportDescriptionXMLDialog();
+            return false;
+        });
+
+        $('body').on('click', '.load-appdf-file', function(event) {
+            showLoadAppdfDialog();
+            return false;
+        });
+
+        $('body').on('click', '.description-videos-youtubevideo-browse', function(event) {
+            showYouTubeBorwseDialog(event.target);
+            return false;
+        });
+
+        $('body').on('click', '.apkfile-pretty-browse', function(event) {
+            $(event.target).closest(".controls").children("input").click();
+            return false;
+        });
     };
 
     function init() {
@@ -226,7 +403,9 @@ var appdfEditor = (function() {
 
     return {
         addMoreKeywords : addMoreKeywords,
-        init : init
+        addMoreLocalPrice : addMoreLocalPrice,
+        init : init,
+        normalizeInputFileName : normalizeInputFileName
     };
 })();
 
