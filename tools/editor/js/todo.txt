@@ -1,9 +1,9 @@
+Make AppDF loading progress
 allow JPG images in small and large promos
 
 check browser compatibility and show unsupported message
 Add checking that appicon is a square
 add validation about screenshot image size while saving
-Add button to enter YouTube URL and corresponding window with code from: http://stackoverflow.com/questions/5830387/how-to-find-all-youtube-video-ids-in-a-string-using-a-regex
 remove all non-validation logic from validation code
 Add video files
 
