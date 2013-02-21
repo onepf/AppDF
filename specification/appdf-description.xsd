@@ -4,6 +4,7 @@
     <xsd:documentation>AppDF description.xml schema</xsd:documentation>
     <xsd:documentation>Project home: http://www.github.com/onepf/appdf</xsd:documentation>
     <xsd:documentation>Author: Vassili Philippov</xsd:documentation>
+    <xsd:documentation>License: http://www.apache.org/licenses/LICENSE-2.0</xsd:documentation>
   </xsd:annotation>
   
   <xsd:element name="application-description-file" type="type-application-description-file" />
