@@ -8,8 +8,8 @@
 
         <categorization>
             <type>application</type>
-            <category>education</category>
-            <subcategory>language learning</subcategory>
+            <category>Education</category>
+            <subcategory>Language learning</subcategory>
         </categorization>
 
         <description>
@@ -173,14 +173,6 @@
 
         <content-description>
             <content-rating>3</content-rating>
-            <rating-certificates>
-                <rating-certificate type="PEGI">3</rating-certificate>
-                <rating-certificate type="ESRB">3</rating-certificate>
-                <rating-certificate type="GRB">all</rating-certificate>
-                <rating-certificate type="CERO">all</rating-certificate>
-                <rating-certificate type="DEJUS">l</rating-certificate>
-                <rating-certificate type="FSK">0</rating-certificate>
-            </rating-certificates>
             <content-descriptors>
                 <cartoon-violence>no</cartoon-violence>
                 <realistic-violence>no</realistic-violence>

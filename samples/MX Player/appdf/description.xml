@@ -8,8 +8,8 @@
 
         <categorization>
             <type>application</type>
-            <category>video</category>
-            <subcategory>video</subcategory>
+            <category>Video</category>
+            <subcategory></subcategory>
         </categorization>
 
         <description>
@@ -154,9 +154,9 @@
             <rating-certificates>
                 <rating-certificate type="PEGI">3</rating-certificate>
                 <rating-certificate type="ESRB">3</rating-certificate>
-                <rating-certificate type="GRB">all</rating-certificate>
-                <rating-certificate type="CERO">all</rating-certificate>
-                <rating-certificate type="DEJUS">l</rating-certificate>
+                <rating-certificate type="GRB">0</rating-certificate>
+                <rating-certificate type="CERO">0</rating-certificate>
+                <rating-certificate type="DEJUS">0</rating-certificate>
                 <rating-certificate type="FSK">0</rating-certificate>
             </rating-certificates>
             <content-descriptors>
