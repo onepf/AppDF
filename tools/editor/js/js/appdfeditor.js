@@ -33,26 +33,10 @@ function getUniqueId() {
 
 $(document).ready(function() {
     zip.workerScriptsPath = "js/zip/";
-    initialFilling();
 
     addValidationToElements($("input,textarea,select"));
     $("#build-appdf-file").click(function(event) {
         return buildAppdDFFile(event);
-    });
-
-    $("#categorization-type").change(function() {
-        fillCategories();
-        fillSubcategories();
-        fillCategoryStoresInfo();
-    });
-
-    $("#categorization-category").change(function() {
-        fillSubcategories();
-        fillCategoryStoresInfo();
-    });
-
-    $("#categorization-subcategory").change(function() {
-        fillCategoryStoresInfo();
     });
 
     $("#price-free-trialversion").change(function() {
@@ -221,59 +205,6 @@ function clearBuildedAppdfFile() {
     downloadLink.download = null;
 };
 
-function fillLanguages(element) {
-    for (var code in allLanguages) {
-        if (code.toLowerCase()!="en_us") {
-            element.append($("<option />").val(code).text(allLanguages[code]));
-        };
-    };
-    element.val("en");
-};
-
-function fillCategories() {
-    var selectedType = $("#categorization-type").find(":selected").val();
-    var categories = $("#categorization-category");
-    var categoryHash = allCategories[selectedType];
-    categories.empty();
-    for (var k in categoryHash) {
-         categories.append($("<option />").val(k).text(k));
-     }
- }
-
- function fillSubcategories() {
-    var selectedType = $("#categorization-type").find(":selected").val();
-    var selectedCategory = $("#categorization-category").find(":selected").val();
-    var subcategories = $("#categorization-subcategory");
-    var subcategoryArray = allCategories[selectedType][selectedCategory];
-    subcategories.empty();
-    for (var i=0; i<subcategoryArray.length; i++) {
-        var s = subcategoryArray[i];
-        subcategories.append($("<option />").val(s).text(s));
-    }
-    if (subcategoryArray.length<=1) {
-        subcategories.closest(".control-group").hide();    
-    } else {
-        subcategories.closest(".control-group").show();            
-    }
-};
-
-function fillCategoryStoresInfo() {
-    var table = $("<table class='table table-striped table-bordered'/>");
-    table.append($("<tr><th>Store</th><th>Category</th></tr>"));
-
-    var selectedType = $("#categorization-type").find(":selected").val();
-    var selectedCategory = $("#categorization-category").find(":selected").val();
-    var selectedSubcategory = $("#categorization-subcategory").find(":selected").val();
-
-    var storeInfo = storeCategories[selectedType][selectedCategory][selectedSubcategory];
-
-    for (store in storeInfo) {
-        table.append($("<tr><td>" + allStores[store] + "</td><td>" + storeInfo[store] + "</td></tr>"));
-    }
-
-    $("#store-categories-info").empty();
-    $("#store-categories-info").append(table);
-};
 
 function addValidationToElements($elements) {
     $elements.jqBootstrapValidation(
@@ -334,12 +265,6 @@ function addMoreScreenshots(e) {
 
 function removeControlGroup(e) {
     $(e).closest(".control-group").remove();
-};
-
-function initialFilling() {
-    fillLanguages($("#add-localization-modal-language"));    
-    fillCategories();
-    fillSubcategories();
 };
 
 function flatten(array) {
@@ -423,7 +348,7 @@ function validationCallbackApkFile($el, value, callback, first) {
         return;
     };
 
-    ApkParser.parseApkFile(file, apkFileName, function(apkData) {
+    apkParser.parseApkFile(file, apkFileName, function(apkData) {
         fillApkFileInfo($el, apkData);
         var data = {
             value: value,

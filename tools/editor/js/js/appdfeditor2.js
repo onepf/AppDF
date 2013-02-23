@@ -143,8 +143,8 @@ var appdfEditor = (function() {
                         data-validation-callback-callback="validationCallbackApkFileMore" \
                     /> \
                     <div class="input-append ie_hide"> \
-                        <input id="pretty-apk-file" class="input-large" type="text" readonly="readonly" onclick="prettyFileInputClick(this);"> \
-                            <a class="btn" onclick="prettyFileInputClick(this);">Browse</a> \
+                        <input id="pretty-apk-file" class="input-large apkfile-pretty-browse" type="text" readonly="readonly" > \
+                            <a class="btn apkfile-pretty-browse">Browse</a> \
                             <a class="btn control-group-remove"><i class="icon-remove"></i></a> \
                     </div> \
                     <p class="help-block">Submit additional APK files if your application uses more than one APK file</p> \
@@ -233,25 +233,29 @@ var appdfEditor = (function() {
     };
 
     function showImportDescriptionXMLDialog() {
-        var $modal = $("#import-description-xml-modal");
+        var $modal = $("#import-descriptionxml-modal");
         var $importButton = $modal.find(".btn-primary");
 
-        $("#load-errors").hide();
+        $("#import-descriptionxml-modal-errors").hide();
+        $("#import-descriptionxml-modal-status").hide();
 
         $modal.on('shown', function () {
-            $("#description-xml-to-import").focus();
+            $("#import-descriptionxml-modal-text").focus();
         });
 
         $importButton.click(function(event) {
             event.preventDefault();
-            var xml = $("#description-xml-to-import").val();
+            var xml = $("#import-descriptionxml-modal-text").val();
+            console.log("Showing importing message");
+            $("#import-descriptionxml-modal-status").show();
+            console.log("Push");
             loadDescriptionXML(xml, function() {
                 $modal.modal('hide');
             }, function(errors) {
                 console.log("Import errors");
                 console.log(errors);
 
-                var $list = $("#load-errors").find("ul");
+                var $list = $("#import-descriptionxml-modal-errors").find("ul");
 
                 //Then we clear all the previous errors from the error lost
                 $list.find("li").remove();
@@ -262,6 +266,8 @@ var appdfEditor = (function() {
                     $list.append( $("<li>").text(errors[i]) );
                 };
 
+            }, function(current, total) {
+                //onprogress
             });
             return false;
         });
@@ -275,18 +281,28 @@ var appdfEditor = (function() {
         var $openButton = $modal.find(".btn-primary");
         var $file = $modal.find("#load-appdf-modal-file");
         $("#load-appdf-modal-errors").hide();
+        $("#load-appdf-modal-status").hide();
+        $("#load-appdf-modal-prettyfile").val("");
+        $file.val("");
 
         $browseButton.click(function(event) {
+            console.log("borwseButton click");
             event.preventDefault();
             $file.click();
+            console.log("click end");
+            return false;
         });
 
         $file.change(function(event) {
+            console.log("file is changed");
             $("#load-appdf-modal-prettyfile").val(appdfEditor.normalizeInputFileName($file.val()));
+            return false;
         });
 
         $openButton.click(function(event) {
             event.preventDefault();
+            $("#load-appdf-modal-status").show();
+
             loadAppdfFile($file[0].files[0], function() {
                 $modal.modal('hide');
             }, function(errors) {
@@ -304,6 +320,8 @@ var appdfEditor = (function() {
                     $list.append( $("<li>").text(errors[i]) );
                 };
 
+            }, function(current, total) {
+                //onprogress
             });
             return false;
         });
@@ -385,6 +403,61 @@ var appdfEditor = (function() {
         $modal.modal("show");
     };
 
+    function fillLanguages() {
+        var $langs = $("#add-localization-modal-language");
+        for (var code in allLanguages) {
+            if (code.toLowerCase() !== "en_us") {
+                $langs.append($("<option />").val(code).text(allLanguages[code]));
+            };
+        };
+        $langs.val("en");
+    };
+
+    function fillCategories() {
+        var selectedType = $("#categorization-type").find(":selected").val();
+        var $categories = $("#categorization-category");
+        var categoryHash = allCategories[selectedType];
+        $categories.empty();
+        for (var k in categoryHash) {
+             $categories.append($("<option />").val(k).text(k));
+         }
+     }
+
+     function fillSubcategories() {
+        var selectedType = $("#categorization-type").find(":selected").val();
+        var selectedCategory = $("#categorization-category").find(":selected").val();
+        var $subcategories = $("#categorization-subcategory");
+        var subcategoryArray = allCategories[selectedType][selectedCategory];
+        $subcategories.empty();
+        for (var i=0; i<subcategoryArray.length; i++) {
+            var s = subcategoryArray[i];
+            $subcategories.append($("<option />").val(s).text(s));
+        }
+        if (subcategoryArray.length<=1) {
+            $subcategories.closest(".control-group").hide();    
+        } else {
+            $subcategories.closest(".control-group").show();            
+        }
+    };
+
+    function fillCategoryStoresInfo() {
+        var $table = $("<table class='table table-striped table-bordered'/>");
+        $table.append($("<tr><th>Store</th><th>Category</th></tr>"));
+
+        var selectedType = $("#categorization-type").find(":selected").val();
+        var selectedCategory = $("#categorization-category").find(":selected").val();
+        var selectedSubcategory = $("#categorization-subcategory").find(":selected").val();
+
+        var storeInfo = storeCategories[selectedType][selectedCategory][selectedSubcategory];
+
+        for (store in storeInfo) {
+            $table.append($("<tr><td>" + allStores[store] + "</td><td>" + storeInfo[store] + "</td></tr>"));
+        }
+
+        $("#store-categories-info").empty();
+        $("#store-categories-info").append($table);
+    };
+
     function addClickHandlers() {
         $('body').on('click', '.description-texts-keywords-addmore', function(e) {
             addMoreKeywords(e.target, "");
@@ -440,12 +513,35 @@ var appdfEditor = (function() {
             addMoreShortDescriptions(event.target, "");
             return false;
         });
+
+        $("#categorization-type").change(function() {
+            fillCategories();
+            fillSubcategories();
+            fillCategoryStoresInfo();
+        });
+
+        $("#categorization-category").change(function() {
+            fillSubcategories();
+            fillCategoryStoresInfo();
+        });
+
+        $("#categorization-subcategory").change(function() {
+            fillCategoryStoresInfo();
+        });        
+    };
+
+    function initFilling() {
+        fillLanguages();    
+        fillCategories();
+        fillSubcategories();
+        fillCategoryStoresInfo();
     };
 
     function init() {
         initRatingCertificate();
         initMenuStickToTop();
         initScrollspy();
+        initFilling();
         addClickHandlers();
     };
 
@@ -455,7 +551,10 @@ var appdfEditor = (function() {
         addMoreLocalPrice : addMoreLocalPrice,
         addMoreTitles : addMoreTitles,
         addMoreShortDescriptions : addMoreShortDescriptions,
-        normalizeInputFileName : normalizeInputFileName
+        normalizeInputFileName : normalizeInputFileName,
+        fillCategories : fillCategories,
+        fillSubcategories : fillSubcategories,
+        fillCategoryStoresInfo : fillCategoryStoresInfo
     };
 })();
 

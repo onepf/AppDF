@@ -93,28 +93,54 @@ function loadDescriptionLocalizationSection(languageCode, data) {
 	};
 };
 
-function loadDescriptionXML(xml, onend, onerror) {
+function loadDescriptionXML(xml, onend, onerror, onprogress) {
 	parseDescriptionXML(xml, function(data) {
+		//Calculate total number of actions to do
+		var totalProgressItems = 22;
+		var passedProgressItems = 0;
+		for (languageCode in data["description"]) {
+			totalProgressItems += 20;
+		};
+
+		//Helper function to report progress
+		function progress(n) {
+			if (!n) {
+				passedProgressItems += 1;
+			} else {
+				passedProgressItems += n;
+			};
+			if (passedProgressItems>totalProgressItems) {
+				console.log("Error passedProgressItems>totalProgressItems. Adjust the constants in this fuction.")
+				passedProgressItems = totalProgressItems;
+			};
+			onprogress(passedProgressItems, totalProgressItems);
+		};
+
 		console.log("Description.XML is parsed");
 		console.log(data);
 
 		//Set control values in the categorization section
 		$("#categorization-type").val(data["categorization"]["type"]);
-		fillCategories();
+		appdfEditor.fillCategories();
+		progress();
 
 		$("#categorization-category").val(data["categorization"]["category"]);
-		fillSubcategories();
+		appdfEditor.fillSubcategories();
+		progress();
 
 		$("#categorization-subcategory").val(data["categorization"]["subcategory"]);
-		fillCategoryStoresInfo();
+		appdfEditor.fillCategoryStoresInfo();
+		progress();
 
 		//Set control values in the description/texts
 		appdfLocalization.removeAllLocalizations();
+		progress(3);
 		for (languageCode in data["description"]) {
 			if (languageCode!="default") {
 				appdfLocalization.addLocalization(languageCode, allLanguages[languageCode]);
 			};
 			loadDescriptionLocalizationSection(languageCode, data["description"][languageCode]);
+			progress(20);
 		};
 
 		//Select default language as open tab
@@ -124,6 +150,7 @@ function loadDescriptionXML(xml, onend, onerror) {
 		$("input[id^=price-localprice-]").closest(".control-group").remove();
 		$("#price-free-fullversion").val("");
 		$("#price-baseprice").val("0");
+		progress();
 		if (data["price"]["free"]) {
 			$('a[href="#tab-price-free"]').tab('show');
 			$("#price-free-trialversion").attr("checked", data["price"]["trial-version"]);
@@ -146,6 +173,7 @@ function loadDescriptionXML(xml, onend, onerror) {
 				appdfEditor.addMoreLocalPrice($("#price-baseprice"), data["price"]["local-price"][countryCode], countryCode);
 			};
 		};
+		progress(3);
 
 		//Consent
 		$("#consent-googleandroidcontentguidelines").attr("checked", data["consent"]["google-android-content-guidelines"]);
@@ -153,15 +181,18 @@ function loadDescriptionXML(xml, onend, onerror) {
 		$("#consent-importexportlaws").attr("checked", data["consent"]["us-export-laws"]);
 		$("#consent-slidemeagreement").attr("checked", data["consent"]["slideme-agreement"]);
 		$("#consent-freefromthirdpartycopytightedcontent").attr("checked", data["consent"]["free-from-third-party-copytighted-content"]);
+		progress();
 
 		//Customer support
 		$("#customersupport-phone").val(data["customer-support"]["phone"]);
 		$("#customersupport-email").val(data["customer-support"]["email"]);
 		$("#customersupport-website").val(data["customer-support"]["website"]);
+		progress();
 		
 
 		//Content description / content rating
 		$("#contentdescription-contentrating").val(data["content-description"]["content-rating"]);
+		progress();
 
 		//Content description / content descriptors
 		var dcd = data["content-description"]["content-descriptors"];
@@ -176,6 +207,7 @@ function loadDescriptionXML(xml, onend, onerror) {
 		$(scd + "alcohol").val(dcd["alcohol"]);
 		$(scd + "smoking").val(dcd["smoking"]);
 		$(scd + "discrimination").val(dcd["discrimination"]);
+		progress(2);
 
 		//Content description / included-activities
 		var dia = data["content-description"]["included-activities"];
@@ -187,6 +219,7 @@ function loadDescriptionXML(xml, onend, onerror) {
 		$(sia + "usertousercommunications").attr("checked", dia["user-to-user-communications"]);
 		$(sia + "accountcreation").attr("checked", dia["account-creation"]);
 		$(sia + "personalinformationcollection").attr("checked", dia["personal-information-collection"]);
+		progress(2);
 
 		//Content description / rating-certificates
 		var certificates = data["content-description"]["rating-certificates"];
@@ -195,20 +228,24 @@ function loadDescriptionXML(xml, onend, onerror) {
 			var typeId = certificates[i]["type"].toLowerCase();
 			$(sc + typeId).val(certificates[i]["rating"]);
 		};
+		progress(3);
 
 		//Testing instructions
 		$("#testinginstructions").val(data["testing-instructions"]);
+		progress();
 
 		//Todo: temporary work with XML
 		$("#availability").val(data["availability"]);
 		$("#requirements").val(data["requirements"]);
 		$("#storespecific").val(data["store-specific"]);
+		progress();
 
 		onend();
 	}, onerror);
 };
 
-function loadAppdfFile(file, onend, onerror) {
+function loadAppdfFile(file, onend, onerror, onprogress) {
+	onprogress(0, 100);
 	var requestFileSystem = window.webkitRequestFileSystem || window.mozRequestFileSystem || window.requestFileSystem;
 	var fileReader = new FileReader();
 
@@ -224,7 +261,11 @@ function loadAppdfFile(file, onend, onerror) {
 				descriptionXmlEntry.getData(writer, function(blob) {
             		fileReader.onload = function(event) {
 						var contents = event.target.result;
-						loadDescriptionXML(contents, onend, onerror);
+						onprogress(20, 100);
+						loadDescriptionXML(contents, onend, onerror, function(current, total) {
+							//on progress
+							onprogress(20 + 80*current/total, 100);
+						});
 					};
 
 					fileReader.onerror = function(event) {

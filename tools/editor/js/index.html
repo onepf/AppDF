@@ -108,14 +108,17 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 					</p>
 				</div>
 
-				<div id="import-description-xml-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="add-localization-modal-label" aria-hidden="true">
+				<div id="import-descriptionxml-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="import-descriptionxml-modal-label" aria-hidden="true">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 id="add-localization-modal-label">Import Description.XML</h3>
+						<h3 id="import-descriptionxml-modal-label">Import Description.XML</h3>
 					</div>
 					<div class="modal-body">
-						<textarea id="description-xml-to-import" class="input-xxlarge" rows="5"></textarea><br>
-						<div class="alert alert-error hide" id="load-errors">
+						<textarea id="import-descriptionxml-modal-text" class="input-xxlarge" rows="5"></textarea><br>
+						<div class="alert alert-success hide" id="import-descriptionxml-modal-status">
+							<b>Importing Description.XML. Please wait...</b>
+						</div>
+						<div class="alert alert-error hide" id="import-descriptionxml-modal-errors">
 							<b>Import errors:</b>
 							<ul></ul>
 						</div>				
@@ -135,9 +138,12 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 						<div>
 							<input type="file" id="load-appdf-modal-file" class="hide ie_show" name="appdf-file" />
 							<div class="input-append ie_hide">
-								<input id="load-appdf-modal-prettyfile" class="input-xlarge" type="text" readonly="readonly" onclick="prettyFileInputClick(this);">
+								<input id="load-appdf-modal-prettyfile" class="input-xlarge" type="text" readonly="readonly">
 								<button class="btn load-appdf-modal-browse">Browse</button>
 							</div>
+						</div>
+						<div class="alert alert-success hide" id="load-appdf-modal-status">
+							<b>Loading AppDF file. Please wait...</b>
 						</div>
 						<div class="alert alert-error hide" id="load-appdf-modal-errors">
 							<b>Import errors:</b>
