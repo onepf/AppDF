@@ -249,7 +249,7 @@ var appdfEditor = (function() {
             console.log("Showing importing message");
             $("#import-descriptionxml-modal-status").show();
             console.log("Push");
-            loadDescriptionXML(xml, function() {
+            appdfXMLLoader.loadDescriptionXML(xml, function() {
                 $modal.modal('hide');
             }, function(errors) {
                 console.log("Import errors");
@@ -303,7 +303,7 @@ var appdfEditor = (function() {
             event.preventDefault();
             $("#load-appdf-modal-status").show();
 
-            loadAppdfFile($file[0].files[0], function() {
+            appdfXMLLoader.loadAppdfFile($file[0].files[0], function() {
                 $modal.modal('hide');
             }, function(errors) {
                 console.log("Import errors");

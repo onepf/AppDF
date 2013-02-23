@@ -380,7 +380,7 @@ function validationCallbackApkFileFirst($el, value, callback) {
             var descriptionXML = localStorage.getItem(firstApkFileData.package);
             if (descriptionXML && descriptionXML!="") {
 //todo: handle carefully that we set it only if page is empty
-//                loadDescriptionXML(descriptionXML, function(){}, function(error){});
+//                appdfXMLLoader.loadDescriptionXML(descriptionXML, function(){}, function(error){});
             };
         };
         callback(data);
