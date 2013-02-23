@@ -31,7 +31,7 @@ function loadDescriptionLocalizationSection(languageCode, data) {
 		if (i==0) {
 			$container.find("#description-texts-title").val(title);
 		} else {
-			addMoreTitles($container.find("#description-texts-title"), title);
+			appdfEditor.addMoreTitles($container.find("#description-texts-title"), title);
 		};
 	};	
 
@@ -53,7 +53,7 @@ function loadDescriptionLocalizationSection(languageCode, data) {
 		if (i==0) {
 			$container.find("#description-texts-shortdescription").val(shortDescription);
 		} else {
-			addMoreShortDescriptions($container.find("#description-texts-shortdescription"), shortDescription);
+			appdfEditor.addMoreShortDescriptions($container.find("#description-texts-shortdescription"), shortDescription);
 		};
 	};	
 

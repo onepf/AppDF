@@ -298,42 +298,6 @@ function addValidationToLastControlGroup($fieldset) {
     addValidationToElements($lastControlGroup.find("input,textarea,select"));
 };
 
-function addMoreTitles(e, value) {
-    var $parent = $(e).closest(".control-group");
-    var $controlGroup = $(' \
-        <div class="control-group"> \
-            <!-- description/texts/title --> \
-            <label class="control-label"  for="description-texts-title-more">Longer title</label> \
-            <div class="controls"> \
-                <div class="input-append"> \
-                    <input type="text" id="description-texts-title-more-' + getUniqueId() + ' class="input-xxlarge" value="' + value + '"> \
-                    <button class="btn" type="button" onclick="removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
-                </div> \
-                <p class="help-block">Enter longer title and it will be used by those stores that support longer titles.</p> \
-            </div> \
-        </div><!--./control-group --> \
-    ');
-     $parent.after($controlGroup);
-};
-
-function addMoreShortDescriptions(e, value) {
-    var $parent = $(e).closest(".control-group");
-    var $controlGroup = $(' \
-        <div class="control-group"> \
-            <!-- description/texts/title --> \
-            <label class="control-label"  for="description-texts-shortdescription-more">Longer short description</label> \
-            <div class="controls"> \
-                <div class="input-append"> \
-                    <input type="text" id="description-texts-shortdescription-more-' + getUniqueId() + '" class="input-xxlarge" value="' + value + '"> \
-                    <button class="btn" type="button" onclick="removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
-                </div> \
-                <p class="help-block">Enter longer short description and it will be used by those stores that support longer short descriptions.</p> \
-            </div> \
-        </div><!--./control-group --> \
-    ');
-     $parent.after($controlGroup);
-};
-
 function addMoreAppIcon(e) {
     var $parent = $(e).closest(".image-group");
     var $controlGroup = $(' \
