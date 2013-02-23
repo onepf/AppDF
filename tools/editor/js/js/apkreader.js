@@ -32,8 +32,8 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-var ApkParser = {
-    parseApkFile : function (file, fileName, onend, onerror) {
+var apkParser = (function() {
+    function parseApkFile(file, fileName, onend, onerror) {
         var fileNameUpperCase = fileName.toUpperCase();
         var suffix = ".APK";
         if (fileNameUpperCase.indexOf(suffix, fileNameUpperCase.length - suffix.length) < 0) {
@@ -47,7 +47,7 @@ var ApkParser = {
                     if (entries[i].filename == "AndroidManifest.xml") {
                         manifestFound = true;
                         entries[i].getData(new zip.BlobWriter(), function(blob) {
-                            ApkParser.parseAndroidManifest(blob, onend, onerror);
+                            parseAndroidManifest(blob, onend, onerror);
                             reader.close(function() {});
                         }, function(current, total) {
                             //On progress - we show no progress because reading APK file seems to be fast
@@ -60,15 +60,15 @@ var ApkParser = {
                 }
             });
         }, onerror);
-    },
+    };
 
 
-    parseAndroidManifest : function (blob, onend, onerror) {
+    function parseAndroidManifest(blob, onend, onerror) {
         console.log("parseAndroidManifest");
         var fileReader = new FileReader();
         fileReader.onloadend = function(e) {
             var byteArray = new Int8Array(this.result);
-            var xmlDoc = ApkParser.parseManifestFileContent(byteArray);
+            var xmlDoc = parseManifestFileContent(byteArray);
             console.log("APK package");
             console.log(xmlDoc);
             var apkData = {
@@ -78,23 +78,23 @@ var ApkParser = {
             onend(apkData);
         };
         fileReader.readAsArrayBuffer(blob);
-    },
+    };
 
 
     /**
     * End of android apk manifest
     */
-    endDocTag: 0x00100101,
+    var endDocTag = 0x00100101;
 
     /**
     * Start of XML tag
     */
-    startTag: 0x00100102,
+    var startTag = 0x00100102;
 
     /**
     * End of XML tag
     */
-    endTag: 0x00100103,
+    var endTag =  0x00100103;
 
     /**
     * Return value of a Little Endian 32 bit word from the byte array at
@@ -104,12 +104,12 @@ var ApkParser = {
     * @param {Integer} offset String offset.
     * @return {Integer} Offset value.
     */
-    lew: function lew(buffer, off) {
+    function lew(buffer, off) {
         return buffer[off + 3] << 24 & 0xff000000 | 
             buffer[off + 2] << 16 & 0xff0000 | 
             buffer[off + 1] << 8 & 0xff00 | 
             buffer[off] & 0xFF;
-    },
+    };
 
     /**
      * Return the string stored in StringTable format at offset strOff. This
@@ -120,7 +120,7 @@ var ApkParser = {
      * @param {Integer} strOff String offset.
      * @return {String} Xml string.
      */
-    completeXMLstringAt: function completeXMLStringAt(buffer, strOff) {
+    function completeXMLStringAt(buffer, strOff) {
         var strLength = buffer[strOff + 1] << 8 & 0xff00 | buffer[strOff] & 0xff;
 
         var s = "";
@@ -128,7 +128,7 @@ var ApkParser = {
             s += String.fromCharCode(buffer[strOff + 2 + i * 2]);
         }
         return s;
-    },
+    };
 
     /**
      * Complete XML tag
@@ -139,20 +139,20 @@ var ApkParser = {
      * @param {Integer} strInd String Index.
      * @return {String} Xml string.
      */
-    completeXMLString: function completeXMLString(buffer, sitOff, stOff, strInd) {
+    function completeXMLString(buffer, sitOff, stOff, strInd) {
         if (strInd < 0) {
             return null;
         }
-        var strOff = stOff + ApkParser.lew(buffer, sitOff + strInd * 4);
-        return ApkParser.completeXMLstringAt(buffer, strOff);
-    },
+        var strOff = stOff + lew(buffer, sitOff + strInd * 4);
+        return completeXMLStringAt(buffer, strOff);
+    }
 
     /**
      * Parse XML binary manifest
      *
      * @param {Buffer} Contents to parse.
      */
-    parseManifestFileContent: function(buffer) {
+    function parseManifestFileContent(buffer) {
         var finalXML = [], numbStrings, sitOff, stOff, XMLTagOff;
 
         // Compressed XML file/bytes starts with 24x bytes of data,
@@ -160,7 +160,7 @@ var ApkParser = {
         // 0th word is 03 00 08 00
         // 3rd word SEEMS TO BE: Offset at then of StringTable
         // 4th word is: Number of strings in string table
-        numbStrings = ApkParser.lew(buffer, 4 * 4);
+        numbStrings = lew(buffer, 4 * 4);
 
         // StringIndexTable starts at offset 24x, an array of 32 bit LE offsets
         // of the length/string data in the StringTable.
@@ -175,12 +175,12 @@ var ApkParser = {
         // StringTable. There is some unknown data after the StringTable, scan
         // forward from this point to the flag for the start of an XML start
         // tag.
-        XMLTagOff = ApkParser.lew(buffer, 3 * 4);
+        XMLTagOff = lew(buffer, 3 * 4);
 
         // Scan forward until we find the bytes: 0x02011000(x00100102 in normal
         // int)
         for (var i = XMLTagOff; i < buffer.length - 4; i += 4) {
-            if (ApkParser.lew(buffer, i) === ApkParser.startTag) {
+            if (lew(buffer, i) === startTag) {
                 XMLTagOff = i;
                 break;
             }
@@ -232,33 +232,33 @@ var ApkParser = {
         while (off < buffer.length - 25) {
 
             // Determines if this is a start/end or doc end tag.
-            tag0 = ApkParser.lew(buffer, off);
+            tag0 = lew(buffer, off);
 
             // Current line number
-            lineNo = ApkParser.lew(buffer, off + 2 * 4);
+            lineNo = lew(buffer, off + 2 * 4);
 
             // Current namespace string index
-            nameNsSi = ApkParser.lew(buffer, off + 4 * 4);
+            nameNsSi = lew(buffer, off + 4 * 4);
 
             // Current string index
-            nameSi = ApkParser.lew(buffer, off + 5 * 4);
+            nameSi = lew(buffer, off + 5 * 4);
 
             /**
              * Start of XML TAG
              */
-            if (tag0 === ApkParser.startTag) {
+            if (tag0 === startTag) {
 
                 // Expected to be 14001400
-                tag6 = ApkParser.lew(buffer, off + 6 * 4);
+                tag6 = lew(buffer, off + 6 * 4);
 
                 // Number of attributes to follow
-                numbAttrs = ApkParser.lew(buffer, off + 7 * 4);
+                numbAttrs = lew(buffer, off + 7 * 4);
 
                 // Skip over 6+3 words of startTag data
                 off += 9 * 4;
 
                 // Name of tag
-                name = ApkParser.completeXMLString(buffer, sitOff, stOff, nameSi);
+                name = completeXMLString(buffer, sitOff, stOff, nameSi);
 
                 // Tag starts on line number
                 startTagLineNo = lineNo;
@@ -270,27 +270,26 @@ var ApkParser = {
                 for (var i = 0; i < numbAttrs; i++) {
 
                     // AttrName Namespace Str, Ind or FFFFFFFF
-                    attrNameNsSi = ApkParser.lew(buffer, off);
+                    attrNameNsSi = lew(buffer, off);
 
                     // AttrName String Index
-                    attrNameSi = ApkParser.lew(buffer, off + 1 * 4);
+                    attrNameSi = lew(buffer, off + 1 * 4);
 
                     // AttrValue Str, Index or FFFFFFFF
-                    attrValueSi = ApkParser.lew(buffer, off + 2 * 4);
+                    attrValueSi = lew(buffer, off + 2 * 4);
 
                     // AttrValue ResourceId or dup AttrVale StrInd
-                    attrResId = ApkParser.lew(buffer, off + 4 * 4);
+                    attrResId = lew(buffer, off + 4 * 4);
 
                     // Skip over 5 words of an attribute
                     off += 5 * 4;
 
                     // Name of attribute
-                    attrName = ApkParser.completeXMLString(buffer, sitOff, stOff,
-                            attrNameSi);
+                    attrName = completeXMLString(buffer, sitOff, stOff, attrNameSi);
 
                     // Value of XML attribute (attrName)
                     attrValue = attrValueSi !== -1 ? 
-                        ApkParser.completeXMLString(buffer, sitOff, stOff, attrValueSi) : 
+                        completeXMLString(buffer, sitOff, stOff, attrValueSi) : 
                         'resourceID 0x' + parseInt(attrResId, 16).toString();
 
                     // Push attribute and value
@@ -304,13 +303,13 @@ var ApkParser = {
                 /**
                  * End of XML TAG
                  */
-            } else if (tag0 === ApkParser.endTag) {
+            } else if (tag0 === endTag) {
 
                 // Skip over 6 words of endTag dag
                 off += 6 * 4;
 
                 // Grab the actual tag name
-                name = ApkParser.completeXMLString(buffer, sitOff, stOff, nameSi);
+                name = completeXMLString(buffer, sitOff, stOff, nameSi);
 
                 // Push tag to XML array
                 finalXML.push('</' + name + '>');
@@ -318,7 +317,7 @@ var ApkParser = {
                 /**
                  * End of android manifest XML
                  */
-            } else if (tag0 === ApkParser.endDocTag) {
+            } else if (tag0 === endDocTag) {
                 break;
                 /**
                  * Unknown parse error
@@ -335,6 +334,10 @@ var ApkParser = {
         finalXML.unshift('<?xml version="1.0" encoding="UTF-8"?>');
         var xmlText = finalXML.join('');
         return $.parseXML(xmlText);
-    }
-};
+    };
+
+    return {
+        parseApkFile : parseApkFile
+    };
+})();
 
