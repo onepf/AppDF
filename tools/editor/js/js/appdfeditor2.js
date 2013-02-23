@@ -392,6 +392,13 @@ var appdfEditor = (function() {
             $(event.target).closest(".controls").children("input").click();
             return false;
         });
+
+        $('body').on('click', '.description-tab-addlocation', function(event) {
+            appdfLocalization.showAllLocalizationDialog();
+            return false;
+        });
+
+
     };
 
     function init() {

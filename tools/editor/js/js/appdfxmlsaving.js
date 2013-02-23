@@ -144,7 +144,7 @@ function generateDescriptionXML(xml) {
 };
 
 function generateDescriptionLocalizationsXML(xml) {
-	var languages = getDescriptionLanguages();
+	var languages = appdfLocalization.getDescriptionLanguages();
 	for (var i=0; i<languages.length; i++) {
 		var languageCode = languages[i];
 		if (languageCode!="default") {

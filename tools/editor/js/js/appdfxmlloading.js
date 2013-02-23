@@ -109,16 +109,16 @@ function loadDescriptionXML(xml, onend, onerror) {
 		fillCategoryStoresInfo();
 
 		//Set control values in the description/texts
-		removeAllLocalizations();
+		appdfLocalization.removeAllLocalizations();
 		for (languageCode in data["description"]) {
 			if (languageCode!="default") {
-				addLocalization(languageCode, allLanguages[languageCode]);
+				appdfLocalization.addLocalization(languageCode, allLanguages[languageCode]);
 			};
 			loadDescriptionLocalizationSection(languageCode, data["description"][languageCode]);
 		};
 
 		//Select default language as open tab
-		selectLanguage("default");
+		appdfLocalization.selectLanguage("default");
 
 		//Price
 		$("input[id^=price-localprice-]").closest(".control-group").remove();
