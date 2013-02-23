@@ -96,7 +96,7 @@ var appdfEditor = (function() {
     };
 
     function addMoreTitles(e, value) {
-        var $parent = $(e).closest(".control-group");
+        var $parent = $(e).closest(".control-group-container");
         var $controlGroup = $(' \
             <div class="control-group"> \
                 <!-- description/texts/title --> \
@@ -110,12 +110,12 @@ var appdfEditor = (function() {
                 </div> \
             </div><!--./control-group --> \
         ');
-        $parent.after($controlGroup);
+        $parent.append($controlGroup);
         $controlGroup.find("input").focus();
     };
 
     function addMoreShortDescriptions(e, value) {
-        var $parent = $(e).closest(".control-group");
+        var $parent = $(e).closest(".control-group-container");
         var $controlGroup = $(' \
             <div class="control-group"> \
                 <!-- description/texts/title --> \
@@ -129,7 +129,7 @@ var appdfEditor = (function() {
                 </div> \
             </div><!--./control-group --> \
         ');
-        $parent.after($controlGroup);
+        $parent.append($controlGroup);
         $controlGroup.find("input").focus();
     };
 
