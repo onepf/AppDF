@@ -72,7 +72,7 @@ function fillApkFileInfo($el, apkData) {
 
 
 function generateAppDFFile(onend) {
-    var descriptionXML = generateDescriptionFileXML(); 
+    var descriptionXML = appdfXMLSaver.generateDescriptionFileXML(); 
     localStorage.setItem(firstApkFileData.package, descriptionXML);
 
     var URL = window.webkitURL || window.mozURL || window.URL;

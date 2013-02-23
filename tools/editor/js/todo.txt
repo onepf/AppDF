@@ -17,6 +17,7 @@ NEW FIELDS
 Add video files
 
 FEATURES
+Multiple screenshot adding
 Add XSD checking during import
 When build error highlight APK or AppIcon sections (if there is error there, now these sections are not highlighted)
 Make end validation waiting for the callbacks (for example image size)
@@ -55,7 +56,6 @@ Roading agreement technology: feed format, standard agreement, etc
 
 =====
 
-Add AppDF Editor to onepf.org
 Add klyatva to onepf.org
 Add description of future projects
 Add list of Stores that already commited
