@@ -94,7 +94,7 @@ function loadDescriptionLocalizationSection(languageCode, data) {
 };
 
 function loadDescriptionXML(xml, onend, onerror, onprogress) {
-	parseDescriptionXML(xml, function(data) {
+	appdfParser.parseDescriptionXML(xml, function(data) {
 		//Calculate total number of actions to do
 		var totalProgressItems = 22;
 		var passedProgressItems = 0;
