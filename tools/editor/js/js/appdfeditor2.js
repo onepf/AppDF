@@ -110,7 +110,8 @@ var appdfEditor = (function() {
                 </div> \
             </div><!--./control-group --> \
         ');
-         $parent.after($controlGroup);
+        $parent.after($controlGroup);
+        $controlGroup.find("input").focus();
     };
 
     function addMoreShortDescriptions(e, value) {
@@ -128,7 +129,8 @@ var appdfEditor = (function() {
                 </div> \
             </div><!--./control-group --> \
         ');
-         $parent.after($controlGroup);
+        $parent.after($controlGroup);
+        $controlGroup.find("input").focus();
     };
 
     function addApkFile(e) {
