@@ -15,9 +15,9 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import java.io.File;
@@ -34,6 +34,7 @@ import org.onepf.appdf.model.Application;
 import org.onepf.appdf.model.Availability;
 import org.onepf.appdf.model.Categorisation;
 import org.onepf.appdf.model.Categorisation.ApplicationType;
+import org.onepf.appdf.model.Consent;
 
 /**
  * Test covers top level functionality of AppdfFileParser class
@@ -77,14 +78,14 @@ public class ParserTest {
 
     public Application parseApplication() throws IOException, ParsingException {
         AppdfFileParser parser = new AppdfFileParser(resource);
-        Application application = parser.parse();
+        Application application = parser.parse().getApplication();
         return application;
     }
 	@Test
 	public void checkCategorisation() throws ParsingException, IOException{
 	    Application app = parseApplication();
 	    Categorisation categorisation = app.getCategorisation();
-        assertNotNull(categorisation);
+        assertThat(categorisation,notNullValue());
         assertThat(categorisation.getApplicationType(),is(ApplicationType.APPLICATION));
 	    assertThat(categorisation.getCategory(),is("personalization"));
 	    assertThat(categorisation.getSubCategory(),is("personalization"));
@@ -102,6 +103,15 @@ public class ParserTest {
 	    assertThat(excludeContries.get(1),is("kz"));
 	    assertThat(excludeContries.get(2),is("tr"));
 	    assertThat(excludeContries.get(3),is("ua"));
+	}
+	@Test
+	public void checkConsent() throws ParsingException,IOException{
+	    Application app = parseApplication();
+	    Consent consent = app.getConsent();
+	    assertThat(consent.isFreeFromThirdPartyCopytightedContent(), is(true));
+	    assertThat(consent.isGoogleAndroidContentGuidelines(), is(true));
+	    assertThat(consent.isSlidemeAgreement(), is(true));
+	    assertThat(consent.isUsExportLaws(),is(true));
 	}
 	
 }
