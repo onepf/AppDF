@@ -15,7 +15,8 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -60,5 +61,12 @@ public class ParserTest {
 		File file = new File(nonZipResourceURL.toURI());
 		@SuppressWarnings("unused")
 		AppdfFileParser parser = new AppdfFileParser(file);
+	}
+	
+	@Test
+	public void checkPackage() throws IOException{
+	    AppdfFileParser parser = new AppdfFileParser(resource);
+        Application application = parser.parse();
+        assertThat(application.getPackageName(), is("ru.yandex.shell"));
 	}
 }

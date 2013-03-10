@@ -24,6 +24,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.onepf.appdf.model.Application;
+import org.onepf.appdf.parser.util.XmlUtil;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -68,7 +69,11 @@ public class ApplicationParser {
 			throw new ParsingException("Application elem is missing");
 		}else{
 			Node applicationNode = applicationNodeList.item(0);
-			
+			String packageName = XmlUtil.getOptionalAttributeValue(applicationNode.getAttributes(), "package");
+			if ( packageName == null ){
+			    throw new ParsingException("Package is missing");
+			}
+			application.setPackageName(packageName);
 			parseApplicationNode(application, applicationNode);				
 		}
 	}
