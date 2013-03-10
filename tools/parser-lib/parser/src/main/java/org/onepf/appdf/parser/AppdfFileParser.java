@@ -48,7 +48,7 @@ public class AppdfFileParser {
 	 *TODO Do we need an async version?
 	 * @return
 	 */
-	public Application parse() throws ParsingException{
+	public ParseResult parse() throws ParsingException{
 		Enumeration<? extends ZipEntry> entries = zipFile.entries();
 		Application application = new Application();
 		ApplicationParser applicationParser = new ApplicationParser();
@@ -60,6 +60,6 @@ public class AppdfFileParser {
 				applicationParser.parse(zipFile,elem,application);
 			}
 		}
-		return application;		
+		return new ParseResult(application,zipFile);		
 	}
 }

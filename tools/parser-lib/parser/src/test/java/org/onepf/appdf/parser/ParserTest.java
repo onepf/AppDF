@@ -35,6 +35,9 @@ import org.onepf.appdf.model.Availability;
 import org.onepf.appdf.model.Categorisation;
 import org.onepf.appdf.model.Categorisation.ApplicationType;
 import org.onepf.appdf.model.Consent;
+import org.onepf.appdf.model.ContentDescription;
+import org.onepf.appdf.model.ContentDescriptor;
+import org.onepf.appdf.model.ContentDescriptor.DescriptorValue;
 
 /**
  * Test covers top level functionality of AppdfFileParser class
@@ -111,7 +114,19 @@ public class ParserTest {
 	    assertThat(consent.isFreeFromThirdPartyCopytightedContent(), is(true));
 	    assertThat(consent.isGoogleAndroidContentGuidelines(), is(true));
 	    assertThat(consent.isSlidemeAgreement(), is(true));
-	    assertThat(consent.isUsExportLaws(),is(true));
+	    assertThat(consent.isUsExportLaws(),is(true));	    
+	}
+	
+	@Test
+	public void checkContentDescription() throws ParsingException, IOException{
+	    Application app = parseApplication();	    
+	    ContentDescription contentDescription = app.getContentDescription();
+	    ContentDescriptor contentDescriptor = contentDescription.getContentDescriptor();
+	    assertThat(contentDescriptor.getAlcohol(),is(DescriptorValue.NO));
+	    assertThat(contentDescriptor.getBadLanguage(),is(DescriptorValue.NO));
+	    assertThat(contentDescriptor.getCartoonViolence(),is(DescriptorValue.NO));
+	    assertThat(contentDescriptor.getDiscrimination(),is(DescriptorValue.NO));
+	    assertThat(contentDescriptor.getDrugs(),is(DescriptorValue.NO));
 	}
 	
 }
