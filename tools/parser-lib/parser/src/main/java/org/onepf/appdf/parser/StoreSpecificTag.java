@@ -24,9 +24,12 @@ import org.onepf.appdf.model.AmazonInfo;
 import org.onepf.appdf.model.Application;
 import org.onepf.appdf.model.AmazonInfo.KindleSupport;
 import org.onepf.appdf.model.GoogleInfo;
+import org.onepf.appdf.model.NookInfo;
+import org.onepf.appdf.model.OperaInfo;
 import org.onepf.appdf.model.SamsungInfo;
 import org.onepf.appdf.model.SlidemeInfo;
 import org.onepf.appdf.model.StoreSpecificInfo;
+import org.onepf.appdf.model.YandexInfo;
 import org.w3c.dom.Node;
 
 public enum StoreSpecificTag implements NodeParser<Application> {
@@ -98,21 +101,21 @@ public enum StoreSpecificTag implements NodeParser<Application> {
         @Override
         public void parse(Node node, Application element)
                 throws ParsingException {
-            defaultHandle(node, element, new GoogleInfo());
+            defaultHandle(node, element, new OperaInfo());
         }
     },
     YANDEX {
         @Override
         public void parse(Node node, Application element)
                 throws ParsingException {
-            defaultHandle(node, element, new GoogleInfo());
+            defaultHandle(node, element, new YandexInfo());
         }
     },
     NOOK {
         @Override
         public void parse(Node node, Application element)
                 throws ParsingException {
-            defaultHandle(node, element, new GoogleInfo());
+            defaultHandle(node, element, new NookInfo());
         }
     };
 
