@@ -15,8 +15,10 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +29,8 @@ import java.util.zip.ZipException;
 import org.junit.Before;
 import org.junit.Test;
 import org.onepf.appdf.model.Application;
+import org.onepf.appdf.model.Categorisation;
+import org.onepf.appdf.model.Categorisation.ApplicationType;
 
 /**
  * Test covers top level functionality of AppdfFileParser class
@@ -51,8 +55,7 @@ public class ParserTest {
 	
 	@Test
 	public void parseDontFail() throws IOException {
-		AppdfFileParser parser = new AppdfFileParser(resource);
-		Application application = parser.parse();
+		Application application = parseApplication();
 		assertNotEquals(null, application);
 	}
 	@Test(expected=ZipException.class)
@@ -65,8 +68,23 @@ public class ParserTest {
 	
 	@Test
 	public void checkPackage() throws IOException{
-	    AppdfFileParser parser = new AppdfFileParser(resource);
-        Application application = parser.parse();
+	    Application application = parseApplication();
         assertThat(application.getPackageName(), is("ru.yandex.shell"));
 	}
+
+    public Application parseApplication() throws IOException, ParsingException {
+        AppdfFileParser parser = new AppdfFileParser(resource);
+        Application application = parser.parse();
+        return application;
+    }
+	@Test
+	public void checkCategorisation() throws ParsingException, IOException{
+	    Application app = parseApplication();
+	    Categorisation categorisation = app.getCategorisation();
+        assertNotNull(categorisation);
+        assertThat(categorisation.getApplicationType(),is(ApplicationType.APPLICATION));
+	    assertThat(categorisation.getCategory(),is("personalization"));
+	    assertThat(categorisation.getSubCategory(),is("personalization"));
+	}
+	
 }
