@@ -2627,7 +2627,7 @@ You can define country list of period of time where/when you application is dist
 Example 1:
 ```xml
 <availability>
-  <countries only-listed="no">
+  <countries only-listed="yes">
     <include>US</include>
     <include>GB</include>
     <include>DE</include>
@@ -2643,7 +2643,7 @@ Example 1:
 Example 2:
 ```xml
 <availability>
-  <countries only-listed="yes">
+  <countries only-listed="no">
     <exclude>CU</exclude>
     <exclude>IM</exclude>
   </countries>
@@ -2673,7 +2673,7 @@ Use either `<include>` or `<exclude>` (depending on the `only-listed` attribute 
 
 Example 1:
 ```xml
-<countries only-listed="no">
+<countries only-listed="yes">
   <include>US</include>
   <include>GB</include>
   <include>DE</include>
@@ -2682,7 +2682,7 @@ Example 1:
 
 Example 2:
 ```xml
-<availability only-listed="yes">
+<availability only-listed="no">
   <countries>
     <exclude>CU</exclude>
     <exclude>IM</exclude>
