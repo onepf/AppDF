@@ -16,7 +16,7 @@
  *    limitations under the License.
  ******************************************************************************/
 
-var allLanguages = {
+var dataLanguages = {
   "ab" : "Abkhaz",
   "aa" : "Afar",
   "af" : "Afrikaans",

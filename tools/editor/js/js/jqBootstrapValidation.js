@@ -466,7 +466,8 @@
                 }
               });
 
-              $form.find("input,select,textarea").not($this).not("[name=\"" + $this.attr("name") + "\"]").trigger("validationLostFocus.validation");
+              //The next line is commented by Vassili (vassili@yandex-team.ru) because otherwize performance was very low
+              //$form.find("input,select,textarea").not($this).not("[name=\"" + $this.attr("name") + "\"]").trigger("validationLostFocus.validation");
 
               errorsFound = $.unique(errorsFound.sort());
 

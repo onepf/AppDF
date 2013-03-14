@@ -1,3 +1,12 @@
+Make real device list to the unsupported device field
+Unsupported device typeahead does not enter the selected option to the input
+Implement required section loading logic
+Implement required section saving logic
+Add more store ids to the specificatoin, xml, json and dataStores
+Read appstore list from dataStores in typeahead
+Add checking that appstore name has no spaces or wrong characters, show error messages
+fix that typeahead does not substitute the value after the first store is added
+
 FIXES
 check browser compatibility and show unsupported message
 Esc/Cancel in AppDF Load dialog wrong behaviour -> check why .click adds more and more listeners but not replace them
@@ -5,7 +14,6 @@ Find a way to push .show event when there will be havy actions after that. Somet
 allow JPG images in small and large promos
 Add checking that appicon is a square
 add validation about screenshot image size while saving, indeed check image size once when loading, then save to a variable and just use it
-SPEED UP!
 Allow empty package name for full version field 
 make localization optional loading while default language required where needed
 return error message from ApkParser
@@ -39,7 +47,9 @@ add tags like in Samsung and Naver
 XSD for full-description clearly describe which tags are allowed
 Add tags to specification
 Add tags (where to use the apps, for whom is the app) like in Samsung Apps and SK T-Store to the specification
+Add size and resolution attributes to the APK files and images to better handle feed exchange case when files are not local 
 when complete register AppDF mime type: http://www.iana.org/cgi-bin/mediatypes.pl
+
 
 =====
 

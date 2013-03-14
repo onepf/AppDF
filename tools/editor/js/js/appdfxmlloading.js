@@ -36,7 +36,7 @@ var appdfXMLLoader = (function() {
 			};
 		};	
 
-		$container.find("input[id^=description-texts-keywords-more-]").closest(".keyword-countainer").remove();
+		$container.find("input[id^=description-texts-keywords-more-]").closest(".input-container").remove();
 		var keywords = data["texts"]["keywords"];
 		for (var i=0; i<keywords.length; i++) {
 			var keyword = keywords[i];
@@ -138,7 +138,7 @@ var appdfXMLLoader = (function() {
 			progress(3);
 			for (languageCode in data["description"]) {
 				if (languageCode!="default") {
-					appdfLocalization.addLocalization(languageCode, allLanguages[languageCode]);
+					appdfLocalization.addLocalization(languageCode, dataLanguages[languageCode]);
 				};
 				loadDescriptionLocalizationSection(languageCode, data["description"][languageCode]);
 				progress(20);

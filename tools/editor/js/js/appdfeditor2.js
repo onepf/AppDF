@@ -33,7 +33,7 @@ var appdfEditor = (function() {
         $e.change(function() {
             var selectedCountryCode = $(this).find(":selected").val();
             if (selectedCountryCode != "") {
-                var currency = countryCurrencies[selectedCountryCode];
+                var currency = dataCountryCurrencies[selectedCountryCode];
                 $(this).closest(".control-group").find(".add-on").html(currency);
             } else {
                 $(this).closest(".control-group").find(".add-on").html("");
@@ -42,7 +42,7 @@ var appdfEditor = (function() {
 
         if (selectedCountry) {
             $e.val(selectedCountry);
-            var currency = countryCurrencies[selectedCountry];
+            var currency = dataCountryCurrencies[selectedCountry];
             $e.closest(".control-group").find(".add-on").html(currency);
         };
     };
@@ -54,13 +54,28 @@ var appdfEditor = (function() {
     function addMoreKeywords(e, value) {
         var $parent = $(e).closest(".input-append").parent();
         var $controlGroup = $(' \
-            <div class="keyword-countainer"> \
+            <div class="input-container"> \
                 <div class="input-append"> \
                     <input type="text" id="description-texts-keywords-more-' + getUniqueId() + '" value="' + value + '" \
                     required \
                     data-validation-required-message="Keyword cannot be empty. Remove keyword input if you do not need it." \
                     > \
                     <button class="btn description-texts-keywords-remove"><i class="icon-remove"></i></button> \
+                </div> \
+            </div> \
+        ');
+        $parent.find("p.help-block").before($controlGroup);
+//        $controlGroup.find("input").focus();
+    };
+
+    function addMoreUnsupportedDevices(e, value) {
+        var $parent = $(e).closest(".input-append").parent();
+        var $controlGroup = $(' \
+            <div class="input-container"> \
+                <div class="input-append"> \
+                    <input type="text" readonly id="requirements-supporteddevices-more-' + getUniqueId() + '" value="' + value + '" \
+                    > \
+                    <button class="btn requirements-supporteddevices-remove"><i class="icon-remove"></i></button> \
                 </div> \
             </div> \
         ');
@@ -93,6 +108,32 @@ var appdfEditor = (function() {
         $parent.append($controlGroup);
         fillCountries($controlGroup.find("select"), country);
         addValidationToElements($controlGroup.find("input"));
+    };
+
+    function getStoreNameById(store) {
+        if (dataStores[store]) {
+            return dataStores[store];
+        } else {
+            store;
+        };
+    };
+
+    function addMoreStoreSpecific(e, store, value) {
+        var $parent = $(e).closest(".control-group-container");
+        var $controlGroup = $(' \
+            <div class="control-group"> \
+                <!-- description/texts/title --> \
+                <label class="control-label"  for="description-texts-title-more">' + getStoreNameById(store) + '</label> \
+                <div class="controls"> \
+                    <input type="hidden" name="storespecific-name-' + store + '" id="storespecific-name-' + store + '" value="' + store + '"> \
+                    <textarea class="input-xxlarge" rows="10" id="storespecific-xml-' + store + '"></textarea> \
+                    <p class="help-block">' + getStoreNameById(store) + ' specific data in XML format. You can also rewrite any of the application description fields in this XML. \
+                    <button class="btn control-group-remove">Remove ' + getStoreNameById(store) + ' Specific Data</button> \
+                </div> \
+            </div><!--./control-group --> \
+        ');
+        $parent.append($controlGroup);
+        $controlGroup.find("input").focus();
     };
 
     function addMoreTitles(e, value) {
@@ -405,18 +446,26 @@ var appdfEditor = (function() {
 
     function fillLanguages() {
         var $langs = $("#add-localization-modal-language");
-        for (var code in allLanguages) {
+        for (var code in dataLanguages) {
             if (code.toLowerCase() !== "en_us") {
-                $langs.append($("<option />").val(code).text(allLanguages[code]));
+                $langs.append($("<option />").val(code).text(dataLanguages[code]));
             };
         };
         $langs.val("en");
     };
 
+    function fillScreenResolutions() {
+        var $div = $("#requirements-supportedresolutions");
+        for (var resolution in dataScreenResolutions) {
+            var $resolutionElement = $('<label class="checkbox"><input type="checkbox" value="" id="requirements-supportedresolutions-' + resolution + '">' + dataScreenResolutions[resolution] + '</label>');
+            $div.append($resolutionElement);
+        };
+    };
+
     function fillCategories() {
         var selectedType = $("#categorization-type").find(":selected").val();
         var $categories = $("#categorization-category");
-        var categoryHash = allCategories[selectedType];
+        var categoryHash = dataCategories[selectedType];
         $categories.empty();
         for (var k in categoryHash) {
              $categories.append($("<option />").val(k).text(k));
@@ -427,7 +476,7 @@ var appdfEditor = (function() {
         var selectedType = $("#categorization-type").find(":selected").val();
         var selectedCategory = $("#categorization-category").find(":selected").val();
         var $subcategories = $("#categorization-subcategory");
-        var subcategoryArray = allCategories[selectedType][selectedCategory];
+        var subcategoryArray = dataCategories[selectedType][selectedCategory];
         $subcategories.empty();
         for (var i=0; i<subcategoryArray.length; i++) {
             var s = subcategoryArray[i];
@@ -448,10 +497,10 @@ var appdfEditor = (function() {
         var selectedCategory = $("#categorization-category").find(":selected").val();
         var selectedSubcategory = $("#categorization-subcategory").find(":selected").val();
 
-        var storeInfo = storeCategories[selectedType][selectedCategory][selectedSubcategory];
+        var storeInfo = dataStoreCategories[selectedType][selectedCategory][selectedSubcategory];
 
         for (store in storeInfo) {
-            $table.append($("<tr><td>" + allStores[store] + "</td><td>" + storeInfo[store] + "</td></tr>"));
+            $table.append($("<tr><td>" + dataStores[store] + "</td><td>" + storeInfo[store] + "</td></tr>"));
         }
 
         $("#store-categories-info").empty();
@@ -464,13 +513,38 @@ var appdfEditor = (function() {
             return false;
         });
 
+        $('body').on('click', '.requirements-supporteddevices-addmore', function(e) {
+            var $input = $(e.target).closest(".input-append").find("input");
+            if ($input.val() !== "") {
+                addMoreUnsupportedDevices(e.target, $input.val());
+            };
+            $input.val("");
+            $input.focus();
+            return false;
+        });
+
+        $('body').on('click', '.storespecific-addmore', function(e) {
+            var $input = $(e.target).closest(".input-append").find("input");
+            if ($input.val() !== "") {
+                addMoreStoreSpecific(e.target, $input.val(), "");
+            };
+            $input.val("");
+            $input.focus();
+            return false;
+        });
+
         $('body').on('click', '.price-localprice-add', function(e) {
             addMoreLocalPrice(e.target, "", "");
             return false;
         });
 
         $('body').on('click', '.description-texts-keywords-remove', function(e) {
-            $(e.target).closest(".keyword-countainer").remove();
+            $(e.target).closest(".input-container").remove();
+            return false;
+        });
+
+        $('body').on('click', '.requirements-supporteddevices-remove', function(e) {
+            $(e.target).closest(".input-container").remove();
             return false;
         });
 
@@ -514,6 +588,25 @@ var appdfEditor = (function() {
             return false;
         });
 
+        $('#requirements-supportedlanguages-type-custom').click(function(event) {
+            event.preventDefault();
+            $("#requirements-supportedlanguages").show();
+            return false;
+        });
+
+        $('#requirements-supportedlanguages-type-defayt').click(function(event) {
+            event.preventDefault();
+            $("#requirements-supportedlanguages").hide();
+            return false;
+        });
+
+        $('#requirements-supportedresolutions-type-custom').click(function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            $("#requirements-supportedresolutions").show();
+            return false;
+        });
+
         $("#categorization-type").change(function() {
             fillCategories();
             fillSubcategories();
@@ -530,11 +623,46 @@ var appdfEditor = (function() {
         });        
     };
 
+    function fillSupportedLanguages() {
+        var $div = $("#requirements-supportedlanguages");
+        var langCodes = [];
+        for (var code in dataLanguages) {
+            langCodes.push(code);
+        };
+        var $row;
+        for (var i=0; i<langCodes.length; i++) {
+            if (i%3 === 0) {
+                $row = $("<div class='row'>");
+                $div.append($row);
+            };
+            $row.append($(' \
+                <div class="span4"> \
+                    <label class="checkbox"> \
+                        <input type="checkbox" value="" id="requirements-supportedlanguages-' + langCodes[i] + '"> \
+                        ' + dataLanguages[langCodes[i]] + ' \
+                    </label> \
+                </div>')
+            );
+        };
+    };
+
+    function fillStores() {
+        $input = $("#storespecific-input");
+        var storeCodes = [];
+        for (store in dataStores) {
+            storeCodes.push(store);
+        };
+        $input.typeahead({source: storeCodes});
+    };
+
     function initFilling() {
         fillLanguages();    
         fillCategories();
         fillSubcategories();
         fillCategoryStoresInfo();
+        fillSupportedLanguages();
+        fillScreenResolutions();
+        fillStores();
     };
 
     function init() {

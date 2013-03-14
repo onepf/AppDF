@@ -88,7 +88,7 @@ var appdfLocalization = (function() {
     	$e.find(".required-mark").remove();
 
         //Remove all additionally added keywords
-        $e.find("input[id^=description-texts-keywords-more-]").closest(".keyword-countainer").remove();
+        $e.find("input[id^=description-texts-keywords-more-]").closest(".input-container").remove();
     };
 
     function removeAllLocalizations() {

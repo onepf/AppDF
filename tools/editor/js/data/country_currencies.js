@@ -16,7 +16,7 @@
  *    limitations under the License.
  ******************************************************************************/
 
- var countryCurrencies = {
+ var dataCountryCurrencies = {
   "AF" : "AFN",
   "AX" : "EUR",
   "AL" : "ALL",

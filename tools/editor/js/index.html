@@ -36,6 +36,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 	<script type="text/javascript" src="data/languages.js"></script>
 	<script type="text/javascript" src="data/countries.js"></script>
 	<script type="text/javascript" src="data/country_currencies.js"></script>
+	<script type="text/javascript" src="data/screen_resolutions.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/holder.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
@@ -205,7 +206,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 								</div>
 							</div>
 						</fieldset>
-					</section>
+					</section><!--section-apk-files-->
 
 					<section id="section-categorization">
 						<fieldset>
@@ -247,7 +248,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 							<div class="controls" id="store-categories-info">
 							</div><!--div#store-categories-info-->
 						</fieldset>
-					</section>
+					</section><!--section-categorizatio-->
 
 					<section id="section-description">
 						<div id="add-localization-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="add-localization-modal-label" aria-hidden="true">
@@ -549,7 +550,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 								</div><!--./tab-content -->
 							</div><!--./tabbable -->			    
 						</fieldset>
-					</section>
+					</section><!--section-description-->
 
 					<section id="section-price">
 						<fieldset>
@@ -602,7 +603,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 								</div><!--./tab-content -->
 							</div><!--./tabbable -->	
 						</fieldset>
-					</section><!--price-->
+					</section><!--section-price-->
 
 					<section id="section-customer-support">
 						<fieldset>
@@ -653,7 +654,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 								</div>
 							</div><!--control-group-->
 						</fieldset>
-					</section><!--customer-support-->
+					</section><!--section-customer-support-->
 
 					<section id="section-consent">
 						<fieldset>
@@ -691,7 +692,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 							</div><!--control-group-->
 
 						</fieldset>
-					</section><!--consent-->
+					</section><!--section-consent-->
 
 					<section id="section-content-description">
 						<fieldset>
@@ -1073,7 +1074,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 							</div><!--control-group-->
 
 						</fieldset>
-					</section><!--content-description-->
+					</section><!--section-content-description-->
 
 					<section id="section-availability">
 						<fieldset>
@@ -1081,7 +1082,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 								<legend class="">Availability</legend>
 							</div>
 							<div class="control-group">
-								<!-- content-description -->
+								<!-- availability -->
 								<label class="control-label"  for="availability">Availability</label>
 								<div class="controls">
 									<textarea class="input-xxlarge" rows="10" id="availability"
@@ -1090,7 +1091,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 								</div>
 							</div><!--control-group-->					 
 						</fieldset>
-					</section><!--content-description-->
+					</section><!--section-availability-->
 
 					<section id="section-requirements">
 						<fieldset>
@@ -1098,16 +1099,79 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 								<legend class="">Requirements</legend>
 							</div>
 							<div class="control-group">
-								<!-- content-description -->
-								<label class="control-label"  for="requirements">Requirements</label>
+								<!-- requirements/features -->
+								<label class="control-label"  for="requirements-features">Features</label>
 								<div class="controls">
-									<textarea class="input-xxlarge" rows="10" id="requirements"
-									></textarea>
-									<p class="help-block">Under construction. Just post XML here. Later this section will be replaced with a set of fields.</p>
+									<label class="checkbox">
+										<input type="checkbox" value="" id="requirements-features-root">
+										Application requires root access
+									</label>							
+
+									<label class="checkbox">
+										<input type="checkbox" value="" id="requirements-features-gms">
+										Application requires Google Mobile Services (GMS), please note that it will dramatically limit supported stores
+									</label>							
+
+									<label class="checkbox">
+										<input type="checkbox" value="" id="contentdescription-includedactivities-advertising">
+										Application cannot work in offline more and requires internet connection
+									</label>							
+
+								</div>
+							</div><!--control-group-->	
+
+							<div class="control-group">
+								<!-- requirements/supported-languages -->
+								<label class="control-label"  for="requirements-supportedlanguages">Supported Languages</label>
+								<div class="controls">
+									<div>
+										<label class="radio">
+											<input type="radio" name="requirements-supportedlanguages-type" id="requirements-supportedlanguages-type-default" value="default" checked>
+											Take information about supported languages from the APK files
+										</label>
+										<label class="radio">
+											<input type="radio" name="requirements-supportedlanguages-type" id="requirements-supportedlanguages-type-custom" value="custom">
+											Enable custom supported language selection
+										</label>
+									</div>
+									<div id="requirements-supportedlanguages" class="hide">
+									</div>
 								</div>
 							</div><!--control-group-->					 
+
+							<div class="control-group">
+								<!-- requirements/supported-devices -->
+								<label class="control-label"  for="requirements-supporteddevices">Unsupported Devices</label>
+								<div class="controls">
+									<div class="input-append"> 
+										<input type="text" id="requirements-supporteddevices-input" autocomplete="off" data-provide="typeahead" data-items="4" data-source='["Ahmedabad","Akola","Asansol","Aurangabad","Bangaluru","Baroda","Belgaon","Berhumpur","Calicut","Chennai","Chapra","Cherapunji"]'> 
+										<button class="btn requirements-supporteddevices-addmore" type="button">Add</button>
+									</div> 
+									<p class="help-block">Add unsupported device model names (aka <a href="http://developer.android.com/reference/android/os/Build.html#DEVICE">name of the industrial design</a>).</p>
+								</div>
+							</div><!--control-group-->					 
+
+							<div class="control-group">
+								<!-- requirements/supported-resolutions -->
+								<label class="control-label"  for="requirements-supportedresolutions">Supported Screen Resolutions</label>
+								<div class="controls">
+									<div>
+										<label class="radio">
+											<input type="radio" name="requirements-supportedresolutions-type" id="requirements-supportedresolutions-type-default" value="default" checked>
+											Take information about supported screen resolutions from the APK files
+										</label>
+										<label class="radio">
+											<input type="radio" name="requirements-supportedresolutions-type" id="requirements-supportedresolutions-type-custom" value="custom">
+											Enable custom screen resolution selection
+										</label>
+									</div>
+									<div id="requirements-supportedresolutions" class="hide">
+									</div>
+								</div>
+							</div><!--control-group-->	
+
 						</fieldset>
-					</section><!--content-description-->
+					</section><!--section-requirements-->
 
 					<section id="section-testing-instructions">
 						<fieldset>
@@ -1128,24 +1192,27 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 								</div>
 							</div><!--control-group-->					 
 						</fieldset>
-					</section><!--content-description-->
+					</section><!--section-testing-instructions-->
 
 					<section id="section-store-specific">
 						<fieldset>
 							<div id="legend">
 								<legend class="">Store Specific</legend>
 							</div>
-							<div class="control-group">
-								<!-- content-description -->
-								<label class="control-label"  for="storespecific">Store Specific</label>
-								<div class="controls">
-									<textarea class="input-xxlarge" rows="10" id="storespecific"
-									></textarea>
-									<p class="help-block">Under construction. Just post XML here. Later this section will be replaced with a set of fields.</p>
-								</div>
-							</div><!--control-group-->					 
+							<div class="control-group-container">
+								<div class="control-group">
+									<label class="control-label"  for="storespecific-input">Application store name</label>
+									<div class="controls">
+										<div class="input-append"> 
+											<input type="text" id="storespecific-input" autocomplete="off" data-provide="typeahead" data-items="20" data-source='["Ahmedabad","Akola","Asansol","Aurangabad","Bangaluru","Baroda","Belgaon","Berhumpur","Calicut","Chennai","Chapra","Cherapunji"]'> 
+											<button class="btn storespecific-addmore" type="button">Add</button>
+										</div> 
+										<p class="help-block">You can add custom fields for a particular application store or rewrite any of the application description fields. XML format is described in the <a href="https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md">AppDF specification</a>.</p>
+									</div>
+								</div><!--control-group-->					 
+							</div>
 						</fieldset>
-					</section><!--content-description-->					
+					</section><!--section-store-specific-->					
 
 					<div class="form-actions">
 						<div class="alert alert-error hide" id="form-errors">

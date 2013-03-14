@@ -16,7 +16,7 @@
  *    limitations under the License.
  ******************************************************************************/
 
-var allCategories = {
+var dataCategories = {
   "application" : {
     "Alarms & Clocks" : [
       ""

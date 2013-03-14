@@ -336,17 +336,17 @@ var appdfParser = (function() {
 	function validateCategorization(data) {
 		var errors = [];
 
-		if (isUndefined(allCategories[data.type])) {
+		if (isUndefined(dataCategories[data.type])) {
 			errors.push("Unknown type \"" + data.type + "\"");
 			return errors;
 		};
 
-		if (isUndefined(allCategories[data.type][data.category])) {
+		if (isUndefined(dataCategories[data.type][data.category])) {
 			errors.push("Unknown category \"" + data.category + "\" for type \"" + data.type + "\"");
 			return errors;
 		};
 
-		if (allCategories[data.type][data.category].indexOf(data.subcategory)==-1) {
+		if (dataCategories[data.type][data.category].indexOf(data.subcategory)==-1) {
 			errors.push("Unknown subcategory \"" + data.subcategory + "\" for category \"" + data.category + "\"");
 			return errors;
 		};

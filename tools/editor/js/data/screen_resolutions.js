@@ -15,14 +15,28 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  ******************************************************************************/
- 
-var dataStores = {
-  "google" : "Google Play",	
-  "amazon" : "Amazon AppStore",	
-  "opera" : "Opera Mobile Store",
-  "yandex" : "Yandex.Store",	
-  "slideme" : "SlideME", 	
-  "samsung" : "Samsung Apps",
-  "tstore" : "SK T-Store",
-  "nook" : "NOOK apps"
-}	
+
+var dataScreenResolutions = {
+  "240x320" : "240x320 (QVGA)",
+  "240x400" : "240x400 (WQVGA)",
+  "240x432" : "240x432 (WQVGA432)",
+  "320x480" : "320x480 (HVGA)",
+  "360x640" : "360x640 (nHD)",
+  "480x640" : "480x640 (VGA)",
+  "480x800" : "480x800 (WVGA)",
+  "480x854" : "480x854 (FWVGA)",
+  "540x960" : "540x960 (qHD)",    
+  "600x1024" : "600x1024",    
+  "640x960" : "640x960 (DVGA)",   
+  "720x1280" : "720x1280 (HD 720p)",
+  "800x1280" : "800x1280 (WXGA)",
+  "1024x600" : "1024x600",
+  "1024x768" : "1024x768 (XGA)",
+  "1080x1920" : "1080x1920 (Full HD)",
+  "1280x768" : "1280x768 (WXGA)",
+  "1536x1152" : "1536x1152",
+  "1920x1152" : "1920x1152",
+  "2048x1536" : "2048x1536",
+  "2560x1536" : "2560x1536",
+  "2560x1600" : "2560x1600"
+};
