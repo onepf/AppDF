@@ -17,7 +17,7 @@
  ******************************************************************************/
 
 /**
- * Parsers AppDF file to JSON data.
+ * Parsers AppDF description.xml file and converts into JSON data
  * Depends on: jquery.js
  */
 var appdfParser = (function() {
