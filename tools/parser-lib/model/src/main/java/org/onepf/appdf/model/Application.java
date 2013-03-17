@@ -16,6 +16,8 @@
 package org.onepf.appdf.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.EnumMap;
 import java.util.List;
 
 /**
@@ -34,7 +36,7 @@ public class Application implements ModelElement {
 	private Availability avalability;
 	private ApkFilesInfo filesInfo;
 	private Requirments requirments;
-	private List<StoreSpecificInfo> storeSpecific;
+	private EnumMap<SupportedStore, StoreSpecificInfo> storeInfo = new EnumMap<>(SupportedStore.class);
 	private String testingInstructions;
 	private Consent consent;
 	private PriceInfo priceInfo;
@@ -96,12 +98,8 @@ public class Application implements ModelElement {
 		this.requirments = requirments;
 	}
 
-	public List<StoreSpecificInfo> getStoreSpecific() {
-		return storeSpecific;
-	}
-
-	public void setStoreSpecific(List<StoreSpecificInfo> storeSpecific) {
-		this.storeSpecific = storeSpecific;
+	public Collection<StoreSpecificInfo> getStoreSpecific() {
+		return storeInfo.values();
 	}
 
 	public String getTestingInstructions() {
@@ -156,9 +154,11 @@ public class Application implements ModelElement {
     }
 
     public void addStoreSpecificInfo(StoreSpecificInfo info){
-        if ( storeSpecific == null ){
-            storeSpecific = new ArrayList<StoreSpecificInfo>();
-        }
-        storeSpecific.add(info);
+        SupportedStore store = info.getStore();
+        storeInfo.put(store, info);
+    }
+    
+    public StoreSpecificInfo getStoreSpecificInfo(SupportedStore store){
+        return storeInfo.get(store);
     }
 }
