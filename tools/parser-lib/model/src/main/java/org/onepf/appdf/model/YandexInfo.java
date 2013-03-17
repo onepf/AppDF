@@ -17,4 +17,8 @@ package org.onepf.appdf.model;
 
 public class YandexInfo extends StoreSpecificInfo {
 
+    @Override
+    public SupportedStore getStore() {
+        return SupportedStore.YANDEX;
+    }
 }

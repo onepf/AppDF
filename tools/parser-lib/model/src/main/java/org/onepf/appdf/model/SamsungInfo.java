@@ -20,4 +20,9 @@ public class SamsungInfo extends StoreSpecificInfo {
     public SamsungInfo() {
     }
 
+    
+    @Override
+    public SupportedStore getStore() {
+        return SupportedStore.SAMSUNG;
+    }
 }

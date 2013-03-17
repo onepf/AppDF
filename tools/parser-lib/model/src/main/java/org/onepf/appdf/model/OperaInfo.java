@@ -20,4 +20,8 @@ public class OperaInfo extends StoreSpecificInfo {
     public OperaInfo() {
     }
 
+    @Override
+    public SupportedStore getStore() {
+        return SupportedStore.OPERA;
+    }
 }

@@ -32,4 +32,9 @@ public class SlidemeInfo extends StoreSpecificInfo {
         this.licenseType = licenseType;
     }
 
+    
+    @Override
+    public SupportedStore getStore() {
+        return SupportedStore.SLIDEME;
+    }
 }

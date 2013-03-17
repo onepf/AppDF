@@ -17,4 +17,8 @@ package org.onepf.appdf.model;
 
 public class NookInfo extends StoreSpecificInfo {
 
+    @Override
+    public SupportedStore getStore() {
+        return SupportedStore.NOOK;
+    }
 }

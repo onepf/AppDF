@@ -27,5 +27,6 @@ public abstract class StoreSpecificInfo implements ModelElement {
         this.application = application;
     }
 
+    public abstract SupportedStore getStore();
     
 }

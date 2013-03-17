@@ -20,4 +20,11 @@ public class GoogleInfo extends StoreSpecificInfo{
     public GoogleInfo() {
     }
 
+    @Override
+    public SupportedStore getStore() {
+        return SupportedStore.GOOGLE;
+    }
+
+    
+    
 }

@@ -106,4 +106,9 @@ public class AmazonInfo extends StoreSpecificInfo {
 		this.binaryAlias = binaryAlias;
 	}
 
+    @Override
+    public SupportedStore getStore() {
+       return SupportedStore.AMAZON;
+    }
+
 }
