@@ -18,6 +18,7 @@ package org.onepf.appdf.parser;
 import java.util.zip.ZipFile;
 
 import org.onepf.appdf.model.Application;
+import org.onepf.appdf.model.SupportedStore;
 
 public class ParseResult {
     private final Application application;
@@ -34,6 +35,10 @@ public class ParseResult {
 
     public ZipFile getFile() {
         return file;
+    }
+    
+    public Application projection(SupportedStore store){
+       return application;
     }
 
 }
