@@ -21,109 +21,208 @@ import java.util.EnumMap;
 import java.util.List;
 
 /**
- * Represents root application model info 
+ * Represents root application model info
+ * 
  * @author nivanov
- *
+ * 
  */
 
 public class Application implements ModelElement {
-	
-	private String packageName;
-	private Categorisation categorisation;
-	private Description mainDescription;
-	private List<Description> descriptionLocalisations;
-	private ContentDescription contentDescription;
-	private Availability avalability;
-	private ApkFilesInfo filesInfo;
-	private Requirments requirments;
-	private EnumMap<SupportedStore, StoreSpecificInfo> storeInfo = new EnumMap<>(SupportedStore.class);
-	private String testingInstructions;
-	private Consent consent;
-	private PriceInfo priceInfo;
-	private CustomerSupport customerSupport;
 
-	public String getPackageName() {
-		return packageName;
-	}
+    private static <T> T compareAndReturn(T main, T projection) {
+        if (projection == null) {
+            return main;
+        }
+        return projection;
 
-	public void setPackageName(String packageName) {
-		this.packageName = packageName;
-	}
+    }
 
-	public Categorisation getCategorisation() {
-		return categorisation;
-	}
+    private static class ApplicationProxy extends Application {
 
-	public void setCategorisation(Categorisation categorisation) {
-		this.categorisation = categorisation;
-	}
+        private final Application projection;
+        private final Application main;
 
-	public List<Description> getDescriptions() {
-		return descriptionLocalisations;
-	}
+        protected ApplicationProxy(Application projection, Application main) {
+            this.projection = projection;
+            this.main = main;
+        }
 
-	public void setDescriptions(List<Description> descriptions) {
-		this.descriptionLocalisations = descriptions;
-	}
+        @Override
+        public String getPackageName() {
+            return compareAndReturn(main.packageName, projection.packageName);
+        }
 
-	public ContentDescription getContentDescription() {
-		return contentDescription;
-	}
+        @Override
+        public Categorisation getCategorisation() {
+            return compareAndReturn(main.categorisation,
+                    projection.categorisation);
+        }
 
-	public void setContentDescription(ContentDescription contentDescription) {
-		this.contentDescription = contentDescription;
-	}
+        @Override
+        public List<Description> getDescriptions() {
+            return compareAndReturn(main.descriptionLocalisations,
+                    projection.descriptionLocalisations);
+        }
 
-	public Availability getAvalability() {
-		return avalability;
-	}
+        @Override
+        public ContentDescription getContentDescription() {
+            return compareAndReturn(main.contentDescription,
+                    projection.contentDescription);
+        }
 
-	public void setAvalability(Availability avalability) {
-		this.avalability = avalability;
-	}
+        @Override
+        public Availability getAvalability() {
+            return compareAndReturn(main.avalability, projection.avalability);
+        }
 
-	public ApkFilesInfo getFilesInfo() {
-		return filesInfo;
-	}
+        @Override
+        public ApkFilesInfo getFilesInfo() {
+            return compareAndReturn(main.filesInfo, projection.filesInfo);
+        }
 
-	public void setFilesInfo(ApkFilesInfo filesInfo) {
-		this.filesInfo = filesInfo;
-	}
+        @Override
+        public Requirments getRequirments() {
+            return compareAndReturn(main.requirments, projection.requirments);
+        }
 
-	public Requirments getRequirments() {
-		return requirments;
-	}
+        @Override
+        public Collection<StoreSpecificInfo> getStoreSpecific() {
+            return compareAndReturn(main.storeInfo.values(),
+                    projection.storeInfo.values());
+        }
 
-	public void setRequirments(Requirments requirments) {
-		this.requirments = requirments;
-	}
+        @Override
+        public String getTestingInstructions() {
+            return compareAndReturn(main.testingInstructions,
+                    projection.testingInstructions);
+        }
 
-	public Collection<StoreSpecificInfo> getStoreSpecific() {
-		return storeInfo.values();
-	}
+        @Override
+        public Consent getConsent() {
+            return compareAndReturn(main.consent, projection.consent);
+        }
 
-	public String getTestingInstructions() {
-		return testingInstructions;
-	}
+        @Override
+        public Description getMainDescription() {
+            return compareAndReturn(main.mainDescription,
+                    projection.mainDescription);
+        }
 
-	public void setTestingInstructions(String testingInstructions) {
-		this.testingInstructions = testingInstructions;
-	}
+        @Override
+        public PriceInfo getPriceInfo() {
+            return compareAndReturn(main.priceInfo, projection.priceInfo);
+        }
 
-	public Consent getConsent() {
-		return consent;
-	}
+        @Override
+        public List<Description> getDescriptionLocalisations() {
+            return compareAndReturn(main.descriptionLocalisations,
+                    projection.descriptionLocalisations);
+        }
 
-	public void setConsent(Consent consent) {
-		this.consent = consent;
-	}
-	
-	public void addDescriptionLocalisation(Description description){
-	    if ( descriptionLocalisations == null ){
-	        descriptionLocalisations = new ArrayList<Description>();
-	    }
-	    descriptionLocalisations.add(description);
-	}
+        @Override
+        public CustomerSupport getCustomerSupport() {
+            return compareAndReturn(main.customerSupport,
+                    projection.customerSupport);
+        }
+    }
+
+    private String packageName;
+    private Categorisation categorisation;
+    private Description mainDescription;
+    private List<Description> descriptionLocalisations;
+    private ContentDescription contentDescription;
+    private Availability avalability;
+    private ApkFilesInfo filesInfo;
+    private Requirments requirments;
+    private EnumMap<SupportedStore, StoreSpecificInfo> storeInfo = new EnumMap<>(
+            SupportedStore.class);
+    private String testingInstructions;
+    private Consent consent;
+    private PriceInfo priceInfo;
+    private CustomerSupport customerSupport;
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
+
+    public Categorisation getCategorisation() {
+        return categorisation;
+    }
+
+    public void setCategorisation(Categorisation categorisation) {
+        this.categorisation = categorisation;
+    }
+
+    public List<Description> getDescriptions() {
+        return descriptionLocalisations;
+    }
+
+    public void setDescriptions(List<Description> descriptions) {
+        this.descriptionLocalisations = descriptions;
+    }
+
+    public ContentDescription getContentDescription() {
+        return contentDescription;
+    }
+
+    public void setContentDescription(ContentDescription contentDescription) {
+        this.contentDescription = contentDescription;
+    }
+
+    public Availability getAvalability() {
+        return avalability;
+    }
+
+    public void setAvalability(Availability avalability) {
+        this.avalability = avalability;
+    }
+
+    public ApkFilesInfo getFilesInfo() {
+        return filesInfo;
+    }
+
+    public void setFilesInfo(ApkFilesInfo filesInfo) {
+        this.filesInfo = filesInfo;
+    }
+
+    public Requirments getRequirments() {
+        return requirments;
+    }
+
+    public void setRequirments(Requirments requirments) {
+        this.requirments = requirments;
+    }
+
+    public Collection<StoreSpecificInfo> getStoreSpecific() {
+        return storeInfo.values();
+    }
+
+    public String getTestingInstructions() {
+        return testingInstructions;
+    }
+
+    public void setTestingInstructions(String testingInstructions) {
+        this.testingInstructions = testingInstructions;
+    }
+
+    public Consent getConsent() {
+        return consent;
+    }
+
+    public void setConsent(Consent consent) {
+        this.consent = consent;
+    }
+
+    public void addDescriptionLocalisation(Description description) {
+        if (descriptionLocalisations == null) {
+            descriptionLocalisations = new ArrayList<Description>();
+        }
+        descriptionLocalisations.add(description);
+    }
 
     public Description getMainDescription() {
         return mainDescription;
@@ -153,12 +252,25 @@ public class Application implements ModelElement {
         this.customerSupport = customerSupport;
     }
 
-    public void addStoreSpecificInfo(StoreSpecificInfo info){
+    public void addStoreSpecificInfo(StoreSpecificInfo info) {
         SupportedStore store = info.getStore();
         storeInfo.put(store, info);
     }
-    
-    public StoreSpecificInfo getStoreSpecificInfo(SupportedStore store){
+
+    public StoreSpecificInfo getStoreSpecificInfo(SupportedStore store) {
         return storeInfo.get(store);
     }
+
+    public Application project(SupportedStore store) {
+        if (storeInfo.containsKey(store)) {
+            StoreSpecificInfo info = storeInfo.get(store);
+            if (info.getApplication() == null) {
+                return this;
+            } else {
+                return new ApplicationProxy(info.getApplication(), this);
+            }
+        }
+        return this;
+    }
+
 }

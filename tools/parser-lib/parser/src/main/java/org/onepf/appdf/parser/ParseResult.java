@@ -18,9 +18,11 @@ package org.onepf.appdf.parser;
 import java.util.zip.ZipFile;
 
 import org.onepf.appdf.model.Application;
+import org.onepf.appdf.model.StoreSpecificInfo;
 import org.onepf.appdf.model.SupportedStore;
 
 public class ParseResult {
+    
     private final Application application;
     private final ZipFile file;
 
@@ -38,6 +40,8 @@ public class ParseResult {
     }
     
     public Application projection(SupportedStore store){
+        StoreSpecificInfo storeInfo = application.getStoreSpecificInfo(store);
+        storeInfo.getApplication();
        return application;
     }
 
