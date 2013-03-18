@@ -290,7 +290,22 @@ var appdfXMLSaver = (function() {
 	};
 
 	function generateStoreSpecificXML(xml) {
-		xml.addString($("#storespecific").val());
+		var _spec_arr = $('input[name^="storespecific-name-"]');
+		
+		if ( _spec_arr.length == 0 ) return false;
+		
+		var _spec_name, _spec_content;
+		xml.addTag("<store-specific>", function() {
+			for ( var i = 0; i < _spec_arr.length; i++ ) {
+				_spec_name = $(_spec_arr[i]).val();
+				_spec_content = $(_spec_arr[i]).next().val();
+				
+				xml.addTag( "<" + _spec_name + ">", function(){
+					//xml.addLine( _spec_content );
+					xml.addString( _spec_content );
+				} );
+			}
+		});
 	};
 
 	function generateDescriptionFileXML() {
