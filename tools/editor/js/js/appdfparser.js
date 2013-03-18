@@ -79,6 +79,21 @@ var appdfParser = (function() {
 				};
 			});
 		};
+		
+		//Load xml content only
+		function loadXmlContent(dataPath, xmlPath) {
+			loadHelper(dataPath, xmlPath, function(d, name, $e) {
+				if ($e.length>0) {
+					var serializer = new XMLSerializer(); 
+					var $el = $e[0].childNodes;
+					var xmlString = '';
+					for ( var i in $el ) {
+						xmlString += serializer.serializeToString($el[i]);
+					}
+					d[name] = xmlString;
+				};
+			});
+		};
 
 		//Load text
 		function loadText(dataPath, xmlPath) {
@@ -296,12 +311,25 @@ var appdfParser = (function() {
 		//Testing Instructions
 		loadText("testing-instructions", "testing-instructions");
 
+		
+		//Store specific
+		var _spc_arr = getElementsByPath( $xml, "application-description-file/application/store-specific" )[0].childNodes;
+		var _spc_length = _spc_arr.length;
+		section("store-specific", "store-specific", function(){
+			for (var i = 0; i < _spc_length; i++ ) {
+				if ( _spc_arr[i].nodeType != '1' ) continue;
+				loadXmlContent(_spc_arr[i].nodeName, _spc_arr[i].nodeName);
+			}
+		});
+		
+		
+		
 		//Todo: temporary XML loading instead of parsing content
 		loadXml("availability", "availability");
 		loadXml("requirements", "requirements");
 		loadText("testing-instructions", "testing-instructions");
-		loadXml("store-specific", "store-specific");
 
+		
 		errors.append(validateDescriptionXMLData(data));
 
 		if (errors.length==0) {
@@ -329,7 +357,8 @@ var appdfParser = (function() {
 		errors.append(validateCustomerSupport(data["customer-support"]));
 		errors.append(validateContentDescription(data["content-description"]));
 		errors.append(validateTestingInstructions(data["testing-instructions"]));
-
+		//errors.append(validateStoreSpecific(data["store-specific"]));
+		
 		return errors;
 	};
 
@@ -570,6 +599,12 @@ var appdfParser = (function() {
 		return errors;	
 	};
 
+	function validateStoreSpecific(data) {
+		//nothing to do.
+		return [];
+	};
+	
+	
     return {
         parseDescriptionXML : parseDescriptionXML
     };

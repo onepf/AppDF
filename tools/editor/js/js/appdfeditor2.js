@@ -111,14 +111,20 @@ var appdfEditor = (function() {
     };
 
     function getStoreNameById(store) {
-        if (dataStores[store]) {
+        if ( typeof dataStores[store] != 'undefined' ) {
             return dataStores[store];
         } else {
-            store;
+            return store;
         };
     };
 
     function addMoreStoreSpecific(e, store, value) {
+		if ( $('#section-store-specific input[name="storespecific-name-' + store + '"]').length ) {
+			$('#double-append-storespecific-error').show();
+			return false;
+		}
+		$('#double-append-storespecific-error').hide();
+		
         var $parent = $(e).closest(".control-group-container");
         var $controlGroup = $(' \
             <div class="control-group"> \
@@ -126,7 +132,7 @@ var appdfEditor = (function() {
                 <label class="control-label"  for="description-texts-title-more">' + getStoreNameById(store) + '</label> \
                 <div class="controls"> \
                     <input type="hidden" name="storespecific-name-' + store + '" id="storespecific-name-' + store + '" value="' + store + '"> \
-                    <textarea class="input-xxlarge" rows="10" id="storespecific-xml-' + store + '"></textarea> \
+                    <textarea class="input-xxlarge" rows="10" id="storespecific-xml-' + store + '" >' + value + '</textarea> \
                     <p class="help-block">' + getStoreNameById(store) + ' specific data in XML format. You can also rewrite any of the application description fields in this XML. \
                     <button class="btn control-group-remove">Remove ' + getStoreNameById(store) + ' Specific Data</button> \
                 </div> \
@@ -134,6 +140,7 @@ var appdfEditor = (function() {
         ');
         $parent.append($controlGroup);
         $controlGroup.find("input").focus();
+		return true;
     };
 
     function addMoreTitles(e, value) {
@@ -526,9 +533,10 @@ var appdfEditor = (function() {
         $('body').on('click', '.storespecific-addmore', function(e) {
             var $input = $(e.target).closest(".input-append").find("input");
             if ($input.val() !== "") {
-                addMoreStoreSpecific(e.target, $input.val(), "");
+                if ( addMoreStoreSpecific(e.target, $input.val(), "") ) {
+					$input.val("");
+				}
             };
-            $input.val("");
             $input.focus();
             return false;
         });
@@ -679,6 +687,7 @@ var appdfEditor = (function() {
         addMoreLocalPrice : addMoreLocalPrice,
         addMoreTitles : addMoreTitles,
         addMoreShortDescriptions : addMoreShortDescriptions,
+		addMoreStoreSpecific: addMoreStoreSpecific,
         normalizeInputFileName : normalizeInputFileName,
         fillCategories : fillCategories,
         fillSubcategories : fillSubcategories,

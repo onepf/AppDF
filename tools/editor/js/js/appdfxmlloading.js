@@ -230,17 +230,28 @@ var appdfXMLLoader = (function() {
 				$(sc + typeId).val(certificates[i]["rating"]);
 			};
 			progress(3);
-
+			
 			//Testing instructions
 			$("#testinginstructions").val(data["testing-instructions"]);
 			progress();
-
+			
+			
+			//remove current specify list
+			$.each( $('#section-store-specific .control-group:gt(0)'), function(index, value){ $(value).remove(); } );
+			//add loaded
+			var dscp = data['store-specific'];
+			for ( var i in dscp ) {
+				appdfEditor.addMoreStoreSpecific( $('.storespecific-addmore'), i, dscp[i] );
+			}
+			progress();
+			
+			
+			
 			//Todo: temporary work with XML
 			$("#availability").val(data["availability"]);
 			$("#requirements").val(data["requirements"]);
-			$("#storespecific").val(data["store-specific"]);
-			progress();
-
+			
+			
 			onend();
 		}, onerror);
 	};
