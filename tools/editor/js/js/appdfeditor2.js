@@ -655,6 +655,30 @@ var appdfEditor = (function() {
         $input.typeahead({source: storeCodes});
     };
 
+    function fillDeviceModels() {
+        $input = $("#requirements-supporteddevices-input");
+        var deviceModels = [];
+        for (model in dataDeviceModels) {
+            deviceModels.push(model + " (" + dataDeviceModels[model]["manufacture"] + "," + dataDeviceModels[model]["resolution"] + ")");
+        };
+        $input.typeahead({
+            "source" : deviceModels,
+            "updater" : function(item) {
+                console.log("updater");
+                console.log(item);
+
+                var deviceModelRegEx = /([^\(]*)\s\([.]*/i;
+                var matched = item.match(deviceModelRegEx); 
+                console.log(matched);
+                if (matched && matched.length>0) {
+                    return matched[1];
+                } else {
+                    return item;
+                };
+            }
+        });
+    };
+
     function initFilling() {
         fillLanguages();    
         fillCategories();
@@ -663,6 +687,7 @@ var appdfEditor = (function() {
         fillSupportedLanguages();
         fillScreenResolutions();
         fillStores();
+        fillDeviceModels();
     };
 
     function init() {
