@@ -476,6 +476,35 @@ function validationCallbackScreenshotRequired($el, value, callback) {
     });
 };
 
+function validationCallbackRequirementDevice($el, value, callback) {
+	if ( $('#section-requirements input[name="unsupport-device-name-' + value + '"]').length ) {
+		callback({
+			value: value,
+			valid: false,
+			message: 'This store already exist.'
+		});
+	} else {
+		callback({
+			value: value,
+			valid: true
+		});
+	}
+}
+
+function validationCallbackStoreSpecify($el, value, callback) {
+	if ( $('#section-store-specific input[name="storespecific-name-' + value + '"]').length ) {
+		callback({
+			value: value,
+			valid: false,
+			message: 'This store already exist.'
+		});
+	} else {
+		callback({
+			value: value,
+			valid: true
+		});
+	}
+}
 
 
 function screenshotClick(e) {
