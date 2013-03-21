@@ -127,16 +127,16 @@ function collectBuildErrors() {
         };
     };
 
-    validationCallbackApkFileFirst($("#apk-file"), $("#apk-file").val(), function(data) {
-        if (!data.valid) {
+    appdfEditor.validationCallbackApkFileFirst($("#apk-file"), $("#apk-file").val(), function(data) {
+        if (!data.valid && data.value) {
             if (errorArray.indexOf(data.message) === -1) {
                 errorArray.push(data.message);
             };
         };
     });
 
-    validationCallbackAppIconFirst($("#description-images-appicon"), $("#description-images-appicon").val(), function(data) {
-        if (!data.valid) {
+    appdfEditor.validationCallbackAppIconFirst($("#description-images-appicon"), $("#description-images-appicon").val(), function(data) {
+        if (!data.valid && data.value) {
             if (errorArray.indexOf(data.message) === -1) {
                 errorArray.push(data.message);
             };
@@ -144,26 +144,24 @@ function collectBuildErrors() {
     });
 	
 	
-	//validate specify
-	var _spc_arr = $('#section-store-specific input[name^="storespecific-name-"]');
-	var _spc_length = _spc_arr.length;
-	if ( _spc_length > 0 ) {
-		var _valid_xml, _msg;
-		for ( var i = 0; i < _spc_length; i++ ) {
-			try {
-				$.parseXML( '<a>' + $(_spc_arr[i]).next().val() + '</a>' );
-				_valid_xml = true;
-			} catch (e) {
-				_valid_xml = false;
-				_msg = 'Store Specific "' + $(_spc_arr[i]).val() + '" - invalid XML.';
-			}
-			
-			if ( !_valid_xml && errorArray.indexOf( _msg ) === -1 ) {
-				errorArray.push( _msg );
-			}
+	//validate store specify
+	var $storeSpecific = $("#section-store-specific input[name^='storespecific-name-']");
+	var storeSpecificID, storeSpecificContent, invalidXmlFlag, errorMessage;
+	$storeSpecific.each(function() {
+		storeSpecificID = $(this).val();
+		storeSpecificContent = $(this).next().val();
+		try {
+			$.parseXML("<a>" + storeSpecificContent + "</a>");
+			invalidXmlFlag = false;
+		} catch (e) {
+			invalidXmlFlag = true;
+			errorMessage = "Store Specific '" + storeSpecificID + "' - invalid XML";
 		}
-	}
-	
+		
+		if (invalidXmlFlag && errorArray.indexOf(errorMessage) === -1) {
+			errorArray.push(errorMessage);
+		}
+	});
 	
     return errorArray;
 };
@@ -258,7 +256,7 @@ function addMoreAppIcon(e) {
         <input type="file" id="description-images-appicon-' + getUniqueId() + '" class="hide ie_show appicon-input empty-image" \
             name="description-images-appicon-' + getUniqueId() + '" \
             accept="image/png" \
-            data-validation-callback-callback="validationCallbackAppIconFirst" \
+            data-validation-callback-callback="appdfEditor.validationCallbackAppIconFirst" \
         /> \
         <img src="img/appicon_placeholder.png" width="128" height="128"> \
         <p class="image-input-label"></p> \
@@ -275,7 +273,7 @@ function addMoreScreenshots(e) {
         <input type="file" id="description-images-screenshot-' + getUniqueId() + '" class="hide ie_show screenshot-input empty-image" \
             name="description-images-screenshot-' + getUniqueId() + '" \
             accept="image/png" \
-            data-validation-callback-callback="validationCallbackScreenshotRequired" \
+            data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired" \
         /> \
         <img src="img/screenshot_placeholder.png" width="132" height="220"> \
         <p class="image-input-label"></p> \
@@ -346,73 +344,6 @@ function onProgress(current, total) {
     $bar.text(percentage);
 };
 
-function validationCallbackApkFile($el, value, callback, first) {
-    var apkFileName = appdfEditor.normalizeInputFileName($el.val());
-    $el.closest(".controls").find("input:text").val(apkFileName);
-
-    if (first && $el[0].files.length === 0) {
-        callback({
-            value: value,
-            valid: false,
-            message: "APK file is required"
-        });
-        return;
-    };
-    
-    var file = $el[0].files[0];
-
-    if (file.size>MAXIMUM_APK_FILE_SIZE) {
-        callback({
-            value: value,
-            valid: false,
-            message: "APK file size cannot exceed 50M"
-        });
-        return;
-    };
-
-    apkParser.parseApkFile(file, apkFileName, function(apkData) {
-        fillApkFileInfo($el, apkData);
-        var data = {
-            value: value,
-            valid: true
-        };
-
-        if (first) {
-            firstApkFileData = apkData;
-        } else {
-            if (firstApkFileData.package!=apkData.package) {
-                data.valid = false;
-                data.message = "APK file package names do not match";
-            };
-        };
-        callback(data);
-    }, function (error) {
-        fillApkFileInfo($el, null);
-        callback({
-            value: value,
-            valid: false,
-            message: error
-        });
-    });
-};
-
-function validationCallbackApkFileFirst($el, value, callback) {
-    validationCallbackApkFile($el, value, function(data) {
-        if (data.valid) {
-            var descriptionXML = localStorage.getItem(firstApkFileData.package);
-            if (descriptionXML && descriptionXML!="") {
-//todo: handle carefully that we set it only if page is empty
-//                appdfXMLLoader.loadDescriptionXML(descriptionXML, function(){}, function(error){});
-            };
-        };
-        callback(data);
-    }, true);
-};
-
-function validationCallbackApkFileMore($el, value, callback) {
-    validationCallbackApkFile($el, value, callback, false);
-};
-
 function getImgSize(imgSrc, onsize) {
     var newImg = new Image();
     newImg.onload = function() {
@@ -422,90 +353,6 @@ function getImgSize(imgSrc, onsize) {
     };
     newImg.src = imgSrc; // this must be done AFTER setting onload
 };
-
-function validationCallbackAppIconFirst($el, value, callback) {
-    if ($el[0].files.length === 0) {
-        callback({
-            value: value,
-            valid: false,
-            message: "Application icon is required"
-        });
-        return;
-    };
-    
-    var imageFileName = appdfEditor.normalizeInputFileName($el.val());
-    var file = $el[0].files[0];
-    var URL = window.webkitURL || window.mozURL || window.URL;    
-    var imgUrl = URL.createObjectURL(file);
-
-    getImgSize(imgUrl, function(width, height) {
-        if (width===512 && height===512) {
-            callback({
-                value: value,
-                valid: true
-            });
-        } else {
-            callback({
-                value: value,
-                valid: false,
-                message: "Application icon size must be 512x512"
-            });
-        };
-    });
-};
-
-function validationCallbackScreenshotRequired($el, value, callback) {
-    var imageFileName = appdfEditor.normalizeInputFileName($el.val());
-    var file = $el[0].files[0];
-    var URL = window.webkitURL || window.mozURL || window.URL;    
-    var imgUrl = URL.createObjectURL(file);
-
-    getImgSize(imgUrl, function(width, height) {
-        if (true /*todo: add some size checking*/) {
-            callback({
-                value: value,
-                valid: true
-            });
-        } else {
-            callback({
-                value: value,
-                valid: false,
-                message: "Wrong screenshot size" //todo: better error message
-            });
-        };
-    });
-};
-
-function validationCallbackRequirementDevice($el, value, callback) {
-	if ( $('#section-requirements input[name="unsupport-device-name-' + value + '"]').length ) {
-		callback({
-			value: value,
-			valid: false,
-			message: 'This store already exist.'
-		});
-	} else {
-		callback({
-			value: value,
-			valid: true
-		});
-	}
-}
-
-function validationCallbackStoreSpecify($el, value, callback) {
-	if ( $('#section-store-specific input[name="storespecific-name-' + value + '"]').length ) {
-		callback({
-			value: value,
-			valid: false,
-			message: 'This store already exist.'
-		});
-	} else {
-		callback({
-			value: value,
-			valid: true
-		});
-	}
-}
-
 
 function screenshotClick(e) {
     $(e).closest(".screenshot-container").children("input").click();

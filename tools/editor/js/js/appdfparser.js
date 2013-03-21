@@ -80,21 +80,23 @@ var appdfParser = (function() {
 			});
 		};
 		
-		//Load xml content only
-		function loadXmlContent(dataPath, xmlPath) {
-			loadHelper(dataPath, xmlPath, function(d, name, $e) {
-				if ($e.length>0) {
-					var serializer = new XMLSerializer(); 
-					var $el = $e[0].childNodes;
-					var xmlString = '';
-					for ( var i in $el ) {
-						xmlString += serializer.serializeToString($el[i]);
-					}
-					d[name] = xmlString;
+		function loadStoreSpecificContent() {
+			loadHelper('', '*', function(d, name, $e) {
+				for (var i = 0; i < $e.length; i++) {
+					d[$e[i].nodeName] = getXmlContent($($e[i]).children());
 				};
 			});
 		};
-
+		
+		function getXmlContent($e) {
+			var serializer = new XMLSerializer(); 
+			var xmlString = '';
+			for (var i = 0; i < $e.length; i++) {
+				xmlString += serializer.serializeToString($e[i]);
+			};
+			return xmlString;
+		};
+		
 		//Load text
 		function loadText(dataPath, xmlPath) {
 			loadHelper(dataPath, xmlPath, function(d, name, $e) {
@@ -110,6 +112,20 @@ var appdfParser = (function() {
 				d[name] = [];
 				$e.each(function() {
 					d[name].push($(this).text());
+				});
+			});
+		};
+		
+		//Load object
+		function loadObjectWithData(dataPath, xmlPath) {
+			loadHelper(dataPath, xmlPath, function(d, name, $e) {
+				if (!$e.length) {
+					return;
+				};
+				
+				d[name] = {};
+				$e.each(function() {
+					d[name][$(this).text()] = ($(this).text());
 				});
 			});
 		};
@@ -313,75 +329,21 @@ var appdfParser = (function() {
 
 		
 		//Store specific
-		if ( getElementsByPath( $xml, "application-description-file/application/store-specific" ).length ) {
-			var _spc_arr = getElementsByPath( $xml, "application-description-file/application/store-specific" )[0].childNodes;
-			var _spc_length = _spc_arr.length;
-			section("store-specific", "store-specific", function(){
-				for (var i = 0; i < _spc_length; i++ ) {
-					if ( _spc_arr[i].nodeType != '1' ) continue;
-					loadXmlContent(_spc_arr[i].nodeName, _spc_arr[i].nodeName);
-				}
-			});
-		}
-		
+		section("store-specific/", "store-specific", function() {
+			loadStoreSpecificContent();
+		});
 		
 		
 		//Requirements
-		if ( getElementsByPath( $xml, "application-description-file/application/requirements" ).length ) {
-			section("requirements", "requirements", function(){
-				var _path = 'application-description-file/application/requirements/', 
-					_arr = getElementsByPath( $xml, _path + "features"),
-					__arr, __arr_length;
-				
-				if ( _arr.length ) {
-					section("features", "features", function() {
-						__arr = _arr[0].childNodes;
-						__arr_length = __arr.length;
-						for ( var i = 0 ; i < __arr_length; i++ ) {
-							if ( __arr[i].nodeType != '1' ) continue;
-							
-							loadBoolean( __arr[i].nodeName );
-						}
-					});
-				}
-				
-				_arr = getElementsByPath( $xml, _path + "supported-languages");
-				if ( _arr.length ) {
-					section("supported-languages", "supported-languages", function() {
-						loadHelper("language", "language", function(d, name, $e) {
-							d[name] = {};
-							$e.each(function() {
-								d[name][$(this).text()] = $(this).text();
-							});
-						});
-					});
-				}
-				
-				_arr = getElementsByPath( $xml, _path + "supported-devices");
-				if ( _arr.length ) {
-					section("supported-devices", "supported-devices", function() {
-						loadHelper("exclude", "exclude", function(d, name, $e) {
-							d[name] = {};
-							$e.each(function() {
-								d[name][$(this).text()] = $(this).text();
-							});
-						});
-					});
-				}
-				
-				_arr = getElementsByPath( $xml, _path + "supported-resolutions");
-				if ( _arr.length ) {
-					section("supported-resolutions", "supported-resolutions", function() {
-						loadHelper("include", "include", function(d, name, $e) {
-							d[name] = {};
-							$e.each(function() {
-								d[name][$(this).text()] = $(this).text();
-							});
-						});
-					});
-				}
-			});
-		}
+		section("requirements", "requirements", function() {
+			loadBoolean("features/root");
+			loadBoolean("features/gms");
+			loadBoolean("features/online");
+			
+			loadObjectWithData("supported-languages/language", "supported-languages/language");
+			loadObjectWithData("supported-devices/exclude", "supported-devices/exclude");
+			loadObjectWithData("supported-resolutions/include", "supported-resolutions/include");
+		});
 		
 		
 		//Todo: temporary XML loading instead of parsing content
