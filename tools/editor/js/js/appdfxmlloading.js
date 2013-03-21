@@ -237,77 +237,73 @@ var appdfXMLLoader = (function() {
 			
 			
 			//Store specify
-			//remove current specify list
-			$.each( $('#section-store-specific .control-group:gt(0)'), function(index, value){ $(value).remove(); } );
-			//add loaded
-			var dscp = data['store-specific'];
-			if ( dscp ) {
-				for ( var i in dscp ) {
-					appdfEditor.addMoreStoreSpecific( $('.storespecific-addmore'), i, dscp[i] );
-				}
-			}
+			//remove current store specify list
+			$('#section-store-specific .store-specific').remove();
+			//add loaded store specify data
+			var storeSpecificData = data["store-specific"];
+			if (storeSpecificData) {
+				for (var i in storeSpecificData) {
+					appdfEditor.addMoreStoreSpecific($(".storespecific-addmore"), i, storeSpecificData[i]);
+				};
+			};
 			progress();
 			
 			
-			
 			//Requirements
-			var _ftr_arr = [ 
-				{ tag:'root', id:'#requirements-features-root' },
-				{ tag:'gms', id:'#requirements-features-gms' },
-				{ tag:'online', id:'#requirements-features-online' }
+			var featuresTagsAndIDsList = [ 
+				{tag:"root", id:"#requirements-features-root"},
+				{tag:"gms", id:"#requirements-features-gms"},
+				{tag:"online", id:"#requirements-features-online"}
 			];
 			//clear supported languages list
-			$('#requirements-supportedlanguages-type-default').click();
+			$("#requirements-supportedlanguages-type-default").click();
 			appdfEditor.fillSupportedLanguages();
 			//clear supported resolutions list
-			$('#requirements-supportedresolutions-type-default').click();
+			$("#requirements-supportedresolutions-type-default").click();
 			appdfEditor.fillScreenResolutions();
 			
-			var _dtr = data["requirements"];
-			if ( _dtr ) {
-				if ( _dtr["features"] ) {
-					for ( var i = 0; i < _ftr_arr.length; i++ ) {
-						if ( _dtr["features"][_ftr_arr[i].tag] ) {
-							$( _ftr_arr[i].id ).attr( 'checked', 'checked' );
-						} else {
-							$( _ftr_arr[i].id ).removeAttr( 'checked' );
-						}
-					}
-				}
-				
-				if ( _dtr["supported-languages"] && _dtr["supported-languages"]["language"] ) {
-					$('#requirements-supportedlanguages-type-custom').click();
-					var $el, _rqsl = _dtr["supported-languages"]["language"];
-					
-					for ( var i in _rqsl ) {
-						$el = $('#requirements-supportedlanguages input[id="requirements-supportedlanguages-' + _rqsl[i] + '"]');
-						if ( $el.size() ) {
-							$el.attr('checked', 'checked');
-						}
+			var dataRequirements = data["requirements"];
+			if (dataRequirements["features"]) {
+				for (var i in featuresTagsAndIDsList) {
+					if (dataRequirements["features"][featuresTagsAndIDsList[i].tag]) {
+						$(featuresTagsAndIDsList[i].id).attr("checked", "checked");
+					} else {
+						$(featuresTagsAndIDsList[i].id).removeAttr("checked");
 					};
-				}
+				};
+			};
+			
+			if (dataRequirements["supported-languages"] && dataRequirements["supported-languages"]["language"]) {
+				$("#requirements-supportedlanguages-type-custom").click();
+				var $el, supportedLanguages = dataRequirements["supported-languages"]["language"];
 				
-				if ( _dtr["supported-devices"] && _dtr["supported-devices"]["exclude"] ) {
-					var _rqsd = _dtr["supported-devices"]["exclude"], $el = $('.requirements-supporteddevices-addmore');
-					
-					for ( var i in _rqsd ) {
-						appdfEditor.addMoreUnsupportedDevices( $el, _rqsd[i] );
-					}
-				}
+				for (var i in supportedLanguages) {
+					$el = $('#requirements-supportedlanguages input[id="requirements-supportedlanguages-' + supportedLanguages[i] + '"]');
+					if ($el.size()) {
+						$el.attr("checked", "checked");
+					};
+				};
+			};
+			
+			if (dataRequirements["supported-devices"] && dataRequirements["supported-devices"]["exclude"]) {
+				var unsupportedDevices = dataRequirements["supported-devices"]["exclude"], $el = $(".requirements-supporteddevices-addmore");
 				
-				if ( _dtr["supported-resolutions"] && _dtr["supported-resolutions"]["include"] ) {
-					$('#requirements-supportedresolutions-type-custom').click();
-					var $el, _rqrs = _dtr["supported-resolutions"]["include"];
-					
-					for ( var i in _rqrs ) {
-						$el = $('#requirements-supportedresolutions input[id="requirements-supportedresolutions-' + _rqrs[i] + '"]');
-						if ( $el.size() ) {
-							$el.attr('checked', 'checked');
-						}
-					}
-				}
+				for (var i in unsupportedDevices) {
+					appdfEditor.addMoreUnsupportedDevices($el, unsupportedDevices[i]);
+				};
+			};
+			
+			if (dataRequirements["supported-resolutions"] && dataRequirements["supported-resolutions"]["include"]) {
+				$("#requirements-supportedresolutions-type-custom").click();
+				var $el, supportedResolutions = dataRequirements["supported-resolutions"]["include"];
 				
-			}
+				for (var i in supportedResolutions) {
+					$el = $('#requirements-supportedresolutions input[id="requirements-supportedresolutions-' + supportedResolutions[i] + '"]');
+					if ($el.size()) {
+						$el.attr("checked", "checked");
+					};
+				};
+			};
 			//progress();
 			
 			

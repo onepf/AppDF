@@ -193,8 +193,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                   <input type="file" id="apk-file" class="hide ie_show" 
                     name="apk-file" 
                     accept="application/vnd.android.package-archive"
-                    data-validation-required-message="APK File required!" required
-                    data-validation-callback-callback="validationCallbackApkFileFirst"
+                    data-validation-required-message="APK file is required" required
+                    data-validation-callback-callback="appdfEditor.validationCallbackApkFileFirst"
                   />
                   <div class="input-append ie_hide">
                     <input id="pretty-apk-file" class="input-large apkfile-pretty-browse" type="text" readonly="readonly">
@@ -437,8 +437,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             <input type="file" id="description-images-appicon" class="hide ie_show appicon-input empty-image" 
                               name="description-images-appicon" 
                               accept="image/png"
-                              data-validation-required-message="App Icon is required!" required
-                              data-validation-callback-callback="validationCallbackAppIconFirst"
+                              data-validation-required-message="Application icon is required" required
+                              data-validation-callback-callback="appdfEditor.validationCallbackAppIconFirst"
                             />
                             <img data-src="holder.js/128x128/text:Click to choose image" id="description-images-appicon-img" width="128" height="128">
                             <p class="image-input-label">&nbsp;</p>
@@ -457,8 +457,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             <input type="file" id="description-images-screenshot-1" class="hide ie_show screenshot-input empty-image" 
                               name="description-images-screenshot-1" 
                               accept="image/png"
-                              data-validation-required-message="At least four 480x800 PNG screenshots are required!" required
-                              data-validation-callback-callback="validationCallbackScreenshotRequired"
+                              data-validation-required-message="Screenshots are required" required
+                              data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired"
                             />
                             <img data-src="holder.js/132x220/text:Screenshot #1" width="132" height="220">
                             <p class="image-input-label">&nbsp;</p>
@@ -467,8 +467,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             <input type="file" id="description-images-screenshot-2" class="hide ie_show screenshot-input empty-image" 
                               name="description-images-screenshot-2" 
                               accept="image/png"
-                              data-validation-required-message="At least four 480x800 PNG screenshots are required!" required
-                              data-validation-callback-callback="validationCallbackScreenshotRequired"
+                              data-validation-required-message="Screenshots are required" required
+                              data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired"
                             />
                             <img data-src="holder.js/132x220/text:Screenshot #2" width="132" height="220">
                             <p class="image-input-label">&nbsp;</p>
@@ -477,8 +477,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             <input type="file" id="description-images-screenshot-3" class="hide ie_show screenshot-input empty-image" 
                               name="description-images-screenshot-3" 
                               accept="image/png"
-                              data-validation-required-message="At least four 480x800 PNG screenshots are required!" required
-                              data-validation-callback-callback="validationCallbackScreenshotRequired"
+                              data-validation-required-message="Screenshots are required" required
+                              data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired"
                             />
                             <img data-src="holder.js/132x220/text:Screenshot #3" width="132" height="220">
                             <p class="image-input-label">&nbsp;</p>
@@ -487,8 +487,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             <input type="file" id="description-images-screenshot-4" class="hide ie_show screenshot-input empty-image" 
                               name="description-images-screenshot-4" 
                               accept="image/png"
-                              data-validation-required-message="At least four 480x800 PNG screenshots are required!" required
-                              data-validation-callback-callback="validationCallbackScreenshotRequired"
+                              data-validation-required-message="Screenshots are required" required
+                              data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired"
                             />
                             <img data-src="holder.js/132x220/text:Screenshot #4" width="132" height="220">
                             <p class="image-input-label">&nbsp;</p>
@@ -507,7 +507,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             <input type="file" id="description-images-largepromo" class="hide ie_show image-input empty-image" 
                               name="description-images-largepromo" 
                               accept="image/png"
-                              data-validation-callback-callback="validationCallbackLargePromo"
+                              data-validation-callback-callback="appdfEditor.validationCallbackLargePromo"
                             />
                             <img data-src="holder.js/256x125/text:Click to choose image" id="description-images-largepromo-img" width="256" height="125">
                             <p class="image-input-label"></p>
@@ -526,7 +526,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             <input type="file" id="description-images-smallpromo" class="hide ie_show image-input empty-image" 
                               name="description-images-smallpromo" 
                               accept="image/png"
-                              data-validation-callback-callback="validationCallbackSmallPromo"
+                              data-validation-callback-callback="appdfEditor.validationCallbackSmallPromo"
                             />
                             <img data-src="holder.js/180x120/text:Click to choose image" id="description-images-largepromo-img" width="180" height="120">
                             <p class="image-input-label"></p>
@@ -1150,7 +1150,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                 <label class="control-label"  for="requirements-supporteddevices">Unsupported Devices</label>
                 <div class="controls">
                   <div class="input-append"> 
-                    <input type="text" id="requirements-supporteddevices-input" data-validation-callback-callback="validationCallbackRequirementDevice" autocomplete="off"> 
+                    <input type="text" id="requirements-supporteddevices-input" data-validation-callback-callback="appdfEditor.validationCallbackRequirementDevice" autocomplete="off"> 
                     <button class="btn requirements-supporteddevices-addmore" type="button">Add</button>
                   </div> 
                   <p class="help-block">Add unsupported device model names (aka <a href="http://developer.android.com/reference/android/os/Build.html#DEVICE">name of the industrial design</a>).</p>
@@ -1211,9 +1211,9 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                   <div class="controls">
                     <div class="input-append"> 
                       <input type="text" id="storespecific-input" 
-                      data-validation-callback-callback="validationCallbackStoreSpecify" 
+                      data-validation-callback-callback="appdfEditor.validationCallbackStoreSpecify" 
                       data-validation-regex-regex="^[^\\s][a-z]*$" 
-                      data-validation-regex-message="Only small English letters without special symbols are valid."
+                      data-validation-regex-message="Application store name could contain only small English letters without special symbols"
                       autocomplete="off" data-provide="typeahead" data-items="20" 
                       > 
                       <button class="btn storespecific-addmore" type="button">Add</button>
