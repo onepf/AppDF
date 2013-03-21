@@ -2,7 +2,7 @@
 
 <application-description-file version="1">
 
-<application package="org.onepf.life">
+<application platform="android" package="org.onepf.life">
 
   <category>
     <type>game</type>

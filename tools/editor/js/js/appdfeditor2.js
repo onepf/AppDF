@@ -69,19 +69,24 @@ var appdfEditor = (function() {
     };
 
     function addMoreUnsupportedDevices(e, value) {
+		if ( $('#section-requirements input[name="unsupport-device-name-' + value + '"]').length ) 
+			return false;
+		
         var $parent = $(e).closest(".input-append").parent();
         var $controlGroup = $(' \
             <div class="input-container"> \
                 <div class="input-append"> \
-                    <input type="text" readonly id="requirements-supporteddevices-more-' + getUniqueId() + '" value="' + value + '" \
+                    <input type="text" readonly id="requirements-supporteddevices-more-' + getUniqueId() + '" \
+					name="unsupport-device-name-' + value + '" value="' + value + '" \
                     > \
                     <button class="btn requirements-supporteddevices-remove"><i class="icon-remove"></i></button> \
                 </div> \
             </div> \
         ');
         $parent.find("p.help-block").before($controlGroup);
-        $controlGroup.find("input").focus();
+        //$controlGroup.find("input").focus();
         addValidationToElements($controlGroup.find("input"));
+		return true;
     };
 
     function addMoreLocalPrice(e, value, country) {
@@ -111,14 +116,18 @@ var appdfEditor = (function() {
     };
 
     function getStoreNameById(store) {
-        if (dataStores[store]) {
+        if ( typeof dataStores[store] != 'undefined' ) {
             return dataStores[store];
         } else {
-            store;
+            return store;
         };
     };
 
     function addMoreStoreSpecific(e, store, value) {
+		var _regexp = /^[^\\s][a-z]*$/;
+		if ( $('#section-store-specific input[name="storespecific-name-' + store + '"]').length || !_regexp.exec(store) ) 
+			return false;
+		
         var $parent = $(e).closest(".control-group-container");
         var $controlGroup = $(' \
             <div class="control-group"> \
@@ -126,7 +135,7 @@ var appdfEditor = (function() {
                 <label class="control-label"  for="description-texts-title-more">' + getStoreNameById(store) + '</label> \
                 <div class="controls"> \
                     <input type="hidden" name="storespecific-name-' + store + '" id="storespecific-name-' + store + '" value="' + store + '"> \
-                    <textarea class="input-xxlarge" rows="10" id="storespecific-xml-' + store + '"></textarea> \
+                    <textarea class="input-xxlarge" rows="10" id="storespecific-xml-' + store + '" >' + value + '</textarea> \
                     <p class="help-block">' + getStoreNameById(store) + ' specific data in XML format. You can also rewrite any of the application description fields in this XML. \
                     <button class="btn control-group-remove">Remove ' + getStoreNameById(store) + ' Specific Data</button> \
                 </div> \
@@ -134,6 +143,8 @@ var appdfEditor = (function() {
         ');
         $parent.append($controlGroup);
         $controlGroup.find("input").focus();
+		addValidationToElements($controlGroup.find("input,textarea,select"));
+		return true;
     };
 
     function addMoreTitles(e, value) {
@@ -456,6 +467,7 @@ var appdfEditor = (function() {
 
     function fillScreenResolutions() {
         var $div = $("#requirements-supportedresolutions");
+		$div.empty();
         for (var resolution in dataScreenResolutions) {
             var $resolutionElement = $('<label class="checkbox"><input type="checkbox" value="" id="requirements-supportedresolutions-' + resolution + '">' + dataScreenResolutions[resolution] + '</label>');
             $div.append($resolutionElement);
@@ -463,31 +475,31 @@ var appdfEditor = (function() {
     };
 
     function fillCategories() {
-        var selectedType = $("#categorization-type").find(":selected").val();
-        var $categories = $("#categorization-category");
-        var categoryHash = dataCategories[selectedType];
-        $categories.empty();
-        for (var k in categoryHash) {
-             $categories.append($("<option />").val(k).text(k));
-         }
-     }
+		var selectedType = $("#categorization-type").find(":selected").val();
+		var $categories = $("#categorization-category");
+		var categoryHash = dataCategories[selectedType];
+		$categories.empty();
+		for (var k in categoryHash) {
+			$categories.append($("<option />").val(k).text(k));
+		}
+	};
 
-     function fillSubcategories() {
-        var selectedType = $("#categorization-type").find(":selected").val();
-        var selectedCategory = $("#categorization-category").find(":selected").val();
-        var $subcategories = $("#categorization-subcategory");
-        var subcategoryArray = dataCategories[selectedType][selectedCategory];
-        $subcategories.empty();
-        for (var i=0; i<subcategoryArray.length; i++) {
-            var s = subcategoryArray[i];
-            $subcategories.append($("<option />").val(s).text(s));
-        }
-        if (subcategoryArray.length<=1) {
-            $subcategories.closest(".control-group").hide();    
-        } else {
-            $subcategories.closest(".control-group").show();            
-        }
-    };
+	function fillSubcategories() {
+		var selectedType = $("#categorization-type").find(":selected").val();
+		var selectedCategory = $("#categorization-category").find(":selected").val();
+		var $subcategories = $("#categorization-subcategory");
+		var subcategoryArray = dataCategories[selectedType][selectedCategory];
+		$subcategories.empty();
+		for (var i=0; i<subcategoryArray.length; i++) {
+			var s = subcategoryArray[i];
+			$subcategories.append($("<option />").val(s).text(s));
+		}
+		if (subcategoryArray.length<=1) {
+			$subcategories.closest(".control-group").hide();    
+		} else {
+			$subcategories.closest(".control-group").show();            
+		}
+	};
 
     function fillCategoryStoresInfo() {
         var $table = $("<table class='table table-striped table-bordered'/>");
@@ -503,6 +515,7 @@ var appdfEditor = (function() {
             $table.append($("<tr><td>" + dataStores[store] + "</td><td>" + storeInfo[store] + "</td></tr>"));
         }
 
+
         $("#store-categories-info").empty();
         $("#store-categories-info").append($table);
     };
@@ -513,12 +526,18 @@ var appdfEditor = (function() {
             return false;
         });
 
+
+
+
+
+
         $('body').on('click', '.requirements-supporteddevices-addmore', function(e) {
             var $input = $(e.target).closest(".input-append").find("input");
             if ($input.val() !== "") {
-                addMoreUnsupportedDevices(e.target, $input.val());
+                if ( addMoreUnsupportedDevices(e.target, $input.val()) ) {
+					$input.val("");
+				}
             };
-            $input.val("");
             $input.focus();
             return false;
         });
@@ -526,9 +545,10 @@ var appdfEditor = (function() {
         $('body').on('click', '.storespecific-addmore', function(e) {
             var $input = $(e.target).closest(".input-append").find("input");
             if ($input.val() !== "") {
-                addMoreStoreSpecific(e.target, $input.val(), "");
+                if ( addMoreStoreSpecific(e.target, $input.val(), "") ) {
+					$input.val("");
+				}
             };
-            $input.val("");
             $input.focus();
             return false;
         });
@@ -537,6 +557,11 @@ var appdfEditor = (function() {
             addMoreLocalPrice(e.target, "", "");
             return false;
         });
+
+
+
+
+
 
         $('body').on('click', '.description-texts-keywords-remove', function(e) {
             $(e.target).closest(".input-container").remove();
@@ -548,10 +573,18 @@ var appdfEditor = (function() {
             return false;
         });
 
+
+
+
+
+
+
+
         $('body').on('click', '.control-group-remove', function(e) {
             $(e.target).closest(".control-group").remove();
             return false;
         });
+
 
         $('body').on('click', '.apk-file-addmore', function(e) {
             addApkFile(e.target);
@@ -563,6 +596,9 @@ var appdfEditor = (function() {
             return false;
         });
 
+
+
+
         $('body').on('click', '.load-appdf-file', function(event) {
             showLoadAppdfDialog();
             return false;
@@ -573,15 +609,18 @@ var appdfEditor = (function() {
             return false;
         });
 
+
         $('body').on('click', '.apkfile-pretty-browse', function(event) {
             $(event.target).closest(".controls").children("input").click();
             return false;
         });
 
+
         $('body').on('click', '.description-texts-title-addmore', function(event) {
             addMoreTitles(event.target, "");
             return false;
         });
+
 
         $('body').on('click', '.description-texts-shortdescription-addmore', function(event) {
             addMoreShortDescriptions(event.target, "");
@@ -589,23 +628,30 @@ var appdfEditor = (function() {
         });
 
         $('#requirements-supportedlanguages-type-custom').click(function(event) {
-            event.preventDefault();
+            //event.preventDefault();
             $("#requirements-supportedlanguages").show();
-            return false;
+            //return false;
         });
-
-        $('#requirements-supportedlanguages-type-defayt').click(function(event) {
-            event.preventDefault();
+        $('#requirements-supportedlanguages-type-default').click(function(event) {
+            //event.preventDefault();
             $("#requirements-supportedlanguages").hide();
-            return false;
+            //return false;
         });
-
+		
         $('#requirements-supportedresolutions-type-custom').click(function(event) {
-            event.stopPropagation();
-            event.preventDefault();
+            //event.stopPropagation();
+            //event.preventDefault();
             $("#requirements-supportedresolutions").show();
-            return false;
+            //return false;
         });
+		$('#requirements-supportedresolutions-type-default').click(function(event) {
+			//event.stopPropagation();
+			//event.preventDefault();
+			$("#requirements-supportedresolutions").hide();
+			//return false;
+		});
+		
+
 
         $("#categorization-type").change(function() {
             fillCategories();
@@ -625,6 +671,8 @@ var appdfEditor = (function() {
 
     function fillSupportedLanguages() {
         var $div = $("#requirements-supportedlanguages");
+		$div.empty();
+		
         var langCodes = [];
         for (var code in dataLanguages) {
             langCodes.push(code);
@@ -704,10 +752,14 @@ var appdfEditor = (function() {
         addMoreLocalPrice : addMoreLocalPrice,
         addMoreTitles : addMoreTitles,
         addMoreShortDescriptions : addMoreShortDescriptions,
+		addMoreStoreSpecific: addMoreStoreSpecific,
+		addMoreUnsupportedDevices: addMoreUnsupportedDevices,
         normalizeInputFileName : normalizeInputFileName,
         fillCategories : fillCategories,
         fillSubcategories : fillSubcategories,
-        fillCategoryStoresInfo : fillCategoryStoresInfo
+        fillCategoryStoresInfo : fillCategoryStoresInfo,
+		fillSupportedLanguages : fillSupportedLanguages,
+        fillScreenResolutions : fillScreenResolutions
     };
 })();
 

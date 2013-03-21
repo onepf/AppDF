@@ -114,7 +114,7 @@ function generateAppDFFile(onend) {
 
 function collectBuildErrors() {
     var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
-    var errorArray = [];
+	var errorArray = [];
     for (field in errors) {
         if (name!=undefined) {
             var fieldErrors = errors[field];
@@ -142,7 +142,29 @@ function collectBuildErrors() {
             };
         };
     });
-
+	
+	
+	//validate specify
+	var _spc_arr = $('#section-store-specific input[name^="storespecific-name-"]');
+	var _spc_length = _spc_arr.length;
+	if ( _spc_length > 0 ) {
+		var _valid_xml, _msg;
+		for ( var i = 0; i < _spc_length; i++ ) {
+			try {
+				$.parseXML( '<a>' + $(_spc_arr[i]).next().val() + '</a>' );
+				_valid_xml = true;
+			} catch (e) {
+				_valid_xml = false;
+				_msg = 'Store Specific "' + $(_spc_arr[i]).val() + '" - invalid XML.';
+			}
+			
+			if ( !_valid_xml && errorArray.indexOf( _msg ) === -1 ) {
+				errorArray.push( _msg );
+			}
+		}
+	}
+	
+	
     return errorArray;
 };
 
@@ -453,6 +475,37 @@ function validationCallbackScreenshotRequired($el, value, callback) {
         };
     });
 };
+
+function validationCallbackRequirementDevice($el, value, callback) {
+	if ( $('#section-requirements input[name="unsupport-device-name-' + value + '"]').length ) {
+		callback({
+			value: value,
+			valid: false,
+			message: 'This store already exist.'
+		});
+	} else {
+		callback({
+			value: value,
+			valid: true
+		});
+	}
+}
+
+function validationCallbackStoreSpecify($el, value, callback) {
+	if ( $('#section-store-specific input[name="storespecific-name-' + value + '"]').length ) {
+		callback({
+			value: value,
+			valid: false,
+			message: 'This store already exist.'
+		});
+	} else {
+		callback({
+			value: value,
+			valid: true
+		});
+	}
+}
+
 
 function screenshotClick(e) {
     $(e).closest(".screenshot-container").children("input").click();

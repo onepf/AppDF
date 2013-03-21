@@ -282,7 +282,64 @@ var appdfXMLSaver = (function() {
 	};
 
 	function generateRequirementsXML(xml) {
-		xml.addString($("#requirements").val());
+		var _features_check = $('#requirements-features-root:checked').size() || $('#requirements-features-gms:checked').size() 
+			|| $('#requirements-features-online:checked').size();
+		
+		var _req_lang_arr = $('#section-requirements input:checked[id^="requirements-supportedlanguages-"][type="checkbox"]');
+		var _lang_length = _req_lang_arr.length;
+		
+		var _unsup_dev_arr = $('#section-requirements input[name^="unsupport-device-name-"]');
+		var _unsup_dev_length = _unsup_dev_arr.length;
+		
+		var _sup_arr = $('#section-requirements input:checked[id^="requirements-supportedresolutions-"][type="checkbox"]');
+		var _sup_length = _sup_arr.length;
+		
+		
+		if ( !_lang_length && !_features_check && !_unsup_dev_length ) return;
+		
+		xml.addTag("<requirements>", function(){
+			if ( _features_check ) {
+				xml.addTag("<features>", function(){
+					if (isCheckboxChecked("requirements-features-root") == "yes") 
+						xml.addTag("<root>", isCheckboxChecked("requirements-features-root"));
+						
+					if (isCheckboxChecked("requirements-features-gms") == "yes") 
+						xml.addTag("<gms>", isCheckboxChecked("requirements-features-gms"));
+						
+					if (isCheckboxChecked("requirements-features-online") == "yes") 
+						xml.addTag("<online>", isCheckboxChecked("requirements-features-online"));
+				});
+			}
+			
+			if ( _lang_length && $('#requirements-supportedlanguages-type-custom:checked').size() ) {
+				xml.addTag("<supported-languages>", function(){
+					var _lang_id;
+					for ( var i = 0; i < _lang_length; i++ ) {
+						_lang_id = $(_req_lang_arr[i]).attr('id').split('-')[2];
+						xml.addTag("<language>", _lang_id );
+					}
+				});
+			}
+			
+			if ( _unsup_dev_length ) {
+				xml.addTag("<supported-devices>", function(){
+					for ( var i = 0; i < _unsup_dev_length; i++ ) {
+						xml.addTag("<exclude>", $(_unsup_dev_arr[i]).val() );
+					}
+				});
+			}
+			
+			if ( _sup_length && $('#requirements-supportedresolutions-type-custom:checked').size() ) {
+				xml.addTag("<supported-resolutions>", function(){
+					var _sup_id;
+					for ( var i = 0; i < _sup_length; i++ ) {
+						_sup_id = $(_sup_arr[i]).attr('id').split('-')[2];
+						xml.addTag("<include>", _sup_id );
+					}
+				});
+			}
+			
+		});
 	};
 
 	function generateTestingInstructionsXML(xml) {
@@ -290,7 +347,21 @@ var appdfXMLSaver = (function() {
 	};
 
 	function generateStoreSpecificXML(xml) {
-		xml.addString($("#storespecific").val());
+		var _spec_arr = $('input[name^="storespecific-name-"]');
+		
+		if ( _spec_arr.length == 0 ) return false;
+		
+		var _spec_name, _spec_content;
+		xml.addTag("<store-specific>", function() {
+			for ( var i = 0; i < _spec_arr.length; i++ ) {
+				_spec_name = $(_spec_arr[i]).val();
+				_spec_content = $(_spec_arr[i]).next().val();
+				
+				xml.addTag( "<" + _spec_name + ">", function(){
+					xml.addString( _spec_content );
+				} );
+			}
+		});
 	};
 
 	function generateDescriptionFileXML() {

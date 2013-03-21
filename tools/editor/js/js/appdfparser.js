@@ -79,6 +79,21 @@ var appdfParser = (function() {
 				};
 			});
 		};
+		
+		//Load xml content only
+		function loadXmlContent(dataPath, xmlPath) {
+			loadHelper(dataPath, xmlPath, function(d, name, $e) {
+				if ($e.length>0) {
+					var serializer = new XMLSerializer(); 
+					var $el = $e[0].childNodes;
+					var xmlString = '';
+					for ( var i in $el ) {
+						xmlString += serializer.serializeToString($el[i]);
+					}
+					d[name] = xmlString;
+				};
+			});
+		};
 
 		//Load text
 		function loadText(dataPath, xmlPath) {
@@ -296,12 +311,84 @@ var appdfParser = (function() {
 		//Testing Instructions
 		loadText("testing-instructions", "testing-instructions");
 
+		
+		//Store specific
+		if ( getElementsByPath( $xml, "application-description-file/application/store-specific" ).length ) {
+			var _spc_arr = getElementsByPath( $xml, "application-description-file/application/store-specific" )[0].childNodes;
+			var _spc_length = _spc_arr.length;
+			section("store-specific", "store-specific", function(){
+				for (var i = 0; i < _spc_length; i++ ) {
+					if ( _spc_arr[i].nodeType != '1' ) continue;
+					loadXmlContent(_spc_arr[i].nodeName, _spc_arr[i].nodeName);
+				}
+			});
+		}
+		
+		
+		
+		//Requirements
+		if ( getElementsByPath( $xml, "application-description-file/application/requirements" ).length ) {
+			section("requirements", "requirements", function(){
+				var _path = 'application-description-file/application/requirements/', 
+					_arr = getElementsByPath( $xml, _path + "features"),
+					__arr, __arr_length;
+				
+				if ( _arr.length ) {
+					section("features", "features", function() {
+						__arr = _arr[0].childNodes;
+						__arr_length = __arr.length;
+						for ( var i = 0 ; i < __arr_length; i++ ) {
+							if ( __arr[i].nodeType != '1' ) continue;
+							
+							loadBoolean( __arr[i].nodeName );
+						}
+					});
+				}
+				
+				_arr = getElementsByPath( $xml, _path + "supported-languages");
+				if ( _arr.length ) {
+					section("supported-languages", "supported-languages", function() {
+						loadHelper("language", "language", function(d, name, $e) {
+							d[name] = {};
+							$e.each(function() {
+								d[name][$(this).text()] = $(this).text();
+							});
+						});
+					});
+				}
+				
+				_arr = getElementsByPath( $xml, _path + "supported-devices");
+				if ( _arr.length ) {
+					section("supported-devices", "supported-devices", function() {
+						loadHelper("exclude", "exclude", function(d, name, $e) {
+							d[name] = {};
+							$e.each(function() {
+								d[name][$(this).text()] = $(this).text();
+							});
+						});
+					});
+				}
+				
+				_arr = getElementsByPath( $xml, _path + "supported-resolutions");
+				if ( _arr.length ) {
+					section("supported-resolutions", "supported-resolutions", function() {
+						loadHelper("include", "include", function(d, name, $e) {
+							d[name] = {};
+							$e.each(function() {
+								d[name][$(this).text()] = $(this).text();
+							});
+						});
+					});
+				}
+			});
+		}
+		
+		
 		//Todo: temporary XML loading instead of parsing content
 		loadXml("availability", "availability");
-		loadXml("requirements", "requirements");
 		loadText("testing-instructions", "testing-instructions");
-		loadXml("store-specific", "store-specific");
 
+		
 		errors.append(validateDescriptionXMLData(data));
 
 		if (errors.length==0) {
@@ -329,7 +416,8 @@ var appdfParser = (function() {
 		errors.append(validateCustomerSupport(data["customer-support"]));
 		errors.append(validateContentDescription(data["content-description"]));
 		errors.append(validateTestingInstructions(data["testing-instructions"]));
-
+		//errors.append(validateStoreSpecific(data["store-specific"]));
+		
 		return errors;
 	};
 
@@ -489,14 +577,8 @@ var appdfParser = (function() {
 			} else {
 				errors.append(validateNumber(data["base-price"], "Wrong price value \"" + data["base-price"] + "\". Must be a valid number like \"15.95\"."));	
 			};
-
-			var localPrices = data["local-price"];
-			for (countryCode in localPrices) {
-				if (isUndefined(dataCountries[countryCode])) {
-					errors.push("Unknown country code \"" + countryCode + "\" in local prices");
-				};	
-				errors.append(validateNumber(localPrices[countryCode], "Wrong local price value \"" + localPrices[countryCode] + "\". Must be a valid number like \"15.95\"."));	
-			};
+			
+			
 		};
 
 		return errors;	
@@ -570,6 +652,12 @@ var appdfParser = (function() {
 		return errors;	
 	};
 
+	function validateStoreSpecific(data) {
+		//nothing to do.
+		return [];
+	};
+	
+	
     return {
         parseDescriptionXML : parseDescriptionXML
     };

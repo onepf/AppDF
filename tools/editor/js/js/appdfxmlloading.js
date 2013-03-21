@@ -230,17 +230,93 @@ var appdfXMLLoader = (function() {
 				$(sc + typeId).val(certificates[i]["rating"]);
 			};
 			progress(3);
-
+			
 			//Testing instructions
 			$("#testinginstructions").val(data["testing-instructions"]);
 			progress();
-
+			
+			
+			//Store specify
+			//remove current specify list
+			$.each( $('#section-store-specific .control-group:gt(0)'), function(index, value){ $(value).remove(); } );
+			//add loaded
+			var dscp = data['store-specific'];
+			if ( dscp ) {
+				for ( var i in dscp ) {
+					appdfEditor.addMoreStoreSpecific( $('.storespecific-addmore'), i, dscp[i] );
+				}
+			}
+			progress();
+			
+			
+			
+			//Requirements
+			var _ftr_arr = [ 
+				{ tag:'root', id:'#requirements-features-root' },
+				{ tag:'gms', id:'#requirements-features-gms' },
+				{ tag:'online', id:'#requirements-features-online' }
+			];
+			//clear supported languages list
+			$('#requirements-supportedlanguages-type-default').click();
+			appdfEditor.fillSupportedLanguages();
+			//clear supported resolutions list
+			$('#requirements-supportedresolutions-type-default').click();
+			appdfEditor.fillScreenResolutions();
+			
+			var _dtr = data["requirements"];
+			if ( _dtr ) {
+				if ( _dtr["features"] ) {
+					for ( var i = 0; i < _ftr_arr.length; i++ ) {
+						if ( _dtr["features"][_ftr_arr[i].tag] ) {
+							$( _ftr_arr[i].id ).attr( 'checked', 'checked' );
+						} else {
+							$( _ftr_arr[i].id ).removeAttr( 'checked' );
+						}
+					}
+				}
+				
+				if ( _dtr["supported-languages"] && _dtr["supported-languages"]["language"] ) {
+					$('#requirements-supportedlanguages-type-custom').click();
+					var $el, _rqsl = _dtr["supported-languages"]["language"];
+					
+					for ( var i in _rqsl ) {
+						$el = $('#requirements-supportedlanguages input[id="requirements-supportedlanguages-' + _rqsl[i] + '"]');
+						if ( $el.size() ) {
+							$el.attr('checked', 'checked');
+						}
+					};
+				}
+				
+				if ( _dtr["supported-devices"] && _dtr["supported-devices"]["exclude"] ) {
+					var _rqsd = _dtr["supported-devices"]["exclude"], $el = $('.requirements-supporteddevices-addmore');
+					
+					for ( var i in _rqsd ) {
+						appdfEditor.addMoreUnsupportedDevices( $el, _rqsd[i] );
+					}
+				}
+				
+				if ( _dtr["supported-resolutions"] && _dtr["supported-resolutions"]["include"] ) {
+					$('#requirements-supportedresolutions-type-custom').click();
+					var $el, _rqrs = _dtr["supported-resolutions"]["include"];
+					
+					for ( var i in _rqrs ) {
+						$el = $('#requirements-supportedresolutions input[id="requirements-supportedresolutions-' + _rqrs[i] + '"]');
+						if ( $el.size() ) {
+							$el.attr('checked', 'checked');
+						}
+					}
+				}
+				
+			}
+			//progress();
+			
+			
+			
+			
 			//Todo: temporary work with XML
 			$("#availability").val(data["availability"]);
-			$("#requirements").val(data["requirements"]);
-			$("#storespecific").val(data["store-specific"]);
-			progress();
-
+			
+			
 			onend();
 		}, onerror);
 	};
