@@ -1,18 +1,18 @@
 {
   "amazon" : "Amazon AppStore", 
+  "androidpit" : "AndroidPIT App Center",
+  "appland" : "Appland",
   "appslib" : "AppsLib",
+  "aptoid" : "Aptoid",
   "getjar" : "GetJar",
   "google" : "Google Play", 
+  "nook" : "NOOK Apps",
   "opera" : "Opera Mobile Store",
   "samsung" : "Samsung Apps",
   "slideme" : "SlideME",    
-  "nook" : "NOOK apps",
   "tstore" : "SK T-Store",
   "yandex" : "Yandex.Store",    
-  "appland" : "appland",
-  "aptoid" : "aptoid",
   "1mobile" : "1mobile",
-  "androidpit" : "AndroidPIT",
   "androidtap" : "androidtap",
   "chinamobile" : "chinamobile"
 }	
