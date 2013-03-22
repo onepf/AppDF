@@ -193,7 +193,7 @@ var appdfEditor = (function() {
                 <label class="control-label" for="pretty-apk-file">APK File</label> \
                 <div class="controls"> \
                     <input type="file" name="apk-file" class="hide ie_show" accept="application/vnd.android.package-archive" \
-                        data-validation-callback-callback="appEditor.validationCallbackApkFileMore" \
+                        data-validation-callback-callback="appdfEditor.validationCallbackApkFileMore" \
                     /> \
                     <div class="input-append ie_hide"> \
                         <input id="pretty-apk-file" class="input-large apkfile-pretty-browse" type="text" readonly="readonly" > \
