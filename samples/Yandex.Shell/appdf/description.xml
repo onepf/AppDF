@@ -4,7 +4,7 @@
                               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                               xsi:noNamespaceSchemaLocation="../../../specification/appdf-description.xsd">
 
-    <application package="ru.yandex.shell">
+    <application platform="android" package="ru.yandex.shell">
 
         <categorization>
             <type>application</type>
@@ -34,9 +34,10 @@
                     <feature>3D interface</feature>
                     <feature>Dialer</feature>
                 </features>
-                <recent-changes>New version (2.0) is available only for smartphones.
-                - An option to filter contacts by groups and accounts added
-                - Several two-SIM devices support added
+                <recent-changes>The current version (2.14) is available for smartphones only. To install the previous version (1.16) for tables contact our support team at support@mobshell.yandex.ru
+                
+                - Full HD devices support is added
+                - Sharing for images and news is added
                 - Other improvements and fixes
                 </recent-changes>
                 <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
@@ -85,15 +86,41 @@
                     <feature>Телефон</feature>
                     <feature>Виджеты</feature>
                 </features>
-                <recent-changes>В настоящее время новая версия (2.0) доступна только для пользователей смартфонов.
-                - Фильтрация списка контактов по группам и учетным записям
-                - Добавлена поддержка некоторых телефонов с двумя сим-картами
+                <recent-changes>Текущая версия (2.14) доступна только для пользователей смартфонов. Для того, чтобы получить предыдущую версию для планшетов (1.16) обратитесь в техническую поддержку: support@mobshell.yandex.ru
+
+                - Добавлена поддержка Full HD разрешения
+                - Добавлена функция "Поделиться" для картинок и новостей
                 - Другие исправления и улучшения
                 </recent-changes>
             </texts>
         </description-localization>
 
-            
+        <description-localization language="tr">
+            <texts>
+                <title>Yandex.Shell</title>
+                <keywords>Яндекс.Шелл, Yandex.Shell, SPB Shell 3D, домашний экран, лончер, виджеты, home screen, launcher, widgets, dialer, address book, телефон, адресная книга, başlatıcısı, widget'lar, çevirici, adres defteri</keywords>
+                <short-description>Android tabanlı cihazların kullanımını kolaylaştıran.</short-description>
+                <short-description>Android tabanlı cihazların kullanımını kolaylaştıran, sade ve kullanışlı üçboyutlu bir arayüzdür.</short-description>
+                <full-description>Yandex.Shell, Android tabanlı cihazların kullanımını kolaylaştıran, sade ve kullanışlı üçboyutlu bir arayüzdür. Yeni arayüz widgetleriniz ve uygulamalarınızı paneller arasında otomatik olarak sıralarken, siz birkaç saniye içinde panelleri kendi tercihlerinize göre zahmetsizce ayarlamanıza olanak sağlar. Panellerin 3 boyutlu olarak birbirine bağlı olması, ekranlar arasında geçiş yapmayı kolaylaştırır.
+
+                Gündemin nabzını tutmak, şehrinizdeki hava ve trafik durumuna dair en güncel bilgiyi anında almak için en sık kullandığınız widgetlerin hepsini aynı panele yerleştirin. Shell’de yer alan program bulma aracı, sadece cihazınızda kurulu uygulamalar ve telefonunuzdaki veriler arasında arama yapmakla kalmayıp, uygulamalar mağazasındaki yeni programlardan da uygun olanları indirmeyi önerir.
+
+                Yandex.Shell adres defteri, aradığınız kurumların adres ve telefonlarını size sunar ve gerekirse, örneğin “restoranlar” şeklinde yapılan bir sorguya yanıt olarak size en yakında bulunan restoranların listesini ve telefon numaralarını çıkarır.
+                Bilinmeyen bir numaradan cevapsız bir çağrı aldığınızda Shell otomatik olarak bu numarayı veritabanında kontrol ederek, arama bir iş telefonundan gelmişse ilgili kuruluşun ismini ve diğer ilgili bilgileri ekranda gösterir.
+                Rusya, Ukrayna, Belarus, Kazakistan ve Türkiye’deki kullanıcılar Yandex.Shell’i ücretsiz olarak indirebilirler.
+
+                Programı kullanmadan önce lütfen aşağıda bulunan lisans sözleşmesinin koşullarını okuyun:
+                http://legal.yandex.com.tr/shell_mobile_agreement/
+                </full-description>
+                <features>
+                    <feature>ana ekran</feature>
+                    <feature>çevirici</feature>
+                    <feature>widget'ları</feature>
+                </features>
+                <recent-changes>Bu sürüm (2.14) yalnızca akıllı telefon kullanıcıları için geçerlidir. Tabletler için de uygun olan önceki sürümü (1.16) için teknik destek ekibiyle iletişime geçmenizi rica ederiz: support@mobshell.yandex.ru
+                </recent-changes>
+            </texts>
+        </description-localization>            
 
         <content-description>
             <content-rating>3</content-rating>
@@ -122,11 +149,11 @@
 
         <availability>
             <countries>
-                <include>ru</include>
-                <include>ua</include>
-                <include>kz</include>
-                <include>by</include>
-                <include>tr</include>
+                <include>RU</include>
+                <include>UA</include>
+                <include>KZ</include>
+                <include>BY</include>
+                <include>TR</include>
             </countries>
         </availability>
 
@@ -135,11 +162,8 @@
         </price>
 
         <apk-files>
-            <apk-file>yandexshell1.apk</apk-file>
-            <apk-file>yandexshell2.apk</apk-file>
-            <apk-file>yandexshell3.apk</apk-file>
-            <apk-file>yandexshell4.apk</apk-file>
-            <apk-file>yandexshell5.apk</apk-file>
+            <apk-file>yshell-release-2.x_2.1-2.3.3_browser_froyo_SP-v22084-release.apk</apk-file>
+            <apk-file>yshell-release-2.x_3.0-4.2_browser_ics_jelly_SP-v42700-release.apk</apk-file>
         </apk-files>
 
         <requirements>
@@ -183,7 +207,7 @@
                     <kindle-fire-hd>yes</kindle-fire-hd>
                     <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
                 </kindle-support>
-                <binary-alias>Version 2.04</binary-alias>
+                <binary-alias>Version 2.14</binary-alias>
             </amazon>
             <samsung>
                 <form-factor>phone,tablet</form-factor>
