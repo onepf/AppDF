@@ -4,7 +4,7 @@
                               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                               xsi:noNamespaceSchemaLocation="../../../specification/appdf-description.xsd">
 
-    <application package="ru.yandex.shell">
+    <application platform="android" package="ru.yandex.shell">
 
         <categorization>
             <type>application</type>
@@ -122,11 +122,11 @@
 
         <availability>
             <countries>
-                <include>ru</include>
-                <include>ua</include>
-                <include>kz</include>
-                <include>by</include>
-                <include>tr</include>
+                <include>RU</include>
+                <include>UA</include>
+                <include>KZ</include>
+                <include>BY</include>
+                <include>TR</include>
             </countries>
         </availability>
 

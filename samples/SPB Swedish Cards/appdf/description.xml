@@ -4,7 +4,7 @@
                               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                               xsi:noNamespaceSchemaLocation="../../../specification/appdf-description.xsd">
 
-    <application package="com.softspb.flashcards.sv">
+    <application platform="android" package="com.softspb.flashcards.sv">
 
         <categorization>
             <type>application</type>
