@@ -122,7 +122,7 @@ var appdfXMLSaver = (function() {
 				if ($screenshots.length>0) {
 					xml.addTag("<screenshots>", function() {
 						$screenshots.each(function() {
-							xml.addNonEmptyTextTag("<sccreenshot>", appdfEditor.normalizeInputFileName($(this).val()));
+							xml.addNonEmptyTextTag("<screenshot>", appdfEditor.normalizeInputFileName($(this).val()));
 						});
 					});
 				};
@@ -359,7 +359,7 @@ var appdfXMLSaver = (function() {
 		var xml = new XMLGenerator();
 		xml.addLine('<?xml version="1.0" encoding="UTF-8"?>');
 		xml.addTag('<application-description-file version="1">', function() {
-			xml.addTag('<application package="' + firstApkFileData.package + '">', function() {
+			xml.addTag('<application platform="android" package="' + firstApkFileData.package + '">', function() {
 				generateCategorizationXML(xml);
 				generateDescriptionXML(xml);
 				generateDescriptionLocalizationsXML(xml);

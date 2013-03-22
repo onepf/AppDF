@@ -112,7 +112,9 @@ function generateAppDFFile(onend) {
     });
 };
 
-function collectBuildErrors() {
+function collectBuildErrors(onsuccess, onerror) {
+	var totalErrorCheckCount = 4, //TOTAL check for error blocks;
+		currentErrorCheckCount = 0;
     var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
 	var errorArray = [];
     for (field in errors) {
@@ -126,23 +128,36 @@ function collectBuildErrors() {
             };
         };
     };
-
-    appdfEditor.validationCallbackApkFileFirst($("#apk-file"), $("#apk-file").val(), function(data) {
-        if (!data.valid && data.value) {
-            if (errorArray.indexOf(data.message) === -1) {
-                errorArray.push(data.message);
-            };
-        };
-    });
-
-    appdfEditor.validationCallbackAppIconFirst($("#description-images-appicon"), $("#description-images-appicon").val(), function(data) {
-        if (!data.valid && data.value) {
-            if (errorArray.indexOf(data.message) === -1) {
-                errorArray.push(data.message);
-            };
-        };
-    });
+	checkBuildErrorsCount();
 	
+	function checkBuildErrorsCount() {
+		currentErrorCheckCount++;
+		if (currentErrorCheckCount === totalErrorCheckCount) {
+			if (errorArray.length) {
+				onerror(errorArray);
+			} else {
+				onsuccess();
+			};
+		};
+	};
+	
+	function checkErrorMessage(data) {
+		if (!data.valid) {
+            if (errorArray.indexOf(data.message) === -1) {
+                errorArray.push(data.message);
+            };
+        };
+		checkBuildErrorsCount();
+	};
+	
+    appdfEditor.validationCallbackApkFileFirst($("#apk-file"), $("#apk-file").val(), checkErrorMessage);
+	appdfEditor.validationCallbackAppIconFirst($("#description-images-appicon"), $("#description-images-appicon").val(), checkErrorMessage);
+	
+	var $screenShotList = $('.screenshot-input');
+	totalErrorCheckCount += $screenShotList.size();//add screenshots count to total error checks
+	$screenShotList.each(function() {
+		appdfEditor.validationCallbackScreenshotRequired($(this), $(this).val(), checkErrorMessage);
+	});
 	
 	//validate store specify
 	var $storeSpecific = $("#section-store-specific input[name^='storespecific-name-']");
@@ -162,8 +177,7 @@ function collectBuildErrors() {
 			errorArray.push(errorMessage);
 		}
 	});
-	
-    return errorArray;
+	checkBuildErrorsCount();
 };
 
 function showBuildErrors(errors) {
@@ -191,31 +205,26 @@ function buildAppdDFFile(event) {
 
     //If not we start the checking and building process.
     //First we collect all the errors and check if there are any
-    var errors = collectBuildErrors();
-    if (errors.length>0) {
-        //If there are errors we just show the errors and return
-        showBuildErrors(errors);
-        return false;
-    } 
+    collectBuildErrors(function(){
+		//If there are not errors, we hide the error block and show the progress block
+		$("#form-errors").hide();
+		$("#build-appdf-progressbarr").css("width", "0%");
+		$("#build-appdf-status").show();
 
-    //If there are not errors, we hide the error block and show the progress block
-    $("#form-errors").hide();
-    $("#build-appdf-progressbarr").css("width", "0%");
-    $("#build-appdf-status").show();
-
-    generateAppDFFile(function(url) {
-        var clickEvent = document.createEvent("MouseEvent");
-        downloadLink.href = url;
-        if (firstApkFileData) {
-            downloadLink.download = firstApkFileData["package"] + ".appdf";
-        } else {
-            downloadLink.download = "untitled.appdf";
-        };
-        clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-        downloadLink.dispatchEvent(clickEvent);
-        $("#build-appdf-status").hide();
-        setTimeout(clearBuildedAppdfFile, 1);
-    });
+		generateAppDFFile(function(url) {
+			var clickEvent = document.createEvent("MouseEvent");
+			downloadLink.href = url;
+			if (firstApkFileData) {
+				downloadLink.download = firstApkFileData["package"] + ".appdf";
+			} else {
+				downloadLink.download = "untitled.appdf";
+			};
+			clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+			downloadLink.dispatchEvent(clickEvent);
+			$("#build-appdf-status").hide();
+			setTimeout(clearBuildedAppdfFile, 1);
+		});
+	}, showBuildErrors);
 
     return false;
 };
