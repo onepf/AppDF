@@ -466,6 +466,13 @@ Required. No attributes. Value could be either `application` or `game`.
     <td>Applications, Games</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>General / Additional Info / Category</td>
+    <td>Yes</td>
+    <td>Application, Games</td>
+  </tr>  
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>General Information / Category</td>
@@ -529,6 +536,13 @@ Required. No attributes. AppDF format has its own list of categories for both ga
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>General / Additional Info / Category</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>General Information / Category</td>
@@ -588,6 +602,12 @@ Although some stores don't use subcategories AppDF includes as detailed category
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -734,6 +754,14 @@ The application name is shown in the application list. As everything inside the 
     <td>30</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>General / General / Name</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Unlimited</td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Description / Display Title</td>
@@ -810,6 +838,15 @@ Comma separated the list of keywords. As everything inside the `<description>` t
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -899,6 +936,15 @@ Short application description is used in the app lists next to the app title. So
     <td>Yes</td>
     <td>80</td>
     <td>Is not shown in the app list but only on promotion pages</td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
@@ -1030,6 +1076,15 @@ The full application description is shown on the product page. You can include s
     <td>simple HTML, no links</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>General / General / Description</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Unlimited</td>
+    <td>Plain text</td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Description / Long description</td>
@@ -1127,6 +1182,14 @@ Example:
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Description / Product feature bullets</td>
@@ -1202,6 +1265,15 @@ Maximum length: 500.
     <td>Describes the changes of the latest version (version number is taken from APK file)</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>Builds / What's new?</td>
+    <td>No</td>
+    <td>Yes</td>
+    <td>Unlimited</td>
+    <td>Describes the changes of the latest version (version number is taken from APK file)</td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>No</td>
     <td></td>
@@ -1272,6 +1344,14 @@ Link to a webpage with your privacy policy for this application. As everything i
     <td>Privacy policy URL</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>General Information / Privacy policy URL</td>
@@ -1339,6 +1419,14 @@ Link to a webpage with your End User License Agreement for this application. As 
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -1462,6 +1550,15 @@ High resolution application icon. Different stores require different resolutions
     <td>32-bit PNG (with alpha)</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>Images / Promo icon</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>512x512</td>
+    <td>32-bit PNG (with alpha), less than 1024KB</td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Images & Multimedia / Small Icon, Large icon</td>
@@ -1553,6 +1650,15 @@ Large promotion picture usually used by the stores on the PC websites.
     <td>JPG or 24-bit PNG (no alpha)</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>Images / Featured screen</td>
+    <td>No</td>
+    <td>No</td>
+    <td>1024x500</td>
+    <td>JPG or 24-bit PNG (no alpha)</td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Images & Multimedia / Promotional image</td>
@@ -1634,6 +1740,15 @@ A small promotion picture is usually used by the stores on a mobile device for p
     <td>Yes</td>
     <td>180x120</td>
     <td>JPG or 24-bit PNG (no alpha)</td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
@@ -1726,6 +1841,16 @@ Example:
     <td>Yes</td>
     <td>Yes</td>
     <td>320x480, 480x800, 480x854, 1280x720, 1280x800</td>
+    <td>JPG or 24-bit PNG (no alpha)</td>
+    <td>2+</td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>Images / Screenshots</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>250x140 - 1920x1080</td>
     <td>JPG or 24-bit PNG (no alpha)</td>
     <td>2+</td>
   </tr>
@@ -1848,6 +1973,14 @@ then tag value should be just `4YcBHQ2fCDE`. Like:
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>No</td>
     <td></td>
@@ -1923,6 +2056,15 @@ Some stores don't support including of YouTube videos but do support uploaded vi
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2101,6 +2243,12 @@ Each application must be labeled with a minimum age allowance according to [ESRB
     <td>Yes</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>General / Additional info / Age Rating</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>No</td>
     <td></td>
@@ -2223,6 +2371,10 @@ Here you can find more detailed information about content rating definitions use
     <td>http://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=188189</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Options are: Adults, Teenagers, Children</td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Uses several content descriptors instead of one rating value</td>
   </tr>
@@ -2327,6 +2479,13 @@ Example:
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2462,6 +2621,13 @@ Example:
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>Age rating</td>
+    <td>Yes</td>
+    <td>Possible values: Adults, Teenagers, Children</td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Content Rating</td>
@@ -2569,6 +2735,13 @@ Example:
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2706,6 +2879,13 @@ Example 2:
     <td>Supports only &lt;exclude&gt;. Many countries are united under "Rest of the world" block and cannot be checked/unchecked one by one</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>General / Distribution</td>
+    <td>Yes</td>
+    <td>One can "Select All" or choose specific countries grouped by continents.</td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Availability & Pricing / Where would you like this app to be available?</td>
@@ -2796,6 +2976,12 @@ If presented this tag defines a date from which the application can be distribut
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Availability & Pricing / When would you like this app to be available on Amazon?</td>
@@ -2876,6 +3062,12 @@ If presented this tag defines a final date of application distribution. Stores t
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -2982,6 +3174,14 @@ This tag is ignored for free apps.
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>General / Additional info / Price</td>
+    <td>USD</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Availability & Pricing / Are you charging for this app?</td>
@@ -3082,6 +3282,13 @@ Currencies used in different countries in [JSON](data/country_currencies.json) a
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Availability & Pricing / Calculated prices</td>
@@ -3162,6 +3369,12 @@ This tag is ignored for paid apps.
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>No</td>
     <td></td>
@@ -3223,6 +3436,14 @@ Example:
     <td>50M</td>
     <td>Yes</td>
     <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>Builds / Upload build</td>
+    <td>Unlimited</td>
+    <td>Yes</td>
+    <td>No</td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
@@ -3341,6 +3562,12 @@ Set value of this tag to `yes` if your application requires root access for work
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>No</td>
     <td></td>
@@ -3399,6 +3626,12 @@ Set value of this tag to `yes` if your application requires Google Play to be in
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>No</td>
     <td></td>
@@ -3452,6 +3685,12 @@ Set value of this tag to `yes` if your application requires internet connection 
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -3526,6 +3765,12 @@ Example:
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Binary File(s) / Language Support</td>
@@ -3593,6 +3838,12 @@ Example:
     <td></td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>No</td>
     <td></td>
@@ -3646,6 +3897,12 @@ Most of the stores take this information from the APK file. Some stores also sup
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td>This information is taken from APK file</td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
     <td>No</td>
     <td></td>
     <td>This information is taken from APK file</td>
@@ -3705,6 +3962,13 @@ Please detail any special requirements to test your app. If your application req
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
     <td>No</td>
     <td></td>
     <td></td>
@@ -3818,6 +4082,12 @@ Example:
     <td>&lt;google-android-content-guidelines&gt;, &lt;us-export-laws&gt;</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>Binary File(s) / Export Compliance</td>
@@ -3894,6 +4164,13 @@ No attributes.
     <td>No</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>General Information / Customer support phone</td>
@@ -3957,6 +4234,13 @@ No attributes.
     <td>No</td>
   </tr>
   <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>General Information / Customer support email address</td>
@@ -4018,6 +4302,13 @@ No attributes.
     <td>Store Listing / Contact Details / Website</td>
     <td>Yes</td>
     <td>No</td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
@@ -4449,7 +4740,7 @@ Application Store Support
 </tr>
 <tr>
   <td>Content premoderation</td>
-  <td>No</td>
+  <td>Yes</td>
 </tr>
 <tr>
   <td>Client Application</td>
@@ -6428,6 +6719,11 @@ The following tables contain information about current language support status (
     <td>Google Play</td>
     <td>Yes</td>
     <td>English US default (cannot be changed)</td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td>Yes</td>
+    <td>English is default (can be changed)</td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
