@@ -761,7 +761,7 @@ var appdfEditor = (function() {
 			callback({
 				value: value,
 				valid: false,
-				message: "This device already exist"
+				message: "This device already exists"
 			});
 		} else {
 			callback({
@@ -870,18 +870,25 @@ var appdfEditor = (function() {
 	};
 
 	function validationCallbackStoreSpecify($el, value, callback) {
+		var regExp = /^[^\s][a-z]*$/;
 		if ($('#section-store-specific input[name="storespecific-name-' + value + '"]').length) {
 			callback({
 				value: value,
 				valid: false,
-				message: "This store already exist"
+				message: "This store already exists"
+			});
+		} else if (value && !regExp.test(value)) {
+			callback({
+				value: value,
+				valid: false,
+				message: "Application store name could contain only small English letters without special symbols"
 			});
 		} else {
 			callback({
 				value: value,
 				valid: true
 			});
-		}
+		};
 	};
 	
     function initFilling() {
