@@ -110,8 +110,8 @@
   <xsd:complexType name="type-description-images-appicon">
     <xsd:simpleContent>
       <xsd:extension base="type-attr-localfile">
-        <xsd:attribute name="width" type="xsd:positiveInteger" />
-        <xsd:attribute name="height" type="xsd:positiveInteger" />
+        <xsd:attribute name="width" type="xsd:positiveInteger" use="required" />
+        <xsd:attribute name="height" type="xsd:positiveInteger" use="required" />
       </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
@@ -119,8 +119,8 @@
   <xsd:complexType name="type-description-images-promoimage">
     <xsd:simpleContent>
       <xsd:extension base="type-attr-localfile">
-        <xsd:attribute name="width" type="xsd:positiveInteger" />
-        <xsd:attribute name="height" type="xsd:positiveInteger" />
+        <xsd:attribute name="width" type="xsd:positiveInteger" use="required" />
+        <xsd:attribute name="height" type="xsd:positiveInteger" use="required" />
       </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
@@ -134,9 +134,9 @@
   <xsd:complexType name="type-description-images-screenshots-screenshot">
     <xsd:simpleContent>
       <xsd:extension base="type-attr-localfile">
-        <xsd:attribute name="width" type="xsd:positiveInteger" />
-        <xsd:attribute name="height" type="xsd:positiveInteger" />
-        <xsd:attribute name="index" type="xsd:positiveInteger" />
+        <xsd:attribute name="width" type="xsd:positiveInteger" use="required" />
+        <xsd:attribute name="height" type="xsd:positiveInteger" use="required" />
+        <xsd:attribute name="index" type="xsd:positiveInteger" use="required" />
       </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
@@ -198,7 +198,7 @@
       <xsd:element name="title" type="xsd:string" maxOccurs="unbounded" minOccurs="0" />
       <xsd:element name="keywords" type="xsd:string" minOccurs="0" />
       <xsd:element name="short-description" type="xsd:string" maxOccurs="unbounded" minOccurs="0" />
-      <xsd:element name="full-description" type="xsd:string" maxOccurs="unbounded" minOccurs="0" />
+      <xsd:element name="full-description" type="type-description-texts-fulldescription" minOccurs="0" />
       <xsd:element name="features" type="type-description-texts-features" minOccurs="0" />
       <xsd:element name="recent-changes" type="xsd:string" minOccurs="0" />
       <xsd:element name="privacy-policy" type="type-description-texts-privacypolicy" minOccurs="0"/>
