@@ -17,28 +17,32 @@
                 <title>MX Player</title>
                 <keywords>video, player, movie, media, play</keywords>
                 <short-description>MX Player - The best way to enjoy your movies.</short-description>
-                <full-description>MX Player - The best way to enjoy your movies.
+                <full-description>
+MX Player - The best way to enjoy your movies.
+<features>
+a) HARDWARE DECODING - With new h/w decoder, more videos can take benefit from hardware acceleration.
+b) MULTI-CORE DECODING - MX Player is the first Android video player that performs multi-core decoding. According to the test results on dual-core devices, it shows up to 70% performance improvement than single-core devices.
+c) PINCH TO ZOOM - Easily zoom in and out by pinching and swiping across screen.
+d) SUBTITLE SCROLL - Scroll on subtitle text and playback position will be adjusted to match previous or next subtitle timing.
+e) KIDS LOCK - Keep your kids entertained without having to worry about making calls or touching other apps. (plugin required)
+f) ANDROID 4.1 - Fully supports Android 4.1 Jelly Bean.
+</features>
 
-                a) HARDWARE DECODING - With new h/w decoder, more videos can take benefit from hardware acceleration.
-                b) MULTI-CORE DECODING - MX Player is the first Android video player that performs multi-core decoding. According to the test results on dual-core devices, it shows up to 70% performance improvement than single-core devices.
-                c) PINCH TO ZOOM - Easily zoom in and out by pinching and swiping across screen.
-                d) SUBTITLE SCROLL - Scroll on subtitle text and playback position will be adjusted to match previous or next subtitle timing.
-                e) KIDS LOCK - Keep your kids entertained without having to worry about making calls or touching other apps. (plugin required)
-                f) ANDROID 4.1 - Fully supports Android 4.1 Jelly Bean.
-
-                Subtitle formats:
-                - DVD, DVB, SSA/ASS Subtitle tracks.
-                - SubStation Alpha(.ssa/.ass) with full styling.
-                - SAMI(.smi/.sami) with ruby tag support.
-                - SubRip(.srt)
-                - MicroDVD(.sub/.txt)
-                - SubViewer2.0(.sub)
-                - MPL2(.mpl/.txt)
-                - PowerDivX(.psb/.txt)
-                - TMPlayer(.txt)
-                ******
-                About "System Tools - display system-level alerts" permission: this permissions is required to block HOME button when input blocking is activated on video playback screen.
-                ******
+Subtitle formats:
+<ul>
+<li>DVD, DVB, SSA/ASS Subtitle tracks.</li>
+<li>SubStation Alpha(.ssa/.ass) with full styling.</li>
+<li>SAMI(.smi/.sami) with ruby tag support.</li>
+<li>SubRip(.srt)</li>
+<li>MicroDVD(.sub/.txt)</li>
+<li>SubViewer2.0(.sub)</li>
+<li>MPL2(.mpl/.txt)</li>
+<li>PowerDivX(.psb/.txt)</li>
+<li>TMPlayer(.txt)</li>
+</ul>
+******
+About "System Tools - display system-level alerts" permission: this permissions is required to block HOME button when input blocking is activated on video playback screen.
+******
                 </full-description>
                 <features>
                     <feature>Hardware Decoding</feature>
@@ -54,14 +58,14 @@
             </texts>
 
             <images>
-                <app-icon size="512">appicon.png</app-icon>
-                <large-promo>promo.png</large-promo>
+                <app-icon width="512" height="512">appicon.png</app-icon>
+                <large-promo width="1024" height="500">promo.png</large-promo>
                 <screenshots>
-                    <screenshot>screenshot01_en.png</screenshot>
-                    <screenshot>screenshot02_en.png</screenshot>
-                    <screenshot>screenshot03_en.png</screenshot>
-                    <screenshot>screenshot04_en.png</screenshot>
-                    <screenshot>screenshot05_en.png</screenshot>
+                    <screenshot width="480" height="800" index="1">screenshot01_en.png</screenshot>
+                    <screenshot width="480" height="800" index="2">screenshot02_en.png</screenshot>
+                    <screenshot width="480" height="800" index="3">screenshot03_en.png</screenshot>
+                    <screenshot width="480" height="800" index="4">screenshot04_en.png</screenshot>
+                    <screenshot width="480" height="800" index="5">screenshot05_en.png</screenshot>
                 </screenshots>
             </images>
 
@@ -77,28 +81,33 @@
                 <keywords>video, videoplayer, medien, film</keywords>
                 <short-description>MX Player - Die beste Art seine Filme zu genießen.</short-description>
                 <full-description>
-                    MX Player - Die beste Art seine Filme zu genießen.
+MX Player - Die beste Art seine Filme zu genießen.
 
-                    a) HARDWARE DECODING - Mit dem neuen H/W Decoder können noch mehr Videos von der Hardware-Beschleunigung profitieren.
-                    b) Multi-Kern-DECODING - MX Player ist der erste Android-Video-Player, der Multi-Core-Dekodierung ausführt. Laut der Testergebnisse auf Dualcore-Geräten zeigt es eine Leistungssteigerung bis zu 70 % gegenüber Geräten mit nur einem Prozessorkern.
-                    c) PINCH TO ZOOM - Leichtes Ein-und Auszoomen durch Kneifen der Finger auf dem Bildschirm.
-                    d) UNTERTITEL SCROLLEN - Durch das scrollen der Untertitel Texte wird die Wiedergabe-Position angepasst, um die vorherigen oder nächsten Untertitel im Timing anzupassen.
-                    e) Kindersicherung-Kinder können nicht zu anderen APPs wechseln oder Anrufe tätigen. (Plugin erforderlich)
-                    f) ANDROID 4,1 - volle Unterstützung von Android 4.1 Jelly Bean.
+<features>
+a) HARDWARE DECODING - Mit dem neuen H/W Decoder können noch mehr Videos von der Hardware-Beschleunigung profitieren.
+b) Multi-Kern-DECODING - MX Player ist der erste Android-Video-Player, der Multi-Core-Dekodierung ausführt. Laut der Testergebnisse auf Dualcore-Geräten zeigt es eine Leistungssteigerung bis zu 70 % gegenüber Geräten mit nur einem Prozessorkern.
+c) PINCH TO ZOOM - Leichtes Ein-und Auszoomen durch Kneifen der Finger auf dem Bildschirm.
+d) UNTERTITEL SCROLLEN - Durch das scrollen der Untertitel Texte wird die Wiedergabe-Position angepasst, um die vorherigen oder nächsten Untertitel im Timing anzupassen.
+e) Kindersicherung-Kinder können nicht zu anderen APPs wechseln oder Anrufe tätigen. (Plugin erforderlich)
+f) ANDROID 4,1 - volle Unterstützung von Android 4.1 Jelly Bean.
+</features>
 
-                    Untertitel Formate:
-                    - DVD, DVB, SSA/ASS Untertitel Track.
-                    - SubStation Alpha(.ssa/.ass) mit vollen Styling.
-                    - SAMI(.smi/.sami) mit Ruby Tag Unterstützung.
-                    - SubRip(.srt)
-                    - MicroDVD(.sub/.txt)
-                    - SubViewer2.0(.sub)
-                    - MPL2(.mpl/.txt)
-                    - PowerDivX(.psb/.txt)
-                    - TMPlayer(.txt)
-                    ******
-                    Über die Berechtigung "SYSTEM-TOOLS: WARNUNGEN AUF SYSTEMEBENE ANZEIGEN": Diese Berechtigungen wird benötigt, um die Home-Taste blockieren zu können, wenn die Eingabeblockierung während der Video-Wiedergabe aktiviert ist.
-                    ******
+Untertitel Formate:
+<ul>
+<li>DVD, DVB, SSA/ASS Untertitel Track.</li>
+<li>SubStation Alpha(.ssa/.ass) mit vollen Styling.</li>
+<li>SAMI(.smi/.sami) mit Ruby Tag Unterstützung.</li>
+<li>SubRip(.srt)</li>
+<li>MicroDVD(.sub/.txt)</li>
+<li>SubViewer2.0(.sub)</li>
+<li>MPL2(.mpl/.txt)</li>
+<li>PowerDivX(.psb/.txt)</li>
+<li>TMPlayer(.txt)</li>
+</ul>
+
+******
+Über die Berechtigung "SYSTEM-TOOLS: WARNUNGEN AUF SYSTEMEBENE ANZEIGEN": Diese Berechtigungen wird benötigt, um die Home-Taste blockieren zu können, wenn die Eingabeblockierung während der Video-Wiedergabe aktiviert ist.
+******
                 </full-description>
                 <features>
                     <feature>Hardware decoding</feature>
@@ -115,28 +124,33 @@
                 <keywords>видео, фильм, плеер, проигрыватель, медиа</keywords>
                 <short-description>MX Player - лучший плеер для просмотра ваших фильмов.</short-description>
                 <full-description>
-                    MX Player - лучший плеер для просмотра ваших фильмов.
+MX Player - лучший плеер для просмотра ваших фильмов.
 
-                    a) АППАРАТНОЕ ДЕКОДИРОВАНИЕ - теперь поддерживается большее количество форматов видео с новым аппаратным декодером.
-                    b) МНОГОЯДЕРНОЕ ДЕКОДИРОВАНИЕ - MX Player является первым проигрывателем видео на Android, который выполняет многоядерное декодирование. По результатам испытаний на двухъядерных устройствах, он показывает до 70% повышения производительности, в отличие от одноядерных устройств.
-                    c) МАСШТАБИРОВАНИЕ ЩИПКОМ - масштабирование при помощи щипка и свайпа.
-                    d) ПРОКРУТКА СУБТИТРОВ - при прокрутке позиция воспроизведения автоматически синхронизируется с текстом субтитров.
-                    e) УМНАЯ БЛОКИРОВКА - не беспокойтесь о случайных вызовах или запусках других приложений, сделанных вашими увлеченными детьми. (Требуется плагин)
-                    f) ANDROID 4.1 - полная поддержка Android 4.1 Jelly Bean.
+<features>
+a) АППАРАТНОЕ ДЕКОДИРОВАНИЕ - теперь поддерживается большее количество форматов видео с новым аппаратным декодером.
+b) МНОГОЯДЕРНОЕ ДЕКОДИРОВАНИЕ - MX Player является первым проигрывателем видео на Android, который выполняет многоядерное декодирование. По результатам испытаний на двухъядерных устройствах, он показывает до 70% повышения производительности, в отличие от одноядерных устройств.
+c) МАСШТАБИРОВАНИЕ ЩИПКОМ - масштабирование при помощи щипка и свайпа.
+d) ПРОКРУТКА СУБТИТРОВ - при прокрутке позиция воспроизведения автоматически синхронизируется с текстом субтитров.
+e) УМНАЯ БЛОКИРОВКА - не беспокойтесь о случайных вызовах или запусках других приложений, сделанных вашими увлеченными детьми. (Требуется плагин)
+f) ANDROID 4.1 - полная поддержка Android 4.1 Jelly Bean.
+</features>
 
-                    Форматы субтитров:
-                    - DVD, DVB, SSA/ASS дорожка субтитров
-                    - SubStation Alpha(.ssa/.ass) с полным стилем.
-                    - SAMI(.smi/.sami) с поддержка тегов ruby.
-                    - SubRip(.srt)
-                    - MicroDVD(.sub/.txt)
-                    - SubViewer2.0(.sub)
-                    - MPL2(.mpl/.txt)
-                    - PowerDivX(.psb/.txt)
-                    - TMPlayer(.txt)
-                    ******
-                    О разрешении "Системные инструменты - отображение системных предупреждений": эти разрешения требуются для блокировки кнопки HOME, если эта функция активирована при воспроизведении видео.
-                    ******
+Форматы субтитров:
+<ul>
+<li>DVD, DVB, SSA/ASS дорожка субтитров</li>
+<li>SubStation Alpha(.ssa/.ass) с полным стилем.</li>
+<li>SAMI(.smi/.sami) с поддержка тегов ruby.</li>
+<li>SubRip(.srt)</li>
+<li>MicroDVD(.sub/.txt)</li>
+<li>SubViewer2.0(.sub)</li>
+<li>MPL2(.mpl/.txt)</li>
+<li>PowerDivX(.psb/.txt)</li>
+<li>TMPlayer(.txt)</li>
+</ul>
+
+******
+О разрешении "Системные инструменты - отображение системных предупреждений": эти разрешения требуются для блокировки кнопки HOME, если эта функция активирована при воспроизведении видео.
+******
                 </full-description>
                 <features>
                     <feature>Аппаратное декодирование</feature>
@@ -151,14 +165,6 @@
 
         <content-description>
             <content-rating>3</content-rating>
-            <rating-certificates>
-                <rating-certificate type="PEGI">3</rating-certificate>
-                <rating-certificate type="ESRB">3</rating-certificate>
-                <rating-certificate type="GRB">0</rating-certificate>
-                <rating-certificate type="CERO">0</rating-certificate>
-                <rating-certificate type="DEJUS">0</rating-certificate>
-                <rating-certificate type="FSK">0</rating-certificate>
-            </rating-certificates>
             <content-descriptors>
                 <cartoon-violence>no</cartoon-violence>
                 <realistic-violence>no</realistic-violence>
