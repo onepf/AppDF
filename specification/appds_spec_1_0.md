@@ -114,11 +114,13 @@ Sample Description.xml File
 
       <!--Optional tag, some stores require it for apps that collect personal information-->
       <!--Privacy policy text should be provided both as a link in "href" attribute and as a text-->
-      <privacy-policy href="http://legal.yandex.com/privacy/">We won't share information about you, your account or your email addresses with anyone. Period.</privacy-policy>
+      <privacy-policy href="http://legal.yandex.com/privacy/">We won't share information about you, your account or your 
+      email addresses with anyone. Period.</privacy-policy>
 
       <!--Optional tag, if presented it give custom EULA that some stores will show before installation-->
       <!--EULA text should be provided both as a link in "href" attribute and as a text-->
-      <eula href="http://wwww.mysite.com/legal/eula.html">Don't violate copyright law and no matter what happens, including damage to your equipment or even someone’s death, you agree not to blame us even if it is our fault.</eula>
+      <eula href="http://wwww.mysite.com/legal/eula.html">Don't violate copyright law and no matter what happens, including 
+      damage to your equipment or even someone’s death, you agree not to blame us even if it is our fault.</eula>
     </texts>
 
     <images>
@@ -133,7 +135,8 @@ Sample Description.xml File
       <small-promo width="180" height="120">feature.png</small-promo>
       <!--Minimum four screenshots should be presented-->
       <!--If you want to add several resolutions of the same screenshot make sure these two tags will have the same "index" attribute-->
-      <!--480x800 screen resolution in PNG format must be included for each screenshot, 1080x1920 (HD) and 1920×1200 (tablets) are highly recommended-->
+      <!--480x800 screen resolution in PNG format must be included for each screenshot-->
+      <!--It is recommended to have 1080x1920 (HD) and 1920×1200 (tablets) resolutions for each screenshot as well-->
       <screenshots>
         <screenshot width="480" height="800" index="1">screenshot01_en.png</screenshot>
         <screenshot width="480" height="800" index="2">screenshot02_en.png</screenshot>
@@ -141,8 +144,12 @@ Sample Description.xml File
         <screenshot width="480" height="800" index="4">screenshot04_en.png</screenshot>
         <screenshot width="1920" height="1200" index="1">screenshot05_en.png</screenshot>
         <screenshot width="1920" height="1200" index="2">screenshot06_en.png</screenshot>
-        <screenshot width="1080" height="1920" index="1">screenshot07_en.png</screenshot>
-        <screenshot width="1080" height="1920" index="2">screenshot08_en.png</screenshot>
+        <screenshot width="1920" height="1200" index="3">screenshot07_en.png</screenshot>
+        <screenshot width="1920" height="1200" index="4">screenshot08_en.png</screenshot>
+        <screenshot width="1080" height="1920" index="1">screenshot09_en.png</screenshot>
+        <screenshot width="1080" height="1920" index="2">screenshot10_en.png</screenshot>
+        <screenshot width="1080" height="1920" index="3">screenshot11_en.png</screenshot>
+        <screenshot width="1080" height="1920" index="4">screenshot12_en.png</screenshot>
       </screenshots>
     </images>
 
@@ -699,8 +706,10 @@ Example:
       <feature>3D interface</feature>
     </features>
     <recent-changes>It is a description of what was changed in the latest version</recent-changes>
-    <privacy-policy href="http://legal.yandex.com/privacy/">We won't share information about you, your account or your email addresses with anyone. Period.</privacy-policy>
-    <eula href="http://wwww.mysite.com/legal/eula.html">Don't violate copyright law and no matter what happens, including damage to your equipment or even someone’s death, you agree not to blame us even if it is our fault.</eula>
+    <privacy-policy href="http://legal.yandex.com/privacy/">We won't share information about you, your 
+    account or your email addresses with anyone. Period.</privacy-policy>
+    <eula href="http://wwww.mysite.com/legal/eula.html">Don't violate copyright law and no matter what happens, 
+    including damage to your equipment or even someone’s death, you agree not to blame us even if it is our fault.</eula>
   </texts>
 
   <images>
@@ -1359,7 +1368,8 @@ Privacy policy for this application. It must include both a link to privacy poli
 
 Example:
 ```xml
-<privacy-policy href="http://legal.yandex.com/privacy/">We won't share information about you, your account or your email addresses with anyone. Period.</privacy-policy>
+<privacy-policy href="http://legal.yandex.com/privacy/">We won't share information about 
+you, your account or your email addresses with anyone. Period.</privacy-policy>
 ```
 
 <table>
@@ -1923,7 +1933,7 @@ Contains several `<screenshot>` subtags. Each `<screenshot>` subtag describes on
 Required. 
 Attributes: `width`, `height`, `index`. 
 
-A tag that describes one screenshot. Screenshots must be in PNG format. There could be several resolutions of each screenshot, they should have the same `index` attribute in that case. 480x800 resolution must be presented for each screenshot. 1080x1920 (HD) and 1920x1200 (tablet) versions are recommended to have as well. Different stores use different screenshot sizes. Each store will choose one the best matching screen resolution from each screenshot group (screenshot with the same `index` attribute).  
+A tag that describes one screenshot. Screenshots must be in PNG format. There could be several versions of each screenshot with different sizes, they should have the same `index` attribute in that case. 480x800 size must be presented for each screenshot. 1080x1920 (HD) and 1920x1200 (tablet) versions are recommended to have as well. Different stores use different screenshot sizes. Each store will choose one the best matching image size from each screenshot group (screenshot with the same `index` attribute).  
 
 <table>
   <tr>
