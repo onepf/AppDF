@@ -65,8 +65,8 @@
       <xsd:element name="full-description" type="type-description-texts-fulldescription" maxOccurs="1" />
       <xsd:element name="features" type="type-description-texts-features" />
       <xsd:element name="recent-changes" type="xsd:string" minOccurs="0"/>
-      <xsd:element name="privacy-policy" type="xsd:anyURI" minOccurs="0"/>
-      <xsd:element name="eula" type="xsd:anyURI" minOccurs="0"/>
+      <xsd:element name="privacy-policy" type="type-description-texts-privacypolicy" minOccurs="0"/>
+      <xsd:element name="eula" type="type-description-texts-eula" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
   
@@ -82,11 +82,27 @@
     </xsd:sequence>
   </xsd:complexType>
   
+  <xsd:complexType name="type-description-texts-eula">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="href" type="xsd:anyURI" use="required" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  
+  <xsd:complexType name="type-description-texts-privacypolicy">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="href" type="xsd:anyURI" use="required" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  
   <xsd:complexType name="type-description-images">
     <xsd:sequence>
       <xsd:element name="app-icon" type="type-description-images-appicon" maxOccurs="unbounded" />
-      <xsd:element name="large-promo" type="type-attr-localfile" minOccurs="0" />
-      <xsd:element name="small-promo" type="type-attr-localfile" minOccurs="0" />
+      <xsd:element name="large-promo" type="type-description-images-promoimage" minOccurs="0" />
+      <xsd:element name="small-promo" type="type-description-images-promoimage" minOccurs="0" />
       <xsd:element name="screenshots" type="type-description-images-screenshots" />
     </xsd:sequence>
   </xsd:complexType>
@@ -94,17 +110,37 @@
   <xsd:complexType name="type-description-images-appicon">
     <xsd:simpleContent>
       <xsd:extension base="type-attr-localfile">
-        <xsd:attribute name="size" type="xsd:positiveInteger" />
+        <xsd:attribute name="width" type="xsd:positiveInteger" />
+        <xsd:attribute name="height" type="xsd:positiveInteger" />
       </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>
-  
+
+  <xsd:complexType name="type-description-images-promoimage">
+    <xsd:simpleContent>
+      <xsd:extension base="type-attr-localfile">
+        <xsd:attribute name="width" type="xsd:positiveInteger" />
+        <xsd:attribute name="height" type="xsd:positiveInteger" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
   <xsd:complexType name="type-description-images-screenshots">
     <xsd:sequence>
-      <xsd:element name="screenshot" type="type-attr-localfile" minOccurs="4" maxOccurs="unbounded" />
+      <xsd:element name="screenshot" type="type-description-images-screenshots-screenshot" minOccurs="4" maxOccurs="unbounded" />
     </xsd:sequence>
   </xsd:complexType>
   
+  <xsd:complexType name="type-description-images-screenshots-screenshot">
+    <xsd:simpleContent>
+      <xsd:extension base="type-attr-localfile">
+        <xsd:attribute name="width" type="xsd:positiveInteger" />
+        <xsd:attribute name="height" type="xsd:positiveInteger" />
+        <xsd:attribute name="index" type="xsd:positiveInteger" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
   <xsd:complexType name="type-description-videos">
     <xsd:sequence>
       <xsd:element name="youtube-video" type="type-attr-youtubeid" minOccurs="0" />
@@ -165,16 +201,16 @@
       <xsd:element name="full-description" type="xsd:string" maxOccurs="unbounded" minOccurs="0" />
       <xsd:element name="features" type="type-description-texts-features" minOccurs="0" />
       <xsd:element name="recent-changes" type="xsd:string" minOccurs="0" />
-      <xsd:element name="privacy-policy" type="xsd:string" minOccurs="0" />
-      <xsd:element name="eula" type="xsd:string" minOccurs="0" />
+      <xsd:element name="privacy-policy" type="type-description-texts-privacypolicy" minOccurs="0"/>
+      <xsd:element name="eula" type="type-description-texts-eula" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
   
   <xsd:complexType name="type-descriptionlocalization-images">
     <xsd:sequence>
       <xsd:element name="app-icon" type="type-description-images-appicon" maxOccurs="unbounded" minOccurs="0" />
-      <xsd:element name="large-promo" type="type-attr-localfile" minOccurs="0" />
-      <xsd:element name="small-promo" type="type-attr-localfile" minOccurs="0" />
+      <xsd:element name="large-promo" type="type-description-images-promoimage" minOccurs="0" />
+      <xsd:element name="small-promo" type="type-description-images-promoimage" minOccurs="0" />
       <xsd:element name="screenshots" type="type-description-images-screenshots" minOccurs="0" />
     </xsd:sequence>
   </xsd:complexType>
@@ -377,6 +413,7 @@
       <xsd:element name="exclude" type="type-attr-resolution" />
       <xsd:element name="include" type="type-attr-resolution" />
     </xsd:choice>
+    <xsd:attribute name="only-listed" type="type-attr-yesno" />
   </xsd:complexType>
   
   <xsd:simpleType name="type-attr-resolution">

@@ -55,6 +55,7 @@ Create 20 AppDF samples with 20 types of error:
 28. price free="no" and trial-version
 29. supported-resolutions only-listed="yes" and <exclude>
 30. supported-resolutions only-listed="yes"> and <include>
+31. Maximum EULA size of 5000 symbols
 =====
 
 Submitter tool
