@@ -113,27 +113,36 @@ Sample Description.xml File
       <recent-changes>It is a description of what was changed in the latest version</recent-changes>
 
       <!--Optional tag, some stores require it for apps that collect personal information-->
-      <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
+      <!--Privacy policy text should be provided both as a link in "href" attribute and as a text-->
+      <privacy-policy href="http://legal.yandex.com/privacy/">We won't share information about you, your account or your email addresses with anyone. Period.</privacy-policy>
 
       <!--Optional tag, if presented it give custom EULA that some stores will show before installation-->
-      <eula></eula>
+      <!--EULA text should be provided both as a link in "href" attribute and as a text-->
+      <eula href="http://wwww.mysite.com/legal/eula.html">Don't violate copyright law and no matter what happens, including damage to your equipment or even someone’s death, you agree not to blame us even if it is our fault.</eula>
     </texts>
 
     <images>
-      <!--Appp icon should have 512x512 size-->
-      <app-icon size="512">icon.png</app-icon>
+      <!--The first app icon should have 512x512 size-->
+      <app-icon width="512" height="512">icon.png</app-icon>
       <!--Optionally you could include application icon in different sizes. If missed AppDF will automatically resize your icon-->
-      <app-icon size="135">icon_135x135.png</app-icon>
-      <app-icon size="144">icon_144x144.png</app-icon>
-      <large-promo>promo.png</large-promo>
-      <small-promo>feature.png</small-promo>
-      <!--Minimum two screenshots should be presented-->
+      <app-icon width="135" height="135">icon_135x135.png</app-icon>
+      <app-icon width="144" height="144">icon_144x144.png</app-icon>
+      <!--Large promo image (to be shown on website) must be in JPG or PNG format and have 1024x500 size-->
+      <large-promo width="1024" height="500">promo.png</large-promo>
+      <!--Small promo image (to be shown on a device) must be in JPG or PNG format and have 180x120 size-->
+      <small-promo width="180" height="120">feature.png</small-promo>
+      <!--Minimum four screenshots should be presented-->
+      <!--If you want to add several resolutions of the same screenshot make sure these two tags will have the same "index" attribute-->
+      <!--480x800 screen resolution in PNG format must be included for each screenshot, 1080x1920 (HD) and 1920×1200 (tablets) are highly recommended-->
       <screenshots>
-        <screenshot>screenshot01_en.png</screenshot>
-        <screenshot>screenshot02_en.png</screenshot>
-        <screenshot>screenshot03_en.png</screenshot>
-        <screenshot>screenshot04_en.png</screenshot>
-        <screenshot>screenshot05_en.png</screenshot>
+        <screenshot width="480" height="800" index="1">screenshot01_en.png</screenshot>
+        <screenshot width="480" height="800" index="2">screenshot02_en.png</screenshot>
+        <screenshot width="480" height="800" index="3">screenshot03_en.png</screenshot>
+        <screenshot width="480" height="800" index="4">screenshot04_en.png</screenshot>
+        <screenshot width="1920" height="1200" index="1">screenshot05_en.png</screenshot>
+        <screenshot width="1920" height="1200" index="2">screenshot06_en.png</screenshot>
+        <screenshot width="1080" height="1920" index="1">screenshot07_en.png</screenshot>
+        <screenshot width="1080" height="1920" index="2">screenshot08_en.png</screenshot>
       </screenshots>
     </images>
 
@@ -156,10 +165,14 @@ Sample Description.xml File
 
     <images>
       <screenshots>
-        <screenshot>screenshot01_ru.png</screenshot>
-        <screenshot>screenshot02_ru.png</screenshot>
-        <screenshot>screenshot03_ru.png</screenshot>
-        <screenshot>screenshot04_ru.png</screenshot>
+        <screenshot width="480" height="800" index="1">screenshot01_ru.png</screenshot>
+        <screenshot width="480" height="800" index="2">screenshot02_ru.png</screenshot>
+        <screenshot width="480" height="800" index="3">screenshot03_ru.png</screenshot>
+        <screenshot width="480" height="800" index="4">screenshot04_ru.png</screenshot>
+        <screenshot width="1920" height="1200" index="1">screenshot05_ru.png</screenshot>
+        <screenshot width="1920" height="1200" index="2">screenshot06_ru.png</screenshot>
+        <screenshot width="1080" height="1920" index="1">screenshot07_ru.png</screenshot>
+        <screenshot width="1080" height="1920" index="2">screenshot08_ru.png</screenshot>
       </screenshots>
     </images>
 
@@ -219,7 +232,7 @@ Sample Description.xml File
   <availability>
     <!--Optional tag, if missed all the countries are included-->
     <!--If attribute only-listed="yes" then this tag contains the list of countries in which the application is available-->
-    <!--If attribute only-listed="yes" the application is available in all the countries except the listed-->
+    <!--If attribute only-listed="yes" then the application is available in all the countries except the listed-->
     <countries only-listed="yes">
       <!--Two symbol ISO 3166-1 country code (upper case) -->
       <include>US</include>
@@ -297,10 +310,23 @@ Sample Description.xml File
     </supported-devices>
 
     <!--Optional tag, if missed information about the supported screen resolutions is taken from the APK file. Use this tag if you want to add some exceptions-->
-    <supported-resolutions>
-      <exclude>480x856</exclude>
-      <include>240x400</include>
+    <!--If attribute only-listed="yes" then this tag contains the list of screen resolutions that the application support-->
+    <!--If attribute only-listed="yes" then the application supports all screen resolutions except the listed-->
+    <supported-resolutions only-listed="yes">
+      <include>320x480</include>
+      <include>480x800</include>
+      <include>540x960</include>
+      <include>720x1280</include>
     </supported-resolutions>
+
+    <!-- Example of the supported resolutions tag where the application supports all screen resolutions except the listed -->
+    <!--
+    <supported-resolutions only-listed="no">
+      <exclude>2048x1536</exclude>
+      <exclude>2560x1536</exclude>
+      <exclude>2560x1600</exclude>
+    </supported-resolutions>
+    -->
   </requirements>
 
   <!--Special requirements to test your app. maximum characters in case of Amazon: 4000-->
@@ -394,7 +420,8 @@ List of Tags:
 		* [app-icon](#descriptionimagesapp-icon)
 		* [large-promo](#descriptionimageslarge-promo)
 		* [small-promo](#descriptionimagessmall-promo)
-		* [screenshots](#descriptionimagesscreenshots)
+    * [screenshots](#descriptionimagesscreenshots)
+      * [screenshot](#descriptionimagesscreenshotsscreenshot)
 	* [videos](#descriptionvideos)
 		* [youtube-video](#descriptionvideosyoutube-video)
 		* [video-file](#descriptionvideosvideo-file)
@@ -672,22 +699,25 @@ Example:
       <feature>3D interface</feature>
     </features>
     <recent-changes>It is a description of what was changed in the latest version</recent-changes>
-    <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
-    <eula></eula>
+    <privacy-policy href="http://legal.yandex.com/privacy/">We won't share information about you, your account or your email addresses with anyone. Period.</privacy-policy>
+    <eula href="http://wwww.mysite.com/legal/eula.html">Don't violate copyright law and no matter what happens, including damage to your equipment or even someone’s death, you agree not to blame us even if it is our fault.</eula>
   </texts>
 
   <images>
-    <app-icon size="512">icon.png</app-icon>
-    <app-icon size="135">icon_135x135.png</app-icon>
-    <app-icon size="144">icon_144x144.png</app-icon>
-    <large-promo>promo.png</large-promo>
-    <small-promo>feature.png</small-promo>
+    <app-icon width="512" height="512">icon.png</app-icon>
+    <app-icon width="135" height="135">icon_135x135.png</app-icon>
+    <app-icon width="144" height="144">icon_144x144.png</app-icon>
+    <large-promo width="1024" height="500">promo.png</large-promo>
+    <small-promo width="180" height="120">feature.png</small-promo>
     <screenshots>
-      <screenshot>screenshot01_en.png</screenshot>
-      <screenshot>screenshot02_en.png</screenshot>
-      <screenshot>screenshot03_en.png</screenshot>
-      <screenshot>screenshot04_en.png</screenshot>
-      <screenshot>screenshot05_en.png</screenshot>
+      <screenshot width="480" height="800" index="1">screenshot01_en.png</screenshot>
+      <screenshot width="480" height="800" index="2">screenshot02_en.png</screenshot>
+      <screenshot width="480" height="800" index="3">screenshot03_en.png</screenshot>
+      <screenshot width="480" height="800" index="4">screenshot04_en.png</screenshot>
+      <screenshot width="1920" height="1200" index="1">screenshot05_en.png</screenshot>
+      <screenshot width="1920" height="1200" index="2">screenshot06_en.png</screenshot>
+      <screenshot width="1080" height="1920" index="1">screenshot07_en.png</screenshot>
+      <screenshot width="1080" height="1920" index="2">screenshot08_en.png</screenshot>
     </screenshots>
   </images>
 
@@ -723,8 +753,8 @@ Example:
     <feature>3D interface</feature>
   </features>
   <recent-changes>It is a description of what was changed in the latest version</recent-changes>
-  <privacy-policy>http://legal.yandex.com/privacy/</privacy-policy>
-  <eula></eula>
+  <privacy-policy href="http://legal.yandex.com/privacy/">We won't share information about you, your account or your email addresses with anyone. Period.</privacy-policy>
+  <eula href="http://wwww.mysite.com/legal/eula.html">Don't violate copyright law and no matter what happens, including damage to your equipment or even someone’s death, you agree not to blame us even if it is our fault.</eula>
 </texts>
 ```
 
@@ -1322,9 +1352,28 @@ Maximum length: 500.
 
 ##### description/texts/privacy-policy
 Optional. 
-No attributes. 
+Attributes: `href`. 
+Maximum length: 5000.
 
-Link to a webpage with your privacy policy for this application. As everything inside the `<description>` tag can be localized using `<description-localization>` section.
+Privacy policy for this application. It must include both a link to privacy policy webpage (in `href` attribute) and full privacy policy text. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
+
+Example:
+```xml
+<privacy-policy href="http://legal.yandex.com/privacy/">We won't share information about you, your account or your email addresses with anyone. Period.</privacy-policy>
+```
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>How it works</th>
+  </tr>
+  <tr>
+    <td>href</td>
+    <td>URL</td>
+    <td>Link to a webpage with your privacy policy for this application</td>
+  </tr>
+</table>
 
 <table>
   <tr>
@@ -1404,9 +1453,28 @@ Link to a webpage with your privacy policy for this application. As everything i
 ##### description/texts/eula
 
 Optional. 
-No attributes. 
+Attributes: `href`. 
+Maximum length: 5000.
 
-Link to a webpage with your End User License Agreement for this application. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
+End User License Agreement for this application. It must include both a link to EULA webpage (in `href` attribute) and full EULA text. As everything inside the `<description>` tag it can be localized using `<description-localization>` section.
+
+Example:
+```xml
+<eula href="http://wwww.mysite.com/legal/eula.html">Don't violate copyright law and no matter what happens, including damage to your equipment or even someone’s death, you agree not to blame us even if it is our fault.</eula>
+```
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>How it works</th>
+  </tr>
+  <tr>
+    <td>href</td>
+    <td>URL</td>
+    <td>Link to a webpage with your End User License Agreement for this application</td>
+  </tr>
+</table>
 
 <table>
   <tr>
@@ -1493,17 +1561,20 @@ This tag contains all application image assets. As everything inside the `<descr
 Example:
 ```xml
 <images>
-  <app-icon size="512">icon.png</app-icon>
-  <app-icon size="135">icon_135x135.png</app-icon>
-  <app-icon size="144">icon_144x144.png</app-icon>
-  <large-promo>promo.png</large-promo>
-  <small-promo>feature.png</small-promo>
+  <app-icon width="512" height="512">icon.png</app-icon>
+  <app-icon width="135" height="135">icon_135x135.png</app-icon>
+  <app-icon width="144" height="144">icon_144x144.png</app-icon>
+  <large-promo width="1024" height="500">promo.png</large-promo>
+  <small-promo width="180" height="120">feature.png</small-promo>
   <screenshots>
-    <screenshot>screenshot01_en.png</screenshot>
-    <screenshot>screenshot02_en.png</screenshot>
-    <screenshot>screenshot03_en.png</screenshot>
-    <screenshot>screenshot04_en.png</screenshot>
-    <screenshot>screenshot05_en.png</screenshot>
+    <screenshot width="480" height="800" index="1">screenshot01_en.png</screenshot>
+    <screenshot width="480" height="800" index="2">screenshot02_en.png</screenshot>
+    <screenshot width="480" height="800" index="3">screenshot03_en.png</screenshot>
+    <screenshot width="480" height="800" index="4">screenshot04_en.png</screenshot>
+    <screenshot width="1920" height="1200" index="1">screenshot05_en.png</screenshot>
+    <screenshot width="1920" height="1200" index="2">screenshot06_en.png</screenshot>
+    <screenshot width="1080" height="1920" index="1">screenshot07_en.png</screenshot>
+    <screenshot width="1080" height="1920" index="2">screenshot08_en.png</screenshot>
   </screenshots>
 </images>
 ```
@@ -1511,9 +1582,9 @@ Example:
 ##### description/images/app-icon
 
 Required. 
-Attributes: `size`. 
+Attributes: `width`, `height`. 
 
-High resolution application icon. Different stores require different resolutions of this icon. You can include several versions of the `<app-icon>` tag with different `size` attributes. The store will automatically select right size. AppDF will automatically rescale your image if there is no needed size. Most of the stores use 512x512 PNG image, so it is highly recommended to include such version.
+High resolution application icon. Must be in PNG format. Different stores require different resolutions of this icon. You can include several versions of the `<app-icon>` tag with different `width` and `height` attributes. The store will automatically select right size. AppDF will automatically rescale your image if there is no needed size. Most of the stores use 512x512 PNG image, so you must include this size, other sizes are optional. The icon must be a square (`width`=`height`).
 
 <table>
   <tr>
@@ -1523,10 +1594,16 @@ High resolution application icon. Different stores require different resolutions
     <th>How it works</th>
   </tr>
   <tr>
-    <td>size</td>
+    <td>width</td>
     <td>a number</td>
-    <td>512</td>
-    <td></td>
+    <td>Mandatory attribute</td>
+    <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512.</td>
+  </tr>
+  <tr>
+    <td>height</td>
+    <td>a number</td>
+    <td>Mandatory attribute</td>
+    <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512.</td>
   </tr>
 </table>
 
@@ -1625,10 +1702,24 @@ High resolution application icon. Different stores require different resolutions
 
 ##### description/images/large-promo
 Optional. 
-No attributes. 
+Attributes: `width`, `height`. 
 
-Large promotion picture usually used by the stores on the PC websites. 
+Large promotion picture usually used by the stores on the PC websites, some stores use in on a device as well. Must be a 1024x500 PNG or JPG image.
 
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+  </tr>
+  <tr>
+    <td>width</td>
+    <td>Must be `1024`</td>
+  </tr>
+  <tr>
+    <td>height</td>
+    <td>Must be `500`</td>
+  </tr>
+</table>
 
 <table>
   <tr>
@@ -1717,10 +1808,24 @@ Large promotion picture usually used by the stores on the PC websites.
 ##### description/images/small-promo
 
 Optional. 
-No attributes. 
+Attributes: `width`, `height`. 
 
-A small promotion picture is usually used by the stores on a mobile device for promoted apps. 
+A small promotion picture is usually used by the stores on a mobile device for promoted apps. Must be a 180x120 PNG or JPG image.
 
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+  </tr>
+  <tr>
+    <td>width</td>
+    <td>Must be `180`</td>
+  </tr>
+  <tr>
+    <td>height</td>
+    <td>Must be `120`</td>
+  </tr>
+</table>
 
 <table>
   <tr>
@@ -1812,14 +1917,46 @@ No attributes.
 
 Contains several `<screenshot>` subtags. Each `<screenshot>` subtag describes one screenshot. Different stores use different number of screenshots. You should provide at least four screenshots to support all the stores. If you provide more screenshots than a store can use the first screenshots are used. 
 
+##### description/images/screenshots/screenshot
+Required. 
+Attributes: `width`, `height`, `index`. 
+
+A tag that describes one screenshot. Screenshots must be in PNG format. There could be several resolutions of each screenshot, they should have the same `index` attribute in that case. 480x800 resolution must be presented for each screenshot. 1080x1920 (HD) and 1920x1200 (tablet) versions are recommended to have as well. Different stores use different screenshot sizes. Each store will choose one the best matching screen resolution from each screenshot group (screenshot with the same `index` attribute).  
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>How it works</th>
+  </tr>
+  <tr>
+    <td>width</td>
+    <td>A number</td>
+    <td>Each store will choose one the best matching screen resolution from each screenshot group</td>
+  </tr>
+  <tr>
+    <td>height</td>
+    <td>Must be `120`</td>
+    <td>Each store will choose one the best matching screen resolution from each screenshot group</td>
+  </tr>
+  <tr>
+    <td>index</td>
+    <td>A number</td>
+    <td>If several screenshots have the same index attribute then they represent the same screenshot in different sizes</td>
+  </tr>
+</table>
+
 Example:
 ```xml
 <screenshots>
-  <screenshot>screenshot01_en.png</screenshot>
-  <screenshot>screenshot02_en.png</screenshot>
-  <screenshot>screenshot03_en.png</screenshot>
-  <screenshot>screenshot04_en.png</screenshot>
-  <screenshot>screenshot05_en.png</screenshot>
+  <screenshot width="480" height="800" index="1">screenshot01_en.png</screenshot>
+  <screenshot width="480" height="800" index="2">screenshot02_en.png</screenshot>
+  <screenshot width="480" height="800" index="3">screenshot03_en.png</screenshot>
+  <screenshot width="480" height="800" index="4">screenshot04_en.png</screenshot>
+  <screenshot width="1920" height="1200" index="1">screenshot05_en.png</screenshot>
+  <screenshot width="1920" height="1200" index="2">screenshot06_en.png</screenshot>
+  <screenshot width="1080" height="1920" index="1">screenshot07_en.png</screenshot>
+  <screenshot width="1080" height="1920" index="2">screenshot08_en.png</screenshot>
 </screenshots>
 ```
 
@@ -2170,12 +2307,16 @@ Example:
   </texts>
 
   <images>
-    <large-promo>promo_de.png</large-promo>
+    <large-promo width="1024" height="500">promo_de.png</large-promo>
     <screenshots>
-      <screenshot>screenshot01_de.png</screenshot>
-      <screenshot>screenshot02_de.png</screenshot>
-      <screenshot>screenshot03_de.png</screenshot>
-      <screenshot>screenshot04_de.png</screenshot>
+      <screenshot width="480" height="800" index="1">screenshot01_de.png</screenshot>
+      <screenshot width="480" height="800" index="2">screenshot02_de.png</screenshot>
+      <screenshot width="480" height="800" index="3">screenshot03_de.png</screenshot>
+      <screenshot width="480" height="800" index="4">screenshot04_de.png</screenshot>
+      <screenshot width="1920" height="1200" index="1">screenshot05_de.png</screenshot>
+      <screenshot width="1920" height="1200" index="2">screenshot06_de.png</screenshot>
+      <screenshot width="1080" height="1920" index="1">screenshot07_de.png</screenshot>
+      <screenshot width="1080" height="1920" index="2">screenshot08_de.png</screenshot>
     </screenshots>
   </images>
 </description-localization>
@@ -3523,9 +3664,10 @@ Example:
     <exclude>SHW-M130K</exclude>
   </supported-devices>
 
-  <supported-resolutions>
-    <exclude>480x856</exclude>
-    <include>240x400</include>
+  <supported-resolutions only-listed="no">
+    <exclude>2048x1536</exclude>
+    <exclude>2560x1536</exclude>
+    <exclude>2560x1600</exclude>
   </supported-resolutions>
 </requirements>
 ```
@@ -3884,9 +4026,43 @@ Example:
 
 #### requirements/supported-resolutions
 Optional.
-No attributes.
+Attributes: `only-listed`. 
 
-Most of the stores take this information from the APK file. Some stores also support manual selection of supported screen resolutions. In most cases you do not need to specify this tag because AppDF can provide information about supported screen resolutions even for the stores that cannot extract this information from APK files themselves.
+Most of the stores take this information from the APK file. Some stores also support manual selection of supported screen resolutions. In most cases you do not need to specify this tag because AppDF can provide information about supported screen resolutions even for the stores that cannot extract this information from APK files themselves. Use either `<include>` or `<exclude>` (depending on the `only-listed` attribute value) subtags to define list of the screen resolutions your application supports. 
+
+Example 1:
+```xml
+<supported-resolutions only-listed="yes">
+  <include>320x480</include>
+  <include>480x800</include>
+  <include>540x960</include>
+  <include>720x1280</include>
+</supported-resolutions>
+```
+
+Example 2:
+```xml
+<supported-resolutions only-listed="no">
+  <exclude>2048x1536</exclude>
+  <exclude>2560x1536</exclude>
+  <exclude>2560x1600</exclude>
+</supported-resolutions>
+```
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>Required</th>
+    <th>How it works</th>
+  </tr>
+  <tr>
+    <td>only-listed</td>
+    <td>yes, no</td>
+    <td>required</td>
+    <td>If value is "yes" then only &lt;include&gt; subtags could be included, if "no" then only &lt;exclude&gt; subtags could be included</td>
+  </tr>
+</table>
 
 <table>
   <tr>
@@ -7464,11 +7640,27 @@ The following languages are currently not support by any of the stores:
 Status
 -------------
 Current status: draft  
-Specification version: 0.96
-Last update: February 18, 2013  
+Specification version: 0.97
+Last update: March 25, 2013  
 
 Change History
 -------------
+### Version 0.97 (March 23, 2013)
+
+* `href` attribute is added to the `<eula>` tag, now the `<eula>` should include both a link to the EULA webpage as well as full EULA text. 
+* Maximum length requirement is added for the `<eula>` tag (5000 symbols). 
+* `href` attribute is added to the `<privacy-policy>` tag, now the `<privacy-policy>` should include both a link to the privacy policy webpage as well as full privacy policy text. 
+* Maximum length requirement is added for the `<privacy-policy>` tag (5000 symbols). 
+* `only-listed` attribute is added to the `<supported-resolutions>` tag to make it clear that either `<include>` or `<exclude>` subtags could be included but not both. 
+* `width` and `height` attributes are added to the `<small-promo>` tag. 
+* `width` and `height` attributes are added to the `<large-promo>` tag. 
+* `size` attribute is removed and `width` and `height` attributes are added to the `<app-icon>` tag. 
+* `width`, `height` and `index` attributes are added to the `<app-icon>` tag. 
+* `<app-icon>` anf `<screenshot>` images must be in PNG format. 
+* `<small-promo>` and `<large-promo>` images must be in PNG or JPG formats. 
+* Exact size for the `<small-promo>` and `<large-promo>` images is specified (180x120 and 1024x500 correspondingly). 
+* Each screenshot must be in 480x800 size, 1080x1920 and 1920x1200 sizes are recommended to have as well. 
+
 ### Version 0.96 (February 18, 2013)
 
 * `testing-instructions` tag is made required because many stores require this information. 
