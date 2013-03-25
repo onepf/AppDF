@@ -1460,7 +1460,9 @@ End User License Agreement for this application. It must include both a link to 
 
 Example:
 ```xml
-<eula href="http://wwww.mysite.com/legal/eula.html">Don't violate copyright law and no matter what happens, including damage to your equipment or even someone’s death, you agree not to blame us even if it is our fault.</eula>
+<eula href="http://wwww.mysite.com/legal/eula.html">Don't violate copyright law and no matter 
+what happens, including damage to your equipment or even someone’s death, you agree not to blame 
+us even if it is our fault.</eula>
 ```
 
 <table>
@@ -1936,7 +1938,7 @@ A tag that describes one screenshot. Screenshots must be in PNG format. There co
   </tr>
   <tr>
     <td>height</td>
-    <td>Must be `120`</td>
+    <td>A number</td>
     <td>Each store will choose one the best matching screen resolution from each screenshot group</td>
   </tr>
   <tr>
