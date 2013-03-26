@@ -412,8 +412,9 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                       <!-- description/texts/privacy-policy -->
                       <label class="control-label" for="description-texts-privacypolicy">Privacy policy</label>
                       <div class="controls">
-                        <input type="text" id="description-texts-privacypolicy" name="description-texts-privacypolicy"
+                        <input type="text" id="description-texts-link-privacypolicy" name="description-texts-privacypolicy"
                         >
+						<textarea id="description-texts-data-privacypolicy" class="input-xxlarge after-input" rows="5">test</textarea>
                         <p class="help-block">Link to privacy policy document for this application, required if your application collect personal data</p>
                       </div>
                     </div><!--./control-group -->
@@ -422,8 +423,9 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                       <!-- description/texts/eula -->
                       <label class="control-label" for="description-texts-eula">End user license agreement</label>
                       <div class="controls">
-                        <input type="text" id="description-texts-eula" name="description-texts-eula"
-                        >
+                        <input type="text" id="description-texts-link-eula" name="description-texts-eula"
+						>
+						<textarea id="description-texts-data-eula" class="input-xxlarge after-input" rows="5">test</textarea>
                         <p class="help-block">If you want you can provide a link to your End User License Agreement (EULA)</p>
                       </div>
                     </div><!--./control-group -->
@@ -1167,11 +1169,17 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                       Take information about supported screen resolutions from the APK files
                     </label>
                     <label class="radio">
-                      <input type="radio" name="requirements-supportedresolutions-type" id="requirements-supportedresolutions-type-custom" value="custom">
+                      <input type="radio" name="requirements-supportedresolutions-type" id="requirements-supportedresolutions-type-include" value="include">
+                      Enable custom screen resolution selection
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="requirements-supportedresolutions-type" id="requirements-supportedresolutions-type-exclude" value="exclude">
                       Enable custom screen resolution selection
                     </label>
                   </div>
-                  <div id="requirements-supportedresolutions" class="hide">
+                  <div id="requirements-supportedresolutions-include" class="hide">
+                  </div>
+				  <div id="requirements-supportedresolutions-exclude" class="hide">
                   </div>
                 </div>
               </div><!--control-group-->  

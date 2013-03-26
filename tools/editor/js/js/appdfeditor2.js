@@ -382,7 +382,7 @@ var appdfEditor = (function() {
         $modal.modal("show");
     };
 
-    function showYouTubeBorwseDialog(e) {
+    function showYouTubeBrowseDialog(e) {
         var $original = $(e).closest(".input-append").find("input");
         var $modal = $("#description-videos-youtubevideo-dialog");
         var $video = $modal.find("#description-videos-youtubevideo-dialog-video");
@@ -467,10 +467,10 @@ var appdfEditor = (function() {
     };
 
     function fillScreenResolutions() {
-        var $div = $("#requirements-supportedresolutions");
+        var $div = $("div[id^=\"requirements-supportedresolutions\"]");
 		$div.empty();
         for (var resolution in dataScreenResolutions) {
-            var $resolutionElement = $('<label class="checkbox"><input type="checkbox" value="" id="requirements-supportedresolutions-' + resolution + '">' + dataScreenResolutions[resolution] + '</label>');
+            var $resolutionElement = $('<label class="checkbox"><input type="checkbox" value="" class="requirements-supportedresolutions-' + resolution + '">' + dataScreenResolutions[resolution] + '</label>');
             $div.append($resolutionElement);
         };
     };
@@ -606,7 +606,7 @@ var appdfEditor = (function() {
         });
 
         $('body').on('click', '.description-videos-youtubevideo-browse', function(event) {
-            showYouTubeBorwseDialog(event.target);
+            showYouTubeBrowseDialog(event.target);
             return false;
         });
 
@@ -635,11 +635,17 @@ var appdfEditor = (function() {
             $("#requirements-supportedlanguages").hide();
         });
 		
-        $('#requirements-supportedresolutions-type-custom').click(function(event) {
-            $("#requirements-supportedresolutions").show();
+        $('#requirements-supportedresolutions-type-include').click(function(event) {
+            $("#requirements-supportedresolutions-include").show();
+			$("#requirements-supportedresolutions-exclude").hide();
+        });
+		$('#requirements-supportedresolutions-type-exclude').click(function(event) {
+			$("#requirements-supportedresolutions-include").hide();
+            $("#requirements-supportedresolutions-exclude").show();
         });
 		$('#requirements-supportedresolutions-type-default').click(function(event) {
-			$("#requirements-supportedresolutions").hide();
+			$("#requirements-supportedresolutions-include").hide();
+			$("#requirements-supportedresolutions-exclude").hide();
 		});
 		
 
@@ -735,13 +741,21 @@ var appdfEditor = (function() {
 	};
 	
 	function validationCallbackScreenshotRequired($el, value, callback) {
+		if ($el[0].files.length === 0) {
+			callback({
+				value: value,
+				valid: false,
+				message: "Screenshot is required"
+			});
+			return;
+		};
 		var imageFileName = appdfEditor.normalizeInputFileName($el.val());
 		var file = $el[0].files[0];
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		
 		getImgSize(imgUrl, function(width, height) {
-			if (false /*todo: add some size checking*/) {
+			if (true /*todo: add some size checking*/) {
 				callback({
 					value: value,
 					valid: true

@@ -75,16 +75,20 @@ var appdfXMLLoader = (function() {
 			$container.find("#description-texts-recentchanges").val("");		
 		};
 
-		if (data["texts"]["privacy-policy"]) {
-			$container.find("#description-texts-privacypolicy").val(data["texts"]["privacy-policy"]);
+		if (data["texts"]["privacy-policy"] && data["texts"]["privacy-policy-link"]) {
+			$container.find("#description-texts-data-privacypolicy").val(data["texts"]["privacy-policy"]);
+			$container.find("#description-texts-link-privacypolicy").val(data["texts"]["privacy-policy-link"]);
 		} else {
-			$container.find("#description-texts-privacypolicy").val("");		
+			$container.find("#description-texts-data-privacypolicy").val("");
+			$container.find("#description-texts-link-privacypolicy").val("");
 		};
 
-		if (data["texts"]["eula"]) {
-			$container.find("#description-texts-eula").val(data["texts"]["eula"]);
+		if (data["texts"]["eula"] && data["texts"]["eula-link"]) {
+			$container.find("#description-texts-link-eula").val(data["texts"]["eula-link"]);
+			$container.find("#description-texts-data-eula").val(data["texts"]["eula"]);
 		} else {
-			$container.find("#description-texts-eula").val("");		
+			$container.find("#description-texts-link-eula").val("");
+			$container.find("#description-texts-data-eula").val("");
 		};
 
 		if (data["videos"]["youtube-video"]) {
@@ -293,12 +297,14 @@ var appdfXMLLoader = (function() {
 				};
 			};
 			
-			if (dataRequirements["supported-resolutions"] && dataRequirements["supported-resolutions"]["include"]) {
-				$("#requirements-supportedresolutions-type-custom").click();
-				var $el, supportedResolutions = dataRequirements["supported-resolutions"]["include"];
+			if (dataRequirements["supported-resolutions"] && (dataRequirements["supported-resolutions"]["include"] || dataRequirements["supported-resolutions"]["exclude"])) {
+				var onlyListedType = dataRequirements["supported-resolutions"]["include"]?"include":"exclude";
+				$("#requirements-supportedresolutions-type-" + onlyListedType).click();
+				
+				var $el, supportedResolutions = dataRequirements["supported-resolutions"][onlyListedType];
 				
 				for (var i in supportedResolutions) {
-					$el = $('#requirements-supportedresolutions input[id="requirements-supportedresolutions-' + supportedResolutions[i] + '"]');
+					$el = $('#requirements-supportedresolutions-' + onlyListedType + ' input[class="requirements-supportedresolutions-' + supportedResolutions[i] + '"]');
 					if ($el.size()) {
 						$el.attr("checked", "checked");
 					};

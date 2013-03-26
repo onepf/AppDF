@@ -21,8 +21,56 @@
  * Depends on: jquery.js, appdfedior.js
  */
 
- $(function() {
-    function onInputImageRemove(e) {
+ var appdfImages = (function() {
+	function addMoreAppIcon(e) {
+		var $parent = $(e).closest(".image-group");
+		var $controlGroup = $(' \
+		<div class="image-input-group"> \
+			<input type="file" id="description-images-appicon-' + getUniqueId() + '" class="hide ie_show appicon-input empty-image" \
+				name="description-images-appicon-' + getUniqueId() + '" \
+				accept="image/png" \
+				data-validation-callback-callback="appdfEditor.validationCallbackAppIconFirst" \
+			/> \
+			<img src="img/appicon_placeholder.png" width="128" height="128"> \
+			<p class="image-input-label"></p> \
+		</div> \
+		');
+		$parent.append($controlGroup);
+		addValidationToElements($controlGroup.find("input"));
+	};
+	
+	function addMoreScreenshots(e) {
+		var $parent = $(e).closest(".image-group");
+		var $controlGroup = $(' \
+		<div class="image-input-group"> \
+			<input type="file" id="description-images-screenshot-' + getUniqueId() + '" class="hide ie_show screenshot-input empty-image" \
+				name="description-images-screenshot-' + getUniqueId() + '" \
+				accept="image/png" \
+				data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired" \
+			/> \
+			<img src="img/screenshot_placeholder.png" width="132" height="220"> \
+			<p class="image-input-label"></p> \
+		</div> \
+		');
+		$parent.append($controlGroup);
+		addValidationToElements($controlGroup.find("input"));
+	};
+	
+	function addScreenshotIndex(e) {
+		var $parent = $(e.target).closest(".image-input-group");
+		var $controlGroup = $(' \
+			<input type="file" id="description-images-screenshot-' + getUniqueId() + '" class="hide ie_show screenshot-input empty-image" \
+				name="description-images-screenshot-' + getUniqueId() + '" \
+				accept="image/png" \
+				data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired" \
+			/> \
+			<img src="img/screenshot_placeholder.png" width="132" height="220"> \
+		');
+		$parent.find("p").before($controlGroup);
+		addValidationToElements($controlGroup.find("input"));
+	};
+	
+	function onInputImageRemove(e) {
         $(e.target).closest(".image-input-group").remove();
         return false;
     };
@@ -78,7 +126,11 @@
 
         var $group = $el.closest(".image-input-group");
 
-        $group.find(".image-input-label").append($('<span> (<a href="#" class="image-input-remove">remove</a> | <a href="#" class="image-input-moveup">move up</a> | <a href="#" class="image-input-movedown">move down</a>)</span>'));
+        $group.find(".image-input-label").append($('<span> \
+			(<a href="#" class="image-input-remove">remove</a> | \
+			<a href="#" class="image-input-moveup">move up</a> | \
+			<a href="#" class="image-input-movedown">move down</a> | \
+			<a href="#" class="image-input-addindex">add other resolution</a>)</span>'));
         $group.find("a.image-input-remove").click(function (e) {
             onScreenshoutRemove(e);
             return false;
@@ -101,14 +153,14 @@
         var URL = window.webkitURL || window.mozURL || window.URL;    
         var file = e.target.files[0];
         var imgUrl = URL.createObjectURL(file);
-
+		
+		$el.next().attr("src", imgUrl);
+		$el.removeClass("empty-image");
+        
         var $group = $el.closest(".image-input-group");
-        $group.find("img").attr("src", imgUrl);
+		$group.find(".image-input-label").html('<span class="image-input-name"></span>');
 
-        $group.find("input").removeClass("empty-image");
-        $group.find(".image-input-label").html('<span class="image-input-name"></span>');
-
-        var imgUrl = $group.find("img").attr("src");
+        var imgUrl = $el.next().attr("src");
         getImgSize(imgUrl, function(width, height) {
             $group.find(".image-input-name").text(imageFileName + " " + width + "x" + height);
         });
@@ -125,16 +177,25 @@
 
         $('body').on('click', '.image-input-group', function(e) {
             if (e.target.tagName.toLowerCase() === "img") {
-                $(e.target).closest(".image-input-group").children("input").click();
+				$(e.target).prev().click();
                 e.preventDefault();
             };
         });
 
+		$('body').on('click', '.image-input-addindex', function(e) {
+			addScreenshotIndex(e);
+			return false;
+		});
+		
         $('body').on('click', '.image-input-remove', function(e) {
             onInputImageRemove(e);
             return false;
         });        
     };
 
-    init();
- });
+    return {
+		init : init,
+		addMoreAppIcon : addMoreAppIcon,
+		addMoreScreenshots : addMoreScreenshots
+	};
+ })();

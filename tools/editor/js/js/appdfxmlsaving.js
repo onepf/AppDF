@@ -81,14 +81,18 @@ var appdfXMLSaver = (function() {
 				xml.addNonEmptyTextTag("<recent-changes>", strRecentChanges);		
 			};
 
-			//Privacy policy and EULA links
-			var strPrivacyPolicy = $parent.find("#description-texts-privacypolicy").val();
-			var strEULA = $parent.find("#description-texts-eula").val();
-			if (strPrivacyPolicy!="") {
-				xml.addNonEmptyTextTag("<privacy-policy>", strPrivacyPolicy);		
+			//Privacy policy
+			var PrivacyPolicyLink = $parent.find("#description-texts-link-privacypolicy").val();
+			var PrivacyPolicyText = $parent.find("#description-texts-data-privacypolicy").val();
+			if (PrivacyPolicyText!="" && PrivacyPolicyLink!="") {
+				xml.addNonEmptyTextTag("<privacy-policy href=\"" + PrivacyPolicyLink + "\">", PrivacyPolicyText);
 			};
-			if (strEULA!="") {
-				xml.addNonEmptyTextTag("<eula>", strEULA);		
+			
+			//EULA
+			var EULAlink = $parent.find("#description-texts-link-eula").val();
+			var EULAtext = $parent.find("#description-texts-data-eula").val();
+			if (EULAtext!="" && EULAlink!="") {
+				xml.addNonEmptyTextTag("<eula href=\"" + EULAlink + "\">", EULAtext);
 			};
 		});	
 	};
@@ -113,16 +117,16 @@ var appdfXMLSaver = (function() {
 		if (numberOfImages>0) {
 			xml.addTag("<images>", function() {
 				$parent.find("input[id^=description-images-appicon]").each(function() {
-					xml.addNonEmptyTextTag("<app-icon>", appdfEditor.normalizeInputFileName($(this).val()));
+					xml.addNonEmptyTextTag("<app-icon width=\"" + 0 + "\" height=\"" + 0 + "\">", appdfEditor.normalizeInputFileName($(this).val()));
 				});
 
-				xml.addNonEmptyTextTag("<large-promo>", appdfEditor.normalizeInputFileName($parent.find("#description-images-largepromo").val()));
-				xml.addNonEmptyTextTag("<small-promo>", appdfEditor.normalizeInputFileName($parent.find("#description-images-smallpromo").val()));
+				xml.addNonEmptyTextTag("<large-promo width=\"" + 0 + "\" height=\"" + 0 + "\">", appdfEditor.normalizeInputFileName($parent.find("#description-images-largepromo").val()));
+				xml.addNonEmptyTextTag("<small-promo width=\"" + 0 + "\" height=\"" + 0 + "\">", appdfEditor.normalizeInputFileName($parent.find("#description-images-smallpromo").val()));
 
 				if ($screenshots.length>0) {
-					xml.addTag("<screenshots>", function() {
+					xml.addTag("<screenshots width=\"" + 0 + "\" height=\"" + 0 + "\" index=\"" + 0 + "\">", function() {
 						$screenshots.each(function() {
-							xml.addNonEmptyTextTag("<sccreenshot>", appdfEditor.normalizeInputFileName($(this).val()));
+							xml.addNonEmptyTextTag("<screenshot>", appdfEditor.normalizeInputFileName($(this).val()));
 						});
 					});
 				};
@@ -287,9 +291,10 @@ var appdfXMLSaver = (function() {
 		
 		var $selectedSupportedLanguages = $('#section-requirements input:checked[id^="requirements-supportedlanguages-"][type="checkbox"]');
 		var $unsupportedDevices = $('#section-requirements input[name^="unsupport-device-name-"]');
-		var $selectedSupportedResolutions = $('#section-requirements input:checked[id^="requirements-supportedresolutions-"][type="checkbox"]');
+		var $selectedSupportedResolutions = $('#requirements-supportedresolutions-include input:checked[id^="requirements-supportedresolutions-"][type="checkbox"]');
+		var $selectedUnSupportedResolutions = $('#requirements-supportedresolutions-exclude input:checked[id^="requirements-supportedresolutions-"][type="checkbox"]');
 		
-		if (!anyFeatureChecked && !$selectedSupportedLanguages.size() && !$selectedSupportedResolutions.size()) {
+		if (!anyFeatureChecked && !$selectedSupportedLanguages.size() && !$selectedSupportedResolutions.size() && !$$selectedUnSupportedResolutions.size()) {
 			return;
 		};
 		
@@ -320,12 +325,17 @@ var appdfXMLSaver = (function() {
 				});
 			};
 			
-			if ($selectedSupportedResolutions.size() && $('#requirements-supportedresolutions-type-custom:checked').size()) {
-				xml.addTag("<supported-resolutions>", function() {
-					var supportedResolutionName;
+			if ($('#requirements-supportedresolutions-type-include:checked').size() && $selectedSupportedResolutions.size()) {
+				xml.addTag("<supported-resolutions only-listed=\"yes\">", function() {
 					$selectedSupportedResolutions.each(function() {
-						supportedResolutionName = $(this).attr('id').split('-')[2];
-						xml.addTag("<include>", supportedResolutionName);
+						xml.addTag("<include>", $(this).attr('id').split('-')[2]);
+					});
+				});
+			};
+			if ($('#requirements-supportedresolutions-type-exclude:checked').size() && $selectedUnSupportedResolutions.size()) {
+				xml.addTag("<supported-resolutions only-listed=\"no\">", function() {
+					$selectedSupportedResolutions.each(function() {
+						xml.addTag("<include>", $(this).attr('id').split('-')[2]);
 					});
 				});
 			};
@@ -359,7 +369,7 @@ var appdfXMLSaver = (function() {
 		var xml = new XMLGenerator();
 		xml.addLine('<?xml version="1.0" encoding="UTF-8"?>');
 		xml.addTag('<application-description-file version="1">', function() {
-			xml.addTag('<application package="' + firstApkFileData.package + '">', function() {
+			xml.addTag('<application platform="android" package="' + firstApkFileData.package + '">', function() {
 				generateCategorizationXML(xml);
 				generateDescriptionXML(xml);
 				generateDescriptionLocalizationsXML(xml);
