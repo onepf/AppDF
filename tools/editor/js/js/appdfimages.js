@@ -72,20 +72,25 @@
 	
 	function onInputImageRemove(e) {
         $(e.target).closest(".image-input-group").remove();
+		setScreenshotsIndexList(e);
         return false;
     };
-
-    function onScreenshoutRemove(e) {
-        onInputImageRemove(e);
-        return false;
-    };
-
+	
+	function setScreenshotsIndexList(e) {
+		var $screenshotsGroup = $(e.target).closest(".image-group").find(".image-input-group.not-empty-group");
+		var currentIndex = 1;
+		for (var i=0; i<$screenshotsGroup.length; i++) {
+			$($screenshotsGroup[i]).data("index", currentIndex++);
+		};
+	};
+	
     function onScreenshotImageInputMoveUp(e) {
         var $imageInputGroup = $(e.target).closest(".image-input-group");
         var $imageGroup = $imageInputGroup.parent();
         if ($imageInputGroup.prev().length>0) {
             $imageInputGroup.prev().before($imageInputGroup);
         };
+		setScreenshotsIndexList(e);
         return false;
     };
 
@@ -95,6 +100,7 @@
         if ($imageInputGroup.next().length>0) {
             $imageInputGroup.next().after($imageInputGroup);
         };
+		setScreenshotsIndexList(e);
         return false;
     };
 
@@ -108,7 +114,7 @@
         var firstImage = $group.is(':first-child');
 
         if (!isDefaultLanguage($el) || !firstImage) {
-            $group.find(".image-input-label").append($('<span> (<a href="#" class="image-input-remove">remove</a>)</span>'));
+            $group.find(".image-input-label").append($('<span><a href="#" class="btn btn-small image-input-remove">remove</a></span>'));
         };
 
         if ($group.parent().find("input.empty-image").length===0) {
@@ -120,26 +126,30 @@
 
     function onScreenshotImageInputChange(e) {
         onImageInputChange(e);
-
+		if (e.target.files.length === 0) {
+            return false;
+        };
+		
         var $el = $(e.target);
         var imageFileName = appdfEditor.normalizeInputFileName($el.val());
 
         var $group = $el.closest(".image-input-group");
 
-        $group.find(".image-input-label").append($('<span> \
-			(<a href="#" class="image-input-remove">remove</a> | \
-			<a href="#" class="image-input-moveup">move up</a> | \
-			<a href="#" class="image-input-movedown">move down</a> | \
-			<a href="#" class="image-input-addindex">add other resolution</a>)</span>'));
-        $group.find("a.image-input-remove").click(function (e) {
-            onScreenshoutRemove(e);
-            return false;
-        });
+        $group.find(".image-input-label").append($('<span class="btn-group"> \
+			<a href="#" class="btn btn-small image-input-remove">remove</a> | \
+			<a href="#" class="btn btn-small image-input-moveup">move up</a> | \
+			<a href="#" class="btn btn-small image-input-movedown">move down</a> | \
+			<a href="#" class="btn btn-small image-input-addindex">add other resolution</a></span>'));
 
         if ($group.parent().find("input.empty-image").length===0) {
             addMoreScreenshots($el);
-        };   
-
+        };
+		
+		if (!$group.hasClass("not-empty-group")) {
+			$group.addClass("not-empty-group");
+		};
+		
+		setScreenshotsIndexList(e);
         return false; 
     };
 
@@ -158,10 +168,11 @@
 		$el.removeClass("empty-image");
         
         var $group = $el.closest(".image-input-group");
-		$group.find(".image-input-label").html('<span class="image-input-name"></span>');
+		$group.find(".image-input-label").html('<span class="label image-input-name"></span>');
 
         var imgUrl = $el.next().attr("src");
         getImgSize(imgUrl, function(width, height) {
+			$el.data("width", width).data("height", height);
             $group.find(".image-input-name").text(imageFileName + " " + width + "x" + height);
         });
 
@@ -196,6 +207,7 @@
     return {
 		init : init,
 		addMoreAppIcon : addMoreAppIcon,
-		addMoreScreenshots : addMoreScreenshots
+		addMoreScreenshots : addMoreScreenshots,
+		addScreenshotIndex: addScreenshotIndex
 	};
  })();

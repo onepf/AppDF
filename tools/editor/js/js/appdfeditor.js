@@ -154,6 +154,8 @@ function collectBuildErrors(onsuccess, onerror) {
 	
     appdfEditor.validationCallbackApkFileFirst($("#apk-file"), $("#apk-file").val(), checkErrorMessage);
 	appdfEditor.validationCallbackAppIconFirst($("#description-images-appicon"), $("#description-images-appicon").val(), checkErrorMessage);
+	appdfEditor.validationCallbackSmallPromo($("#description-images-smallpromo"), $("#description-images-smallpromo").val(), checkErrorMessage);
+	appdfEditor.validationCallbackLargePromo($("#description-images-largepromo"), $("#description-images-largepromo").val(), checkErrorMessage);
 	
 	var $screenShotList = $('.screenshot-input');
 	totalErrorCheckCount += $screenShotList.size();//add screenshots count to total error checks
@@ -161,9 +163,31 @@ function collectBuildErrors(onsuccess, onerror) {
 		appdfEditor.validationCallbackScreenshotRequired($(this), $(this).val(), checkErrorMessage);
 	});
 	
-	//TODO eula && privacy validation
+	//privacy policy validation
+	var $privacyPolicyArr = $("input[id^=\"description-texts-link-privacypolicy\"]");
+	$privacyPolicyArr.each(function() {
+		if (($(this).val()!=="" && $(this).next().val()==="") || ($(this).val()==="" && $(this).next().val()!=="")) {
+			checkErrorMessage({
+				valid: false,
+				value: "",
+				message: "Privacy policy should include both link and full text"
+			});
+			return false;
+		};
+	});
 	
-	
+	//eula validation
+	var $eulaArr = $("input[id^=\"description-texts-link-eula\"]");
+	$eulaArr.each(function() {
+		if (($(this).val()!=="" && $(this).next().val()==="") || ($(this).val()==="" && $(this).next().val()!=="")) {
+			checkErrorMessage({
+				valid: false,
+				value: "",
+				message: "End user license agreement should include both link and full text"
+			});
+			return false;
+		};
+	});
 	
 	//validate store specify
 	var $storeSpecific = $("#section-store-specific input[name^='storespecific-name-']");

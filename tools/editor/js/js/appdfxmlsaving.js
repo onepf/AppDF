@@ -117,16 +117,25 @@ var appdfXMLSaver = (function() {
 		if (numberOfImages>0) {
 			xml.addTag("<images>", function() {
 				$parent.find("input[id^=description-images-appicon]").each(function() {
-					xml.addNonEmptyTextTag("<app-icon width=\"" + 0 + "\" height=\"" + 0 + "\">", appdfEditor.normalizeInputFileName($(this).val()));
+					xml.addNonEmptyTextTag("<app-icon width=\"" + $(this).data("width") + 
+						"\" height=\"" + $(this).data("height") + "\">", 
+						appdfEditor.normalizeInputFileName($(this).val()));
 				});
 
-				xml.addNonEmptyTextTag("<large-promo width=\"" + 0 + "\" height=\"" + 0 + "\">", appdfEditor.normalizeInputFileName($parent.find("#description-images-largepromo").val()));
-				xml.addNonEmptyTextTag("<small-promo width=\"" + 0 + "\" height=\"" + 0 + "\">", appdfEditor.normalizeInputFileName($parent.find("#description-images-smallpromo").val()));
+				xml.addNonEmptyTextTag("<large-promo width=\"" + $parent.find("#description-images-largepromo").data("width") + 
+					"\" height=\"" + $parent.find("#description-images-largepromo").data("height") + "\">", 
+					appdfEditor.normalizeInputFileName($parent.find("#description-images-largepromo").val()));
+				xml.addNonEmptyTextTag("<small-promo width=\"" + $parent.find("#description-images-smallpromo").data("width") + 
+					"\" height=\"" + $parent.find("#description-images-smallpromo").data("height") + "\">", 
+					appdfEditor.normalizeInputFileName($parent.find("#description-images-smallpromo").val()));
 
 				if ($screenshots.length>0) {
-					xml.addTag("<screenshots width=\"" + 0 + "\" height=\"" + 0 + "\" index=\"" + 0 + "\">", function() {
+					xml.addTag("<screenshots>", function() {
 						$screenshots.each(function() {
-							xml.addNonEmptyTextTag("<screenshot>", appdfEditor.normalizeInputFileName($(this).val()));
+							xml.addNonEmptyTextTag("<screenshot width=\"" + $(this).data("width") + 
+								"\" height=\"" + $(this).data("height") + 
+								"\" index=\"" + $(this).closest(".image-input-group").data("index") + 
+								"\">", appdfEditor.normalizeInputFileName($(this).val()));
 						});
 					});
 				};
@@ -294,7 +303,7 @@ var appdfXMLSaver = (function() {
 		var $selectedSupportedResolutions = $('#requirements-supportedresolutions-include input:checked[id^="requirements-supportedresolutions-"][type="checkbox"]');
 		var $selectedUnSupportedResolutions = $('#requirements-supportedresolutions-exclude input:checked[id^="requirements-supportedresolutions-"][type="checkbox"]');
 		
-		if (!anyFeatureChecked && !$selectedSupportedLanguages.size() && !$selectedSupportedResolutions.size() && !$$selectedUnSupportedResolutions.size()) {
+		if (!anyFeatureChecked && !$selectedSupportedLanguages.size() && !$selectedSupportedResolutions.size() && !$selectedUnSupportedResolutions.size()) {
 			return;
 		};
 		
@@ -334,8 +343,8 @@ var appdfXMLSaver = (function() {
 			};
 			if ($('#requirements-supportedresolutions-type-exclude:checked').size() && $selectedUnSupportedResolutions.size()) {
 				xml.addTag("<supported-resolutions only-listed=\"no\">", function() {
-					$selectedSupportedResolutions.each(function() {
-						xml.addTag("<include>", $(this).attr('id').split('-')[2]);
+					$selectedUnSupportedResolutions.each(function() {
+						xml.addTag("<exclude>", $(this).attr('id').split('-')[2]);
 					});
 				});
 			};

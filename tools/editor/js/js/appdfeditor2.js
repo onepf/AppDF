@@ -470,7 +470,7 @@ var appdfEditor = (function() {
         var $div = $("div[id^=\"requirements-supportedresolutions\"]");
 		$div.empty();
         for (var resolution in dataScreenResolutions) {
-            var $resolutionElement = $('<label class="checkbox"><input type="checkbox" value="" class="requirements-supportedresolutions-' + resolution + '">' + dataScreenResolutions[resolution] + '</label>');
+            var $resolutionElement = $('<label class="checkbox"><input type="checkbox" id="requirements-supportedresolutions-' + resolution + '">' + dataScreenResolutions[resolution] + '</label>');
             $div.append($resolutionElement);
         };
     };
@@ -725,27 +725,41 @@ var appdfEditor = (function() {
     };
 	
 	function validationCallbackSmallPromo($el, value, callback) {
-		//TODO small promo check
-		callback({
-			value: value,
-			valid: true
+		if ($el[0].files.length === 0) {
+			callback({
+				value: value,
+				valid: true
+			});
+			return;
+		};
+		
+		var imageFileName = appdfEditor.normalizeInputFileName($el.val());
+		var file = $el[0].files[0];
+		var URL = window.webkitURL || window.mozURL || window.URL;    
+		var imgUrl = URL.createObjectURL(file);
+		
+		getImgSize(imgUrl, function(width, height) {
+			if (width===180 && height===120) {
+				$el.data("width", width).data("height", height);
+				callback({
+					value: value,
+					valid: true
+				});
+			} else {
+				callback({
+					value: value,
+					valid: false,
+					message: "Small promotion image size must be 180x120" 
+				});
+			};
 		});
 	};
 	
 	function validationCallbackLargePromo($el, value, callback) {
-		//TODO large promo check
-		callback({
-			value: value,
-			valid: true
-		});
-	};
-	
-	function validationCallbackScreenshotRequired($el, value, callback) {
 		if ($el[0].files.length === 0) {
 			callback({
 				value: value,
-				valid: false,
-				message: "Screenshot is required"
+				valid: true
 			});
 			return;
 		};
@@ -755,7 +769,38 @@ var appdfEditor = (function() {
 		var imgUrl = URL.createObjectURL(file);
 		
 		getImgSize(imgUrl, function(width, height) {
-			if (true /*todo: add some size checking*/) {
+			if (width===1024 && height===500) {
+				$el.data("width", width).data("height", height);
+				callback({
+					value: value,
+					valid: true
+				});
+			} else {
+				callback({
+					value: value,
+					valid: false,
+					message: "Large promotion image size must be 1024x500" 
+				});
+			};
+		});
+	};
+	
+	function validationCallbackScreenshotRequired($el, value, callback) {
+		if ($el[0].files.length === 0) {
+			callback({
+				value: value,
+				valid: true
+				//message: "Screenshot is required"
+			});
+			return;
+		};
+		var imageFileName = appdfEditor.normalizeInputFileName($el.val());
+		var file = $el[0].files[0];
+		var URL = window.webkitURL || window.mozURL || window.URL;    
+		var imgUrl = URL.createObjectURL(file);
+		
+		getImgSize(imgUrl, function(width, height) {
+			if ((width===480 && height===800) || (width===1080 && height===1920) || (width===1920 && height===1200)) {
 				callback({
 					value: value,
 					valid: true
