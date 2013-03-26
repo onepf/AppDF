@@ -21,9 +21,15 @@ SPECIFICATION
 Information about each attribute if it is optional or not
 Add size and resolution attributes to the APK files and images to better handle feed exchange case when files are not local 
 
+TODO:
+* Check with whom I have a conf call on Tuesday
+* Email Naver and other missed
+* Finish AppStore wiki page: https://github.com/onepf/AppDF/wiki/Android-Application-Stores
+* Make diagrams for AppDF and OpenIAB
 
 =========
 Update XSD
+Add EULA 5000 chars limit to EULA
 Create 20 AppDF samples with 20 types of error:
 1. File is mentioned in AppDF but not in ZIP
 2. Wrong app icon file format (for example JPG not PNG)
