@@ -382,7 +382,7 @@ var appdfEditor = (function() {
         $modal.modal("show");
     };
 
-    function showYouTubeBorwseDialog(e) {
+    function showYouTubeBrowseDialog(e) {
         var $original = $(e).closest(".input-append").find("input");
         var $modal = $("#description-videos-youtubevideo-dialog");
         var $video = $modal.find("#description-videos-youtubevideo-dialog-video");
@@ -606,7 +606,7 @@ var appdfEditor = (function() {
         });
 
         $('body').on('click', '.description-videos-youtubevideo-browse', function(event) {
-            showYouTubeBorwseDialog(event.target);
+            showYouTubeBrowseDialog(event.target);
             return false;
         });
 
@@ -735,6 +735,15 @@ var appdfEditor = (function() {
 	};
 	
 	function validationCallbackScreenshotRequired($el, value, callback) {
+		if ($el[0].files.length === 0) {
+			callback({
+				value: value,
+				valid: false,
+				message: "Screenshot is required"
+			});
+			return;
+		};
+		
 		var imageFileName = appdfEditor.normalizeInputFileName($el.val());
 		var file = $el[0].files[0];
 		var URL = window.webkitURL || window.mozURL || window.URL;    
