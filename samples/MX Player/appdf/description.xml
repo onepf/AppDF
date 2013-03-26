@@ -51,9 +51,10 @@ About "System Tools - display system-level alerts" permission: this permissions 
                     <feature>Subtitle Scroll</feature>
                 </features>
                 <recent-changes>
-                Fixed not automatically advancing to next video/audio when screen is locked.
-                Fixed broken Tegra3 s/w video playback.
-                Fixed broken MIPS s/w audio playback.
+Fixed broken h/w+ decoder on Tegra 3 and Intel x86 devices.
+Fixed broken s/w audio decoder settings.
+Moved screen rotation button to left side of the screen on Android 3.0 and later.
+Added hiding option of screen rotation button.
                 </recent-changes>
             </texts>
 
@@ -222,7 +223,7 @@ f) ANDROID 4.1 - полная поддержка Android 4.1 Jelly Bean.
                     <kindle-fire-hd>yes</kindle-fire-hd>
                     <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
                 </kindle-support>
-                <binary-alias>Version 1.7.10</binary-alias>
+                <binary-alias>Version 1.7.13</binary-alias>
             </amazon>
             
            
