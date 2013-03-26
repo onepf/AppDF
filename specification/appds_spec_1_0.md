@@ -7667,7 +7667,7 @@ Change History
 * `width` and `height` attributes are added to the `<small-promo>` tag. 
 * `width` and `height` attributes are added to the `<large-promo>` tag. 
 * `size` attribute is removed and `width` and `height` attributes are added to the `<app-icon>` tag. 
-* `width`, `height` and `index` attributes are added to the `<app-icon>` tag. 
+* `width`, `height` and `index` attributes are added to the `<screenshot>` tag. 
 * `<app-icon>` anf `<screenshot>` images must be in PNG format. 
 * `<small-promo>` and `<large-promo>` images must be in PNG or JPG formats. 
 * Exact size for the `<small-promo>` and `<large-promo>` images is specified (180x120 and 1024x500 correspondingly). 
