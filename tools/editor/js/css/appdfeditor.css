@@ -43,3 +43,7 @@ div.apk-file-info {
 .file-input-group {
     display: inline;
 }
+
+textarea.after-input {
+	margin-top: 10px;
+}
