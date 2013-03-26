@@ -20,15 +20,15 @@
                 <short-description>Traditional flash cards for learning Swedish language.</short-description>
                 <full-description>
                     Traditional flash cards for learning Swedish language enhanced with smartphone technologies like photos, native speakers' dubbing, learning progress visualization, smart adaptive algorithm, and detailed statistics. The program helps you to skip the stage of translating a word into your mother tongue first, but memorizing a direct match of a subject and a foreign word instead.
-
                     <features>
-                        <feature>1000+ words and 65+ categories</feature>
-                        <feature>Explicit photos for all words</feature>
-                        <feature>Voice records by native speakers</feature>
-                        <feature>5 different learning modes</feature>
-                        <feature>Track your learning progress with detailed statistics</feature>
+                        <ul>
+                        <li>1000+ words and 65+ categories</li>
+                        <li>Explicit photos for all words</li>
+                        <li>Voice records by native speakers</li>
+                        <li>5 different learning modes</li>
+                        <li>Track your learning progress with detailed statistics</li>
+                        </ul>
                     </features>
-
                 </full-description>
                 <features>
                     <feature>1000+ words and 65+ categories</feature>
@@ -37,11 +37,10 @@
                     <feature>5 different learning modes</feature>
                     <feature>Track your learning progress with detailed statistics</feature>
                 </features>
-                
             </texts>
 
             <images>
-                <app-icon size="512">appicon.png</app-icon>
+                <app-icon width="512" height="512">appicon.png</app-icon>
                 <screenshots>
                     <screenshot>screenshot01_en.png</screenshot>
                     <screenshot>screenshot02_en.png</screenshot>
