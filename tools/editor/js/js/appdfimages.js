@@ -29,7 +29,7 @@
 			<input type="file" id="description-images-appicon-' + getUniqueId() + '" class="hide ie_show appicon-input empty-image" \
 				name="description-images-appicon-' + getUniqueId() + '" \
 				accept="image/png" \
-				data-validation-callback-callback="appdfEditor.validationCallbackAppIconFirst" \
+				data-validation-callback-callback="appdfEditor.validationCallbackAppIconMore" \
 			/> \
 			<img src="img/appicon_placeholder.png" width="128" height="128"> \
 			<p class="image-input-label"></p> \
@@ -108,12 +108,10 @@
         onImageInputChange(e);
 
         var $el = $(e.target);
-        var imageFileName = appdfEditor.normalizeInputFileName($el.val());
-
         var $group = $el.closest(".image-input-group");
         var firstImage = $group.is(':first-child');
 
-        if (!isDefaultLanguage($el) || !firstImage) {
+        if (!appdfLocalization.isDefaultLanguage($el) || !firstImage) {
             $group.find(".image-input-label").append($('<span><a href="#" class="btn btn-small image-input-remove">remove</a></span>'));
         };
 
@@ -131,8 +129,6 @@
         };
 		
         var $el = $(e.target);
-        var imageFileName = appdfEditor.normalizeInputFileName($el.val());
-
         var $group = $el.closest(".image-input-group");
 
         $group.find(".image-input-label").append($('<span class="btn-group"> \
@@ -154,14 +150,15 @@
     };
 
     function onImageInputChange(e) {
-        if (e.target.files.length === 0) {
+        console.log("onImageInputChange");
+        var $el = $(e.target);
+        if (appdfEditor.isNoFile($el[0])) {
             return false;
         };
         
-        var $el = $(e.target);
-        var imageFileName = appdfEditor.normalizeInputFileName($el.val());
+        var imageFileName = appdfEditor.getFileName($el[0]);
         var URL = window.webkitURL || window.mozURL || window.URL;    
-        var file = e.target.files[0];
+        var file = appdfEditor.getFileContent($el[0]);
         var imgUrl = URL.createObjectURL(file);
 		
 		$el.next().attr("src", imgUrl);
@@ -178,7 +175,17 @@
 
         return false;
     };
-
+    
+    function getImgSize(imgSrc, onsize) {
+        var newImg = new Image();
+        newImg.onload = function() {
+            var width = newImg.width;
+            var height = newImg.height;
+            onsize(width, height);
+        };
+        newImg.src = imgSrc; // this must be done AFTER setting onload
+    };
+    
     function init() {
         $('body').on('click', '.image-input-moveup', onScreenshotImageInputMoveUp);
         $('body').on('click', '.image-input-movedown', onScreenshotImageInputMoveDown);
@@ -208,6 +215,12 @@
 		init : init,
 		addMoreAppIcon : addMoreAppIcon,
 		addMoreScreenshots : addMoreScreenshots,
-		addScreenshotIndex: addScreenshotIndex
+		addScreenshotIndex: addScreenshotIndex,
+        onAppIconImageInputChange : onAppIconImageInputChange,
+        getImgSize : getImgSize
 	};
  })();
+ 
+ $(function() {
+	appdfImages.init();
+});

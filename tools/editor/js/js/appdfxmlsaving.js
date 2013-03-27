@@ -82,15 +82,15 @@ var appdfXMLSaver = (function() {
 			};
 
 			//Privacy policy
-			var PrivacyPolicyLink = $parent.find("#description-texts-link-privacypolicy").val();
-			var PrivacyPolicyText = $parent.find("#description-texts-data-privacypolicy").val();
+			var PrivacyPolicyLink = $parent.find("#description-texts-privacypolicy-link").val();
+			var PrivacyPolicyText = $parent.find("#description-texts-privacypolicy-data").val();
 			if (PrivacyPolicyText!="" && PrivacyPolicyLink!="") {
 				xml.addNonEmptyTextTag("<privacy-policy href=\"" + PrivacyPolicyLink + "\">", PrivacyPolicyText);
 			};
 			
 			//EULA
-			var EULAlink = $parent.find("#description-texts-link-eula").val();
-			var EULAtext = $parent.find("#description-texts-data-eula").val();
+			var EULAlink = $parent.find("#description-texts-eula-link").val();
+			var EULAtext = $parent.find("#description-texts-eula-data").val();
 			if (EULAtext!="" && EULAlink!="") {
 				xml.addNonEmptyTextTag("<eula href=\"" + EULAlink + "\">", EULAtext);
 			};

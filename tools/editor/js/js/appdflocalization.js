@@ -150,12 +150,20 @@ var appdfLocalization = (function() {
             return false;
         });
     };
+    
+    function isDefaultLanguage($el) {
+        var $tab = $el.closest(".tab-pane");
+        var tabId = $tab.attr('id')
+        var result = (tabId==="localization-tab-default");
+        return result;
+    };
 
     return {
         init : init,
         removeAllLocalizations : removeAllLocalizations,
         addLocalization : addLocalization,
         selectLanguage : selectLanguage,
+        isDefaultLanguage : isDefaultLanguage,
         getDescriptionLanguages : getDescriptionLanguages
     };
 })();

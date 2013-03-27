@@ -21,7 +21,6 @@
  *             xmlgenerator.js, zip.js, appdflocalization.js, apkreader.js, appdfparser.js, appdfxmlsaving.js, appdfxmlloading.js
  */
 
-var MAXIMUM_APK_FILE_SIZE = 50000000;
 var firstApkFileData = {};
 var globalUnigueCounter = 0;
 
@@ -35,42 +34,8 @@ $(document).ready(function() {
     zip.workerScriptsPath = "js/zip/";
 
     addValidationToElements($("input,textarea,select"));
-    $("#build-appdf-file").click(function(event) {
-        return buildAppdDFFile(event);
-    });
-
-    $("#price-free-trialversion").change(function() {
-        var trialVersion = $("#price-free-trialversion").attr("checked");
-        if (trialVersion === "checked") {
-            $("#price-free-fullversion").removeAttr('disabled');
-        } else {
-            $("#price-free-fullversion").attr('disabled', 'disabled');
-        };
-    });
-	
-	appdfImages.init();
 });
 
-
-//Checks does the given element from the description belong to default language or one of optional localizations
-function isDefaultLanguage($el) {
-    var $tab = $el.closest(".tab-pane");
-    var tabId = $tab.attr('id')
-    var result = (tabId==="localization-tab-default");
-    return result;
-};
-
-function fillApkFileInfo($el, apkData) {
-    var $info = $el.closest(".control-group").find(".apk-file-info");
-    $info.empty();
-
-    if (apkData) {
-        var $table = $("<table class='table table-striped table-bordered'/>");
-        $table.append($("<tr><td>Package</td><td>" + apkData["package"] + "</td></tr>"));
-        $table.append($("<tr><td>Version</td><td>" + apkData["version"] + "</td></tr>"));
-        $info.append($table);
-    };
-};
 
 
 function generateAppDFFile(onend) {
@@ -115,8 +80,8 @@ function generateAppDFFile(onend) {
 };
 
 function collectBuildErrors(onsuccess, onerror) {
-	var totalErrorCheckCount = 4, //TOTAL check for error blocks;
-		currentErrorCheckCount = 0;
+	var totalErrorCheckCount = 4; //TOTAL check for error blocks;
+	var currentErrorCheckCount = 0;
     var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
 	var errorArray = [];
     for (field in errors) {
@@ -164,7 +129,7 @@ function collectBuildErrors(onsuccess, onerror) {
 	});
 	
 	//privacy policy validation
-	var $privacyPolicyArr = $("input[id^=\"description-texts-link-privacypolicy\"]");
+	var $privacyPolicyArr = $("input[id^=\"description-texts-privacypolicy-link\"]");
 	$privacyPolicyArr.each(function() {
 		if (($(this).val()!=="" && $(this).next().val()==="") || ($(this).val()==="" && $(this).next().val()!=="")) {
 			checkErrorMessage({
@@ -177,7 +142,7 @@ function collectBuildErrors(onsuccess, onerror) {
 	});
 	
 	//eula validation
-	var $eulaArr = $("input[id^=\"description-texts-link-eula\"]");
+	var $eulaArr = $("input[id^=\"description-texts-eula-link\"]");
 	$eulaArr.each(function() {
 		if (($(this).val()!=="" && $(this).next().val()==="") || ($(this).val()==="" && $(this).next().val()!=="")) {
 			checkErrorMessage({
@@ -283,15 +248,6 @@ function addValidationToElements($elements) {
     );
 };
 
-function addValidationToLastControlGroup($fieldset) {
-    var $lastControlGroup = $fieldset.children(".control-group").last();
-    addValidationToElements($lastControlGroup.find("input,textarea,select"));
-};
-
-function removeControlGroup(e) {
-    $(e).closest(".control-group").remove();
-};
-
 function flatten(array) {
     var flat = [];
     for (var i = 0; i < array.length; i++) {
@@ -347,18 +303,4 @@ function onProgress(current, total) {
     var percentage = "" + Math.round(100.0 * current / total) + "%";
     $bar.css("width", percentage);
     $bar.text(percentage);
-};
-
-function getImgSize(imgSrc, onsize) {
-    var newImg = new Image();
-    newImg.onload = function() {
-        var width = newImg.width;
-        var height = newImg.height;
-        onsize(width, height);
-    };
-    newImg.src = imgSrc; // this must be done AFTER setting onload
-};
-
-function screenshotClick(e) {
-    $(e).closest(".screenshot-container").children("input").click();
 };

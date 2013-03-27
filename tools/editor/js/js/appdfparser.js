@@ -380,7 +380,10 @@ var appdfParser = (function() {
 			});
 		});
 		
-		
+        section("apk-files/", "apk-files", function() {
+            loadArray("apk-file", "apk-file");
+        });
+        
 		//Todo: temporary XML loading instead of parsing content
 		loadXml("availability", "availability");
 		loadText("testing-instructions", "testing-instructions");
