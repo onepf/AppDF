@@ -750,7 +750,7 @@ var appdfEditor = (function() {
     };
 	
 	function validationCallbackPromo($el, value, callback) {
-		if ($el[0].files.length === 0) {
+		if (isNoFile($el[0])) {
 			callback({
 				value: value,
 				valid: true
@@ -759,8 +759,8 @@ var appdfEditor = (function() {
 		};
 		
 		var promoName = $($el).attr("name").split("-")[2];
-		var imageFileName = normalizeInputFileName($el.val());
-		var file = $el[0].files[0];
+		var imageFileName = getFileName($el[0]);
+		var file = getFileContent($el[0]);
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		
@@ -782,7 +782,7 @@ var appdfEditor = (function() {
 	};
 	
 	function validationCallbackScreenshotRequired($el, value, callback) {
-		if ($el[0].files.length === 0) {
+		if (isNoFile($el[0])) {
 			callback({
 				value: value,
 				valid: true
@@ -790,8 +790,8 @@ var appdfEditor = (function() {
 			});
 			return;
 		};
-		var imageFileName = normalizeInputFileName($el.val());
-		var file = $el[0].files[0];
+		var imageFileName = getFileName($el[0]);
+		var file = getFileContent($el[0]);
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		

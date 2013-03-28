@@ -233,9 +233,29 @@ var appdfParser = (function() {
 						});
 					});
 				});
-				loadText("large-promo", "large-promo");
-				loadText("small-promo", "small-promo");
-				
+                
+				loadHelper("large-promo", "large-promo", function(d, name, $e) {
+					d[name] = null;
+					$e.each(function() {
+						d[name] = {
+							"name" : $(this).text(),
+							"width" : $(this).attr("width"),
+							"height" : $(this).attr("height")
+						};
+					});
+				});
+                
+                loadHelper("small-promo", "small-promo", function(d, name, $e) {
+					d[name] = null;
+					$e.each(function() {
+						d[name] = {
+							"name" : $(this).text(),
+							"width" : $(this).attr("width"),
+							"height" : $(this).attr("height")
+						};
+					});
+				});
+                
 				loadHelper("screenshots", "screenshots/screenshot", function(d, name, $e) {
 					d[name] = [];
 					$e.each(function() {
@@ -248,6 +268,7 @@ var appdfParser = (function() {
 					});
 				});
 			});
+            
 			section("videos/", "videos", function() {
 				loadText("youtube-video", "youtube-video");
 			});

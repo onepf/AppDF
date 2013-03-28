@@ -100,11 +100,38 @@ var appdfXMLLoader = (function() {
                 $appIconInput.data("file", appIcons[i].name);
                 
                 if (i===0) {
-                    appdfEditor.validationCallbackAppIconFirst($appIconInput, appIcons[i].name, function(d) { console.log(d); });
+                    appdfEditor.validationCallbackAppIconFirst($appIconInput, appIcons[i].name, function(d) {});
                 } else {
-                    appdfEditor.validationCallbackAppIconMore($appIconInput, appIcons[i].name, function(e) { console.log(e); });
+                    appdfEditor.validationCallbackAppIconMore($appIconInput, appIcons[i].name, function(e) {});
                 };
                 appdfImages.onAppIconImageInputChange({target:$appIconInput});
+            };
+        }
+        
+        updatePromo(data["images"]["large-promo"], $container.find("input[id^=\"description-images-largepromo\"]"));
+        updatePromo(data["images"]["small-promo"], $container.find("input[id^=\"description-images-smallpromo\"]"));
+        
+        
+        //clear screenshots
+        $container.find(".screenshots-group a.image-input-remove").click();
+        
+        var screenshots = data["images"]["screenshots"];
+        if (screenshots.length) {
+            for (var i=0; i<screenshots.length; i++) {
+                var $screenshotGroups = $container.find(".screenshots-group .image-input-group");
+                var screenshotIndex = screenshots[i].index;
+                
+                while ($screenshotGroups.length < +screenshotIndex) {
+                    appdfImages.addMoreScreenshots($screenshotGroups[0]);
+                    $screenshotGroups = $container.find(".screenshots-group .image-input-group");
+                }
+                
+                var $screenshotInput = $($screenshotGroups[screenshotIndex-1]).find("input.empty-image:last");
+                if (!$screenshotInput.length) {
+                    appdfImages.addScreenshotIndex({target:$screenshotGroups[screenshotIndex-1]});
+                    $screenshotInput = $($screenshotGroups[screenshotIndex-1]).find("input.empty-image:last");
+                }
+                updateScreenshot(screenshots[i], $screenshotInput);
             };
         }
         
@@ -114,7 +141,23 @@ var appdfXMLLoader = (function() {
             $container.find("#description-videos-youtubevideo").val("");
         };
     };
-
+    
+    function updateScreenshot(screenshotData, $screenshotInput) {
+        $screenshotInput.data("file", screenshotData.name);
+        
+        appdfEditor.validationCallbackScreenshotRequired($screenshotInput, screenshotData.name, function(d) {});
+        appdfImages.onScreenshotImageInputChange({target:$screenshotInput[0]});
+    };
+    
+    function updatePromo(promo, $promoInput) {
+        if ( promo ) {
+            $promoInput.data("file", promo.name);
+            
+            appdfEditor.validationCallbackPromo($promoInput, promo.name, function(d) {});
+            appdfImages.onImageInputChange({target:$promoInput});
+        };  
+    };
+    
     function loadDescriptionXML(xml, onend, onerror, onprogress) {
         appdfParser.parseDescriptionXML(xml, function(data) {
             //Calculate total number of actions to do
