@@ -156,7 +156,7 @@
   
   <xsd:simpleType name="type-attr-package">
     <xsd:restriction base="xsd:string">
-      <xsd:pattern value="([a-zA-Z0-9\-]+\.)+[a-zA-Z0-9\-]+"/>
+      <xsd:pattern value="([_a-zA-Z0-9\-]+\.)+[_a-zA-Z0-9\-]+"/>
     </xsd:restriction>
   </xsd:simpleType>  
   
