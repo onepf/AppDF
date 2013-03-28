@@ -48,8 +48,8 @@ function generateAppDFFile(onend) {
     function addInputFiles($el) {
         $el.each(function() {
             //check if the file is already in the list then do not push it
-            if ($(this)[0].files.length>0 && $(this)[0].files[0]) {
-                files.push($(this)[0].files[0]);
+            if (!appdfEditor.isNoFile($(this)[0]) && appdfEditor.getFileContent($(this)[0])) {
+                files.push(appdfEditor.getFileContent($(this)[0]));
             };
         });
     };
@@ -64,7 +64,7 @@ function generateAppDFFile(onend) {
     addInputFiles($("input[id^=description-images-largepromo]"));
     addInputFiles($("input[id^=contentdescription-ratingcertificates-certificate-]"));
     addInputFiles($("input[id^=contentdescription-ratingcertificates-mark-]"));
-
+    
     zip.createWriter(new zip.BlobWriter(), function(writer) {
 
         addDescriptionAndFilesToZipWriter(writer, descriptionXML, files, onProgress, function() {
@@ -117,10 +117,14 @@ function collectBuildErrors(onsuccess, onerror) {
 		checkBuildErrorsCount();
 	};
 	
-    appdfEditor.validationCallbackApkFileFirst($("#apk-file"), $("#apk-file").val(), checkErrorMessage);
-	appdfEditor.validationCallbackAppIconFirst($("#description-images-appicon"), $("#description-images-appicon").val(), checkErrorMessage);
-	appdfEditor.validationCallbackSmallPromo($("#description-images-smallpromo"), $("#description-images-smallpromo").val(), checkErrorMessage);
-	appdfEditor.validationCallbackLargePromo($("#description-images-largepromo"), $("#description-images-largepromo").val(), checkErrorMessage);
+    appdfEditor.validationCallbackApkFileFirst($("#apk-file"), 
+        appdfEditor.getFileName($("#apk-file")), checkErrorMessage);
+	appdfEditor.validationCallbackAppIconFirst($("#description-images-appicon"), 
+        appdfEditor.getFileName($("#description-images-appicon")), checkErrorMessage);
+	appdfEditor.validationCallbackPromo($("#description-images-smallpromo"), 
+        appdfEditor.getFileName($("#description-images-smallpromo")), checkErrorMessage);
+	appdfEditor.validationCallbackPromo($("#description-images-largepromo"), 
+        appdfEditor.getFileName($("#description-images-largepromo")), checkErrorMessage);
 	
 	var $screenShotList = $('.screenshot-input');
 	totalErrorCheckCount += $screenShotList.size();//add screenshots count to total error checks
@@ -290,7 +294,7 @@ function addDescriptionAndFilesToZipWriter(zipWriter, descriptionXml, files, onp
             onprogress(sizeOfAlreadyZippedFilesIncludingCurrent - total + current, totalSizeOfAllFiles)
         });
     };
-
+    
     zipWriter.add("description.xml", new zip.TextReader(descriptionXml), function() {
         addNextFile();
     }, function(current, total) {

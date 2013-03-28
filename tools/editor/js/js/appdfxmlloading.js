@@ -456,6 +456,7 @@ var appdfXMLLoader = (function() {
         appdfFileEntry.getData(new zip.BlobWriter(), function(blob){
             fileReader.onload = function(event) {
                 appdfFiles[fileName] = event.target.result;
+                appdfFiles[fileName].name = fileName;
                 oncomplete();
             };
             
@@ -471,6 +472,7 @@ var appdfXMLLoader = (function() {
                 fileReader.readAsText(blob);
             } else {
                 appdfFiles[fileName] = blob;
+                appdfFiles[fileName].name = fileName;
                 oncomplete();
             };
         });
