@@ -82,15 +82,15 @@ var appdfXMLSaver = (function() {
 			};
 
 			//Privacy policy
-			var PrivacyPolicyLink = $parent.find("#description-texts-link-privacypolicy").val();
-			var PrivacyPolicyText = $parent.find("#description-texts-data-privacypolicy").val();
+			var PrivacyPolicyLink = $parent.find("#description-texts-privacypolicy-link").val();
+			var PrivacyPolicyText = $parent.find("#description-texts-privacypolicy-data").val();
 			if (PrivacyPolicyText!="" && PrivacyPolicyLink!="") {
 				xml.addNonEmptyTextTag("<privacy-policy href=\"" + PrivacyPolicyLink + "\">", PrivacyPolicyText);
 			};
 			
 			//EULA
-			var EULAlink = $parent.find("#description-texts-link-eula").val();
-			var EULAtext = $parent.find("#description-texts-data-eula").val();
+			var EULAlink = $parent.find("#description-texts-eula-link").val();
+			var EULAtext = $parent.find("#description-texts-eula-data").val();
 			if (EULAtext!="" && EULAlink!="") {
 				xml.addNonEmptyTextTag("<eula href=\"" + EULAlink + "\">", EULAtext);
 			};
@@ -99,35 +99,49 @@ var appdfXMLSaver = (function() {
 
 	function generateOneLanguageImageDescription(languageCode, xml) {
 		$parent = $("#localization-tab-" + languageCode);
-		var $screenshots = $parent.find("input[id^=description-images-screenshot]").not('[value=]');
-
+		var $screenshots = $parent.find("input[id^=description-images-screenshot]:not(.empty-image)");
+        
 		//We calculate total number of images to check if this section is empty
-		var numberOfImages = 0;
-		numberOfImages += $screenshots.length;
-		if ($parent.find("input[id^=description-images-appicon]").val()) {
+		var numberOfImages = $screenshots.length;
+        var $appIcon = $parent.find("input[id^=description-images-appicon]")[0];
+		if (!appdfEditor.isNoFile($appIcon)) {
 			numberOfImages += 1;
 		};
-		if ($parent.find("#description-images-largepromo").val()) {
+		var $largePromo = $parent.find("#description-images-largepromo");
+		if ($largePromo.size() && !appdfEditor.isNoFile($largePromo[0])) {
 			numberOfImages += 1;
+            $largePromo = $largePromo[0];
+        } else {
+            $largePromo = null;
 		};
-		if ($parent.find("#description-images-smallpromo").val()) {
+        
+        var $smallPromo = $parent.find("#description-images-smallpromo");
+		if ($smallPromo && !appdfEditor.isNoFile($smallPromo[0])) {
 			numberOfImages += 1;
-		};
-
+            $smallPromo = $smallPromo[0];
+		} else {
+            $smallPromo = null;
+        };
+        
 		if (numberOfImages>0) {
 			xml.addTag("<images>", function() {
 				$parent.find("input[id^=description-images-appicon]").each(function() {
-					xml.addNonEmptyTextTag("<app-icon width=\"" + $(this).data("width") + 
-						"\" height=\"" + $(this).data("height") + "\">", 
-						appdfEditor.normalizeInputFileName($(this).val()));
+                    if (!appdfEditor.isNoFile($(this)[0])) {
+                        xml.addNonEmptyTextTag("<app-icon width=\"" + $(this).data("width") + "\" height=\"" + $(this).data("height") + "\">", 
+                            appdfEditor.getFileName($(this)[0]));
+                    };
 				});
 
-				xml.addNonEmptyTextTag("<large-promo width=\"" + $parent.find("#description-images-largepromo").data("width") + 
-					"\" height=\"" + $parent.find("#description-images-largepromo").data("height") + "\">", 
-					appdfEditor.normalizeInputFileName($parent.find("#description-images-largepromo").val()));
-				xml.addNonEmptyTextTag("<small-promo width=\"" + $parent.find("#description-images-smallpromo").data("width") + 
-					"\" height=\"" + $parent.find("#description-images-smallpromo").data("height") + "\">", 
-					appdfEditor.normalizeInputFileName($parent.find("#description-images-smallpromo").val()));
+                if ($largePromo && !appdfEditor.isNoFile($largePromo)) {
+                    xml.addNonEmptyTextTag("<large-promo width=\"" + $parent.find("#description-images-largepromo").data("width") + 
+                        "\" height=\"" + $parent.find("#description-images-largepromo").data("height") + "\">", 
+                        appdfEditor.getFileName($largePromo));
+                };
+                if ($smallPromo && !appdfEditor.isNoFile($smallPromo)) {
+                    xml.addNonEmptyTextTag("<small-promo width=\"" + $parent.find("#description-images-smallpromo").data("width") + 
+                        "\" height=\"" + $parent.find("#description-images-smallpromo").data("height") + "\">", 
+                        appdfEditor.getFileName($smallPromo));
+                };
 
 				if ($screenshots.length>0) {
 					xml.addTag("<screenshots>", function() {
@@ -135,7 +149,7 @@ var appdfXMLSaver = (function() {
 							xml.addNonEmptyTextTag("<screenshot width=\"" + $(this).data("width") + 
 								"\" height=\"" + $(this).data("height") + 
 								"\" index=\"" + $(this).closest(".image-input-group").data("index") + 
-								"\">", appdfEditor.normalizeInputFileName($(this).val()));
+								"\">", appdfEditor.getFileName($(this)[0]));
 						});
 					});
 				};
@@ -206,7 +220,7 @@ var appdfXMLSaver = (function() {
 	function generateApkFilesXML(xml) {
 		xml.addTag("<apk-files>", function() {
 			$("section#section-apk-files").find("input:file").each(function() {
-				xml.addTag("<apk-file>", appdfEditor.normalizeInputFileName($(this).val()));
+				xml.addTag("<apk-file>", appdfEditor.getFileName($(this)));
 			});
 		});
 	};
