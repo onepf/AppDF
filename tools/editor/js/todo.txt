@@ -22,16 +22,27 @@ Information about each attribute if it is optional or not
 Add size and resolution attributes to the APK files and images to better handle feed exchange case when files are not local 
 
 TODO:
-* Check with whom I have a conf call on Tuesday
-* Email Naver and other missed
 * Finish AppStore wiki page: https://github.com/onepf/AppDF/wiki/Android-Application-Stores
+* Draw digrams
+* A script to automate publishing from GitHub to onepf.org
+* contact that russian developer who used AppDF itself
+* Email Naver and other missed
 * Make diagrams for AppDF and OpenIAB
+* Design "Upload AppDF" button (Upload AppDF | ^ (Create AppDF Online | Read more about AppDF))
+* Examples of mistakes
 
 =========
 Update XSD
-Add EULA 5000 chars limit to EULA
+Remove 5000 chars limit from EULA
+Add readme to all the subfolders
 Create 20 AppDF samples with 20 types of error:
-1. File is mentioned in AppDF but not in ZIP
+DONE:
+1. Not a zip file
+2. No description.xml in ZIP file
+3. description.xml is not an XML file
+4. File is mentioned in AppDF (screenshot) but not in ZIP
+5. File is mentioned in AppDF (appicon) but not in ZIP
+
 2. Wrong app icon file format (for example JPG not PNG)
 3. Wrong app icon size
 4. Width/height from AppDF and actual image width/height do not match 
@@ -41,8 +52,6 @@ Create 20 AppDF samples with 20 types of error:
 8. Wrong country code
 9. Wrong currency code
 10. No text in EULA
-11. Not a zip file
-12. No description.xml in ZIP file
 13. Wrong subcategory
 14. Wrong type (super-category)
 15. No short enough short description
@@ -61,7 +70,7 @@ Create 20 AppDF samples with 20 types of error:
 28. price free="no" and trial-version
 29. supported-resolutions only-listed="yes" and <exclude>
 30. supported-resolutions only-listed="yes"> and <include>
-31. Maximum EULA size of 5000 symbols
+
 =====
 
 Submitter tool
