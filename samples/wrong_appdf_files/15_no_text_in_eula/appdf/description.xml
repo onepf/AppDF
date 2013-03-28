@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<application-description-file version="1"
+                              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                              xsi:noNamespaceSchemaLocation="../../../specification/appdf-description.xsd">
+
+    <application platform="android" package="com.softspb.geo_game">
+
+        <categorization>
+            <type>game</type>
+            <category>Trivia</category>
+            <subcategory></subcategory>
+        </categorization>
+
+        <description>
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, game, geo, world, capital, flag, country, trivia</keywords>
+                <short-description>With SPB Geo Game you can study national capitals and flags.</short-description>
+                <full-description>
+With SPB Geo Game you can study national capitals and flags.
+<features>
+<ul>
+<li>World Flags</li>
+<li>World Capitals</li>
+<li>3D Globe</li>
+<li>Educational Animation</li>
+</ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>World Flags</feature>
+                    <feature>World Capitals</feature>
+                    <feature>3D Globe</feature>
+                    <feature>Educational Animation</feature>
+                </features>
+                <eula href="http://spb.com/about/eula_en"></eula>
+            </texts>
+
+            <images>
+                <app-icon width="512" height="512">appicon.png</app-icon>
+                <screenshots>
+                    <screenshot width="480" height="800" index="1">geogamead_ss1.png</screenshot>
+                    <screenshot width="480" height="800" index="2">geogamead_ss2.png</screenshot>
+                    <screenshot width="480" height="800" index="3">geogamead_ss3.png</screenshot>
+                    <screenshot width="480" height="800" index="4">geogamead_ss4.png</screenshot>
+                    <screenshot width="480" height="800" index="5">geogamead_ss5.png</screenshot>
+                    <screenshot width="480" height="800" index="6">geogamead_ss6.png</screenshot>
+                    <screenshot width="480" height="800" index="7">geogamead_ss7.png</screenshot>
+                    <screenshot width="480" height="800" index="8">geogamead_ss8.png</screenshot>
+                </screenshots>
+            </images>
+
+            <videos>
+                <youtube-video>WAyMMGOqXDE</youtube-video>
+            </videos>
+
+        </description>
+
+         <description-localization language="ru">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, гео, игра, страны, столицы, флаги</keywords>
+                <short-description>С помощью игры SPB Geo Game вы можете изучать столицы и флаги стран мира.</short-description>
+                <full-description>
+С помощью игры SPB Geo Game вы можете изучать столицы и флаги стран мира.
+<features>
+    <ul>
+        <li>Флаги стран мира</li>
+        <li>Мировые столицы</li>
+        <li>Глобус</li>
+        <li>Познавательная анимация</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>Флаги стран мира</feature>
+                    <feature>Мировые столицы</feature>
+                    <feature>Глобус</feature>
+                    <feature>Познавательная анимация</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+<description-localization language="fr">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, géo, le gibier, les pays, les capitales, drapeaux, trivia</keywords>
+                <short-description>Avec le jeu SPB Geo vous pouvez étudier les capitales et les drapeaux.</short-description>
+                <full-description>
+Avec le jeu SPB Geo vous pouvez étudier les capitales et les drapeaux.
+<features>
+    <ul>
+        <li>Drapeaux du monde</li>
+        <li>Capitales du monde</li>
+        <li>Globe 3d</li>
+        <li>Animation éducative</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>Drapeaux du monde</feature>
+                    <feature>Capitales du monde</feature>
+                    <feature>Globe 3d</feature>
+                    <feature>Animation éducative</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="de">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, geo, Spiel, Länder, Hauptstädte, Flaggen, trivia</keywords>
+                <short-description>Mit SPB Geo Game könenn Sie Hauptstädte und Flaggen kennen lernen.</short-description>
+                <full-description>
+Mit SPB Geo Game könenn Sie Hauptstädte und Flaggen kennen lernen.
+<features>
+    <ul>
+        <li>Welt Flaggen</li>
+        <li>Hauptstädte</li>
+        <li>3D Globus</li>
+        <li>Schöne Animationen</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>Welt Flaggen</feature>
+                    <feature>Hauptstädte</feature>
+                    <feature>3D Globus</feature>
+                    <feature>Schöne Animationen</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="it">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, geo, gioco, paesi, capitali, bandiere, curiosità</keywords>
+                <short-description>Con SPB Geo Game si possono studiare le capitali nazionali e le bandiere.</short-description>
+                <full-description>
+Con SPB Geo Game si possono studiare le capitali nazionali e le bandiere.
+<features>
+    <ul>
+        <li>Bandiere del mondo</li>
+        <li>Le capitali del mondo</li>
+        <li>Mappamondo 3D</li>
+        <li>Animazione Educativo</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>Bandiere del mondo</feature>
+                    <feature>Le capitali del mondo</feature>
+                    <feature>Mappamondo 3D</feature>
+                    <feature>Animazione Educativo</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="pt">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, geo, jogos, países, capitais, bandeiras, curiosidades</keywords>
+                <short-description>Com o SPB Geo Game pode estudar capitais nacionais e bandeiras.</short-description>
+                <full-description>
+Com o SPB Geo Game pode estudar capitais nacionais e bandeiras.
+<features>
+    <ul>
+        <li>Bandeiras do Mundo</li>
+        <li>Capitais do Mundo</li>
+        <li>Globo 3D</li>
+        <li>Informação Educacional</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>Bandeiras do Mundo</feature>
+                    <feature>Capitais do Mundo</feature>
+                    <feature>Globo 3D</feature>
+                    <feature>Informação Educacional</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="ja">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, geo, game, 地理、ゲーム、国、首都、フラグ、トリビア</keywords>
+                <short-description>SPB Geo Game では、楽しみながら首都や国旗を覚えることができます。</short-description>
+                <full-description>
+SPB Geo Game では、楽しみながら首都や国旗を覚えることができます。
+<features>
+    <ul>
+        <li>国旗</li>
+        <li>世界の首都</li>
+        <li>3D 地球儀</li>
+        <li>教育用アニメ</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>国旗</feature>
+                    <feature>世界の首都</feature>
+                    <feature>3D 地球儀</feature>
+                    <feature>教育用アニメ</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <content-description>
+            <content-rating>3</content-rating>
+            <content-descriptors>
+                <cartoon-violence>no</cartoon-violence>
+                <realistic-violence>no</realistic-violence>
+                <bad-language>no</bad-language>
+                <fear>no</fear>
+                <sexual-content>no</sexual-content>
+                <drugs>no</drugs>
+                <gambling-reference>no</gambling-reference>
+                <alcohol>no</alcohol>
+                <smoking>strong</smoking>
+                <discrimination>no</discrimination>
+            </content-descriptors>
+            <included-activities>
+                <in-app-billing>no</in-app-billing>
+                <gambling>no</gambling>
+                <advertising>no</advertising>
+                <user-generated-content>no</user-generated-content>
+                <user-to-user-communications>no</user-to-user-communications>
+                <account-creation>no</account-creation>
+                <personal-information-collection>no</personal-information-collection>
+            </included-activities>
+        </content-description>
+    
+        <price free="no">
+            <base-price>0.99</base-price>
+            <local-price country="AU">0.99</local-price>
+            <local-price country="AT">0.69</local-price>
+            <local-price country="BE">0.69</local-price>
+            <local-price country="BR">2.00</local-price>
+            <local-price country="CA">0.99</local-price>
+            <local-price country="CZ">19.50</local-price>
+            <local-price country="DK">6.00</local-price>
+            <local-price country="EE">0.69</local-price>
+            <local-price country="FI">0.69</local-price>
+            <local-price country="FR">0.69</local-price>
+            <local-price country="DE">0.69</local-price>
+            <local-price country="GR">0.69</local-price>
+            <local-price country="HK">7.49</local-price>
+            <local-price country="IN">52.49</local-price>
+            <local-price country="IE">0.69</local-price>
+            <local-price country="IL">3.49</local-price>
+            <local-price country="IT">0.69</local-price>
+            <local-price country="JP">99</local-price>
+            <local-price country="LU">0.69</local-price>
+            <local-price country="MX">12.99</local-price>
+            <local-price country="NL">0.69</local-price>
+            <local-price country="NZ">0.99</local-price>
+            <local-price country="NO">6.00</local-price>
+            <local-price country="PL">2.99</local-price>
+            <local-price country="PT">0.69</local-price>
+            <local-price country="RU">30</local-price>
+            <local-price country="SG">0.99</local-price>
+            <local-price country="SK">0.69</local-price>
+            <local-price country="SI">0.69</local-price>
+            <local-price country="KR">1000</local-price>
+            <local-price country="ES">0.69</local-price>
+            <local-price country="SE">7.00</local-price>
+            <local-price country="CH">0.99</local-price>
+            <local-price country="GB">0.59</local-price>
+        </price>
+
+        <apk-files>
+            <apk-file>SPBGeoGame.apk</apk-file>
+        </apk-files>
+
+        <testing-instructions>
+        </testing-instructions>
+        
+        <consent>
+            <google-android-content-guidelines>yes</google-android-content-guidelines>
+            <us-export-laws>yes</us-export-laws>
+            <slideme-agreement>yes</slideme-agreement>
+            <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+            <import-export>yes</import-export>
+        </consent>
+
+        <customer-support>
+            <phone>+7 (812) 3356993</phone>
+            <email>support@spband.yandex.ru</email>
+            <website>http://www.yandex.ru</website>
+        </customer-support>
+
+        <store-specific>
+            <amazon>
+                <form-factor>all</form-factor>
+                <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
+                <apply-amazon-drm>yes</apply-amazon-drm>
+                <kindle-support>
+                    <kindle-fire-first-generation>yes</kindle-fire-first-generation>
+                    <kindle-fire>yes</kindle-fire>
+                    <kindle-fire-hd>yes</kindle-fire-hd>
+                    <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
+                </kindle-support>
+                <binary-alias>Version 1.0</binary-alias>
+            </amazon>
+            <samsung>
+                <form-factor>phone,tablet</form-factor>
+            </samsung>
+           
+        </store-specific>
+
+    </application>
+
+</application-description-file>

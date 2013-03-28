@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<application-description-file version="1"
+                              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                              xsi:noNamespaceSchemaLocation="../../../specification/appdf-description.xsd">
+
+    <application platform="android" package="com.softspb.geo_game">
+
+        <categorization>
+            <type>game</type>
+            <category>Trivia</category>
+            <subcategory></subcategory>
+        </categorization>
+
+        <description>
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, game, geo, world, capital, flag, country, trivia</keywords>
+                <short-description>With SPB Geo Game you can study national capitals and flags.</short-description>
+                <full-description>
+With SPB Geo Game you can study national capitals and flags.
+<features>
+<ul>
+<li>World Flags</li>
+<li>World Capitals</li>
+<li>3D Globe</li>
+<li>Educational Animation</li>
+</ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>World Flags</feature>
+                    <feature>World Capitals</feature>
+                    <feature>3D Globe</feature>
+                    <feature>Educational Animation</feature>
+                </features>
+                <eula href="http://spb.com/about/eula_en">
+IMPORTANT - USE OF SPB SOFTWARE INC. SOFTWARE IS SUBJECT TO LICENSE RESTRICTIONS. CAREFULLY READ THIS LICENSE AGREEMENT BEFORE USING THE SOFTWARE.
+
+NOTICE TO USER: PLEASE READ THIS AGREEMENT CAREFULLY. THIS LICENSE IS A LEGAL "AGREEMENT" CONCERNING THE USE OF SOFTWARE BETWEEN YOU, THE END USER, EITHER INDIVIDUALLY OR AS AN AUTHORIZED REPRESENTATIVE OF THE COMPANY OBTAINING THE LICENSE, AND SPB SOFTWARE INC. BY USING ALL OR ANY PORTION OF THE SOFTWARE YOU ACCEPT ALL THE TERMS AND CONDITIONS OF THIS AGREEMENT, INCLUDING, IN PARTICULAR THE LIMITATION ON: USE, TRANSFERABILITY, WARRANTY AND LIABILITY. YOU AGREE THAT THIS AGREEMENT IS ENFORCEABLE LIKE ANY WRITTEN NEGOTIATED AGREEMENT SIGNED BY YOU. IF YOU DO NOT AGREE, DO NOT USE THIS SOFTWARE. IF YOU ACQUIRED THE SOFTWARE ON TANGIBLE MEDIA (E.G. CD) WITHOUT AN OPPORTUNITY TO REVIEW THIS LICENSE AND YOU DO NOT ACCEPT THIS AGREEMENT, YOU MAY OBTAIN A REFUND OF THE AMOUNT YOU ORIGINALLY PAID IF YOU: (A) DO NOT USE THE SOFTWARE AND (B) RETURN IT, WITH PROOF OF PAYMENT, TO THE LOCATION FROM WHICH IT WAS OBTAINED WITHIN THIRTY (30) DAYS OF THE PURCHASE DATE.
+
+1. DEFINITIONS. "Software" means (a) all of the content of the files, disk(s), CD-ROM(s) or other media with which this agreement is provided, including but not limited to (i) Spb Software Inc. or third party computer information or software; (ii) digital images, stock photographs, clip art, sounds or other artistic works ("Stock Files"); (iii) related explanatory written materials or files ("Documentation"); and (b) modified versions, updates additions, and copies of the Software, if any,  licensed to you by Spb Software Inc. "Use" or "Using" means to access, install, download, copy or otherwise benefit from using the functionality of the Software in accordance with the Documentation. "Permitted Number" means one (1) unless otherwise indicated under a valid license (e.g. volume license) granted by Spb Software Inc. "Computer" means an electronic device that accepts information in digital or similar form and manipulates it for a specific result based on a sequence of instructions. "Spb Software Inc." means a joint stock company, duly organized and validly existing under the laws of the Unated States, named as Spb Software Inc., and having its principal place of business at 14 Washington Place, Hackensack, NJ 07601, USA.
+
+2. SOFTWARE LICENSE. As long as you comply with the terms of this End User License Agreement (the "Agreement"), Spb Software Inc. grants to you a non-exclusive license to Use the Software for the purposes described in Documentation.  Some third party materials included in the Software may be subject to other terms and conditions, which are typically found in a "Read Me" file located near such materials. 
+
+2.1 General Use. You may install and Use a copy of the Software on your compatible computer, up to the Permitted Number of computers;
+
+2.2 Backup Copy. You may make one backup copy of the Software, provided your backup copy is not installed or used on any computer, for the following purposes: 
+-reservation of  the Software copy and having it in store for a case of the Software damage. You may not transfer the rights to a backup copy unless you transfer all rights in the Software as provided under Section 4.
+
+2.3 Home Use. You, as primary user of the computer on which the Software is installed, may also install the Software on one of your home computers. However, the Software may not be used on your home computer at the same time the Software on the primary computer is being used.
+
+2.4 Stock Files. Unless stated otherwise in the "Read Me" files associated with the Stock Files, which may include specific rights and restrictions with respect to such materials, you may display, modify, reproduce and distribute any of the Stock Files on a stand-alone basis, i. E. In circumstances in which the Stock Files constitute the primary value of the product being distributed.  Stock Files may not be used in the production of libelous defamatory, fraudulent, lewd, obscene or pornographic material or any material that infringes upon any third party intellectual rights in the Stock Files or derivative works thereof.
+
+2.5 Lost License. If the License with its individual number is lost either along with hardware or alone, the License is deemed invalid. In this case you can either get a new license or contact Spb Software Inc. Customers Department.
+
+2.6. Links. The Software contains links to other Web, RTSP,MMS and other sites operated by third parties. Spb Software Inc. is not responsible for the content or the privacy practices of those third party sites. Spb Software Inc. makes no warranty or representation regarding, and accepts no responsibility for the content, quality, nature or reliability of third-party sites or services accessible by hyperlink from the Software. Spb Software Inc. provides these links for your convenience only and Spb Software Inc. does not control such Web sites. Spb Software Inc.'s inclusion of links to such sites does not imply any endorsement of the materials on such third party sites or any association with their operators. It is your responsibility to review the privacy policies and terms of use of any other Web site you visit.
+
+2.7. Submissions. You agree that any materials, including but not limited to suggestions, notes, drawings, ideas, questions, original or creative materials, plans, comments or other information, provided by you in the form of e-mail or other submissions to Spb Software Inc. are non-confidential and you grant to Spb Software Inc. a nonexclusive, perpetual, royalty-free, irrevocable, and fully sublicensable right to use, adapt, reproduce, modify, translate, publish, create derivative works from, distribute, and display such materials throughout the world in any media now known or hereafter developed with or without acknowledgment to you in Spb Software Inc.'s sole discretion and without compensation to you. You also grant to Spb Software Inc.the right to use your name in connection with the submitted materials and other information as well as in connection with all marketing, advertising and promotional material related thereto. Spb Software Inc.has no obligation to use any submitted materials and may remove any such materials in its sole discretion.
+
+
+3. INTELLECTUAL PROPERTY RIGHTS. The Software and any copies that you are authorized by Spb Software Inc. to make are the intellectual property of and are owned by Spb Software Inc.  The structure, organization and code of the Software  are the valuable trade secrets and confidential information of Spb Software Inc. The Software is protected by copyright, including without limitation by US Copyright Law, international treaties provisions and applicable laws in the country in which it is being used.  You may not copy the Software, except as set forth in Section 2 ("Software License"). Any copies that you are permitted to make pursuant to this Agreement must contain the same copyright and other proprietary notices  that appear on or in the Software.  You agree not to modify, adapt or translate the Software.  You also agree not to reverse engineer, decompile, disassemble or otherwise attempt to discover the source code of the Software except to the extent you may be expressly permitted to decompile under applicable law, it is essential to do so in order to achieve operability of the Software with another software program, and you have first requested Spb Software Inc. to provide information necessary to achieve such operability and Spb Software Inc. has not made such information available. Spb Software Inc. has the right to impose reasonable conditions and to request a reasonable fee before providing such information.  Any information supplied by Spb Software Inc. or obtained by you, as permitted hereunder, may only be used by you for the purpose described herein and may not be disclosed to any third party or used to create any software which is substantially similar to the extension of the Software. Requests for information should be directed to the Spb Software Inc. Customer Support Department. Trademarks shall be used in accordance with accepted trademark practice, including identification of trademarks owners' names. Trademarks can only be used to identify printed output produced by the Software and such use of any trademark does not give you any rights of ownership in that trademark.  Except as expressly stated above, this Agreement does not grant you any intellectual property rights in the Software.
+
+4. TRANSFER. You may not rent, lease, sublicense, or authorize all or any portion of the Software to be copied onto another users computer except as may be expressly permitted herein.  You may, however, transfer all your rights to Use the Software to another person or legal entity provided that: (a) you also transfer each this Agreement, the Software and all other software or hardware bundled or pre-installed with the Software, including all copies, Updates and prior versions to such person or entity; (b) you retain no copies, including backups and copies stored on a computer; and (c) the receiving party accepts the terms and conditions of this Agreement and any other terms and conditions upon which you legally purchased a license to the Software.  Notwithstanding the foregoing, you may not transfer education, pre-release, or not for resale copies of the Software.
+
+5. MULTIPLE ENVIRONMENT SOFTWARE/ MULTIPLE LANGUAGE SOFTWARE/ DUAL MEDIA SOFTWARE/ MULTIPLE COPIES/ BUNDLES. If the Software supports multiple platforms of languages, if you receive the Software on multiple media, if you otherwise receive multiple copies of the Software, or if you received the Software bundled with other software, the total numbers of your computers on which all versions of the Software are installed may not exceed the Permitted Number. You may not rent, lease, sublicense, lend or transfer any versions or copies of such Software you do not Use. 
+
+6. NO WARRANTY. The Software is being delivered to you "AS IS" and Spb Software Inc. makes no warranty as to its use or performance. SPB SOFTWARE INC. AND ITS SUPPLIERS DO NOT AND CANNOT WARRANT THE PERFORMANCE OR RESULTS YOU MAY OBTAIN BY USING THE SOFTWARE. EXCEPT FOR ANY WARRANTY, CONDITION, REPRESENTATION OR TERM TO THE EXTENT TO WHICH THE SAME CANNOT OR MAY NOT BE EXCLUDED OR LIMITED BY LAW APPLICABLE IN YOUR JURISDICTION, SPB SOFTWARE INC. AND ITS SUPPLIERS MAKE NO WARRANTIES CONDITIONS, REPRESENTATIONS, OR TERMS (EXPRESS OR IMPLIED WHETHER BY STATUTE, COMMON LAW, CUSTOM, USAGE OR OTHERWISE) AS TO ANY MATTER INCLUDING WITHOUT LIMITATION NONINFRINGEMENT OF THIRD PARTY RIGHTS, MERCHANTABILITY, INTEGRATION, SATISFACTORY QUALITY, OR FITNESS FOR ANY PARTICULAR PURPOSE.
+
+7. LIMITATION OF LIABILITY. IN NO EVENT WILL SPB SOFTWARE INC. OR ITS SUPPLIERS BE LIABLE TO YOU FOR ANY DAMAGES, CLAIMS OR COSTS WHATSOEVER OR ANY CONSEQUENTIAL, INDIRECT, DIRECT, INCIDENTAL DAMAGES, OR ANY LOST PROFITS OR LOST SAVINGS, EVEN IF SPB SOFTWARE INC. REPRESENTATIVE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH LOSS, DAMAGES, CLAIMS OR COSTS OR FOR ANY CLAIM BY ANY THIRD PARTY. THE FOREGOING LIMITATIONS AND EXCLUSIONS APPLY TO EXTENT  PERMITTED BY APPLICABLE LAW IN YOUR JURISDICTION. SPB SOFTWARE INC'S AGGREGATE LIABILITY AND THAT OF ITS SUPPLIERS UNDER OR IN CONNECTION WITH THIS AGREEMENT SHALL BE LIMITED TO THE AMOUNT PAID FOR THE SOFTWARE, IF ANY. Spb Software Inc. is acting on behalf of its suppliers for the purpose of disclaiming, excluding and/or limiting obligations, warranties and liability as provided in this Agreement, but in no other respects and for no other purpose.
+
+8. LIFE ENDANGERING ACTIVITIES. NEITHER SPB SOFTWARE INC. NOR ITS SUPPLIERS SHALL BE LIABLE FOR ANY DAMAGES RESULTING FROM OR IN CONNECTION WITH THE USE OF SOFTWARE IN ANY APPLICATION WHERE THE FAILURE OR INACCURACY OF THE SOFTWARE MIGHT RESULT IN DEATH OR PERSONAL INJURY. YOU AGREE TO INDEMNIFY AND HOLD HARMLESS SPB SOFTWARE INC. AND ITS SUPPLIERS FROM ANY CLAIMS, LOSS, COST, DAMAGE, EXPENSE, OR LIABILITY, INCLUDING ATTORNEYS' FEES, ARISING OUT OF OR IN CONNECTION WITH SUCH USE. 
+
+9. GENERAL PROVISIONS. This Agreement contains the entire understanding between the parties relating to its subject matter and supersedes all prior or contemporaneous agreements, including but not limited to any purchase order terms and conditions, except valid license agreements related to the subject matter of this Agreement which are physically signed by you and an authorized agent of Spb Software Inc. This Agreement may only be modified by a physically signed writing between you and an authorized agent of Spb Software Inc. Waiver of terms or excuse of breach must be in writing and shall not constitute subsequent consent, waiver or excuse. 
+
+10. COMPLIANCE WITH LICENSES. If you are a business or organization, you agree that upon request of Spb Software Inc. or Spb Software Inc.'s authorized agent, you will within thirty (30) days fully document and certify  that Use of any and all Spb Software Inc.'s Software at the time of the request is in conformity with your valid license obtained from Spb Software Inc.
+
+
+If you have any questions regarding this agreement or if you wish to request any information from Spb Software Inc., please use the address and the contact information included in this product to contact the Spb Software Inc. office serving your jurisdiction.
+                </eula>
+            </texts>
+
+            <images>
+                <app-icon width="512" height="512">appicon.png</app-icon>
+                <screenshots>
+                    <screenshot width="480" height="800" index="1">geogamead_ss1.png</screenshot>
+                    <screenshot width="480" height="800" index="2">geogamead_ss2.png</screenshot>
+                    <screenshot width="480" height="800" index="3">geogamead_ss3.png</screenshot>
+                    <screenshot width="480" height="800" index="4">geogamead_ss4.png</screenshot>
+                    <screenshot width="480" height="800" index="5">geogamead_ss5.png</screenshot>
+                    <screenshot width="480" height="800" index="6">geogamead_ss6.png</screenshot>
+                    <screenshot width="480" height="800" index="7">geogamead_ss7.png</screenshot>
+                    <screenshot width="480" height="800" index="8">geogamead_ss8.png</screenshot>
+                </screenshots>
+            </images>
+
+            <videos>
+                <youtube-video>WAyMMGOqXDE</youtube-video>
+            </videos>
+
+        </description>
+
+         <description-localization language="xx">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, гео, игра, страны, столицы, флаги</keywords>
+                <short-description>С помощью игры SPB Geo Game вы можете изучать столицы и флаги стран мира.</short-description>
+                <full-description>
+С помощью игры SPB Geo Game вы можете изучать столицы и флаги стран мира.
+<features>
+    <ul>
+        <li>Флаги стран мира</li>
+        <li>Мировые столицы</li>
+        <li>Глобус</li>
+        <li>Познавательная анимация</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>Флаги стран мира</feature>
+                    <feature>Мировые столицы</feature>
+                    <feature>Глобус</feature>
+                    <feature>Познавательная анимация</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+<description-localization language="fr">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, géo, le gibier, les pays, les capitales, drapeaux, trivia</keywords>
+                <short-description>Avec le jeu SPB Geo vous pouvez étudier les capitales et les drapeaux.</short-description>
+                <full-description>
+Avec le jeu SPB Geo vous pouvez étudier les capitales et les drapeaux.
+<features>
+    <ul>
+        <li>Drapeaux du monde</li>
+        <li>Capitales du monde</li>
+        <li>Globe 3d</li>
+        <li>Animation éducative</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>Drapeaux du monde</feature>
+                    <feature>Capitales du monde</feature>
+                    <feature>Globe 3d</feature>
+                    <feature>Animation éducative</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="de">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, geo, Spiel, Länder, Hauptstädte, Flaggen, trivia</keywords>
+                <short-description>Mit SPB Geo Game könenn Sie Hauptstädte und Flaggen kennen lernen.</short-description>
+                <full-description>
+Mit SPB Geo Game könenn Sie Hauptstädte und Flaggen kennen lernen.
+<features>
+    <ul>
+        <li>Welt Flaggen</li>
+        <li>Hauptstädte</li>
+        <li>3D Globus</li>
+        <li>Schöne Animationen</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>Welt Flaggen</feature>
+                    <feature>Hauptstädte</feature>
+                    <feature>3D Globus</feature>
+                    <feature>Schöne Animationen</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="it">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, geo, gioco, paesi, capitali, bandiere, curiosità</keywords>
+                <short-description>Con SPB Geo Game si possono studiare le capitali nazionali e le bandiere.</short-description>
+                <full-description>
+Con SPB Geo Game si possono studiare le capitali nazionali e le bandiere.
+<features>
+    <ul>
+        <li>Bandiere del mondo</li>
+        <li>Le capitali del mondo</li>
+        <li>Mappamondo 3D</li>
+        <li>Animazione Educativo</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>Bandiere del mondo</feature>
+                    <feature>Le capitali del mondo</feature>
+                    <feature>Mappamondo 3D</feature>
+                    <feature>Animazione Educativo</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="pt">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, geo, jogos, países, capitais, bandeiras, curiosidades</keywords>
+                <short-description>Com o SPB Geo Game pode estudar capitais nacionais e bandeiras.</short-description>
+                <full-description>
+Com o SPB Geo Game pode estudar capitais nacionais e bandeiras.
+<features>
+    <ul>
+        <li>Bandeiras do Mundo</li>
+        <li>Capitais do Mundo</li>
+        <li>Globo 3D</li>
+        <li>Informação Educacional</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>Bandeiras do Mundo</feature>
+                    <feature>Capitais do Mundo</feature>
+                    <feature>Globo 3D</feature>
+                    <feature>Informação Educacional</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <description-localization language="ja">
+            <texts>
+                <title>SPB Geo Game</title>
+                <keywords>spb, geo, game, 地理、ゲーム、国、首都、フラグ、トリビア</keywords>
+                <short-description>SPB Geo Game では、楽しみながら首都や国旗を覚えることができます。</short-description>
+                <full-description>
+SPB Geo Game では、楽しみながら首都や国旗を覚えることができます。
+<features>
+    <ul>
+        <li>国旗</li>
+        <li>世界の首都</li>
+        <li>3D 地球儀</li>
+        <li>教育用アニメ</li>
+    </ul>
+</features>
+                </full-description>
+                <features>
+                    <feature>国旗</feature>
+                    <feature>世界の首都</feature>
+                    <feature>3D 地球儀</feature>
+                    <feature>教育用アニメ</feature>
+                </features>
+            </texts>
+        </description-localization>
+
+        <content-description>
+            <content-rating>3</content-rating>
+            <content-descriptors>
+                <cartoon-violence>no</cartoon-violence>
+                <realistic-violence>no</realistic-violence>
+                <bad-language>no</bad-language>
+                <fear>no</fear>
+                <sexual-content>no</sexual-content>
+                <drugs>no</drugs>
+                <gambling-reference>no</gambling-reference>
+                <alcohol>no</alcohol>
+                <smoking>strong</smoking>
+                <discrimination>no</discrimination>
+            </content-descriptors>
+            <included-activities>
+                <in-app-billing>no</in-app-billing>
+                <gambling>no</gambling>
+                <advertising>no</advertising>
+                <user-generated-content>no</user-generated-content>
+                <user-to-user-communications>no</user-to-user-communications>
+                <account-creation>no</account-creation>
+                <personal-information-collection>no</personal-information-collection>
+            </included-activities>
+        </content-description>
+    
+        <price free="no">
+            <base-price>0.99</base-price>
+            <local-price country="AU">0.99</local-price>
+            <local-price country="AT">0.69</local-price>
+            <local-price country="BE">0.69</local-price>
+            <local-price country="BR">2.00</local-price>
+            <local-price country="CA">0.99</local-price>
+            <local-price country="CZ">19.50</local-price>
+            <local-price country="DK">6.00</local-price>
+            <local-price country="EE">0.69</local-price>
+            <local-price country="FI">0.69</local-price>
+            <local-price country="FR">0.69</local-price>
+            <local-price country="DE">0.69</local-price>
+            <local-price country="GR">0.69</local-price>
+            <local-price country="HK">7.49</local-price>
+            <local-price country="IN">52.49</local-price>
+            <local-price country="IE">0.69</local-price>
+            <local-price country="IL">3.49</local-price>
+            <local-price country="IT">0.69</local-price>
+            <local-price country="JP">99</local-price>
+            <local-price country="LU">0.69</local-price>
+            <local-price country="MX">12.99</local-price>
+            <local-price country="NL">0.69</local-price>
+            <local-price country="NZ">0.99</local-price>
+            <local-price country="NO">6.00</local-price>
+            <local-price country="PL">2.99</local-price>
+            <local-price country="PT">0.69</local-price>
+            <local-price country="RU">30</local-price>
+            <local-price country="SG">0.99</local-price>
+            <local-price country="SK">0.69</local-price>
+            <local-price country="SI">0.69</local-price>
+            <local-price country="KR">1000</local-price>
+            <local-price country="ES">0.69</local-price>
+            <local-price country="SE">7.00</local-price>
+            <local-price country="CH">0.99</local-price>
+            <local-price country="GB">0.59</local-price>
+        </price>
+
+        <apk-files>
+            <apk-file>SPBGeoGame.apk</apk-file>
+        </apk-files>
+
+        <testing-instructions>
+        </testing-instructions>
+        
+        <consent>
+            <google-android-content-guidelines>yes</google-android-content-guidelines>
+            <us-export-laws>yes</us-export-laws>
+            <slideme-agreement>yes</slideme-agreement>
+            <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+            <import-export>yes</import-export>
+        </consent>
+
+        <customer-support>
+            <phone>+7 (812) 3356993</phone>
+            <email>support@spband.yandex.ru</email>
+            <website>http://www.yandex.ru</website>
+        </customer-support>
+
+        <store-specific>
+            <amazon>
+                <form-factor>all</form-factor>
+                <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
+                <apply-amazon-drm>yes</apply-amazon-drm>
+                <kindle-support>
+                    <kindle-fire-first-generation>yes</kindle-fire-first-generation>
+                    <kindle-fire>yes</kindle-fire>
+                    <kindle-fire-hd>yes</kindle-fire-hd>
+                    <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
+                </kindle-support>
+                <binary-alias>Version 1.0</binary-alias>
+            </amazon>
+            <samsung>
+                <form-factor>phone,tablet</form-factor>
+            </samsung>
+           
+        </store-specific>
+
+    </application>
+
+</application-description-file>

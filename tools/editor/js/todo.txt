@@ -42,31 +42,32 @@ DONE:
 3. description.xml is not an XML file
 4. File is mentioned in AppDF (screenshot) but not in ZIP
 5. File is mentioned in AppDF (appicon) but not in ZIP
+6. Wrong type (super-category)
+7. Wrong category
+8. Wrong subcategory
+9. Wrong country code
+10. Wrong language id in description localization
+11. price free="yes" and base-price or local-price
+12. price free="no" and no base-price
+13. No short enough title
 
 2. Wrong app icon file format (for example JPG not PNG)
 3. Wrong app icon size
 4. Width/height from AppDF and actual image width/height do not match 
 5. Wrong screenshot format
 6. No required screenshot size
-7. Wrong category
-8. Wrong country code
-9. Wrong currency code
+8. Wrong currency code
 10. No text in EULA
-13. Wrong subcategory
-14. Wrong type (super-category)
 15. No short enough short description
-16. No short enough title
 17. Bad subtags in <full-description>
 18. Not enough features
 19. Wrong URL format in recent-changes href
 20. Wrong YouTube ID
-21. Wrong language id in description localization
 22. Wrong xml structure in description-localization
 23. rating-certificate ссылающийся на несуществующий файл
 24. Wrong date in availability/period
 25. In availbility/countries only-listed="yes" and <exclude>
 26. In availbility/countries only-listed="no" and <include>
-27. price free="yes" and base-price or local-price
 28. price free="no" and trial-version
 29. supported-resolutions only-listed="yes" and <exclude>
 30. supported-resolutions only-listed="yes"> and <include>
