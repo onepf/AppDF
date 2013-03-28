@@ -45,11 +45,13 @@ function generateAppDFFile(onend) {
     var URL = window.webkitURL || window.mozURL || window.URL;
 
     var files = [];
+    var fileNames = [];
     function addInputFiles($el) {
         $el.each(function() {
             //check if the file is already in the list then do not push it
-            if (!appdfEditor.isNoFile($(this)[0]) && appdfEditor.getFileContent($(this)[0])) {
+            if (!appdfEditor.isNoFile($(this)[0]) && fileNames.indexOf(appdfEditor.getFileName($(this)[0]))===-1) {
                 files.push(appdfEditor.getFileContent($(this)[0]));
+                fileNames.push(appdfEditor.getFileName($(this)[0]));
             };
         });
     };

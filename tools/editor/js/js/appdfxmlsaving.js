@@ -100,8 +100,6 @@ var appdfXMLSaver = (function() {
 	function generateOneLanguageImageDescription(languageCode, xml) {
 		$parent = $("#localization-tab-" + languageCode);
 		var $screenshots = $parent.find("input[id^=description-images-screenshot]:not(.empty-image)");
-        console.log("generateOneLanguageImageDescription: " + languageCode);
-        console.log($screenshots);
         
 		//We calculate total number of images to check if this section is empty
 		var numberOfImages = $screenshots.length;
