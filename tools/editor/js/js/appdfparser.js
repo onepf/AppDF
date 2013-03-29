@@ -497,7 +497,7 @@ var appdfParser = (function() {
 			};
 		};
 
-		if (isDefined(data["privacy-policy"]) && data["privacy-policy"].length>500) {
+		if (isDefined(data["recent-changes"]) && data["recent-changes"].length>500) {
 			errors.push("Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")");
 		};
 
