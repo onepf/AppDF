@@ -96,7 +96,7 @@ var appdfEditor = (function() {
                 <div class="input-append"> \
                     <input type="text" id="description-texts-keywords-more-' + getUniqueId() + '" value="' + value + '" \
                     required \
-                    data-validation-required-message="Keyword cannot be empty. Remove keyword input if you do not need it." \
+                    data-validation-required-message="' + errorMessages.keywordRequired + '" \
                     > \
                     <button class="btn description-texts-keywords-remove"><i class="icon-remove"></i></button> \
                 </div> \
@@ -141,7 +141,7 @@ var appdfEditor = (function() {
                         <span class="add-on"></span> \
                         <input class="span2" type="text" id="price-localprice-' + getUniqueId() + '" value="' + value + '" \
                             pattern="^\\d+\\.\\d+$|^\\d+$" \
-                            data-validation-pattern-message="Wrong price value. Must be a valid number like 15.95." \
+                            data-validation-pattern-message="' + errorMessages.pricePattern + '" \
                         > \
                         <button class="btn control-group-remove"><i class="icon-remove"></i></button> \
                     </div> \
@@ -365,7 +365,8 @@ var appdfEditor = (function() {
 
         $modal.modal("show");
     };
-
+    
+    var loadAppdfDialogInit = false;
     function showLoadAppdfDialog() {
         var $modal = $("#load-appdf-modal");
         var $browseButton = $modal.find(".load-appdf-modal-browse")
@@ -375,51 +376,56 @@ var appdfEditor = (function() {
         $("#load-appdf-modal-status").hide();
         $("#load-appdf-modal-prettyfile").val("");
         $file.val("");
-
-        $browseButton.click(function(event) {
-            console.log("borwseButton click");
-            event.preventDefault();
-            $file.click();
-            console.log("click end");
-            return false;
-        });
-
-        $file.change(function(event) {
-            console.log("file is changed");
-            $("#load-appdf-modal-prettyfile").val(normalizeInputFileName($file.val()));
-            return false;
-        });
-
-        $openButton.click(function(event) {
-            event.preventDefault();
-            $("#load-appdf-modal-status").show();
-
-            appdfXMLLoader.loadAppdfFile($file[0].files[0], function() {
-                $modal.modal('hide');
-            }, function(errors) {
-                console.log("Import errors");
-                console.log(errors);
-
-                var $list = $("#load-appdf-modal-errors").find("ul");
-
-                //Then we clear all the previous errors from the error lost
-                $list.find("li").remove();
-
-                //Now we make sure the error list is visible and add all the errors there
-                $("#load-appdf-modal-errors").show();
-                for (var i=0; i<errors.length; i++) {
-                    $list.append($("<li>").text(errors[i]));
-                };
-
-            }, function(current, total) {
-                //onprogress
+        
+        if (!loadAppdfDialogInit) {
+            loadAppdfDialogInit = true;
+            
+            $browseButton.click(function(event) {
+                console.log("borwseButton click");
+                event.preventDefault();
+                $file.click();
+                console.log("click end");
+                return false;
             });
-            return false;
-        });
 
+            $file.change(function(event) {
+                console.log("file is changed");
+                $("#load-appdf-modal-prettyfile").val(normalizeInputFileName($file.val()));
+                return false;
+            });
+
+            $openButton.click(function(event) {
+                event.preventDefault();
+                $("#load-appdf-modal-status").show();
+
+                appdfXMLLoader.loadAppdfFile($file[0].files[0], function() {
+                    $modal.modal('hide');
+                }, function(errors) {
+                    console.log("Import errors");
+                    console.log(errors);
+
+                    var $list = $("#load-appdf-modal-errors").find("ul");
+
+                    //Then we clear all the previous errors from the error lost
+                    $list.find("li").remove();
+
+                    //Now we make sure the error list is visible and add all the errors there
+                    $("#load-appdf-modal-errors").show();
+                    for (var i=0; i<errors.length; i++) {
+                        $list.append($("<li>").text(errors[i]));
+                    };
+
+                }, function(current, total) {
+                    //onprogress
+                });
+                return false;
+            });
+        }
+        
         $modal.modal("show");
     };
 
+    var youTubeBrowseDialogInit = false;
     function showYouTubeBrowseDialog(e) {
         var $original = $(e).closest(".input-append").find("input");
         var $modal = $("#description-videos-youtubevideo-dialog");
@@ -458,38 +464,42 @@ var appdfEditor = (function() {
             };
         };
 
-        $modal.find(".description-videos-youtubevideo-dialog-check").click(function(event) {
-            event.preventDefault();
-            getVideoId();
+        if (!youTubeBrowseDialogInit){
+            youTubeBrowseDialogInit = true;
+            
+            $modal.find(".description-videos-youtubevideo-dialog-check").click(function(event) {
+                event.preventDefault();
+                getVideoId();
 
-            if (videoId) {
-                $info.text("YouTube ID = " + videoId);
-                $video.attr("src" , "http://www.youtube.com/embed/" + videoId + "?rel=0");
-                $video.show();
-            } else {
-                $info.text("Error: unrecognized YouTube URL format");
-                $video.hide();
-            };
-        });
+                if (videoId) {
+                    $info.text("YouTube ID = " + videoId);
+                    $video.attr("src" , "http://www.youtube.com/embed/" + videoId + "?rel=0");
+                    $video.show();
+                } else {
+                    $info.text("Error: unrecognized YouTube URL format");
+                    $video.hide();
+                };
+            });
 
-        $okButton.click(function(event) {
-            event.preventDefault();
-            getVideoId();
-            if (videoId) {
-                $modal.modal('hide');
-                $original.val(videoId);
-            };
-        });
+            $okButton.click(function(event) {
+                event.preventDefault();
+                getVideoId();
+                if (videoId) {
+                    $modal.modal('hide');
+                    $original.val(videoId);
+                };
+            });
 
-        $modal.on('shown', function () {
-            $input.focus();
-        });
+            $modal.on('shown', function () {
+                $input.focus();
+            });
 
-        $modal.on('hidden', function () {
-            //To stop playing video in background after the modal dialog is closed
-            $video.attr("src" , "");
-        });
-
+            $modal.on('hidden', function () {
+                //To stop playing video in background after the modal dialog is closed
+                $video.attr("src" , "");
+            });
+        }
+        
         init();
         $modal.modal("show");
     };
@@ -775,7 +785,7 @@ var appdfEditor = (function() {
 				callback({
 					value: value,
 					valid: false,
-					message: promoName==="smallpromo"?"Small promotion image size must be 180x120":"Large promotion image size must be 1024x500" 
+					message: promoName==="smallpromo"?errorMessages.smallPromoWrongSize:errorMessages.largePromoWrongSize 
 				});
 			};
 		});
@@ -786,12 +796,21 @@ var appdfEditor = (function() {
 			callback({
 				value: value,
 				valid: true
-				//message: "Screenshot is required"
+				//message: errorMessages.screenshotRequired
 			});
 			return;
 		};
 		var imageFileName = getFileName($el[0]);
 		var file = getFileContent($el[0]);
+        if (typeof file==="undefined") {
+            callback({
+                value: value,
+                valid: false,
+                message: imageFileName + errorMessages.resourceNotFound
+            });
+            return false;
+        };
+        
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		
@@ -805,7 +824,7 @@ var appdfEditor = (function() {
 				callback({
 					value: value,
 					valid: false,
-					message: "Wrong screenshot size" //todo: better error message
+					message: errorMessages.screenshowWrongSize//todo: better error message
 				});
 			};
 		});
@@ -816,7 +835,7 @@ var appdfEditor = (function() {
 			callback({
 				value: value,
 				valid: false,
-				message: "This device already exists"
+				message: errorMessages.deviceAlreadyExist
 			});
 		} else {
 			callback({
@@ -838,13 +857,22 @@ var appdfEditor = (function() {
 			callback({
 				value: value,
 				valid: false,
-				message: "Application icon is required"
+				message: errorMessages.appIconRequired
 			});
 			return;
 		};
         
 		var imageFileName = getFileName($el[0]);
 		var file = getFileContent($el[0]);
+        if (typeof file==="undefined") {
+            callback({
+                value: value,
+                valid: false,
+                message: imageFileName + errorMessages.resourceNotFound
+            });
+            return false;
+        };
+        
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
         if (isOnlyDataImage($el[0])) {
@@ -862,7 +890,7 @@ var appdfEditor = (function() {
 				callback({
 					value: value,
 					valid: false,
-					message: "Application icon size must be 512x512"
+					message: errorMessages.appIconSize512
 				});
 			};
 		});
@@ -876,18 +904,26 @@ var appdfEditor = (function() {
 			callback({
 				value: value,
 				valid: false,
-				message: "APK file is required"
+				message: errorMessages.APKfileRequired
 			});
 			return;
 		};
 		
 		var file = getFileContent($el[0]);
+        if (typeof file==="undefined") {
+            callback({
+                value: value,
+                valid: false,
+                message: apkFileName + errorMessages.resourceNotFound
+            });
+            return false;
+        };
         
 		if (file.size>MAXIMUM_APK_FILE_SIZE) {
 			callback({
 				value: value,
 				valid: false,
-				message: "APK file size cannot exceed 50M"
+				message: errorMessages.APKfileSize50M
 			});
 			return;
 		};
@@ -904,7 +940,7 @@ var appdfEditor = (function() {
 			} else {
 				if (firstApkFileData.package!=apkData.package) {
 					data.valid = false;
-					data.message = "APK file package names do not match";
+					data.message = errorMessages.APKfileWrongPackageName;
 				};
 			};
 			callback(data);
@@ -941,13 +977,13 @@ var appdfEditor = (function() {
 			callback({
 				value: value,
 				valid: false,
-				message: "This store already exists"
+				message: errorMessages.storeExist
 			});
 		} else if (value && !regExp.test(value)) {
 			callback({
 				value: value,
 				valid: false,
-				message: "Application store name could contain only small English letters without special symbols"
+				message: errorMessages.applicationNameWrong
 			});
 		} else {
 			callback({

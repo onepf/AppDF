@@ -24,7 +24,7 @@
 var appdfXMLLoader = (function() {
     var appdfFiles = {};
     
-    function loadDescriptionLocalizationSection(languageCode, data) {
+    function loadDescriptionLocalizationSection(languageCode, data, onerror) {
         var $container = $("#localization-tab-" + languageCode);
 
         $container.find("input[id^=description-texts-title-more-]").closest(".control-group").remove();
@@ -100,9 +100,19 @@ var appdfXMLLoader = (function() {
                 $appIconInput.data("file", appIcons[i].name);
                 
                 if (i===0) {
-                    appdfEditor.validationCallbackAppIconFirst($appIconInput, appIcons[i].name, function(d) {});
+                    appdfEditor.validationCallbackAppIconFirst($appIconInput, appIcons[i].name, function(v) {
+                        if (!v.valid) {
+                            onerror([v.message]);
+                            return false;
+                        };
+                    });
                 } else {
-                    appdfEditor.validationCallbackAppIconMore($appIconInput, appIcons[i].name, function(e) {});
+                    appdfEditor.validationCallbackAppIconMore($appIconInput, appIcons[i].name, function(v) {
+                        if (!v.valid) {
+                            onerror([v.message]);
+                            return false;
+                        };
+                    });
                 };
                 appdfImages.onAppIconImageInputChange({target:$appIconInput});
             };
@@ -131,7 +141,7 @@ var appdfXMLLoader = (function() {
                     appdfImages.addScreenshotIndex({target:$screenshotGroups[screenshotIndex-1]});
                     $screenshotInput = $($screenshotGroups[screenshotIndex-1]).find("input.empty-image:last");
                 }
-                updateScreenshot(screenshots[i], $screenshotInput);
+                updateScreenshot(screenshots[i], $screenshotInput, onerror);
             };
         }
         
@@ -142,10 +152,15 @@ var appdfXMLLoader = (function() {
         };
     };
     
-    function updateScreenshot(screenshotData, $screenshotInput) {
+    function updateScreenshot(screenshotData, $screenshotInput, onerror) {
         $screenshotInput.data("file", screenshotData.name);
         
-        appdfEditor.validationCallbackScreenshotRequired($screenshotInput, screenshotData.name, function(d) {});
+        appdfEditor.validationCallbackScreenshotRequired($screenshotInput, screenshotData.name, function(v) {
+            if (!v.valid) {
+                onerror([v.message]);
+                return false;
+            };
+        });
         appdfImages.onScreenshotImageInputChange({target:$screenshotInput[0]});
     };
     
@@ -153,7 +168,12 @@ var appdfXMLLoader = (function() {
         if ( promo ) {
             $promoInput.data("file", promo.name);
             
-            appdfEditor.validationCallbackPromo($promoInput, promo.name, function(d) {});
+            appdfEditor.validationCallbackPromo($promoInput, promo.name, function(v) {
+                if (!v.valid) {
+                    onerror([v.message]);
+                    return false;
+                };
+            });
             appdfImages.onImageInputChange({target:$promoInput});
         };  
     };
@@ -202,9 +222,14 @@ var appdfXMLLoader = (function() {
             progress(3);
             for (languageCode in data["description"]) {
                 if (languageCode!="default") {
+                    if (typeof dataLanguages[languageCode]==="undefined") {
+                        onerror([errorMessages.wrongLanguageCode]);
+                        return false;
+                    };
+                    
                     appdfLocalization.addLocalization(languageCode, dataLanguages[languageCode]);
                 };
-                loadDescriptionLocalizationSection(languageCode, data["description"][languageCode]);
+                loadDescriptionLocalizationSection(languageCode, data["description"][languageCode], onerror);
                 progress(20);
             };
 
@@ -384,15 +409,26 @@ var appdfXMLLoader = (function() {
                     $apkFileInputHidden = $("#section-apk-files input[id=\"apk-file\"]:last");
                     $apkFileInputHidden.data("file", apkFileList[i]);
                     
-                    if (i===0) {
-                        appdfEditor.validationCallbackApkFileFirst($apkFileInputHidden, apkFileList[i], function() {});
-                    } else {
-                        appdfEditor.validationCallbackApkFileMore($apkFileInputHidden, apkFileList[i], function() {})
-                    };
-                    
                     if (i<apkFileList.length-1) {
                         appdfEditor.addApkFile($apkFileInputHidden);
                     };
+                    
+                    if (i===0) {
+                        appdfEditor.validationCallbackApkFileFirst($apkFileInputHidden, apkFileList[i], function(v) {
+                            if (!v.valid) {
+                                onerror([v.message]);
+                                return false;
+                            };
+                        });
+                    } else {
+                        appdfEditor.validationCallbackApkFileMore($apkFileInputHidden, apkFileList[i], function(v) {
+                            if (!v.valid) {
+                                onerror([v.message]);
+                                return false;
+                            };
+                        })
+                    };
+                    
                 };
             };
             
@@ -407,7 +443,7 @@ var appdfXMLLoader = (function() {
 
     function loadAppdfFile(file, onend, onerror, onprogress) {
         if (!file) {
-            onerror(["Please select AppDF file"]);
+            onerror([errorMessages.selectAppDFFile]);
             return false;
         };
         
@@ -430,7 +466,7 @@ var appdfXMLLoader = (function() {
                 });
                 
                 if (!descriptionAttachedFlag) {
-                    onerror(["description.xml file is not found inside AppDF container"]);
+                    onerror([errorMessages.descriptionNotFound]);
                     return false;
                 };
                 
@@ -445,7 +481,9 @@ var appdfXMLLoader = (function() {
                 };
                 getNextFileData();
             });
-        }, onerror);
+        }, function(e) {
+            onerror([errorMessages.selectAppDFFile]);
+        });
     };
     
     function getFileData(appdfFileEntry, oncomplete, onerror) {
@@ -465,7 +503,7 @@ var appdfXMLLoader = (function() {
             };
             
             fileReader.onerror = function(event) {
-                onerror([fileName + " file could not be read. Code " + event.target.error.code]);
+                onerror([fileName + errorMessages.fileErrorAndCode + event.target.error.code]);
             };
             
             if (fileName==="description.xml") {

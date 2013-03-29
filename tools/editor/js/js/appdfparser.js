@@ -31,7 +31,13 @@ var appdfParser = (function() {
 
 	function parseDescriptionXML(xmlText, onend, onerror) {
 		data = {};
-		var $xml = $($.parseXML(xmlText));
+        var $xml;
+        try {
+            $xml = $($.parseXML(xmlText));
+        } catch(e) {
+            onerror([errorMessages.descriptionIsNotXML]);
+            return false;
+        };
 
 		var errors = [];
 		var curDataPath = "";

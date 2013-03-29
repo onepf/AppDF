@@ -141,7 +141,7 @@ function collectBuildErrors(onsuccess, onerror) {
 			checkErrorMessage({
 				valid: false,
 				value: "",
-				message: "Privacy policy should include both link and full text"
+				message: errorMessages.privacypolicyNotBothFilled
 			});
 			return false;
 		};
@@ -154,7 +154,7 @@ function collectBuildErrors(onsuccess, onerror) {
 			checkErrorMessage({
 				valid: false,
 				value: "",
-				message: "End user license agreement should include both link and full text"
+				message: errorMessages.eulaNotBothFilled
 			});
 			return false;
 		};
