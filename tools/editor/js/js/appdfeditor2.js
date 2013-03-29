@@ -23,6 +23,8 @@
  */
 
 var appdfEditor = (function() {
+    var MAXIMUM_APK_FILE_SIZE = 50000000;
+    
     function fillCountries($e, selectedCountry) {
         $e.append($("<option />").val("").text("Select Country"));
 
@@ -51,6 +53,42 @@ var appdfEditor = (function() {
         return fileName.replace("C:\\fakepath\\", "");
     };
 
+    function getFileName($el) {
+        if ($($el).val()) {
+            return normalizeInputFileName($($el).val());
+        } else if ($($el).data("file")) {
+            return $($el).data("file");
+        } else {
+            return "";
+        };
+    };
+    
+    function getFileContent($el) {
+        if ($el.files.length) {
+            return $el.files[0];
+        } else if ($($el).data("file")) {
+            return appdfXMLLoader.appdfFiles[$($el).data("file")];
+        } else {
+            return null;
+        };
+    };
+    
+    function isNoFile($el) {
+        if ($el.files.length || $($el).data("file")) {
+            return false;
+        } else {
+            return true;
+        };
+    };
+    
+    function isOnlyDataImage($el) {
+        if (!$el.files.length && $($el).data("file")) {
+            return true;
+        } else {
+            return false;
+        };
+    };
+    
     function addMoreKeywords(e, value) {
         var $parent = $(e).closest(".input-append").parent();
         var $controlGroup = $(' \
@@ -157,7 +195,7 @@ var appdfEditor = (function() {
                 <div class="controls"> \
                     <div class="input-append"> \
                         <input type="text" id="description-texts-title-more-' + getUniqueId() + ' class="input-xxlarge" value="' + value + '"> \
-                        <button class="btn" type="button" onclick="removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
+                        <button class="btn" type="button" onclick="appdfEditor.removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
                     </div> \
                     <p class="help-block">Enter longer title and it will be used by those stores that support longer titles.</p> \
                 </div> \
@@ -176,7 +214,7 @@ var appdfEditor = (function() {
                 <div class="controls"> \
                     <div class="input-append"> \
                         <input type="text" id="description-texts-shortdescription-more-' + getUniqueId() + '" class="input-xxlarge" value="' + value + '"> \
-                        <button class="btn" type="button" onclick="removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
+                        <button class="btn" type="button" onclick="appdfEditor.removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
                     </div> \
                     <p class="help-block">Enter longer short description and it will be used by those stores that support longer short descriptions.</p> \
                 </div> \
@@ -348,7 +386,7 @@ var appdfEditor = (function() {
 
         $file.change(function(event) {
             console.log("file is changed");
-            $("#load-appdf-modal-prettyfile").val(appdfEditor.normalizeInputFileName($file.val()));
+            $("#load-appdf-modal-prettyfile").val(normalizeInputFileName($file.val()));
             return false;
         });
 
@@ -527,11 +565,6 @@ var appdfEditor = (function() {
             return false;
         });
 
-
-
-
-
-
         $('body').on('click', '.requirements-supporteddevices-addmore', function(e) {
             var $input = $(e.target).closest(".input-append").find("input");
             if ($input.val() !== "") {
@@ -559,11 +592,6 @@ var appdfEditor = (function() {
             return false;
         });
 
-
-
-
-
-
         $('body').on('click', '.description-texts-keywords-remove', function(e) {
             $(e.target).closest(".input-container").remove();
             return false;
@@ -574,18 +602,10 @@ var appdfEditor = (function() {
             return false;
         });
 
-
-
-
-
-
-
-
         $('body').on('click', '.control-group-remove', function(e) {
             $(e.target).closest(".control-group").remove();
             return false;
         });
-
 
         $('body').on('click', '.apk-file-addmore', function(e) {
             addApkFile(e.target);
@@ -597,9 +617,6 @@ var appdfEditor = (function() {
             return false;
         });
 
-
-
-
         $('body').on('click', '.load-appdf-file', function(event) {
             showLoadAppdfDialog();
             return false;
@@ -610,18 +627,15 @@ var appdfEditor = (function() {
             return false;
         });
 
-
         $('body').on('click', '.apkfile-pretty-browse', function(event) {
-            $(event.target).closest(".controls").children("input").click();
+            $(event.target).closest(".controls").children("input[type=\"file\"]").click();
             return false;
         });
-
 
         $('body').on('click', '.description-texts-title-addmore', function(event) {
             addMoreTitles(event.target, "");
             return false;
         });
-
 
         $('body').on('click', '.description-texts-shortdescription-addmore', function(event) {
             addMoreShortDescriptions(event.target, "");
@@ -647,8 +661,6 @@ var appdfEditor = (function() {
 			$("#requirements-supportedresolutions-include").hide();
 			$("#requirements-supportedresolutions-exclude").hide();
 		});
-		
-
 
         $("#categorization-type").change(function() {
             fillCategories();
@@ -663,7 +675,20 @@ var appdfEditor = (function() {
 
         $("#categorization-subcategory").change(function() {
             fillCategoryStoresInfo();
-        });        
+        });
+        
+        $("#build-appdf-file").click(function(event) {
+            return buildAppdDFFile(event);
+        });
+
+        $("#price-free-trialversion").change(function() {
+            var trialVersion = $("#price-free-trialversion").attr("checked");
+            if (trialVersion === "checked") {
+                $("#price-free-fullversion").removeAttr('disabled');
+            } else {
+                $("#price-free-fullversion").attr('disabled', 'disabled');
+            };
+        });
     };
 
     function fillSupportedLanguages() {
@@ -724,8 +749,8 @@ var appdfEditor = (function() {
         });
     };
 	
-	function validationCallbackSmallPromo($el, value, callback) {
-		if ($el[0].files.length === 0) {
+	function validationCallbackPromo($el, value, callback) {
+		if (isNoFile($el[0])) {
 			callback({
 				value: value,
 				valid: true
@@ -733,13 +758,14 @@ var appdfEditor = (function() {
 			return;
 		};
 		
-		var imageFileName = appdfEditor.normalizeInputFileName($el.val());
-		var file = $el[0].files[0];
+		var promoName = $($el).attr("name").split("-")[2];
+		var imageFileName = getFileName($el[0]);
+		var file = getFileContent($el[0]);
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		
-		getImgSize(imgUrl, function(width, height) {
-			if (width===180 && height===120) {
+		appdfImages.getImgSize(imgUrl, function(width, height) {
+			if ( (promoName==="smallpromo" && width===180 && height===120) || (promoName==="largepromo" && width===1024 && height===500)) {
 				$el.data("width", width).data("height", height);
 				callback({
 					value: value,
@@ -749,44 +775,14 @@ var appdfEditor = (function() {
 				callback({
 					value: value,
 					valid: false,
-					message: "Small promotion image size must be 180x120" 
-				});
-			};
-		});
-	};
-	
-	function validationCallbackLargePromo($el, value, callback) {
-		if ($el[0].files.length === 0) {
-			callback({
-				value: value,
-				valid: true
-			});
-			return;
-		};
-		var imageFileName = appdfEditor.normalizeInputFileName($el.val());
-		var file = $el[0].files[0];
-		var URL = window.webkitURL || window.mozURL || window.URL;    
-		var imgUrl = URL.createObjectURL(file);
-		
-		getImgSize(imgUrl, function(width, height) {
-			if (width===1024 && height===500) {
-				$el.data("width", width).data("height", height);
-				callback({
-					value: value,
-					valid: true
-				});
-			} else {
-				callback({
-					value: value,
-					valid: false,
-					message: "Large promotion image size must be 1024x500" 
+					message: promoName==="smallpromo"?"Small promotion image size must be 180x120":"Large promotion image size must be 1024x500" 
 				});
 			};
 		});
 	};
 	
 	function validationCallbackScreenshotRequired($el, value, callback) {
-		if ($el[0].files.length === 0) {
+		if (isNoFile($el[0])) {
 			callback({
 				value: value,
 				valid: true
@@ -794,12 +790,12 @@ var appdfEditor = (function() {
 			});
 			return;
 		};
-		var imageFileName = appdfEditor.normalizeInputFileName($el.val());
-		var file = $el[0].files[0];
+		var imageFileName = getFileName($el[0]);
+		var file = getFileContent($el[0]);
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		
-		getImgSize(imgUrl, function(width, height) {
+		appdfImages.getImgSize(imgUrl, function(width, height) {
 			if ((width===480 && height===800) || (width===1080 && height===1920) || (width===1920 && height===1200)) {
 				callback({
 					value: value,
@@ -829,9 +825,16 @@ var appdfEditor = (function() {
 			});
 		}
 	};
-	
+    
 	function validationCallbackAppIconFirst($el, value, callback) {
-		if ($el[0].files.length === 0) {
+        validationCallbackAppIcon($el, value, callback, true);
+    };
+	function validationCallbackAppIconMore($el, value, callback) {
+        validationCallbackAppIcon($el, value, callback, false);
+    };
+    
+	function validationCallbackAppIcon($el, value, callback, first) {
+		if (first && isNoFile($el[0])) {
 			callback({
 				value: value,
 				valid: false,
@@ -839,13 +842,17 @@ var appdfEditor = (function() {
 			});
 			return;
 		};
-
-		var imageFileName = appdfEditor.normalizeInputFileName($el.val());
-		var file = $el[0].files[0];
+        
+		var imageFileName = getFileName($el[0]);
+		var file = getFileContent($el[0]);
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
-
-		getImgSize(imgUrl, function(width, height) {
+        if (isOnlyDataImage($el[0])) {
+            $($el[0]).removeClass("empty-image");
+            $($el[0]).next().attr("src", imgUrl);
+        };
+        
+		appdfImages.getImgSize(imgUrl, function(width, height) {
 			if (width===512 && height===512) {
 				callback({
 					value: value,
@@ -862,10 +869,10 @@ var appdfEditor = (function() {
 	};
 	
 	function validationCallbackApkFile($el, value, callback, first) {
-		var apkFileName = appdfEditor.normalizeInputFileName($el.val());
-		$el.closest(".controls").find("input:text").val(apkFileName);
+        var apkFileName = getFileName($el[0]);
+        $el.closest(".controls").find("input:text").val(apkFileName);
 
-		if (first && $el[0].files.length === 0) {
+		if (first && isNoFile($el[0])) {
 			callback({
 				value: value,
 				valid: false,
@@ -874,8 +881,8 @@ var appdfEditor = (function() {
 			return;
 		};
 		
-		var file = $el[0].files[0];
-
+		var file = getFileContent($el[0]);
+        
 		if (file.size>MAXIMUM_APK_FILE_SIZE) {
 			callback({
 				value: value,
@@ -950,6 +957,22 @@ var appdfEditor = (function() {
 		};
 	};
 	
+    function removeControlGroup(e) {
+        $(e).closest(".control-group").remove();
+    };
+    
+    function fillApkFileInfo($el, apkData) {
+        var $info = $el.closest(".control-group").find(".apk-file-info");
+        $info.empty();
+
+        if (apkData) {
+            var $table = $("<table class='table table-striped table-bordered'/>");
+            $table.append($("<tr><td>Package</td><td>" + apkData["package"] + "</td></tr>"));
+            $table.append($("<tr><td>Version</td><td>" + apkData["version"] + "</td></tr>"));
+            $info.append($table);
+        };
+    };
+
     function initFilling() {
         fillLanguages();    
         fillCategories();
@@ -971,6 +994,7 @@ var appdfEditor = (function() {
 
     return {
         init : init,
+        addApkFile : addApkFile,
         addMoreKeywords : addMoreKeywords,
         addMoreLocalPrice : addMoreLocalPrice,
         addMoreTitles : addMoreTitles,
@@ -978,16 +1002,19 @@ var appdfEditor = (function() {
 		addMoreStoreSpecific: addMoreStoreSpecific,
 		addMoreUnsupportedDevices: addMoreUnsupportedDevices,
         normalizeInputFileName : normalizeInputFileName,
+        getFileName : getFileName,
+        getFileContent : getFileContent,
+        isNoFile : isNoFile,
         fillCategories : fillCategories,
         fillSubcategories : fillSubcategories,
         fillCategoryStoresInfo : fillCategoryStoresInfo,
 		fillSupportedLanguages : fillSupportedLanguages,
         fillScreenResolutions : fillScreenResolutions,
 		validationCallbackAppIconFirst : validationCallbackAppIconFirst,
+        validationCallbackAppIconMore : validationCallbackAppIconMore,
 		validationCallbackApkFileFirst : validationCallbackApkFileFirst,
 		validationCallbackApkFileMore : validationCallbackApkFileMore,
-		validationCallbackSmallPromo : validationCallbackSmallPromo,
-		validationCallbackLargePromo : validationCallbackLargePromo,
+		validationCallbackPromo : validationCallbackPromo,
 		validationCallbackScreenshotRequired : validationCallbackScreenshotRequired,
 		validationCallbackRequirementDevice : validationCallbackRequirementDevice,
 		validationCallbackStoreSpecify : validationCallbackStoreSpecify

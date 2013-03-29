@@ -83,10 +83,12 @@ var appdfLocalization = (function() {
     	$e.find(".image-input-group").find("input.image-input").not(".empty-image").closest(".image-input-group").remove();
     	$e.find(".image-input-group").find("input.screenshot-input").not(".empty-image").closest(".image-input-group").remove();
     	$e.find(".image-input-group").find("input.appicon-input").not(".empty-image").closest(".image-input-group").remove();
-
+        
+        //TODO Add default promo images if needed
+        
         //Remove the required "*" symbol from the end of all labels because all fields in a localization are optional
     	$e.find(".required-mark").remove();
-
+        
         //Remove all additionally added keywords
         $e.find("input[id^=description-texts-keywords-more-]").closest(".input-container").remove();
     };
@@ -150,12 +152,20 @@ var appdfLocalization = (function() {
             return false;
         });
     };
+    
+    function isDefaultLanguage($el) {
+        var $tab = $el.closest(".tab-pane");
+        var tabId = $tab.attr('id')
+        var result = (tabId==="localization-tab-default");
+        return result;
+    };
 
     return {
         init : init,
         removeAllLocalizations : removeAllLocalizations,
         addLocalization : addLocalization,
         selectLanguage : selectLanguage,
+        isDefaultLanguage : isDefaultLanguage,
         getDescriptionLanguages : getDescriptionLanguages
     };
 })();
