@@ -24,7 +24,7 @@
 var appdfXMLLoader = (function() {
     var appdfFiles = {};
     
-    function loadDescriptionLocalizationSection(languageCode, data, onerror) {
+    function loadDescriptionLocalizationSection(languageCode, data) {
         var $container = $("#localization-tab-" + languageCode);
 
         $container.find("input[id^=description-texts-title-more-]").closest(".control-group").remove();
@@ -100,19 +100,9 @@ var appdfXMLLoader = (function() {
                 $appIconInput.data("file", appIcons[i].name);
                 
                 if (i===0) {
-                    appdfEditor.validationCallbackAppIconFirst($appIconInput, appIcons[i].name, function(v) {
-                        if (!v.valid) {
-                            onerror([v.message]);
-                            return false;
-                        };
-                    });
+                    appdfEditor.validationCallbackAppIconFirst($appIconInput, appIcons[i].name, function(v) {});
                 } else {
-                    appdfEditor.validationCallbackAppIconMore($appIconInput, appIcons[i].name, function(v) {
-                        if (!v.valid) {
-                            onerror([v.message]);
-                            return false;
-                        };
-                    });
+                    appdfEditor.validationCallbackAppIconMore($appIconInput, appIcons[i].name, function(v) {});
                 };
                 appdfImages.onAppIconImageInputChange({target:$appIconInput});
             };
@@ -141,7 +131,7 @@ var appdfXMLLoader = (function() {
                     appdfImages.addScreenshotIndex({target:$screenshotGroups[screenshotIndex-1]});
                     $screenshotInput = $($screenshotGroups[screenshotIndex-1]).find("input.empty-image:last");
                 }
-                updateScreenshot(screenshots[i], $screenshotInput, onerror);
+                updateScreenshot(screenshots[i], $screenshotInput);
             };
         }
         
@@ -152,15 +142,10 @@ var appdfXMLLoader = (function() {
         };
     };
     
-    function updateScreenshot(screenshotData, $screenshotInput, onerror) {
+    function updateScreenshot(screenshotData, $screenshotInput) {
         $screenshotInput.data("file", screenshotData.name);
         
-        appdfEditor.validationCallbackScreenshotRequired($screenshotInput, screenshotData.name, function(v) {
-            if (!v.valid) {
-                onerror([v.message]);
-                return false;
-            };
-        });
+        appdfEditor.validationCallbackScreenshotRequired($screenshotInput, screenshotData.name, function(v) {});
         appdfImages.onScreenshotImageInputChange({target:$screenshotInput[0]});
     };
     
@@ -168,12 +153,7 @@ var appdfXMLLoader = (function() {
         if ( promo ) {
             $promoInput.data("file", promo.name);
             
-            appdfEditor.validationCallbackPromo($promoInput, promo.name, function(v) {
-                if (!v.valid) {
-                    onerror([v.message]);
-                    return false;
-                };
-            });
+            appdfEditor.validationCallbackPromo($promoInput, promo.name, function(v) {});
             appdfImages.onImageInputChange({target:$promoInput});
         };  
     };
@@ -222,14 +202,9 @@ var appdfXMLLoader = (function() {
             progress(3);
             for (languageCode in data["description"]) {
                 if (languageCode!="default") {
-                    if (typeof dataLanguages[languageCode]==="undefined") {
-                        onerror([errorMessages.wrongLanguageCode]);
-                        return false;
-                    };
-                    
                     appdfLocalization.addLocalization(languageCode, dataLanguages[languageCode]);
                 };
-                loadDescriptionLocalizationSection(languageCode, data["description"][languageCode], onerror);
+                loadDescriptionLocalizationSection(languageCode, data["description"][languageCode]);
                 progress(20);
             };
 
@@ -414,19 +389,9 @@ var appdfXMLLoader = (function() {
                     };
                     
                     if (i===0) {
-                        appdfEditor.validationCallbackApkFileFirst($apkFileInputHidden, apkFileList[i], function(v) {
-                            if (!v.valid) {
-                                onerror([v.message]);
-                                return false;
-                            };
-                        });
+                        appdfEditor.validationCallbackApkFileFirst($apkFileInputHidden, apkFileList[i], function(v) {});
                     } else {
-                        appdfEditor.validationCallbackApkFileMore($apkFileInputHidden, apkFileList[i], function(v) {
-                            if (!v.valid) {
-                                onerror([v.message]);
-                                return false;
-                            };
-                        })
+                        appdfEditor.validationCallbackApkFileMore($apkFileInputHidden, apkFileList[i], function(v) {})
                     };
                     
                 };
@@ -442,6 +407,8 @@ var appdfXMLLoader = (function() {
     };
 
     function loadAppdfFile(file, onend, onerror, onprogress) {
+        appdfFiles = {};
+        
         if (!file) {
             onerror([errorMessages.selectAppDFFile]);
             return false;
@@ -482,14 +449,13 @@ var appdfXMLLoader = (function() {
                 getNextFileData();
             });
         }, function(e) {
-            onerror([errorMessages.selectAppDFFile]);
+            onerror([errorMessages.errorCreatingAppDFFile]);
         });
     };
     
     function getFileData(appdfFileEntry, oncomplete, onerror) {
         var fileName = appdfFileEntry.filename;
         var fileReader = new FileReader();
-        //var requestFileSystem = window.webkitRequestFileSystem || window.mozRequestFileSystem || window.requestFileSystem;
         
         appdfFileEntry.getData(new zip.BlobWriter(), function(blob){
             fileReader.onload = function(event) {
@@ -503,7 +469,7 @@ var appdfXMLLoader = (function() {
             };
             
             fileReader.onerror = function(event) {
-                onerror([fileName + errorMessages.fileErrorAndCode + event.target.error.code]);
+                onerror([errorMessages.fileErrorAndCode(fileName, event.target.error.code)]);
             };
             
             if (fileName==="description.xml") {
@@ -518,6 +484,7 @@ var appdfXMLLoader = (function() {
     
     function loadComplete(onend, onerror) {
         var contents = appdfFiles["description.xml"];
+        appdfXMLLoader.appdfFiles = appdfFiles;
         
         //parse descriptionXML after all files loaded
         loadDescriptionXML(contents, onend, onerror, function(current, total) {

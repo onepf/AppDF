@@ -38,10 +38,26 @@ var errorMessages = {
     
     //loading errors
     selectAppDFFile: "Please select AppDF file",
+    errorCreatingAppDFFile: "Cant create AppDF file",
     notZipFile: "AppDF not in zip format",
     descriptionIsNotXML: "description.xml file is not XML",
     descriptionNotFound: "description.xml file is not found inside AppDF container",
-    fileErrorAndCode: /*here file name*/" file could not be read. Code "/*here error code*/,
     wrongLanguageCode: "Wrong language code",
-    resourceNotFound: /*filename*/" not found"
+    
+    //validation in parser
+    requiredGoogleAndroidTagMiss: "Required <google-android-content-guidelines> tag in <consent> section is missing",
+    requiredUSExportLawsTagMiss: "Required <us-export-laws> tag in <consent> section is missing",
+    requiredSlideMeTagMiss: "Required <slideme-agreement> tag in <consent> section is missing",
+    requiredFree3PartyTagMiss: "Required <free-from-third-party-copytighted-content> tag in <consent> section is missing",
+    requiredImportExportTagMiss: "Required <import-export> tag in <consent> section is missing",
+    
+    
+    //fn
+    fnResourceNotFound: function(name) { return name + " not found"; },
+    fnFileErrorAndCode: function(fileName, errorCode) { return fileName + " file could not be read. Code " + errorCode; },
+    fnWrongAttribute: function(tagName, name) { return "Tag <" + tagName + "> doesn`t have attribute \"" + name + "\""; },
+    fnWrongAttrBooleanValue: function(attributeValue, tagName) { return "Wrong attribute value \"" + attributeValue + "\" in tag <" + tagName + ">. Must be \"yes\" or \"no\"."; },
+    fnWrongBooleanValue: function(tagName) { return "Wrong value in tag <" + tagName + ">. Must be \"yes\" or \"no\"."; }
+    
+    
 };

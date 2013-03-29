@@ -806,7 +806,7 @@ var appdfEditor = (function() {
             callback({
                 value: value,
                 valid: false,
-                message: imageFileName + errorMessages.resourceNotFound
+                message: errorMessages.fnResourceNotFound(imageFileName)
             });
             return false;
         };
@@ -868,7 +868,7 @@ var appdfEditor = (function() {
             callback({
                 value: value,
                 valid: false,
-                message: imageFileName + errorMessages.resourceNotFound
+                message: errorMessages.fnResourceNotFound(imageFileName)
             });
             return false;
         };
@@ -914,7 +914,7 @@ var appdfEditor = (function() {
             callback({
                 value: value,
                 valid: false,
-                message: apkFileName + errorMessages.resourceNotFound
+                message: errorMessages.fnResourceNotFound(apkFileName)
             });
             return false;
         };
