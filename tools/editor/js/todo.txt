@@ -22,14 +22,18 @@ Information about each attribute if it is optional or not
 Add size and resolution attributes to the APK files and images to better handle feed exchange case when files are not local 
 
 TODO:
+* Readme for wrong samples (finish)
 * Finish AppStore wiki page: https://github.com/onepf/AppDF/wiki/Android-Application-Stores
-* Draw digrams
+* Draw digrams (OpenIAB, AppDF vs agregation)
+* screencast of uploading to many stores
 * A script to automate publishing from GitHub to onepf.org
 * contact that russian developer who used AppDF itself
 * Email Naver and other missed
-* Make diagrams for AppDF and OpenIAB
 * Design "Upload AppDF" button (Upload AppDF | ^ (Create AppDF Online | Read more about AppDF))
-* Examples of mistakes
+* onepf.org
+ - main page: goal, about AppDF, about OpenIAB, publish your app to many stores now, how to contribute, who is behind it
+ - how to contribute: if you are a store, if you are an app developer, 
+ - appdf: a paragraph what's that, list of supported stores, step-by-step how it works, diagram, how to contribute
 
 =========
 Update XSD
@@ -50,6 +54,11 @@ DONE:
 11. price free="yes" and base-price or local-price
 12. price free="no" and no base-price
 13. No short enough title
+14. No short enough short description
+15. No text in EULA
+16. No text in privacy policy
+17. Not enough features
+18. Bad subtags in <full-description>
 
 2. Wrong app icon file format (for example JPG not PNG)
 3. Wrong app icon size
@@ -57,10 +66,6 @@ DONE:
 5. Wrong screenshot format
 6. No required screenshot size
 8. Wrong currency code
-10. No text in EULA
-15. No short enough short description
-17. Bad subtags in <full-description>
-18. Not enough features
 19. Wrong URL format in recent-changes href
 20. Wrong YouTube ID
 22. Wrong xml structure in description-localization
@@ -68,7 +73,6 @@ DONE:
 24. Wrong date in availability/period
 25. In availbility/countries only-listed="yes" and <exclude>
 26. In availbility/countries only-listed="no" and <include>
-28. price free="no" and trial-version
 29. supported-resolutions only-listed="yes" and <exclude>
 30. supported-resolutions only-listed="yes"> and <include>
 
