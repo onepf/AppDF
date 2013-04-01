@@ -21,7 +21,12 @@ SPECIFICATION
 Information about each attribute if it is optional or not
 Add size and resolution attributes to the APK files and images to better handle feed exchange case when files are not local 
 
-TODO:
+TODO
+* Make a page about AppDF parsers
+* Option to download AppDF editor as a ZIP file to take away
+* Add AppLand categories
+* Bug: when click "Remove Localization" from the drop-down list the drop-down list is not closed
+* Check all texts in AppDF Editor 
 * Readme for wrong samples (finish)
 * Finish AppStore wiki page: https://github.com/onepf/AppDF/wiki/Android-Application-Stores
 * Draw digrams (OpenIAB, AppDF vs agregation)
