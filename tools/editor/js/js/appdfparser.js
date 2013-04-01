@@ -29,8 +29,27 @@ var appdfParser = (function() {
 		return (typeof x === "undefined");
 	};
 
-	function parseDescriptionXML(xmlText, onend, onerror) {
-        errorList = [];
+	function parseDescriptionXML(xmlText, onend, onerror, onprogress) {
+        //Calculate total number of actions to do
+        var totalProgressItems = 14;
+        var passedProgressItems = 0;
+        //to set progressbar max value to 50% for parsing
+        totalProgressItems *= 2;
+        
+        //Helper function to report progress
+        function progress(n) {
+            if (!n) {
+                passedProgressItems += 1;
+            } else {
+                passedProgressItems += n;
+            };
+            if (passedProgressItems>totalProgressItems) {
+                console.log("Error passedProgressItems>totalProgressItems. Adjust the constants in this fuction.")
+                passedProgressItems = totalProgressItems;
+            };
+            onprogress(passedProgressItems, totalProgressItems);
+        };
+        
 		data = {};
         var $xml;
         try {
@@ -39,7 +58,8 @@ var appdfParser = (function() {
             onerror([errorMessages.descriptionIsNotXML]);
             return false;
         };
-
+        progress();//1
+        
 		var errors = [];
 		var curDataPath = "";
 		var $curXml = $xml;
@@ -214,7 +234,8 @@ var appdfParser = (function() {
 			loadText("category");
 			loadText("subcategory");
 		});
-
+        progress();//2
+        
 		function loadOneLanguageDescription() {
 			section("texts/", "texts", function() {
 				loadArray("title", "title");
@@ -290,8 +311,10 @@ var appdfParser = (function() {
 		//Description
 		section("description/default", "description", function() {
 			loadOneLanguageDescription();
+            totalProgressItems += 5 * 2;
 		});
-
+        progress(5);//5 + 2
+        
 		//Description localization
 		var $dl = getElementsByPath($curXml, "description-localization");
 		$dl.each(function() {
@@ -299,9 +322,11 @@ var appdfParser = (function() {
 
 			section("description/" + languageCode + "/", $(this), function() {
 				loadOneLanguageDescription();
+                totalProgressItems += 5 * 2;
 			});
+            progress(5);//LanguageCode*5 + 2
 		});
-
+        
 		//Price
 		section("price", "price", function() {
 			loadBooleanAttribute("free", "", "free");
@@ -326,7 +351,8 @@ var appdfParser = (function() {
 				});
 			};
 		});
-
+        progress();//LanguageCode*5 + 3
+        
 		//Consent
 		section("consent", "consent", function() {
 			loadBoolean("google-android-content-guidelines");
@@ -335,13 +361,15 @@ var appdfParser = (function() {
 			loadBoolean("free-from-third-party-copytighted-content");
 			loadBoolean("import-export");
 		});
-
+        progress();//LanguageCode*5 + 4
+        
 		//Customer Support
 		section("customer-support", "customer-support", function() {
 			loadText("phone");
 			loadText("email");
 			loadText("website");
 		});
+        progress();//LanguageCode*5 + 5
 
 		//Content Description
 		section("content-description", "content-description", function() {
@@ -362,6 +390,8 @@ var appdfParser = (function() {
 					d[name].push(ratingCertificate);
 				});
 			});
+            progress();//LanguageCode*5 + 6
+            
 			section("content-descriptors", "content-descriptors", function() {
 				loadText("cartoon-violence");
 				loadText("realistic-violence");
@@ -374,6 +404,8 @@ var appdfParser = (function() {
 				loadText("smoking");
 				loadText("discrimination");
 			});
+            progress();//LanguageCode*5 + 7
+            
 			section("included-activities", "included-activities", function() {
 				loadBoolean("in-app-billing");
 				loadBoolean("gambling");
@@ -383,17 +415,18 @@ var appdfParser = (function() {
 				loadBoolean("account-creation");
 				loadBoolean("personal-information-collection");
 			});
+            progress();//LanguageCode*5 + 8
 		});
 
 		//Testing Instructions
 		loadText("testing-instructions", "testing-instructions");
-
+        progress();//LanguageCode*5 + 9
 		
 		//Store specific
 		section("store-specific/", "store-specific", function() {
 			loadStoreSpecificContent();
 		});
-		
+        progress();//LanguageCode*5 + 10
 		
 		//Requirements
 		section("requirements", "requirements", function() {
@@ -414,14 +447,19 @@ var appdfParser = (function() {
 				};
 			});
 		});
-		
+        progress();//LanguageCode*5 + 11
+        
         section("apk-files/", "apk-files", function() {
             loadArray("apk-file", "apk-file");
         });
+        progress();//LanguageCode*5 + 12
         
 		//Todo: temporary XML loading instead of parsing content
 		loadXml("availability", "availability");
+        progress();//LanguageCode*5 + 13
+        
 		loadText("testing-instructions", "testing-instructions");
+        progress();//LanguageCode*5 + 14
 
 		errors.append(validateDescriptionXMLData(data));
 
@@ -536,16 +574,16 @@ var appdfParser = (function() {
 		var errors = [];
 
 		if (isDefined(data["title"]) && data["title"][0].length>30) {
-			errors.push("The first title must be shorter than 30 symbols (for language \"" + languageCode + "\")");
+			errors.push(errorMessages.fnTitleError(languageCode));
 		};
 
 		if (isDefined(data["short-description"]) && data["short-description"][0].length>80) {
-			errors.push("The first short description must be shorter than 80 symbols (for language \"" + languageCode + "\")");
+			errors.push(errorMessages.fnShortDescriptionError(languageCode));
 		};
         
         //TODO check for tags
 		if (isDefined(data["full-description"]) && data["full-description"].length>4000) {
-			errors.push("The full description must be shorter than 4000 symbols (for language \"" + languageCode + "\")");
+			errors.push(errorMessages.fnFullDescriptionError(languageCode));
 		};
 
 		if ((isDefined(data["eula"]) && data["eula"].length && (isUndefined(data["eula-link"]) || data["eula-link"].length===0)) ||
@@ -560,15 +598,15 @@ var appdfParser = (function() {
 
 		if (isDefined(data.features)) {
 			if (data.features.length>5) {
-				errors.push("More than five features (for language \"" + languageCode + "\")");
+				errors.push(errorMessages.fnFeatureMaxError(languageCode));
 			};
 			if (data.features.length<3) {
-				errors.push("There must be at least three features (for language \"" + languageCode + "\")");
+				errors.push(errorMessages.fnFeatureMinError(languageCode));
 			};
 		};
 
 		if (isDefined(data["recent-changes"]) && data["recent-changes"].length>500) {
-			errors.push("Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")");
+			errors.push(errorMessages.fnRecentChangesError(languageCode));
 		};
 
 		return errors;

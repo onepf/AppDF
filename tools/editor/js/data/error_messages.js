@@ -57,7 +57,13 @@ var errorMessages = {
     fnFileErrorAndCode: function(fileName, errorCode) { return fileName + " file could not be read. Code " + errorCode; },
     fnWrongAttribute: function(tagName, name) { return "Tag <" + tagName + "> doesn`t have attribute \"" + name + "\""; },
     fnWrongAttrBooleanValue: function(attributeValue, tagName) { return "Wrong attribute value \"" + attributeValue + "\" in tag <" + tagName + ">. Must be \"yes\" or \"no\"."; },
-    fnWrongBooleanValue: function(tagName) { return "Wrong value in tag <" + tagName + ">. Must be \"yes\" or \"no\"."; }
+    fnWrongBooleanValue: function(tagName) { return "Wrong value in tag <" + tagName + ">. Must be \"yes\" or \"no\"."; },
     
+    fnTitleError: function(languageCode) { return "The first title must be shorter than 30 symbols (for language \"" + languageCode + "\")"; },
+    fnShortDescriptionError: function(languageCode) { return "The first short description must be shorter than 80 symbols (for language \"" + languageCode + "\")"; },
+    fnFullDescriptionError: function(languageCode) { return "The full description must be shorter than 4000 symbols (for language \"" + languageCode + "\")"; },
     
+    fnFeatureMaxError: function(languageCode) { return "More than five features (for language \"" + languageCode + "\")"; },
+    fnFeatureMinError: function(languageCode) { return "There must be at least three features (for language \"" + languageCode + "\")"; },
+    fnRecentChangesError: function(languageCode) { return "Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")"; }
 };

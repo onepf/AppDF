@@ -137,7 +137,9 @@ function collectBuildErrors(onsuccess, onerror) {
 	//privacy policy validation
 	var $privacyPolicyArr = $("input[id^=\"description-texts-privacypolicy-link\"]");
 	$privacyPolicyArr.each(function() {
-		if (($(this).val()!=="" && $(this).next().val()==="") || ($(this).val()==="" && $(this).next().val()!=="")) {
+        var linkValue = $(this).val();
+        var fullTextValue = $(this).next().next().val();
+		if ((linkValue!=="" && fullTextValue==="") || (linkValue==="" && fullTextValue!=="")) {
 			checkErrorMessage({
 				valid: false,
 				value: "",
@@ -150,7 +152,9 @@ function collectBuildErrors(onsuccess, onerror) {
 	//eula validation
 	var $eulaArr = $("input[id^=\"description-texts-eula-link\"]");
 	$eulaArr.each(function() {
-		if (($(this).val()!=="" && $(this).next().val()==="") || ($(this).val()==="" && $(this).next().val()!=="")) {
+        var linkValue = $(this).val();
+        var fullTextValue = $(this).next().next().val();
+		if ((linkValue!=="" && fullTextValue==="") || (linkValue==="" && fullTextValue!=="")) {
 			checkErrorMessage({
 				valid: false,
 				value: "",

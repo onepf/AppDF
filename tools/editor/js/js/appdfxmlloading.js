@@ -161,12 +161,15 @@ var appdfXMLLoader = (function() {
     function loadDescriptionXML(xml, onend, onerror, onprogress) {
         appdfParser.parseDescriptionXML(xml, function(data) {
             //Calculate total number of actions to do
-            var totalProgressItems = 22;
-            var passedProgressItems = 0;
+            var totalProgressItems = 29;
             for (languageCode in data["description"]) {
                 totalProgressItems += 20;
             };
-
+            //to start progress bar from 50% after parsing
+            var passedProgressItems = totalProgressItems;
+            totalProgressItems *= 2;
+            
+            
             //Helper function to report progress
             function progress(n) {
                 if (!n) {
@@ -187,26 +190,26 @@ var appdfXMLLoader = (function() {
             //Set control values in the categorization section
             $("#categorization-type").val(data["categorization"]["type"]);
             appdfEditor.fillCategories();
-            progress();
+            progress();//1
 
             $("#categorization-category").val(data["categorization"]["category"]);
             appdfEditor.fillSubcategories();
-            progress();
+            progress();//2
 
             $("#categorization-subcategory").val(data["categorization"]["subcategory"]);
             appdfEditor.fillCategoryStoresInfo();
-            progress();
+            progress();//3
 
             //Set control values in the description/texts
             appdfLocalization.removeAllLocalizations();
-            progress(3);
+            progress(3);//6
             for (languageCode in data["description"]) {
                 if (languageCode!="default") {
                     appdfLocalization.addLocalization(languageCode, dataLanguages[languageCode]);
                 };
                 loadDescriptionLocalizationSection(languageCode, data["description"][languageCode]);
                 progress(20);
-            };
+            };//20*LanguageCount + 6
 
             //Select default language as open tab
             appdfLocalization.selectLanguage("default");
@@ -215,7 +218,7 @@ var appdfXMLLoader = (function() {
             $("input[id^=price-localprice-]").closest(".control-group").remove();
             $("#price-free-fullversion").val("");
             $("#price-baseprice").val("0");
-            progress();
+            progress();//20*LanguageCount + 7
             if (data["price"]["free"]) {
                 $('a[href="#tab-price-free"]').tab('show');
                 $("#price-free-trialversion").attr("checked", data["price"]["trial-version"]);
@@ -238,7 +241,7 @@ var appdfXMLLoader = (function() {
                     appdfEditor.addMoreLocalPrice($("#price-baseprice"), data["price"]["local-price"][countryCode], countryCode);
                 };
             };
-            progress(3);
+            progress(3);//20*LanguageCount + 10
 
             //Consent
             $("#consent-googleandroidcontentguidelines").attr("checked", data["consent"]["google-android-content-guidelines"]);
@@ -246,18 +249,18 @@ var appdfXMLLoader = (function() {
             $("#consent-importexportlaws").attr("checked", data["consent"]["us-export-laws"]);
             $("#consent-slidemeagreement").attr("checked", data["consent"]["slideme-agreement"]);
             $("#consent-freefromthirdpartycopytightedcontent").attr("checked", data["consent"]["free-from-third-party-copytighted-content"]);
-            progress();
+            progress();//20*LanguageCount + 11
 
             //Customer support
             $("#customersupport-phone").val(data["customer-support"]["phone"]);
             $("#customersupport-email").val(data["customer-support"]["email"]);
             $("#customersupport-website").val(data["customer-support"]["website"]);
-            progress();
+            progress();//20*LanguageCount + 12
             
 
             //Content description / content rating
             $("#contentdescription-contentrating").val(data["content-description"]["content-rating"]);
-            progress();
+            progress();//20*LanguageCount + 13
 
             //Content description / content descriptors
             var dcd = data["content-description"]["content-descriptors"];
@@ -272,7 +275,7 @@ var appdfXMLLoader = (function() {
             $(scd + "alcohol").val(dcd["alcohol"]);
             $(scd + "smoking").val(dcd["smoking"]);
             $(scd + "discrimination").val(dcd["discrimination"]);
-            progress(2);
+            progress(2);//20*LanguageCount + 15
 
             //Content description / included-activities
             var dia = data["content-description"]["included-activities"];
@@ -284,7 +287,7 @@ var appdfXMLLoader = (function() {
             $(sia + "usertousercommunications").attr("checked", dia["user-to-user-communications"]);
             $(sia + "accountcreation").attr("checked", dia["account-creation"]);
             $(sia + "personalinformationcollection").attr("checked", dia["personal-information-collection"]);
-            progress(2);
+            progress(2);//20*LanguageCount + 17
 
             //Content description / rating-certificates
             var certificates = data["content-description"]["rating-certificates"];
@@ -293,11 +296,11 @@ var appdfXMLLoader = (function() {
                 var typeId = certificates[i]["type"].toLowerCase();
                 $(sc + typeId).val(certificates[i]["rating"]);
             };
-            progress(3);
+            progress(3);//20*LanguageCount + 20
             
             //Testing instructions
             $("#testinginstructions").val(data["testing-instructions"]);
-            progress();
+            progress();//20*LanguageCount + 21
             
             
             //Store specify
@@ -310,7 +313,7 @@ var appdfXMLLoader = (function() {
                     appdfEditor.addMoreStoreSpecific($(".storespecific-addmore"), i, storeSpecificData[i]);
                 };
             };
-            progress();
+            progress();//20*LanguageCount + 22
             
             
             //Requirements
@@ -325,6 +328,7 @@ var appdfXMLLoader = (function() {
             //clear supported resolutions list
             $("#requirements-supportedresolutions-type-default").click();
             appdfEditor.fillScreenResolutions();
+            progress();//20*LanguageCount + 23
             
             var dataRequirements = data["requirements"];
             if (dataRequirements["features"]) {
@@ -336,6 +340,7 @@ var appdfXMLLoader = (function() {
                     };
                 };
             };
+            progress();//20*LanguageCount + 24
             
             if (dataRequirements["supported-languages"] && dataRequirements["supported-languages"]["language"]) {
                 $("#requirements-supportedlanguages-type-custom").click();
@@ -348,6 +353,7 @@ var appdfXMLLoader = (function() {
                     };
                 };
             };
+            progress();//20*LanguageCount + 25
             
             if (dataRequirements["supported-devices"] && dataRequirements["supported-devices"]["exclude"]) {
                 var unsupportedDevices = dataRequirements["supported-devices"]["exclude"], $el = $(".requirements-supporteddevices-addmore");
@@ -356,6 +362,7 @@ var appdfXMLLoader = (function() {
                     appdfEditor.addMoreUnsupportedDevices($el, unsupportedDevices[i]);
                 };
             };
+            progress();//20*LanguageCount + 26
             
             if (dataRequirements["supported-resolutions"] && (dataRequirements["supported-resolutions"]["include"] || dataRequirements["supported-resolutions"]["exclude"])) {
                 var onlyListedType = dataRequirements["supported-resolutions"]["include"]?"include":"exclude";
@@ -370,7 +377,7 @@ var appdfXMLLoader = (function() {
                     };
                 };
             };
-            //progress();
+            progress();//20*LanguageCount + 27
             
             //apk files section
             $("#section-apk-files .control-group-remove").click();
@@ -396,17 +403,17 @@ var appdfXMLLoader = (function() {
                     
                 };
             };
-            
+            progress();//20*LanguageCount + 28
             
             //Todo: temporary work with XML
             $("#availability").val(data["availability"]);
-            
+            progress();//20*LanguageCount + 29
             
             onend();
-        }, onerror);
+        }, onerror, onprogress);
     };
 
-    function loadAppdfFile(file, onend, onerror, onprogress) {
+    function loadAppdfFile(file, onend, onerror, loadprogress, parseprogress) {
         appdfFiles = {};
         
         if (!file) {
@@ -414,17 +421,20 @@ var appdfXMLLoader = (function() {
             return false;
         };
         
-        onprogress(0, 100);
-        //var requestFileSystem = window.webkitRequestFileSystem || window.mozRequestFileSystem || window.requestFileSystem;
-        //var fileReader = new FileReader();
-        
         zip.createReader(new zip.BlobReader(file), function(zipReader) {
             zipReader.getEntries(function (entries) {
                 var appdfEntries = [];
                 var totalFilesCount = 0;
                 var filesLoaded = 0;
                 var descriptionAttachedFlag = false;
+                
+                var totalFileSize = 0;
+                var loadedSize = 0;
+                var previousTotalSize = 0;
+                var previousCurrentSize = 0;
+                
                 entries.forEach(function(entry) {
+                    totalFileSize += entry.uncompressedSize;
                     appdfEntries.push(entry);
                     totalFilesCount++;
                     if (entry.filename==="description.xml") {
@@ -440,11 +450,21 @@ var appdfXMLLoader = (function() {
                 function getNextFileData() {
                     getFileData(appdfEntries[filesLoaded], function() {
                         if (++filesLoaded === totalFilesCount) {
-                            loadComplete(onend, onerror);
+                            loadComplete(onend, onerror, parseprogress);
                         } else {
                             getNextFileData();
                         };
-                    }, onerror);
+                    }, onerror, function(current, total) {//onloadprogress
+                        if (total===previousTotalSize && current>=previousCurrentSize) {
+                            loadedSize += current - previousCurrentSize;
+                            previousCurrentSize = current;
+                        } else {
+                            previousTotalSize = total;
+                            previousCurrentSize = current;
+                            loadedSize += current;
+                        }
+                        loadprogress(loadedSize, totalFileSize);
+                    });
                 };
                 getNextFileData();
             });
@@ -453,7 +473,7 @@ var appdfXMLLoader = (function() {
         });
     };
     
-    function getFileData(appdfFileEntry, oncomplete, onerror) {
+    function getFileData(appdfFileEntry, oncomplete, onerror, onprogress) {
         var fileName = appdfFileEntry.filename;
         var fileReader = new FileReader();
         
@@ -464,8 +484,8 @@ var appdfXMLLoader = (function() {
                 oncomplete();
             };
             
-            fileReader.onprogress = function(event) {
-                //progress update
+            fileReader.onprogress = function(e) {
+                onprogress(e.loaded, e.total);
             };
             
             fileReader.onerror = function(event) {
@@ -479,18 +499,15 @@ var appdfXMLLoader = (function() {
                 appdfFiles[fileName].name = fileName;
                 oncomplete();
             };
-        });
+        }, onprogress);
     };
     
-    function loadComplete(onend, onerror) {
+    function loadComplete(onend, onerror, onprogress) {
         var contents = appdfFiles["description.xml"];
         appdfXMLLoader.appdfFiles = appdfFiles;
         
         //parse descriptionXML after all files loaded
-        loadDescriptionXML(contents, onend, onerror, function(current, total) {
-            //on progress
-            //onprogress(20 + 80*current/total, 100);
-        });
+        loadDescriptionXML(contents, onend, onerror, onprogress);
     };
     
     return {

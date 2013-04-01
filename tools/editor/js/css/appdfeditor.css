@@ -47,3 +47,6 @@ div.apk-file-info {
 textarea.after-input {
 	margin-top: 10px;
 }
+textarea.input-x-xlarge {
+    width: 516px;
+}

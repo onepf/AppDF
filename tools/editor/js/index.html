@@ -110,6 +110,39 @@ Copyright (c) 2012 Yandex <www.yandex.com>
           </p>
         </div>
 
+        <!--MODALS START-->
+        <div id="requirements-store-add-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="requirements-store-add-modal-label" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="requirements-store-add-modal-label">Add store</h3>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                  <label class="control-label"  for="storespecific-input-modal">Application store name</label>
+                  <div class="controls">
+                    <div class=""> 
+                      <input type="text" id="storespecific-input-modal" 
+                      data-validation-callback-callback="appdfEditor.validationCallbackStoreSpecify" 
+                      autocomplete="off" data-provide="typeahead" data-items="20" 
+                      > 
+                    </div> 
+                    <p class="help-block">You can add custom fields for a particular application store or rewrite any of the application description fields. XML format is described in the <a href="https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md">AppDF specification</a>.</p>
+                  </div>
+                </div><!--control-group-->  
+                <div class="control-group">
+                    <label class="control-label" for="storespecific-name-default-modal">Store data</label>
+                    <div class="controls">
+                        <textarea class="input-x-xlarge" rows="8" id="storespecific-xml-default-modal"></textarea>
+                        <p class="help-block">Store specific data in XML format. You can also rewrite any of the application description fields in this XML.
+                    </div>
+                </div><!--./control-group -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cansel</button>
+                <button class="btn btn-primary">Add store</button>
+            </div>
+        </div><!--Modal-->
+        
         <div id="import-descriptionxml-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="import-descriptionxml-modal-label" aria-hidden="true">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -119,6 +152,9 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             <textarea id="import-descriptionxml-modal-text" class="input-xxlarge" rows="5"></textarea><br>
             <div class="alert alert-success hide" id="import-descriptionxml-modal-status">
               <b>Importing Description.XML. Please wait...</b>
+              <div class="progress">
+                <div id="load-descriptionxml-modal-progressbar" class="bar" style="width: 0%;"></div>
+              </div>
             </div>
             <div class="alert alert-error hide" id="import-descriptionxml-modal-errors">
               <b>Import errors:</b>
@@ -146,6 +182,9 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             </div>
             <div class="alert alert-success hide" id="load-appdf-modal-status">
               <b>Loading AppDF file. Please wait...</b>
+              <div class="progress">
+                <div id="load-appdf-modal-progressbar" class="bar" style="width: 0%;"></div>
+              </div>
             </div>
             <div class="alert alert-error hide" id="load-appdf-modal-errors">
               <b>Import errors:</b>
@@ -179,7 +218,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             <button class="btn btn-primary">OK</button>
           </div>
         </div><!--Modal-->            
-
+        <!--MODALS END-->
 
         <form class="form-horizontal" action='' method="POST" novalidate>
           <section id="section-apk-files">
@@ -1214,12 +1253,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                 <div class="control-group">
                   <label class="control-label"  for="storespecific-input">Application store name</label>
                   <div class="controls">
-                    <div class="input-append"> 
-                      <input type="text" id="storespecific-input" 
-                      data-validation-callback-callback="appdfEditor.validationCallbackStoreSpecify" 
-                      autocomplete="off" data-provide="typeahead" data-items="20" 
-                      > 
-                      <button class="btn storespecific-addmore" type="button">Add</button>
+                    <div class=""> 
+                      <button class="btn storespecific-addmore" type="button">Add new store specific data</button>
                     </div> 
                     <p class="help-block">You can add custom fields for a particular application store or rewrite any of the application description fields. XML format is described in the <a href="https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md">AppDF specification</a>.</p>
                   </div>
