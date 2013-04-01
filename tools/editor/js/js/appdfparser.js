@@ -29,10 +29,37 @@ var appdfParser = (function() {
 		return (typeof x === "undefined");
 	};
 
-	function parseDescriptionXML(xmlText, onend, onerror) {
+	function parseDescriptionXML(xmlText, onend, onerror, onprogress) {
+        //Calculate total number of actions to do
+        var totalProgressItems = 14;
+        var passedProgressItems = 0;
+        //to set progressbar max value to 50% for parsing
+        totalProgressItems *= 2;
+        
+        //Helper function to report progress
+        function progress(n) {
+            if (!n) {
+                passedProgressItems += 1;
+            } else {
+                passedProgressItems += n;
+            };
+            if (passedProgressItems>totalProgressItems) {
+                console.log("Error passedProgressItems>totalProgressItems. Adjust the constants in this fuction.")
+                passedProgressItems = totalProgressItems;
+            };
+            onprogress(passedProgressItems, totalProgressItems);
+        };
+        
 		data = {};
-		var $xml = $($.parseXML(xmlText));
-
+        var $xml;
+        try {
+            $xml = $($.parseXML(xmlText));
+        } catch(e) {
+            onerror([errorMessages.descriptionIsNotXML]);
+            return false;
+        };
+        progress();//1
+        
 		var errors = [];
 		var curDataPath = "";
 		var $curXml = $xml;
@@ -138,7 +165,7 @@ var appdfParser = (function() {
 					if (typeof attributeValue!=="undefined" && attributeValue!==false) {
 						d[name] = attributeValue;
 					} else {
-						errors.push("Tag <" + $e[0].tagName + "> doesn`t have attribute \"" + name + "\"");
+						errors.push(errorMessages.fnWrongAttribute($e[0].tagName, name));
 					};
 				};
 			});
@@ -154,7 +181,7 @@ var appdfParser = (function() {
 					} else if (attributeValue=="no") {
 						d[name] = false;
 					} else {
-						errors.push("Wrong attribute value \"" + attributeValue + "\" in tag <" + $e[0].tagName + ">. Must be \"yes\" or \"no\".");
+                        errors.push(errorMessages.fnWrongAttrBooleanValue(attributeValue, $e[0].tagName));
 					};
 				};
 			});
@@ -173,7 +200,7 @@ var appdfParser = (function() {
 					} else if (tagValue=="no") {
 						d[name] = false;
 					} else {
-						errors.push("Wrong value in tag <" + $e[0].tagName + ">. Must be \"yes\" or \"no\".");
+                        errors.push(errorMessages.fnWrongBooleanValue($e[0].tagName));
 					};
 				};
 			});
@@ -207,7 +234,8 @@ var appdfParser = (function() {
 			loadText("category");
 			loadText("subcategory");
 		});
-
+        progress();//2
+        
 		function loadOneLanguageDescription() {
 			section("texts/", "texts", function() {
 				loadArray("title", "title");
@@ -215,10 +243,16 @@ var appdfParser = (function() {
 					d[name] = $e.text().split(/\s*,\s*/);
 				});
 				loadArray("short-description", "short-description");
-				loadText("full-description", "full-description");
+				
+                //loadXml("full-description", "full-description");
+                loadText("full-description", "full-description");
+                
 				loadArray("features", "features/feature");
 				loadText("recent-changes", "recent-changes");
+                
+				loadTextAttribute("privacy-policy-link", "privacy-policy", "href");
 				loadText("privacy-policy", "privacy-policy");
+                
 				loadTextAttribute("eula-link", "eula", "href")
 				loadText("eula", "eula");
 			});
@@ -277,17 +311,22 @@ var appdfParser = (function() {
 		//Description
 		section("description/default", "description", function() {
 			loadOneLanguageDescription();
+            totalProgressItems += 5 * 2;
 		});
-
+        progress(5);//5 + 2
+        
 		//Description localization
 		var $dl = getElementsByPath($curXml, "description-localization");
 		$dl.each(function() {
 			var languageCode = $(this).attr("language");
+
 			section("description/" + languageCode + "/", $(this), function() {
 				loadOneLanguageDescription();
+                totalProgressItems += 5 * 2;
 			});
+            progress(5);//LanguageCode*5 + 2
 		});
-
+        
 		//Price
 		section("price", "price", function() {
 			loadBooleanAttribute("free", "", "free");
@@ -312,7 +351,8 @@ var appdfParser = (function() {
 				});
 			};
 		});
-
+        progress();//LanguageCode*5 + 3
+        
 		//Consent
 		section("consent", "consent", function() {
 			loadBoolean("google-android-content-guidelines");
@@ -321,13 +361,15 @@ var appdfParser = (function() {
 			loadBoolean("free-from-third-party-copytighted-content");
 			loadBoolean("import-export");
 		});
-
+        progress();//LanguageCode*5 + 4
+        
 		//Customer Support
 		section("customer-support", "customer-support", function() {
 			loadText("phone");
 			loadText("email");
 			loadText("website");
 		});
+        progress();//LanguageCode*5 + 5
 
 		//Content Description
 		section("content-description", "content-description", function() {
@@ -348,6 +390,8 @@ var appdfParser = (function() {
 					d[name].push(ratingCertificate);
 				});
 			});
+            progress();//LanguageCode*5 + 6
+            
 			section("content-descriptors", "content-descriptors", function() {
 				loadText("cartoon-violence");
 				loadText("realistic-violence");
@@ -360,6 +404,8 @@ var appdfParser = (function() {
 				loadText("smoking");
 				loadText("discrimination");
 			});
+            progress();//LanguageCode*5 + 7
+            
 			section("included-activities", "included-activities", function() {
 				loadBoolean("in-app-billing");
 				loadBoolean("gambling");
@@ -369,17 +415,18 @@ var appdfParser = (function() {
 				loadBoolean("account-creation");
 				loadBoolean("personal-information-collection");
 			});
+            progress();//LanguageCode*5 + 8
 		});
 
 		//Testing Instructions
 		loadText("testing-instructions", "testing-instructions");
-
+        progress();//LanguageCode*5 + 9
 		
 		//Store specific
 		section("store-specific/", "store-specific", function() {
 			loadStoreSpecificContent();
 		});
-		
+        progress();//LanguageCode*5 + 10
 		
 		//Requirements
 		section("requirements", "requirements", function() {
@@ -400,16 +447,20 @@ var appdfParser = (function() {
 				};
 			});
 		});
-		
+        progress();//LanguageCode*5 + 11
+        
         section("apk-files/", "apk-files", function() {
             loadArray("apk-file", "apk-file");
         });
+        progress();//LanguageCode*5 + 12
         
 		//Todo: temporary XML loading instead of parsing content
 		loadXml("availability", "availability");
+        progress();//LanguageCode*5 + 13
+        
 		loadText("testing-instructions", "testing-instructions");
+        progress();//LanguageCode*5 + 14
 
-		
 		errors.append(validateDescriptionXMLData(data));
 
 		if (errors.length==0) {
@@ -427,8 +478,9 @@ var appdfParser = (function() {
 
 	function validateDescriptionXMLData(data) {
 		var errors = [];
-
+        
 		errors.append(validateCategorization(data.categorization));
+        errors.append(validateDescriptionLanguage(data.description));
 		errors.append(validateDescriptionTexts("default", data.description.default.texts));
 		errors.append(validateDescriptionImages("default", data.description.default.images));
 		errors.append(validateDescriptionVideos("default", data.description.default.videos));
@@ -437,7 +489,7 @@ var appdfParser = (function() {
 		errors.append(validateCustomerSupport(data["customer-support"]));
 		errors.append(validateContentDescription(data["content-description"]));
 		errors.append(validateTestingInstructions(data["testing-instructions"]));
-		//errors.append(validateStoreSpecific(data["store-specific"]));
+		errors.append(validateStoreSpecific(data["store-specific"]));
 		
 		return errors;
 	};
@@ -463,8 +515,53 @@ var appdfParser = (function() {
 		return errors;
 	};
 
+    function validateDescriptionLanguage(data) {
+        var errors = [];
+        
+        for (var languageCode in data) {
+            if (languageCode!=="default" && isUndefined(dataLanguages[languageCode])) {
+                errors.push(errorMessages.wrongLanguageCode);
+            };
+        };
+        
+        return errors;
+    };
+    
 	function validateDescriptionImages(languageCode, data) {
 		var errors = [];
+        
+        var appIconList = data["app-icon"];
+        if (appIconList.length) {
+            for (var i=0; i<appIconList.length; i++) {
+                if (isUndefined(appdfXMLLoader.appdfFiles[appIconList[i].name])) {
+                    errors.push(errorMessages.fnResourceNotFound(appIconList[i].name));
+                };
+            };
+        };
+        
+        var screenshotList = data["screenshots"];
+        if (screenshotList.length) {
+            for (var i=0; i<screenshotList.length; i++) {
+                if (isUndefined(appdfXMLLoader.appdfFiles[screenshotList[i].name])) {
+                    errors.push(errorMessages.fnResourceNotFound(screenshotList[i].name));
+                };
+            };
+        };
+        
+        var largePromo = data["large-promo"];
+        if (largePromo) {
+            if (isUndefined(appdfXMLLoader.appdfFiles[largePromo.name])) {
+                errors.push(errorMessages.fnResourceNotFound(largePromo.name));
+            };
+        };
+        
+        var smallPromo = data["small-promo"];
+        if (smallPromo) {
+            if (isUndefined(appdfXMLLoader.appdfFiles[smallPromo.name])) {
+                errors.push(errorMessages.fnResourceNotFound(smallPromo.name));
+            };
+        };
+        
 		return errors;
 	};
 
@@ -477,28 +574,39 @@ var appdfParser = (function() {
 		var errors = [];
 
 		if (isDefined(data["title"]) && data["title"][0].length>30) {
-			errors.push("The first title must be shorter than 30 symbols (for language \"" + languageCode + "\")");
+			errors.push(errorMessages.fnTitleError(languageCode));
 		};
 
 		if (isDefined(data["short-description"]) && data["short-description"][0].length>80) {
-			errors.push("The first short description must be shorter than 80 symbols (for language \"" + languageCode + "\")");
+			errors.push(errorMessages.fnShortDescriptionError(languageCode));
+		};
+        
+        //TODO check for tags
+		if (isDefined(data["full-description"]) && data["full-description"].length>4000) {
+			errors.push(errorMessages.fnFullDescriptionError(languageCode));
 		};
 
-		if (isDefined(data["full-description"]) && data["full-description"].length>4000) {
-			errors.push("The full description must be shorter than 4000 symbols (for language \"" + languageCode + "\")");
+		if ((isDefined(data["eula"]) && data["eula"].length && (isUndefined(data["eula-link"]) || data["eula-link"].length===0)) ||
+            (isDefined(data["eula-link"]) && data["eula-link"].length && (isUndefined(data["eula"]) || data["eula"].length===0))) {
+			errors.push(errorMessages.eulaNotBothFilled);
+		};
+
+		if ((isDefined(data["privacy-policy"]) && data["privacy-policy"].length && (isUndefined(data["privacy-policy-link"]) || data["privacy-policy-link"].length===0)) ||
+            (isDefined(data["privacy-policy-link"]) && data["privacy-policy-link"].length && (isUndefined(data["privacy-policy"]) || data["privacy-policy"].length===0))) {
+			errors.push(errorMessages.privacypolicyNotBothFilled);
 		};
 
 		if (isDefined(data.features)) {
 			if (data.features.length>5) {
-				errors.push("More than five features (for language \"" + languageCode + "\")");
+				errors.push(errorMessages.fnFeatureMaxError(languageCode));
 			};
 			if (data.features.length<3) {
-				errors.push("There must be at least three features (for language \"" + languageCode + "\")");
+				errors.push(errorMessages.fnFeatureMinError(languageCode));
 			};
 		};
 
 		if (isDefined(data["recent-changes"]) && data["recent-changes"].length>500) {
-			errors.push("Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")");
+			errors.push(errorMessages.fnRecentChangesError(languageCode));
 		};
 
 		return errors;
@@ -508,23 +616,23 @@ var appdfParser = (function() {
 		var errors = [];
 
 		if (isUndefined(data["google-android-content-guidelines"])) {
-			errors.push("Required <google-android-content-guidelines> tag in <consent> section is missing");
+			errors.push(errorMessages.requiredGoogleAndroidTagMiss);
 		};
 
 		if (isUndefined(data["us-export-laws"])) {
-			errors.push("Required <us-export-laws> tag in <consent> section is missing");
+			errors.push(errorMessages.requiredUSExportLawsTagMiss);
 		};
 
 		if (isUndefined(data["slideme-agreement"])) {
-			errors.push("Required <slideme-agreement> tag in <consent> section is missing");
+			errors.push(errorMessages.requiredSlideMeTagMiss);
 		};
 
 		if (isUndefined(data["free-from-third-party-copytighted-content"])) {
-			errors.push("Required <free-from-third-party-copytighted-content> tag in <consent> section is missing");
+			errors.push(errorMessages.requiredFree3PartyTagMiss);
 		};
 
 		if (isUndefined(data["import-export"])) {
-			errors.push("Required <import-export> tag in <consent> section is missing");
+			errors.push(errorMessages.requiredImportExportTagMiss);
 		};
 
 		return errors;	

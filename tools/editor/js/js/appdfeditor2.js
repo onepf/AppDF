@@ -96,7 +96,7 @@ var appdfEditor = (function() {
                 <div class="input-append"> \
                     <input type="text" id="description-texts-keywords-more-' + getUniqueId() + '" value="' + value + '" \
                     required \
-                    data-validation-required-message="Keyword cannot be empty. Remove keyword input if you do not need it." \
+                    data-validation-required-message="' + errorMessages.keywordRequired + '" \
                     > \
                     <button class="btn description-texts-keywords-remove"><i class="icon-remove"></i></button> \
                 </div> \
@@ -122,8 +122,8 @@ var appdfEditor = (function() {
                 </div> \
             </div> \
         ');
-        $parent.find("p.help-block").before($controlGroup);
-        //$controlGroup.find("input").focus();
+        //$parent.find("p.help-block").before($controlGroup);
+        $parent.find(".input-append:first").after($controlGroup);
         addValidationToElements($controlGroup.find("input"));
 		return true;
     };
@@ -141,7 +141,7 @@ var appdfEditor = (function() {
                         <span class="add-on"></span> \
                         <input class="span2" type="text" id="price-localprice-' + getUniqueId() + '" value="' + value + '" \
                             pattern="^\\d+\\.\\d+$|^\\d+$" \
-                            data-validation-pattern-message="Wrong price value. Must be a valid number like 15.95." \
+                            data-validation-pattern-message="' + errorMessages.pricePattern + '" \
                         > \
                         <button class="btn control-group-remove"><i class="icon-remove"></i></button> \
                     </div> \
@@ -167,7 +167,7 @@ var appdfEditor = (function() {
 		if ($('#section-store-specific input[name="storespecific-name-' + store + '"]').length || !regExp.test(store)) {
 			return false;
 		};
-		
+        
         var $parent = $(e).closest(".control-group-container");
         var $controlGroup = $(' \
             <div class="control-group store-specific"> \
@@ -180,6 +180,7 @@ var appdfEditor = (function() {
                 </div> \
             </div><!--./control-group --> \
         ');
+        
         $parent.append($controlGroup);
         $controlGroup.find("input").focus();
 		addValidationToElements($controlGroup.find("input,textarea,select"));
@@ -322,7 +323,8 @@ var appdfEditor = (function() {
             return false;
         });
     };
-
+    
+    var importDescriptionXMLInit = false;
     function showImportDescriptionXMLDialog() {
         var $modal = $("#import-descriptionxml-modal");
         var $importButton = $modal.find(".btn-primary");
@@ -330,42 +332,40 @@ var appdfEditor = (function() {
         $("#import-descriptionxml-modal-errors").hide();
         $("#import-descriptionxml-modal-status").hide();
 
-        $modal.on('shown', function () {
-            $("#import-descriptionxml-modal-text").focus();
-        });
-
-        $importButton.click(function(event) {
-            event.preventDefault();
-            var xml = $("#import-descriptionxml-modal-text").val();
-            console.log("Showing importing message");
-            $("#import-descriptionxml-modal-status").show();
-            console.log("Push");
-            appdfXMLLoader.loadDescriptionXML(xml, function() {
-                $modal.modal('hide');
-            }, function(errors) {
-                console.log("Import errors");
-                console.log(errors);
-
-                var $list = $("#import-descriptionxml-modal-errors").find("ul");
-
-                //Then we clear all the previous errors from the error lost
-                $list.find("li").remove();
-
-                //Now we make sure the error list is visible and add all the errors there
-                $("#load-errors").show();
-                for (var i=0; i<errors.length; i++) {
-                    $list.append($("<li>").text(errors[i]));
-                };
-
-            }, function(current, total) {
-                //onprogress
+        if (!importDescriptionXMLInit) {
+            importDescriptionXMLInit = true;
+            
+            $modal.on('shown', function () {
+                $("#import-descriptionxml-modal-text").focus();
             });
-            return false;
-        });
 
+            $importButton.click(function(event) {
+                event.preventDefault();
+                var xml = $("#import-descriptionxml-modal-text").val();
+                $("#import-descriptionxml-modal-status").show();
+                $("#import-descriptionxml-modal-errors").hide();
+                
+                appdfXMLLoader.loadDescriptionXML(xml, function() {
+                    $modal.modal('hide');
+                }, function(errors) {
+                    $("#import-descriptionxml-modal-status").hide();
+                    $("#import-descriptionxml-modal-errors").show();
+                    
+                    var $list = $("#import-descriptionxml-modal-errors").find("ul");
+                    $list.find("li").remove();
+                    for (var i=0; i<errors.length; i++) {
+                        $list.append($("<li>").text(errors[i]));
+                    };
+
+                }, importProgress);
+                return false;
+            });
+        };
+        
         $modal.modal("show");
     };
-
+    
+    var loadAppdfDialogInit = false;
     function showLoadAppdfDialog() {
         var $modal = $("#load-appdf-modal");
         var $browseButton = $modal.find(".load-appdf-modal-browse")
@@ -375,51 +375,80 @@ var appdfEditor = (function() {
         $("#load-appdf-modal-status").hide();
         $("#load-appdf-modal-prettyfile").val("");
         $file.val("");
-
-        $browseButton.click(function(event) {
-            console.log("borwseButton click");
-            event.preventDefault();
-            $file.click();
-            console.log("click end");
-            return false;
-        });
-
-        $file.change(function(event) {
-            console.log("file is changed");
-            $("#load-appdf-modal-prettyfile").val(normalizeInputFileName($file.val()));
-            return false;
-        });
-
-        $openButton.click(function(event) {
-            event.preventDefault();
-            $("#load-appdf-modal-status").show();
-
-            appdfXMLLoader.loadAppdfFile($file[0].files[0], function() {
-                $modal.modal('hide');
-            }, function(errors) {
-                console.log("Import errors");
-                console.log(errors);
-
-                var $list = $("#load-appdf-modal-errors").find("ul");
-
-                //Then we clear all the previous errors from the error lost
-                $list.find("li").remove();
-
-                //Now we make sure the error list is visible and add all the errors there
-                $("#load-appdf-modal-errors").show();
-                for (var i=0; i<errors.length; i++) {
-                    $list.append($("<li>").text(errors[i]));
-                };
-
-            }, function(current, total) {
-                //onprogress
+        
+        if (!loadAppdfDialogInit) {
+            loadAppdfDialogInit = true;
+            
+            $browseButton.click(function(event) {
+                event.preventDefault();
+                $file.click();
+                return false;
             });
-            return false;
-        });
 
+            $file.change(function(event) {
+                $("#load-appdf-modal-prettyfile").val(normalizeInputFileName($file.val()));
+                return false;
+            });
+
+            $openButton.click(function(event) {
+                event.preventDefault();
+                $("#load-appdf-modal-status").show();
+                $("#load-appdf-modal-errors").hide();
+                
+                appdfXMLLoader.loadAppdfFile($file[0].files[0], function() {
+                    $modal.modal('hide');
+                }, function(errors) {
+                    console.log("Import errors");
+                    console.log(errors);
+                    
+                    $("#load-appdf-modal-status").hide();
+
+                    var $list = $("#load-appdf-modal-errors").find("ul");
+
+                    //Then we clear all the previous errors from the error lost
+                    $list.find("li").remove();
+
+                    //Now we make sure the error list is visible and add all the errors there
+                    $("#load-appdf-modal-errors").show();
+                    for (var i=0; i<errors.length; i++) {
+                        $list.append($("<li>").text(errors[i]));
+                    };
+                }, loadProgress, parseProgress);
+                return false;
+            });
+        }
+        
         $modal.modal("show");
     };
+    
+    var addStoreDialogInit = false;
+    function showAddStoreDialog() {
+        var $modal = $("#requirements-store-add-modal");
+        var $addButton = $modal.find(".btn-primary");
+        
+        if (!addStoreDialogInit) {
+            addStoreDialogInit = true;
+            
+            $modal.on('shown', function () {
+                $("#storespecific-input-modal").val("");
+                $("#storespecific-xml-default-modal").val("");
+                $("#storespecific-input-modal").focus();
+            });
 
+            $addButton.click(function(event) {
+                event.preventDefault();
+                var storeLabel = $("#storespecific-input-modal").val();
+                var storeSpecificXML = $("#storespecific-xml-default-modal").val();
+                if (addMoreStoreSpecific($(".storespecific-addmore"), storeLabel, storeSpecificXML)) {
+                    $modal.modal("hide");
+                };
+            });
+        };
+        
+        $modal.modal("show");
+    };
+    
+    var youTubeBrowseDialogInit = false;
     function showYouTubeBrowseDialog(e) {
         var $original = $(e).closest(".input-append").find("input");
         var $modal = $("#description-videos-youtubevideo-dialog");
@@ -458,38 +487,42 @@ var appdfEditor = (function() {
             };
         };
 
-        $modal.find(".description-videos-youtubevideo-dialog-check").click(function(event) {
-            event.preventDefault();
-            getVideoId();
+        if (!youTubeBrowseDialogInit){
+            youTubeBrowseDialogInit = true;
+            
+            $modal.find(".description-videos-youtubevideo-dialog-check").click(function(event) {
+                event.preventDefault();
+                getVideoId();
 
-            if (videoId) {
-                $info.text("YouTube ID = " + videoId);
-                $video.attr("src" , "http://www.youtube.com/embed/" + videoId + "?rel=0");
-                $video.show();
-            } else {
-                $info.text("Error: unrecognized YouTube URL format");
-                $video.hide();
-            };
-        });
+                if (videoId) {
+                    $info.text("YouTube ID = " + videoId);
+                    $video.attr("src" , "http://www.youtube.com/embed/" + videoId + "?rel=0");
+                    $video.show();
+                } else {
+                    $info.text("Error: unrecognized YouTube URL format");
+                    $video.hide();
+                };
+            });
 
-        $okButton.click(function(event) {
-            event.preventDefault();
-            getVideoId();
-            if (videoId) {
-                $modal.modal('hide');
-                $original.val(videoId);
-            };
-        });
+            $okButton.click(function(event) {
+                event.preventDefault();
+                getVideoId();
+                if (videoId) {
+                    $modal.modal('hide');
+                    $original.val(videoId);
+                };
+            });
 
-        $modal.on('shown', function () {
-            $input.focus();
-        });
+            $modal.on('shown', function () {
+                $input.focus();
+            });
 
-        $modal.on('hidden', function () {
-            //To stop playing video in background after the modal dialog is closed
-            $video.attr("src" , "");
-        });
-
+            $modal.on('hidden', function () {
+                //To stop playing video in background after the modal dialog is closed
+                $video.attr("src" , "");
+            });
+        }
+        
         init();
         $modal.modal("show");
     };
@@ -577,13 +610,7 @@ var appdfEditor = (function() {
         });
 
         $('body').on('click', '.storespecific-addmore', function(e) {
-            var $input = $(e.target).closest(".input-append").find("input");
-            if ($input.val() !== "") {
-                if (addMoreStoreSpecific(e.target, $input.val(), "")) {
-					$input.val("");
-				}
-            };
-            $input.focus();
+            showAddStoreDialog();
             return false;
         });
 
@@ -648,6 +675,14 @@ var appdfEditor = (function() {
         $('#requirements-supportedlanguages-type-default').click(function(event) {
             $("#requirements-supportedlanguages").hide();
         });
+        $('body').on('click', '.requirements-supportedlanguages-selectall', function(event) {
+            $("#requirements-supportedlanguages input[type=\"checkbox\"]").attr("checked", "checked");
+            return false;
+        });
+        $('body').on('click', '.requirements-supportedlanguages-unselectall', function(event) {
+            $("#requirements-supportedlanguages input[type=\"checkbox\"]").removeAttr("checked");
+            return false;
+        });
 		
         $('#requirements-supportedresolutions-type-include').click(function(event) {
             $("#requirements-supportedresolutions-include").show();
@@ -695,6 +730,14 @@ var appdfEditor = (function() {
         var $div = $("#requirements-supportedlanguages");
 		$div.empty();
 		
+        $div.append("\
+            <div>\
+                <button class=\"btn requirements-supportedlanguages-selectall\">Select all</button>\
+                &nbsp;&nbsp;&nbsp;\
+                <button class=\"btn requirements-supportedlanguages-unselectall\">Unselect all</button>\
+            </div>\
+        ");
+        
         var langCodes = [];
         for (var code in dataLanguages) {
             langCodes.push(code);
@@ -717,7 +760,7 @@ var appdfEditor = (function() {
     };
 
     function fillStores() {
-        $input = $("#storespecific-input");
+        $input = $("#storespecific-input, #storespecific-input-modal");
         var storeCodes = [];
         for (store in dataStores) {
             storeCodes.push(store);
@@ -775,7 +818,7 @@ var appdfEditor = (function() {
 				callback({
 					value: value,
 					valid: false,
-					message: promoName==="smallpromo"?"Small promotion image size must be 180x120":"Large promotion image size must be 1024x500" 
+					message: promoName==="smallpromo"?errorMessages.smallPromoWrongSize:errorMessages.largePromoWrongSize 
 				});
 			};
 		});
@@ -786,12 +829,21 @@ var appdfEditor = (function() {
 			callback({
 				value: value,
 				valid: true
-				//message: "Screenshot is required"
+				//message: errorMessages.screenshotRequired
 			});
 			return;
 		};
 		var imageFileName = getFileName($el[0]);
 		var file = getFileContent($el[0]);
+        if (typeof file==="undefined") {
+            callback({
+                value: value,
+                valid: false,
+                message: errorMessages.fnResourceNotFound(imageFileName)
+            });
+            return false;
+        };
+        
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		
@@ -805,7 +857,7 @@ var appdfEditor = (function() {
 				callback({
 					value: value,
 					valid: false,
-					message: "Wrong screenshot size" //todo: better error message
+					message: errorMessages.screenshowWrongSize//todo: better error message
 				});
 			};
 		});
@@ -816,7 +868,7 @@ var appdfEditor = (function() {
 			callback({
 				value: value,
 				valid: false,
-				message: "This device already exists"
+				message: errorMessages.deviceAlreadyExist
 			});
 		} else {
 			callback({
@@ -838,13 +890,22 @@ var appdfEditor = (function() {
 			callback({
 				value: value,
 				valid: false,
-				message: "Application icon is required"
+				message: errorMessages.appIconRequired
 			});
 			return;
 		};
         
 		var imageFileName = getFileName($el[0]);
 		var file = getFileContent($el[0]);
+        if (typeof file==="undefined") {
+            callback({
+                value: value,
+                valid: false,
+                message: errorMessages.fnResourceNotFound(imageFileName)
+            });
+            return false;
+        };
+        
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
         if (isOnlyDataImage($el[0])) {
@@ -862,7 +923,7 @@ var appdfEditor = (function() {
 				callback({
 					value: value,
 					valid: false,
-					message: "Application icon size must be 512x512"
+					message: errorMessages.appIconSize512
 				});
 			};
 		});
@@ -876,18 +937,26 @@ var appdfEditor = (function() {
 			callback({
 				value: value,
 				valid: false,
-				message: "APK file is required"
+				message: errorMessages.APKfileRequired
 			});
 			return;
 		};
 		
 		var file = getFileContent($el[0]);
+        if (typeof file==="undefined") {
+            callback({
+                value: value,
+                valid: false,
+                message: errorMessages.fnResourceNotFound(apkFileName)
+            });
+            return false;
+        };
         
 		if (file.size>MAXIMUM_APK_FILE_SIZE) {
 			callback({
 				value: value,
 				valid: false,
-				message: "APK file size cannot exceed 50M"
+				message: errorMessages.APKfileSize50M
 			});
 			return;
 		};
@@ -904,7 +973,7 @@ var appdfEditor = (function() {
 			} else {
 				if (firstApkFileData.package!=apkData.package) {
 					data.valid = false;
-					data.message = "APK file package names do not match";
+					data.message = errorMessages.APKfileWrongPackageName;
 				};
 			};
 			callback(data);
@@ -941,13 +1010,13 @@ var appdfEditor = (function() {
 			callback({
 				value: value,
 				valid: false,
-				message: "This store already exists"
+				message: errorMessages.storeExist
 			});
 		} else if (value && !regExp.test(value)) {
 			callback({
 				value: value,
 				valid: false,
-				message: "Application store name could contain only small English letters without special symbols"
+				message: errorMessages.applicationNameWrong
 			});
 		} else {
 			callback({
@@ -972,7 +1041,33 @@ var appdfEditor = (function() {
             $info.append($table);
         };
     };
-
+    
+    function buildProgress(current, total) {
+        var $bar = $("#build-appdf-progressbar");
+        onProgress(current, total, $bar, "Building: ");
+    };
+    
+    function importProgress(current, total) {
+        var $bar = $("#load-descriptionxml-modal-progressbar");
+        onProgress(current, total, $bar, "Importing: ");
+    };
+    
+    function loadProgress(current, total) {
+        var $bar = $("#load-appdf-modal-progressbar");
+        onProgress(current, total, $bar, "Loading: ");
+    };
+    
+    function parseProgress(current, total) {
+        var $bar = $("#load-appdf-modal-progressbar");
+        onProgress(current, total, $bar, "Parsing: ");
+    };
+    
+    function onProgress(current, total, $bar, label) {
+        var percentage = "" + Math.round(100.0 * current / total) + "%";
+        $bar.css("width", percentage);
+        $bar.text(label + percentage);
+    };
+    
     function initFilling() {
         fillLanguages();    
         fillCategories();
@@ -1017,7 +1112,8 @@ var appdfEditor = (function() {
 		validationCallbackPromo : validationCallbackPromo,
 		validationCallbackScreenshotRequired : validationCallbackScreenshotRequired,
 		validationCallbackRequirementDevice : validationCallbackRequirementDevice,
-		validationCallbackStoreSpecify : validationCallbackStoreSpecify
+		validationCallbackStoreSpecify : validationCallbackStoreSpecify,
+        parseProgress : parseProgress
     };
 })();
 

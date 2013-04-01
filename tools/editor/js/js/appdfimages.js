@@ -159,6 +159,11 @@
         var imageFileName = appdfEditor.getFileName($el[0]);
         var URL = window.webkitURL || window.mozURL || window.URL;    
         var file = appdfEditor.getFileContent($el[0]);
+        if (typeof file==="undefined") {
+            //error
+            return false;
+        };
+        
         var imgUrl = URL.createObjectURL(file);
 		
 		$el.next().attr("src", imgUrl);
