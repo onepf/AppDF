@@ -601,7 +601,7 @@ Yayın tarihi 21.02.2012
             </supported-devices>
         </requirements>
 
-        <testing-instructions></testing-instructions>
+        <testing-instructions>Not specified.</testing-instructions>
         
         <consent>
             <google-android-content-guidelines>yes</google-android-content-guidelines>
