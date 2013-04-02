@@ -196,7 +196,7 @@ f) ANDROID 4.1 - полная поддержка Android 4.1 Jelly Bean.
             <apk-file>mxplayer.apk</apk-file>
         </apk-files>
 
-        <testing-instructions></testing-instructions>
+        <testing-instructions>Not specified.</testing-instructions>
         
         <consent>
             <google-android-content-guidelines>yes</google-android-content-guidelines>
