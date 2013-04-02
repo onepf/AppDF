@@ -1,8 +1,9 @@
 
+Allow JPG images in small and large promos. Right now only PNG images are allows in small and large promo. We need to add JPG as well.
+Change AppDF Editor header
+
 FIXES
 Esc/Cancel in AppDF Load dialog wrong behaviour -> check why .click adds more and more listeners but not replace them
-Find a way to push .show event when there will be havy actions after that. Something like flush. Could help for prev item as well.
-allow JPG images in small and large promos
 add validation about screenshot image size while saving, indeed check image size once when loading, then save to a variable and just use it
 Allow empty package name for full version field 
 make localization optional loading while default language required where needed
@@ -12,9 +13,7 @@ REFACTORING
 remove all non-validation logic from validation code
 
 FEATURES
-Multiple screenshot adding
 Add XSD checking during import
-Make end validation waiting for the callbacks (for example image size)
 move langs from drop-down to main tabs when a tab is deleted
 
 SPECIFICATION
@@ -25,20 +24,13 @@ TODO
 * Make a page about AppDF parsers
 * Option to download AppDF editor as a ZIP file to take away
 * Add AppLand categories
-* Bug: when click "Remove Localization" from the drop-down list the drop-down list is not closed
 * Check all texts in AppDF Editor 
 * Readme for wrong samples (finish)
-* Finish AppStore wiki page: https://github.com/onepf/AppDF/wiki/Android-Application-Stores
-* Draw digrams (OpenIAB, AppDF vs agregation)
 * screencast of uploading to many stores
 * A script to automate publishing from GitHub to onepf.org
 * contact that russian developer who used AppDF itself
 * Email Naver and other missed
 * Design "Upload AppDF" button (Upload AppDF | ^ (Create AppDF Online | Read more about AppDF))
-* onepf.org
- - main page: goal, about AppDF, about OpenIAB, publish your app to many stores now, how to contribute, who is behind it
- - how to contribute: if you are a store, if you are an app developer, 
- - appdf: a paragraph what's that, list of supported stores, step-by-step how it works, diagram, how to contribute
 
 =========
 Update XSD

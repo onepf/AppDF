@@ -62,25 +62,27 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 
   <body>
 
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="#">AddDF Editor</a>
-        <div class="nav-collapse collapse">
-          <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="http://www.onepf.org">About AppDF</a></li>
-            <li><a href="https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md">Specification</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div><!--/.container-fluid -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://www.onepf.org/">One Platform Foundation</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="http://www.onepf.org/appdf/">AppDF</a></li>
+              <li><a href="http://www.onepf.org/openiab/">OpenIAB</a></li>
+              <li><a href="http://www.onepf.org/contribute/">How to Contribute</a></li>
+              <li><a href="http://www.onepf.org/follow/">Follow Us</a></li>
+              <li><a href="http://www.onepf.org/faq/">FAQ</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
     </div>
-  </div><!--/.navbar -->
 
   <div class="container-fluid">
     <div class="row-fluid">
@@ -103,6 +105,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
       </div><!--/span-->
       <div class="span9">
         <div class="hero-unit">
+          <h1>AppDF Editor</h1>
           <p>Uploading Android application to several appstores could be time consuming. AppDF format is designed to simplify this process. You describe your Android application once, create a simple AppDF file that includes description, APK file(s), screenshots, app icon, promo images, etc and just upload this AppDF file to all the stores that support AppDF uploading.</p>
           <p>
             <button class="btn btn-primary show-import-description-xml">Import Description.xml</button>
@@ -366,7 +369,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                           maxlength="4000"
                           data-validation-maxlength-message="Full description must be shorter than 4000 symbols"
                         ></textarea>
-                        <p class="help-block">Please provide full application description that will be shown on the product page. Maximum length: 4000 symbols.</p>
+                        <p class="help-block">Please provide full application description that will be shown on the product page. You can include a special subtag &lt;features&gt;, everything inside the &lt;features&gt; subtag will be shown only by the stores that do not support separate feature list (it could be useful to avoid feature list duplication). You can also include the following HTML tags: &lt;ul&gt;, &lt;li&gt;, &lt;a&gt;, &lt;b&gt;, &lt;i&gt;. The appstores that do not support those HTML tags will automatically convert them to plain text. Maximum length: 4000 symbols.</p>
                       </div>
                     </div><!--./control-group -->
 
@@ -1284,7 +1287,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
     <hr>
 
     <footer>
-      <p>&copy; <a href="http://www.onepf.org">One Platform Foundation</a> 2012</p>
+      <p>&copy; <a href="http://www.onepf.org">One Platform Foundation</a> 2012-2013</p>
     </footer>
 
   </div><!--/.fluid-container-->
