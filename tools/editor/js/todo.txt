@@ -1,6 +1,5 @@
 
 Allow JPG images in small and large promos. Right now only PNG images are allows in small and large promo. We need to add JPG as well.
-Change AppDF Editor header
 
 FIXES
 Esc/Cancel in AppDF Load dialog wrong behaviour -> check why .click adds more and more listeners but not replace them
