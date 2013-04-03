@@ -160,13 +160,23 @@ var appdfXMLSaver = (function() {
 	function generateOneLanguageVideoDescription(languageCode, xml) {
 		$parent = $("#localization-tab-" + languageCode);
 
-		var numberOfVideos = 0;
-		if ($parent.find("#description-videos-youtubevideo").val()) {
-			numberOfVideos += 1;
-		};
-		if (numberOfVideos>0) {
+		var youtubeVideoId = $parent.find("#description-videos-youtubevideo").val();
+        
+        var $videosList = $(".controls.video-file-control").not(".empty-video");
+        var videoFileName;
+        
+		if (youtubeVideoId || $videosList.size()) {
 			xml.addTag("<videos>", function() {
-				xml.addNonEmptyTextTag("<youtube-video>", $parent.find("#description-videos-youtubevideo").val());
+				if (youtubeVideoId) {
+                    xml.addNonEmptyTextTag("<youtube-video>", youtubeVideoId);
+                };
+                
+                if ($videosList.size()) {
+                    $videosList.each(function() {
+                        videoFileName = appdfEditor.getFileName($(this).find("input.hidden-video-file"));
+                        xml.addNonEmptyTextTag("<video-file>", videoFileName);
+                    });
+                };
 			});	
 		};
 	};
@@ -305,7 +315,49 @@ var appdfXMLSaver = (function() {
 	};
 
 	function generateAvailabilityXML(xml) {
-		xml.addString($("#availability").val());
+        var $selectedSupportedCountries = $('#availability-supportedcountries-include input:checked[id^="availability-supportedcountries-"][type="checkbox"]');
+		var $selectedUnSupportedCountries = $('#availability-supportedcountries-exclude input:checked[id^="availability-supportedcountries-"][type="checkbox"]');
+		var periodSinceValue = $("#section-availability input.availability-period-since").val();
+        var periodUntilValue = $("#section-availability input.availability-period-until").val();
+        var periodSinceDate = $("#section-availability input.availability-period-since").data("datepicker").date;
+        console.log("periodSinceDate");
+        console.log(periodSinceDate);
+        var periodUntilDate = $("#section-availability input.availability-period-until").data("datepicker").date;
+        
+        var checkedSupportedCountries = $('#availability-supportedcountries-type-include:checked').size() && $selectedSupportedCountries.size();
+        var checkedUnsupportedCountries = $('#availability-supportedcountries-type-exclude:checked').size() && $selectedUnSupportedCountries.size();
+        if (checkedSupportedCountries || checkedUnsupportedCountries || periodSinceValue || periodUntilValue) {
+            xml.addTag("<availability>", function() {
+            
+                if (checkedSupportedCountries) {
+                    xml.addTag("<countries only-listed=\"yes\">", function() {
+                        $selectedSupportedCountries.each(function() {
+                            xml.addTag("<include>", $(this).attr('id').split('-')[2]);
+                        });
+                    });
+                };
+                if (checkedUnsupportedCountries) {
+                    xml.addTag("<countries-resolutions only-listed=\"no\">", function() {
+                        $selectedUnSupportedCountries.each(function() {
+                            xml.addTag("<exclude>", $(this).attr('id').split('-')[2]);
+                        });
+                    });
+                };
+                
+                if (periodSinceValue || periodUntilValue) {
+                    xml.addTag("<period>", function() {
+                        if (periodSinceValue) {
+                            xml.addTag("<since year=\"" + periodSinceDate.getFullYear() + 
+                                "\" month=\"" + periodSinceDate.getMonth() + "\" day=\"" + periodSinceDate.getDate() + "\">");
+                        };
+                        if (periodUntilValue) {
+                            xml.addTag("<until year=\"" + periodUntilDate.getFullYear() + 
+                                "\" month=\"" + periodUntilDate.getMonth() + "\" day=\"" + periodUntilDate.getDate() + "\">");
+                        };
+                    });
+                };
+            });
+        };
 	};
 
 	function generateRequirementsXML(xml) {

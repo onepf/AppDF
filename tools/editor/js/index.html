@@ -29,6 +29,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/appdfeditor.css" rel="stylesheet">
     <link href="css/bsdocs.css" rel="stylesheet">
+    <link href="css/datepicker.css" rel="stylesheet">
 
   <script type="text/javascript" src="data/categories.js"></script>
   <script type="text/javascript" src="data/store_categories.js"></script>
@@ -42,6 +43,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/holder.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
   <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>    
   <script type="text/javascript" src="js/xmlgenerator.js"></script>    
   <script type="text/javascript" src="js/zip/zip.js"></script>
@@ -152,7 +154,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             <h3 id="import-descriptionxml-modal-label">Import Description.XML</h3>
           </div>
           <div class="modal-body">
-            <textarea id="import-descriptionxml-modal-text" class="input-xxlarge" rows="5"></textarea><br>
+            <textarea id="import-descriptionxml-modal-text" class="input-x-xlarge" rows="5"></textarea><br>
             <div class="alert alert-success hide" id="import-descriptionxml-modal-status">
               <b>Importing Description.XML. Please wait...</b>
               <div class="progress">
@@ -233,7 +235,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                 <!-- apk-files/apk-file -->
                 <label class="control-label" for="pretty-apk-file">APK File <span class="required-mark">*</span></label>
                 <div class="controls">
-                  <input type="file" id="apk-file" class="hide ie_show" 
+                  <input type="file" id="apk-file" class="hide ie_show hidden-apk-file" 
                     name="apk-file" 
                     accept="application/vnd.android.package-archive"
                     data-validation-callback-callback="appdfEditor.validationCallbackApkFileFirst"
@@ -550,8 +552,9 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                               accept="image/png"
                               data-validation-callback-callback="appdfEditor.validationCallbackPromo"
                             />
-                            <img data-src="holder.js/256x125/text:Click to choose image" id="description-images-largepromo-img" width="256" height="125">
+                            <img src="img/largepromo_placeholder.png" id="description-images-largepromo-img" width="256" height="125">
                             <p class="image-input-label"></p>
+                            <div class="btn large-promo-image-reset">Reset large promo image</div>
                           </div>
                         </div>
                         <p class="help-block">1024x500 PNG file which is usually used by the stores on the PC websites</p>
@@ -569,22 +572,32 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                               accept="image/png"
                               data-validation-callback-callback="appdfEditor.validationCallbackPromo"
                             />
-                            <img data-src="holder.js/180x120/text:Click to choose image" id="description-images-largepromo-img" width="180" height="120">
+                            <img src="img/smallpromo_placeholder.png" id="description-images-largepromo-img" width="180" height="120">
                             <p class="image-input-label"></p>
+                            <div class="btn small-promo-image-reset">Reset small promo image</div>
                           </div>
                         </div>
                         <p class="help-block">180x120 PNG file which is usually used in a mobile appstore for features apps</p>
                       </div>
                     </div><!--./control-group -->
 
+                    
+                    <div class="control-group video-files-group">
+                        <!-- description/videos/video -->
+                        <label class="control-label" for="pretty-video-file">Video files</label>
+                        <div class="controls">
+                            <p class="help-block">You can <button class="btn video-file-addmore">add video files</button> for your application</p>
+                            <br />
+                        </div>
+                    </div><!--./control-group -->
+                    
                     <div class="control-group">
                       <!-- description/videos/youtube-video -->
                       <label class="control-label" for="description-videos-youtubevideo">YouTube video</label>
                       <div class="controls">
                         <div class="input-append"> 
                           <input type="text" id="description-videos-youtubevideo" name="description-videos-youtubevideo"
-                            data-validation-regex-regex="^[0-9a-zA-Z\-\_]{11}$" 
-                            data-validation-regex-message="Wrong YouTube video ID format. Do not place entire URL but just ID (which is usualy written in URL after 'v='"
+                            data-validation-callback-callback="appdfEditor.validationCallbackYoutube"
                           >
                           <button class="btn description-videos-youtubevideo-browse" type="button">Browse</button>
                         </div> 
@@ -1128,15 +1141,62 @@ Copyright (c) 2012 Yandex <www.yandex.com>
               <div id="legend">
                 <legend class="">Availability</legend>
               </div>
+              
               <div class="control-group">
-                <!-- availability -->
-                <label class="control-label"  for="availability">Availability</label>
+                <!-- availability/countries -->
+                <label class="control-label"  for="availability-supportedcountries">Countries</label>
                 <div class="controls">
-                  <textarea class="input-xxlarge" rows="10" id="availability"
-                  ></textarea>
-                  <p class="help-block">Under construction. Just post XML here. Later this section will be replaced with a set of fields.</p>
+                  <div>
+                    <label class="radio">
+                      <input type="radio" checked="checked" name="availability-supportedcountries-type" id="availability-supportedcountries-type-default" value="include">
+                      Disable countries list
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="availability-supportedcountries-type" id="availability-supportedcountries-type-include" value="include">
+                      Enable supported countries list
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="availability-supportedcountries-type" id="availability-supportedcountries-type-exclude" value="exclude">
+                      Enable unsupported countries list
+                    </label>
+                  </div>
+                  <div id="availability-supportedcountries-include" class="hide">
+                  </div>
+                  <div id="availability-supportedcountries-exclude" class="hide">
+                  </div>
                 </div>
-              </div><!--control-group-->           
+              </div><!--control-group-->  
+              
+              <div class="control-group">
+                <!-- availability/period -->
+                <label class="control-label"  for="availability">Period</label>
+                <div class="controls">
+                  <table class="table span8">
+                    <tbody>
+                        <tr>
+                            <td>Since</td>
+                            <td>
+                                <input class="availability-period-since" type="text" />
+                            </td>
+                            <td>
+                                <div class="btn clear-datepicker">Clear date</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Until</td>
+                            <td>
+                                <input class="availability-period-until" type="text" />
+                            </td>
+                            <td>
+                                <div class="btn clear-datepicker">Clear date</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                  <div class="help-block hide"></div>
+                </div>
+              </div><!--control-group-->         
+              
             </fieldset>
           </section><!--section-availability-->
 

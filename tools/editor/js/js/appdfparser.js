@@ -210,18 +210,21 @@ var appdfParser = (function() {
 			function isString(o) {
 				return typeof o == "string" || (typeof o == "object" && o.constructor === String);
 			};
-			var saveCurDataPath = curDataPath;
 			var $saveCurXml = $curXml;
-			curDataPath += dataPath;
-			if (curDataPath[curDataPath.length-1]!="/") {
-				curDataPath += "/";
-			};
+			var saveCurDataPath = curDataPath;
 			if (isString(xmlPath)) {
 				$curXml = getElementsByPath($curXml, xmlPath);
 			} else {
 				$curXml = xmlPath;			
 			};
-			onsection();
+            if ($curXml.length) {
+                curDataPath += dataPath;
+                if (curDataPath[curDataPath.length-1]!="/") {
+                    curDataPath += "/";
+                };
+                
+                onsection();
+            };
 			curDataPath = saveCurDataPath;
 			$curXml = $saveCurXml;
 		};
@@ -305,6 +308,7 @@ var appdfParser = (function() {
             
 			section("videos/", "videos", function() {
 				loadText("youtube-video", "youtube-video");
+                loadArray("video-file", "video-file");
 			});
 		};
 
@@ -454,16 +458,41 @@ var appdfParser = (function() {
         });
         progress();//LanguageCode*5 + 12
         
-		//Todo: temporary XML loading instead of parsing content
-		loadXml("availability", "availability");
+        section("availability", "availability", function() {
+            section("countries", "countries", function() {
+                loadBooleanAttribute("only-listed", "", "only-listed");
+                
+                if (data["availability"]["countries"]["only-listed"]) {
+                    loadObjectWithData("include", "include");
+				} else {
+					loadObjectWithData("exclude", "exlude");
+                };
+            });
+            
+            section("period", "period", function() {
+                loadHelper("since", "since", function(d, name, $e) {
+                    var year = $($e).attr("year");
+                    var month = $($e).attr("month");
+                    var day = $($e).attr("day");
+                    d[name] = new Date(year, month, day, 0, 0, 0, 0);
+                });
+                
+                loadHelper("until", "until", function(d, name, $e) {
+                    var year = $($e).attr("year");
+                    var month = $($e).attr("month");
+                    var day = $($e).attr("day");
+                    d[name] = new Date(year, month, day, 0, 0, 0, 0);
+                });
+            });
+        });
         progress();//LanguageCode*5 + 13
         
 		loadText("testing-instructions", "testing-instructions");
         progress();//LanguageCode*5 + 14
 
 		errors.append(validateDescriptionXMLData(data));
-
-		if (errors.length==0) {
+        
+        if (errors.length==0) {
 			onend(data);
 		} else {
 			onerror(errors);
@@ -480,14 +509,24 @@ var appdfParser = (function() {
 		var errors = [];
         
 		errors.append(validateCategorization(data.categorization));
-        errors.append(validateDescriptionLanguage(data.description));
-		errors.append(validateDescriptionTexts("default", data.description.default.texts));
-		errors.append(validateDescriptionImages("default", data.description.default.images));
-		errors.append(validateDescriptionVideos("default", data.description.default.videos));
+        errors.append(validateLanguageCode(data.description));
+        
+        for (var i in data.description) {
+            if (data.description[i]["texts"]) {
+                errors.append(validateDescriptionTexts(i, data.description[i].texts));
+            };
+            if (data.description[i]["images"]) {
+                errors.append(validateDescriptionImages(i, data.description[i].images));
+            };
+            if (data.description[i]["videos"]) {
+                errors.append(validateDescriptionVideos(i, data.description[i].videos));
+            };
+        };
 		errors.append(validatePrice(data.price));
 		errors.append(validateConsent(data["consent"]));
 		errors.append(validateCustomerSupport(data["customer-support"]));
 		errors.append(validateContentDescription(data["content-description"]));
+        errors.append(validateAvailabilityPeriod(data));
 		errors.append(validateTestingInstructions(data["testing-instructions"]));
 		errors.append(validateStoreSpecific(data["store-specific"]));
 		
@@ -515,12 +554,42 @@ var appdfParser = (function() {
 		return errors;
 	};
 
-    function validateDescriptionLanguage(data) {
+    function validateLanguageCode(data) {
         var errors = [];
         
         for (var languageCode in data) {
             if (languageCode!=="default" && isUndefined(dataLanguages[languageCode])) {
                 errors.push(errorMessages.wrongLanguageCode);
+            };
+        };
+        
+        return errors;
+    };
+    
+    function validateCountryCode(data) {
+        var errors = [];
+        
+        for (var countryCode in data) {
+            if (isUndefined(countryCode[languageCode])) {
+                errors.push(errorMessages.wrongLanguageCode);
+            };
+        };
+        
+        return errors;
+    };
+    
+    function validateDescriptionVideos(languageCode, data) {
+        var errors = [];
+        
+        if (data["video-file"]) {
+            var videoList = data["video-file"];
+            
+            if (videoList.length) {
+                for (var i=0; i<videoList.length; i++) {
+                    if (isUndefined(appdfXMLLoader.appdfFiles[videoList[i]])) {
+                        errors.push(errorMessages.fnResourceNotFound(videoList[i]));
+                    };
+                };
             };
         };
         
@@ -562,11 +631,6 @@ var appdfParser = (function() {
             };
         };
         
-		return errors;
-	};
-
-	function validateDescriptionVideos(languageCode, data) {
-		var errors = [];
 		return errors;
 	};
 
@@ -766,7 +830,19 @@ var appdfParser = (function() {
 		};
 		return errors;	
 	};
-
+    
+    function validateAvailabilityPeriod(data) {
+        var errors = [];
+        
+        if (data["availability"] && data["availability"]["period"]) {
+            var dataPeriod = data["availability"]["period"];
+            if (isDefined(dataPeriod["since"]) && isDefined(dataPeriod["until"]) && dataPeriod["since"].valueOf()>=dataPeriod["until"].valueOf()) {
+                errors.push(errorMessages.availabilityPerionError);
+            };
+        };
+        return errors;
+    };
+    
 	function validateTestingInstructions(data) {
 		var errors = [];
 

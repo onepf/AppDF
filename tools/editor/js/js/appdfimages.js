@@ -23,7 +23,7 @@
 
  var appdfImages = (function() {
 	function addMoreAppIcon(e) {
-		var $parent = $(e).closest(".image-group");
+		var $parent = $(e).closest(".controls").find(".image-group:first");
 		var $controlGroup = $(' \
 		<div class="image-input-group"> \
 			<input type="file" id="description-images-appicon-' + getUniqueId() + '" class="hide ie_show appicon-input empty-image" \
@@ -39,6 +39,46 @@
 		addValidationToElements($controlGroup.find("input"));
 	};
 	
+    function addLargePromo(e) {
+        var $parent = $(e).closest(".controls").find(".image-group:first");
+        
+        $parent.find(".image-input-group").remove();
+		var $controlGroup = $(' \
+        <div class="image-input-group"> \
+            <input type="file" id="description-images-largepromo" class="hide ie_show image-input empty-image" \
+                name="description-images-largepromo" \
+                accept="image/png" \
+                data-validation-callback-callback="appdfEditor.validationCallbackPromo" \
+            /> \
+            <img src="img/largepromo_placeholder.png" id="description-images-largepromo-img" width="256" height="125"> \
+            <p class="image-input-label"></p> \
+            <div class="btn large-promo-image-reset">Reset large promo image</div> \
+        </div> \
+		');
+		$parent.append($controlGroup);
+		addValidationToElements($controlGroup.find("input"));
+    };
+    
+    function addSmallPromo(e) {
+        var $parent = $(e).closest(".image-group");
+        
+        $parent.find(".image-input-group").remove();
+		var $controlGroup = $(' \
+        <div class="image-input-group"> \
+            <input type="file" id="description-images-smallpromo" class="hide ie_show image-input empty-image" \
+                name="description-images-smallpromo" \
+                accept="image/png" \
+                data-validation-callback-callback="appdfEditor.validationCallbackPromo" \
+            /> \
+            <img src="img/smallpromo_placeholder.png" id="description-images-largepromo-img" width="180" height="120"> \
+            <p class="image-input-label"></p> \
+            <div class="btn small-promo-image-reset">Reset small promo image</div> \
+        </div> \
+		');
+		$parent.append($controlGroup);
+		addValidationToElements($controlGroup.find("input"));
+    };
+    
 	function addMoreScreenshots(e) {
 		var $parent = $(e).closest(".image-group");
 		var $controlGroup = $(' \
@@ -221,6 +261,8 @@
 		addMoreAppIcon : addMoreAppIcon,
 		addMoreScreenshots : addMoreScreenshots,
 		addScreenshotIndex: addScreenshotIndex,
+        addLargePromo : addLargePromo,
+        addSmallPromo : addSmallPromo,
         onAppIconImageInputChange : onAppIconImageInputChange,
         onScreenshotImageInputChange : onScreenshotImageInputChange,
         onImageInputChange : onImageInputChange,
