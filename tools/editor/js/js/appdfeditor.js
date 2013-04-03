@@ -67,6 +67,11 @@ function generateAppDFFile(onend) {
     addInputFiles($("input[id^=contentdescription-ratingcertificates-certificate-]"));
     addInputFiles($("input[id^=contentdescription-ratingcertificates-mark-]"));
     
+    //videofiles
+    console.log("video0");
+    addInputFiles($("input[class*=hidden-video-file]"));
+    console.log("video1");
+    
     zip.createWriter(new zip.BlobWriter(), function(writer) {
 
         addDescriptionAndFilesToZipWriter(writer, descriptionXML, files, onProgress, function() {
@@ -82,7 +87,7 @@ function generateAppDFFile(onend) {
 };
 
 function collectBuildErrors(onsuccess, onerror) {
-	var totalErrorCheckCount = 4; //TOTAL check for error blocks;
+	var totalErrorCheckCount = 0; //TOTAL check for error blocks;
 	var currentErrorCheckCount = 0;
     var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
 	var errorArray = [];
@@ -97,9 +102,8 @@ function collectBuildErrors(onsuccess, onerror) {
             };
         };
     };
-	checkBuildErrorsCount();
 	
-	function checkBuildErrorsCount() {
+    function checkBuildErrorsCount() {
 		currentErrorCheckCount++;
 		if (currentErrorCheckCount === totalErrorCheckCount) {
 			if (errorArray.length) {
@@ -119,12 +123,19 @@ function collectBuildErrors(onsuccess, onerror) {
 		checkBuildErrorsCount();
 	};
 	
+    totalErrorCheckCount++;
     appdfEditor.validationCallbackApkFileFirst($("#apk-file"), 
         appdfEditor.getFileName($("#apk-file")), checkErrorMessage);
+    
+    totalErrorCheckCount++;
 	appdfEditor.validationCallbackAppIconFirst($("#description-images-appicon"), 
         appdfEditor.getFileName($("#description-images-appicon")), checkErrorMessage);
+    
+    totalErrorCheckCount++;
 	appdfEditor.validationCallbackPromo($("#description-images-smallpromo"), 
         appdfEditor.getFileName($("#description-images-smallpromo")), checkErrorMessage);
+    
+    totalErrorCheckCount++;
 	appdfEditor.validationCallbackPromo($("#description-images-largepromo"), 
         appdfEditor.getFileName($("#description-images-largepromo")), checkErrorMessage);
 	
@@ -133,9 +144,28 @@ function collectBuildErrors(onsuccess, onerror) {
 	$screenShotList.each(function() {
 		appdfEditor.validationCallbackScreenshotRequired($(this), $(this).val(), checkErrorMessage);
 	});
-	
+    defaultScreenshotCount = $("#localization-tab-default .screenshots-group .image-input-group.not-empty-group").size();
+    
+    totalErrorCheckCount++;
+	if (defaultScreenshotCount < 4) {
+        checkErrorMessage({
+            valid: false,
+            value: "",
+            message: errorMessages.screenshotLeastCount
+        });
+    } else {
+        checkErrorMessage({valid: true});
+    };
+    
+    var $videoFileList = $(".controls.video-file-control").not(".empty-video");
+    totalErrorCheckCount += $videoFileList.size();
+    $videoFileList.each(function() {
+        appdfEditor.validationCallbackVideoFile($(this).find("input.hidden-video-file"), appdfEditor.getFileName($(this).find("input.hidden-video-file")), checkErrorMessage);
+    });
+    
 	//privacy policy validation
 	var $privacyPolicyArr = $("input[id^=\"description-texts-privacypolicy-link\"]");
+    totalErrorCheckCount += $privacyPolicyArr.size();
 	$privacyPolicyArr.each(function() {
         var linkValue = $(this).val();
         var fullTextValue = $(this).next().next().val();
@@ -145,12 +175,14 @@ function collectBuildErrors(onsuccess, onerror) {
 				value: "",
 				message: errorMessages.privacypolicyNotBothFilled
 			});
-			return false;
-		};
+		} else {
+            checkErrorMessage({valid: true});
+        };
 	});
 	
 	//eula validation
 	var $eulaArr = $("input[id^=\"description-texts-eula-link\"]");
+    totalErrorCheckCount += $eulaArr.size();
 	$eulaArr.each(function() {
         var linkValue = $(this).val();
         var fullTextValue = $(this).next().next().val();
@@ -160,8 +192,9 @@ function collectBuildErrors(onsuccess, onerror) {
 				value: "",
 				message: errorMessages.eulaNotBothFilled
 			});
-			return false;
-		};
+        } else {
+            checkErrorMessage({valid: true});
+        };
 	});
 	
 	//validate store specify
@@ -213,6 +246,7 @@ function buildAppdDFFile(event) {
     collectBuildErrors(function(){
 		//If there are not errors, we hide the error block and show the progress block
 		$("#form-errors").hide();
+        onProgress(0, 100);
 		$("#build-appdf-progressbarr").css("width", "0%");
 		$("#build-appdf-status").show();
 

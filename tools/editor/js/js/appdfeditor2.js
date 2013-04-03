@@ -231,7 +231,7 @@ var appdfEditor = (function() {
             <div class="control-group"> \
                 <label class="control-label" for="pretty-apk-file">APK File</label> \
                 <div class="controls"> \
-                    <input type="file" name="apk-file" class="hide ie_show" accept="application/vnd.android.package-archive" \
+                    <input type="file" name="apk-file" class="hide ie_show hidden-apk-file" accept="application/vnd.android.package-archive" \
                         data-validation-callback-callback="appdfEditor.validationCallbackApkFileMore" \
                     /> \
                     <div class="input-append ie_hide"> \
@@ -247,6 +247,25 @@ var appdfEditor = (function() {
             </div> \
         ');
         $parent.after($controlGroup);
+        addValidationToElements($controlGroup.find("input,textarea,select"));
+    };
+
+    function addVideoFile(e) {
+        var $parent = $(e).closest(".control-group");
+        var $controlGroup = $(' \
+            <div class="controls video-file-control empty-video"> \
+                <input type="file" name="video-file" class="hide ie_show hidden-video-file" accept="video/mpeg" \
+                    data-validation-callback-callback="appdfEditor.validationCallbackVideoFile" \
+                /> \
+                <div class="input-append ie_hide"> \
+                    <input id="pretty-video-file" class="input-large video-pretty-browse" type="text" readonly="readonly" > \
+                        <a class="btn video-pretty-browse">Browse</a> \
+                        <a class="btn control-remove"><i class="icon-remove"></i></a> \
+                </div> \
+                <p class="help-block"></p> \
+            </div> \
+        ');
+        $parent.append($controlGroup);
         addValidationToElements($controlGroup.find("input,textarea,select"));
     };
 
@@ -347,8 +366,10 @@ var appdfEditor = (function() {
                 
                 appdfXMLLoader.loadDescriptionXML(xml, function() {
                     $modal.modal('hide');
+                    importProgress(0, 100);
                 }, function(errors) {
                     $("#import-descriptionxml-modal-status").hide();
+                    importProgress(0, 100);
                     $("#import-descriptionxml-modal-errors").show();
                     
                     var $list = $("#import-descriptionxml-modal-errors").find("ul");
@@ -397,12 +418,14 @@ var appdfEditor = (function() {
                 
                 appdfXMLLoader.loadAppdfFile($file[0].files[0], function() {
                     $modal.modal('hide');
+                    loadProgress(0, 100);
                 }, function(errors) {
                     console.log("Import errors");
                     console.log(errors);
                     
                     $("#load-appdf-modal-status").hide();
-
+                    loadProgress(0, 100);
+                    
                     var $list = $("#load-appdf-modal-errors").find("ul");
 
                     //Then we clear all the previous errors from the error lost
@@ -545,7 +568,43 @@ var appdfEditor = (function() {
             $div.append($resolutionElement);
         };
     };
-
+    
+    function fillSupportedCountries() {
+        var $div = $("div[id^=\"availability-supportedcountries-\"]");
+        
+		$div.empty();
+        $div.append("\
+            <div>\
+                <button class=\"btn availability-supportedcountries-selectall\">Select all</button>\
+                &nbsp;&nbsp;&nbsp;\
+                <button class=\"btn availability-supportedcountries-unselectall\">Unselect all</button>\
+            </div>\
+        ");
+        
+        var countryCodes = [];
+        for (countryCode in dataCountries) {
+            countryCodes.push(countryCode);
+        };
+        
+        var $row;
+        $.each($div, function() {
+            for (var i=0; i<countryCodes.length; i++) {
+                if (i%3 === 0) {
+                    $row = $("<div class='row'>");
+                    $(this).append($row);
+                };
+                $row.append($(' \
+                    <div class="span4"> \
+                        <label class="checkbox"> \
+                            <input type="checkbox" value="" id="availability-supportedcountries-' + countryCodes[i] + '"> \
+                            ' + dataCountries[countryCodes[i]] + ' \
+                        </label> \
+                    </div>')
+                );
+            };
+        });
+    };
+    
     function fillCategories() {
 		var selectedType = $("#categorization-type").find(":selected").val();
 		var $categories = $("#categorization-category");
@@ -586,7 +645,6 @@ var appdfEditor = (function() {
         for (store in storeInfo) {
             $table.append($("<tr><td>" + dataStores[store] + "</td><td>" + storeInfo[store] + "</td></tr>"));
         }
-
 
         $("#store-categories-info").empty();
         $("#store-categories-info").append($table);
@@ -634,8 +692,18 @@ var appdfEditor = (function() {
             return false;
         });
 
+        $('body').on('click', '.control-remove', function(e) {
+            $(e.target).closest(".controls").remove();
+            return false;
+        });
+
         $('body').on('click', '.apk-file-addmore', function(e) {
             addApkFile(e.target);
+            return false;
+        });
+
+        $('body').on('click', '.video-file-addmore', function(e) {
+            addVideoFile(e.target);
             return false;
         });
 
@@ -654,7 +722,7 @@ var appdfEditor = (function() {
             return false;
         });
 
-        $('body').on('click', '.apkfile-pretty-browse', function(event) {
+        $('body').on('click', '.apkfile-pretty-browse, .video-pretty-browse', function(event) {
             $(event.target).closest(".controls").children("input[type=\"file\"]").click();
             return false;
         });
@@ -697,6 +765,31 @@ var appdfEditor = (function() {
 			$("#requirements-supportedresolutions-exclude").hide();
 		});
 
+        $("#availability-supportedcountries-type-default").click(function(event) {
+            $("#availability-supportedcountries-include").hide();
+            $("#availability-supportedcountries-exclude").hide();
+        });
+        $("#availability-supportedcountries-type-include").click(function(event) {
+            $("#availability-supportedcountries-include").show();
+            $("#availability-supportedcountries-exclude").hide();
+        });
+        $("#availability-supportedcountries-type-exclude").click(function(event) {
+            $("#availability-supportedcountries-include").hide();
+            $("#availability-supportedcountries-exclude").show();
+        });
+         $('body').on('click', '.availability-supportedcountries-selectall', function(event) {
+            $(event.target).closest("div[id^=\"availability-supportedcountries\"]").find("input[type=\"checkbox\"]").attr("checked", "checked");
+            return false;
+        });
+        $('body').on('click', '.availability-supportedcountries-unselectall', function(event) {
+            $(event.target).closest("div[id^=\"availability-supportedcountries\"]").find("input[type=\"checkbox\"]").removeAttr("checked");
+            return false;
+        });
+        $('body').on("click", ".clear-datepicker", function(event) {
+            $(event.target).closest("tr").find("input").val("");
+            return false;
+        });
+       
         $("#categorization-type").change(function() {
             fillCategories();
             fillSubcategories();
@@ -724,8 +817,44 @@ var appdfEditor = (function() {
                 $("#price-free-fullversion").attr('disabled', 'disabled');
             };
         });
+        
+        $("body").on("click", ".large-promo-image-reset", function(event) {
+            appdfImages.addLargePromo(event.target);
+            return false;
+        });
+        $("body").on("click", ".small-promo-image-reset", function(event) {
+            appdfImages.addSmallPromo(event.target);
+            return false;
+        });
     };
 
+    function addDatePicker() {
+        var nowTemp = new Date();
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+        
+        var perionSince = $("input[class=\"availability-period-since\"]").datepicker({
+            onRender: function(date) {
+                return date.valueOf() < now.valueOf() ? "disabled" : "";
+            }
+        }).on("changeDate", function(ev) {
+            if (ev.date.valueOf() > perionUntil.date.valueOf()) {
+                var newDate = new Date(ev.date)
+                newDate.setDate(newDate.getDate() + 1);
+                perionUntil.setValue(newDate);
+                $("input[class=\"availability-period-until\"]").val("");
+            };
+            perionSince.hide();
+        }).data("datepicker");
+        
+        var perionUntil = $("input[class=\"availability-period-until\"]").datepicker({
+            onRender: function(date) {
+                return date.valueOf() <= perionSince.date.valueOf() ? "disabled" : "";
+            }
+        }).on("changeDate", function(ev) {
+            perionUntil.hide();
+        }).data("datepicker");
+    };
+    
     function fillSupportedLanguages() {
         var $div = $("#requirements-supportedlanguages");
 		$div.empty();
@@ -967,7 +1096,7 @@ var appdfEditor = (function() {
 				value: value,
 				valid: true
 			};
-
+            
 			if (first) {
 				firstApkFileData = apkData;
 			} else {
@@ -1026,6 +1155,33 @@ var appdfEditor = (function() {
 		};
 	};
 	
+    function validationCallbackYoutube($el, value, callback) {
+        var regExp = /^[0-9a-zA-Z\-\_]{11}$/;
+		if (value && !regExp.test(value)) {
+			callback({
+				value: value,
+				valid: false,
+				message: errorMessages.wrongYoutubeFormat
+			});
+		} else {
+			callback({
+				value: value,
+				valid: true
+			});
+		};
+    };
+    
+    function validationCallbackVideoFile($el, value, callback) {
+        var videoFileName = getFileName($el[0]);
+        $el.closest(".controls").removeClass("empty-video");
+        $el.closest(".controls").find("input[id^=\"pretty-video-file\"]").val(videoFileName);
+        
+        callback({
+            value: value,
+            valid: true
+        });
+    };
+    
     function removeControlGroup(e) {
         $(e).closest(".control-group").remove();
     };
@@ -1075,6 +1231,7 @@ var appdfEditor = (function() {
         fillCategoryStoresInfo();
         fillSupportedLanguages();
         fillScreenResolutions();
+        fillSupportedCountries();
         fillStores();
         fillDeviceModels();
     };
@@ -1085,11 +1242,13 @@ var appdfEditor = (function() {
         initScrollspy();
         initFilling();
         addClickHandlers();
+        addDatePicker();
     };
 
     return {
         init : init,
         addApkFile : addApkFile,
+        addVideoFile : addVideoFile,
         addMoreKeywords : addMoreKeywords,
         addMoreLocalPrice : addMoreLocalPrice,
         addMoreTitles : addMoreTitles,
@@ -1105,6 +1264,7 @@ var appdfEditor = (function() {
         fillCategoryStoresInfo : fillCategoryStoresInfo,
 		fillSupportedLanguages : fillSupportedLanguages,
         fillScreenResolutions : fillScreenResolutions,
+        fillSupportedCountries : fillSupportedCountries,
 		validationCallbackAppIconFirst : validationCallbackAppIconFirst,
         validationCallbackAppIconMore : validationCallbackAppIconMore,
 		validationCallbackApkFileFirst : validationCallbackApkFileFirst,
@@ -1113,6 +1273,8 @@ var appdfEditor = (function() {
 		validationCallbackScreenshotRequired : validationCallbackScreenshotRequired,
 		validationCallbackRequirementDevice : validationCallbackRequirementDevice,
 		validationCallbackStoreSpecify : validationCallbackStoreSpecify,
+        validationCallbackYoutube : validationCallbackYoutube,
+        validationCallbackVideoFile : validationCallbackVideoFile,
         parseProgress : parseProgress
     };
 })();

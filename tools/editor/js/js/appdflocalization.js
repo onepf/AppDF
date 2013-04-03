@@ -79,15 +79,19 @@ var appdfLocalization = (function() {
     };
 
     function prepareJustCopiedDescription($e) {
+        //reset promo images
+        appdfImages.addLargePromo($e.find(".large-promo-image-reset")[0]);
+        appdfImages.addSmallPromo($e.find(".small-promo-image-reset")[0]);
+        
     	//Remove image fields that were non-empty in the default language
     	$e.find(".image-input-group").find("input.image-input").not(".empty-image").closest(".image-input-group").remove();
     	$e.find(".image-input-group").find("input.screenshot-input").not(".empty-image").closest(".image-input-group").remove();
     	$e.find(".image-input-group").find("input.appicon-input").not(".empty-image").closest(".image-input-group").remove();
         
-        //TODO Add default promo images if needed
-        
         //Remove the required "*" symbol from the end of all labels because all fields in a localization are optional
     	$e.find(".required-mark").remove();
+        
+        $e.find(".warning").removeClass("warning");
         
         //Remove all additionally added keywords
         $e.find("input[id^=description-texts-keywords-more-]").closest(".input-container").remove();
@@ -129,15 +133,20 @@ var appdfLocalization = (function() {
         selectLanguage("default");
     };
 
+    var localizationDialogInit = false;
     function showAllLocalizationDialog() {
         var $modal = $("#add-localization-modal");
         var $okButton = $modal.find(".btn-primary");
-        $okButton.click(function(event) {
-            event.preventDefault();
-            $modal.modal('hide');
-            addLocalization($("#add-localization-modal-language").val(), $("#add-localization-modal-language").children(":selected").text());
-        });
-
+        
+        if (!localizationDialogInit) {
+            localizationDialogInit = true;
+            $okButton.click(function(event) {
+                event.preventDefault();
+                $modal.modal('hide');
+                addLocalization($("#add-localization-modal-language").val(), $("#add-localization-modal-language").children(":selected").text());
+            });
+        };
+        
         $modal.modal("show");
     };
 
@@ -149,6 +158,8 @@ var appdfLocalization = (function() {
         
         $('body').on('click', '.description-tab-removeselectedlocalization', function(event) {
             removeSelectedLocalization();
+            var $tabHeader = $("#description-tab-header");
+            $tabHeader.find("li.dropdown.open").removeClass("open");
             return false;
         });
     };
