@@ -569,7 +569,7 @@ Yayın tarihi 21.02.2012
         </content-description>
 
         <availability>
-            <countries>
+            <countries only-listed="yes">
                 <include>RU</include>
                 <include>UA</include>
                 <include>KZ</include>
