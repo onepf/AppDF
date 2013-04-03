@@ -21,6 +21,7 @@ var errorMessages = {
     eulaNotBothFilled: "End user license agreement should include both link and full text",
     smallPromoWrongSize: "Small promotion image size must be 180x120",
     largePromoWrongSize: "Large promotion image size must be 1024x500",
+    screenshotLeastCount: "At least 4 screenshots are required",
     screenshotRequired: "Screenshot is required",
     screenshowWrongSize: "Wrong screenshot size",
     deviceAlreadyExist: "This device already exists",
@@ -31,6 +32,7 @@ var errorMessages = {
     APKfileWrongPackageName: "APK file package names do not match",
     storeExist: "This store already exists",
     applicationNameWrong: "Application store name could contain only small English letters without special symbols",
+    wrongYoutubeFormat: "Wrong YouTube video ID format. Do not place entire URL but just ID (which is usualy written in URL after 'v='",
     
     //incode html in appdfeditor2.js
     keywordRequired: "Keyword cannot be empty. Remove keyword input if you do not need it.",
@@ -43,6 +45,7 @@ var errorMessages = {
     descriptionIsNotXML: "description.xml file is not XML",
     descriptionNotFound: "description.xml file is not found inside AppDF container",
     wrongLanguageCode: "Wrong language code",
+    wrongCountryCode: "Wrong country code",
     
     //validation in parser
     requiredGoogleAndroidTagMiss: "Required <google-android-content-guidelines> tag in <consent> section is missing",
@@ -50,7 +53,7 @@ var errorMessages = {
     requiredSlideMeTagMiss: "Required <slideme-agreement> tag in <consent> section is missing",
     requiredFree3PartyTagMiss: "Required <free-from-third-party-copytighted-content> tag in <consent> section is missing",
     requiredImportExportTagMiss: "Required <import-export> tag in <consent> section is missing",
-    
+    availabilityPerionError: "Availability period since date must be earlier than until date",
     
     //fn
     fnResourceNotFound: function(name) { return name + " not found"; },
