@@ -304,7 +304,7 @@
       <xsd:element name="include" type="type-attr-country" minOccurs="0" maxOccurs="unbounded" />
       <xsd:element name="exclude" type="type-attr-country" minOccurs="0" maxOccurs="unbounded" />
     </xsd:sequence>
-    <xsd:attribute name="only-listed" type="type-attr-yesno" />
+    <xsd:attribute name="only-listed" type="type-attr-yesno" use="required" />
   </xsd:complexType>
   
   <xsd:complexType name="type-availability-period">
@@ -321,9 +321,9 @@
   </xsd:simpleType>  
   
   <xsd:complexType name="type-attr-date">
-    <xsd:attribute name="year" type="type-attr-year" />
-    <xsd:attribute name="month" type="type-attr-month" />
-    <xsd:attribute name="day" type="type-attr-day" />
+    <xsd:attribute name="year" type="type-attr-year" use="required" />
+    <xsd:attribute name="month" type="type-attr-month" use="required" />
+    <xsd:attribute name="day" type="type-attr-day" use="required" />
   </xsd:complexType>
   
   <xsd:simpleType name="type-attr-year">
@@ -352,7 +352,7 @@
       <xsd:element name="local-price" type="type-price-localprice" minOccurs="0" maxOccurs="unbounded" />
       <xsd:element name="trial-version" type="type-price-trialversion" minOccurs="0" />
     </xsd:sequence>
-    <xsd:attribute name="free" type="type-attr-yesno" />
+    <xsd:attribute name="free" type="type-attr-yesno" use="required" />
   </xsd:complexType>
   
   <xsd:complexType name="type-price-localprice">
@@ -413,7 +413,7 @@
       <xsd:element name="exclude" type="type-attr-resolution" />
       <xsd:element name="include" type="type-attr-resolution" />
     </xsd:choice>
-    <xsd:attribute name="only-listed" type="type-attr-yesno" />
+    <xsd:attribute name="only-listed" type="type-attr-yesno" use="required" />
   </xsd:complexType>
   
   <xsd:simpleType name="type-attr-resolution">
