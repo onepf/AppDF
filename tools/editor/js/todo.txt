@@ -1,3 +1,33 @@
+Hi Joe,
+
+Will you have time this week to edit English texts?
+
+Here are the webpages that needs to be edited:
+http://www.onepf.org/
+http://www.onepf.org/appdf/
+http://www.onepf.org/openiab/
+http://www.onepf.org/follow/
+http://www.onepf.org/contribute/
+
+Do you remember how to edit the pages in GitHub?
+
+What you need to do:
+
+1. Open GitHub, make sure you are logged in
+
+2. Open repository that corresponds to onepf.org website:
+http://www.github.com/onepf/onepf.org
+
+3. Fork it (press the Fork button in the top right corner)
+
+4. Edit the HTML pages at GitHub. They are located in the "public" folder in "Code" section. For exmaple HTML webpage that corresponds to "http://www.onepf.org/follow/" is located in "public/follow/index.html"
+
+5. After one page is edited make Pull Request
+
+Best regards,
+Vassili
+
+---------------
 
 Allow JPG images in small and large promos. Right now only PNG images are allows in small and large promo. We need to add JPG as well.
 
@@ -76,8 +106,6 @@ DONE:
 
 Submitter tool
 Google Play submitter
-In-app purchase Lib
-In-app purchase API
 Licensing
 Advertising - reference id
 Marketing API (App Annie, Distimo)
