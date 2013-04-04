@@ -15,10 +15,12 @@
  ******************************************************************************/
 package org.onepf.appdf.model;
 
-import java.util.List;
-
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import java.util.Collection;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 
 
@@ -32,21 +34,21 @@ public class CategoryCatalogTestCase{
 	@Test
 	public void basicWorking(){
 		@SuppressWarnings("unused")
-		CategoryCatalog catalog = CategoryCatalog.CATALOG;		
+		CategoryCatalog catalog = CategoryCatalog.INSTANCE;
 	}
 	/**
 	 * Do we have some categories
 	 */
 	@Test
 	public void categoryListIsNotEmpty(){
-		CategoryCatalog catalog = CategoryCatalog.CATALOG;
-		assertFalse(catalog.getAllCategories().isEmpty());
+		CategoryCatalog catalog = CategoryCatalog.INSTANCE;
+		assertFalse(catalog.getAll().isEmpty());
 	}
 	
 	@Test(expected=UnsupportedOperationException.class)
 	public void cantModifyCategoryList(){
-		CategoryCatalog catalog = CategoryCatalog.CATALOG;
-		List<Category> allCategories = catalog.getAllCategories();
+		CategoryCatalog catalog = CategoryCatalog.INSTANCE;
+		Collection<Category> allCategories = catalog.getAll();
 		allCategories.remove(0);
 	}
 	/**
@@ -55,7 +57,7 @@ public class CategoryCatalogTestCase{
 	@Test
 	public void properParsing(){
 		String appdfCategory = "Comics";
-		CategoryCatalog catalog = CategoryCatalog.CATALOG;
-		assertNotNull(catalog.getCategoryByAppdfName(appdfCategory)); 
+		CategoryCatalog catalog = CategoryCatalog.INSTANCE;
+		assertNotNull(catalog.getById(appdfCategory));
 	}
 }
