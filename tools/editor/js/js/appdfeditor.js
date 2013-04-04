@@ -68,9 +68,7 @@ function generateAppDFFile(onend) {
     addInputFiles($("input[id^=contentdescription-ratingcertificates-mark-]"));
     
     //videofiles
-    console.log("video0");
     addInputFiles($("input[class*=hidden-video-file]"));
-    console.log("video1");
     
     zip.createWriter(new zip.BlobWriter(), function(writer) {
 
@@ -91,6 +89,9 @@ function collectBuildErrors(onsuccess, onerror) {
 	var currentErrorCheckCount = 0;
     var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
 	var errorArray = [];
+    onProgress(0, 100);
+    $("#build-appdf-status").show();
+    
     for (field in errors) {
         if (name!=undefined) {
             var fieldErrors = errors[field];
@@ -104,14 +105,16 @@ function collectBuildErrors(onsuccess, onerror) {
     };
 	
     function checkBuildErrorsCount() {
-		currentErrorCheckCount++;
+        onProgress(currentErrorCheckCount, totalErrorCheckCount);
 		if (currentErrorCheckCount === totalErrorCheckCount) {
+            $("#build-appdf-status").hide();
 			if (errorArray.length) {
 				onerror(errorArray);
 			} else {
 				onsuccess();
 			};
 		};
+		currentErrorCheckCount++;
 	};
 	
 	function checkErrorMessage(data) {
@@ -126,6 +129,12 @@ function collectBuildErrors(onsuccess, onerror) {
     totalErrorCheckCount++;
     appdfEditor.validationCallbackApkFileFirst($("#apk-file"), 
         appdfEditor.getFileName($("#apk-file")), checkErrorMessage);
+    
+    /*var $apkFilesList = $("input.hidden-apk-file").not("[id=\"apk-file\"]");
+    totalErrorCheckCount += $apkFilesList.size();
+    $apkFilesList.each(function() {
+        appdfEditor.validationCallbackApkFileMore($(this), appdfEditor.getFileName($(this)), checkErrorMessage);
+    });*/
     
     totalErrorCheckCount++;
 	appdfEditor.validationCallbackAppIconFirst($("#description-images-appicon"), 
@@ -144,9 +153,9 @@ function collectBuildErrors(onsuccess, onerror) {
 	$screenShotList.each(function() {
 		appdfEditor.validationCallbackScreenshotRequired($(this), $(this).val(), checkErrorMessage);
 	});
-    defaultScreenshotCount = $("#localization-tab-default .screenshots-group .image-input-group.not-empty-group").size();
     
     totalErrorCheckCount++;
+    defaultScreenshotCount = $("#localization-tab-default .screenshots-group .image-input-group.not-empty-group").size();
 	if (defaultScreenshotCount < 4) {
         checkErrorMessage({
             valid: false,
@@ -199,6 +208,7 @@ function collectBuildErrors(onsuccess, onerror) {
 	
 	//validate store specify
 	var $storeSpecific = $("#section-store-specific input[name^='storespecific-name-']");
+    totalErrorCheckCount += $storeSpecific.size();
 	var storeSpecificID, storeSpecificContent, invalidXmlFlag, errorMessage;
 	$storeSpecific.each(function() {
 		storeSpecificID = $(this).val();
@@ -209,13 +219,19 @@ function collectBuildErrors(onsuccess, onerror) {
 		} catch (e) {
 			invalidXmlFlag = true;
 			errorMessage = "Store Specific '" + storeSpecificID + "' - invalid XML";
-		}
+		};
 		
 		if (invalidXmlFlag && errorArray.indexOf(errorMessage) === -1) {
-			errorArray.push(errorMessage);
-		}
+			checkErrorMessage({
+				valid: false,
+				value: "",
+				message: errorMessage
+			});
+		} else {
+            checkErrorMessage({valid: true});
+        };
 	});
-	checkBuildErrorsCount();
+    checkBuildErrorsCount();
 };
 
 function showBuildErrors(errors) {
@@ -239,7 +255,7 @@ function buildAppdDFFile(event) {
     var downloadLink = document.getElementById("build-appdf-file");
     if (downloadLink.download) {
         return true;
-    }
+    };
 
     //If not we start the checking and building process.
     //First we collect all the errors and check if there are any
@@ -251,6 +267,7 @@ function buildAppdDFFile(event) {
 		$("#build-appdf-status").show();
 
 		generateAppDFFile(function(url) {
+            console.log(url);
 			var clickEvent = document.createEvent("MouseEvent");
 			downloadLink.href = url;
 			if (firstApkFileData) {
@@ -262,6 +279,12 @@ function buildAppdDFFile(event) {
 			downloadLink.dispatchEvent(clickEvent);
 			$("#build-appdf-status").hide();
 			setTimeout(clearBuildedAppdfFile, 1);
+            
+            $.generateFile({
+                filename: 'test.appdf',
+                content: "test",
+                script: 'download.php'
+            });
 		});
 	}, showBuildErrors);
 

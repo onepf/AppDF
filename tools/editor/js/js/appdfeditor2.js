@@ -103,7 +103,7 @@ var appdfEditor = (function() {
             </div> \
         ');
         $parent.find("p.help-block").before($controlGroup);
-//        $controlGroup.find("input").focus();
+        //$controlGroup.find("input").focus();
     };
 
     function addMoreUnsupportedDevices(e, value) {
@@ -182,7 +182,7 @@ var appdfEditor = (function() {
         ');
         
         $parent.append($controlGroup);
-        $controlGroup.find("input").focus();
+        //$controlGroup.find("input").focus();
 		addValidationToElements($controlGroup.find("input,textarea,select"));
 		return true;
     };
@@ -203,7 +203,7 @@ var appdfEditor = (function() {
             </div><!--./control-group --> \
         ');
         $parent.append($controlGroup);
-        $controlGroup.find("input").focus();
+        //$controlGroup.find("input").focus();
     };
 
     function addMoreShortDescriptions(e, value) {
@@ -222,7 +222,7 @@ var appdfEditor = (function() {
             </div><!--./control-group --> \
         ');
         $parent.append($controlGroup);
-        $controlGroup.find("input").focus();
+        //$controlGroup.find("input").focus();
     };
 
     function addApkFile(e) {
@@ -452,10 +452,13 @@ var appdfEditor = (function() {
         if (!addStoreDialogInit) {
             addStoreDialogInit = true;
             
-            $modal.on('shown', function () {
+            $modal.on("shown", function () {
                 $("#storespecific-input-modal").val("");
                 $("#storespecific-xml-default-modal").val("");
                 $("#storespecific-input-modal").focus();
+            }).on("hidden", function() {
+                $("#storespecific-input-modal").val("");
+                $("#storespecific-xml-default-modal").val("");
             });
 
             $addButton.click(function(event) {
@@ -936,20 +939,23 @@ var appdfEditor = (function() {
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		
-		appdfImages.getImgSize(imgUrl, function(width, height) {
-			if ( (promoName==="smallpromo" && width===180 && height===120) || (promoName==="largepromo" && width===1024 && height===500)) {
+		appdfImages.checkTransparency(imgUrl, function(width, height, result) {
+            result.value = value;
+			if (((promoName==="smallpromo" && width===180 && height===120) || (promoName==="largepromo" && width===1024 && height===500)) && result.valid) {
 				$el.data("width", width).data("height", height);
 				callback({
 					value: value,
 					valid: true
 				});
-			} else {
+			} else if (result.valid) {
 				callback({
 					value: value,
 					valid: false,
 					message: promoName==="smallpromo"?errorMessages.smallPromoWrongSize:errorMessages.largePromoWrongSize 
 				});
-			};
+			} else {
+                callback(result);
+            };
 		});
 	};
 	
@@ -976,19 +982,22 @@ var appdfEditor = (function() {
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		
-		appdfImages.getImgSize(imgUrl, function(width, height) {
-			if ((width===480 && height===800) || (width===1080 && height===1920) || (width===1920 && height===1200)) {
+		appdfImages.checkTransparency(imgUrl, function(width, height,result) {
+            result.value = value;
+			if (((width===480 && height===800) || (width===1080 && height===1920) || (width===1920 && height===1200)) && result.valid) {
 				callback({
 					value: value,
 					valid: true
 				});
-			} else {
+			} else if (result.valid) {
 				callback({
 					value: value,
 					valid: false,
-					message: errorMessages.screenshowWrongSize//todo: better error message
+					message: errorMessages.screenshowWrongSize
 				});
-			};
+			} else {
+                callback(result);
+            };
 		});
 	};
 
@@ -1021,7 +1030,7 @@ var appdfEditor = (function() {
 				valid: false,
 				message: errorMessages.appIconRequired
 			});
-			return;
+			return false;
 		};
         
 		var imageFileName = getFileName($el[0]);
@@ -1043,7 +1052,7 @@ var appdfEditor = (function() {
         };
         
 		appdfImages.getImgSize(imgUrl, function(width, height) {
-			if (width===512 && height===512) {
+			if ((first && width===512 && height===512)||(!first && width===height)) {
 				callback({
 					value: value,
 					valid: true
@@ -1052,7 +1061,7 @@ var appdfEditor = (function() {
 				callback({
 					value: value,
 					valid: false,
-					message: errorMessages.appIconSize512
+					message: first?errorMessages.appIconSize512:errorMessages.appIconSizeSquare
 				});
 			};
 		});
@@ -1235,8 +1244,43 @@ var appdfEditor = (function() {
         fillStores();
         fillDeviceModels();
     };
-
+    
+    function isCanvasSupported(){
+        var elem = document.createElement('canvas');
+        return !!(elem.getContext && elem.getContext('2d'));
+    };
+    
+    function checkInit() {
+        var errors = [];
+        
+        if (!isCanvasSupported) {
+            errors.push(errorMessages.canvasNotSupported);
+            console.log("Canvas is not supported");
+        } else {
+            console.log("Canvas is supported");
+            errors.push("Canvas is supported");
+        };
+        
+        if (window.FileReader) {
+            errors.push("FileReader is supported");
+            console.log("FileReader is supported");
+        } else {
+            errors.push(errorMessages.fileReaderNotSupported);
+            console.log("FileReader is not supported");
+        };
+        
+        //todo check browser support
+        $.each($.browser, function(i, val) {
+            console.log(i + ":" + val);
+            errors.push(i + ":" + val);
+        });
+        
+        alert(errors);
+        //todo show modal error log
+    };
+    
     function init() {
+        checkInit();
         initRatingCertificate();
         initMenuStickToTop();
         initScrollspy();

@@ -17,6 +17,10 @@
  ******************************************************************************/
 
 var errorMessages = {
+    canvasNotSupported: "Your browser doesn`t support canvas",
+    fileReaderNotSupported: "Your browser doesn`t support FileReader",
+    imageHasTransparency: "Image has transparency",
+    
     privacypolicyNotBothFilled: "Privacy policy should include both link and full text",
     eulaNotBothFilled: "End user license agreement should include both link and full text",
     smallPromoWrongSize: "Small promotion image size must be 180x120",
@@ -27,6 +31,7 @@ var errorMessages = {
     deviceAlreadyExist: "This device already exists",
     appIconRequired: "Application icon is required",
     appIconSize512: "Application icon size must be 512x512",
+    appIconSizeSquare: "Application icon must be square",
     APKfileRequired: "APK file is required",
     APKfileSize50M: "APK file size cannot exceed 50M",
     APKfileWrongPackageName: "APK file package names do not match",
@@ -68,5 +73,7 @@ var errorMessages = {
     
     fnFeatureMaxError: function(languageCode) { return "More than five features (for language \"" + languageCode + "\")"; },
     fnFeatureMinError: function(languageCode) { return "There must be at least three features (for language \"" + languageCode + "\")"; },
-    fnRecentChangesError: function(languageCode) { return "Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")"; }
+    fnRecentChangesError: function(languageCode) { return "Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")"; },
+    
+    fnUnableAccessImageData: function(error) { return "Unable to access image data: " + error; }
 };
