@@ -15,13 +15,14 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import java.util.List;
-
 import org.onepf.appdf.model.Application;
 import org.onepf.appdf.model.Categorisation;
 import org.onepf.appdf.model.Categorisation.ApplicationType;
+import org.onepf.appdf.model.CategoryCatalog;
 import org.onepf.appdf.parser.util.XmlUtil;
 import org.w3c.dom.Node;
+
+import java.util.List;
 
 public class CategorizationParser implements NodeParser<Application> {
 
@@ -46,16 +47,16 @@ public class CategorizationParser implements NodeParser<Application> {
 				categorisation.setApplicationType(appType);
 			}else if ( CATEGORY_TAG.equals(nodeName)){
 				String category = n.getTextContent().trim();
-				if ( categorisation.getCategory() != null  ){
+                if ( categorisation.getCategory() != null  ){
 					throw new ParsingException("Multiple categories set");
 				}
-				categorisation.setCategory(category);
+				categorisation.setCategory(CategoryCatalog.INSTANCE.getById(category));
 			}else if ( SUBCATEGORY_TAG.equals(nodeName)){
 				String subcategory = n.getTextContent();
 				if ( categorisation.getSubCategory() != null ){
-					throw new ParsingException("Subcategory allready set");					
+					throw new ParsingException("Subcategory allready set");
 				}
-				categorisation.setSubCategory(subcategory);
+//				categorisation.setSubCategory(subcategory);
 			}else{
 				throw new ParsingException("Unexpected tag in categorization:" + nodeName);
 			}
