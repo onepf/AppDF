@@ -26,8 +26,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Collections;
-import java.util.List;
 import java.util.zip.ZipException;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -94,14 +92,7 @@ public class ParserTest {
 	    Application app = parseApplication();
 	    Availability avalability = app.getAvalability();
 	    assertThat(avalability.getIncludeContries().size(),is(5));
-	    assertThat(avalability.getIncludeContries().get(0),is("ru"));
-	    List<String> excludeContries = avalability.getExcludeContries();
-        assertThat(excludeContries.size(),is(4));
-	    Collections.sort(excludeContries);
-	    assertThat(excludeContries.get(0),is("by"));
-	    assertThat(excludeContries.get(1),is("kz"));
-	    assertThat(excludeContries.get(2),is("tr"));
-	    assertThat(excludeContries.get(3),is("ua"));
+	    assertThat(avalability.getIncludeContries().get(0),is("RU"));
 	}
 	@Test
 	public void checkConsent() throws ParsingException,IOException{

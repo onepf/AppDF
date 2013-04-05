@@ -21,8 +21,8 @@ import java.util.Collection;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-
-
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
 
 public class CategoryCatalogTestCase{
 
@@ -60,4 +60,14 @@ public class CategoryCatalogTestCase{
 		CategoryCatalog catalog = CategoryCatalog.INSTANCE;
 		assertNotNull(catalog.getById(appdfCategory));
 	}
+
+
+    @Test
+    public void properPersonalisation(){
+        String appdfCategory = "Personalization";
+        CategoryCatalog catalog = CategoryCatalog.INSTANCE;
+        Category category = catalog.getById(appdfCategory);
+        assertNotNull(category);
+        assertThat("Personalization type is application",category.getType(),is(Categorisation.ApplicationType.APPLICATION));
+    }
 }
