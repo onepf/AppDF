@@ -49,7 +49,6 @@ public class ApplicationParser {
 
         @Override
         public void error(SAXParseException exception) throws SAXException {
-            System.err.println("exception:" + exception.getLocalizedMessage());
         }
 
         @Override
