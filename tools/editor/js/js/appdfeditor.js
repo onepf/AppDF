@@ -29,7 +29,6 @@ function getUniqueId() {
     return globalUnigueCounter;
 };
 
-
 $(document).ready(function() {
     zip.workerScriptsPath = "js/zip/";
 

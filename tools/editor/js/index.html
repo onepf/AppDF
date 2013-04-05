@@ -115,6 +115,25 @@ Copyright (c) 2012 Yandex <www.yandex.com>
         </div>
 
         <!--MODALS START-->
+        <div id="no-js-modal">
+            <div class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="no-js-modal-label" aria-hidden="false" style="display: block;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="no-js-modal-label">Error</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-error">
+                        <b>Javascript is disabled</b>
+                        <p>Site wouldnot work correctly</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Ok</button>
+                </div>
+            </div>
+            <div class="modal-backdrop fade in"></div>
+        </div><!--no_js modal-->
+
         <div id="requirements-store-add-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="requirements-store-add-modal-label" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -479,7 +498,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                       <!-- description/images/app-icon -->
                       <label class="control-label" for="description-images-appicon">Application icon <span class="required-mark">*</span></label>
                       <div class="controls">
-                        <div class="image-group">
+                        <div class="image-group app-icon-first">
                           <div class="image-input-group">
                             <input type="file" id="description-images-appicon" class="hide ie_show appicon-input empty-image" 
                               name="description-images-appicon" 
@@ -955,7 +974,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                       <th>Mark</th>
                     </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Pan_European_Game_Information">PEGI</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Pan_European_Game_Information" target="_blank">PEGI</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-pegi"> 
                                   <option value="">No certificate</option>
@@ -982,7 +1001,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             </td> 
                         </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board">ESRB</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board" target="_blank">ESRB</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-esrb"> 
                                   <option value="">No certificate</option>
@@ -1010,7 +1029,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             </td> 
                         </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Game_Rating_Board">GRB</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Game_Rating_Board" target="_blank">GRB</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-gbr"> 
                                   <option value="">No certificate</option>
@@ -1036,7 +1055,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             </td> 
                         </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Computer_Entertainment_Rating_Organization">CERO</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Computer_Entertainment_Rating_Organization" target="_blank">CERO</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-cero"> 
                                   <option value="">No certificate</option>
@@ -1063,7 +1082,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             </td> 
                         </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Department_of_Justice,_Rating,_Titles_and_Qualification">DEJUS</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Department_of_Justice,_Rating,_Titles_and_Qualification" target="_blank">DEJUS</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-dejus"> 
                                   <option value="">No certificate</option>
@@ -1101,7 +1120,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             </td> 
                         </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Freiwillige_Selbstkontrolle_der_Filmwirtschaft">FSK</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Freiwillige_Selbstkontrolle_der_Filmwirtschaft" target="_blank">FSK</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-fsk"> 
                                   <option value="">No certificate</option>
@@ -1175,7 +1194,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                         <tr>
                             <td>Since</td>
                             <td>
-                                <input class="availability-period-since" type="text" />
+                                <input class="availability-period-since" type="text" readonly="readonly" />
                             </td>
                             <td>
                                 <div class="btn clear-datepicker">Clear date</div>
@@ -1184,7 +1203,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                         <tr>
                             <td>Until</td>
                             <td>
-                                <input class="availability-period-until" type="text" />
+                                <input class="availability-period-until" type="text" readonly="readonly" />
                             </td>
                             <td>
                                 <div class="btn clear-datepicker">Clear date</div>
@@ -1348,8 +1367,6 @@ Copyright (c) 2012 Yandex <www.yandex.com>
     <footer>
       <p>&copy; <a href="http://www.onepf.org">One Platform Foundation</a> 2012-2013</p>
     </footer>
-
   </div><!--/.fluid-container-->
-
   </body>
 </html>

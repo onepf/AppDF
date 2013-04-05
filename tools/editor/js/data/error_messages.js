@@ -38,6 +38,10 @@ var errorMessages = {
     storeExist: "This store already exists",
     applicationNameWrong: "Application store name could contain only small English letters without special symbols",
     wrongYoutubeFormat: "Wrong YouTube video ID format. Do not place entire URL but just ID (which is usualy written in URL after 'v='",
+    wrongCategorization: "Wrong categorisation",
+    wrongCustomerPhone: "Wrong customer support phone number format. Only digits, brackets, spaces and dashes are allowed. Must be in international format like +1 (555) 123-45-67.",
+    wrongCustomerEmail: "Wrong customer support email format. Must be a valid email address.",
+    wrongCustomerWebPage: "Wrong customer support webpage format. Must be a valid URL.",
     
     //incode html in appdfeditor2.js
     keywordRequired: "Keyword cannot be empty. Remove keyword input if you do not need it.",
@@ -77,5 +81,16 @@ var errorMessages = {
     
     fnWrongTag: function(wrongTag, where) { return "Wrong tag " + wrongTag + " in " + where + " found"; },
     fnWrongCountryCode: function(countryCode) { return "Wrong country code " + countryCode; },
-    fnWrongLanguageCode: function(languageCode) { return "Wrong language code " + languageCode; }
+    fnWrongLanguageCode: function(languageCode) { return "Wrong language code " + languageCode; },
+    
+    fnUnknownType: function(type) { return "Unknown type \"" + type + "\""; },
+    fnUnknownCategory: function(category, type) { return "Unknown category \"" + category + "\" for type \"" + type + "\""; },
+    fnUnknownSubCategory: function(subcategory, category) { return "Unknown subcategory \"" + subcategory + "\" for category \"" + category + "\""; },
+    fnUnknownType: function(type) { return ; },
+    fnUnknownType: function(type) { return ; },
+    fnUnknownType: function(type) { return ; },
+    fnUnknownType: function(type) { return ; },
+    fnUnknownType: function(type) { return ; },
+    fnUnknownType: function(type) { return ; },
+    fnUnknownType: function(type) { return ; },
 };

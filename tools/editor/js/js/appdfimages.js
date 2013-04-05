@@ -22,6 +22,23 @@
  */
 
  var appdfImages = (function() {
+    function resetFirstAppIcon() {
+        $(".app-icon-first").empty();
+        $imageGroup = $(' \
+        <div class="image-input-group"> \
+            <input type="file" id="description-images-appicon" class="hide ie_show appicon-input empty-image" \
+                name="description-images-appicon" \
+                accept="image/png" \
+                data-validation-callback-callback="appdfEditor.validationCallbackAppIconFirst" \
+                /> \
+            <img src="img/appicon_placeholder.png" id="description-images-appicon-img" width="128" height="128"> \
+            <p class="image-input-label">&nbsp;</p> \
+        </div> \
+        ');
+        $(".app-icon-first").append($imageGroup);
+        addValidationToElements($imageGroup.find("input"));
+    };
+    
 	function addMoreAppIcon(e) {
 		var $parent = $(e).closest(".controls").find(".image-group:first");
 		var $controlGroup = $(' \
@@ -332,6 +349,7 @@
 
     return {
 		init : init,
+        resetFirstAppIcon : resetFirstAppIcon,
 		addMoreAppIcon : addMoreAppIcon,
 		addMoreScreenshots : addMoreScreenshots,
 		addScreenshotIndex: addScreenshotIndex,

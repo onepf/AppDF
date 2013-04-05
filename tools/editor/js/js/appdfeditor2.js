@@ -378,7 +378,7 @@ var appdfEditor = (function() {
                         $list.append($("<li>").text(errors[i]));
                     };
 
-                }, importProgress);
+                }, importProgress, false);
                 return false;
             });
         };
@@ -555,6 +555,7 @@ var appdfEditor = (function() {
 
     function fillLanguages() {
         var $langs = $("#add-localization-modal-language");
+        $langs.empty();
         for (var code in dataLanguages) {
             if (code.toLowerCase() !== "en_us") {
                 $langs.append($("<option />").val(code).text(dataLanguages[code]));
@@ -1578,6 +1579,106 @@ var appdfEditor = (function() {
         downloadLink.download = null;
     };
     
+    function reinitEditor() {
+        //todo remove all warnings
+        
+        //remove erros messages
+        $("#form-errors").hide();
+        
+        //apk
+        $("#section-apk-files .control-group-remove").click();
+        //reset first
+        $("#pretty-apk-file").val("");
+        
+        //category
+        
+        
+        //description
+        //remove localisations
+        appdfLocalization.removeAllLocalizations();
+        
+        //clear appicons
+        $(".image-input-remove").click();
+        appdfImages.resetFirstAppIcon();
+        
+        //clear screenshots
+        $(".screenshots-group a.image-input-remove").click();
+        
+        //reset promo
+        $(".large-promo-image-reset").click();
+        $(".small-promo-image-reset").click();
+        //youtube
+        $("#description-videos-youtubevideo").val("");
+        //video
+        $(".control-remove").click();
+        
+        
+        //price
+        $("input[id^=price-localprice-]").closest(".control-group").remove();
+        $("#price-free-fullversion").val("");
+        $("#price-baseprice").val("0");
+        
+        //customer support
+        $("#customersupport-phone").val("");
+        $("#customersupport-email").val("");
+        $("#customersupport-website").val("");
+        
+        //consent
+        $("#consent-googleandroidcontentguidelines").removeAttr("checked");
+        $("#consent-usexportlaws").removeAttr("checked");
+        $("#consent-importexportlaws").removeAttr("checked");
+        $("#consent-slidemeagreement").removeAttr("checked");
+        $("#consent-freefromthirdpartycopytightedcontent").removeAttr("checked");
+        
+        //content rating and descriptors
+        $("#contentdescription-contentrating").val("3");
+        var scd = "#contentdescription-contentdescriptors-";
+        $(scd + "cartoonviolence").val("no");
+        $(scd + "realisticviolence").val("no");
+        $(scd + "badlanguage").val("no");
+        $(scd + "fear").val("no");
+        $(scd + "sexualcontent").val("no");
+        $(scd + "drugs").val("no");
+        $(scd + "gamblingreference").val("no");
+        $(scd + "alcohol").val("no");
+        $(scd + "smoking").val("no");
+        $(scd + "discrimination").val("no");
+        
+        var sia = "#contentdescription-includedactivities-";
+        $(sia + "inappbilling").removeAttr("checked");
+        $(sia + "gambling").removeAttr("checked");
+        $(sia + "advertising").removeAttr("checked");
+        $(sia + "usergeneratedcontent").removeAttr("checked");
+        $(sia + "usertousercommunications").removeAttr("checked");
+        $(sia + "accountcreation").removeAttr("checked");
+        $(sia + "personalinformationcollection").removeAttr("checked");
+        
+        $(".pretty-file-input").val("");
+        
+        
+        //availability
+        $(".availability-supportedcountries-unselectall").click();
+        
+        //requirements
+        $("#requirements-features-root").removeAttr("checked");
+        $("#requirements-features-gms").removeAttr("checked");
+        $("#requirements-features-online").removeAttr("checked");
+        //clear supported languages list
+        $("#requirements-supportedlanguages-type-default").click();
+        $(".requirements-supportedlanguages-unselectall").click();
+        fillSupportedLanguages();
+        //clear supported devices
+        $(".requirements-supporteddevices-remove").click();
+        //clear supported resolutions list
+        $("#requirements-supportedresolutions-type-default").click();
+        fillScreenResolutions();
+        
+        //testing instructions
+        $("#testinginstructions").val("");
+        
+        //store specific
+        $('#section-store-specific .store-specific').remove();
+    };
     
     function init() {
         checkInit();
@@ -1591,6 +1692,7 @@ var appdfEditor = (function() {
 
     return {
         init : init,
+        reinitEditor : reinitEditor,
         addApkFile : addApkFile,
         addVideoFile : addVideoFile,
         addMoreKeywords : addMoreKeywords,
@@ -1606,8 +1708,6 @@ var appdfEditor = (function() {
         fillCategories : fillCategories,
         fillSubcategories : fillSubcategories,
         fillCategoryStoresInfo : fillCategoryStoresInfo,
-		fillSupportedLanguages : fillSupportedLanguages,
-        fillScreenResolutions : fillScreenResolutions,
         fillSupportedCountries : fillSupportedCountries,
 		validationCallbackAppIconFirst : validationCallbackAppIconFirst,
         validationCallbackAppIconMore : validationCallbackAppIconMore,
@@ -1624,6 +1724,7 @@ var appdfEditor = (function() {
 })();
 
 $(function() {
+    $("#no-js-modal").remove();
     appdfEditor.init();
 });
 

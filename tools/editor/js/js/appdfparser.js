@@ -21,6 +21,8 @@
  * Depends on: jquery.js
  */
 var appdfParser = (function() {
+    var checkRes = true;
+    
 	function isDefined(x) {
 		return (typeof x != "undefined");
 	};
@@ -29,7 +31,9 @@ var appdfParser = (function() {
 		return (typeof x === "undefined");
 	};
 
-	function parseDescriptionXML(xmlText, onend, onerror, onprogress) {
+	function parseDescriptionXML(xmlText, onend, onerror, onprogress, checkRes) {
+        appdfParser.checkRes = checkRes;
+        
         //Calculate total number of actions to do
         var totalProgressItems = 14;
         var passedProgressItems = 0;
@@ -526,7 +530,7 @@ var appdfParser = (function() {
             if (data.description[i]["texts"]) {
                 errors.append(validateDescriptionTexts(i, data.description[i].texts));
             };
-            if (data.description[i]["images"]) {
+            if (appdfParser.checkRes && data.description[i]["images"]) {
                 errors.append(validateDescriptionImages(i, data.description[i].images));
             };
             if (data.description[i]["videos"]) {
@@ -558,22 +562,27 @@ var appdfParser = (function() {
     
 	function validateCategorization(data) {
 		var errors = [];
+        
+        if (isUndefined(data)) {
+            errors.push(errorMessages.wrongCategorization);
+            return errors;
+        };
+        
+        if (isUndefined(dataCategories[data.type])) {
+            errors.push(errorMessages.fnUnknownType(data.type));
+            return errors;
+        };
 
-		if (isUndefined(dataCategories[data.type])) {
-			errors.push("Unknown type \"" + data.type + "\"");
-			return errors;
-		};
+        if (isUndefined(dataCategories[data.type][data.category])) {
+            errors.push(errorMessages.fnUnknownCategory(data.category, data.type));
+            return errors;
+        };
 
-		if (isUndefined(dataCategories[data.type][data.category])) {
-			errors.push("Unknown category \"" + data.category + "\" for type \"" + data.type + "\"");
-			return errors;
-		};
-
-		if (dataCategories[data.type][data.category].indexOf(data.subcategory)==-1) {
-			errors.push("Unknown subcategory \"" + data.subcategory + "\" for category \"" + data.category + "\"");
-			return errors;
-		};
-
+        if (dataCategories[data.type][data.category].indexOf(data.subcategory)==-1) {
+            errors.push(errorMessages.fnUnknownSubCategory(data.subcategory, data.category));
+            return errors;
+        };
+        
 		return errors;
 	};
 
@@ -604,7 +613,7 @@ var appdfParser = (function() {
     function validateDescriptionVideos(languageCode, data) {
         var errors = [];
         
-        if (data["video-file"]) {
+        if (appdfParser.checkRes && data["video-file"]) {
             var videoList = data["video-file"];
             
             if (videoList.length) {
@@ -660,7 +669,7 @@ var appdfParser = (function() {
 	function validateDescriptionTexts(languageCode, data) {
 		var errors = [];
 
-		if (isDefined(data["title"]) && data["title"][0].length>30) {
+		if (isDefined(data["title"]) && data["title"].length && data["title"][0].length>30) {
 			errors.push(errorMessages.fnTitleError(languageCode));
 		};
 
@@ -718,6 +727,11 @@ var appdfParser = (function() {
 	function validateConsent(data) {
 		var errors = [];
 
+        if (isUndefined(data)) {
+            //errors.push();
+            return errors;
+        };
+        
 		if (isUndefined(data["google-android-content-guidelines"])) {
 			errors.push(errorMessages.requiredGoogleAndroidTagMiss);
 		};
@@ -799,7 +813,12 @@ var appdfParser = (function() {
 	function validatePrice(data) {
 		var errors = [];
 
-		if (data["free"]) {
+        if (isUndefined(data)) {
+            //errors.push();
+            return errors;
+        };
+        
+        if (data["free"]) {
 			if (isDefined(data["full-version"])) {
 				errors.append(validatePackageName(data["full-version"], "Wrong package name format \"" + data["full-version"] + "\" in full version attribute"));	
 			};
@@ -819,9 +838,14 @@ var appdfParser = (function() {
 	function validateCustomerSupport(data) {
 		var errors = [];
 
-		errors.append(validatePhoneNumber(data["phone"], "Wrong customer support phone number format. Only digits, brackets, spaces and dashes are allowed. Must be in international format like +1 (555) 123-45-67."));	
-		errors.append(validateEmail(data["email"], "Wrong customer support email format. Must be a valid email address."));	
-		errors.append(validateURL(data["website"], "Wrong customer support webpage format. Must be a valid URL."));	
+        if (isUndefined(data)) {
+            //errors.push();
+            return errors;
+        };
+        
+		errors.append(validatePhoneNumber(data["phone"], errorMessages.wrongCustomerPhone));	
+		errors.append(validateEmail(data["email"], errorMessages.wrongCustomerEmail));	
+		errors.append(validateURL(data["website"], errorMessages.wrongCustomerWebPage));	
 
 		return errors;	
 	};
@@ -829,6 +853,11 @@ var appdfParser = (function() {
 	function validateContentDescription(data) {
 		var errors = [];
 
+        if (isUndefined(data)) {
+            //errors.push();
+            return errors;
+        };
+        
 		errors.append(validateEnum(data["content-rating"], "Content rating", [3,6,10,13,17,18]));	
 		var yes_light_strong = ["no", "light", "strong"];
 		errors.append(validateEnum(data["content-descriptors"]["cartoon-violence"], "cartoon violence", yes_light_strong));	
