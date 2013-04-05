@@ -21,6 +21,8 @@
  * Depends on: jquery.js
  */
 var appdfParser = (function() {
+    var checkRes = true;
+    
 	function isDefined(x) {
 		return (typeof x != "undefined");
 	};
@@ -29,7 +31,9 @@ var appdfParser = (function() {
 		return (typeof x === "undefined");
 	};
 
-	function parseDescriptionXML(xmlText, onend, onerror, onprogress) {
+	function parseDescriptionXML(xmlText, onend, onerror, onprogress, checkRes) {
+        appdfParser.checkRes = checkRes;
+        
         //Calculate total number of actions to do
         var totalProgressItems = 14;
         var passedProgressItems = 0;
@@ -107,7 +111,19 @@ var appdfParser = (function() {
 			});
 		};
 		
-		function loadStoreSpecificContent() {
+		//Load xml content
+		function loadXmlContent(dataPath, xmlPath) {
+			loadHelper(dataPath, xmlPath, function(d, name, $e) {
+				if ($e.length>0) {
+					var serializer = new XMLSerializer(); 
+					var xmlString = serializer.serializeToString($e[0]);
+                    xmlString = xmlString.slice(name.length + 2, -(name.length + 3));
+					d[name] = xmlString;
+				};
+			});
+		};
+		
+        function loadStoreSpecificContent() {
 			loadHelper('', '*', function(d, name, $e) {
 				for (var i = 0; i < $e.length; i++) {
 					d[$e[i].nodeName] = getXmlContent($($e[i]).children());
@@ -247,8 +263,7 @@ var appdfParser = (function() {
 				});
 				loadArray("short-description", "short-description");
 				
-                //loadXml("full-description", "full-description");
-                loadText("full-description", "full-description");
+                loadXmlContent("full-description", "full-description");
                 
 				loadArray("features", "features/feature");
 				loadText("recent-changes", "recent-changes");
@@ -515,7 +530,7 @@ var appdfParser = (function() {
             if (data.description[i]["texts"]) {
                 errors.append(validateDescriptionTexts(i, data.description[i].texts));
             };
-            if (data.description[i]["images"]) {
+            if (appdfParser.checkRes && data.description[i]["images"]) {
                 errors.append(validateDescriptionImages(i, data.description[i].images));
             };
             if (data.description[i]["videos"]) {
@@ -526,31 +541,48 @@ var appdfParser = (function() {
 		errors.append(validateConsent(data["consent"]));
 		errors.append(validateCustomerSupport(data["customer-support"]));
 		errors.append(validateContentDescription(data["content-description"]));
-        errors.append(validateAvailabilityPeriod(data));
+        errors.append(validateAvailability(data));
+        errors.append(validateRequirements(data));
 		errors.append(validateTestingInstructions(data["testing-instructions"]));
 		errors.append(validateStoreSpecific(data["store-specific"]));
 		
 		return errors;
 	};
 
+    function validateRequirements(data) {
+        var errors = [];
+        
+        if (data["requirements"] && data["requirements"]["supported-languages"] && data["requirements"]["supported-languages"]["language"] ) {
+            var dataLanguageList = data["requirements"]["supported-languages"]["language"];
+            errors.append(validateLanguageCode(dataLanguageList));
+        };
+        
+        return errors;
+    };
+    
 	function validateCategorization(data) {
 		var errors = [];
+        
+        if (isUndefined(data)) {
+            errors.push(errorMessages.wrongCategorization);
+            return errors;
+        };
+        
+        if (isUndefined(dataCategories[data.type])) {
+            errors.push(errorMessages.fnUnknownType(data.type));
+            return errors;
+        };
 
-		if (isUndefined(dataCategories[data.type])) {
-			errors.push("Unknown type \"" + data.type + "\"");
-			return errors;
-		};
+        if (isUndefined(dataCategories[data.type][data.category])) {
+            errors.push(errorMessages.fnUnknownCategory(data.category, data.type));
+            return errors;
+        };
 
-		if (isUndefined(dataCategories[data.type][data.category])) {
-			errors.push("Unknown category \"" + data.category + "\" for type \"" + data.type + "\"");
-			return errors;
-		};
-
-		if (dataCategories[data.type][data.category].indexOf(data.subcategory)==-1) {
-			errors.push("Unknown subcategory \"" + data.subcategory + "\" for category \"" + data.category + "\"");
-			return errors;
-		};
-
+        if (dataCategories[data.type][data.category].indexOf(data.subcategory)==-1) {
+            errors.push(errorMessages.fnUnknownSubCategory(data.subcategory, data.category));
+            return errors;
+        };
+        
 		return errors;
 	};
 
@@ -559,7 +591,7 @@ var appdfParser = (function() {
         
         for (var languageCode in data) {
             if (languageCode!=="default" && isUndefined(dataLanguages[languageCode])) {
-                errors.push(errorMessages.wrongLanguageCode);
+                errors.push(errorMessages.fnWrongLanguageCode(languageCode));
             };
         };
         
@@ -570,8 +602,8 @@ var appdfParser = (function() {
         var errors = [];
         
         for (var countryCode in data) {
-            if (isUndefined(countryCode[languageCode])) {
-                errors.push(errorMessages.wrongLanguageCode);
+            if (isUndefined(dataCountries[countryCode])) {
+                errors.push(errorMessages.fnWrongCountryCode(countryCode));
             };
         };
         
@@ -581,7 +613,7 @@ var appdfParser = (function() {
     function validateDescriptionVideos(languageCode, data) {
         var errors = [];
         
-        if (data["video-file"]) {
+        if (appdfParser.checkRes && data["video-file"]) {
             var videoList = data["video-file"];
             
             if (videoList.length) {
@@ -637,7 +669,7 @@ var appdfParser = (function() {
 	function validateDescriptionTexts(languageCode, data) {
 		var errors = [];
 
-		if (isDefined(data["title"]) && data["title"][0].length>30) {
+		if (isDefined(data["title"]) && data["title"].length && data["title"][0].length>30) {
 			errors.push(errorMessages.fnTitleError(languageCode));
 		};
 
@@ -645,11 +677,27 @@ var appdfParser = (function() {
 			errors.push(errorMessages.fnShortDescriptionError(languageCode));
 		};
         
-        //TODO check for tags
-		if (isDefined(data["full-description"]) && data["full-description"].length>4000) {
-			errors.push(errorMessages.fnFullDescriptionError(languageCode));
+        if (isDefined(data["full-description"])) {
+            if (data["full-description"].length>4000) {
+                errors.push(errorMessages.fnFullDescriptionError(languageCode));
+            } else {
+                //check for tags
+                var regExp = /<[^</]+?>/g;
+                var tagsArr = data["full-description"].match(regExp);
+                
+                var validTags = ["<b>", "<i>", "<ul>", "<li>", "<features>"];
+                
+                if (tagsArr) {
+                    regExp = /^<a[\s]{1}href/;
+                    for (var i=0; i<tagsArr.length; i++) {
+                        if (validTags.indexOf(tagsArr[i].toLowerCase())===-1 && !regExp.test(tagsArr[i].toLowerCase())) {
+                            errors.push(errorMessages.fnWrongTag(tagsArr[i], "<full-description>"));
+                        };
+                    };
+                };
+            };
 		};
-
+		
 		if ((isDefined(data["eula"]) && data["eula"].length && (isUndefined(data["eula-link"]) || data["eula-link"].length===0)) ||
             (isDefined(data["eula-link"]) && data["eula-link"].length && (isUndefined(data["eula"]) || data["eula"].length===0))) {
 			errors.push(errorMessages.eulaNotBothFilled);
@@ -679,6 +727,11 @@ var appdfParser = (function() {
 	function validateConsent(data) {
 		var errors = [];
 
+        if (isUndefined(data)) {
+            //errors.push();
+            return errors;
+        };
+        
 		if (isUndefined(data["google-android-content-guidelines"])) {
 			errors.push(errorMessages.requiredGoogleAndroidTagMiss);
 		};
@@ -760,7 +813,12 @@ var appdfParser = (function() {
 	function validatePrice(data) {
 		var errors = [];
 
-		if (data["free"]) {
+        if (isUndefined(data)) {
+            //errors.push();
+            return errors;
+        };
+        
+        if (data["free"]) {
 			if (isDefined(data["full-version"])) {
 				errors.append(validatePackageName(data["full-version"], "Wrong package name format \"" + data["full-version"] + "\" in full version attribute"));	
 			};
@@ -771,7 +829,7 @@ var appdfParser = (function() {
 				errors.append(validateNumber(data["base-price"], "Wrong price value \"" + data["base-price"] + "\". Must be a valid number like \"15.95\"."));	
 			};
 			
-			
+            errors.append(validateCountryCode(data["local-price"]));
 		};
 
 		return errors;	
@@ -780,9 +838,14 @@ var appdfParser = (function() {
 	function validateCustomerSupport(data) {
 		var errors = [];
 
-		errors.append(validatePhoneNumber(data["phone"], "Wrong customer support phone number format. Only digits, brackets, spaces and dashes are allowed. Must be in international format like +1 (555) 123-45-67."));	
-		errors.append(validateEmail(data["email"], "Wrong customer support email format. Must be a valid email address."));	
-		errors.append(validateURL(data["website"], "Wrong customer support webpage format. Must be a valid URL."));	
+        if (isUndefined(data)) {
+            //errors.push();
+            return errors;
+        };
+        
+		errors.append(validatePhoneNumber(data["phone"], errorMessages.wrongCustomerPhone));	
+		errors.append(validateEmail(data["email"], errorMessages.wrongCustomerEmail));	
+		errors.append(validateURL(data["website"], errorMessages.wrongCustomerWebPage));	
 
 		return errors;	
 	};
@@ -790,6 +853,11 @@ var appdfParser = (function() {
 	function validateContentDescription(data) {
 		var errors = [];
 
+        if (isUndefined(data)) {
+            //errors.push();
+            return errors;
+        };
+        
 		errors.append(validateEnum(data["content-rating"], "Content rating", [3,6,10,13,17,18]));	
 		var yes_light_strong = ["no", "light", "strong"];
 		errors.append(validateEnum(data["content-descriptors"]["cartoon-violence"], "cartoon violence", yes_light_strong));	
@@ -831,14 +899,24 @@ var appdfParser = (function() {
 		return errors;	
 	};
     
-    function validateAvailabilityPeriod(data) {
+    function validateAvailability(data) {
         var errors = [];
         
-        if (data["availability"] && data["availability"]["period"]) {
+        if (!data["availability"]) {
+            return errors;
+        };
+        
+        if (data["availability"]["period"]) {
             var dataPeriod = data["availability"]["period"];
             if (isDefined(dataPeriod["since"]) && isDefined(dataPeriod["until"]) && dataPeriod["since"].valueOf()>=dataPeriod["until"].valueOf()) {
                 errors.push(errorMessages.availabilityPerionError);
             };
+        };
+        
+        if (data["availability"]["countries"]) {
+            var dataCountries = data["availability"]["countries"]["include"]?data["availability"]["countries"]["include"]:data["availability"]["countries"]["exclude"];
+            
+            errors.append(validateCountryCode(dataCountries));
         };
         return errors;
     };

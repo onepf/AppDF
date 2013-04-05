@@ -67,8 +67,8 @@ sub {
 }
 
 img {
-  width: auto\9;
-  height: auto;
+  /*width: auto\9;
+  height: auto;*/
   max-width: 100%;
   vertical-align: middle;
   border: 0;
@@ -1875,6 +1875,9 @@ input.search-query {
 .form-search .hide,
 .form-inline .hide,
 .form-horizontal .hide {
+  /*visibility: hidden;
+  position: absolute;
+  left: -10000px;*/
   display: none;
 }
 

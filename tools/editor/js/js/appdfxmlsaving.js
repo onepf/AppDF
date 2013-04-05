@@ -320,8 +320,6 @@ var appdfXMLSaver = (function() {
 		var periodSinceValue = $("#section-availability input.availability-period-since").val();
         var periodUntilValue = $("#section-availability input.availability-period-until").val();
         var periodSinceDate = $("#section-availability input.availability-period-since").data("datepicker").date;
-        console.log("periodSinceDate");
-        console.log(periodSinceDate);
         var periodUntilDate = $("#section-availability input.availability-period-until").data("datepicker").date;
         
         var checkedSupportedCountries = $('#availability-supportedcountries-type-include:checked').size() && $selectedSupportedCountries.size();
@@ -369,7 +367,7 @@ var appdfXMLSaver = (function() {
 		var $selectedSupportedResolutions = $('#requirements-supportedresolutions-include input:checked[id^="requirements-supportedresolutions-"][type="checkbox"]');
 		var $selectedUnSupportedResolutions = $('#requirements-supportedresolutions-exclude input:checked[id^="requirements-supportedresolutions-"][type="checkbox"]');
 		
-		if (!anyFeatureChecked && !$selectedSupportedLanguages.size() && !$selectedSupportedResolutions.size() && !$selectedUnSupportedResolutions.size()) {
+		if (!anyFeatureChecked && !$selectedSupportedLanguages.size() && !$selectedSupportedResolutions.size() && !$selectedUnSupportedResolutions.size() && !$unsupportedDevices.size()) {
 			return;
 		};
 		

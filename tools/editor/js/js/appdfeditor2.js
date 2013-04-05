@@ -103,7 +103,7 @@ var appdfEditor = (function() {
             </div> \
         ');
         $parent.find("p.help-block").before($controlGroup);
-//        $controlGroup.find("input").focus();
+        //$controlGroup.find("input").focus();
     };
 
     function addMoreUnsupportedDevices(e, value) {
@@ -182,7 +182,7 @@ var appdfEditor = (function() {
         ');
         
         $parent.append($controlGroup);
-        $controlGroup.find("input").focus();
+        //$controlGroup.find("input").focus();
 		addValidationToElements($controlGroup.find("input,textarea,select"));
 		return true;
     };
@@ -203,7 +203,7 @@ var appdfEditor = (function() {
             </div><!--./control-group --> \
         ');
         $parent.append($controlGroup);
-        $controlGroup.find("input").focus();
+        //$controlGroup.find("input").focus();
     };
 
     function addMoreShortDescriptions(e, value) {
@@ -222,7 +222,7 @@ var appdfEditor = (function() {
             </div><!--./control-group --> \
         ');
         $parent.append($controlGroup);
-        $controlGroup.find("input").focus();
+        //$controlGroup.find("input").focus();
     };
 
     function addApkFile(e) {
@@ -378,7 +378,7 @@ var appdfEditor = (function() {
                         $list.append($("<li>").text(errors[i]));
                     };
 
-                }, importProgress);
+                }, importProgress, false);
                 return false;
             });
         };
@@ -452,10 +452,13 @@ var appdfEditor = (function() {
         if (!addStoreDialogInit) {
             addStoreDialogInit = true;
             
-            $modal.on('shown', function () {
+            $modal.on("shown", function () {
                 $("#storespecific-input-modal").val("");
                 $("#storespecific-xml-default-modal").val("");
                 $("#storespecific-input-modal").focus();
+            }).on("hidden", function() {
+                $("#storespecific-input-modal").val("");
+                $("#storespecific-xml-default-modal").val("");
             });
 
             $addButton.click(function(event) {
@@ -552,6 +555,7 @@ var appdfEditor = (function() {
 
     function fillLanguages() {
         var $langs = $("#add-localization-modal-language");
+        $langs.empty();
         for (var code in dataLanguages) {
             if (code.toLowerCase() !== "en_us") {
                 $langs.append($("<option />").val(code).text(dataLanguages[code]));
@@ -906,12 +910,9 @@ var appdfEditor = (function() {
         $input.typeahead({
             "source" : deviceModels,
             "updater" : function(item) {
-                console.log("updater");
-                console.log(item);
-
                 var deviceModelRegEx = /([^\(]*)\s\([.]*/i;
                 var matched = item.match(deviceModelRegEx); 
-                console.log(matched);
+                
                 if (matched && matched.length>0) {
                     return matched[1];
                 } else {
@@ -936,20 +937,23 @@ var appdfEditor = (function() {
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		
-		appdfImages.getImgSize(imgUrl, function(width, height) {
-			if ( (promoName==="smallpromo" && width===180 && height===120) || (promoName==="largepromo" && width===1024 && height===500)) {
+		appdfImages.checkTransparency(imgUrl, function(width, height, result) {
+            result.value = value;
+			if (((promoName==="smallpromo" && width===180 && height===120) || (promoName==="largepromo" && width===1024 && height===500)) && result.valid) {
 				$el.data("width", width).data("height", height);
 				callback({
 					value: value,
 					valid: true
 				});
-			} else {
+			} else if (result.valid) {
 				callback({
 					value: value,
 					valid: false,
 					message: promoName==="smallpromo"?errorMessages.smallPromoWrongSize:errorMessages.largePromoWrongSize 
 				});
-			};
+			} else {
+                callback(result);
+            };
 		});
 	};
 	
@@ -976,19 +980,22 @@ var appdfEditor = (function() {
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		
-		appdfImages.getImgSize(imgUrl, function(width, height) {
-			if ((width===480 && height===800) || (width===1080 && height===1920) || (width===1920 && height===1200)) {
+		appdfImages.checkTransparency(imgUrl, function(width, height,result) {
+            result.value = value;
+			if (((width===480 && height===800) || (width===1080 && height===1920) || (width===1920 && height===1200)) && result.valid) {
 				callback({
 					value: value,
 					valid: true
 				});
-			} else {
+			} else if (result.valid) {
 				callback({
 					value: value,
 					valid: false,
-					message: errorMessages.screenshowWrongSize//todo: better error message
+					message: errorMessages.screenshowWrongSize
 				});
-			};
+			} else {
+                callback(result);
+            };
 		});
 	};
 
@@ -1021,7 +1028,7 @@ var appdfEditor = (function() {
 				valid: false,
 				message: errorMessages.appIconRequired
 			});
-			return;
+			return false;
 		};
         
 		var imageFileName = getFileName($el[0]);
@@ -1043,7 +1050,7 @@ var appdfEditor = (function() {
         };
         
 		appdfImages.getImgSize(imgUrl, function(width, height) {
-			if (width===512 && height===512) {
+			if ((first && width===512 && height===512)||(!first && width===height)) {
 				callback({
 					value: value,
 					valid: true
@@ -1052,7 +1059,7 @@ var appdfEditor = (function() {
 				callback({
 					value: value,
 					valid: false,
-					message: errorMessages.appIconSize512
+					message: first?errorMessages.appIconSize512:errorMessages.appIconSizeSquare
 				});
 			};
 		});
@@ -1235,8 +1242,446 @@ var appdfEditor = (function() {
         fillStores();
         fillDeviceModels();
     };
+    
+    function isCanvasSupported(){
+        var elem = document.createElement('canvas');
+        return !!(elem.getContext && elem.getContext('2d'));
+    };
+    
+    function checkInit() {
+        var errors = [];
+        
+        if (!isCanvasSupported) {
+            errors.push(errorMessages.canvasNotSupported);
+            console.log("Canvas is not supported");
+        } else {
+            console.log("Canvas is supported");
+            errors.push("Canvas is supported");
+        };
+        
+        if (window.FileReader) {
+            errors.push("FileReader is supported");
+            console.log("FileReader is supported");
+        } else {
+            errors.push(errorMessages.fileReaderNotSupported);
+            console.log("FileReader is not supported");
+        };
+        
+        //todo check browser support
+        $.each($.browser, function(i, val) {
+            console.log(i + ":" + val);
+            errors.push(i + ":" + val);
+        });
+        
+        //alert(errors);
+        //todo show modal error log
+    };
 
+
+    function buildAppdDFFile(event) {
+        //First we check if there is already built file, if so we return to a standard download handler
+        var downloadLink = document.getElementById("build-appdf-file");
+        if (downloadLink.download) {
+            return true;
+        };
+
+        //If not we start the checking and building process.
+        //First we collect all the errors and check if there are any
+        collectBuildErrors(function(){
+            //If there are not errors, we hide the error block and show the progress block
+            $("#form-errors").hide();
+            buildProgress(0, 100);
+            $("#build-appdf-progressbarr").css("width", "0%");
+            $("#build-appdf-status").show();
+
+            generateAppDFFile(function(url) {
+                var fileName;
+                if (firstApkFileData) {
+                    fileName = firstApkFileData["package"] + ".appdf";
+                } else {
+                    fileName = "untitled.appdf";
+                };
+                var clickEvent = document.createEvent("MouseEvent");
+                downloadLink.href = url;
+                downloadLink.download = fileName;
+                clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                downloadLink.dispatchEvent(clickEvent);
+                $("#build-appdf-status").hide();
+                setTimeout(clearBuildedAppdfFile, 1);
+            });
+        }, showBuildErrors);
+
+        return false;
+    };
+
+    function collectBuildErrors(onsuccess, onerror) {
+        var totalErrorCheckCount = 0; //TOTAL check for error blocks;
+        var currentErrorCheckCount = 0;
+        var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
+        var errorArray = [];
+        buildProgress(0, 100);
+        $("#build-appdf-status").show();
+        
+        for (field in errors) {
+            if (name!=undefined) {
+                var fieldErrors = errors[field];
+                for (var i=0; i<fieldErrors.length; i++) {
+                    var error = fieldErrors[i];
+                    if (errorArray.indexOf(error) === -1) {
+                        errorArray.push(error);
+                    };
+                };
+            };
+        };
+        
+        function checkBuildErrorsCount() {
+            buildProgress(currentErrorCheckCount, totalErrorCheckCount);
+            if (currentErrorCheckCount === totalErrorCheckCount) {
+                $("#build-appdf-status").hide();
+                if (errorArray.length) {
+                    onerror(errorArray);
+                } else {
+                    onsuccess();
+                };
+            };
+            currentErrorCheckCount++;
+        };
+        
+        function checkErrorMessage(data) {
+            if (!data.valid) {
+                if (errorArray.indexOf(data.message) === -1) {
+                    errorArray.push(data.message);
+                };
+            };
+            checkBuildErrorsCount();
+        };
+        
+        totalErrorCheckCount++;
+        appdfEditor.validationCallbackApkFileFirst($("#apk-file"), 
+            appdfEditor.getFileName($("#apk-file")), checkErrorMessage);
+        
+        /*var $apkFilesList = $("input.hidden-apk-file").not("[id=\"apk-file\"]");
+        totalErrorCheckCount += $apkFilesList.size();
+        $apkFilesList.each(function() {
+            appdfEditor.validationCallbackApkFileMore($(this), appdfEditor.getFileName($(this)), checkErrorMessage);
+        });*/
+        
+        totalErrorCheckCount++;
+        appdfEditor.validationCallbackAppIconFirst($("#description-images-appicon"), 
+            appdfEditor.getFileName($("#description-images-appicon")), checkErrorMessage);
+        
+        totalErrorCheckCount++;
+        appdfEditor.validationCallbackPromo($("#description-images-smallpromo"), 
+            appdfEditor.getFileName($("#description-images-smallpromo")), checkErrorMessage);
+        
+        totalErrorCheckCount++;
+        appdfEditor.validationCallbackPromo($("#description-images-largepromo"), 
+            appdfEditor.getFileName($("#description-images-largepromo")), checkErrorMessage);
+        
+        var $screenShotList = $('.screenshot-input');
+        totalErrorCheckCount += $screenShotList.size();//add screenshots count to total error checks
+        $screenShotList.each(function() {
+            appdfEditor.validationCallbackScreenshotRequired($(this), $(this).val(), checkErrorMessage);
+        });
+        
+        totalErrorCheckCount++;
+        defaultScreenshotCount = $("#localization-tab-default .screenshots-group .image-input-group.not-empty-group").size();
+        if (defaultScreenshotCount < 4) {
+            checkErrorMessage({
+                valid: false,
+                value: "",
+                message: errorMessages.screenshotLeastCount
+            });
+        } else {
+            checkErrorMessage({valid: true});
+        };
+        
+        var $videoFileList = $(".controls.video-file-control").not(".empty-video");
+        totalErrorCheckCount += $videoFileList.size();
+        $videoFileList.each(function() {
+            appdfEditor.validationCallbackVideoFile($(this).find("input.hidden-video-file"), appdfEditor.getFileName($(this).find("input.hidden-video-file")), checkErrorMessage);
+        });
+        
+        //privacy policy validation
+        var $privacyPolicyArr = $("input[id^=\"description-texts-privacypolicy-link\"]");
+        totalErrorCheckCount += $privacyPolicyArr.size();
+        $privacyPolicyArr.each(function() {
+            var linkValue = $(this).val();
+            var fullTextValue = $(this).next().next().val();
+            if ((linkValue!=="" && fullTextValue==="") || (linkValue==="" && fullTextValue!=="")) {
+                checkErrorMessage({
+                    valid: false,
+                    value: "",
+                    message: errorMessages.privacypolicyNotBothFilled
+                });
+            } else {
+                checkErrorMessage({valid: true});
+            };
+        });
+        
+        //eula validation
+        var $eulaArr = $("input[id^=\"description-texts-eula-link\"]");
+        totalErrorCheckCount += $eulaArr.size();
+        $eulaArr.each(function() {
+            var linkValue = $(this).val();
+            var fullTextValue = $(this).next().next().val();
+            if ((linkValue!=="" && fullTextValue==="") || (linkValue==="" && fullTextValue!=="")) {
+                checkErrorMessage({
+                    valid: false,
+                    value: "",
+                    message: errorMessages.eulaNotBothFilled
+                });
+            } else {
+                checkErrorMessage({valid: true});
+            };
+        });
+        
+        //validate store specify
+        var $storeSpecific = $("#section-store-specific input[name^='storespecific-name-']");
+        totalErrorCheckCount += $storeSpecific.size();
+        var storeSpecificID, storeSpecificContent, invalidXmlFlag, errorMessage;
+        $storeSpecific.each(function() {
+            storeSpecificID = $(this).val();
+            storeSpecificContent = $(this).next().val();
+            try {
+                $.parseXML("<a>" + storeSpecificContent + "</a>");
+                invalidXmlFlag = false;
+            } catch (e) {
+                invalidXmlFlag = true;
+                errorMessage = "Store Specific '" + storeSpecificID + "' - invalid XML";
+            };
+            
+            if (invalidXmlFlag && errorArray.indexOf(errorMessage) === -1) {
+                checkErrorMessage({
+                    valid: false,
+                    value: "",
+                    message: errorMessage
+                });
+            } else {
+                checkErrorMessage({valid: true});
+            };
+        });
+        checkBuildErrorsCount();
+    };
+    
+    function generateAppDFFile(onend) {
+        var descriptionXML = appdfXMLSaver.generateDescriptionFileXML(); 
+        localStorage.setItem(firstApkFileData.package, descriptionXML);
+
+        var URL = window.webkitURL || window.mozURL || window.URL;
+
+        var files = [];
+        var fileNames = [];
+        function addInputFiles($el) {
+            $el.each(function() {
+                //check if the file is already in the list then do not push it
+                if (!appdfEditor.isNoFile($(this)[0]) && fileNames.indexOf(appdfEditor.getFileName($(this)[0]))===-1) {
+                    files.push(appdfEditor.getFileContent($(this)[0]));
+                    fileNames.push(appdfEditor.getFileName($(this)[0]));
+                };
+            });
+        };
+
+        //Add all APK files
+        addInputFiles($("section#section-apk-files").find("input:file"));
+
+        //Add all the images
+        addInputFiles($("input[id^=description-images-appicon]"));
+        addInputFiles($("input[id^=description-images-screenshot]"));
+        addInputFiles($("input[id^=description-images-smallpromo]"));
+        addInputFiles($("input[id^=description-images-largepromo]"));
+        addInputFiles($("input[id^=contentdescription-ratingcertificates-certificate-]"));
+        addInputFiles($("input[id^=contentdescription-ratingcertificates-mark-]"));
+        
+        //videofiles
+        addInputFiles($("input[class*=hidden-video-file]"));
+        
+        zip.createWriter(new zip.BlobWriter(), function(writer) {
+            addDescriptionAndFilesToZipWriter(writer, descriptionXML, files, buildProgress, function() {
+                writer.close(function(blob) {
+                    var url = URL.createObjectURL(blob);
+                    onend(url);
+                });
+            });
+        }, function(error) {
+            alert("error:" + error);
+        });
+    };  
+
+    function flatten(array) {
+        var flat = [];
+        for (var i = 0; i < array.length; i++) {
+            var type = Object.prototype.toString.call(array[i]).split(' ').pop().split(']').shift().toLowerCase();
+            if (type) { 
+                if (/^(array|collection|arguments|object|filelist)$/.test(type)) {
+                    flat = flat.concat(flatten(array[i])); 
+                } else {
+                    flat = flat.concat(array[i]);                 
+                }
+            }
+        }
+        return flat;
+    };    
+    
+    function addDescriptionAndFilesToZipWriter(zipWriter, descriptionXml, files, onprogress, onend) {
+        //console.log("Description.xml");
+        //console.log(descriptionXml);
+        var addIndex = 0;
+
+        var flattenedFiles = flatten(files);
+        var totalSizeOfAllFiles = 0;
+        $.each(flattenedFiles, function() { 
+            totalSizeOfAllFiles += this.size;
+        });
+
+        var sizeOfAlreadyZippedFilesIncludingCurrent = 0;
+
+        function addNextFile() {
+            var file = flattenedFiles[addIndex];
+            sizeOfAlreadyZippedFilesIncludingCurrent += file.size;
+            zipWriter.add(file.name, new zip.BlobReader(file), function() {
+                addIndex++;
+                if (addIndex < flattenedFiles.length) {
+                    addNextFile();
+                } else {
+                    onend();
+                }
+            }, function(current, total) {
+                onprogress(sizeOfAlreadyZippedFilesIncludingCurrent - total + current, totalSizeOfAllFiles)
+            });
+        };
+        
+        zipWriter.add("description.xml", new zip.TextReader(descriptionXml), function() {
+            addNextFile();
+        }, function(current, total) {
+            onprogress(totalSizeOfAllFiles, totalSizeOfAllFiles);
+        });
+    };
+    
+    function showBuildErrors(errors) {
+        //First trigger showing error messages inside control helpers
+        $("input,select,textarea").trigger("submit.validation").trigger("validationLostFocus.validation");
+
+        var $list = $("#form-errors").find("ul");
+
+        //Then we clear all the previous errors from the error lost
+        $list.find("li").remove();
+
+        //Now we make sure the error list is visible and add all the errors there
+        $("#form-errors").show();
+        for (var i=0; i<errors.length; i++) {
+            $list.append($("<li>"+errors[i]+"</li>"))
+        };
+    };   
+    
+    function clearBuildedAppdfFile() {
+        var downloadLink = document.getElementById("build-appdf-file");
+        downloadLink.download = null;
+    };
+    
+    function reinitEditor() {
+        //todo remove all warnings
+        
+        //remove erros messages
+        $("#form-errors").hide();
+        
+        //apk
+        $("#section-apk-files .control-group-remove").click();
+        //reset first
+        $("#pretty-apk-file").val("");
+        
+        //category
+        
+        
+        //description
+        //remove localisations
+        appdfLocalization.removeAllLocalizations();
+        
+        //clear appicons
+        $(".image-input-remove").click();
+        appdfImages.resetFirstAppIcon();
+        
+        //clear screenshots
+        $(".screenshots-group a.image-input-remove").click();
+        
+        //reset promo
+        $(".large-promo-image-reset").click();
+        $(".small-promo-image-reset").click();
+        //youtube
+        $("#description-videos-youtubevideo").val("");
+        //video
+        $(".control-remove").click();
+        
+        
+        //price
+        $("input[id^=price-localprice-]").closest(".control-group").remove();
+        $("#price-free-fullversion").val("");
+        $("#price-baseprice").val("0");
+        
+        //customer support
+        $("#customersupport-phone").val("");
+        $("#customersupport-email").val("");
+        $("#customersupport-website").val("");
+        
+        //consent
+        $("#consent-googleandroidcontentguidelines").removeAttr("checked");
+        $("#consent-usexportlaws").removeAttr("checked");
+        $("#consent-importexportlaws").removeAttr("checked");
+        $("#consent-slidemeagreement").removeAttr("checked");
+        $("#consent-freefromthirdpartycopytightedcontent").removeAttr("checked");
+        
+        //content rating and descriptors
+        $("#contentdescription-contentrating").val("3");
+        var scd = "#contentdescription-contentdescriptors-";
+        $(scd + "cartoonviolence").val("no");
+        $(scd + "realisticviolence").val("no");
+        $(scd + "badlanguage").val("no");
+        $(scd + "fear").val("no");
+        $(scd + "sexualcontent").val("no");
+        $(scd + "drugs").val("no");
+        $(scd + "gamblingreference").val("no");
+        $(scd + "alcohol").val("no");
+        $(scd + "smoking").val("no");
+        $(scd + "discrimination").val("no");
+        
+        var sia = "#contentdescription-includedactivities-";
+        $(sia + "inappbilling").removeAttr("checked");
+        $(sia + "gambling").removeAttr("checked");
+        $(sia + "advertising").removeAttr("checked");
+        $(sia + "usergeneratedcontent").removeAttr("checked");
+        $(sia + "usertousercommunications").removeAttr("checked");
+        $(sia + "accountcreation").removeAttr("checked");
+        $(sia + "personalinformationcollection").removeAttr("checked");
+        
+        $(".pretty-file-input").val("");
+        
+        
+        //availability
+        $(".availability-supportedcountries-unselectall").click();
+        
+        //requirements
+        $("#requirements-features-root").removeAttr("checked");
+        $("#requirements-features-gms").removeAttr("checked");
+        $("#requirements-features-online").removeAttr("checked");
+        //clear supported languages list
+        $("#requirements-supportedlanguages-type-default").click();
+        $(".requirements-supportedlanguages-unselectall").click();
+        fillSupportedLanguages();
+        //clear supported devices
+        $(".requirements-supporteddevices-remove").click();
+        //clear supported resolutions list
+        $("#requirements-supportedresolutions-type-default").click();
+        fillScreenResolutions();
+        
+        //testing instructions
+        $("#testinginstructions").val("");
+        
+        //store specific
+        $('#section-store-specific .store-specific').remove();
+    };
+    
     function init() {
+        checkInit();
         initRatingCertificate();
         initMenuStickToTop();
         initScrollspy();
@@ -1247,6 +1692,7 @@ var appdfEditor = (function() {
 
     return {
         init : init,
+        reinitEditor : reinitEditor,
         addApkFile : addApkFile,
         addVideoFile : addVideoFile,
         addMoreKeywords : addMoreKeywords,
@@ -1262,8 +1708,6 @@ var appdfEditor = (function() {
         fillCategories : fillCategories,
         fillSubcategories : fillSubcategories,
         fillCategoryStoresInfo : fillCategoryStoresInfo,
-		fillSupportedLanguages : fillSupportedLanguages,
-        fillScreenResolutions : fillScreenResolutions,
         fillSupportedCountries : fillSupportedCountries,
 		validationCallbackAppIconFirst : validationCallbackAppIconFirst,
         validationCallbackAppIconMore : validationCallbackAppIconMore,
@@ -1280,6 +1724,7 @@ var appdfEditor = (function() {
 })();
 
 $(function() {
+    $("#no-js-modal").remove();
     appdfEditor.init();
 });
 
