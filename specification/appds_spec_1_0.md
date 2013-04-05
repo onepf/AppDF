@@ -346,7 +346,7 @@ Sample Description.xml File
     <google-android-content-guidelines>yes</google-android-content-guidelines>
     <!--https://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=113770-->
     <us-export-laws>yes</us-export-laws>
-    <!--https://slideme.org/developer-conditions/popup-->
+    <!--http://slideme.org/developers/dda-->
     <slideme-agreement>yes</slideme-agreement>
     <!--If your app uses third party copyrighted images, sounds, databases or other information--> 
     <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
@@ -826,11 +826,11 @@ The application name is shown in the application list. As everything inside the 
   </tr>
   <tr>
     <td>SlideME</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>Yes (imported from android:label of Android manifest)</td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>255</td>
   </tr>
   <tr>
     <td>NOOK apps</td>
@@ -4242,7 +4242,7 @@ Example:
   <tr>
     <td>&lt;slideme-agreement&gt;</td>
     <td>You agree with the complete Developer/Publisher Distribution Agreement</td>
-    <td>https://slideme.org/developer-conditions/popup</td>
+    <td>http://slideme.org/developers/dda</td>
   </tr>
   <tr>
     <td>&lt;free-from-third-party-copytighted-content&gt;</td>
@@ -4957,7 +4957,7 @@ Application Store Support
 </tr>
 <tr>
   <td>Distribution agreement URL</td>
-  <td><a href="http://slideme.org/developer-conditions">http://slideme.org/developer-conditions</a></td>
+  <td><a href="http://slideme.org/developers/dda">http://slideme.org/developers/dda</a></td>
 </tr>
 <tr>
   <td>AppDF ID</td>
