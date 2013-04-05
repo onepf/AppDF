@@ -27,6 +27,8 @@ http://www.github.com/onepf/onepf.org
 Best regards,
 Vassili
 
+==============
+Script
 ---------------
 
 Allow JPG images in small and large promos. Right now only PNG images are allows in small and large promo. We need to add JPG as well.
