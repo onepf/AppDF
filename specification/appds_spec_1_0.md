@@ -826,7 +826,7 @@ The application name is shown in the application list. As everything inside the 
   </tr>
   <tr>
     <td>SlideME</td>
-    <td>Yes (imported from android:label of Android manifest)</td>
+    <td>No (imported from APK Android manifest file (android:label field)</td>
     <td>-</td>
     <td>Yes</td>
     <td>Yes</td>
