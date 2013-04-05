@@ -52,9 +52,9 @@ public class CategorizationParser implements NodeParser<Application> {
 					throw new ParsingException("Multiple categories set");
 				}
                 Category byId = CategoryCatalog.INSTANCE.getById(category);
-                System.out.println("category=" + category + " byId-" + byId);
                 categorisation.setCategory(byId);
-			}else if ( SUBCATEGORY_TAG.equals(nodeName)){
+                System.out.println(byId);
+            }else if ( SUBCATEGORY_TAG.equals(nodeName)){
 				String subcategory = n.getTextContent();
 				if ( categorisation.getSubCategory() != null ){
 					throw new ParsingException("Subcategory allready set");

@@ -71,17 +71,22 @@ public class ApplicationParser {
 		try {			
 			inputStream = zipFile.getInputStream(elem);
 			DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-            builderFactory.setValidating(true);
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             URL schemeUrl = getClass().getResource("scheme.xsd");
             Schema schema = factory.newSchema(schemeUrl);
+//            Validator validator = schema.newValidator();
+//            System.out.println(">>");
+//            validator.validate(new StreamSource(inputStream));
+//            inputStream.close();
+//            inputStream = zipFile.getInputStream(elem);
+//            System.out.println("<<");
             builderFactory.setSchema(schema);
             DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
             documentBuilder.setErrorHandler(new XMLErrorHandler());
             Document document = documentBuilder.parse(inputStream);
 			parseApplicationDocument(document, application, zipFile);
 		} catch (Exception e) {//TODO:Proper exception handling
-			throw new RuntimeException(e);
+			throw new ParsingException(e);
 		}finally {
 			if ( inputStream != null ){
 				try {
