@@ -29,6 +29,7 @@ import java.net.URL;
 import java.util.zip.ZipException;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
@@ -85,7 +86,8 @@ public class ParserTest {
         assertThat(categorisation,notNullValue());
         assertThat(categorisation.getApplicationType(),is(ApplicationType.APPLICATION));
 	    assertThat(categorisation.getCategory(),is(CoreMatchers.notNullValue()));
-	    assertThat(categorisation.getSubCategory(),is("personalization"));
+        assertThat(categorisation.getCategory(),is(CategoryCatalog.INSTANCE.getById("Personalization")));
+        assertThat(categorisation.getSubCategory(),is(nullValue()));
 	}
 	@Test
 	public void checkAvalibility() throws ParsingException,IOException{
