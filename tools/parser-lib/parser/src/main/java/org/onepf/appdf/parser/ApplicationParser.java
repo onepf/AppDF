@@ -39,6 +39,7 @@ import java.util.zip.ZipFile;
 public class ApplicationParser {
 
 	private static final String APPLICATION_TAG = "application";
+    private Schema schema;
 
     static class XMLErrorHandler implements ErrorHandler {
 
@@ -57,8 +58,17 @@ public class ApplicationParser {
         }
     }
 
+    public ApplicationParser() {
+        try {
+            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            URL schemeUrl = getClass().getResource("scheme.xsd");
+            schema = factory.newSchema(schemeUrl);
+        } catch (SAXException e) {
+            throw new ParsingException(e);
+        }
+    }
 
-	/**
+    /**
 	 * Parses provided zip entry as main desription.xml and fills provided application model with values
 	 * @param zipFile 
 	 * @param elem
@@ -70,10 +80,6 @@ public class ApplicationParser {
 		try {			
 			inputStream = zipFile.getInputStream(elem);
 			DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            URL schemeUrl = getClass().getResource("scheme.xsd");
-            Schema schema = factory.newSchema(schemeUrl);
-
             builderFactory.setSchema(schema);
             DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
             documentBuilder.setErrorHandler(new XMLErrorHandler());
