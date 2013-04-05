@@ -49,8 +49,6 @@ var errorMessages = {
     notZipFile: "AppDF not in zip format",
     descriptionIsNotXML: "description.xml file is not XML",
     descriptionNotFound: "description.xml file is not found inside AppDF container",
-    wrongLanguageCode: "Wrong language code",
-    wrongCountryCode: "Wrong country code",
     
     //validation in parser
     requiredGoogleAndroidTagMiss: "Required <google-android-content-guidelines> tag in <consent> section is missing",
@@ -75,5 +73,9 @@ var errorMessages = {
     fnFeatureMinError: function(languageCode) { return "There must be at least three features (for language \"" + languageCode + "\")"; },
     fnRecentChangesError: function(languageCode) { return "Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")"; },
     
-    fnUnableAccessImageData: function(error) { return "Unable to access image data: " + error; }
+    fnUnableAccessImageData: function(error) { return "Unable to access image data: " + error; },
+    
+    fnWrongTag: function(wrongTag, where) { return "Wrong tag " + wrongTag + " in " + where + " found"; },
+    fnWrongCountryCode: function(countryCode) { return "Wrong country code " + countryCode; },
+    fnWrongLanguageCode: function(languageCode) { return "Wrong language code " + languageCode; }
 };
