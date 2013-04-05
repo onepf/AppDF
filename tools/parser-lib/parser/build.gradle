@@ -1,3 +1,11 @@
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
+processResources.dependsOn 'copyScheme'
+
+task('copyScheme',type:Copy) {
+    setIncludeEmptyDirs(false)
+    from('../../../specification/appdf-description.xsd')
+    into('src/main/resources/org/onepf/appdf/parser/')
+    rename('appdf-description.xsd',"scheme.xsd")
+}
