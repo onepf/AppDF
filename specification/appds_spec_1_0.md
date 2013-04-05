@@ -346,7 +346,7 @@ Sample Description.xml File
     <google-android-content-guidelines>yes</google-android-content-guidelines>
     <!--https://support.google.com/googleplay/android-developer/support/bin/answer.py?hl=en&answer=113770-->
     <us-export-laws>yes</us-export-laws>
-    <!--https://slideme.org/developer-conditions/popup-->
+    <!--https://slideme.org/developers/dda/popup-->
     <slideme-agreement>yes</slideme-agreement>
     <!--If your app uses third party copyrighted images, sounds, databases or other information--> 
     <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
@@ -4242,7 +4242,7 @@ Example:
   <tr>
     <td>&lt;slideme-agreement&gt;</td>
     <td>You agree with the complete Developer/Publisher Distribution Agreement</td>
-    <td>https://slideme.org/developer-conditions/popup</td>
+    <td>http://slideme.org/developers/dda</td>
   </tr>
   <tr>
     <td>&lt;free-from-third-party-copytighted-content&gt;</td>
@@ -4957,7 +4957,7 @@ Application Store Support
 </tr>
 <tr>
   <td>Distribution agreement URL</td>
-  <td><a href="http://slideme.org/developer-conditions">http://slideme.org/developer-conditions</a></td>
+  <td><a href="http://slideme.org/developers/dda">http://slideme.org/developers/dda</a></td>
 </tr>
 <tr>
   <td>AppDF ID</td>
