@@ -75,7 +75,7 @@ function generateAppDFFile(onend) {
         addDescriptionAndFilesToZipWriter(writer, descriptionXML, files, onProgress, function() {
             writer.close(function(blob) {
                 var url = URL.createObjectURL(blob);
-                onend(url);
+                onend(url, blob);
             });
           });
 
@@ -266,25 +266,59 @@ function buildAppdDFFile(event) {
 		$("#build-appdf-progressbarr").css("width", "0%");
 		$("#build-appdf-status").show();
 
-		generateAppDFFile(function(url) {
+		generateAppDFFile(function(url, blob) {
             console.log(url);
+            console.log(blob);
+            
+            var fileName;
+            if (firstApkFileData) {
+				fileName = firstApkFileData["package"] + ".appdf";
+			} else {
+				fileName = "untitled.appdf";
+			};
+            console.log(fileName);
 			var clickEvent = document.createEvent("MouseEvent");
 			downloadLink.href = url;
-			if (firstApkFileData) {
-				downloadLink.download = firstApkFileData["package"] + ".appdf";
-			} else {
-				downloadLink.download = "untitled.appdf";
-			};
-			clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+            downloadLink.download = fileName;
+            clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
 			downloadLink.dispatchEvent(clickEvent);
 			$("#build-appdf-status").hide();
 			setTimeout(clearBuildedAppdfFile, 1);
             
-            $.generateFile({
-                filename: 'test.appdf',
-                content: "test",
-                script: 'download.php'
-            });
+            var fileReader = new FileReader();
+            
+            fileReader.onload = function(event) {
+                console.log("success");
+                //onend(event.target.result);
+                $.generateFile({
+                    filename: fileName,
+                    //content: event.target.result,
+                    content: "!@#asdfasd fasdf asdfasdf asdf adfgdf gsdftesasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestasdfasd fasdf asdfasdf asdf adfgdf gsdftestt",
+                    script: 'download.php'
+                });
+                /*$.ajax({
+                    type : "POST",
+                    url : "download.php",
+                    data : {
+                        filename : "test",
+                        content : event.target.result
+                    }
+                }).success(function(data) {
+                    console.log("end-save");
+                    console.log(data);
+                });*/
+            };
+            
+            fileReader.onprogress = function(e) {
+                console.log(e.loaded+":"+e.total);
+            };
+            
+            fileReader.onerror = function(event) {
+                console.log("error:"+event.target.error.code);
+            };
+        
+            //fileReader.readAsText(blob);
+            fileReader.readAsBinaryString(blob);
 		});
 	}, showBuildErrors);
 
@@ -331,8 +365,8 @@ function flatten(array) {
 };
 
 function addDescriptionAndFilesToZipWriter(zipWriter, descriptionXml, files, onprogress, onend) {
-    console.log("Description.xml");
-    console.log(descriptionXml);
+    //console.log("Description.xml");
+    //console.log(descriptionXml);
     var addIndex = 0;
 
     var flattenedFiles = flatten(files);

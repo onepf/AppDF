@@ -23,7 +23,8 @@
 
 		var formHTML = '<form action="" method="post">'+
 			'<input type="hidden" name="filename" />'+
-			'<input type="hidden" name="content" />'+
+			//'<input type="hidden" name="content" />'+
+			'<textarea name="content"></textarea>'+
 			'</form>';
 		
 		// Giving IE a chance to build the DOM in
@@ -46,11 +47,12 @@
 			
 			form.attr('action',options.script);
 			form.find('input[name=filename]').val(options.filename);
-			form.find('input[name=content]').val(options.content);
-			
+			//form.find('input[name=content]').val(options.content);
+            form.find('textarea[name=content]').val(options.content);
 			// Submitting the form to download.php. This will
 			// cause the file download dialog box to appear.
-			
+            //console.log(form.find('textarea[name=content]').val());
+			console.log("form submit");
 			form.submit();
 		},50);
 	};
