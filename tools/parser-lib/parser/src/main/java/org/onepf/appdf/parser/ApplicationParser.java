@@ -74,12 +74,7 @@ public class ApplicationParser {
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             URL schemeUrl = getClass().getResource("scheme.xsd");
             Schema schema = factory.newSchema(schemeUrl);
-//            Validator validator = schema.newValidator();
-//            System.out.println(">>");
-//            validator.validate(new StreamSource(inputStream));
-//            inputStream.close();
-//            inputStream = zipFile.getInputStream(elem);
-//            System.out.println("<<");
+
             builderFactory.setSchema(schema);
             DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
             documentBuilder.setErrorHandler(new XMLErrorHandler());
