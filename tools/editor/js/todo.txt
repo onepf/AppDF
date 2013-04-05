@@ -28,8 +28,13 @@ Best regards,
 Vassili
 
 ==============
-Script
----------------
+Readme for JS parser
+Sample of usage for JS parser
+==============
+Script:
+- copy XSD to onepf.org
+- copy Json files to onepf.org
+- copy JS parser to parser-js
 
 Allow JPG images in small and large promos. Right now only PNG images are allows in small and large promo. We need to add JPG as well.
 
