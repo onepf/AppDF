@@ -108,4 +108,14 @@ public class Category {
         this.type = type;
         this.storesMapping = storesMapping;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("Category");
+        sb.append("{id='").append(id).append('\'');
+        sb.append(", type=").append(type);
+        sb.append('}');
+        return sb.toString();
+    }
 }
