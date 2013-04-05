@@ -21,6 +21,15 @@ public class Consent {
     private boolean usExportLaws;
     private boolean slidemeAgreement;
     private boolean freeFromThirdPartyCopytightedContent;
+    private boolean importExport;
+
+    public boolean isImportExport() {
+        return importExport;
+    }
+
+    public void setImportExport(boolean importExport) {
+        this.importExport = importExport;
+    }
 
     public boolean isGoogleAndroidContentGuidelines() {
         return googleAndroidContentGuidelines;

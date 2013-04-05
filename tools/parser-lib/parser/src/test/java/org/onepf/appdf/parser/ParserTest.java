@@ -15,10 +15,12 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertThat;
+import org.hamcrest.CoreMatchers;
+import org.junit.Before;
+import org.junit.Test;
+import org.onepf.appdf.model.*;
+import org.onepf.appdf.model.Categorisation.ApplicationType;
+import org.onepf.appdf.model.ContentDescriptor.DescriptorValue;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,16 +30,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.zip.ZipException;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.onepf.appdf.model.Application;
-import org.onepf.appdf.model.Availability;
-import org.onepf.appdf.model.Categorisation;
-import org.onepf.appdf.model.Categorisation.ApplicationType;
-import org.onepf.appdf.model.Consent;
-import org.onepf.appdf.model.ContentDescription;
-import org.onepf.appdf.model.ContentDescriptor;
-import org.onepf.appdf.model.ContentDescriptor.DescriptorValue;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertThat;
 
 /**
  * Test covers top level functionality of AppdfFileParser class
@@ -50,7 +46,7 @@ public class ParserTest {
 	
 	@Before
 	public void initResource() throws URISyntaxException{
-		URL resourceUrl = ParserTest.class.getResource("yshell.appdf");
+		URL resourceUrl = ParserTest.class.getResource("yashell.appdf");
 		resource = new File(resourceUrl.toURI());
 	}
 	
@@ -90,14 +86,14 @@ public class ParserTest {
 	    Categorisation categorisation = app.getCategorisation();
         assertThat(categorisation,notNullValue());
         assertThat(categorisation.getApplicationType(),is(ApplicationType.APPLICATION));
-	    assertThat(categorisation.getCategory(),is("personalization"));
+	    assertThat(categorisation.getCategory(),is(CoreMatchers.notNullValue()));
 	    assertThat(categorisation.getSubCategory(),is("personalization"));
 	}
 	@Test
 	public void checkAvalibility() throws ParsingException,IOException{
 	    Application app = parseApplication();
 	    Availability avalability = app.getAvalability();
-	    assertThat(avalability.getIncludeContries().size(),is(1));
+	    assertThat(avalability.getIncludeContries().size(),is(5));
 	    assertThat(avalability.getIncludeContries().get(0),is("ru"));
 	    List<String> excludeContries = avalability.getExcludeContries();
         assertThat(excludeContries.size(),is(4));

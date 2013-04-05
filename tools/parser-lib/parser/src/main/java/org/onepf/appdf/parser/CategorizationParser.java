@@ -18,6 +18,7 @@ package org.onepf.appdf.parser;
 import org.onepf.appdf.model.Application;
 import org.onepf.appdf.model.Categorisation;
 import org.onepf.appdf.model.Categorisation.ApplicationType;
+import org.onepf.appdf.model.Category;
 import org.onepf.appdf.model.CategoryCatalog;
 import org.onepf.appdf.parser.util.XmlUtil;
 import org.w3c.dom.Node;
@@ -50,7 +51,9 @@ public class CategorizationParser implements NodeParser<Application> {
                 if ( categorisation.getCategory() != null  ){
 					throw new ParsingException("Multiple categories set");
 				}
-				categorisation.setCategory(CategoryCatalog.INSTANCE.getById(category));
+                Category byId = CategoryCatalog.INSTANCE.getById(category);
+                System.out.println("category=" + category + " byId-" + byId);
+                categorisation.setCategory(byId);
 			}else if ( SUBCATEGORY_TAG.equals(nodeName)){
 				String subcategory = n.getTextContent();
 				if ( categorisation.getSubCategory() != null ){

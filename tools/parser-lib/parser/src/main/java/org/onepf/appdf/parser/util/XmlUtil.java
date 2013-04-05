@@ -15,23 +15,17 @@
  ******************************************************************************/
 package org.onepf.appdf.parser.util;
 
-import java.beans.IntrospectionException;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.onepf.appdf.parser.ParsingException;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import java.beans.IntrospectionException;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.*;
 
 public class XmlUtil {
 
@@ -132,10 +126,10 @@ public class XmlUtil {
                 writeMethod.invoke(bean, param);
             } catch (IntrospectionException e) {
                 throw new ParsingException("Unexpected descriptor:"
-                        + originalTagName);
+                        + originalTagName + " mapped to " + tagName,e);
             } catch (IllegalArgumentException iae) {
                 throw new ParsingException("Illegal descriptor value:"
-                        + childValue);
+                        + childValue,iae);
             } catch (InvocationTargetException | IllegalAccessException e) {
                 throw new ParsingException(e);
             }

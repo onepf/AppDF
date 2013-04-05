@@ -34,6 +34,7 @@ public class ContentDescriptor {
 
     private DescriptorValue drugs;
 
+    //gambling-reference
     private DescriptorValue gamblingReference;
 
     private DescriptorValue alcohol;
@@ -90,11 +91,11 @@ public class ContentDescriptor {
         this.drugs = drugs;
     }
 
-    public DescriptorValue getGamblingRefference() {
+    public DescriptorValue getGamblingReference() {
         return gamblingReference;
     }
 
-    public void setGamblingRefference(DescriptorValue gamblingReference) {
+    public void setGamblingReference(DescriptorValue gamblingReference) {
         this.gamblingReference = gamblingReference;
     }
 
