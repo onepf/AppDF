@@ -24,6 +24,8 @@
 
 var appdfEditor = (function() {
     var MAXIMUM_APK_FILE_SIZE = 50000000;
+    var buildingFlag = false;
+    var importingFlag = false;
     
     function fillCountries($e, selectedCountry) {
         $e.append($("<option />").val("").text("Select Country"));
@@ -355,11 +357,23 @@ var appdfEditor = (function() {
             importDescriptionXMLInit = true;
             
             $modal.on('shown', function () {
+                if (appdfEditor.importingFlag) {
+                    $("#import-descriptionxml-modal-status").show();
+                } else {
+                    $("#import-descriptionxml-modal-text").val("");
+                    $("#import-descriptionxml-modal-status").hide();
+                };
+                
                 $("#import-descriptionxml-modal-text").focus();
             });
 
             $importButton.click(function(event) {
                 event.preventDefault();
+                if (appdfEditor.importingFlag) {
+                    return;
+                };
+                appdfEditor.importingFlag = true;
+                
                 var xml = $("#import-descriptionxml-modal-text").val();
                 $("#import-descriptionxml-modal-status").show();
                 $("#import-descriptionxml-modal-errors").hide();
@@ -367,6 +381,7 @@ var appdfEditor = (function() {
                 appdfXMLLoader.loadDescriptionXML(xml, function() {
                     $modal.modal('hide');
                     importProgress(0, 100);
+                    appdfEditor.importingFlag = false;
                 }, function(errors) {
                     $("#import-descriptionxml-modal-status").hide();
                     importProgress(0, 100);
@@ -377,7 +392,7 @@ var appdfEditor = (function() {
                     for (var i=0; i<errors.length; i++) {
                         $list.append($("<li>").text(errors[i]));
                     };
-
+                    appdfEditor.importingFlag = false;
                 }, importProgress, false);
                 return false;
             });
@@ -411,14 +426,29 @@ var appdfEditor = (function() {
                 return false;
             });
 
+            $modal.on("shown", function() {
+                if (appdfEditor.importingFlag) {
+                    $("#load-appdf-modal-status").show();
+                } else {
+                    $("#load-appdf-modal-status").hide();
+                };
+                $("#load-appdf-modal-errors").hide();
+            });
+            
             $openButton.click(function(event) {
                 event.preventDefault();
+                if (appdfEditor.importingFlag) {
+                    return false;
+                };
+                appdfEditor.importingFlag = true;
+                
                 $("#load-appdf-modal-status").show();
                 $("#load-appdf-modal-errors").hide();
                 
                 appdfXMLLoader.loadAppdfFile($file[0].files[0], function() {
                     $modal.modal('hide');
                     loadProgress(0, 100);
+                    appdfEditor.importingFlag = false;
                 }, function(errors) {
                     console.log("Import errors");
                     console.log(errors);
@@ -436,6 +466,7 @@ var appdfEditor = (function() {
                     for (var i=0; i<errors.length; i++) {
                         $list.append($("<li>").text(errors[i]));
                     };
+                    appdfEditor.importingFlag = false;
                 }, loadProgress, parseProgress);
                 return false;
             });
@@ -1251,7 +1282,7 @@ var appdfEditor = (function() {
     function checkInit() {
         var errors = [];
         
-        if (!isCanvasSupported) {
+        /*if (!isCanvasSupported) {
             errors.push(errorMessages.canvasNotSupported);
             console.log("Canvas is not supported");
         } else {
@@ -1265,21 +1296,36 @@ var appdfEditor = (function() {
         } else {
             errors.push(errorMessages.fileReaderNotSupported);
             console.log("FileReader is not supported");
-        };
+        };*/
         
-        //todo check browser support
-        $.each($.browser, function(i, val) {
-            console.log(i + ":" + val);
-            errors.push(i + ":" + val);
+        var supportFlag = false;
+        var regExp = /^[0-9]+/;
+        var version = regExp.exec($.browser.version)[0];
+        
+        var supportBrowserData = [
+            {browser: "mozilla", version: 15},
+            {browser: "chrome", version: 19}
+        ];
+        
+        $.each(supportBrowserData, function(i, val) {
+            if ($.browser[val.browser] && version>=val.version && isCanvasSupported() && window.FileReader) {
+                supportFlag = true;
+            };
         });
         
-        //alert(errors);
-        //todo show modal error log
+        if (!supportFlag) {
+            $("#not-yet-supported-modal").modal("show");
+        };
     };
 
 
     function buildAppdDFFile(event) {
         //First we check if there is already built file, if so we return to a standard download handler
+        if (appdfEditor.buildingFlag) {
+            return false;
+        };
+        appdfEditor.buildingFlag = true;
+        
         var downloadLink = document.getElementById("build-appdf-file");
         if (downloadLink.download) {
             return true;
@@ -1318,6 +1364,7 @@ var appdfEditor = (function() {
         var totalErrorCheckCount = 0; //TOTAL check for error blocks;
         var currentErrorCheckCount = 0;
         var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
+        
         var errorArray = [];
         buildProgress(0, 100);
         $("#build-appdf-status").show();
@@ -1448,7 +1495,7 @@ var appdfEditor = (function() {
                 invalidXmlFlag = false;
             } catch (e) {
                 invalidXmlFlag = true;
-                errorMessage = "Store Specific '" + storeSpecificID + "' - invalid XML";
+                errorMessage = errorMessages.fnStoreSpecificXMLError(storeSpecificID);
             };
             
             if (invalidXmlFlag && errorArray.indexOf(errorMessage) === -1) {
@@ -1461,6 +1508,40 @@ var appdfEditor = (function() {
                 checkErrorMessage({valid: true});
             };
         });
+        
+        
+        var fileNames = [];
+        function addInputFiles($el) {
+            $el.each(function() {
+                //check if the file is already in the list then do not push it
+                var fileName = appdfEditor.getFileName($(this)[0]);
+                if (!appdfEditor.isNoFile($(this)[0]) && fileNames.indexOf(fileName)===-1) {
+                    fileNames.push(fileName);
+                } else if (fileName) {
+                    totalErrorCheckCount++;
+                    checkErrorMessage({
+                        valid: false,
+                        value: fileName,
+                        message: errorMessages.fnDublikateRes(fileName)
+                    });
+                };
+            });
+        };
+
+        //Add all APK files
+        addInputFiles($("section#section-apk-files").find("input:file"));
+
+        //Add all the images
+        addInputFiles($("input[id^=description-images-appicon]"));
+        addInputFiles($("input[id^=description-images-screenshot]"));
+        addInputFiles($("input[id^=description-images-smallpromo]"));
+        addInputFiles($("input[id^=description-images-largepromo]"));
+        addInputFiles($("input[id^=contentdescription-ratingcertificates-certificate-]"));
+        addInputFiles($("input[id^=contentdescription-ratingcertificates-mark-]"));
+        
+        //videofiles
+        addInputFiles($("input[class*=hidden-video-file]"));
+        
         checkBuildErrorsCount();
     };
     
@@ -1561,7 +1642,7 @@ var appdfEditor = (function() {
     function showBuildErrors(errors) {
         //First trigger showing error messages inside control helpers
         $("input,select,textarea").trigger("submit.validation").trigger("validationLostFocus.validation");
-
+        
         var $list = $("#form-errors").find("ul");
 
         //Then we clear all the previous errors from the error lost
@@ -1572,16 +1653,19 @@ var appdfEditor = (function() {
         for (var i=0; i<errors.length; i++) {
             $list.append($("<li>"+errors[i]+"</li>"))
         };
+        appdfEditor.buildingFlag = false;
     };   
     
     function clearBuildedAppdfFile() {
         var downloadLink = document.getElementById("build-appdf-file");
         downloadLink.download = null;
+        appdfEditor.buildingFlag = false;
     };
     
     function reinitEditor() {
-        //todo remove all warnings
-        
+        //remove all warnings
+        $("input,select,textarea").trigger("clear.validation");
+
         //remove erros messages
         $("#form-errors").hide();
         
@@ -1653,6 +1737,20 @@ var appdfEditor = (function() {
         $(sia + "accountcreation").removeAttr("checked");
         $(sia + "personalinformationcollection").removeAttr("checked");
         
+        var src = "#contentdescription-ratingcertificates-rating-";
+        $(src + "pegi").val("");
+        $(src + "esrb").val("");
+        $(src + "gbr").val("");
+        $(src + "cero").val("");
+        $(src + "dejus").val("");
+        $(src + "fsk").val("");
+        
+        //reset hidden file input data
+        $(".file-input-group").each(function() {
+            var html = $(this).html();
+            $(this).empty();
+            $(this).html(html);
+        });
         $(".pretty-file-input").val("");
         
         
@@ -1668,6 +1766,7 @@ var appdfEditor = (function() {
         $(".requirements-supportedlanguages-unselectall").click();
         fillSupportedLanguages();
         //clear supported devices
+        $("#requirements-supporteddevices-input").val("");
         $(".requirements-supporteddevices-remove").click();
         //clear supported resolutions list
         $("#requirements-supportedresolutions-type-default").click();
@@ -1691,6 +1790,9 @@ var appdfEditor = (function() {
     };
 
     return {
+        buildingFlag : buildingFlag,
+        importingFlag : importingFlag,
+        
         init : init,
         reinitEditor : reinitEditor,
         addApkFile : addApkFile,

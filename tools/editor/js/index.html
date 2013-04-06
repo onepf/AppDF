@@ -119,12 +119,11 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             <div class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="no-js-modal-label" aria-hidden="false" style="display: block;">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="no-js-modal-label">Error</h3>
+                    <h3 id="no-js-modal-label">Javascript is disabled</h3>
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-error">
-                        <b>Javascript is disabled</b>
-                        <p>Site wouldnot work correctly</p>
+                        <b>Site wouldn`t work correctly</b>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -133,6 +132,26 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             </div>
             <div class="modal-backdrop fade in"></div>
         </div><!--no_js modal-->
+        
+        <div id="not-yet-supported-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="not-yet-supported-modal-label" aria-hidden="false" style="display: block;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="not-yet-supported-modal-label">Your browser isn't supported yet</h3>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-error">
+                    <b>Please select one of these:</b>
+                    <ul>
+                        <li>Mozilla Firefox ver.15+</li>
+                        <li>Chrome ver.19+</li>
+                        <li>Yandex Browser</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Ok</button>
+            </div>
+        </div><!--not supported browser modal-->
 
         <div id="requirements-store-add-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="requirements-store-add-modal-label" aria-hidden="true">
             <div class="modal-header">
