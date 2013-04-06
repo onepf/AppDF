@@ -65,7 +65,7 @@ var appdfLocalization = (function() {
         $("#description-tab-content").append($(strHtmlContent));
 
         //reset all warnings before cloning.
-        //TODO
+        $("#description-tab-content").children("div#localization-tab-default").find("input,select,textarea").trigger("clear.validation");
 
         //Add copy of default langauge content to just created container 
         var strHtmlClone = $("#description-tab-content").children("div#localization-tab-default").html();

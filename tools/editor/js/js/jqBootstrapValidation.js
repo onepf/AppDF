@@ -437,6 +437,13 @@
               return $this.triggerHandler("change.validation", {submitting: true});
             }
           );
+          
+          //clear warnings
+          $this.bind("clear.validation", function() {
+            $controlGroup.removeClass("warning error success");
+            $helpBlock.html($helpBlock.data("original-contents"));
+          });
+          
           $this.bind(
             [
               "keyup",
@@ -540,7 +547,11 @@
           var $el = $(el);
           var name = $el.attr("name");
           var errors = $el.triggerHandler("validation.validation", {includeEmpty: true});
-          errorMessages[name] = $.extend(true, errors, errorMessages[name]);
+          //errorMessages[name] = $.extend(true, errors, errorMessages[name]);
+          if (typeof errorMessages[name]==="undefined") {
+            errorMessages[name] = [];
+          };
+          errorMessages[name].append(errors);
         });
 
         $.each(errorMessages, function (i, el) {

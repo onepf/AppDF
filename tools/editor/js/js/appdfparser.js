@@ -274,57 +274,60 @@ var appdfParser = (function() {
 				loadTextAttribute("eula-link", "eula", "href")
 				loadText("eula", "eula");
 			});
-			section("images/", "images", function() {
-				loadHelper("app-icon", "app-icon", function(d, name, $e) {
-					d[name] = [];
-					$e.each(function() {
-						d[name].push({
-							"name" : $(this).text(),
-							"width" : $(this).attr("width"),
-							"height" : $(this).attr("height")
-						});
-					});
-				});
-                
-				loadHelper("large-promo", "large-promo", function(d, name, $e) {
-					d[name] = null;
-					$e.each(function() {
-						d[name] = {
-							"name" : $(this).text(),
-							"width" : $(this).attr("width"),
-							"height" : $(this).attr("height")
-						};
-					});
-				});
-                
-                loadHelper("small-promo", "small-promo", function(d, name, $e) {
-					d[name] = null;
-					$e.each(function() {
-						d[name] = {
-							"name" : $(this).text(),
-							"width" : $(this).attr("width"),
-							"height" : $(this).attr("height")
-						};
-					});
-				});
-                
-				loadHelper("screenshots", "screenshots/screenshot", function(d, name, $e) {
-					d[name] = [];
-					$e.each(function() {
-						d[name].push({
-							"name" : $(this).text(),
-							"width" : $(this).attr("width"),
-							"height" : $(this).attr("height"),
-							"index" : $(this).attr("index")
-						});
-					});
-				});
-			});
             
-			section("videos/", "videos", function() {
-				loadText("youtube-video", "youtube-video");
-                loadArray("video-file", "video-file");
-			});
+			if (appdfParser.checkRes) {
+                section("images/", "images", function() {
+                    loadHelper("app-icon", "app-icon", function(d, name, $e) {
+                        d[name] = [];
+                        $e.each(function() {
+                            d[name].push({
+                                "name" : $(this).text(),
+                                "width" : $(this).attr("width"),
+                                "height" : $(this).attr("height")
+                            });
+                        });
+                    });
+                    
+                    loadHelper("large-promo", "large-promo", function(d, name, $e) {
+                        d[name] = null;
+                        $e.each(function() {
+                            d[name] = {
+                                "name" : $(this).text(),
+                                "width" : $(this).attr("width"),
+                                "height" : $(this).attr("height")
+                            };
+                        });
+                    });
+                    
+                    loadHelper("small-promo", "small-promo", function(d, name, $e) {
+                        d[name] = null;
+                        $e.each(function() {
+                            d[name] = {
+                                "name" : $(this).text(),
+                                "width" : $(this).attr("width"),
+                                "height" : $(this).attr("height")
+                            };
+                        });
+                    });
+                    
+                    loadHelper("screenshots", "screenshots/screenshot", function(d, name, $e) {
+                        d[name] = [];
+                        $e.each(function() {
+                            d[name].push({
+                                "name" : $(this).text(),
+                                "width" : $(this).attr("width"),
+                                "height" : $(this).attr("height"),
+                                "index" : $(this).attr("index")
+                            });
+                        });
+                    });
+                });
+            
+                section("videos/", "videos", function() {
+                    loadText("youtube-video", "youtube-video");
+                    loadArray("video-file", "video-file");
+                });
+            };
 		};
 
 		//Description
@@ -400,10 +403,10 @@ var appdfParser = (function() {
 						"rating" : $(this).text(),
 						"type" : $(this).attr("type")
 					};
-					if ($(this).attr("certificate")) {
+					if (appdfParser.checkRes && $(this).attr("certificate")) {
 						ratingCertificate["certificate"] = $(this).attr("certificate");
 					};
-					if ($(this).attr("mark")) {
+					if (appdfParser.checkRes && $(this).attr("mark")) {
 						ratingCertificate["mark"] = $(this).attr("mark");
 					};
 					d[name].push(ratingCertificate);
@@ -468,9 +471,11 @@ var appdfParser = (function() {
 		});
         progress();//LanguageCode*5 + 11
         
-        section("apk-files/", "apk-files", function() {
-            loadArray("apk-file", "apk-file");
-        });
+        if (appdfParser.checkRes) {
+            section("apk-files/", "apk-files", function() {
+                loadArray("apk-file", "apk-file");
+            });
+        };
         progress();//LanguageCode*5 + 12
         
         section("availability", "availability", function() {
@@ -515,6 +520,10 @@ var appdfParser = (function() {
 	};
 
 	Array.prototype.append = function(a) {
+        if (!a) {
+            return;
+        };
+        
 		for (var i=0; i<a.length; i++) {
 			this.push(a[i]);
 		};
@@ -530,7 +539,7 @@ var appdfParser = (function() {
             if (data.description[i]["texts"]) {
                 errors.append(validateDescriptionTexts(i, data.description[i].texts));
             };
-            if (appdfParser.checkRes && data.description[i]["images"]) {
+            if (data.description[i]["images"]) {
                 errors.append(validateDescriptionImages(i, data.description[i].images));
             };
             if (data.description[i]["videos"]) {
@@ -613,7 +622,7 @@ var appdfParser = (function() {
     function validateDescriptionVideos(languageCode, data) {
         var errors = [];
         
-        if (appdfParser.checkRes && data["video-file"]) {
+        if (data["video-file"]) {
             var videoList = data["video-file"];
             
             if (videoList.length) {
