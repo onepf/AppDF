@@ -406,7 +406,7 @@ Sample Description.xml File
 Description.xml Structure
 -------------
 
-[Formal  XML Schema (XSD) description](appdf-description.xsd) of Description.xml file structure.
+[Formal  XML Schema (XSD) description](http://www.onepf.org/appdf/appdf-description-1-0.xsd) of Description.xml file structure.
 
 List of Tags:
 * [categorization](#categorization)
@@ -2292,9 +2292,9 @@ Attributes: `language`.
 
 You can use `<description-localization>` section to localize texts, images and videos in product description. This tag has the same structure as `<description>` but all subtags are optional. If some information is missing in the `<description-localization>` section it will be taken from the  `<description>` section.
 
-Reference language list in [JSON](data/languages.json) and [XML](data/languages.xml) formats.
+Reference language list in [JSON](http://www.onepf.org/appdf/data/languages.json) and [XML](data/languages.xml) formats.
 
-Reference country list in [JSON](data/countries.json) and [XML](data/countries.xml) formats.
+Reference country list in [JSON](http://www.onepf.org/appdf/data/countries.json) and [XML](data/countries.xml) formats.
 
 
 <table>
@@ -2305,7 +2305,7 @@ Reference country list in [JSON](data/countries.json) and [XML](data/countries.x
   </tr>
   <tr>
     <td>language</td>
-    <td>two letter ISO 639-1 language code (like "en", full language list in <a href="data/languages.json">JSON</a> and <a href="data/languages.xml">XML</a> formats) or two letters language code + two upper case letter ISO 3166‑1 country code (like "en-US", full country list in <a href="data/countries.json">JSON</a> and <a href="data/countries.xml">XML</a> formats)</td>
+    <td>two letter ISO 639-1 language code (like "en", full language list in <a href="http://www.onepf.org/appdf/data/languages.json">JSON</a> and <a href="data/languages.xml">XML</a> formats) or two letters language code + two upper case letter ISO 3166‑1 country code (like "en-US", full country list in <a href="http://www.onepf.org/appdf/data/countries.json">JSON</a> and <a href="data/countries.xml">XML</a> formats)</td>
     <td>required tag</td>
   </tr>
 </table>
@@ -2995,7 +2995,7 @@ Attributes: `only-listed`.
   </tr>
 </table>
 
-Use either `<include>` or `<exclude>` (depending on the `only-listed` attribute value) subtags to define list of the countries where your application is distributed. Subtag value should be a two upper case symbol ISO 3166‑1 country code. Here is the country list in [JSON](data/countries.json) and [XML](data/countries.xml) formats.
+Use either `<include>` or `<exclude>` (depending on the `only-listed` attribute value) subtags to define list of the countries where your application is distributed. Subtag value should be a two upper case symbol ISO 3166‑1 country code. Here is the country list in [JSON](http://www.onepf.org/appdf/data/countries.json) and [XML](data/countries.xml) formats.
 
 Example 1:
 ```xml
@@ -3398,11 +3398,11 @@ Attributes: `country`.
 
 The stores will use your default price defined in the `<base-price>` tag to automatically generate prices for other currencies and other countries. Nevertheless you can use `<local-price>` tags to manually define price for some countries. Tag value should be a dot-separated number.
 
-Reference country list in [JSON](data/countries.json) and [XML](data/countries.xml) formats.
+Reference country list in [JSON](http://www.onepf.org/appdf/data/countries.json) and [XML](data/countries.xml) formats.
 
-Reference currency list in [JSON](data/currencies.json) and [XML](data/currencies.xml) formats.
+Reference currency list in [JSON](http://www.onepf.org/appdf/data/currencies.json) and [XML](data/currencies.xml) formats.
 
-Currencies used in different countries in [JSON](data/country_currencies.json) and [XML](data/country_currencies.xml) formats. One currency per country. If there are several official currencies in a country one is selected. Local prices are set in a currency defined according to this table. 
+Currencies used in different countries in [JSON](http://www.onepf.org/appdf/data/country_currencies.json) and [XML](data/country_currencies.xml) formats. One currency per country. If there are several official currencies in a country one is selected. Local prices are set in a currency defined according to this table. 
 
 <table>
   <tr>
@@ -3413,7 +3413,7 @@ Currencies used in different countries in [JSON](data/country_currencies.json) a
   </tr>
   <tr>
     <td>country</td>
-    <td>two letter ISO 3166-1 country code, see the list in <a href="data/countries.json">JSON</a> or <a href="data/countries.xml">XML</a> formats</td>
+    <td>two letter ISO 3166-1 country code, see the list in <a href="http://www.onepf.org/appdf/data/countries.json">JSON</a> or <a href="data/countries.xml">XML</a> formats</td>
     <td>required</td>
     <td></td>
   </tr>
@@ -5072,7 +5072,7 @@ Category List
 -------------
 AppDF provides universal category list that could be matched to any appstore category list. When we chose categories for the AppDF we tried to create the most detailed list to archive unambiguous mapping for any appstore.
 
-The AppDF category list is available as [JSON](data/categories.json) or [XML](data/categories.xml). You can also download a proposal mapping of the AppDF category list to some application stores as [JSON](data/store_categories.json) or [XML](data/store_categories.xml).
+The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/categories.json) or [XML](data/categories.xml). You can also download a proposal mapping of the AppDF category list to some application stores as [JSON](http://www.onepf.org/appdf/data/store_categories.json) or [XML](data/store_categories.xml).
 
 ### Application Categories
 
@@ -6893,7 +6893,7 @@ Localization Support
 -------------
 AppDF supports localization to all the languages. Nevertheless not all languages supported by all the stores. 
 
-Reference language list in [JSON](data/languages.json) and [XML](data/languages.xml) formats.
+Reference language list in [JSON](http://www.onepf.org/appdf/data/languages.json) and [XML](data/languages.xml) formats.
 
 The following tables contain information about current language support status (updated January 14, 2013).
 
