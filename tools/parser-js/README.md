@@ -19,7 +19,7 @@ appdfParser.parseDescriptionXML(xml, function(data) {
         for (var i=0; i<errors.length; i++) {
             console.log(errors[i]);
         };
-    }, function()(current, total) {
+    }, function(current, total) {
         console.log("progress: " + current + " of " + total);
     }, false
 );
