@@ -86,11 +86,6 @@ var errorMessages = {
     fnUnknownType: function(type) { return "Unknown type \"" + type + "\""; },
     fnUnknownCategory: function(category, type) { return "Unknown category \"" + category + "\" for type \"" + type + "\""; },
     fnUnknownSubCategory: function(subcategory, category) { return "Unknown subcategory \"" + subcategory + "\" for category \"" + category + "\""; },
-    fnUnknownType: function(type) { return ; },
-    fnUnknownType: function(type) { return ; },
-    fnUnknownType: function(type) { return ; },
-    fnUnknownType: function(type) { return ; },
-    fnUnknownType: function(type) { return ; },
-    fnUnknownType: function(type) { return ; },
-    fnUnknownType: function(type) { return ; },
+    fnStoreSpecificXMLError: function(storeSpecificID) { return "Store Specific '" + storeSpecificID + "' - invalid XML"; },
+    fnDublikateRes: function(resName) { return "Dublicated resource " + resName; }
 };
