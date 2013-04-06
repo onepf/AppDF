@@ -504,7 +504,10 @@ var appdfXMLLoader = (function() {
                 function getNextFileData() {
                     getFileData(appdfEntries[filesLoaded], function() {
                         if (++filesLoaded === totalFilesCount) {
-                            loadComplete(onend, onerror, parseprogress);
+                            loadprogress(100, 100);
+                            setTimeout(function() {
+                                loadComplete(onend, onerror, parseprogress);
+                            });
                         } else {
                             getNextFileData();
                         };

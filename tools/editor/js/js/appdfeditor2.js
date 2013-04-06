@@ -24,7 +24,6 @@
 
 var appdfEditor = (function() {
     var MAXIMUM_APK_FILE_SIZE = 50000000;
-    var buildingFlag = false;
     var importingFlag = false;
     
     function fillCountries($e, selectedCountry) {
@@ -370,7 +369,7 @@ var appdfEditor = (function() {
             $importButton.click(function(event) {
                 event.preventDefault();
                 if (appdfEditor.importingFlag) {
-                    return;
+                    return false;
                 };
                 appdfEditor.importingFlag = true;
                 
@@ -1236,6 +1235,16 @@ var appdfEditor = (function() {
         };
     };
     
+    function validateProgress(current, total) {
+        var $bar = $("#build-appdf-progressbar");
+        onProgress(current, total, $bar, "Validating: ");
+    };
+    
+    function checkProgress(current, total) {
+        var $bar = $("#build-appdf-progressbar");
+        onProgress(current, total, $bar, "Checking: ");
+    };
+    
     function buildProgress(current, total) {
         var $bar = $("#build-appdf-progressbar");
         onProgress(current, total, $bar, "Building: ");
@@ -1321,16 +1330,16 @@ var appdfEditor = (function() {
 
     function buildAppdDFFile(event) {
         //First we check if there is already built file, if so we return to a standard download handler
-        if (appdfEditor.buildingFlag) {
-            return false;
-        };
-        appdfEditor.buildingFlag = true;
-        
         var downloadLink = document.getElementById("build-appdf-file");
         if (downloadLink.download) {
             return true;
         };
-
+        
+        if ($("#build-appdf-file[init]").size()) {
+            return false;
+        };
+        $("#build-appdf-file").attr("init", true);
+        
         //If not we start the checking and building process.
         //First we collect all the errors and check if there are any
         collectBuildErrors(function(){
@@ -1339,7 +1348,7 @@ var appdfEditor = (function() {
             buildProgress(0, 100);
             $("#build-appdf-progressbarr").css("width", "0%");
             $("#build-appdf-status").show();
-
+            
             generateAppDFFile(function(url) {
                 var fileName;
                 if (firstApkFileData) {
@@ -1347,7 +1356,7 @@ var appdfEditor = (function() {
                 } else {
                     fileName = "untitled.appdf";
                 };
-                var clickEvent = document.createEvent("MouseEvent");
+                var clickEvent = document.createEvent("MouseEvents");
                 downloadLink.href = url;
                 downloadLink.download = fileName;
                 clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
@@ -1355,7 +1364,7 @@ var appdfEditor = (function() {
                 $("#build-appdf-status").hide();
                 setTimeout(clearBuildedAppdfFile, 1);
             });
-        }, showBuildErrors);
+        }, showValidationErrors);
 
         return false;
     };
@@ -1366,7 +1375,7 @@ var appdfEditor = (function() {
         var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
         
         var errorArray = [];
-        buildProgress(0, 100);
+        checkProgress(0, 100);
         $("#build-appdf-status").show();
         
         for (field in errors) {
@@ -1382,12 +1391,12 @@ var appdfEditor = (function() {
         };
         
         function checkBuildErrorsCount() {
-            buildProgress(currentErrorCheckCount, totalErrorCheckCount);
+            checkProgress(currentErrorCheckCount + 0, totalErrorCheckCount);
             if (currentErrorCheckCount === totalErrorCheckCount) {
-                $("#build-appdf-status").hide();
                 if (errorArray.length) {
-                    onerror(errorArray);
+                    onerror(errorArray, totalErrorCheckCount);
                 } else {
+                    $("#build-appdf-status").hide();
                     onsuccess();
                 };
             };
@@ -1546,6 +1555,8 @@ var appdfEditor = (function() {
     };
     
     function generateAppDFFile(onend) {
+        console.log("generateAppDFFile");
+        
         var descriptionXML = appdfXMLSaver.generateDescriptionFileXML(); 
         localStorage.setItem(firstApkFileData.package, descriptionXML);
 
@@ -1639,9 +1650,30 @@ var appdfEditor = (function() {
         });
     };
     
+    function showValidationErrors(errors) {
+        var $validateList = $("input[required],input[data-data-validation-callback],select[required],select[data-data-validation-callback],textarea[required],textarea[data-data-validation-callback]");
+        //$("input,select,textarea");
+        var currentErrorCount = 0;
+        totalErrorCount = $validateList.size();
+        
+        //$("input,select,textarea").trigger("submit.validation").trigger("validationLostFocus.validation");
+        $validateList.each( function() {
+            var $this = $(this);
+            setTimeout(function() {
+                currentErrorCount++;
+                validateProgress(currentErrorCount, totalErrorCount);
+                $this.trigger("submit.validation").trigger("validationLostFocus.validation");
+                if (currentErrorCount===totalErrorCount) {
+                    showBuildErrors(errors);
+                };
+            }, 5);
+        });
+    };
+    
     function showBuildErrors(errors) {
-        //First trigger showing error messages inside control helpers
-        $("input,select,textarea").trigger("submit.validation").trigger("validationLostFocus.validation");
+        $("#build-appdf-status").hide();
+        validateProgress(0, 100);
+        $("#build-appdf-file").removeAttr("init");
         
         var $list = $("#form-errors").find("ul");
 
@@ -1653,19 +1685,20 @@ var appdfEditor = (function() {
         for (var i=0; i<errors.length; i++) {
             $list.append($("<li>"+errors[i]+"</li>"))
         };
-        appdfEditor.buildingFlag = false;
+        
     };   
     
     function clearBuildedAppdfFile() {
+        $("#build-appdf-file").removeAttr("init");
         var downloadLink = document.getElementById("build-appdf-file");
         downloadLink.download = null;
-        appdfEditor.buildingFlag = false;
     };
     
     function reinitEditor() {
         //remove all warnings
-        $("input,select,textarea").trigger("clear.validation");
-
+        //$("input,select,textarea").trigger("clear.validation");
+        $("input[required],input[data-data-validation-callback],select[required],select[data-data-validation-callback],textarea[required],textarea[data-data-validation-callback]").trigger("clear.validation");
+        
         //remove erros messages
         $("#form-errors").hide();
         
@@ -1790,9 +1823,6 @@ var appdfEditor = (function() {
     };
 
     return {
-        buildingFlag : buildingFlag,
-        importingFlag : importingFlag,
-        
         init : init,
         reinitEditor : reinitEditor,
         addApkFile : addApkFile,
