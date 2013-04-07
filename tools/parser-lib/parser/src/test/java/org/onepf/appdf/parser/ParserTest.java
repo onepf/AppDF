@@ -15,12 +15,11 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Before;
-import org.junit.Test;
-import org.onepf.appdf.model.*;
-import org.onepf.appdf.model.Categorisation.ApplicationType;
-import org.onepf.appdf.model.ContentDescriptor.DescriptorValue;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,26 +27,24 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.zip.ZipException;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertThat;
+import org.hamcrest.CoreMatchers;
+import org.junit.Test;
+import org.onepf.appdf.model.Application;
+import org.onepf.appdf.model.Availability;
+import org.onepf.appdf.model.Categorisation;
+import org.onepf.appdf.model.Categorisation.ApplicationType;
+import org.onepf.appdf.model.CategoryCatalog;
+import org.onepf.appdf.model.Consent;
+import org.onepf.appdf.model.ContentDescription;
+import org.onepf.appdf.model.ContentDescriptor;
+import org.onepf.appdf.model.ContentDescriptor.DescriptorValue;
 
 /**
  * Test covers top level functionality of AppdfFileParser class
  * @author nivanov
  *
  */
-public class ParserTest {
-	
-	private File resource;
-	
-	@Before
-	public void initResource() throws URISyntaxException{
-		URL resourceUrl = ParserTest.class.getResource("yashell.appdf");
-		resource = new File(resourceUrl.toURI());
-	}
+public class ParserTest extends AbstractResourceTest {
 	
 	@Test
 	public void parserCreation() throws IOException{
@@ -74,12 +71,7 @@ public class ParserTest {
         assertThat(application.getPackageName(), is("ru.yandex.shell"));
 	}
 
-    public Application parseApplication() throws IOException, ParsingException {
-        AppdfFileParser parser = new AppdfFileParser(resource);
-        Application application = parser.parse().getApplication();
-        return application;
-    }
-	@Test
+    @Test
 	public void checkCategorisation() throws ParsingException, IOException{
 	    Application app = parseApplication();
 	    Categorisation categorisation = app.getCategorisation();
@@ -117,5 +109,9 @@ public class ParserTest {
 	    assertThat(contentDescriptor.getDiscrimination(),is(DescriptorValue.NO));
 	    assertThat(contentDescriptor.getDrugs(),is(DescriptorValue.NO));
 	}
+
+    protected String getResourceName() {
+        return "yashell.appdf";
+    }
 	
 }
