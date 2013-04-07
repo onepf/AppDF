@@ -50,12 +50,18 @@ The following appstores are working on AppDF support but not ready with implemen
 
 Specification
 =====
-Current specification draft can be found here:  
+
+Current AppDF specification status is 1.0. It can be found here:  
+http://www.onepf.org/appdf/specification/
+
+Current version of AppDF specification in work can be found here:
 https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md
 
-Samples
+AppDF Samples
 =====
-You can download three AppDF samples:  
+You can download four AppDF samples: 
+
+* [SPB Geo Game](https://github.com/appdf/samples/com.softspb.geo_game.appdf) - a simple paid game
 * [MX Player](https://github.com/onepf/AppDF/raw/master/samples/MX%20Player/mxplayer.appdf) - a free video player localized to three languages
 * [SPB Swedish Cards](https://github.com/onepf/AppDF/raw/master/samples/SPB%20Swedish%20Cards/spbswedishcards.appdf) - a paid application localized to many languages
 * [Yandex.Shell](https://github.com/onepf/AppDF/raw/master/samples/Yandex.Shell/yandex.shell.appdf) - a free application limited to several countries
@@ -68,6 +74,16 @@ http://www.onepf.org/editor/index.html
 Source code here:
 https://github.com/onepf/AppDF/tree/master/tools/editor/js
 
+License 
+=====
+
+Source code of the AppDF Editor and the reference parser libs is available under the terms of the Apache License, Version 2.0:<br>
+<a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>
+
+The AppDF specification and the related texts are available under the terms of the Creative Commons Attribution 2.5 license:<br>
+<a href="http://creativecommons.org/licenses/by/2.5/">http://creativecommons.org/licenses/by/2.5/</a>
+
+
 How Can I Help?
 =====
 1. Join [our mailing list](http://groups.google.com/group/appdf).
@@ -75,46 +91,9 @@ How Can I Help?
 3. Email the group that you want to work on this task and let's discuss on how to do it the best way.
 
 
-
-        </p>
-      </section>    
-
-      <section id="specification">
-        <legend>Specification</legend>
-        <p>
-          <a href="https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md">AppDF Specification 1.0</a>.
-          Date: April 8th, 2013
-        </p>
-      </section>    
-  
-      <section id="samples">
-        <legend>AppDF Samples</legend>
-        <ul>
-          <li><a href="/appdf/samples/com.softspb.geo_game.appdf">SPB Geo Game</a> - a simple paid game</li>
-          <li><a href="/appdf/samples/mxplayer.appdf">MX Player</a> - a free video player localized to three languages</li>
-          <li><a href="/appdf/samples/spbswedishcards.appdf">SPB Swedish Cards</a> - a paid application localized to many languages</li> 
-          <li><a href="/appdf/samples/yandex.shell.appdf">Yandex.Shell</a> - a free application limited to several countries</li>          
-        </ul>
-      </section>    
-  
-      <section id="license">
-        <legend>License</legend>
-        <p>
-          Source code of the AppDF Editor and the reference parser libs is available under the terms of the Apache License, Version 2.0:<br>
-          <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>
-        </p>
-        <p>
-          The AppDF specification and the related texts are available under the terms of the Creative Commons Attribution 2.5 license:<br>
-          <a href="http://creativecommons.org/licenses/by/2.5/">http://creativecommons.org/licenses/by/2.5/</a>
-        </p>
-      </section>    
-  
-      <section id="roadmap">
-        <legend>What's Next</legend>
-        <ul>
-          <li>In-App Billing support in the next version of AppDF</li>
-          <li>Add a feature to the AppDF Editor to automatically download application description from Google Play</li>
-          <li>Add "What's Next" section to the AppDF Editor that explains how the generated AppDF file could be submitted to appstores</li> 
-          <li>Add better documentation about AppDF parser reference source code</li>
-        </ul>
-      </section> 
+What's Next (AppDF Roadmap)
+=====
+* In-App Billing support in the next version of AppDF
+* Add a feature to the AppDF Editor to automatically download application description from Google Play
+* Add "What's Next" section to the AppDF Editor that explains how the generated AppDF file could be submitted to appstores
+* Add better documentation about AppDF parser reference source code
