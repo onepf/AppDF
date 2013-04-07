@@ -66,9 +66,9 @@ You can download four AppDF samples:
 * [SPB Swedish Cards](http://www.onepf.org/appdf/samples/spbswedishcards.appdf) - a paid application localized to many languages
 * [Yandex.Shell](http://www.onepf.org/appdf/samples/yandex.shell.appdf) - a free application limited to several countries
 
-There are two ways to explore the samples:
-1. Open a sample in <a href="http://www.onepf.org/editor/">AppDF Editor</a>
-2. Download a sample, rename it to .zip file, unzip it, check description.xml file
+There are two ways to explore the samples:  
+1. Open a sample in <a href="http://www.onepf.org/editor/">AppDF Editor</a>  
+2. Download a sample, rename it to .zip file, unzip it, check description.xml file  
 
 AppDF Editor 
 =====
