@@ -26,9 +26,11 @@ How AppDF Works
 =====
 There are more than <a href="https://github.com/onepf/AppDF/wiki/Android-Application-Stores">15 alternative Android appstores</a>. All of them have their own audience. You loose many millions of potential addressable users by submitting your application to Google Play only.
 But submitting an app to all the appstores could take you several days, and then you need to upload each update to all the stores as well. AppDF allows you to submit your application as easy as uploading one file. You simply create an AppDF file using HTML5 AppDF Editor and submit the generated AppDF file to all the appstores. 
-<img src="../img/appdfdiagram.png" width="600">
-1. Create AppDF file for your application either using <a href="../editor/">AppDF Editor</a> or just follow <a href="/appdf/specification/">the specification</a> to create an AppDF file manually</li>
-2. Submit your AppDF file to the supporting appstores</li>
+
+![AppDF Diagram](http://www.onepf.org/img/appdfdiagram.png "AppDF Diagram")
+
+1. Create AppDF file for your application either using <a href="http://wwww.onepf.org/editor/">AppDF Editor</a> or just follow <a href="/appdf/specification/">the specification</a> to create an AppDF file manually
+2. Submit your AppDF file to the supporting appstores
 
 Specification
 =====
