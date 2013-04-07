@@ -29,4 +29,8 @@ public abstract class StoreSpecificInfo implements ModelElement {
 
     public abstract SupportedStore getStore();
     
+    public String getStoreName(){
+        return getStore().name();
+    }
+    
 }

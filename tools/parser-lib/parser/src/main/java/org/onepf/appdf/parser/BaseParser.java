@@ -31,14 +31,31 @@ import org.w3c.dom.Node;
  */
 public abstract class BaseParser<T extends ModelElement, E extends Enum<E> & NodeParser<T>>
         implements NodeParser<T> {
+    
+    /**
+     * Class for handling unexpected nodes default implementation throws Parsing exception
+     * @author nivanov
+     *
+     */
+    public static class ExtraNodesHandler<V>{
+        public void handle(String tagName,String enclosingTagName,V elem,Node n){
+            throw new ParsingException("Unsupported tag:" + tagName
+                    + " inside of " + enclosingTagName);
+        }
+    }
 
     private final Class<E> enumClass;
     private final String enclosingTagName;
+    protected ExtraNodesHandler<T> handler;
 
-    public BaseParser(Class<E> enumClass, String enclosingTagName) {
+    public BaseParser(Class<E> enumClass, String enclosingTagName,ExtraNodesHandler<T> handler) {
         this.enumClass = enumClass;
         this.enclosingTagName = enclosingTagName;
-
+        this.handler = handler;
+    }
+    
+    public BaseParser(Class<E> enumClass, String enclosingTagName) {
+        this(enumClass,enclosingTagName,new ExtraNodesHandler<T>());
     }
     
 
@@ -54,8 +71,7 @@ public abstract class BaseParser<T extends ModelElement, E extends Enum<E> & Nod
                 Enum.valueOf(enumClass, tagName.toUpperCase().replace('-', '_'))
                         .parse(childNode, element);
             } catch (IllegalArgumentException iae) {
-                throw new ParsingException("Unsupported tag:" + tagName
-                        + " inside of " + enclosingTagName);
+                handler.handle(tagName, enclosingTagName,element, node);
             }
         }
     }

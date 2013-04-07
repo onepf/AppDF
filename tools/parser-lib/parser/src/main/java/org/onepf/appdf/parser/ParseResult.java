@@ -15,6 +15,9 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import org.onepf.appdf.model.Application;
@@ -43,6 +46,17 @@ public class ParseResult {
         StoreSpecificInfo storeInfo = application.getStoreSpecificInfo(store);
         storeInfo.getApplication();
        return application;
+    }
+    /**
+     * Gets an input stream for an entry inside appdf file
+     * can be used to retrieve screenshots, binaries, etc
+     * @param path
+     * @return
+     * @throws IOException
+     */
+    public InputStream getEntryStream(String path) throws IOException{
+        ZipEntry entry = file.getEntry(path);
+        return file.getInputStream(entry);
     }
 
 }
