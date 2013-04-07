@@ -71,7 +71,7 @@ public abstract class BaseParser<T extends ModelElement, E extends Enum<E> & Nod
                 Enum.valueOf(enumClass, tagName.toUpperCase().replace('-', '_'))
                         .parse(childNode, element);
             } catch (IllegalArgumentException iae) {
-                handler.handle(tagName, enclosingTagName,element, node);
+                handler.handle(tagName, enclosingTagName,element, childNode);
             }
         }
     }
