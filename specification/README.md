@@ -1,7 +1,7 @@
 AppDF Specification
 =====
 
-This folder contains the <a href="">AppDF Specification](https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md) file as well as subsidary files:
+This folder contains the [AppDF Specification](https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md) file as well as subsidary files:
 
 <table>
     <tr>
