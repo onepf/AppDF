@@ -62,9 +62,9 @@ AppDF Samples
 You can download four AppDF samples: 
 
 * [SPB Geo Game](http://www.onepf.org/appdf/samples/com.softspb.geo_game.appdf) - a simple paid game
-* [MX Player](http://www.onepf.org/appdf/samples/MX%20Player/mxplayer.appdf) - a free video player localized to three languages
-* [SPB Swedish Cards](http://www.onepf.org/appdf/samples/SPB%20Swedish%20Cards/spbswedishcards.appdf) - a paid application localized to many languages
-* [Yandex.Shell](http://www.onepf.org/appdf/samples/Yandex.Shell/yandex.shell.appdf) - a free application limited to several countries
+* [MX Player](http://www.onepf.org/appdf/samples/mxplayer.appdf) - a free video player localized to three languages
+* [SPB Swedish Cards](http://www.onepf.org/appdf/samples/spbswedishcards.appdf) - a paid application localized to many languages
+* [Yandex.Shell](http://www.onepf.org/appdf/samples/yandex.shell.appdf) - a free application limited to several countries
 
 There are two ways to explore the samples:
 1. Open a sample in <a href="http://www.onepf.org/editor/">AppDF Editor</a>
