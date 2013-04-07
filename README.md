@@ -32,6 +32,22 @@ But submitting an app to all the appstores could take you several days, and then
 1. Create AppDF file for your application either using <a href="http://wwww.onepf.org/editor/">AppDF Editor</a> or just follow <a href="/appdf/specification/">the specification</a> to create an AppDF file manually
 2. Submit your AppDF file to the supporting appstores
 
+No Middle Man
+=====
+AppDF is an open file format. It is not an aggregator. There is no middle man in the process. The app developers work directly with the appstores as before.
+There is just a common file format that makes it easier.
+
+Appstores
+=====
+We have just started the AppDF project. The following Android application stores already support AppDF format (you can go to their developer portals and submit AppDF files):
+* <a href="http://apps.opera.com/">Opera Mobile Store</a>
+* <a href="http://store.yandex.com/">Yandex.Store</a>
+
+The following appstores are working on AppDF support but not ready with implementation yet:
+* <a href="http://www.appland.se/">Appland</a>
+* <a href="http://www.aptoide.com/">Aptoide</a>
+* <a href="http://slideme.org/">SlideME</a>
+
 Specification
 =====
 Current specification draft can be found here:  
@@ -60,32 +76,6 @@ How Can I Help?
 
 
 
-      </section>      
-
-      <section id="nomiddleman">
-        <legend>No Middle Man</legend>
-        <p>
-          AppDF is an open file format. It is not an aggregator. There is no middle man in the process. The app developers work directly with the appstores as before.
-          There is just a common file format that makes it easier.
-        </p>
-      </section>    
-
-      <section id="appstores">
-        <legend>Appstores</legend>
-        <p>
-          We have just started the AppDF project. The following Android application stores already support AppDF format (you can go to their developer portals and submit AppDF files):
-          <ul>
-            <li><a href="http://apps.opera.com/">Opera Mobile Store</a></li>
-            <li><a href="http://store.yandex.com/">Yandex.Store</a></li>
-          </ul>
-        </p>
-        <p>
-          The following appstores are working on AppDF support but not ready with implementation yet:
-          <ul>
-            <li><a href="http://www.appland.se/">Appland</a></li>
-            <li><a href="http://www.aptoide.com/">Aptoide</a></li>
-            <li><a href="http://slideme.org/">SlideME</a></li>
-          </ul>
         </p>
       </section>    
 
