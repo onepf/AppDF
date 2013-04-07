@@ -24,9 +24,8 @@ public class StoreSpecificParser extends BaseParser<Application, StoreSpecificTa
     private static class ExtraStoresHandler extends ExtraNodesHandler<Application>{
         @Override
         public void handle(String tagName, String enclosingTagName,
-                Application elem, Node n) {
-            String storeName = n.getNodeName();
-            StoreSpecificTag.defaultHandle(n, elem, new AdditionalStore(storeName));
+                Application elem, Node n) {         
+            StoreSpecificTag.defaultHandle(n, elem, new AdditionalStore(tagName));
         }
     }
 
