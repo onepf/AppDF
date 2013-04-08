@@ -7651,12 +7651,15 @@ The following languages are currently not support by any of the stores:
 
 Status
 -------------
-Current status: draft  
-Specification version: 0.97
+Current status: final specification  
+Specification version: 1.00
 Last update: March 25, 2013  
 
 Change History
 -------------
+### Version 1.00 (April 08, 2013)
+* Version 0.97 is accepted as 1.0 without changes
+
 ### Version 0.97 (March 23, 2013)
 
 * `href` attribute is added to the `<eula>` tag, now the `<eula>` should include both a link to the EULA webpage as well as full EULA text. 
