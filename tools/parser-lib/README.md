@@ -6,8 +6,15 @@ as output. It also provides utility methods for extracting data from archive.
 
 Building
 ========
-We're using Gradle as our buildsystem so building is as simple as gradle jar. You also can install parser-lib artifacts 
-to your local maven repository using gradle install command
+We're using [Gradle](http://www.gradle.org/) as our buildsystem so building is as simple as 
+```
+gradle jar 
+```
+You also can install parser-lib artifacts 
+to your local maven repository using 
+```
+gradle install
+```
 Artifact Id
 ===========
 ```pom
