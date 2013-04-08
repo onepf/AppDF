@@ -76,7 +76,8 @@ public enum ImagesTag implements NodeParser<Description> {
                 if ( !SCREENSHOT_TAG.equalsIgnoreCase(screenshotNode.getNodeName())){
                     throw new ParsingException("Unexpected tag inside screenshots:" + screenshotNode.getNodeName());
                 }
-                imagesDescription.addScreenshot(node.getTextContent());
+                String content = screenshotNode.getTextContent();
+                imagesDescription.addScreenshot(content);
             }
             
         }
