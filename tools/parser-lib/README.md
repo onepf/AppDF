@@ -44,5 +44,6 @@ Usage example
   }
   
 ```
+For more usage examples you can check parser tests located [inside of parser project](https://github.com/onepf/AppDF/tree/master/tools/parser-lib/parser/src/test/java/org/onepf/appdf/parser)
 
 
