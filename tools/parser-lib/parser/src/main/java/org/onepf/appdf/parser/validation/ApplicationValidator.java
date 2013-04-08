@@ -2,6 +2,8 @@ package org.onepf.appdf.parser.validation;
 
 import org.onepf.appdf.model.Application;
 
+import java.util.List;
+
 import static org.onepf.appdf.parser.validation.rules.CollectionRules.exists;
 import static org.onepf.appdf.parser.validation.rules.NullRules.notNull;
 import static org.onepf.appdf.parser.validation.rules.StringRules.lessThan;
@@ -12,7 +14,7 @@ import static org.onepf.appdf.parser.validation.rules.StringRules.lessThan;
  */
 public class ApplicationValidator{
 
-    public ValidatorResult validate(Application app){
+    public List<ValidationResult> validate(Application app){
       return Validator.builder()
        .target("categorisation",app.getCategorisation(),notNull())
        .target("categorisation/type", app.getCategorisation(), notNull())
