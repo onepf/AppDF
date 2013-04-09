@@ -58,7 +58,7 @@ public enum RequirmentTags implements NodeParser<Requirments>{
         public void parse(Node node, Requirments element)
                 throws ParsingException {
             List<String> excludedDevices = collectNodeValues(node, EXCLUDE_TAG);
-            element.addExcludedDevices(excludedDevices);
+            element.addSupportedDevices(excludedDevices);
         }
         
     }
