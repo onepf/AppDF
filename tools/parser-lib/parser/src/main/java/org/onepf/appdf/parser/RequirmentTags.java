@@ -15,14 +15,14 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import static org.onepf.appdf.parser.util.XmlUtil.collectNodeValues;
-import static org.onepf.appdf.parser.util.XmlUtil.mapChildsToBean;
-
-import java.util.List;
-
 import org.onepf.appdf.model.Features;
 import org.onepf.appdf.model.Requirments;
 import org.w3c.dom.Node;
+
+import java.util.List;
+
+import static org.onepf.appdf.parser.util.XmlUtil.collectNodeValues;
+import static org.onepf.appdf.parser.util.XmlUtil.mapChildsToBean;
 
 
 public enum RequirmentTags implements NodeParser<Requirments>{
@@ -45,6 +45,7 @@ public enum RequirmentTags implements NodeParser<Requirments>{
         public void parse(Node node, Requirments element)
                 throws ParsingException {
            List<String> langs = collectNodeValues(node, LANGUAGE_TAG);
+           element.addSupportedLanguages(langs);
            element.addSupportedLanguages(langs);
         }
         
