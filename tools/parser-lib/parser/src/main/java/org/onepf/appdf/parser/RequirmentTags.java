@@ -46,7 +46,6 @@ public enum RequirmentTags implements NodeParser<Requirments>{
                 throws ParsingException {
            List<String> langs = collectNodeValues(node, LANGUAGE_TAG);
            element.addSupportedLanguages(langs);
-           element.addSupportedLanguages(langs);
         }
         
     },
