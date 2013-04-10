@@ -84,7 +84,7 @@ public class ApplicationParser {
             DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
             documentBuilder.setErrorHandler(new XMLErrorHandler());
             Document document = documentBuilder.parse(inputStream);
-			parseApplicationDocument(document, application, zipFile);
+			parseApplicationDocument(document, application);
 		} catch (Exception e) {//TODO:Proper exception handling
 			throw new ParsingException(e);
 		}finally {
@@ -98,8 +98,21 @@ public class ApplicationParser {
 		}
 		
 	}
+
+    public  void parse(InputStream is, Application application) {
+        try {
+            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            builderFactory.setSchema(schema);
+            DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
+            documentBuilder.setErrorHandler(new XMLErrorHandler());
+            Document document = documentBuilder.parse(is);
+            parseApplicationDocument(document, application);
+        } catch (Exception e) {//TODO:Proper exception handling
+            throw new ParsingException(e);
+        }
+    }
 	
-	private void parseApplicationDocument(Document document,Application application,ZipFile zipFile){
+	private void parseApplicationDocument(Document document,Application application){
 		NodeList applicationNodeList = document.getElementsByTagName(APPLICATION_TAG);
 		if ( applicationNodeList.getLength() == 0 ){
 			throw new ParsingException("Application elem is missing");
