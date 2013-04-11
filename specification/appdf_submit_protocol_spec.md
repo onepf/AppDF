@@ -66,7 +66,7 @@ Parameters
   </tr>
 </table>
 
-
+### Commands
 <table>
   <tr>
     <th>Command</th>
@@ -94,10 +94,28 @@ Result Format
 -------------
 
 REST call should return JSON with the following parameters:
-* return code
-* message
-* package
-* version
+<table>
+  <tr>
+    <th>Parameter</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>code</td>
+    <td>See the list of return codes below</td>
+  </tr>
+  <tr>
+    <td>message</td>
+    <td>Optional message that described details in human readable format</td>
+  </tr>
+  <tr>
+    <td>package</td>
+    <td>Application package, if AppDF file was not parsed then <code>package</code> parameters could be empty</td>
+  </tr>
+  <tr>
+    <td>version</td>
+    <td>Version of the application refered</td>
+  </tr>
+</table>
 
 ### Return Codes
 <table>
