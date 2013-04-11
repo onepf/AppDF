@@ -14,14 +14,10 @@ But option to build separate APK files for appstores to avoid any overhead
 We do not make in-app billing easier to use, we just make it working in all the appstores with single code
 ================
 
-Allow JPG images in small and large promos. Right now only PNG images are allows in small and large promo. We need to add JPG as well.
+Make it clearer if entering custom prices needed
+Take default languages, screen resolutions, etc from APK file
+20:00 OpenMobileWW
 
-FIXES
-Esc/Cancel in AppDF Load dialog wrong behaviour -> check why .click adds more and more listeners but not replace them
-add validation about screenshot image size while saving, indeed check image size once when loading, then save to a variable and just use it
-Allow empty package name for full version field 
-make localization optional loading while default language required where needed
-return error message from ApkParser
 
 REFACTORING
 remove all non-validation logic from validation code
