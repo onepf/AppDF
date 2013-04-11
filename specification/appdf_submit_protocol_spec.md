@@ -1,8 +1,8 @@
 Application Submit Protocol Specification
 -------------
 
-In order to make it easier for application developers to submit their apps the appstores support an HTTP based 
-protocol to submit AppDF files from a command line tool. It is a very simple REST based protocol that includes
+In order to make it easier for application developers to submit their apps the appstores support an HTTP(s) based 
+protocol to submit AppDF files from a command line tool. It is a very simple REST based protocol that includes digest
 authorization and status and error reporting. 
 
 
@@ -12,7 +12,7 @@ Samples
 ### Sample 1
 #### Request:
 ```
-http://www.myappstore.com/appdf?login=mylogin&password=mypassword&command=submit-and-activate
+http://mylogin:mypassword@www.myappstore.com/appdf?command=submit-and-activate
 ```
 
 #### Response:
@@ -28,7 +28,7 @@ http://www.myappstore.com/appdf?login=mylogin&password=mypassword&command=submit
 ### Sample 2
 #### Request:
 ```
-http://www.myappstore.com/appdf?login=mylogin&password=mypassword&command=check&package=com.mydomain.myapp
+http://mylogin:mypassword@www.myappstore.com/appdf?command=check&package=com.mydomain.myapp
 ```
 
 #### Response:
@@ -40,21 +40,20 @@ http://www.myappstore.com/appdf?login=mylogin&password=mypassword&command=check&
     "version" : "2.12"
 }
 ```
+Authentification
+----------------
+
+User authentification uses basic or digest http authorization according to [rfc2617](http://tools.ietf.org/html/rfc2617).
+Most of http libraries and web servers do it transparently.
+
 
 Parameters
 -------------
+
 <table>
   <tr>
     <th>Parameter</th>
     <th>Description</th>
-  </tr>
-  <tr>
-    <td>login</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>password</td>
-    <td></td>
   </tr>
   <tr>
     <td>command</td>
