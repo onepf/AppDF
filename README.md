@@ -29,7 +29,7 @@ But submitting an app to all the appstores could take you several days, and then
 
 ![AppDF Diagram](http://www.onepf.org/img/appdfdiagram.png "AppDF Diagram")
 
-1. Create AppDF file for your application either using <a href="http://wwww.onepf.org/editor/">AppDF Editor</a> or just follow <a href="http://www.onepf.org/appdf/specification/">the specification</a> to create an AppDF file manually
+1. Create AppDF file for your application either using <a href="http://www.onepf.org/editor/">AppDF Editor</a> or just follow <a href="http://www.onepf.org/appdf/specification/">the specification</a> to create an AppDF file manually
 2. Submit your AppDF file to the supporting appstores
 
 No Middle Man
