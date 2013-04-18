@@ -13,7 +13,8 @@
       ""
     ],
     "Business" : [
-      ""
+      "",
+      "Reference"
     ],
     "Calculators" : [
       ""
@@ -45,6 +46,7 @@
       "E-mail",
       "Instant Messaging",
       "SMS",
+      "Phone",
       "Other"
     ],
     "Cooking" : [
@@ -77,6 +79,9 @@
       "Music",
       "Sports",
       "Theatre",
+      "Movies",
+      "Fun tools",
+      "Bollywood",
       "Other"
     ],
     "Finance" : [
@@ -97,6 +102,7 @@
       "Meditation",
       "Pregnancy",
       "Sleep Trackers"
+      "Books"
     ],
     "Health & Fitness" : [
       ""
@@ -117,6 +123,9 @@
       "Reading",
       "Science",
       "Writing"
+    ],
+    "Libraries & Demo" : [
+      ""
     ],
     "Lifestyle" : [
       "",
@@ -183,6 +192,7 @@
     ],
     "Photography" : [
       "",
+      "Other",
       "Camera",
       "Editing",
       "Gallery",
@@ -192,7 +202,11 @@
       ""
     ],
     "Productivity" : [
-      ""
+      "",
+      "Other",
+      "Telephony",
+      "Android OS",
+      "Management"
     ],
     "Publications" : [
       ""
@@ -213,6 +227,9 @@
       "Christianity",
       "Hinduism",
       "Islam",
+      "Quran"
+      "Hadith"
+      "Islamic tools"
       "Other"
     ],
     "Ringtones" : [
@@ -245,6 +262,7 @@
       "Athletic",
       "Disabled",
       "Extreme",
+      "Cricket",
       "Motor",
       "Baseball",
       "Basketball",
@@ -286,7 +304,13 @@
   },
   "game" : {
     "Puzzles" : [
-      ""
+      "",
+      "Sudoku",
+      "Words",
+      "Pictures",
+      "Sokoban",
+      "Jigsaw",
+      "Physics"
     ],
     "Trivia" : [
       ""
@@ -298,49 +322,107 @@
       ""
     ],
     "Casual" : [
-      ""
+      "",
+      "Social Gaming",
+      "Physics-Based",
+      "Other"
     ],
     "Educational" : [
-      ""
+      "",
+      "Kids",
+      "Grammar",
+      "Science",
+      "Geography",
+      "Arithmetic"
     ],
     "Kids" : [
       ""
     ],
     "Multiplayer" : [
-      ""
+      "",
+      "Social Gaming",
+      "Online Roleplaying"
     ],
     "Music" : [
-      ""
+      "",
+      "Rhythm",
+      "Karaoke",
+      "Simulation",
+      "Party"
     ],
     "Arcade" : [
-      ""
+      "",
+      "Shooter",
+      "Rail Shooter",
+      "Third Person Shooter",
+      "Racing",
+      "Flight",
+      "Fighting",
+      "Hack-And-Slash"
     ],
     "Board" : [
       ""
     ],
     "Action" : [
-      ""
+      "",
+      "Platformer",
+      "Thriller",
+      "Shooter",
+      "Rail Shooter",
+      "Third-Person Shooter",
+      "Hack-And-Slash"
     ],
     "Adventure" : [
-      ""
+      "",
+      "Third Person Shooter",
+      "Roleplaying"
     ],
     "Role Playing" : [
-      ""
+      "",
+      "Mmorpg",
+      "Action Rpg",
+      "Social Rpg"
     ],
     "Strategy" : [
-      ""
+      "",
+      "Realtime Strategy",
+      "Tower Defense",
+      "Moba",
+      "Simulation"
     ],
     "Cards" : [
-      ""
+      "",
+      "Poker",
+      "Blackjack",
+      "Solitaire",
+      "Hearts",
+      "Rummy",
+      "Gin",
+      "Freecell",
+      "Bridge",
+      "Euchre",
+      "Spades"
     ],
     "Casino" : [
-      ""
+      "",
+      "Betting",
+      "Slots"
     ],
     "Racing" : [
-      ""
+      "",
+      "Arcade Racing",
+      "Simulation Racing",
+      "Horse",
+      "Dog",
+      "Betting"
     ],
     "Sports" : [
-      ""
+      "",
+      "Swimming",
+      "Basketball",
+      "Soccer",
+      "Football",
+      "Cricket"
     ]
   }
 }
