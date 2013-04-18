@@ -71,7 +71,7 @@
           "yandex" : "Utilities",
           "samsung" : "Utilities",
           "appland" : "Business / Tools",
-          "slideme" : "Tools & Utilities / Other"
+          "slideme" : "Productivity / Calculator"
         }
     },
     "Calendars" : {
@@ -93,7 +93,7 @@
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
           "appland" : "Kids / Books",
-          "slideme" : "Publications"
+          "slideme" : "Publications / Other"
         }
     },
     "City Info" : {
@@ -244,6 +244,15 @@
           "samsung" : "Social Networking",
           "appland" : "Social & Messaging / Misc",
           "slideme" : "Communication / SMS"
+        },
+        "Phone" : {
+          "google" : "Communication",
+          "amazon" : "Communication",
+          "opera" : "Communication",
+          "yandex" : "Communication",
+          "samsung" : "Social Networking",
+          "appland" : "Social & Messaging / Misc",
+          "slideme" : "Communication / Phone"
         },
         "Other" : {
           "google" : "Communication",
@@ -460,7 +469,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
           "appland" : "Entertainment / Movies",
-          "slideme" : "Entertainment / Other"
+          "slideme" : "Entertainment / Film"
         },
         "Fun tools" : {
           "google" : "Entertainment",
@@ -563,7 +572,7 @@
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
           "appland" : "Books & Magazines / Misc",
-          "slideme" : "Publications"
+          "slideme" : "Publications / Other"
         }
     },
     "Health" : {
@@ -752,6 +761,17 @@
           "samsung" : "Kids / Edutainment",
           "appland" : "Kids / Misc",
           "slideme" : "Education / Early Childhood"
+        }
+    },
+    "Libraries & Demo" : {
+        "" : {
+          "google" : "Libraries & Demo",
+          "amazon" : "Utilities / Other",
+          "opera" : "Utilities",
+          "yandex" : "Utilities",
+          "samsung" : "Utilities",
+          "appland" : "Lifestyle / Misc",
+          "slideme" : "Tools & Utilities"
         }
     },
     "Lifestyle" : {
@@ -1082,7 +1102,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "Books & Magazines / Music",
-          "slideme" : "Publications"
+          "slideme" : "Publications / Other"
         }
     },
     "Notes" : {
@@ -1138,6 +1158,15 @@
           "samsung" : "Photo",
           "appland" : "Lifestyle / Photography",
           "slideme" : "Photography"
+        },
+        "Other" : {
+          "google" : "Photography",
+          "amazon" : "Photography",
+          "opera" : "Multimedia",
+          "yandex" : "Multimedia",
+          "samsung" : "Photo",
+          "appland" : "Lifestyle / Photography",
+          "slideme" : "Photography / Other"
         },
         "Camera" : {
           "google" : "Photography",
@@ -1196,6 +1225,42 @@
           "samsung" : "Productivity",
           "appland" : "Business / Productivity",
           "slideme" : "Productivity"
+        },
+        "Other" : {
+          "google" : "Productivity",
+          "amazon" : "Productivity",
+          "opera" : "Organizers",
+          "yandex" : "Organizers",
+          "samsung" : "Productivity",
+          "appland" : "Business / Productivity",
+          "slideme" : "Productivity / Other"
+        },
+        "Telephony" : {
+          "google" : "Productivity",
+          "amazon" : "Productivity",
+          "opera" : "Organizers",
+          "yandex" : "Organizers",
+          "samsung" : "Productivity",
+          "appland" : "Business / Productivity",
+          "slideme" : "Productivity / Telephony"
+        },
+        "Android OS" : {
+          "google" : "Productivity",
+          "amazon" : "Productivity",
+          "opera" : "Organizers",
+          "yandex" : "Organizers",
+          "samsung" : "Productivity",
+          "appland" : "Business / Productivity",
+          "slideme" : "Productivity / Android OS"
+        },
+        "Management" : {
+          "google" : "Productivity",
+          "amazon" : "Productivity",
+          "opera" : "Organizers",
+          "yandex" : "Organizers",
+          "samsung" : "Productivity",
+          "appland" : "Business / Productivity",
+          "slideme" : "Productivity / Management"
         }
     },
     "Publications" : {
@@ -1239,7 +1304,7 @@
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
           "appland" : "Books & Magazines / Misc",
-          "slideme" : "Publications"
+          "slideme" : "Publications / Other"
         }
     },
     "Religion" : {
@@ -1537,7 +1602,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Sports",
           "appland" : "Sport / Cricket",
-          "slideme" : "Sports" 
+          "slideme" : "Sports / Other" 
         },
         "Disabled" : {
           "google" : "Sports",
@@ -1715,7 +1780,7 @@
     },
     "Utilities" : {
         "" : {
-          "google" : "Libraries & Demo",
+          "google" : "Tools",
           "amazon" : "Utilities / Other",
           "opera" : "Utilities",
           "yandex" : "Utilities",
@@ -1724,16 +1789,16 @@
           "slideme" : "Tools & Utilities"
         },
         "Developer" : {
-          "google" : "Libraries & Demo",
+          "google" : "Tools",
           "amazon" : "Utilities / Other",
           "opera" : "Utilities",
           "yandex" : "Utilities",
           "samsung" : "Utilities",
           "appland" : "Lifestyle / Misc",
-          "slideme" : "Tools & Utilities / Developer вЂ“ Programmer"
+          "slideme" : "Tools & Utilities / Developer/Programmer"
         },
         "Other" : {
-          "google" : "Libraries & Demo",
+          "google" : "Tools",
           "amazon" : "Utilities / Other",
           "opera" : "Utilities",
           "yandex" : "Utilities",
@@ -1741,8 +1806,17 @@
           "appland" : "Lifestyle / Misc",
           "slideme" : "Tools & Utilities / Other"
         },
+        "Antivirus" : {
+          "google" : "Tools",
+          "amazon" : "Utilities / Other",
+          "opera" : "Utilities",
+          "yandex" : "Utilities",
+          "samsung" : "Utilities",
+          "appland" : "Lifestyle / Misc",
+          "slideme" : "Tools & Utilities / Security / Antivirus"
+        },
         "Security" : {
-          "google" : "Libraries & Demo",
+          "google" : "Tools",
           "amazon" : "Utilities / Other",
           "opera" : "Utilities",
           "yandex" : "Utilities",
@@ -1807,6 +1881,60 @@
         "samsung" : "Game / Puzzle",
         "appland" : "Gaming / Puzzle",
         "slideme" : "Fun & Games / Puzzle"
+      },
+      "Sudoku" : {
+        "google" : "Brain & Puzzle",
+        "amazon" : "Games / Puzzles & Trivia",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Puzzle",
+        "appland" : "Gaming / Puzzle",
+        "slideme" : "Fun & Games / Puzzle / Sudoku"
+      },
+      "Words" : {
+        "google" : "Brain & Puzzle",
+        "amazon" : "Games / Puzzles & Trivia",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Puzzle",
+        "appland" : "Gaming / Puzzle",
+        "slideme" : "Fun & Games / Puzzle / Words"
+      },
+      "Pictures" : {
+        "google" : "Brain & Puzzle",
+        "amazon" : "Games / Puzzles & Trivia",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Puzzle",
+        "appland" : "Gaming / Puzzle",
+        "slideme" : "Fun & Games / Puzzle / Pictures"
+      },
+      "Sokoban" : {
+        "google" : "Brain & Puzzle",
+        "amazon" : "Games / Puzzles & Trivia",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Puzzle",
+        "appland" : "Gaming / Puzzle",
+        "slideme" : "Fun & Games / Puzzle / Sokoban"
+      },
+      "Jigsaw" : {
+        "google" : "Brain & Puzzle",
+        "amazon" : "Games / Puzzles & Trivia",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Puzzle",
+        "appland" : "Gaming / Puzzle",
+        "slideme" : "Fun & Games / Puzzle / Jigsaw"
+      },
+      "Physics" : {
+        "google" : "Brain & Puzzle",
+        "amazon" : "Games / Puzzles & Trivia",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Puzzle",
+        "appland" : "Gaming / Puzzle",
+        "slideme" : "Fun & Games / Puzzle / Physics"
       }
     },
 
@@ -1855,6 +1983,33 @@
         "samsung" : "Game / Others",
         "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Casual"
+      },
+      "Social Gaming" : {
+        "google" : "Casual",
+        "amazon" : "Games / Casual",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Casual / Social Gaming"
+      },
+      "Physics-Based" : {
+        "google" : "Casual",
+        "amazon" : "Games / Casual",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Casual / Physics-Based"
+      },
+      "Other" : {
+        "google" : "Casual",
+        "amazon" : "Games / Casual",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Casual / Other"
       }
     },
 
@@ -1867,6 +2022,51 @@
         "samsung" : "Game / Others",
         "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Educational"
+      },
+      "Kids" : {
+        "google" : "Casual",
+        "amazon" : "Games / Educational",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Educational / Kids"
+      },
+      "Grammar" : {
+        "google" : "Casual",
+        "amazon" : "Games / Educational",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Educational / Grammar"
+      },
+      "Science" : {
+        "google" : "Casual",
+        "amazon" : "Games / Educational",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Educational / Science"
+      },
+      "Geography" : {
+        "google" : "Casual",
+        "amazon" : "Games / Educational",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Educational / Geography"
+      },
+      "Arithmetic" : {
+        "google" : "Casual",
+        "amazon" : "Games / Educational",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Educational / Arithmetic"
       }
     },
 
@@ -1891,6 +2091,24 @@
         "samsung" : "Game / Others",
         "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Multiplayer"
+      },
+      "Social Gaming" : {
+        "google" : "Casual",
+        "amazon" : "Games / Multiplayer",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Multiplayer / Social Gaming"
+      },
+      "Online Roleplaying" : {
+        "google" : "Casual",
+        "amazon" : "Games / Multiplayer",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Multiplayer / Online Roleplaying"
       }
     },
 
@@ -1903,6 +2121,42 @@
         "samsung" : "Game / Music",
         "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Music"
+      },
+      "Rhythm" : {
+        "google" : "Casual",
+        "amazon" : "Games / Music",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Music",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Music / Rhythm"
+      },
+      "Karaoke" : {
+        "google" : "Casual",
+        "amazon" : "Games / Music",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Music",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Music / Karaoke"
+      },
+      "Simulation" : {
+        "google" : "Casual",
+        "amazon" : "Games / Music",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Music",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Music / Simulation"
+      },
+      "Party" : {
+        "google" : "Casual",
+        "amazon" : "Games / Music",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Music",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Music / Party"
       }
     },
 
@@ -1915,6 +2169,69 @@
         "samsung" : "Game / Arcade",
         "appland" : "Gaming / Arcade",
         "slideme" : "Fun & Games / Arcade"
+      },
+      "Shooter" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Board",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Arcade",
+        "appland" : "Gaming / Arcade",
+        "slideme" : "Fun & Games / Arcade / Shooter"
+      },
+      "Rail Shooter" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Board",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Arcade",
+        "appland" : "Gaming / Arcade",
+        "slideme" : "Fun & Games / Arcade / Rail Shooter"
+      },
+      "Third Person Shooter" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Board",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Arcade",
+        "appland" : "Gaming / Arcade",
+        "slideme" : "Fun & Games / Arcade / Third Person Shooter"
+      },
+      "Racing" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Board",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Arcade",
+        "appland" : "Gaming / Arcade",
+        "slideme" : "Fun & Games / Arcade / Racing"
+      },
+      "Flight" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Board",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Arcade",
+        "appland" : "Gaming / Arcade",
+        "slideme" : "Fun & Games / Arcade / Flight"
+      },
+      "Fighting" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Board",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Arcade",
+        "appland" : "Gaming / Arcade",
+        "slideme" : "Fun & Games / Arcade / Fighting"
+      },
+      "Hack-And-Slash" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Board",
+        "opera" : "Games",
+        "yandex" : "Arcade",
+        "samsung" : "Game / Arcade",
+        "appland" : "Gaming / Arcade",
+        "slideme" : "Fun & Games / Arcade / Hack-And-Slash"
       }
     },
 
@@ -1939,6 +2256,60 @@
         "samsung" : "Game / Action",
         "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Action"
+      },
+      "Platformer" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Action",
+        "opera" : "Games / Action",
+        "yandex" : "Action",
+        "samsung" : "Game / Action",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Action / Platformer"
+      },
+      "Thriller" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Action",
+        "opera" : "Games / Action",
+        "yandex" : "Action",
+        "samsung" : "Game / Action",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Action / Thriller"
+      },
+      "Shooter" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Action",
+        "opera" : "Games / Action",
+        "yandex" : "Action",
+        "samsung" : "Game / Action",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Action / Shooter"
+      },
+      "Rail Shooter" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Action",
+        "opera" : "Games / Action",
+        "yandex" : "Action",
+        "samsung" : "Game / Action",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Action / Rail Shooter"
+      },
+      "Third-Person Shooter" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Action",
+        "opera" : "Games / Action",
+        "yandex" : "Action",
+        "samsung" : "Game / Action",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Action / Third-Person Shooter"
+      },
+      "Hack-And-Slash" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Action",
+        "opera" : "Games / Action",
+        "yandex" : "Action",
+        "samsung" : "Game / Action",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Action / Hack-And-Slash"
       }
     },
 
@@ -1951,6 +2322,24 @@
         "samsung" : "Game / Adventure",
         "appland" : "Gaming / Adventure",
         "slideme" : "Fun & Games / Adventure"
+      },
+      "Third Person Shooter" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Adventure",
+        "opera" : "Games / Action",
+        "yandex" : "Action",
+        "samsung" : "Game / Adventure",
+        "appland" : "Gaming / Adventure",
+        "slideme" : "Fun & Games / Adventure / Third Person Shooter"
+      },
+      "Roleplaying" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Adventure",
+        "opera" : "Games / Action",
+        "yandex" : "Action",
+        "samsung" : "Game / Adventure",
+        "appland" : "Gaming / Adventure",
+        "slideme" : "Fun & Games / Adventure / Roleplaying"
       }
     },
 
@@ -1963,6 +2352,33 @@
         "samsung" : "Game / Role Playing",
         "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Role Playing"
+      },
+      "Mmorpg" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Role Playing",
+        "opera" : "Games / Strategy",
+        "yandex" : "Strategy",
+        "samsung" : "Game / Role Playing",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Role Playing / Mmorpg"
+      },
+      "Action Rpg" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Role Playing",
+        "opera" : "Games / Strategy",
+        "yandex" : "Strategy",
+        "samsung" : "Game / Role Playing",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Role Playing / Action Rpg"
+      },
+      "Social Rpg" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Role Playing",
+        "opera" : "Games / Strategy",
+        "yandex" : "Strategy",
+        "samsung" : "Game / Role Playing",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Role Playing / Social Rpg"
       }
     },
 
@@ -1975,6 +2391,42 @@
         "samsung" : "Game / Strategy",
         "appland" : "Gaming / Strategy",
         "slideme" : "Fun & Games / Strategy"
+      },
+      "Realtime Strategy" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Strategy",
+        "opera" : "Games / Strategy",
+        "yandex" : "Strategy",
+        "samsung" : "Game / Strategy",
+        "appland" : "Gaming / Strategy",
+        "slideme" : "Fun & Games / Strategy / Realtime Strategy"
+      },
+      "Tower Defense" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Strategy",
+        "opera" : "Games / Strategy",
+        "yandex" : "Strategy",
+        "samsung" : "Game / Strategy",
+        "appland" : "Gaming / Strategy",
+        "slideme" : "Fun & Games / Strategy / Tower Defense"
+      },
+      "Moba" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Strategy",
+        "opera" : "Games / Strategy",
+        "yandex" : "Strategy",
+        "samsung" : "Game / Strategy",
+        "appland" : "Gaming / Strategy",
+        "slideme" : "Fun & Games / Strategy / Moba"
+      },
+      "Simulation" : {
+        "google" : "Arcade & Action",
+        "amazon" : "Games / Strategy",
+        "opera" : "Games / Strategy",
+        "yandex" : "Strategy",
+        "samsung" : "Game / Strategy",
+        "appland" : "Gaming / Strategy",
+        "slideme" : "Fun & Games / Strategy / Simulation"
       }
     },
 
@@ -1987,6 +2439,96 @@
         "samsung" : "Game / Card/Casino",
         "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Cards & Casino"
+      },
+      "Poker" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Cards",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Poker"
+      },
+      "Blackjack" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Cards",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Blackjack"
+      },
+      "Solitaire" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Cards",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Solitaire"
+      },
+      "Hearts" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Cards",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Hearts"
+      },
+      "Rummy" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Cards",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Rummy"
+      },
+      "Gin" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Cards",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Gin"
+      },
+      "Freecell" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Cards",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Freecell"
+      },
+      "Bridge" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Cards",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Bridge"
+      },
+      "Euchre" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Cards",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Euchre"
+      },
+      "Spades" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Cards",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Spades"
       }
     },
 
@@ -1999,6 +2541,24 @@
         "samsung" : "Game / Card/Casino",
         "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Cards & Casino"
+      },
+      "Betting" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Casino",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Betting"
+      },
+      "Slots" : {
+        "google" : "Cards & Casino",
+        "amazon" : "Games / Casino",
+        "opera" : "Games / Cards",
+        "yandex" : "Cards",
+        "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Cards & Casino / Slots"
       }
     },
 
@@ -2011,30 +2571,51 @@
         "samsung" : "Game / Sports",
         "appland" : "Gaming / Racing",
         "slideme" : "Fun & Games / Racing"
-      }
-    },
-
-    "Football" : {
-      "" : {
-        "google" : "Sports Games",
-        "amazon" : "Games / Sports",
+      },
+      "Arcade Racing" : {
+        "google" : "Racing",
+        "amazon" : "Games / Racing",
         "opera" : "Games / Sports",
         "yandex" : "Sports",
         "samsung" : "Game / Sports",
-        "appland" : "Gaming / Football",
-        "slideme" : "Fun & Games / Sports"
-      }
-    },
-
-    "Cricket" : {
-      "" : {
-        "google" : "Sports Games",
-        "amazon" : "Games / Sports",
+        "appland" : "Gaming / Racing",
+        "slideme" : "Fun & Games / Racing / Arcade Racing"
+      },
+      "Simulation Racing" : {
+        "google" : "Racing",
+        "amazon" : "Games / Racing",
         "opera" : "Games / Sports",
         "yandex" : "Sports",
         "samsung" : "Game / Sports",
-        "appland" : "Gaming / Cricket",
-        "slideme" : "Fun & Games / Sports"
+        "appland" : "Gaming / Racing",
+        "slideme" : "Fun & Games / Racing / Simulation Racing"
+      },
+      "Horse" : {
+        "google" : "Racing",
+        "amazon" : "Games / Racing",
+        "opera" : "Games / Sports",
+        "yandex" : "Sports",
+        "samsung" : "Game / Sports",
+        "appland" : "Gaming / Racing",
+        "slideme" : "Fun & Games / Racing / Horse"
+      },
+      "Dog" : {
+        "google" : "Racing",
+        "amazon" : "Games / Racing",
+        "opera" : "Games / Sports",
+        "yandex" : "Sports",
+        "samsung" : "Game / Sports",
+        "appland" : "Gaming / Racing",
+        "slideme" : "Fun & Games / Racing / Dog"
+      },
+      "Betting" : {
+        "google" : "Racing",
+        "amazon" : "Games / Racing",
+        "opera" : "Games / Sports",
+        "yandex" : "Sports",
+        "samsung" : "Game / Sports",
+        "appland" : "Gaming / Racing",
+        "slideme" : "Fun & Games / Racing / Betting"
       }
     },
 
@@ -2047,6 +2628,51 @@
         "samsung" : "Game / Sports",
         "appland" : "Gaming / Sport",
         "slideme" : "Fun & Games / Sports"
+      },
+      "Football" : {
+        "google" : "Sports Games",
+        "amazon" : "Games / Sports",
+        "opera" : "Games / Sports",
+        "yandex" : "Sports",
+        "samsung" : "Game / Sports",
+        "appland" : "Gaming / Football",
+        "slideme" : "Fun & Games / Sports / Football"
+      },
+      "Cricket" : {
+        "google" : "Sports Games",
+        "amazon" : "Games / Sports",
+        "opera" : "Games / Sports",
+        "yandex" : "Sports",
+        "samsung" : "Game / Sports",
+        "appland" : "Gaming / Cricket",
+        "slideme" : "Fun & Games / Sports / Cricket"
+      },
+      "Swimming" : {
+        "google" : "Sports Games",
+        "amazon" : "Games / Sports",
+        "opera" : "Games / Sports",
+        "yandex" : "Sports",
+        "samsung" : "Game / Sports",
+        "appland" : "Gaming / Sport",
+        "slideme" : "Fun & Games / Sports / Swimming"
+      },
+      "Basketball" : {
+        "google" : "Sports Games",
+        "amazon" : "Games / Sports",
+        "opera" : "Games / Sports",
+        "yandex" : "Sports",
+        "samsung" : "Game / Sports",
+        "appland" : "Gaming / Sport",
+        "slideme" : "Fun & Games / Sports / Basketball"
+      },
+      "Soccer" : {
+        "google" : "Sports Games",
+        "amazon" : "Games / Sports",
+        "opera" : "Games / Sports",
+        "yandex" : "Sports",
+        "samsung" : "Game / Sports",
+        "appland" : "Gaming / Sport",
+        "slideme" : "Fun & Games / Sports / Soccer"
       }
     }
   }

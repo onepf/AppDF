@@ -46,6 +46,7 @@
       "E-mail",
       "Instant Messaging",
       "SMS",
+      "Phone",
       "Other"
     ],
     "Cooking" : [
@@ -123,6 +124,9 @@
       "Science",
       "Writing"
     ],
+    "Libraries & Demo" : [
+      ""
+    ],
     "Lifestyle" : [
       "",
       "Advice",
@@ -188,6 +192,7 @@
     ],
     "Photography" : [
       "",
+      "Other",
       "Camera",
       "Editing",
       "Gallery",
@@ -197,7 +202,11 @@
       ""
     ],
     "Productivity" : [
-      ""
+      "",
+      "Other",
+      "Telephony",
+      "Android OS",
+      "Management"
     ],
     "Publications" : [
       ""
@@ -295,7 +304,13 @@
   },
   "game" : {
     "Puzzles" : [
-      ""
+      "",
+      "Sudoku",
+      "Words",
+      "Pictures",
+      "Sokoban",
+      "Jigsaw",
+      "Physics"
     ],
     "Trivia" : [
       ""
@@ -307,55 +322,107 @@
       ""
     ],
     "Casual" : [
-      ""
+      "",
+      "Social Gaming",
+      "Physics-Based",
+      "Other"
     ],
     "Educational" : [
-      ""
+      "",
+      "Kids",
+      "Grammar",
+      "Science",
+      "Geography",
+      "Arithmetic"
     ],
     "Kids" : [
       ""
     ],
     "Multiplayer" : [
-      ""
+      "",
+      "Social Gaming",
+      "Online Roleplaying"
     ],
     "Music" : [
-      ""
+      "",
+      "Rhythm",
+      "Karaoke",
+      "Simulation",
+      "Party"
     ],
     "Arcade" : [
-      ""
+      "",
+      "Shooter",
+      "Rail Shooter",
+      "Third Person Shooter",
+      "Racing",
+      "Flight",
+      "Fighting",
+      "Hack-And-Slash"
     ],
     "Board" : [
       ""
     ],
     "Action" : [
-      ""
+      "",
+      "Platformer",
+      "Thriller",
+      "Shooter",
+      "Rail Shooter",
+      "Third-Person Shooter",
+      "Hack-And-Slash"
     ],
     "Adventure" : [
-      ""
+      "",
+      "Third Person Shooter",
+      "Roleplaying"
     ],
     "Role Playing" : [
-      ""
+      "",
+      "Mmorpg",
+      "Action Rpg",
+      "Social Rpg"
     ],
     "Strategy" : [
-      ""
+      "",
+      "Realtime Strategy",
+      "Tower Defense",
+      "Moba",
+      "Simulation"
     ],
     "Cards" : [
-      ""
+      "",
+      "Poker",
+      "Blackjack",
+      "Solitaire",
+      "Hearts",
+      "Rummy",
+      "Gin",
+      "Freecell",
+      "Bridge",
+      "Euchre",
+      "Spades"
     ],
     "Casino" : [
-      ""
+      "",
+      "Betting",
+      "Slots"
     ],
     "Racing" : [
-      ""
-    ],
-    "Football" : [
-      ""
-    ],
-    "Cricket" : [
-      ""
+      "",
+      "Arcade Racing",
+      "Simulation Racing",
+      "Horse",
+      "Dog",
+      "Betting"
     ],
     "Sports" : [
-      ""
+      "",
+      "Swimming",
+      "Basketball",
+      "Soccer",
+      "Football",
+      "Cricket"
     ]
   }
 }
