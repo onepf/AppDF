@@ -19,7 +19,7 @@
           "yandex" : "Utilities",
           "samsung" : "Utilities",
           "appland" : "Lifestyle / Misc",
-          "slideme" : "Tools & Utilities / Other"
+          "slideme" : "Productivity / Android OS"
         }
     },
     "Books" : {
@@ -52,7 +52,7 @@
           "yandex" : "Business & Finance",
           "samsung" : "Business",
           "appland" : "Business / Tools",
-          "slideme" : "Finance / Other"
+          "slideme" : "Finance / Corporate"
         },
         "Reference" : {
           "google" : "Business",
@@ -71,7 +71,7 @@
           "yandex" : "Utilities",
           "samsung" : "Utilities",
           "appland" : "Business / Tools",
-          "slideme" : "Tools & Utilities / Other"
+          "slideme" : "Productivity / Calculator"
         }
     },
     "Calendars" : {
@@ -82,18 +82,18 @@
           "yandex" : "Organizers",
           "samsung" : "Utilities",
           "appland" : "Business / Tools",
-          "slideme" : "Tools & Utilities / Other"
+          "slideme" : "Productivity / Management"
         }
     },
     "Children's Books" : {
         "" : {
           "google" : "Books & Reference",
-          "amazon" : "Books & Comic / ChildrenвЂ™s Books",
+          "amazon" : "Books & Comic / Children's Books",
           "opera" : "eBooks",
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
           "appland" : "Kids / Books",
-          "slideme" : "Publications"
+          "slideme" : "Publications / E-books / Children"
         }
     },
     "City Info" : {
@@ -285,7 +285,7 @@
           "yandex" : "Health",
           "samsung" : "Health/Fitness",
           "appland" : "Health & Fitness / Misc",
-          "slideme" : "Health & Fitness / Calorie calculators"
+          "slideme" : "Health & Fitness / Fitness"
         }
     },
     "Education" : {
@@ -563,7 +563,7 @@
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
           "appland" : "Books & Magazines / Misc",
-          "slideme" : "Publications"
+          "slideme" : "Publications / Comics / Graphic Noven"
         }
     },
     "Health" : {
@@ -1082,7 +1082,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "Books & Magazines / Music",
-          "slideme" : "Publications"
+          "slideme" : "News & Weather / News"
         }
     },
     "Notes" : {
@@ -1093,7 +1093,7 @@
           "yandex" : "Organizers",
           "samsung" : "Utilities",
           "appland" : "Business / Tools",
-          "slideme" : "Tools & Utilities / Other"
+          "slideme" : "Productivity / Management"
         }
     },
     "Novelty" : {
@@ -1878,7 +1878,7 @@
         "yandex" : "Arcade",
         "samsung" : "Game / Others",
         "appland" : "Gaming / Misc",
-        "slideme" : "Fun & Games / Other"
+        "slideme" : "Fun & Games / Educational / Kids"
       }
     },
 
