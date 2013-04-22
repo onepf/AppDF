@@ -25,8 +25,31 @@
 var appdfEditor = (function() {
     var MAXIMUM_APK_FILE_SIZE = 50000000;
     var importingFlag = false;
+    var firstApkFileData = {};
+    var globalUnigueCounter = 0;
+
+    function getUniqueId() {
+        globalUnigueCounter += 1;
+        return globalUnigueCounter;
+    };
     
-    function fillCountries($e, selectedCountry) {
+    function addValidationToElements($elements) {
+        $elements.jqBootstrapValidation({
+            preventSubmit: true,
+            submitError: function($form, event, errors) {
+                // Here I do nothing, but you could do something like display 
+                // the error messages to the user, log, etc.
+            },
+            submitSuccess: function($form, event) {
+                event.preventDefault();
+            },
+            filter: function() {
+                return $(this).is(":visible");
+            }
+        });
+    };
+
+   function fillCountries($e, selectedCountry) {
         $e.append($("<option />").val("").text("Select Country"));
 
         for (countryCode in dataCountries) {
@@ -843,6 +866,11 @@ var appdfEditor = (function() {
             return buildAppdDFFile(event);
         });
 
+        $("#build-unfinished-appdf-file").click(function(event) {
+            startBuildingFile(true);
+            return false;
+        });
+
         $("#price-free-trialversion").change(function() {
             var trialVersion = $("#price-free-trialversion").attr("checked");
             if (trialVersion === "checked") {
@@ -1290,23 +1318,6 @@ var appdfEditor = (function() {
     
     function checkInit() {
         var errors = [];
-        
-        /*if (!isCanvasSupported) {
-            errors.push(errorMessages.canvasNotSupported);
-            console.log("Canvas is not supported");
-        } else {
-            console.log("Canvas is supported");
-            errors.push("Canvas is supported");
-        };
-        
-        if (window.FileReader) {
-            errors.push("FileReader is supported");
-            console.log("FileReader is supported");
-        } else {
-            errors.push(errorMessages.fileReaderNotSupported);
-            console.log("FileReader is not supported");
-        };*/
-        
         var supportFlag = false;
         var regExp = /^[0-9]+/;
         var version = regExp.exec($.browser.version)[0];
@@ -1324,12 +1335,16 @@ var appdfEditor = (function() {
         
         if (!supportFlag) {
             $("#not-yet-supported-modal").modal("show");
+        } else {
+            $("#not-yet-supported-modal").remove();
         };
     };
 
 
     function buildAppdDFFile(event) {
         //First we check if there is already built file, if so we return to a standard download handler
+        $("#build-unfinished-appdf-file").hide();
+        
         var downloadLink = document.getElementById("build-appdf-file");
         if (downloadLink.download) {
             return true;
@@ -1342,37 +1357,46 @@ var appdfEditor = (function() {
         
         //If not we start the checking and building process.
         //First we collect all the errors and check if there are any
-        collectBuildErrors(function(){
-            //If there are not errors, we hide the error block and show the progress block
-            $("#form-errors").hide();
-            buildProgress(0, 100);
-            $("#build-appdf-progressbarr").css("width", "0%");
-            $("#build-appdf-status").show();
-            
-            generateAppDFFile(function(url) {
-                var fileName;
-                if (firstApkFileData) {
-                    fileName = firstApkFileData["package"] + ".appdf";
-                } else {
-                    fileName = "untitled.appdf";
-                };
-                var clickEvent = document.createEvent("MouseEvents");
-                downloadLink.href = url;
-                downloadLink.download = fileName;
-                clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-                downloadLink.dispatchEvent(clickEvent);
-                $("#build-appdf-status").hide();
-                setTimeout(clearBuildedAppdfFile, 1);
-            });
-        }, showValidationErrors);
+        collectBuildErrors(startBuildingFile, showValidationErrors);
 
         return false;
     };
 
+    function startBuildingFile(errorsExist){
+        //If there are not errors, we hide the error block and show the progress block
+        if (!errorsExist) {
+            $("#form-errors").hide();
+        } else {
+            $("#build-appdf-file").attr("init", true);
+        };
+        
+        buildProgress(0, 100);
+        $("#build-appdf-progressbarr").css("width", "0%");
+        $("#build-appdf-status").show();
+        
+        generateAppDFFile(function(url) {
+            var fileName;
+            if (firstApkFileData) {
+                fileName = firstApkFileData["package"] + ".appdf";
+            } else {
+                fileName = "untitled.appdf";
+            };
+            var clickEvent = document.createEvent("MouseEvents");
+            var downloadLink = document.getElementById("build-appdf-file");
+            downloadLink.href = url;
+            downloadLink.download = fileName;
+            clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+            downloadLink.dispatchEvent(clickEvent);
+            $("#build-appdf-status").hide();
+            setTimeout(clearBuildedAppdfFile, 1);
+        });
+    };
+        
     function collectBuildErrors(onsuccess, onerror) {
         var totalErrorCheckCount = 0; //TOTAL check for error blocks;
         var currentErrorCheckCount = 0;
         var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
+        var validErrors = true;
         
         var errorArray = [];
         checkProgress(0, 100);
@@ -1381,12 +1405,17 @@ var appdfEditor = (function() {
         for (field in errors) {
             if (name!=undefined) {
                 var fieldErrors = errors[field];
+                var errorValidation = false;
                 for (var i=0; i<fieldErrors.length; i++) {
                     var error = fieldErrors[i];
+                    if (error.indexOf("required") != -1) {
+                        errorValidation = true;
+                    };
                     if (errorArray.indexOf(error) === -1) {
                         errorArray.push(error);
                     };
                 };
+                validErrors = validErrors && errorValidation;
             };
         };
         
@@ -1394,10 +1423,10 @@ var appdfEditor = (function() {
             checkProgress(currentErrorCheckCount + 0, totalErrorCheckCount);
             if (currentErrorCheckCount === totalErrorCheckCount) {
                 if (errorArray.length) {
-                    onerror(errorArray, totalErrorCheckCount);
+                    onerror(errorArray, validErrors, onsuccess);
                 } else {
                     $("#build-appdf-status").hide();
-                    onsuccess();
+                    onsuccess(false);
                 };
             };
             currentErrorCheckCount++;
@@ -1405,6 +1434,12 @@ var appdfEditor = (function() {
         
         function checkErrorMessage(data) {
             if (!data.valid) {
+                if (validErrors && data.message.indexOf("required") != -1) {
+                    validErrors = true;
+                } else {
+                    validErrors = false;
+                };
+                
                 if (errorArray.indexOf(data.message) === -1) {
                     errorArray.push(data.message);
                 };
@@ -1558,6 +1593,8 @@ var appdfEditor = (function() {
         console.log("generateAppDFFile");
         
         var descriptionXML = appdfXMLSaver.generateDescriptionFileXML(); 
+        console.log(descriptionXML);
+        console.log(firstApkFileData);
         localStorage.setItem(firstApkFileData.package, descriptionXML);
 
         var URL = window.webkitURL || window.mozURL || window.URL;
@@ -1650,8 +1687,8 @@ var appdfEditor = (function() {
         });
     };
     
-    function showValidationErrors(errors) {
-        var $validateList = $("input[required],input[data-data-validation-callback],select[required],select[data-data-validation-callback],textarea[required],textarea[data-data-validation-callback]");
+    function showValidationErrors(errors, validError) {
+        var $validateList = $("input[required],input[data-validation-callback-callback],select[required],select[data-validation-callback-callback],textarea[required],textarea[data-validation-callback-callback]");
         //$("input,select,textarea");
         var currentErrorCount = 0;
         totalErrorCount = $validateList.size();
@@ -1664,13 +1701,13 @@ var appdfEditor = (function() {
                 validateProgress(currentErrorCount, totalErrorCount);
                 $this.trigger("submit.validation").trigger("validationLostFocus.validation");
                 if (currentErrorCount===totalErrorCount) {
-                    showBuildErrors(errors);
+                    showBuildErrors(errors, validError);
                 };
             }, 5);
         });
     };
     
-    function showBuildErrors(errors) {
+    function showBuildErrors(errors, validError) {
         $("#build-appdf-status").hide();
         validateProgress(0, 100);
         $("#build-appdf-file").removeAttr("init");
@@ -1686,6 +1723,10 @@ var appdfEditor = (function() {
             $list.append($("<li>"+errors[i]+"</li>"))
         };
         
+        if (validError) {
+            //show button to build unfinished file
+            $("#build-unfinished-appdf-file").show();
+        };
     };   
     
     function clearBuildedAppdfFile() {
@@ -1697,7 +1738,7 @@ var appdfEditor = (function() {
     function reinitEditor() {
         //remove all warnings
         //$("input,select,textarea").trigger("clear.validation");
-        $("input[required],input[data-data-validation-callback],select[required],select[data-data-validation-callback],textarea[required],textarea[data-data-validation-callback]").trigger("clear.validation");
+        $("input[required],input[data-validation-callback-callback],select[required],select[data-validation-callback-callback],textarea[required],textarea[data-validation-callback-callback]").trigger("clear.validation");
         
         //remove erros messages
         $("#form-errors").hide();
@@ -1823,6 +1864,8 @@ var appdfEditor = (function() {
     };
 
     return {
+        firstApkFileData : firstApkFileData,
+        
         init : init,
         reinitEditor : reinitEditor,
         addApkFile : addApkFile,
@@ -1851,6 +1894,8 @@ var appdfEditor = (function() {
 		validationCallbackStoreSpecify : validationCallbackStoreSpecify,
         validationCallbackYoutube : validationCallbackYoutube,
         validationCallbackVideoFile : validationCallbackVideoFile,
+        addValidationToElements : addValidationToElements,
+        getUniqueId : getUniqueId,
         parseProgress : parseProgress
     };
 })();
@@ -1858,5 +1903,11 @@ var appdfEditor = (function() {
 $(function() {
     $("#no-js-modal").remove();
     appdfEditor.init();
+});
+
+$(document).ready(function() {
+    zip.workerScriptsPath = "js/zip/";
+
+    appdfEditor.addValidationToElements($("input,textarea,select"));
 });
 
