@@ -17,8 +17,9 @@ package org.onepf.appdf.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Represents root application model info
@@ -134,8 +135,7 @@ public class Application implements ModelElement {
     private Availability avalability;
     private ApkFilesInfo filesInfo;
     private Requirments requirments;
-    private EnumMap<SupportedStore, StoreSpecificInfo> storeInfo = new EnumMap<>(
-            SupportedStore.class);
+    private HashMap<String, StoreSpecificInfo> storeInfo = new HashMap<>();
     private String testingInstructions;
     private Consent consent;
     private PriceInfo priceInfo;
@@ -253,17 +253,16 @@ public class Application implements ModelElement {
     }
 
     public void addStoreSpecificInfo(StoreSpecificInfo info) {
-        SupportedStore store = info.getStore();
-        storeInfo.put(store, info);
+        storeInfo.put(info.getStoreName(), info);
     }
 
     public StoreSpecificInfo getStoreSpecificInfo(SupportedStore store) {
         return storeInfo.get(store);
     }
 
-    public Application project(SupportedStore store) {
-        if (storeInfo.containsKey(store)) {
-            StoreSpecificInfo info = storeInfo.get(store);
+    public Application project(String storeName) {
+        if (storeInfo.containsKey(storeName)) {
+            StoreSpecificInfo info = storeInfo.get(storeName);
             if (info.getApplication() == null) {
                 return this;
             } else {
@@ -271,6 +270,10 @@ public class Application implements ModelElement {
             }
         }
         return this;
+    }
+    
+    public Set<String> getSupportedStores(){
+        return storeInfo.keySet();
     }
 
 }

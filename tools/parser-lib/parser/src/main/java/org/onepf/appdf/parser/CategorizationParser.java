@@ -18,6 +18,7 @@ package org.onepf.appdf.parser;
 import org.onepf.appdf.model.Application;
 import org.onepf.appdf.model.Categorisation;
 import org.onepf.appdf.model.Categorisation.ApplicationType;
+import org.onepf.appdf.model.Category;
 import org.onepf.appdf.model.CategoryCatalog;
 import org.onepf.appdf.parser.util.XmlUtil;
 import org.w3c.dom.Node;
@@ -36,8 +37,9 @@ public class CategorizationParser implements NodeParser<Application> {
 			throw new ParsingException("Minimum categorization child count is 2");
 		}
 		Categorisation categorisation = new Categorisation();
-		for ( Node n : childElements ){
-			String nodeName = n.getNodeName();
+        String pendingSubCategoryId = null;
+        for ( Node n : childElements ){
+            String nodeName = n.getNodeName();
 			if ( TYPE_TAG.equals(nodeName)){
 				String typeValue = n.getTextContent().trim();
 				ApplicationType appType = Categorisation.ApplicationType.valueOf(typeValue.toUpperCase());
@@ -50,13 +52,25 @@ public class CategorizationParser implements NodeParser<Application> {
                 if ( categorisation.getCategory() != null  ){
 					throw new ParsingException("Multiple categories set");
 				}
-				categorisation.setCategory(CategoryCatalog.INSTANCE.getById(category));
-			}else if ( SUBCATEGORY_TAG.equals(nodeName)){
-				String subcategory = n.getTextContent();
+                Category byId = CategoryCatalog.INSTANCE.getById(category);
+                categorisation.setCategory(byId);
+                if( pendingSubCategoryId != null ){
+                    Category subCategory = byId.getSubCategory(pendingSubCategoryId);
+                    categorisation.setSubCategory(subCategory);
+                    pendingSubCategoryId = null;
+                }
+
+            }else if ( SUBCATEGORY_TAG.equals(nodeName)){
+				String subcategoryCode = n.getTextContent();
 				if ( categorisation.getSubCategory() != null ){
 					throw new ParsingException("Subcategory allready set");
 				}
-//				categorisation.setSubCategory(subcategory);
+				if(categorisation.getCategory() != null){
+                    Category subCategory = categorisation.getCategory().getSubCategory(subcategoryCode);
+                    categorisation.setSubCategory(subCategory);
+                }else{
+                    pendingSubCategoryId = subcategoryCode;
+                }
 			}else{
 				throw new ParsingException("Unexpected tag in categorization:" + nodeName);
 			}

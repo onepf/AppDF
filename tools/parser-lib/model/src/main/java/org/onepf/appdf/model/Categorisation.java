@@ -24,9 +24,9 @@ public class Categorisation {
 	
 	private ApplicationType applicationType;
 	
-	private String category;
+	private Category category;
 	
-	private String subCategory;
+	private Category subCategory;
 
 	public ApplicationType getApplicationType() {
 		return applicationType;
@@ -36,19 +36,19 @@ public class Categorisation {
 		this.applicationType = applicationType;
 	}
 
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 
-	public String getSubCategory() {
+	public Category getSubCategory() {
 		return subCategory;
 	}
 
-	public void setSubCategory(String subCategory) {
+	public void setSubCategory(Category subCategory) {
 		this.subCategory = subCategory;
 	}
 	

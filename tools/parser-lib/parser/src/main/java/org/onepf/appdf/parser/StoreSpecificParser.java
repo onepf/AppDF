@@ -15,12 +15,22 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
+import org.onepf.appdf.model.AdditionalStore;
 import org.onepf.appdf.model.Application;
+import org.w3c.dom.Node;
 
 public class StoreSpecificParser extends BaseParser<Application, StoreSpecificTag>{
+    
+    private static class ExtraStoresHandler extends ExtraNodesHandler<Application>{
+        @Override
+        public void handle(String tagName, String enclosingTagName,
+                Application elem, Node n) {         
+            StoreSpecificTag.defaultHandle(n, elem, new AdditionalStore(tagName));
+        }
+    }
 
     public StoreSpecificParser() {
-        super(StoreSpecificTag.class,"store-specific");
+        super(StoreSpecificTag.class,"store-specific",new ExtraStoresHandler());
     }
 
 }

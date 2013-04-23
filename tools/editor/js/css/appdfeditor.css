@@ -1,3 +1,11 @@
+input.hide {
+    display: block !important;
+    visibility: hidden;
+    position: absolute;
+    left: -10000px;
+    top: 0px;
+}
+
 div.input-container {
 	padding-top: 5px;
 }

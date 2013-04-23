@@ -94,9 +94,6 @@ var appdfXMLLoader = (function() {
         };
         
         
-        //clear screenshots
-        $container.find(".screenshots-group a.image-input-remove").click();
-        
         if (data["images"]) {
             var appIcons = data["images"]["app-icon"];
             if (appIcons && appIcons.length) {
@@ -178,7 +175,7 @@ var appdfXMLLoader = (function() {
         };  
     };
     
-    function loadDescriptionXML(xml, onend, onerror, onprogress) {
+    function loadDescriptionXML(xml, onend, onerror, onprogress, checkRes) {
         appdfParser.parseDescriptionXML(xml, function(data) {
             //Calculate total number of actions to do
             var totalProgressItems = 29;
@@ -204,6 +201,8 @@ var appdfXMLLoader = (function() {
                 onprogress(passedProgressItems, totalProgressItems);
             };
 
+            appdfEditor.reinitEditor();
+            
             console.log("Description.XML is parsed");
             console.log(data);
 
@@ -221,7 +220,6 @@ var appdfXMLLoader = (function() {
             progress();//3
 
             //Set control values in the description/texts
-            appdfLocalization.removeAllLocalizations();
             progress(3);//6
             for (languageCode in data["description"]) {
                 if (languageCode!="default") {
@@ -235,9 +233,6 @@ var appdfXMLLoader = (function() {
             appdfLocalization.selectLanguage("default");
 
             //Price
-            $("input[id^=price-localprice-]").closest(".control-group").remove();
-            $("#price-free-fullversion").val("");
-            $("#price-baseprice").val("0");
             progress();//20*LanguageCount + 7
             if (data["price"]["free"]) {
                 $('a[href="#tab-price-free"]').tab('show');
@@ -284,7 +279,7 @@ var appdfXMLLoader = (function() {
 
             //Content description / content descriptors
             var dcd = data["content-description"]["content-descriptors"];
-            var scd = "#contentdescription-contentdescriptors-"
+            var scd = "#contentdescription-contentdescriptors-";
             $(scd + "cartoonviolence").val(dcd["cartoon-violence"]);
             $(scd + "realisticviolence").val(dcd["realistic-violence"]);
             $(scd + "badlanguage").val(dcd["bad-language"]);
@@ -299,7 +294,7 @@ var appdfXMLLoader = (function() {
 
             //Content description / included-activities
             var dia = data["content-description"]["included-activities"];
-            var sia = "#contentdescription-includedactivities-"
+            var sia = "#contentdescription-includedactivities-";
             $(sia + "inappbilling").attr("checked", dia["in-app-billing"]);
             $(sia + "gambling").attr("checked", dia["gambling"]);
             $(sia + "advertising").attr("checked", dia["advertising"]);
@@ -324,8 +319,6 @@ var appdfXMLLoader = (function() {
             
             
             //Store specify
-            //remove current store specify list
-            $('#section-store-specific .store-specific').remove();
             //add loaded store specify data
             var storeSpecificData = data["store-specific"];
             if (storeSpecificData) {
@@ -342,12 +335,6 @@ var appdfXMLLoader = (function() {
                 {tag:"gms", id:"#requirements-features-gms"},
                 {tag:"online", id:"#requirements-features-online"}
             ];
-            //clear supported languages list
-            $("#requirements-supportedlanguages-type-default").click();
-            appdfEditor.fillSupportedLanguages();
-            //clear supported resolutions list
-            $("#requirements-supportedresolutions-type-default").click();
-            appdfEditor.fillScreenResolutions();
             progress();//20*LanguageCount + 23
             
             var dataRequirements = data["requirements"];
@@ -365,7 +352,8 @@ var appdfXMLLoader = (function() {
                 
                 if (dataRequirements["supported-languages"] && dataRequirements["supported-languages"]["language"]) {
                     $("#requirements-supportedlanguages-type-custom").click();
-                    var $el, supportedLanguages = dataRequirements["supported-languages"]["language"];
+                    var $el;
+                    var supportedLanguages = dataRequirements["supported-languages"]["language"];
                     
                     for (var i in supportedLanguages) {
                         $el = $('#requirements-supportedlanguages input[id="requirements-supportedlanguages-' + supportedLanguages[i] + '"]');
@@ -377,7 +365,8 @@ var appdfXMLLoader = (function() {
                 progress();//20*LanguageCount + 25
                 
                 if (dataRequirements["supported-devices"] && dataRequirements["supported-devices"]["exclude"]) {
-                    var unsupportedDevices = dataRequirements["supported-devices"]["exclude"], $el = $(".requirements-supporteddevices-addmore");
+                    var $el = $(".requirements-supporteddevices-addmore");
+                    var unsupportedDevices = dataRequirements["supported-devices"]["exclude"];
                     
                     for (var i in unsupportedDevices) {
                         appdfEditor.addMoreUnsupportedDevices($el, unsupportedDevices[i]);
@@ -405,7 +394,6 @@ var appdfXMLLoader = (function() {
             };
             
             //apk files section
-            $("#section-apk-files .control-group-remove").click();
             if (data["apk-files"] && data["apk-files"]["apk-file"]) {
                 var apkFileList = data["apk-files"]["apk-file"];
                 var $apkFileInput;
@@ -476,7 +464,7 @@ var appdfXMLLoader = (function() {
             progress();//20*LanguageCount + 29
             
             onend();
-        }, onerror, onprogress);
+        }, onerror, onprogress, checkRes);
     };
 
     function loadAppdfFile(file, onend, onerror, loadprogress, parseprogress) {
@@ -516,7 +504,10 @@ var appdfXMLLoader = (function() {
                 function getNextFileData() {
                     getFileData(appdfEntries[filesLoaded], function() {
                         if (++filesLoaded === totalFilesCount) {
-                            loadComplete(onend, onerror, parseprogress);
+                            loadprogress(100, 100);
+                            setTimeout(function() {
+                                loadComplete(onend, onerror, parseprogress);
+                            });
                         } else {
                             getNextFileData();
                         };
@@ -573,7 +564,7 @@ var appdfXMLLoader = (function() {
         appdfXMLLoader.appdfFiles = appdfFiles;
         
         //parse descriptionXML after all files loaded
-        loadDescriptionXML(contents, onend, onerror, onprogress);
+        loadDescriptionXML(contents, onend, onerror, onprogress, true);
     };
     
     return {

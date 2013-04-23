@@ -49,7 +49,7 @@ public enum CategoryCatalog {
                 continue;
             }
             Element elem = (Element) item;
-            String typeLabel = ((Element) elem.getParentNode()).getAttribute("type");
+            String typeLabel = ((Element) elem.getParentNode()).getAttribute("code");
             Categorisation.ApplicationType type = typeLabel.equals("application") ? Categorisation.ApplicationType.APPLICATION :
                     Categorisation.ApplicationType.GAME;
             String code = elem.getAttribute("code");

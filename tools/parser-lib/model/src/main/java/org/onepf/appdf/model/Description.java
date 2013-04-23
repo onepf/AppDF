@@ -17,11 +17,10 @@ package org.onepf.appdf.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class Description implements ModelElement {
 	
-	private Locale language;
+	private Language language;
 	
 	private boolean isDefault;
 	
@@ -47,11 +46,11 @@ public class Description implements ModelElement {
 	
 	private List<String> videos;
 
-	public Locale getLanguage() {
+	public Language getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(Locale language) {
+	public void setLanguage(Language language) {
 		this.language = language;
 	}
 

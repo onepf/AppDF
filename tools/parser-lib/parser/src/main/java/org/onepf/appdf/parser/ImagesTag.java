@@ -15,28 +15,35 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import java.util.List;
-
 import org.onepf.appdf.model.AppIcon;
 import org.onepf.appdf.model.Description;
 import org.onepf.appdf.model.ImagesDescription;
 import org.onepf.appdf.parser.util.XmlUtil;
 import org.w3c.dom.Node;
 
+import java.util.List;
+
 public enum ImagesTag implements NodeParser<Description> {
     APP_ICON {
 
-        private static final String SIZE_ATTR = "size";
+        private static final String WIDTH_ATTR = "width";
+        private static final String HEIGHT_ATTR = "height";
 
         @Override
         public void parse(Node node, Description element) {
-            Node sizeAttr = node.getAttributes().getNamedItem(SIZE_ATTR);
-            if (sizeAttr == null) {
-                throw new ParsingException("Required attribute size is missing");
+            Node widthAttr = node.getAttributes().getNamedItem(WIDTH_ATTR);
+            Node heightAttr = node.getAttributes().getNamedItem(HEIGHT_ATTR);
+            if (widthAttr == null) {
+                throw new ParsingException("Required attribute width is missing");
             }
-            int size = Integer.parseInt(sizeAttr.getTextContent());
+            if ( heightAttr == null ){
+                throw new ParsingException("Required attribute height is missing");
+            }
+            int width = Integer.parseInt(widthAttr.getTextContent());
+            int height = Integer.parseInt(heightAttr.getTextContent());
             AppIcon appIcon = new AppIcon();
-            appIcon.setSize(size);
+            appIcon.setHeight(height);
+            appIcon.setWidth(width);
             appIcon.setName(node.getTextContent());
             ImagesDescription imagesDescription = getImagesDescription(element);
             imagesDescription.addAppIcon(appIcon);
@@ -69,7 +76,8 @@ public enum ImagesTag implements NodeParser<Description> {
                 if ( !SCREENSHOT_TAG.equalsIgnoreCase(screenshotNode.getNodeName())){
                     throw new ParsingException("Unexpected tag inside screenshots:" + screenshotNode.getNodeName());
                 }
-                imagesDescription.addScreenshot(node.getTextContent());
+                String content = screenshotNode.getTextContent();
+                imagesDescription.addScreenshot(content);
             }
             
         }

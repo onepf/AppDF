@@ -17,6 +17,10 @@
  ******************************************************************************/
 
 var errorMessages = {
+    canvasNotSupported: "Your browser doesn`t support canvas",
+    fileReaderNotSupported: "Your browser doesn`t support FileReader",
+    imageHasTransparency: "Image has transparency",
+    
     privacypolicyNotBothFilled: "Privacy policy should include both link and full text",
     eulaNotBothFilled: "End user license agreement should include both link and full text",
     smallPromoWrongSize: "Small promotion image size must be 180x120",
@@ -27,12 +31,17 @@ var errorMessages = {
     deviceAlreadyExist: "This device already exists",
     appIconRequired: "Application icon is required",
     appIconSize512: "Application icon size must be 512x512",
+    appIconSizeSquare: "Application icon must be square",
     APKfileRequired: "APK file is required",
     APKfileSize50M: "APK file size cannot exceed 50M",
     APKfileWrongPackageName: "APK file package names do not match",
     storeExist: "This store already exists",
     applicationNameWrong: "Application store name could contain only small English letters without special symbols",
     wrongYoutubeFormat: "Wrong YouTube video ID format. Do not place entire URL but just ID (which is usualy written in URL after 'v='",
+    wrongCategorization: "Wrong categorisation",
+    wrongCustomerPhone: "Wrong customer support phone number format. Only digits, brackets, spaces and dashes are allowed. Must be in international format like +1 (555) 123-45-67.",
+    wrongCustomerEmail: "Wrong customer support email format. Must be a valid email address.",
+    wrongCustomerWebPage: "Wrong customer support webpage format. Must be a valid URL.",
     
     //incode html in appdfeditor2.js
     keywordRequired: "Keyword cannot be empty. Remove keyword input if you do not need it.",
@@ -44,8 +53,6 @@ var errorMessages = {
     notZipFile: "AppDF not in zip format",
     descriptionIsNotXML: "description.xml file is not XML",
     descriptionNotFound: "description.xml file is not found inside AppDF container",
-    wrongLanguageCode: "Wrong language code",
-    wrongCountryCode: "Wrong country code",
     
     //validation in parser
     requiredGoogleAndroidTagMiss: "Required <google-android-content-guidelines> tag in <consent> section is missing",
@@ -68,5 +75,17 @@ var errorMessages = {
     
     fnFeatureMaxError: function(languageCode) { return "More than five features (for language \"" + languageCode + "\")"; },
     fnFeatureMinError: function(languageCode) { return "There must be at least three features (for language \"" + languageCode + "\")"; },
-    fnRecentChangesError: function(languageCode) { return "Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")"; }
+    fnRecentChangesError: function(languageCode) { return "Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")"; },
+    
+    fnUnableAccessImageData: function(error) { return "Unable to access image data: " + error; },
+    
+    fnWrongTag: function(wrongTag, where) { return "Wrong tag " + wrongTag + " in " + where + " found"; },
+    fnWrongCountryCode: function(countryCode) { return "Wrong country code " + countryCode; },
+    fnWrongLanguageCode: function(languageCode) { return "Wrong language code " + languageCode; },
+    
+    fnUnknownType: function(type) { return "Unknown type \"" + type + "\""; },
+    fnUnknownCategory: function(category, type) { return "Unknown category \"" + category + "\" for type \"" + type + "\""; },
+    fnUnknownSubCategory: function(subcategory, category) { return "Unknown subcategory \"" + subcategory + "\" for category \"" + category + "\""; },
+    fnStoreSpecificXMLError: function(storeSpecificID) { return "Store Specific '" + storeSpecificID + "' - invalid XML"; },
+    fnDublikateRes: function(resName) { return "Dublicated resource " + resName; }
 };

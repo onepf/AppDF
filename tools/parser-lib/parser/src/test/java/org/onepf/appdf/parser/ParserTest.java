@@ -15,7 +15,8 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
@@ -24,16 +25,15 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Collections;
-import java.util.List;
 import java.util.zip.ZipException;
 
-import org.junit.Before;
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.onepf.appdf.model.Application;
 import org.onepf.appdf.model.Availability;
 import org.onepf.appdf.model.Categorisation;
 import org.onepf.appdf.model.Categorisation.ApplicationType;
+import org.onepf.appdf.model.CategoryCatalog;
 import org.onepf.appdf.model.Consent;
 import org.onepf.appdf.model.ContentDescription;
 import org.onepf.appdf.model.ContentDescriptor;
@@ -44,15 +44,7 @@ import org.onepf.appdf.model.ContentDescriptor.DescriptorValue;
  * @author nivanov
  *
  */
-public class ParserTest {
-	
-	private File resource;
-	
-	@Before
-	public void initResource() throws URISyntaxException{
-		URL resourceUrl = ParserTest.class.getResource("yshell.appdf");
-		resource = new File(resourceUrl.toURI());
-	}
+public class ParserTest extends AbstractResourceTest {
 	
 	@Test
 	public void parserCreation() throws IOException{
@@ -79,33 +71,22 @@ public class ParserTest {
         assertThat(application.getPackageName(), is("ru.yandex.shell"));
 	}
 
-    public Application parseApplication() throws IOException, ParsingException {
-        AppdfFileParser parser = new AppdfFileParser(resource);
-        Application application = parser.parse().getApplication();
-        return application;
-    }
-	@Test
+    @Test
 	public void checkCategorisation() throws ParsingException, IOException{
 	    Application app = parseApplication();
 	    Categorisation categorisation = app.getCategorisation();
         assertThat(categorisation,notNullValue());
         assertThat(categorisation.getApplicationType(),is(ApplicationType.APPLICATION));
-	    assertThat(categorisation.getCategory(),is("personalization"));
-	    assertThat(categorisation.getSubCategory(),is("personalization"));
+	    assertThat(categorisation.getCategory(),is(CoreMatchers.notNullValue()));
+        assertThat(categorisation.getCategory(),is(CategoryCatalog.INSTANCE.getById("Personalization")));
+        assertThat(categorisation.getSubCategory(),is(nullValue()));
 	}
 	@Test
 	public void checkAvalibility() throws ParsingException,IOException{
 	    Application app = parseApplication();
 	    Availability avalability = app.getAvalability();
-	    assertThat(avalability.getIncludeContries().size(),is(1));
-	    assertThat(avalability.getIncludeContries().get(0),is("ru"));
-	    List<String> excludeContries = avalability.getExcludeContries();
-        assertThat(excludeContries.size(),is(4));
-	    Collections.sort(excludeContries);
-	    assertThat(excludeContries.get(0),is("by"));
-	    assertThat(excludeContries.get(1),is("kz"));
-	    assertThat(excludeContries.get(2),is("tr"));
-	    assertThat(excludeContries.get(3),is("ua"));
+	    assertThat(avalability.getIncludeContries().size(),is(5));
+	    assertThat(avalability.getIncludeContries().get(0),is("RU"));
 	}
 	@Test
 	public void checkConsent() throws ParsingException,IOException{
@@ -128,5 +109,9 @@ public class ParserTest {
 	    assertThat(contentDescriptor.getDiscrimination(),is(DescriptorValue.NO));
 	    assertThat(contentDescriptor.getDrugs(),is(DescriptorValue.NO));
 	}
+
+    protected String getResourceName() {
+        return "yashell.appdf";
+    }
 	
 }

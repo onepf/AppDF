@@ -24,7 +24,7 @@ public class Requirments implements ModelElement{
 	
 	private List<String> supportedLanguages;
 	
-	private List<String> excludedDevices;
+	private List<String> supportedDevices;
 	
 	private List<Resolution> includedResolutions;
 	
@@ -53,12 +53,12 @@ public class Requirments implements ModelElement{
 		this.supportedLanguages = supportedLanguages;
 	}
 
-	public List<String> getExcludedDevices() {
-		return excludedDevices;
+	public List<String> getSupportedDevices() {
+		return supportedDevices;
 	}
 
-	public void setExcludedDevices(List<String> excludedDevices) {
-		this.excludedDevices = excludedDevices;
+	public void setSupportedDevices(List<String> supportedDevices) {
+		this.supportedDevices = supportedDevices;
 	}
 
 	public List<Resolution> getIncludedResolutions() {
@@ -86,11 +86,11 @@ public class Requirments implements ModelElement{
         
     }
 
-    public void addExcludedDevices(List<String> excludedDevices) {
-        if ( this.excludedDevices == null ){
-            this.excludedDevices = new ArrayList<String>(excludedDevices);
+    public void addSupportedDevices(List<String> excludedDevices) {
+        if ( this.supportedDevices == null ){
+            this.supportedDevices = new ArrayList<String>(excludedDevices);
         }else{
-            this.excludedDevices.addAll(excludedDevices);
+            this.supportedDevices.addAll(excludedDevices);
         }
         
     }

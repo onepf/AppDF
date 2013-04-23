@@ -15,13 +15,13 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import java.util.List;
-
 import org.onepf.appdf.model.Description;
 import org.onepf.appdf.model.FullDescription;
 import org.onepf.appdf.parser.util.XmlUtil;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+
+import java.util.List;
 
 public enum TextsTags implements NodeParser<Description> {
     TITLE {
@@ -64,7 +64,7 @@ public enum TextsTags implements NodeParser<Description> {
             String[] attrName = new String[] { HTML, FEATURELESS };
             for (int i = 0; i < attrName.length; i++) {
                 Node attribute = attributes.getNamedItem(attrName[i]);
-                attrValue[i] = attribute == null ? false : "yes"
+                attrValue[i] = attribute != null && "yes"
                         .equalsIgnoreCase(attribute.getTextContent());
             }
             fd.setWithHtml(attrValue[0]);

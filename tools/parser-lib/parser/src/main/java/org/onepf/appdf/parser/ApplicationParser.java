@@ -15,42 +15,78 @@
  ******************************************************************************/
 package org.onepf.appdf.parser;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.onepf.appdf.model.Application;
 import org.onepf.appdf.parser.util.XmlUtil;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 public class ApplicationParser {
 
 	private static final String APPLICATION_TAG = "application";
+    private Schema schema;
 
-	/**
+    static class XMLErrorHandler implements ErrorHandler {
+
+        @Override
+        public void warning(SAXParseException exception) throws SAXException {
+
+        }
+
+        @Override
+        public void error(SAXParseException exception) throws SAXException {
+        }
+
+        @Override
+        public void fatalError(SAXParseException exception) throws SAXException {
+            throw new ParsingException(exception);
+        }
+    }
+
+    public ApplicationParser() {
+        try {
+            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            URL schemeUrl = getClass().getResource("scheme.xsd");
+            schema = factory.newSchema(schemeUrl);
+        } catch (SAXException e) {
+            throw new ParsingException(e);
+        }
+    }
+
+    /**
 	 * Parses provided zip entry as main desription.xml and fills provided application model with values
 	 * @param zipFile 
 	 * @param elem
 	 * @param application
-	 * @throws A RuntimeException as a wrapper around any inner exception this is mostly a temporary solution
+	 * @throws RuntimeException as a wrapper around any inner exception this is mostly a temporary solution
 	 */
 	public  void parse(ZipFile zipFile, ZipEntry elem, Application application) {
 		InputStream inputStream = null;
 		try {			
 			inputStream = zipFile.getInputStream(elem);
 			DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
-			Document document = documentBuilder.parse(inputStream);
-			parseApplicationDocument(document, application, zipFile);
+            builderFactory.setSchema(schema);
+            DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
+            documentBuilder.setErrorHandler(new XMLErrorHandler());
+            Document document = documentBuilder.parse(inputStream);
+			parseApplicationDocument(document, application);
 		} catch (Exception e) {//TODO:Proper exception handling
-			throw new RuntimeException(e);
+			throw new ParsingException(e);
 		}finally {
 			if ( inputStream != null ){
 				try {
@@ -62,8 +98,21 @@ public class ApplicationParser {
 		}
 		
 	}
+
+    public  void parse(InputStream is, Application application) {
+        try {
+            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            builderFactory.setSchema(schema);
+            DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
+            documentBuilder.setErrorHandler(new XMLErrorHandler());
+            Document document = documentBuilder.parse(is);
+            parseApplicationDocument(document, application);
+        } catch (Exception e) {//TODO:Proper exception handling
+            throw new ParsingException(e);
+        }
+    }
 	
-	private void parseApplicationDocument(Document document,Application application,ZipFile zipFile){
+	private void parseApplicationDocument(Document document,Application application){
 		NodeList applicationNodeList = document.getElementsByTagName(APPLICATION_TAG);
 		if ( applicationNodeList.getLength() == 0 ){
 			throw new ParsingException("Application elem is missing");

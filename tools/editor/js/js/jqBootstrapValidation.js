@@ -46,7 +46,9 @@
         $(uniqueForms).bind("submit", function (e) {
           var $form = $(this);
           var warningsFound = 0;
-          var $inputs = $form.find("input,textarea,select").not("[type=submit],[type=image]").filter(settings.options.filter);
+          //var $inputs = $form.find("input,textarea,select").not("[type=submit],[type=image]").filter(settings.options.filter);
+          var $inputs = $form.find("input[required],input[data-data-validation-callback],select[required],select[data-data-validation-callback],textarea[required],textarea[data-data-validation-callback]").not("[type=submit],[type=image]").filter(settings.options.filter);
+          
           $inputs.trigger("submit.validation").trigger("validationLostFocus.validation");
 
           $inputs.each(function (i, el) {
@@ -437,6 +439,13 @@
               return $this.triggerHandler("change.validation", {submitting: true});
             }
           );
+          
+          //clear warnings
+          $this.bind("clear.validation", function() {
+            $controlGroup.removeClass("warning error success");
+            $helpBlock.html($helpBlock.data("original-contents"));
+          });
+          
           $this.bind(
             [
               "keyup",
@@ -452,8 +461,10 @@
               var value = getValue($this);
 
               var errorsFound = [];
-
-              $controlGroup.find("input,textarea,select").each(function (i, el) {
+              
+              //in case of perfomance
+              //$controlGroup.find("input,textarea,select").each(function (i, el) {
+              $controlGroup.find("input[required],input[data-data-validation-callback],select[required],select[data-data-validation-callback],textarea[required],textarea[data-data-validation-callback]").each(function (i, el) {
                 var oldCount = errorsFound.length;
                 $.each($(el).triggerHandler("validation.validation", params) || [], function (j, message) {
                   errorsFound.push(message);
@@ -540,7 +551,11 @@
           var $el = $(el);
           var name = $el.attr("name");
           var errors = $el.triggerHandler("validation.validation", {includeEmpty: true});
-          errorMessages[name] = $.extend(true, errors, errorMessages[name]);
+          //errorMessages[name] = $.extend(true, errors, errorMessages[name]);
+          if (typeof errorMessages[name]==="undefined") {
+            errorMessages[name] = [];
+          };
+          errorMessages[name].append(errors);
         });
 
         $.each(errorMessages, function (i, el) {

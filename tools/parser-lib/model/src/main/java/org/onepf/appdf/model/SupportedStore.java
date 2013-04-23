@@ -23,5 +23,6 @@ public enum SupportedStore {
     OPERA,
     SAMSUNG,
     NOOK,
-    APPSLIB
+    APPSLIB,
+    EXTRA
 }

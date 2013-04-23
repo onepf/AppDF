@@ -48,7 +48,7 @@ var appdfLocalization = (function() {
         if (descriptionLangs.indexOf(languageCode)>=0) {
             return;
         };
-
+        
         var strHtmlHeader = '<li><a href="#localization-tab-' + languageCode + '" data-toggle="tab">' + languageName + '</a></li>';
 
         var $tabHeader = $("#description-tab-header");
@@ -63,6 +63,9 @@ var appdfLocalization = (function() {
         //Create new tab content container
         var strHtmlContent = '<div class="tab-pane" id="localization-tab-' + languageCode + '"></div>';
         $("#description-tab-content").append($(strHtmlContent));
+
+        //reset all warnings before cloning.
+        $("#description-tab-content").children("div#localization-tab-default").find("input,select,textarea").trigger("clear.validation");
 
         //Add copy of default langauge content to just created container 
         var strHtmlClone = $("#description-tab-content").children("div#localization-tab-default").html();

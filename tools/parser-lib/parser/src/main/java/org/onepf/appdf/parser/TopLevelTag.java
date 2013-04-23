@@ -127,6 +127,7 @@ public enum TopLevelTag implements NodeParser<Application> {
                 throws ParsingException {
             Requirments requirments = new Requirments();
             (new RequirmentsParser()).parse(node, requirments);
+            element.setRequirments(requirments);
         }
 
     },

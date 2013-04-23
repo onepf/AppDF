@@ -22,6 +22,23 @@
  */
 
  var appdfImages = (function() {
+    function resetFirstAppIcon() {
+        $(".app-icon-first").empty();
+        $imageGroup = $(' \
+        <div class="image-input-group"> \
+            <input type="file" id="description-images-appicon" class="hide ie_show appicon-input empty-image" \
+                name="description-images-appicon" \
+                accept="image/png" \
+                data-validation-callback-callback="appdfEditor.validationCallbackAppIconFirst" \
+                /> \
+            <img src="img/appicon_placeholder.png" id="description-images-appicon-img" width="128" height="128"> \
+            <p class="image-input-label">&nbsp;</p> \
+        </div> \
+        ');
+        $(".app-icon-first").append($imageGroup);
+        addValidationToElements($imageGroup.find("input"));
+    };
+    
 	function addMoreAppIcon(e) {
 		var $parent = $(e).closest(".controls").find(".image-group:first");
 		var $controlGroup = $(' \
@@ -231,6 +248,80 @@
         newImg.src = imgSrc; // this must be done AFTER setting onload
     };
     
+    function checkTransparency(imgSrc, oncheck) {
+        var start = false;
+        var context = null;
+        var c = document.createElement("canvas");
+        if (c.getContext) {
+            context = c.getContext("2d");
+            if (context.getImageData) {
+                start = true;
+            };
+        };
+        
+        var loadImage = new Image();
+        loadImage.style.position = "absolute";
+        loadImage.style.left = "-10000px";
+        loadImage.style.top = "-10000px";
+        document.body.appendChild(loadImage);
+        
+        loadImage.onload = function() {
+            var iWidth = this.offsetWidth;
+            var iHeight = this.offsetHeight;
+            
+            if (start) {
+                c.width = iWidth;
+                c.height = iHeight;
+                c.style.width = iWidth + "px";
+                c.style.height = iHeight + "px";
+                context.drawImage(this, 0, 0, iWidth, iHeight);
+                try {
+                    try {
+                        var imgDat = context.getImageData(0, 0, iWidth, iHeight);
+                    } catch (e) {
+                        netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+                        var imgDat = context.getImageData(0, 0, iWidth, iHeight);
+                    };
+                } catch (e) {
+                    oncheck(iWidth, iHeight, {
+                        checked: false,
+                        valid: true,
+                        message: errorMessages.canvasNotSupported
+                    });
+                    document.body.removeChild(loadImage);
+                    return;
+                };
+                
+                var imgData = imgDat.data;
+                for(var i=0, n=imgData.length; i<n; i+=4) {
+                    if (imgData[i+3]===0) {
+                        oncheck(iWidth, iHeight, {
+                            checked: true,
+                            valid: false,
+                            message: errorMessages.imageHasTransparency
+                        });
+                        document.body.removeChild(loadImage);
+                        return;
+                    };
+                };
+                
+                oncheck(iWidth, iHeight, {
+                    checked: true,
+                    valid: true,
+                    message: ""
+                });
+            } else {
+                oncheck(iWidth, iHeight, {
+                    checked: false,
+                    valid: true,
+                    message: errorMessages.canvasNotSupported
+                });
+            };
+            document.body.removeChild(loadImage);
+        };
+        loadImage.src = imgSrc;
+    };
+    
     function init() {
         $('body').on('click', '.image-input-moveup', onScreenshotImageInputMoveUp);
         $('body').on('click', '.image-input-movedown', onScreenshotImageInputMoveDown);
@@ -258,6 +349,7 @@
 
     return {
 		init : init,
+        resetFirstAppIcon : resetFirstAppIcon,
 		addMoreAppIcon : addMoreAppIcon,
 		addMoreScreenshots : addMoreScreenshots,
 		addScreenshotIndex: addScreenshotIndex,
@@ -266,7 +358,8 @@
         onAppIconImageInputChange : onAppIconImageInputChange,
         onScreenshotImageInputChange : onScreenshotImageInputChange,
         onImageInputChange : onImageInputChange,
-        getImgSize : getImgSize
+        getImgSize : getImgSize,
+        checkTransparency : checkTransparency
 	};
  })();
  

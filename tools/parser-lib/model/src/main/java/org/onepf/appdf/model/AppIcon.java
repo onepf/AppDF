@@ -17,16 +17,26 @@ package org.onepf.appdf.model;
 
 public class AppIcon {
 
-	private int size;
-	
-	private String name;
+	private int width;
 
-	public int getSize() {
-		return size;
+    private int height;
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    private String name;
+
+	public int getWidth() {
+		return width;
 	}
 
-	public void setSize(int size) {
-		this.size = size;
+	public void setWidth(int width) {
+		this.width = width;
 	}
 
 	public String getName() {

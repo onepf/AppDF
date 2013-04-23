@@ -41,7 +41,6 @@ Copyright (c) 2012 Yandex <www.yandex.com>
   <script type="text/javascript" src="data/device_models.js"></script>
   <script type="text/javascript" src="data/error_messages.js"></script>
   <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/holder.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
   <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>    
@@ -108,7 +107,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
       <div class="span9">
         <div class="hero-unit">
           <h1>AppDF Editor</h1>
-          <p>Uploading Android application to several appstores could be time consuming. AppDF format is designed to simplify this process. You describe your Android application once, create a simple AppDF file that includes description, APK file(s), screenshots, app icon, promo images, etc and just upload this AppDF file to all the stores that support AppDF uploading.</p>
+          <p>Uploading Android application to several appstores could be time consuming. AppDF format is designed to simplify this process. You describe your Android application once, create a simple AppDF file that includes description, APK file(s), screenshots, app icon, promo images, etc. and just upload this AppDF file to all the stores that support AppDF uploading.</p>
           <p>
             <button class="btn btn-primary show-import-description-xml">Import Description.xml</button>
             <button class="btn btn-primary load-appdf-file">Open AppDF File</button>
@@ -116,6 +115,44 @@ Copyright (c) 2012 Yandex <www.yandex.com>
         </div>
 
         <!--MODALS START-->
+        <div id="no-js-modal">
+            <div class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="no-js-modal-label" aria-hidden="false" style="display: block;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="no-js-modal-label">Javascript is disabled</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-error">
+                        <b>Site wouldn`t work correctly</b>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Ok</button>
+                </div>
+            </div>
+            <div class="modal-backdrop fade in"></div>
+        </div><!--no_js modal-->
+        
+        <div id="not-yet-supported-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="not-yet-supported-modal-label" aria-hidden="false" style="display: block;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="not-yet-supported-modal-label">Your browser isn't supported yet</h3>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-error">
+                    <b>Please select one of these:</b>
+                    <ul>
+                        <li>Mozilla Firefox ver.15+</li>
+                        <li>Chrome ver.19+</li>
+                        <li>Yandex Browser</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Ok</button>
+            </div>
+        </div><!--not supported browser modal-->
+
         <div id="requirements-store-add-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="requirements-store-add-modal-label" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -131,7 +168,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                       autocomplete="off" data-provide="typeahead" data-items="20" 
                       > 
                     </div> 
-                    <p class="help-block">You can add custom fields for a particular application store or rewrite any of the application description fields. XML format is described in the <a href="https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md">AppDF specification</a>.</p>
+                    <p class="help-block">You can add custom fields for a particular application store or rewrite any of the application description fields. XML format is described in the <a href="https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md" target="_blank">AppDF specification</a>.</p>
                   </div>
                 </div><!--control-group-->  
                 <div class="control-group">
@@ -143,7 +180,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                 </div><!--./control-group -->
             </div>
             <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Cansel</button>
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
                 <button class="btn btn-primary">Add store</button>
             </div>
         </div><!--Modal-->
@@ -276,7 +313,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                 <div class="controls">
                   <select id="categorization-category" name="categorization-category">
                   </select>
-                  <p class="help-block">Select primary category, if not sure check how this category will be mapped to application stores categories</p>
+                  <p class="help-block">Select primary category.If not sure, check how this category will be mapped to application stores categories</p>
                 </div>
               </div><!--control-group-->
            
@@ -286,7 +323,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                 <div class="controls">
                   <select id="categorization-subcategory">
                   </select>
-                  <p class="help-block">For this category you can also select a subcategory (can be empty), if not sure check how this subcategory will be mapped to application stores categories</p>
+                  <p class="help-block">For this category you can also select a subcategory (can be empty).If not sure, check how this subcategory will be mapped to application stores categories</p>
                 </div>
               </div><!--control-group-->
 
@@ -480,14 +517,14 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                       <!-- description/images/app-icon -->
                       <label class="control-label" for="description-images-appicon">Application icon <span class="required-mark">*</span></label>
                       <div class="controls">
-                        <div class="image-group">
+                        <div class="image-group app-icon-first">
                           <div class="image-input-group">
                             <input type="file" id="description-images-appicon" class="hide ie_show appicon-input empty-image" 
                               name="description-images-appicon" 
                               accept="image/png"
                               data-validation-callback-callback="appdfEditor.validationCallbackAppIconFirst"
                             />
-                            <img data-src="holder.js/128x128/text:Click to choose image" id="description-images-appicon-img" width="128" height="128">
+                            <img src="img/appicon_placeholder.png" id="description-images-appicon-img" width="128" height="128">
                             <p class="image-input-label">&nbsp;</p>
                           </div>
                         </div>
@@ -506,7 +543,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                               accept="image/png"
                               data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired"
                             />
-                            <img data-src="holder.js/132x220/text:Screenshot #1" width="132" height="220">
+                            <img src="img/screenshot_placeholder.png" width="132" height="220">
                             <p class="image-input-label">&nbsp;</p>
                           </div>
                           <div class="image-input-group">
@@ -515,7 +552,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                               accept="image/png"
                               data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired"
                             />
-                            <img data-src="holder.js/132x220/text:Screenshot #2" width="132" height="220">
+                            <img src="img/screenshot_placeholder.png" width="132" height="220">
                             <p class="image-input-label">&nbsp;</p>
                           </div>
                           <div class="image-input-group">
@@ -524,7 +561,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                               accept="image/png"
                               data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired"
                             />
-                            <img data-src="holder.js/132x220/text:Screenshot #3" width="132" height="220">
+                            <img src="img/screenshot_placeholder.png" width="132" height="220">
                             <p class="image-input-label">&nbsp;</p>
                           </div>
                           <div class="image-input-group">
@@ -533,7 +570,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                               accept="image/png"
                               data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired"
                             />
-                            <img data-src="holder.js/132x220/text:Screenshot #4" width="132" height="220">
+                            <img src="img/screenshot_placeholder.png" width="132" height="220">
                             <p class="image-input-label">&nbsp;</p>
                           </div>
                         </div>
@@ -726,12 +763,12 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                 <div class="controls">
                   <label class="checkbox">
                     <input type="checkbox" value="" id="consent-googleandroidcontentguidelines">
-                    This application meets <a href="http://play.google.com/about/developer-content-policy.html">Android Content Guidelines</a>
+                    This application meets <a href="http://play.google.com/about/developer-content-policy.html" target="_blank">Android Content Guidelines</a>
                   </label>              
 
                   <label class="checkbox">
                     <input type="checkbox" value="" id="consent-usexportlaws">
-                    I acknowledge that this application may be subject to United States export laws, regardless of my location or nationality. I agree that I have complied with all such laws, including any requirements for software with encryption functions. I hereby certify that my application is authorized for export from the United States under these laws. <a href="https://support.google.com/googleplay/android-developer/support/bin/answer.py?answer=113770">More...</a>                    
+                    I acknowledge that this application may be subject to United States export laws, regardless of my location or nationality. I agree that I have complied with all such laws, including any requirements for software with encryption functions. I hereby certify that my application is authorized for export from the United States under these laws. <a href="https://support.google.com/googleplay/android-developer/support/bin/answer.py?answer=113770" target="_blank">More...</a>                    
                   </label>              
 
                   <label class="checkbox">
@@ -741,12 +778,12 @@ Copyright (c) 2012 Yandex <www.yandex.com>
 
                   <label class="checkbox">
                     <input type="checkbox" value="" id="consent-slidemeagreement">
-                    I agree with the complete <a href="http://slideme.org/developers/dda">SlideME Developer/Publisher Distribution Agreement</a>
+                    I agree with the complete <a href="http://slideme.org/developers/dda" target="_blank">SlideME Developer/Publisher Distribution Agreement</a>
                   </label>    
 
                   <label class="checkbox">
                     <input type="checkbox" value="" id="consent-freefromthirdpartycopytightedcontent">
-                    You confirm that your application is free from third-party copyrighted picture, sounds, database or other types of information
+                    You confirm that your application is free from third-party copyrighted picture, sounds, database or other types of information.
                   </label>    
                 </div>
               </div><!--control-group-->
@@ -771,7 +808,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                     <option value="17">17</option>
                     <option value="18">18</option>
                   </select>
-                  <p class="help-block">Minimum age allowance according to the <a href="http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board">ESRB standard</a></p>
+                  <p class="help-block">Minimum age allowance according to the <a href="http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board" target="_blank">ESRB standard</a></p>
                 </div>
               </div><!--control-group-->
            
@@ -956,7 +993,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                       <th>Mark</th>
                     </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Pan_European_Game_Information">PEGI</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Pan_European_Game_Information" target="_blank">PEGI</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-pegi"> 
                                   <option value="">No certificate</option>
@@ -983,7 +1020,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             </td> 
                         </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board">ESRB</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board" target="_blank">ESRB</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-esrb"> 
                                   <option value="">No certificate</option>
@@ -1011,7 +1048,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             </td> 
                         </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Game_Rating_Board">GRB</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Game_Rating_Board" target="_blank">GRB</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-gbr"> 
                                   <option value="">No certificate</option>
@@ -1037,7 +1074,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             </td> 
                         </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Computer_Entertainment_Rating_Organization">CERO</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Computer_Entertainment_Rating_Organization" target="_blank">CERO</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-cero"> 
                                   <option value="">No certificate</option>
@@ -1064,7 +1101,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             </td> 
                         </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Department_of_Justice,_Rating,_Titles_and_Qualification">DEJUS</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Department_of_Justice,_Rating,_Titles_and_Qualification" target="_blank">DEJUS</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-dejus"> 
                                   <option value="">No certificate</option>
@@ -1102,7 +1139,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             </td> 
                         </tr>
                         <tr> 
-                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Freiwillige_Selbstkontrolle_der_Filmwirtschaft">FSK</a></td>
+                            <td><a class="contentdescription-ratingcertificates-type" href="http://en.wikipedia.org/wiki/Freiwillige_Selbstkontrolle_der_Filmwirtschaft" target="_blank">FSK</a></td>
                             <td> 
                                 <select class="input-large" id="contentdescription-ratingcertificates-rating-fsk"> 
                                   <option value="">No certificate</option>
@@ -1129,7 +1166,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             </td> 
                         </tr>
                     </table>
-                  <p class="help-block">If you have an industry recognized rating certificates for your game application please upload a scanned image of your document in PDF format. For DEJUS certificate you are also required to upload a certification mark like in <a href="http://img.samsungapps.com/seller/en_US/images/common/bg/mark.jpg">this example</a>.</p>
+                  <p class="help-block">If you have an industry recognized rating certificates for your game application please upload a scanned image of your document in PDF format. For DEJUS certificate you are also required to upload a certification mark like in <a href="http://img.samsungapps.com/seller/en_US/images/common/bg/mark.jpg" target="_blank">this example</a>.</p>
                 </div>
               </div><!--control-group-->
 
@@ -1176,7 +1213,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                         <tr>
                             <td>Since</td>
                             <td>
-                                <input class="availability-period-since" type="text" />
+                                <input class="availability-period-since" type="text" readonly="readonly" />
                             </td>
                             <td>
                                 <div class="btn clear-datepicker">Clear date</div>
@@ -1185,7 +1222,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                         <tr>
                             <td>Until</td>
                             <td>
-                                <input class="availability-period-until" type="text" />
+                                <input class="availability-period-until" type="text" readonly="readonly" />
                             </td>
                             <td>
                                 <div class="btn clear-datepicker">Clear date</div>
@@ -1254,7 +1291,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                     <input type="text" id="requirements-supporteddevices-input" data-validation-callback-callback="appdfEditor.validationCallbackRequirementDevice" autocomplete="off"> 
                     <button class="btn requirements-supporteddevices-addmore" type="button">Add</button>
                   </div> 
-                  <p class="help-block">Add unsupported device model names (aka <a href="http://developer.android.com/reference/android/os/Build.html#DEVICE">name of the industrial design</a>).</p>
+                  <p class="help-block">Add unsupported device model names (aka <a href="http://developer.android.com/reference/android/os/Build.html#DEVICE" target="_blank">name of the industrial design</a>).</p>
                 </div>
               </div><!--control-group-->           
 
@@ -1319,7 +1356,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                     <div class=""> 
                       <button class="btn storespecific-addmore" type="button">Add new store specific data</button>
                     </div> 
-                    <p class="help-block">You can add custom fields for a particular application store or rewrite any of the application description fields. XML format is described in the <a href="https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md">AppDF specification</a>.</p>
+                    <p class="help-block">You can add custom fields for a particular application store or rewrite any of the application description fields. XML format is described in the <a href="https://github.com/onepf/AppDF/blob/master/specification/appds_spec_1_0.md" target="_blank">AppDF specification</a>.</p>
                   </div>
                 </div><!--control-group-->           
               </div>
@@ -1349,8 +1386,6 @@ Copyright (c) 2012 Yandex <www.yandex.com>
     <footer>
       <p>&copy; <a href="http://www.onepf.org">One Platform Foundation</a> 2012-2013</p>
     </footer>
-
   </div><!--/.fluid-container-->
-
   </body>
 </html>

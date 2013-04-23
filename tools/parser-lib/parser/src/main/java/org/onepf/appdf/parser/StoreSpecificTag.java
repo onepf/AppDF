@@ -123,14 +123,14 @@ public enum StoreSpecificTag implements NodeParser<Application> {
     private static final String LICENSE_TYPE_TAG = "license-type";
     private static final String APPLICATION_TAG = "application";
 
-    protected void handleApplicationTag(Node n, StoreSpecificInfo info) {
+    protected static void handleApplicationTag(Node n, StoreSpecificInfo info) {
         ApplicationParser parser = new ApplicationParser();
         Application app = new Application();
         parser.parseApplicationNode(app, n);
         info.setApplication(app);
     }
 
-    protected void defaultHandle(Node node, Application element,
+    protected static void defaultHandle(Node node, Application element,
             StoreSpecificInfo info) {
         for (Node n : extractChildElements(node)) {
             String tag = n.getNodeName();

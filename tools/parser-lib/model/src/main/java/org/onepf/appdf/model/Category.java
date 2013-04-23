@@ -15,10 +15,7 @@
  ******************************************************************************/
 package org.onepf.appdf.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Category {
 
@@ -66,7 +63,7 @@ public class Category {
 
     private final String id;
 
-    private final List<Category> subcategories;
+    private final Map<String,Category> subcategories;
 
     private final Map<String, String> storesMapping;
 
@@ -90,8 +87,8 @@ public class Category {
         return id.hashCode();
     }
 
-    public List<Category> getSubcategories() {
-        return subcategories;
+    public Collection<Category> getSubcategories() {
+        return subcategories.values();
     }
 
     public Map<String, String> getStoresMapping() {
@@ -104,8 +101,26 @@ public class Category {
 
     private Category(String id, List<Category> subcategories, Categorisation.ApplicationType type, Map<String, String> storesMapping) {
         this.id = id;
-        this.subcategories = subcategories;
+        Map<String,Category> tmpMap = new HashMap<>();
+        for(Category sub : subcategories){
+            tmpMap.put(sub.getId(),sub);
+        }
+        this.subcategories = Collections.unmodifiableMap(tmpMap);
         this.type = type;
         this.storesMapping = storesMapping;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("Category");
+        sb.append("{id='").append(id).append('\'');
+        sb.append(", type=").append(type);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    public Category getSubCategory(String id){
+        return subcategories.get(id);
     }
 }
