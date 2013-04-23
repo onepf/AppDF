@@ -47,7 +47,7 @@
           var $form = $(this);
           var warningsFound = 0;
           //var $inputs = $form.find("input,textarea,select").not("[type=submit],[type=image]").filter(settings.options.filter);
-          var $inputs = $form.find("input[required],input[data-data-validation-callback],select[required],select[data-data-validation-callback],textarea[required],textarea[data-data-validation-callback]").not("[type=submit],[type=image]").filter(settings.options.filter);
+          var $inputs = $form.find("input[required],input[data-validation-callback-callback],select[required],select[data-validation-callback-callback],textarea[required],textarea[data-validation-callback-callback]").not("[type=submit],[type=image]").filter(settings.options.filter);
           
           $inputs.trigger("submit.validation").trigger("validationLostFocus.validation");
 
@@ -464,7 +464,7 @@
               
               //in case of perfomance
               //$controlGroup.find("input,textarea,select").each(function (i, el) {
-              $controlGroup.find("input[required],input[data-data-validation-callback],select[required],select[data-data-validation-callback],textarea[required],textarea[data-data-validation-callback]").each(function (i, el) {
+              $controlGroup.find("input[required],input[data-validation-callback-callback],select[required],select[data-validation-callback-callback],textarea[required],textarea[data-validation-callback-callback]").each(function (i, el) {
                 var oldCount = errorsFound.length;
                 $.each($(el).triggerHandler("validation.validation", params) || [], function (j, message) {
                   errorsFound.push(message);

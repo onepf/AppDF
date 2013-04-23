@@ -52,7 +52,6 @@ Copyright (c) 2012 Yandex <www.yandex.com>
   <script type="text/javascript" src="js/appdfparser.js"></script>
   <script type="text/javascript" src="js/appdfxmlsaving.js"></script>
   <script type="text/javascript" src="js/appdfxmlloading.js"></script>
-  <script type="text/javascript" src="js/appdfeditor.js"></script>
   <script type="text/javascript" src="js/appdfeditor2.js"></script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -235,7 +234,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
           </div>
           <div class="modal-footer">
             <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-            <button class="btn btn-primary">Open</button>
+            <button class="btn btn-primary" id="load-appdf-modal-open-button">Open</button>
+            <button class="btn btn-primary hide" id="load-appdf-modal-open-unfinished-button">Open unfinished</button>
           </div>
         </div><!--Modal-->    
 
@@ -1376,6 +1376,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
               </div>
             </div>
             <a href="#" id="build-appdf-file" class="btn btn-primary">Build AppDF File</a>
+            <a href="#" id="build-unfinished-appdf-file" class="btn btn-primary hide">Build unfinished AppDF File</a>
           </div>
         </form>
       </div><!--/span-->

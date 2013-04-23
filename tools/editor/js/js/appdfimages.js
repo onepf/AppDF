@@ -36,15 +36,15 @@
         </div> \
         ');
         $(".app-icon-first").append($imageGroup);
-        addValidationToElements($imageGroup.find("input"));
+        appdfEditor.addValidationToElements($imageGroup.find("input"));
     };
     
 	function addMoreAppIcon(e) {
 		var $parent = $(e).closest(".controls").find(".image-group:first");
 		var $controlGroup = $(' \
 		<div class="image-input-group"> \
-			<input type="file" id="description-images-appicon-' + getUniqueId() + '" class="hide ie_show appicon-input empty-image" \
-				name="description-images-appicon-' + getUniqueId() + '" \
+			<input type="file" id="description-images-appicon-' + appdfEditor.getUniqueId() + '" class="hide ie_show appicon-input empty-image" \
+				name="description-images-appicon-' + appdfEditor.getUniqueId() + '" \
 				accept="image/png" \
 				data-validation-callback-callback="appdfEditor.validationCallbackAppIconMore" \
 			/> \
@@ -53,7 +53,7 @@
 		</div> \
 		');
 		$parent.append($controlGroup);
-		addValidationToElements($controlGroup.find("input"));
+		appdfEditor.addValidationToElements($controlGroup.find("input"));
 	};
 	
     function addLargePromo(e) {
@@ -73,7 +73,7 @@
         </div> \
 		');
 		$parent.append($controlGroup);
-		addValidationToElements($controlGroup.find("input"));
+		appdfEditor.addValidationToElements($controlGroup.find("input"));
     };
     
     function addSmallPromo(e) {
@@ -87,21 +87,21 @@
                 accept="image/png" \
                 data-validation-callback-callback="appdfEditor.validationCallbackPromo" \
             /> \
-            <img src="img/smallpromo_placeholder.png" id="description-images-largepromo-img" width="180" height="120"> \
+            <img src="img/smallpromo_placeholder.png" id="description-images-smallpromo-img" width="180" height="120"> \
             <p class="image-input-label"></p> \
             <div class="btn small-promo-image-reset">Reset small promo image</div> \
         </div> \
 		');
 		$parent.append($controlGroup);
-		addValidationToElements($controlGroup.find("input"));
+		appdfEditor.addValidationToElements($controlGroup.find("input"));
     };
     
 	function addMoreScreenshots(e) {
 		var $parent = $(e).closest(".image-group");
 		var $controlGroup = $(' \
 		<div class="image-input-group"> \
-			<input type="file" id="description-images-screenshot-' + getUniqueId() + '" class="hide ie_show screenshot-input empty-image" \
-				name="description-images-screenshot-' + getUniqueId() + '" \
+			<input type="file" id="description-images-screenshot-' + appdfEditor.getUniqueId() + '" class="hide ie_show screenshot-input empty-image" \
+				name="description-images-screenshot-' + appdfEditor.getUniqueId() + '" \
 				accept="image/png" \
 				data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired" \
 			/> \
@@ -110,21 +110,21 @@
 		</div> \
 		');
 		$parent.append($controlGroup);
-		addValidationToElements($controlGroup.find("input"));
+		appdfEditor.addValidationToElements($controlGroup.find("input"));
 	};
 	
 	function addScreenshotIndex(e) {
 		var $parent = $(e.target).closest(".image-input-group");
 		var $controlGroup = $(' \
-			<input type="file" id="description-images-screenshot-' + getUniqueId() + '" class="hide ie_show screenshot-input empty-image" \
-				name="description-images-screenshot-' + getUniqueId() + '" \
+			<input type="file" id="description-images-screenshot-' + appdfEditor.getUniqueId() + '" class="hide ie_show screenshot-input empty-image" \
+				name="description-images-screenshot-' + appdfEditor.getUniqueId() + '" \
 				accept="image/png" \
 				data-validation-callback-callback="appdfEditor.validationCallbackScreenshotRequired" \
 			/> \
 			<img src="img/screenshot_placeholder.png" width="132" height="220"> \
 		');
 		$parent.find("p").before($controlGroup);
-		addValidationToElements($controlGroup.find("input"));
+		appdfEditor.addValidationToElements($controlGroup.find("input"));
 	};
 	
 	function onInputImageRemove(e) {

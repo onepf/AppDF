@@ -176,295 +176,299 @@ var appdfXMLLoader = (function() {
     };
     
     function loadDescriptionXML(xml, onend, onerror, onprogress, checkRes) {
-        appdfParser.parseDescriptionXML(xml, function(data) {
-            //Calculate total number of actions to do
-            var totalProgressItems = 29;
-            for (languageCode in data["description"]) {
-                totalProgressItems += 20;
-            };
-            //to start progress bar from 50% after parsing
-            var passedProgressItems = totalProgressItems;
-            totalProgressItems *= 2;
-            
-            
-            //Helper function to report progress
-            function progress(n) {
-                if (!n) {
-                    passedProgressItems += 1;
-                } else {
-                    passedProgressItems += n;
-                };
-                if (passedProgressItems>totalProgressItems) {
-                    console.log("Error passedProgressItems>totalProgressItems. Adjust the constants in this fuction.")
-                    passedProgressItems = totalProgressItems;
-                };
-                onprogress(passedProgressItems, totalProgressItems);
-            };
-
-            appdfEditor.reinitEditor();
-            
-            console.log("Description.XML is parsed");
-            console.log(data);
-
-            //Set control values in the categorization section
-            $("#categorization-type").val(data["categorization"]["type"]);
-            appdfEditor.fillCategories();
-            progress();//1
-
-            $("#categorization-category").val(data["categorization"]["category"]);
-            appdfEditor.fillSubcategories();
-            progress();//2
-
-            $("#categorization-subcategory").val(data["categorization"]["subcategory"]);
-            appdfEditor.fillCategoryStoresInfo();
-            progress();//3
-
-            //Set control values in the description/texts
-            progress(3);//6
-            for (languageCode in data["description"]) {
-                if (languageCode!="default") {
-                    appdfLocalization.addLocalization(languageCode, dataLanguages[languageCode]);
-                };
-                loadDescriptionLocalizationSection(languageCode, data["description"][languageCode]);
-                progress(20);
-            };//20*LanguageCount + 6
-
-            //Select default language as open tab
-            appdfLocalization.selectLanguage("default");
-
-            //Price
-            progress();//20*LanguageCount + 7
-            if (data["price"]["free"]) {
-                $('a[href="#tab-price-free"]').tab('show');
-                $("#price-free-trialversion").attr("checked", data["price"]["trial-version"]);
-                if (data["price"]["trial-version"]) {
-                    $("#price-free-fullversion").removeAttr('disabled');
-                } else {
-                    $("#price-free-fullversion").attr('disabled', 'disabled');
-                };
-                if (typeof data["price"]["full-version"] != 'undefined') {
-                    $("#price-free-fullversion").val(data["price"]["full-version"]);
-                };        
-            } else {
-                $('a[href="#tab-price-paid"]').tab('show');
-                $("#price-baseprice").val(data["price"]["base-price"]);            
-
-                $("#price-free-trialversion").attr("checked", false);
-                $("#price-free-fullversion").attr('disabled', 'disabled');
-
-                for (countryCode in data["price"]["local-price"]) {
-                    appdfEditor.addMoreLocalPrice($("#price-baseprice"), data["price"]["local-price"][countryCode], countryCode);
-                };
-            };
-            progress(3);//20*LanguageCount + 10
-
-            //Consent
-            $("#consent-googleandroidcontentguidelines").attr("checked", data["consent"]["google-android-content-guidelines"]);
-            $("#consent-usexportlaws").attr("checked", data["consent"]["us-export-laws"]);
-            $("#consent-importexportlaws").attr("checked", data["consent"]["us-export-laws"]);
-            $("#consent-slidemeagreement").attr("checked", data["consent"]["slideme-agreement"]);
-            $("#consent-freefromthirdpartycopytightedcontent").attr("checked", data["consent"]["free-from-third-party-copytighted-content"]);
-            progress();//20*LanguageCount + 11
-
-            //Customer support
-            $("#customersupport-phone").val(data["customer-support"]["phone"]);
-            $("#customersupport-email").val(data["customer-support"]["email"]);
-            $("#customersupport-website").val(data["customer-support"]["website"]);
-            progress();//20*LanguageCount + 12
-            
-
-            //Content description / content rating
-            $("#contentdescription-contentrating").val(data["content-description"]["content-rating"]);
-            progress();//20*LanguageCount + 13
-
-            //Content description / content descriptors
-            var dcd = data["content-description"]["content-descriptors"];
-            var scd = "#contentdescription-contentdescriptors-";
-            $(scd + "cartoonviolence").val(dcd["cartoon-violence"]);
-            $(scd + "realisticviolence").val(dcd["realistic-violence"]);
-            $(scd + "badlanguage").val(dcd["bad-language"]);
-            $(scd + "fear").val(dcd["fear"]);
-            $(scd + "sexualcontent").val(dcd["sexual-content"]);
-            $(scd + "drugs").val(dcd["drugs"]);
-            $(scd + "gamblingreference").val(dcd["gambling-reference"]);
-            $(scd + "alcohol").val(dcd["alcohol"]);
-            $(scd + "smoking").val(dcd["smoking"]);
-            $(scd + "discrimination").val(dcd["discrimination"]);
-            progress(2);//20*LanguageCount + 15
-
-            //Content description / included-activities
-            var dia = data["content-description"]["included-activities"];
-            var sia = "#contentdescription-includedactivities-";
-            $(sia + "inappbilling").attr("checked", dia["in-app-billing"]);
-            $(sia + "gambling").attr("checked", dia["gambling"]);
-            $(sia + "advertising").attr("checked", dia["advertising"]);
-            $(sia + "usergeneratedcontent").attr("checked", dia["user-generated-content"]);
-            $(sia + "usertousercommunications").attr("checked", dia["user-to-user-communications"]);
-            $(sia + "accountcreation").attr("checked", dia["account-creation"]);
-            $(sia + "personalinformationcollection").attr("checked", dia["personal-information-collection"]);
-            progress(2);//20*LanguageCount + 17
-
-            //Content description / rating-certificates
-            var certificates = data["content-description"]["rating-certificates"];
-            var sc = "#contentdescription-ratingcertificates-rating-"
-            for (var i=0; i<certificates.length; i++) {
-                var typeId = certificates[i]["type"].toLowerCase();
-                $(sc + typeId).val(certificates[i]["rating"]);
-            };
-            progress(3);//20*LanguageCount + 20
-            
-            //Testing instructions
-            $("#testinginstructions").val(data["testing-instructions"]);
-            progress();//20*LanguageCount + 21
-            
-            
-            //Store specify
-            //add loaded store specify data
-            var storeSpecificData = data["store-specific"];
-            if (storeSpecificData) {
-                for (var i in storeSpecificData) {
-                    appdfEditor.addMoreStoreSpecific($(".storespecific-addmore"), i, storeSpecificData[i]);
-                };
-            };
-            progress();//20*LanguageCount + 22
-            
-            
-            //Requirements
-            var featuresTagsAndIDsList = [ 
-                {tag:"root", id:"#requirements-features-root"},
-                {tag:"gms", id:"#requirements-features-gms"},
-                {tag:"online", id:"#requirements-features-online"}
-            ];
-            progress();//20*LanguageCount + 23
-            
-            var dataRequirements = data["requirements"];
-            if (dataRequirements) {
-                if (dataRequirements["features"]) {
-                    for (var i in featuresTagsAndIDsList) {
-                        if (dataRequirements["features"][featuresTagsAndIDsList[i].tag]) {
-                            $(featuresTagsAndIDsList[i].id).attr("checked", "checked");
-                        } else {
-                            $(featuresTagsAndIDsList[i].id).removeAttr("checked");
-                        };
-                    };
-                };
-                progress();//20*LanguageCount + 24
-                
-                if (dataRequirements["supported-languages"] && dataRequirements["supported-languages"]["language"]) {
-                    $("#requirements-supportedlanguages-type-custom").click();
-                    var $el;
-                    var supportedLanguages = dataRequirements["supported-languages"]["language"];
-                    
-                    for (var i in supportedLanguages) {
-                        $el = $('#requirements-supportedlanguages input[id="requirements-supportedlanguages-' + supportedLanguages[i] + '"]');
-                        if ($el.size()) {
-                            $el.attr("checked", "checked");
-                        };
-                    };
-                };
-                progress();//20*LanguageCount + 25
-                
-                if (dataRequirements["supported-devices"] && dataRequirements["supported-devices"]["exclude"]) {
-                    var $el = $(".requirements-supporteddevices-addmore");
-                    var unsupportedDevices = dataRequirements["supported-devices"]["exclude"];
-                    
-                    for (var i in unsupportedDevices) {
-                        appdfEditor.addMoreUnsupportedDevices($el, unsupportedDevices[i]);
-                    };
-                };
-                progress();//20*LanguageCount + 26
-                
-                if (dataRequirements["supported-resolutions"] && (dataRequirements["supported-resolutions"]["include"] || dataRequirements["supported-resolutions"]["exclude"])) {
-                    var onlyListedType = dataRequirements["supported-resolutions"]["include"]?"include":"exclude";
-                    $("#requirements-supportedresolutions-type-" + onlyListedType).click();
-                    
-                    var $el;
-                    var supportedResolutions = dataRequirements["supported-resolutions"][onlyListedType];
-                    
-                    for (var i in supportedResolutions) {
-                        $el = $('#requirements-supportedresolutions-' + onlyListedType + ' input[id="requirements-supportedresolutions-' + supportedResolutions[i] + '"]');
-                        if ($el.size()) {
-                            $el.attr("checked", "checked");
-                        };
-                    };
-                };
-                progress();//20*LanguageCount + 27
-            } else {
-                progress(4);//20*LanguageCount + 27
-            };
-            
-            //apk files section
-            if (data["apk-files"] && data["apk-files"]["apk-file"]) {
-                var apkFileList = data["apk-files"]["apk-file"];
-                var $apkFileInput;
-                var $apkFileInputHidden;
-                var apkFileIndex = 0;
-                
-                function checkApkValidationResult(data) {
-                    if (!data.valid) {
-                        console.log("APK file error: " + data.message);
-                    };
-                    if (++apkFileIndex<apkFileList.length) {
-                        nextApkFileLoad();
-                    };
-                };
-                
-                function nextApkFileLoad() {
-                    if (apkFileList[apkFileIndex] && appdfFiles[apkFileList[apkFileIndex]]) {
-                        $apkFileInput = $("#section-apk-files input[class*=\"apkfile-pretty-browse\"]:last");
-                        $apkFileInput.val(apkFileList[apkFileIndex]);
-                        $apkFileInputHidden = $("#section-apk-files input[class*=\"hidden-apk-file\"]:last");
-                        
-                        $apkFileInputHidden.data("file", apkFileList[apkFileIndex]);
-                        
-                        if (apkFileIndex<apkFileList.length-1) {
-                            appdfEditor.addApkFile($apkFileInputHidden);
-                        };
-                        
-                        if (apkFileIndex===0) {
-                            appdfEditor.validationCallbackApkFileFirst($apkFileInputHidden, apkFileList[apkFileIndex], checkApkValidationResult);
-                        } else {
-                            appdfEditor.validationCallbackApkFileMore($apkFileInputHidden, apkFileList[apkFileIndex], checkApkValidationResult);
-                        };
-                    };
-                };
-                
-                nextApkFileLoad();
-            };
-            progress();//20*LanguageCount + 28
-            
-            //availability
-            $("#availability-supportedcountries-type-default").click();
-            $("#section-availability .availability-supportedcountries-unselectall").click();
-            if (data["availability"] && data["availability"]["countries"]) {
-                var dataAvailCountry = data["availability"]["countries"];
-                if (dataAvailCountry && (dataAvailCountry["include"] || dataAvailCountry["exclude"])) {
-                    var onlyListedType = dataAvailCountry["include"]?"include":"exclude";
-                    $("#availability-supportedcountries-type-" + onlyListedType).click();
-                    
-                    var $el;
-                    var countriesList = dataAvailCountry[onlyListedType];
-                    
-                    for (var i in countriesList) {
-                        $el = $('#availability-supportedcountries-' + onlyListedType + ' input[id="availability-supportedcountries-' + countriesList[i] + '"]');
-                        if ($el.size()) {
-                            $el.attr("checked", "checked");
-                        };
-                    };
-                };
-                
-                var dataAvailPeriod = data["availability"]["period"];
-                if (dataAvailPeriod && dataAvailPeriod["since"]) {
-                    $("#section-availability input.availability-period-since").data("datepicker").setValue(dataAvailPeriod["since"]);
-                };
-                if (dataAvailPeriod && dataAvailPeriod["until"]) {
-                    $("#section-availability input.availability-period-until").data("datepicker").setValue(dataAvailPeriod["until"]);
-                };
-            };
-            progress();//20*LanguageCount + 29
-            
-            onend();
+        appdfParser.parseDescriptionXML(xml, function(data){ 
+            applyDescriptionXMLData(data, onend, onprogress);
         }, onerror, onprogress, checkRes);
+    };
+    
+    function applyDescriptionXMLData(data, onend, onprogress) {
+        //Calculate total number of actions to do
+        var totalProgressItems = 29;
+        for (languageCode in data["description"]) {
+            totalProgressItems += 20;
+        };
+        //to start progress bar from 50% after parsing
+        var passedProgressItems = totalProgressItems;
+        totalProgressItems *= 2;
+        
+        
+        //Helper function to report progress
+        function progress(n) {
+            if (!n) {
+                passedProgressItems += 1;
+            } else {
+                passedProgressItems += n;
+            };
+            if (passedProgressItems>totalProgressItems) {
+                console.log("Error passedProgressItems>totalProgressItems. Adjust the constants in this fuction.")
+                passedProgressItems = totalProgressItems;
+            };
+            onprogress(passedProgressItems, totalProgressItems);
+        };
+
+        appdfEditor.reinitEditor();
+        
+        console.log("Description.XML is parsed");
+        console.log(data);
+
+        //Set control values in the categorization section
+        $("#categorization-type").val(data["categorization"]["type"]);
+        appdfEditor.fillCategories();
+        progress();//1
+
+        $("#categorization-category").val(data["categorization"]["category"]);
+        appdfEditor.fillSubcategories();
+        progress();//2
+
+        $("#categorization-subcategory").val(data["categorization"]["subcategory"]);
+        appdfEditor.fillCategoryStoresInfo();
+        progress();//3
+
+        //Set control values in the description/texts
+        progress(3);//6
+        for (languageCode in data["description"]) {
+            if (languageCode!="default") {
+                appdfLocalization.addLocalization(languageCode, dataLanguages[languageCode]);
+            };
+            loadDescriptionLocalizationSection(languageCode, data["description"][languageCode]);
+            progress(20);
+        };//20*LanguageCount + 6
+
+        //Select default language as open tab
+        appdfLocalization.selectLanguage("default");
+
+        //Price
+        progress();//20*LanguageCount + 7
+        if (data["price"]["free"]) {
+            $('a[href="#tab-price-free"]').tab('show');
+            $("#price-free-trialversion").attr("checked", data["price"]["trial-version"]);
+            if (data["price"]["trial-version"]) {
+                $("#price-free-fullversion").removeAttr('disabled');
+            } else {
+                $("#price-free-fullversion").attr('disabled', 'disabled');
+            };
+            if (typeof data["price"]["full-version"] != 'undefined') {
+                $("#price-free-fullversion").val(data["price"]["full-version"]);
+            };        
+        } else {
+            $('a[href="#tab-price-paid"]').tab('show');
+            $("#price-baseprice").val(data["price"]["base-price"]);            
+
+            $("#price-free-trialversion").attr("checked", false);
+            $("#price-free-fullversion").attr('disabled', 'disabled');
+
+            for (countryCode in data["price"]["local-price"]) {
+                appdfEditor.addMoreLocalPrice($("#price-baseprice"), data["price"]["local-price"][countryCode], countryCode);
+            };
+        };
+        progress(3);//20*LanguageCount + 10
+
+        //Consent
+        $("#consent-googleandroidcontentguidelines").attr("checked", data["consent"]["google-android-content-guidelines"]);
+        $("#consent-usexportlaws").attr("checked", data["consent"]["us-export-laws"]);
+        $("#consent-importexportlaws").attr("checked", data["consent"]["us-export-laws"]);
+        $("#consent-slidemeagreement").attr("checked", data["consent"]["slideme-agreement"]);
+        $("#consent-freefromthirdpartycopytightedcontent").attr("checked", data["consent"]["free-from-third-party-copytighted-content"]);
+        progress();//20*LanguageCount + 11
+
+        //Customer support
+        $("#customersupport-phone").val(data["customer-support"]["phone"]);
+        $("#customersupport-email").val(data["customer-support"]["email"]);
+        $("#customersupport-website").val(data["customer-support"]["website"]);
+        progress();//20*LanguageCount + 12
+        
+
+        //Content description / content rating
+        $("#contentdescription-contentrating").val(data["content-description"]["content-rating"]);
+        progress();//20*LanguageCount + 13
+
+        //Content description / content descriptors
+        var dcd = data["content-description"]["content-descriptors"];
+        var scd = "#contentdescription-contentdescriptors-";
+        $(scd + "cartoonviolence").val(dcd["cartoon-violence"]);
+        $(scd + "realisticviolence").val(dcd["realistic-violence"]);
+        $(scd + "badlanguage").val(dcd["bad-language"]);
+        $(scd + "fear").val(dcd["fear"]);
+        $(scd + "sexualcontent").val(dcd["sexual-content"]);
+        $(scd + "drugs").val(dcd["drugs"]);
+        $(scd + "gamblingreference").val(dcd["gambling-reference"]);
+        $(scd + "alcohol").val(dcd["alcohol"]);
+        $(scd + "smoking").val(dcd["smoking"]);
+        $(scd + "discrimination").val(dcd["discrimination"]);
+        progress(2);//20*LanguageCount + 15
+
+        //Content description / included-activities
+        var dia = data["content-description"]["included-activities"];
+        var sia = "#contentdescription-includedactivities-";
+        $(sia + "inappbilling").attr("checked", dia["in-app-billing"]);
+        $(sia + "gambling").attr("checked", dia["gambling"]);
+        $(sia + "advertising").attr("checked", dia["advertising"]);
+        $(sia + "usergeneratedcontent").attr("checked", dia["user-generated-content"]);
+        $(sia + "usertousercommunications").attr("checked", dia["user-to-user-communications"]);
+        $(sia + "accountcreation").attr("checked", dia["account-creation"]);
+        $(sia + "personalinformationcollection").attr("checked", dia["personal-information-collection"]);
+        progress(2);//20*LanguageCount + 17
+
+        //Content description / rating-certificates
+        var certificates = data["content-description"]["rating-certificates"];
+        var sc = "#contentdescription-ratingcertificates-rating-"
+        for (var i=0; i<certificates.length; i++) {
+            var typeId = certificates[i]["type"].toLowerCase();
+            $(sc + typeId).val(certificates[i]["rating"]);
+        };
+        progress(3);//20*LanguageCount + 20
+        
+        //Testing instructions
+        $("#testinginstructions").val(data["testing-instructions"]);
+        progress();//20*LanguageCount + 21
+        
+        
+        //Store specify
+        //add loaded store specify data
+        var storeSpecificData = data["store-specific"];
+        if (storeSpecificData) {
+            for (var i in storeSpecificData) {
+                appdfEditor.addMoreStoreSpecific($(".storespecific-addmore"), i, storeSpecificData[i]);
+            };
+        };
+        progress();//20*LanguageCount + 22
+        
+        
+        //Requirements
+        var featuresTagsAndIDsList = [ 
+            {tag:"root", id:"#requirements-features-root"},
+            {tag:"gms", id:"#requirements-features-gms"},
+            {tag:"online", id:"#requirements-features-online"}
+        ];
+        progress();//20*LanguageCount + 23
+        
+        var dataRequirements = data["requirements"];
+        if (dataRequirements) {
+            if (dataRequirements["features"]) {
+                for (var i in featuresTagsAndIDsList) {
+                    if (dataRequirements["features"][featuresTagsAndIDsList[i].tag]) {
+                        $(featuresTagsAndIDsList[i].id).attr("checked", "checked");
+                    } else {
+                        $(featuresTagsAndIDsList[i].id).removeAttr("checked");
+                    };
+                };
+            };
+            progress();//20*LanguageCount + 24
+            
+            if (dataRequirements["supported-languages"] && dataRequirements["supported-languages"]["language"]) {
+                $("#requirements-supportedlanguages-type-custom").click();
+                var $el;
+                var supportedLanguages = dataRequirements["supported-languages"]["language"];
+                
+                for (var i in supportedLanguages) {
+                    $el = $('#requirements-supportedlanguages input[id="requirements-supportedlanguages-' + supportedLanguages[i] + '"]');
+                    if ($el.size()) {
+                        $el.attr("checked", "checked");
+                    };
+                };
+            };
+            progress();//20*LanguageCount + 25
+            
+            if (dataRequirements["supported-devices"] && dataRequirements["supported-devices"]["exclude"]) {
+                var $el = $(".requirements-supporteddevices-addmore");
+                var unsupportedDevices = dataRequirements["supported-devices"]["exclude"];
+                
+                for (var i in unsupportedDevices) {
+                    appdfEditor.addMoreUnsupportedDevices($el, unsupportedDevices[i]);
+                };
+            };
+            progress();//20*LanguageCount + 26
+            
+            if (dataRequirements["supported-resolutions"] && (dataRequirements["supported-resolutions"]["include"] || dataRequirements["supported-resolutions"]["exclude"])) {
+                var onlyListedType = dataRequirements["supported-resolutions"]["include"]?"include":"exclude";
+                $("#requirements-supportedresolutions-type-" + onlyListedType).click();
+                
+                var $el;
+                var supportedResolutions = dataRequirements["supported-resolutions"][onlyListedType];
+                
+                for (var i in supportedResolutions) {
+                    $el = $('#requirements-supportedresolutions-' + onlyListedType + ' input[id="requirements-supportedresolutions-' + supportedResolutions[i] + '"]');
+                    if ($el.size()) {
+                        $el.attr("checked", "checked");
+                    };
+                };
+            };
+            progress();//20*LanguageCount + 27
+        } else {
+            progress(4);//20*LanguageCount + 27
+        };
+        
+        //apk files section
+        if (data["apk-files"] && data["apk-files"]["apk-file"]) {
+            var apkFileList = data["apk-files"]["apk-file"];
+            var $apkFileInput;
+            var $apkFileInputHidden;
+            var apkFileIndex = 0;
+            
+            function checkApkValidationResult(data) {
+                if (!data.valid) {
+                    console.log("APK file error: " + data.message);
+                };
+                if (++apkFileIndex<apkFileList.length) {
+                    nextApkFileLoad();
+                };
+            };
+            
+            function nextApkFileLoad() {
+                if (apkFileList[apkFileIndex] && appdfFiles[apkFileList[apkFileIndex]]) {
+                    $apkFileInput = $("#section-apk-files input[class*=\"apkfile-pretty-browse\"]:last");
+                    $apkFileInput.val(apkFileList[apkFileIndex]);
+                    $apkFileInputHidden = $("#section-apk-files input[class*=\"hidden-apk-file\"]:last");
+                    
+                    $apkFileInputHidden.data("file", apkFileList[apkFileIndex]);
+                    
+                    if (apkFileIndex<apkFileList.length-1) {
+                        appdfEditor.addApkFile($apkFileInputHidden);
+                    };
+                    
+                    if (apkFileIndex===0) {
+                        appdfEditor.validationCallbackApkFileFirst($apkFileInputHidden, apkFileList[apkFileIndex], checkApkValidationResult);
+                    } else {
+                        appdfEditor.validationCallbackApkFileMore($apkFileInputHidden, apkFileList[apkFileIndex], checkApkValidationResult);
+                    };
+                };
+            };
+            
+            nextApkFileLoad();
+        };
+        progress();//20*LanguageCount + 28
+        
+        //availability
+        $("#availability-supportedcountries-type-default").click();
+        $("#section-availability .availability-supportedcountries-unselectall").click();
+        if (data["availability"] && data["availability"]["countries"]) {
+            var dataAvailCountry = data["availability"]["countries"];
+            if (dataAvailCountry && (dataAvailCountry["include"] || dataAvailCountry["exclude"])) {
+                var onlyListedType = dataAvailCountry["include"]?"include":"exclude";
+                $("#availability-supportedcountries-type-" + onlyListedType).click();
+                
+                var $el;
+                var countriesList = dataAvailCountry[onlyListedType];
+                
+                for (var i in countriesList) {
+                    $el = $('#availability-supportedcountries-' + onlyListedType + ' input[id="availability-supportedcountries-' + countriesList[i] + '"]');
+                    if ($el.size()) {
+                        $el.attr("checked", "checked");
+                    };
+                };
+            };
+            
+            var dataAvailPeriod = data["availability"]["period"];
+            if (dataAvailPeriod && dataAvailPeriod["since"]) {
+                $("#section-availability input.availability-period-since").data("datepicker").setValue(dataAvailPeriod["since"]);
+            };
+            if (dataAvailPeriod && dataAvailPeriod["until"]) {
+                $("#section-availability input.availability-period-until").data("datepicker").setValue(dataAvailPeriod["until"]);
+            };
+        };
+        progress();//20*LanguageCount + 29
+        
+        onend();
     };
 
     function loadAppdfFile(file, onend, onerror, loadprogress, parseprogress) {
@@ -570,6 +574,7 @@ var appdfXMLLoader = (function() {
     return {
         appdfFiles : appdfFiles,
         loadDescriptionXML : loadDescriptionXML,
+        applyDescriptionXMLData : applyDescriptionXMLData,
         loadAppdfFile : loadAppdfFile
     };
 })();
