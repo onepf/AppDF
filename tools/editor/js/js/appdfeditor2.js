@@ -427,8 +427,11 @@ var appdfEditor = (function() {
     function showLoadAppdfDialog() {
         var $modal = $("#load-appdf-modal");
         var $browseButton = $modal.find(".load-appdf-modal-browse")
-        var $openButton = $modal.find(".btn-primary");
+        var $openButton = $modal.find("#load-appdf-modal-open-button");
+        var $openUnfinishedButton = $modal.find("#load-appdf-modal-open-unfinished-button");
         var $file = $modal.find("#load-appdf-modal-file");
+        
+        $openUnfinishedButton.hide();
         $("#load-appdf-modal-errors").hide();
         $("#load-appdf-modal-status").hide();
         $("#load-appdf-modal-prettyfile").val("");
@@ -457,11 +460,20 @@ var appdfEditor = (function() {
                 $("#load-appdf-modal-errors").hide();
             });
             
+            /*$openUnfinishedButton.click(function(event) {
+                event.preventDefault();
+                
+                $("#load-appdf-modal-status").show();
+                
+                applyDescriptionXMLData()
+            });*/
+            
             $openButton.click(function(event) {
                 event.preventDefault();
                 if (appdfEditor.importingFlag) {
                     return false;
                 };
+                $openUnfinishedButton.hide();
                 appdfEditor.importingFlag = true;
                 
                 $("#load-appdf-modal-status").show();
@@ -1666,6 +1678,11 @@ var appdfEditor = (function() {
         var sizeOfAlreadyZippedFilesIncludingCurrent = 0;
 
         function addNextFile() {
+            if (addIndex===flattenedFiles.length) {
+                onend();
+                return;
+            };
+            
             var file = flattenedFiles[addIndex];
             sizeOfAlreadyZippedFilesIncludingCurrent += file.size;
             zipWriter.add(file.name, new zip.BlobReader(file), function() {
@@ -1725,7 +1742,8 @@ var appdfEditor = (function() {
         
         if (validError) {
             //show button to build unfinished file
-            $("#build-unfinished-appdf-file").show();
+            //TODO TBD
+            //$("#build-unfinished-appdf-file").show();
         };
     };   
     

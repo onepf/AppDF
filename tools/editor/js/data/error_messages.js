@@ -69,6 +69,7 @@ var errorMessages = {
     fnWrongAttrBooleanValue: function(attributeValue, tagName) { return "Wrong attribute value \"" + attributeValue + "\" in tag <" + tagName + ">. Must be \"yes\" or \"no\"."; },
     fnWrongBooleanValue: function(tagName) { return "Wrong value in tag <" + tagName + ">. Must be \"yes\" or \"no\"."; },
     
+    fnTitleRequiredError: function(languageCode) { return "The first title required (for language \"" + languageCode + "\")"; },
     fnTitleError: function(languageCode) { return "The first title must be shorter than 30 symbols (for language \"" + languageCode + "\")"; },
     fnShortDescriptionError: function(languageCode) { return "The first short description must be shorter than 80 symbols (for language \"" + languageCode + "\")"; },
     fnFullDescriptionError: function(languageCode) { return "The full description must be shorter than 4000 symbols (for language \"" + languageCode + "\")"; },

@@ -22,6 +22,7 @@
  */
 var appdfParser = (function() {
     var checkRes = true;
+    var validErrors = true;
     
 	function isDefined(x) {
 		return (typeof x != "undefined");
@@ -509,13 +510,25 @@ var appdfParser = (function() {
         
 		loadText("testing-instructions", "testing-instructions");
         progress();//LanguageCode*5 + 14
-
+        
+        validErrors = true;
 		errors.append(validateDescriptionXMLData(data));
         
         if (errors.length==0) {
 			onend(data);
 		} else {
 			onerror(errors);
+            if (validErrors) {
+                //remove event
+                $("#load-appdf-modal-open-unfinished-button").off("click");
+                $("#load-appdf-modal-open-unfinished-button").click(function(){
+                    console.log("onclock!!!");
+                    onend(data);
+                });
+                //show load data button
+                //TODO TBD
+                //$("#load-appdf-modal-open-unfinished-button").show();
+            };
 		};
 	};
 
@@ -678,9 +691,13 @@ var appdfParser = (function() {
 	function validateDescriptionTexts(languageCode, data) {
 		var errors = [];
 
-		if (isDefined(data["title"]) && data["title"].length && data["title"][0].length>30) {
-			errors.push(errorMessages.fnTitleError(languageCode));
-		};
+		if (isDefined(data["title"]) && data["title"].length) {
+            if (isDefined(data["title"][0]) && data["title"][0].length>30) {
+                errors.push(errorMessages.fnTitleError(languageCode));
+            };
+        } else if (languageCode==="default") {
+            errors.push(errorMessages.fnTitleRequiredError(languageCode));
+        };
 
 		if (isDefined(data["short-description"]) && data["short-description"][0].length>80) {
 			errors.push(errorMessages.fnShortDescriptionError(languageCode));
