@@ -62,6 +62,7 @@
           "samsung" : "Business",
           "appland" : "Business / References",
           "slideme" : "Finance / Other"
+        }
     },
     "Calculators" : {
         "" : {
@@ -2050,4 +2051,4 @@
       }
     }
   }
-}
+}}

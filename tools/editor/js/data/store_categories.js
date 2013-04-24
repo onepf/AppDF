@@ -25,6 +25,7 @@ var dataStoreCategories = {
           "opera" : "Utilities",
           "yandex" : "Utilities",
           "samsung" : "Utilities",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Tools & Utilities / Other"
         }
     },
@@ -35,7 +36,8 @@ var dataStoreCategories = {
           "opera" : "Utilities",
           "yandex" : "Utilities",
           "samsung" : "Utilities",
-          "slideme" : "Tools & Utilities / Other"
+          "appland" : "Lifestyle / Misc",
+          "slideme" : "Productivity / Android OS"
         }
     },
     "Books" : {
@@ -45,6 +47,7 @@ var dataStoreCategories = {
           "opera" : "eBooks",
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
+          "appland" : "Books & Magazines / Misc",
           "slideme" : "Publications / E-books"
         }
     },
@@ -55,6 +58,7 @@ var dataStoreCategories = {
           "opera" : "eBooks",
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
+          "appland" : "Books & Magazines / Misc",
           "slideme" : "Publications / E-book readers"
         }
     },
@@ -63,8 +67,18 @@ var dataStoreCategories = {
           "google" : "Business",
           "amazon" : "Finance / Other",
           "opera" : "Business & Finance",
-          "yandex" : "Business & FinanceBusiness",
+          "yandex" : "Business & Finance",
           "samsung" : "Business",
+          "appland" : "Business / Tools",
+          "slideme" : "Finance / Corporate"
+        },
+        "Reference" : {
+          "google" : "Business",
+          "amazon" : "Finance / Other",
+          "opera" : "Business & Finance",
+          "yandex" : "Business & Finance",
+          "samsung" : "Business",
+          "appland" : "Business / References",
           "slideme" : "Finance / Other"
         }
     },
@@ -75,7 +89,8 @@ var dataStoreCategories = {
           "opera" : "Utilities",
           "yandex" : "Utilities",
           "samsung" : "Utilities",
-          "slideme" : "Tools & Utilities / Other"
+          "appland" : "Business / Tools",
+          "slideme" : "Productivity / Calculator"
         }
     },
     "Calendars" : {
@@ -85,17 +100,19 @@ var dataStoreCategories = {
           "opera" : "Organizers",
           "yandex" : "Organizers",
           "samsung" : "Utilities",
-          "slideme" : "Tools & Utilities / Other"
+          "appland" : "Business / Tools",
+          "slideme" : "Productivity / Management"
         }
     },
     "Children's Books" : {
         "" : {
           "google" : "Books & Reference",
-          "amazon" : "Books & Comic / ChildrenвЂ™s Books",
+          "amazon" : "Books & Comic / Children's Books",
           "opera" : "eBooks",
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
-          "slideme" : "Publications"
+          "appland" : "Kids / Books",
+          "slideme" : "Publications / E-books / Children"
         }
     },
     "City Info" : {
@@ -105,6 +122,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / City Guides"
         },
         "Boston" : {
@@ -113,6 +131,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / City Guides"
         },
         "Chicago" : {
@@ -121,6 +140,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / City Guides"
         },
         "Dallas" : {
@@ -129,6 +149,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / City Guides"
         },
         "Los Angeles" : {
@@ -137,6 +158,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / City Guides"
         },
         "Miami" : {
@@ -145,6 +167,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / City Guides"
         },
         "New York" : {
@@ -153,6 +176,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / City Guides"
         },
         "Philadelphia" : {
@@ -161,6 +185,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / City Guides"
         },
         "Phoenix" : {
@@ -169,6 +194,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / City Guides"
         },
         "San Francisco" : {
@@ -177,6 +203,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / City Guides"
         },
         "Seattle" : {
@@ -185,6 +212,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / City Guides"
         }
     },
@@ -195,6 +223,7 @@ var dataStoreCategories = {
           "opera" : "eBooks",
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
+          "appland" : "Books & Magazines / Misc",
           "slideme" : "Publications / Comics"
         }
     },
@@ -205,6 +234,7 @@ var dataStoreCategories = {
           "opera" : "Communication",
           "yandex" : "Communication",
           "samsung" : "Social Networking",
+          "appland" : "Social & Messaging / Misc",
           "slideme" : "Communication"
         },
         "E-mail" : {
@@ -213,6 +243,7 @@ var dataStoreCategories = {
           "opera" : "Communication",
           "yandex" : "Communication",
           "samsung" : "Social Networking",
+          "appland" : "Social & Messaging / Misc",
           "slideme" : "Communication / E-mail"
         },
         "Instant Messaging" : {
@@ -221,6 +252,7 @@ var dataStoreCategories = {
           "opera" : "Communication",
           "yandex" : "Communication",
           "samsung" : "Social Networking",
+          "appland" : "Social & Messaging / Misc",
           "slideme" : "Communication / Instant Messaging"
         },
         "SMS" : {
@@ -229,6 +261,7 @@ var dataStoreCategories = {
           "opera" : "Communication",
           "yandex" : "Communication",
           "samsung" : "Social Networking",
+          "appland" : "Social & Messaging / Misc",
           "slideme" : "Communication / SMS"
         },
         "Other" : {
@@ -237,6 +270,7 @@ var dataStoreCategories = {
           "opera" : "Communication",
           "yandex" : "Communication",
           "samsung" : "Social Networking",
+          "appland" : "Social & Messaging / Misc",
           "slideme" : "Communication / Other"
         }
     },
@@ -247,6 +281,7 @@ var dataStoreCategories = {
           "opera" : "Health",
           "yandex" : "Health",
           "samsung" : "Health/Fitness",
+          "appland" : "Women World / Cooking",
           "slideme" : "Home & Hobby / Cooking"
         }
     },
@@ -257,6 +292,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Reference",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / Country Guides"
         }
     },
@@ -267,7 +303,8 @@ var dataStoreCategories = {
           "opera" : "Health",
           "yandex" : "Health",
           "samsung" : "Health/Fitness",
-          "slideme" : "Health & Fitness / Calorie calculators"
+          "appland" : "Health & Fitness / Misc",
+          "slideme" : "Health & Fitness / Fitness"
         }
     },
     "Education" : {
@@ -277,6 +314,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Misc",
           "slideme" : "Education"
         },
         "Higher" : {
@@ -285,6 +323,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Misc",
           "slideme" : "Education / Higher"
         },
         "Primary" : {
@@ -293,6 +332,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Misc",
           "slideme" : "Education / Primary"
         },
         "Secondary" : {
@@ -301,6 +341,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Misc",
           "slideme" : "Education / Secondary"
         },
         "History" : {
@@ -309,6 +350,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / References",
           "slideme" : "Education / Other"
         },
         "Math" : {
@@ -317,6 +359,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Misc",
           "slideme" : "Education / Other"
         },
         "Reading" : {
@@ -325,6 +368,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Books",
           "slideme" : "Education / Other"
         },
         "Science" : {
@@ -333,6 +377,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Misc",
           "slideme" : "Education / Other"
         },
         "Test Guides" : {
@@ -341,6 +386,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Misc",
           "slideme" : "Education / Other"
         },
         "Writing" : {
@@ -349,6 +395,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Misc",
           "slideme" : "Education / Other"
         },
         "Language" : {
@@ -357,6 +404,7 @@ var dataStoreCategories = {
           "opera" : "Languages & Translators",
           "yandex" : "Languages & Translators",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Languages",
           "slideme" : "Languages"
         },
         "Dictionaries" : {
@@ -365,6 +413,7 @@ var dataStoreCategories = {
           "opera" : "Languages & Translators",
           "yandex" : "Languages & Translators",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Misc",
           "slideme" : "Languages / Dictionaries"
         },
         "Language learning" : {
@@ -373,6 +422,7 @@ var dataStoreCategories = {
           "opera" : "Languages & Translators",
           "yandex" : "Languages & Translators",
           "samsung" : "Education/E-Book",
+          "appland" : "Education & Careers / Languages",
           "slideme" : "Languages / Language learning"
         }
     },
@@ -383,6 +433,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Entertainment"
         },
         "Comedy" : {
@@ -391,6 +442,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
+          "appland" : "Entertainment / Humour",
           "slideme" : "Entertainment / Comedy"
         },
         "Music" : {
@@ -399,6 +451,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
+          "appland" : "Entertainment / Music",
           "slideme" : "Entertainment / Music"
         },
         "Sports" : {
@@ -407,6 +460,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Entertainment / Sports"
         },
         "Theatre" : {
@@ -415,7 +469,35 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Entertainment / Theatre"
+        },
+        "Movies" : {
+          "google" : "Entertainment",
+          "amazon" : "Entertainment",
+          "opera" : "Entertainment",
+          "yandex" : "Entertainment",
+          "samsung" : "Entertainment",
+          "appland" : "Entertainment / Movies",
+          "slideme" : "Entertainment / Other"
+        },
+        "Fun tools" : {
+          "google" : "Entertainment",
+          "amazon" : "Entertainment",
+          "opera" : "Entertainment",
+          "yandex" : "Entertainment",
+          "samsung" : "Entertainment",
+          "appland" : "Entertainment / Fun tools",
+          "slideme" : "Entertainment / Other"
+        },
+        "Bollywood" : {
+          "google" : "Entertainment",
+          "amazon" : "Entertainment",
+          "opera" : "Entertainment",
+          "yandex" : "Entertainment",
+          "samsung" : "Entertainment",
+          "appland" : "Entertainment / Bollywood",
+          "slideme" : "Entertainment / Other"
         },
         "Other" : {
           "google" : "Entertainment",
@@ -423,6 +505,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Entertainment / Other"
         }
     },
@@ -433,6 +516,7 @@ var dataStoreCategories = {
           "opera" : "Business & Finance",
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
+          "appland" : "Finance / Misc",
           "slideme" : "Finance"
         },
         "Corporate" : {
@@ -441,6 +525,7 @@ var dataStoreCategories = {
           "opera" : "Business & Finance",
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
+          "appland" : "Finance / Misc",
           "slideme" : "Finance / Corporate"
         },
         "Other" : {
@@ -449,6 +534,7 @@ var dataStoreCategories = {
           "opera" : "Business & Finance",
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
+          "appland" : "Finance / Misc",
           "slideme" : "Finance / Other"
         },
         "Accounting" : {
@@ -457,6 +543,7 @@ var dataStoreCategories = {
           "opera" : "Business & Finance",
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
+          "appland" : "Finance / Misc",
           "slideme" : "Finance"
         },
         "Banking" : {
@@ -465,6 +552,7 @@ var dataStoreCategories = {
           "opera" : "Business & Finance",
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
+          "appland" : "Finance / Misc",
           "slideme" : "Finance"
         },
         "Investing" : {
@@ -473,6 +561,7 @@ var dataStoreCategories = {
           "opera" : "Business & Finance",
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
+          "appland" : "Finance / Misc",
           "slideme" : "Finance"
         },
         "Money & Currency" : {
@@ -481,6 +570,7 @@ var dataStoreCategories = {
           "opera" : "Business & Finance",
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
+          "appland" : "Finance / Misc",
           "slideme" : "Finance"
         }
     },
@@ -491,7 +581,8 @@ var dataStoreCategories = {
           "opera" : "eBooks",
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
-          "slideme" : "Publications"
+          "appland" : "Books & Magazines / Misc",
+          "slideme" : "Publications / Comics / Graphic Novel"
         }
     },
     "Health" : {
@@ -501,6 +592,7 @@ var dataStoreCategories = {
           "opera" : "Health",
           "yandex" : "Health",
           "samsung" : "Health/Fitness",
+          "appland" : "Health & Fitness / Tools",
           "slideme" : "Health & Fitness / Fitness"
         },
         "Medical" : {
@@ -509,6 +601,7 @@ var dataStoreCategories = {
           "opera" : "Health",
           "yandex" : "Health",
           "samsung" : "Health/Fitness",
+          "appland" : "Health & Fitness / Misc",
           "slideme" : "Health & Fitness / Other"
         },
         "Meditation" : {
@@ -517,6 +610,7 @@ var dataStoreCategories = {
           "opera" : "Health",
           "yandex" : "Health",
           "samsung" : "Health/Fitness",
+          "appland" : "Health & Fitness / Misc",
           "slideme" : "Health & Fitness / Other"
         },
         "Pregnancy" : {
@@ -525,7 +619,17 @@ var dataStoreCategories = {
           "opera" : "Health",
           "yandex" : "Health",
           "samsung" : "Health/Fitness",
+          "appland" : "Health & Fitness / Misc",
           "slideme" : "Health & Fitness / Family Planning"
+        },
+        "Books" : {
+          "google" : "Health & Fitness",
+          "amazon" : "Health & Fitness / Exercise & Fitness",
+          "opera" : "Health",
+          "yandex" : "Health",
+          "samsung" : "Health/Fitness",
+          "appland" : "Health & Fitness / Books",
+          "slideme" : "Health & Fitness / Other"
         },
         "Sleep Trackers" : {
           "google" : "Health & Fitness",
@@ -533,6 +637,7 @@ var dataStoreCategories = {
           "opera" : "Health",
           "yandex" : "Health",
           "samsung" : "Health/Fitness",
+          "appland" : "Health & Fitness / Misc",
           "slideme" : "Health & Fitness / Other"
         }
     },
@@ -543,6 +648,7 @@ var dataStoreCategories = {
           "opera" : "Health",
           "yandex" : "Health",
           "samsung" : "Health/Fitness",
+          "appland" : "Health & Fitness / Misc",
           "slideme" : "Health & Fitness"
         }
     },
@@ -553,6 +659,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Home & Hobby"
         },
         "Other" : {
@@ -561,6 +668,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Home & Hobby / Other"
         },
         "Budgeting" : {
@@ -569,6 +677,7 @@ var dataStoreCategories = {
           "opera" : "Business & Finance",
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
+          "appland" : "Finance / Misc",
           "slideme" : "Home & Hobby / Budgeting"
         }
     },
@@ -579,6 +688,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Kids / All",
+          "appland" : "Kids / Misc",
           "slideme" : "Education / Early Childhood"
         },
         "Alphabet" : {
@@ -587,6 +697,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Kids / Edutainment",
+          "appland" : "Kids / Misc",
           "slideme" : "Education / Early Childhood"
         },
         "Animals" : {
@@ -595,6 +706,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Kids / Edutainment",
+          "appland" : "Kids / Games",
           "slideme" : "Education / Early Childhood"
         },
         "History" : {
@@ -603,6 +715,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Kids / Edutainment",
+          "appland" : "Kids / Misc",
           "slideme" : "Education / Early Childhood"
         },
         "Language" : {
@@ -611,6 +724,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Kids / Edutainment",
+          "appland" : "Kids / Misc",
           "slideme" : "Education / Early Childhood"
         },
         "Math" : {
@@ -619,6 +733,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Kids / Edutainment",
+          "appland" : "Kids / Education",
           "slideme" : "Education / Early Childhood"
         },
         "Popular Characters" : {
@@ -627,6 +742,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Kids / Edutainmenttd>",
+          "appland" : "Kids / Misc",
           "slideme" : "Education / Early Childhood"
         },
         "Reading" : {
@@ -635,6 +751,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Kids / Edutainment",
+          "appland" : "Kids / Books",
           "slideme" : "Education / Early Childhood"
         },
         "Science" : {
@@ -643,6 +760,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Kids / Edutainment",
+          "appland" : "Kids / Misc",
           "slideme" : "Education / Early Childhood"
         },
         "Writing" : {
@@ -651,6 +769,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Kids / Edutainment",
+          "appland" : "Kids / Misc",
           "slideme" : "Education / Early Childhood"
         }
     },
@@ -661,6 +780,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Lifestyle"
         },
         "Advice" : {
@@ -669,6 +789,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Lifestyle / Other"
         },
         "Astrology" : {
@@ -677,6 +798,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Lifestyle / Other"
         },
         "Celebrity" : {
@@ -685,6 +807,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Celebrities",
           "slideme" : "Lifestyle / Celebrities"
         },
         "Culture" : {
@@ -693,6 +816,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Lifestyle / Culture"
         },
         "Design" : {
@@ -701,6 +825,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Lifestyle / Design"
         },
         "Fashion" : {
@@ -709,6 +834,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Women World / Fashion",
           "slideme" : "Lifestyle / Fashion"
         },
         "Living" : {
@@ -717,6 +843,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Lifestyle / Living"
         },
         "Hair & Beauty" : {
@@ -725,6 +852,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Lifestyle / Other"
         },
         "Home & Garden" : {
@@ -733,6 +861,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Lifestyle / Other"
         },
         "Parenting" : {
@@ -741,6 +870,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Women World / Parenting",
           "slideme" : "Lifestyle / Other"
         },
         "Quizzes & Games" : {
@@ -749,6 +879,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Lifestyle / Other"
         },
         "Relationships" : {
@@ -757,6 +888,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Lifestyle / Other"
         },
         "Self Improvement" : {
@@ -765,6 +897,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Lifestyle / Other"
         }
     },
@@ -775,6 +908,7 @@ var dataStoreCategories = {
           "opera" : "Themes & Skins",
           "yandex" : "Themes & Skins",
           "samsung" : "Theme",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Live Wallpapers"
         }
     },
@@ -785,6 +919,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "Books & Magazines / Misc",
           "slideme" : "Publications / Magazines"
         }
     },
@@ -795,6 +930,7 @@ var dataStoreCategories = {
           "opera" : "Multimedia",
           "yandex" : "Multimedia",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Music",
           "slideme" : "Music"
         },
         "Artists" : {
@@ -803,6 +939,7 @@ var dataStoreCategories = {
           "opera" : "Multimedia",
           "yandex" : "Multimedia",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Music",
           "slideme" : "Music / Other"
         },
         "Instruments" : {
@@ -811,6 +948,7 @@ var dataStoreCategories = {
           "opera" : "Multimedia",
           "yandex" : "Multimedia",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Music",
           "slideme" : "Music / Instruments"
         },
         "Songbooks" : {
@@ -819,6 +957,7 @@ var dataStoreCategories = {
           "opera" : "Multimedia",
           "yandex" : "Multimedia",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Music",
           "slideme" : "Music / Other"
         }
     },
@@ -829,6 +968,7 @@ var dataStoreCategories = {
           "opera" : "Multimedia",
           "yandex" : "Multimedia",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Music",
           "slideme" : "Music / Music players"
         }
     },
@@ -839,6 +979,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Navigation",
+          "appland" : "Lifestyle / Navigation",
           "slideme" : "Travel & Locality / Navigation"
         }
     },
@@ -849,6 +990,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather / News"
         },
         "Regional News" : {
@@ -857,6 +999,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather / Regional News"
         },
         "Other" : {
@@ -865,6 +1008,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather / Other"
         },
         "Weather" : {
@@ -873,6 +1017,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather"
         },
         "Business" : {
@@ -881,6 +1026,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather / News"
         },
         "Entertainment" : {
@@ -889,6 +1035,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather / News"
         },
         "Health" : {
@@ -897,6 +1044,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather / News"
         },
         "Politics" : {
@@ -905,6 +1053,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather / News"
         },
         "Science & Tech" : {
@@ -913,6 +1062,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather / News"
         },
         "Sports" : {
@@ -921,6 +1071,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather / News"
         },
         "US" : {
@@ -929,6 +1080,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather / News"
         },
         "World" : {
@@ -937,6 +1089,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
+          "appland" : "News & Info / Misc",
           "slideme" : "News & Weather / News"
         }
     },
@@ -947,7 +1100,8 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
-          "slideme" : "Publications"
+          "appland" : "Books & Magazines / Music",
+          "slideme" : "News & Weather / News"
         }
     },
     "Notes" : {
@@ -957,7 +1111,8 @@ var dataStoreCategories = {
           "opera" : "Organizers",
           "yandex" : "Organizers",
           "samsung" : "Utilities",
-          "slideme" : "Tools & Utilities / Other"
+          "appland" : "Business / Tools",
+          "slideme" : "Productivity / Management"
         }
     },
     "Novelty" : {
@@ -967,6 +1122,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
+          "appland" : "Books & Magazines/ Misc",
           "slideme" : "Entertainment"
         }
     },
@@ -977,6 +1133,7 @@ var dataStoreCategories = {
           "opera" : "Business & Finance",
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
+          "appland" : "Finance / Misc",
           "slideme" : "Finance / Personal"
         }
     },
@@ -987,6 +1144,7 @@ var dataStoreCategories = {
           "opera" : "Themes & Skins",
           "yandex" : "Themes & Skins",
           "samsung" : "Theme",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes"
         }
     },
@@ -997,6 +1155,7 @@ var dataStoreCategories = {
           "opera" : "Multimedia",
           "yandex" : "Multimedia",
           "samsung" : "Photo",
+          "appland" : "Lifestyle / Photography",
           "slideme" : "Photography"
         },
         "Camera" : {
@@ -1005,6 +1164,7 @@ var dataStoreCategories = {
           "opera" : "Multimedia",
           "yandex" : "Multimedia",
           "samsung" : "Photo",
+          "appland" : "Lifestyle / Photography",
           "slideme" : "Photography / Camera"
         },
         "Editing" : {
@@ -1013,6 +1173,7 @@ var dataStoreCategories = {
           "opera" : "Multimedia",
           "yandex" : "Multimedia",
           "samsung" : "Photo",
+          "appland" : "Lifestyle / Photography",
           "slideme" : "Photography / Editing"
         },
         "Gallery" : {
@@ -1021,6 +1182,7 @@ var dataStoreCategories = {
           "opera" : "Multimedia",
           "yandex" : "Multimedia",
           "samsung" : "Photo",
+          "appland" : "Lifestyle / Photography",
           "slideme" : "Photography / Gallery"
         },
         "Sharing" : {
@@ -1029,6 +1191,7 @@ var dataStoreCategories = {
           "opera" : "Multimedia",
           "yandex" : "Multimedia",
           "samsung" : "Photo",
+          "appland" : "Lifestyle / Photography",
           "slideme" : "Photography / Sharing"
         }
     },
@@ -1039,6 +1202,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Entertainment"
         }
     },
@@ -1049,6 +1213,7 @@ var dataStoreCategories = {
           "opera" : "Organizers",
           "yandex" : "Organizers",
           "samsung" : "Productivity",
+          "appland" : "Business / Productivity",
           "slideme" : "Productivity"
         }
     },
@@ -1059,6 +1224,7 @@ var dataStoreCategories = {
           "opera" : "eBooks",
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
+          "appland" : "Books & Magazines / Misc",
           "slideme" : "Publications"
         }
     },
@@ -1069,6 +1235,7 @@ var dataStoreCategories = {
           "opera" : "Multimedia",
           "yandex" : "Multimedia",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Music / Radio"
         }
     },
@@ -1079,6 +1246,7 @@ var dataStoreCategories = {
           "opera" : "Business & Finance",
           "yandex" : "Business & Finance",
           "samsung" : "Business",
+          "appland" : "Business / Misc",
           "slideme" : "Finance / Other"
         }
     },
@@ -1089,6 +1257,7 @@ var dataStoreCategories = {
           "opera" : "eBooks",
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
+          "appland" : "Books & Magazines / Misc",
           "slideme" : "Publications"
         }
     },
@@ -1099,6 +1268,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Religion"
         },
         "Buddhism" : {
@@ -1107,6 +1277,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Religion / Buddhism"
         },
         "Chinese folk" : {
@@ -1115,6 +1286,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Religion / Chinese folk"
         },
         "Christianity" : {
@@ -1123,6 +1295,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Religion / Christianity"
         },
         "Hinduism" : {
@@ -1131,6 +1304,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Religion / Hinduism"
         },
         "Islam" : {
@@ -1139,6 +1313,34 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Islamic / Misc",
+          "slideme" : "Religion / Islam"
+        },
+        "Hadith" : {
+          "google" : "Lifestyle",
+          "amazon" : "Lifestyle / Other",
+          "opera" : "Entertainment",
+          "yandex" : "Entertainment",
+          "samsung" : "Lifestyle",
+          "appland" : "Islamic / Hadith",
+          "slideme" : "Religion / Islam"
+        },
+        "Quran" : {
+          "google" : "Lifestyle",
+          "amazon" : "Lifestyle / Other",
+          "opera" : "Entertainment",
+          "yandex" : "Entertainment",
+          "samsung" : "Lifestyle",
+          "appland" : "Islamic / Quran",
+          "slideme" : "Religion / Islam"
+        },
+        "Islamic tools" : {
+          "google" : "Lifestyle",
+          "amazon" : "Lifestyle / Other",
+          "opera" : "Entertainment",
+          "yandex" : "Entertainment",
+          "samsung" : "Lifestyle",
+          "appland" : "Islamic / Islamic tools",
           "slideme" : "Religion / Islam"
         },
         "Other" : {
@@ -1147,6 +1349,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Religion / Other"
         }
     },
@@ -1157,6 +1360,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Christian" : {
@@ -1165,6 +1369,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Classical" : {
@@ -1173,6 +1378,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Collegiate" : {
@@ -1181,6 +1387,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Comedy" : {
@@ -1189,6 +1396,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Country" : {
@@ -1197,6 +1405,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Dance & Electronic" : {
@@ -1205,6 +1414,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Jazz & Standards" : {
@@ -1213,6 +1423,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Latin" : {
@@ -1221,6 +1432,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Pop" : {
@@ -1229,6 +1441,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Rap" : {
@@ -1237,6 +1450,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Rock" : {
@@ -1245,6 +1459,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Sound Effects" : {
@@ -1253,6 +1468,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Soundtracks" : {
@@ -1261,6 +1477,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Sports" : {
@@ -1269,6 +1486,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "TV" : {
@@ -1277,6 +1495,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         },
         "Voicetones" : {
@@ -1285,6 +1504,7 @@ var dataStoreCategories = {
           "opera" : "Ringtones",
           "yandex" : "Ringtones",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Ringtones"
         }
     },
@@ -1295,6 +1515,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Home & Hobby / Shopping"
         }
     },
@@ -1305,6 +1526,7 @@ var dataStoreCategories = {
           "opera" : "Communication",
           "yandex" : "Communication",
           "samsung" : "Social Networking",
+          "appland" : "Social & Messaging / Misc",
           "slideme" : "Communication / Social Networking"
         }
     },
@@ -1315,6 +1537,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Misc",
           "slideme" : "Sports"
         },
         "Athletic" : {
@@ -1323,7 +1546,17 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Misc",
           "slideme" : "Sports / Athletic"
+        },
+        "Cricket" : {
+          "google" : "Sports",
+          "amazon" : "Sports / Other",
+          "opera" : "Entertainment",
+          "yandex" : "Entertainment",
+          "samsung" : "Sports",
+          "appland" : "Sport / Cricket",
+          "slideme" : "Sports" 
         },
         "Disabled" : {
           "google" : "Sports",
@@ -1331,6 +1564,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Misc",
           "slideme" : "Sports / Disabled"
         },
         "Extreme" : {
@@ -1339,6 +1573,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Misc",
           "slideme" : "Sports / Extreme"
         },
         "Motor" : {
@@ -1347,6 +1582,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Cars",
           "slideme" : "Sports / Motor"
         },
         "Baseball" : {
@@ -1355,6 +1591,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Leagues",
           "slideme" : "Sports / Other"
         },
         "Basketball" : {
@@ -1363,6 +1600,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Leagues",
           "slideme" : "Sports / Other"
         },
         "Boxing" : {
@@ -1371,6 +1609,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Misc",
           "slideme" : "Sports / Other"
         },
         "Football" : {
@@ -1379,6 +1618,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Football",
           "slideme" : "Sports / Other"
         },
         "Golf" : {
@@ -1387,6 +1627,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Misc",
           "slideme" : "Sports / Other"
         },
         "Hockey" : {
@@ -1395,6 +1636,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Leagues",
           "slideme" : "Sports / Other"
         },
         "NCAA" : {
@@ -1403,6 +1645,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Misc",
           "slideme" : "Sports / Other"
         },
         "Soccer" : {
@@ -1411,6 +1654,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Football",
           "slideme" : "Sports / Other"
         },
         "Tennis" : {
@@ -1419,6 +1663,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Misc",
           "slideme" : "Sports / Other"
         },
         "UFC" : {
@@ -1427,6 +1672,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Sports",
+          "appland" : "Sport / Misc",
           "slideme" : "Sports / Other"
         }
     },
@@ -1437,6 +1683,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Travel",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / Other"
         },
         "" : {
@@ -1445,6 +1692,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Travel",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality"
         },
         "Auto Rental" : {
@@ -1453,6 +1701,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Travel",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / Other"
         },
         "Flight" : {
@@ -1461,6 +1710,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Travel",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / Other"
         },
         "Hotel" : {
@@ -1469,6 +1719,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Travel",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / Other"
         },
         "Trip Planner" : {
@@ -1477,6 +1728,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Travel",
+          "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / Other"
         }
     },
@@ -1487,6 +1739,7 @@ var dataStoreCategories = {
           "opera" : "Utilities",
           "yandex" : "Utilities",
           "samsung" : "Utilities",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Tools & Utilities"
         },
         "Developer" : {
@@ -1495,6 +1748,7 @@ var dataStoreCategories = {
           "opera" : "Utilities",
           "yandex" : "Utilities",
           "samsung" : "Utilities",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Tools & Utilities / Developer вЂ“ Programmer"
         },
         "Other" : {
@@ -1503,6 +1757,7 @@ var dataStoreCategories = {
           "opera" : "Utilities",
           "yandex" : "Utilities",
           "samsung" : "Utilities",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Tools & Utilities / Other"
         },
         "Security" : {
@@ -1511,6 +1766,7 @@ var dataStoreCategories = {
           "opera" : "Utilities",
           "yandex" : "Utilities",
           "samsung" : "Utilities",
+          "appland" : "Lifestyle / Misc",
           "slideme" : "Tools & Utilities / Security"
         }
     },
@@ -1521,6 +1777,7 @@ var dataStoreCategories = {
           "opera" : "Entertainment",
           "yandex" : "Entertainment",
           "samsung" : "Music/Video",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Entertainment / Film"
         }
     },
@@ -1531,6 +1788,7 @@ var dataStoreCategories = {
           "opera" : "Themes & Skins",
           "yandex" : "Themes & Skins",
           "samsung" : "Theme",
+          "appland" : "Entertainment / Misc",
           "slideme" : "Themes / Wallpapers"
         }
     },
@@ -1541,6 +1799,7 @@ var dataStoreCategories = {
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Weather",
+          "appland" : "Travel & Weather / Misc",
           "slideme" : "News & Weather / Weather"
         }
     },
@@ -1551,6 +1810,7 @@ var dataStoreCategories = {
           "opera" : "Communication",
           "yandex" : "Communication",
           "samsung" : "Social Networking",
+          "appland" : "Social & Messaging / Misc",
           "slideme" : "Tools & Utilities / Browsers"
         }
     }
@@ -1564,6 +1824,7 @@ var dataStoreCategories = {
         "opera" : "Games",
         "yandex" : "Arcade",
         "samsung" : "Game / Puzzle",
+        "appland" : "Gaming / Puzzle",
         "slideme" : "Fun & Games / Puzzle"
       }
     },
@@ -1575,6 +1836,7 @@ var dataStoreCategories = {
         "opera" : "Games",
         "yandex" : "Arcade",
         "samsung" : "Game / Word/Trivia",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Other"
       }
     },
@@ -1586,6 +1848,7 @@ var dataStoreCategories = {
         "opera" : "Games",
         "yandex" : "Arcade",
         "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Other"
       }
     },
@@ -1597,6 +1860,7 @@ var dataStoreCategories = {
         "opera" : "Games",
         "yandex" : "Arcade",
         "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Drawing"
       }
     },
@@ -1608,6 +1872,7 @@ var dataStoreCategories = {
         "opera" : "Games",
         "yandex" : "Arcade",
         "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Casual"
       }
     },
@@ -1619,6 +1884,7 @@ var dataStoreCategories = {
         "opera" : "Games",
         "yandex" : "Arcade",
         "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Educational"
       }
     },
@@ -1630,7 +1896,8 @@ var dataStoreCategories = {
         "opera" : "Games",
         "yandex" : "Arcade",
         "samsung" : "Game / Others",
-        "slideme" : "Fun & Games / Other"
+        "appland" : "Gaming / Misc",
+        "slideme" : "Fun & Games / Educational / Kids"
       }
     },
 
@@ -1641,6 +1908,7 @@ var dataStoreCategories = {
         "opera" : "Games",
         "yandex" : "Arcade",
         "samsung" : "Game / Others",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Multiplayer"
       }
     },
@@ -1652,6 +1920,7 @@ var dataStoreCategories = {
         "opera" : "Games",
         "yandex" : "Arcade",
         "samsung" : "Game / Music",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Music"
       }
     },
@@ -1663,6 +1932,7 @@ var dataStoreCategories = {
         "opera" : "Games",
         "yandex" : "Arcade",
         "samsung" : "Game / Arcade",
+        "appland" : "Gaming / Arcade",
         "slideme" : "Fun & Games / Arcade"
       }
     },
@@ -1674,6 +1944,7 @@ var dataStoreCategories = {
         "opera" : "Games / Arcade",
         "yandex" : "Arcade",
         "samsung" : "Game / Board",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Board"
       }
     },
@@ -1685,6 +1956,7 @@ var dataStoreCategories = {
         "opera" : "Games / Action",
         "yandex" : "Action",
         "samsung" : "Game / Action",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Action"
       }
     },
@@ -1696,6 +1968,7 @@ var dataStoreCategories = {
         "opera" : "Games / Action",
         "yandex" : "Action",
         "samsung" : "Game / Adventure",
+        "appland" : "Gaming / Adventure",
         "slideme" : "Fun & Games / Adventure"
       }
     },
@@ -1707,6 +1980,7 @@ var dataStoreCategories = {
         "opera" : "Games / Strategy",
         "yandex" : "Strategy",
         "samsung" : "Game / Role Playing",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Role Playing"
       }
     },
@@ -1718,6 +1992,7 @@ var dataStoreCategories = {
         "opera" : "Games / Strategy",
         "yandex" : "Strategy",
         "samsung" : "Game / Strategy",
+        "appland" : "Gaming / Strategy",
         "slideme" : "Fun & Games / Strategy"
       }
     },
@@ -1729,6 +2004,7 @@ var dataStoreCategories = {
         "opera" : "Games / Cards",
         "yandex" : "Cards",
         "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Cards & Casino"
       }
     },
@@ -1740,6 +2016,7 @@ var dataStoreCategories = {
         "opera" : "Games / Cards",
         "yandex" : "Cards",
         "samsung" : "Game / Card/Casino",
+        "appland" : "Gaming / Misc",
         "slideme" : "Fun & Games / Cards & Casino"
       }
     },
@@ -1751,7 +2028,32 @@ var dataStoreCategories = {
         "opera" : "Games / Sports",
         "yandex" : "Sports",
         "samsung" : "Game / Sports",
+        "appland" : "Gaming / Racing",
         "slideme" : "Fun & Games / Racing"
+      }
+    },
+
+    "Football" : {
+      "" : {
+        "google" : "Sports Games",
+        "amazon" : "Games / Sports",
+        "opera" : "Games / Sports",
+        "yandex" : "Sports",
+        "samsung" : "Game / Sports",
+        "appland" : "Gaming / Football",
+        "slideme" : "Fun & Games / Sports"
+      }
+    },
+
+    "Cricket" : {
+      "" : {
+        "google" : "Sports Games",
+        "amazon" : "Games / Sports",
+        "opera" : "Games / Sports",
+        "yandex" : "Sports",
+        "samsung" : "Game / Sports",
+        "appland" : "Gaming / Cricket",
+        "slideme" : "Fun & Games / Sports"
       }
     },
 
@@ -1762,8 +2064,11 @@ var dataStoreCategories = {
         "opera" : "Games / Sports",
         "yandex" : "Sports",
         "samsung" : "Game / Sports",
+        "appland" : "Gaming / Sport",
         "slideme" : "Fun & Games / Sports"
       }
     }
   }
-}
+};
+
+console.log(dataStoreCategories);

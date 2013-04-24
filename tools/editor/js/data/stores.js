@@ -27,7 +27,7 @@ var dataStores = {
   "nook" : "NOOK apps",
   "tstore" : "SK T-Store",
   "yandex" : "Yandex.Store",    
-  "appland" : "appland",
+  "appland" : "Appland",
   "aptoid" : "aptoid",
   "1mobile" : "1mobile",
   "androidpit" : "AndroidPIT",

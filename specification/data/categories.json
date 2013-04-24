@@ -100,7 +100,7 @@
       "Medical",
       "Meditation",
       "Pregnancy",
-      "Sleep Trackers"
+      "Sleep Trackers",
       "Books"
     ],
     "Health & Fitness" : [
@@ -218,9 +218,9 @@
       "Christianity",
       "Hinduism",
       "Islam",
-      "Quran"
-      "Hadith"
-      "Islamic tools"
+      "Quran",
+      "Hadith",
+      "Islamic tools",
       "Other"
     ],
     "Ringtones" : [
