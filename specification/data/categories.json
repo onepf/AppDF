@@ -13,7 +13,8 @@
       ""
     ],
     "Business" : [
-      ""
+      "",
+      "Reference"
     ],
     "Calculators" : [
       ""
@@ -77,6 +78,9 @@
       "Music",
       "Sports",
       "Theatre",
+      "Movies",
+      "Fun tools",
+      "Bollywood",
       "Other"
     ],
     "Finance" : [
@@ -96,7 +100,8 @@
       "Medical",
       "Meditation",
       "Pregnancy",
-      "Sleep Trackers"
+      "Sleep Trackers",
+      "Books"
     ],
     "Health & Fitness" : [
       ""
@@ -213,6 +218,9 @@
       "Christianity",
       "Hinduism",
       "Islam",
+      "Quran",
+      "Hadith",
+      "Islamic tools",
       "Other"
     ],
     "Ringtones" : [
@@ -245,6 +253,7 @@
       "Athletic",
       "Disabled",
       "Extreme",
+      "Cricket",
       "Motor",
       "Baseball",
       "Basketball",
@@ -337,6 +346,12 @@
       ""
     ],
     "Racing" : [
+      ""
+    ],
+    "Football" : [
+      ""
+    ],
+    "Cricket" : [
       ""
     ],
     "Sports" : [
