@@ -61,6 +61,11 @@ var errorMessages = {
     requiredFree3PartyTagMiss: "Required <free-from-third-party-copytighted-content> tag in <consent> section is missing",
     requiredImportExportTagMiss: "Required <import-export> tag in <consent> section is missing",
     availabilityPerionError: "Availability period since date must be earlier than until date",
+    shortDescriptionRequired: "Short description required",
+    fullDescriptionRequired: "Full description required",
+    customerPhoneRequired: "Customer phone required",
+    customerEmailRequired: "Customer email required",
+    customerWebSiteRequired: "Customer website required",
     
     //fn
     fnResourceNotFound: function(name) { return name + " not found"; },
@@ -75,7 +80,7 @@ var errorMessages = {
     fnFullDescriptionError: function(languageCode) { return "The full description must be shorter than 4000 symbols (for language \"" + languageCode + "\")"; },
     
     fnFeatureMaxError: function(languageCode) { return "More than five features (for language \"" + languageCode + "\")"; },
-    fnFeatureMinError: function(languageCode) { return "There must be at least three features (for language \"" + languageCode + "\")"; },
+    fnFeatureMinError: function(languageCode) { return "At least three features (for language \"" + languageCode + "\") required"; },
     fnRecentChangesError: function(languageCode) { return "Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")"; },
     
     fnUnableAccessImageData: function(error) { return "Unable to access image data: " + error; },
@@ -88,5 +93,7 @@ var errorMessages = {
     fnUnknownCategory: function(category, type) { return "Unknown category \"" + category + "\" for type \"" + type + "\""; },
     fnUnknownSubCategory: function(subcategory, category) { return "Unknown subcategory \"" + subcategory + "\" for category \"" + category + "\""; },
     fnStoreSpecificXMLError: function(storeSpecificID) { return "Store Specific '" + storeSpecificID + "' - invalid XML"; },
-    fnDublikateRes: function(resName) { return "Dublicated resource " + resName; }
+    fnDublikateRes: function(resName) { return "Dublicated resource " + resName; },
+    
+    fnWrongResSize: function(resName) { return "Width/height from AppDF and actual " + resName + " width/height do not match"; }
 };

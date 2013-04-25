@@ -1742,8 +1742,7 @@ var appdfEditor = (function() {
         
         if (validError) {
             //show button to build unfinished file
-            //TODO TBD
-            //$("#build-unfinished-appdf-file").show();
+            $("#build-unfinished-appdf-file").show();
         };
     };   
     

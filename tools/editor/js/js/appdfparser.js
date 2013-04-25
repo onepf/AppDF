@@ -23,6 +23,8 @@
 var appdfParser = (function() {
     var checkRes = true;
     var validErrors = true;
+    var asyncValidationCount = 0;
+    
     
 	function isDefined(x) {
 		return (typeof x != "undefined");
@@ -246,6 +248,9 @@ var appdfParser = (function() {
 			$curXml = $saveCurXml;
 		};
 
+        //TODO check for "application-description-file" version tag
+        
+        
 		$curXml = getElementsByPath($xml, "application-description-file/application");
 
 		//Categorization 
@@ -512,24 +517,34 @@ var appdfParser = (function() {
         progress();//LanguageCode*5 + 14
         
         validErrors = true;
-		errors.append(validateDescriptionXMLData(data));
         
-        if (errors.length==0) {
-			onend(data);
-		} else {
-			onerror(errors);
-            if (validErrors) {
-                //remove event
-                $("#load-appdf-modal-open-unfinished-button").off("click");
-                $("#load-appdf-modal-open-unfinished-button").click(function(){
-                    console.log("onclock!!!");
+        asyncValidationCount = 0;
+        validateDescriptionXMLData(data, function(_errors) {
+            errors.append(_errors);
+            
+            if (--asyncValidationCount===0) {
+                if (errors.length===0) {
                     onend(data);
-                });
-                //show load data button
-                //TODO TBD
-                //$("#load-appdf-modal-open-unfinished-button").show();
+                } else {
+                    onerror(errors);
+                    
+                    //check valid errors
+                    for (var i=0; i<errors.length; i++) {
+                        validErrors&=errors[i].indexOf(" required")!==-1;
+                    };
+                    
+                    if (validErrors) {
+                        //remove event
+                        $("#load-appdf-modal-open-unfinished-button").off("click");
+                        $("#load-appdf-modal-open-unfinished-button").click(function(){
+                            onend(data);
+                        });
+                        //show load data button
+                        $("#load-appdf-modal-open-unfinished-button").show();
+                    };
+                };
             };
-		};
+        });
 	};
 
 	Array.prototype.append = function(a) {
@@ -542,8 +557,9 @@ var appdfParser = (function() {
 		};
 	};
 
-	function validateDescriptionXMLData(data) {
+	function validateDescriptionXMLData(data, onend) {
 		var errors = [];
+        asyncValidationCount++;
         
 		errors.append(validateCategorization(data.categorization));
         errors.append(validateLanguageCode(data.description));
@@ -553,10 +569,10 @@ var appdfParser = (function() {
                 errors.append(validateDescriptionTexts(i, data.description[i].texts));
             };
             if (data.description[i]["images"]) {
-                errors.append(validateDescriptionImages(i, data.description[i].images));
+                errors.append(validateDescriptionImages(i, data.description[i].images, onend));
             };
             if (data.description[i]["videos"]) {
-                errors.append(validateDescriptionVideos(i, data.description[i].videos));
+                errors.append(validateDescriptionVideos(i, data.description[i].videos, onend));
             };
         };
 		errors.append(validatePrice(data.price));
@@ -568,7 +584,7 @@ var appdfParser = (function() {
 		errors.append(validateTestingInstructions(data["testing-instructions"]));
 		errors.append(validateStoreSpecific(data["store-specific"]));
 		
-		return errors;
+		onend(errors);
 	};
 
     function validateRequirements(data) {
@@ -632,8 +648,20 @@ var appdfParser = (function() {
         return errors;
     };
     
-    function validateDescriptionVideos(languageCode, data) {
+    function validateDescriptionVideos(languageCode, data, onend) {
         var errors = [];
+        
+        if (data["youtube-video"]) {
+            asyncValidationCount++;
+            //youtube ID validation
+            appdfEditor.validationCallbackYoutube(null, data["youtube-video"], function(result) {
+                if (result.valid) {
+                    onend([]);
+                } else {
+                    onend([result.message]);
+                };
+            });
+        };
         
         if (data["video-file"]) {
             var videoList = data["video-file"];
@@ -650,15 +678,32 @@ var appdfParser = (function() {
         return errors;
     };
     
-	function validateDescriptionImages(languageCode, data) {
+	function validateDescriptionImages(languageCode, data, onend) {
 		var errors = [];
         
         var appIconList = data["app-icon"];
         if (appIconList.length) {
             for (var i=0; i<appIconList.length; i++) {
-                if (isUndefined(appdfXMLLoader.appdfFiles[appIconList[i].name])) {
+                if (isUndefined(appdfXMLLoader.appdfFiles[appIconList[i].name])) {//file exist
                     errors.push(errorMessages.fnResourceNotFound(appIconList[i].name));
+                } else if ((i===0 && appIconList[i].width==="512" && appIconList[i].height==="512")||(i!==0 && appIconList[i].width===appIconList[i].height)) {//declared correct file resolution
+                    //nothing
+                } else {//wrong declared file resolution
+                    errors.push(i===0?errorMessages.appIconSize512:errorMessages.appIconSizeSquare);
                 };
+                
+                //check for size
+                //TODO check format???
+                asyncValidationCount++;
+                (function(i) {
+                    appdfImages.getImgSizeFromBlob(appdfXMLLoader.appdfFiles[appIconList[i].name], function(width, height) {
+                        if (width!=1*appIconList[i].width || height!=1*appIconList[i].height) {
+                            onend([errorMessages.fnWrongResSize(appIconList[i].name)]);
+                        } else {
+                            onend([]);
+                        };
+                    });
+                })(i);
             };
         };
         
@@ -667,7 +712,26 @@ var appdfParser = (function() {
             for (var i=0; i<screenshotList.length; i++) {
                 if (isUndefined(appdfXMLLoader.appdfFiles[screenshotList[i].name])) {
                     errors.push(errorMessages.fnResourceNotFound(screenshotList[i].name));
+                } else if ((screenshotList[i].width==="480" && screenshotList[i].height==="800") || 
+                    (screenshotList[i].width==="1080" && screenshotList[i].height==="1920") || 
+                    (screenshotList[i].width==="1920" && screenshotList[i].height==="1200")) {
+                    //nothing
+                } else {//wrong declared file resolution
+                    errors.push(errorMessages.screenshowWrongSize);
                 };
+                
+                //check for size
+                //TODO check format???
+                asyncValidationCount++;
+                (function(i) {
+                    appdfImages.getImgSizeFromBlob(appdfXMLLoader.appdfFiles[screenshotList[i].name], function(width, height) {
+                        if (screenshotList[i].width*1===width && screenshotList[i].height*1===height) {
+                            onend([]);
+                        } else {
+                            onend([errorMessages.fnWrongResSize(screenshotList[i].name)]);
+                        };
+                    });
+                })(i);
             };
         };
         
@@ -675,14 +739,48 @@ var appdfParser = (function() {
         if (largePromo) {
             if (isUndefined(appdfXMLLoader.appdfFiles[largePromo.name])) {
                 errors.push(errorMessages.fnResourceNotFound(largePromo.name));
+            } else if (largePromo.width==="1024" && largePromo.height==="500") {
+                //nothing
+            } else {//wrong declared resolution
+                errors.push(errorMessages.largePromoWrongSize);
             };
+            
+            //check for size
+            //TODO check format???
+            asyncValidationCount++;
+            (function(i) {
+                appdfImages.getImgSizeFromBlob(appdfXMLLoader.appdfFiles[largePromo.name], function(width, height) {
+                    if (largePromo.width*1===width && largePromo.height*1===height) {
+                        onend([]);
+                    } else {
+                        onend([errorMessages.fnWrongResSize(largePromo.name)]);
+                    };
+                });
+            })(i);
         };
         
         var smallPromo = data["small-promo"];
         if (smallPromo) {
             if (isUndefined(appdfXMLLoader.appdfFiles[smallPromo.name])) {
                 errors.push(errorMessages.fnResourceNotFound(smallPromo.name));
+            } else if (largePromo.width==="180" && largePromo.height==="120") {
+                //nothing
+            } else {//wrong declared resolution
+                errors.push(errorMessages.smallPromoWrongSize);
             };
+            
+            //check for size
+            //TODO check format???
+            asyncValidationCount++;
+            (function(i) {
+                appdfImages.getImgSizeFromBlob(appdfXMLLoader.appdfFiles[smallPromo.name], function(width, height) {
+                    if (smallPromo.width*1===width && smallPromo.height*1===height) {
+                        onend([]);
+                    } else {
+                        onend([errorMessages.fnWrongResSize(smallPromo.name)]);
+                    };
+                });
+            })(i);
         };
         
 		return errors;
@@ -699,8 +797,12 @@ var appdfParser = (function() {
             errors.push(errorMessages.fnTitleRequiredError(languageCode));
         };
 
-		if (isDefined(data["short-description"]) && data["short-description"][0].length>80) {
-			errors.push(errorMessages.fnShortDescriptionError(languageCode));
+		if (isDefined(data["short-description"]) && data["short-description"].length) {
+            if (isDefined(data["short-description"][0]) && data["short-description"][0].length>80) {
+                errors.push(errorMessages.fnShortDescriptionError(languageCode));
+            };
+        } else if (languageCode==="default") {
+            errors.push(errorMessages.shortDescriptionRequired);
 		};
         
         if (isDefined(data["full-description"])) {
@@ -722,7 +824,9 @@ var appdfParser = (function() {
                     };
                 };
             };
-		};
+		} else if (languageCode==="default") {
+            errors.push(errorMessages.fullDescriptionRequired);
+        };
 		
 		if ((isDefined(data["eula"]) && data["eula"].length && (isUndefined(data["eula-link"]) || data["eula-link"].length===0)) ||
             (isDefined(data["eula-link"]) && data["eula-link"].length && (isUndefined(data["eula"]) || data["eula"].length===0))) {
@@ -846,16 +950,16 @@ var appdfParser = (function() {
         
         if (data["free"]) {
 			if (isDefined(data["full-version"])) {
-				errors.append(validatePackageName(data["full-version"], "Wrong package name format \"" + data["full-version"] + "\" in full version attribute"));	
+				errors.push(validatePackageName(data["full-version"], "Wrong package name format \"" + data["full-version"] + "\" in full version attribute"));	
 			};
 		} else {
 			if (isUndefined(data["base-price"])) {
 				errors.push("Required base price value is missing for paid product");
 			} else {
-				errors.append(validateNumber(data["base-price"], "Wrong price value \"" + data["base-price"] + "\". Must be a valid number like \"15.95\"."));	
+				errors.push(validateNumber(data["base-price"], "Wrong price value \"" + data["base-price"] + "\". Must be a valid number like \"15.95\"."));	
 			};
 			
-            errors.append(validateCountryCode(data["local-price"]));
+            errors.push(validateCountryCode(data["local-price"]));
 		};
 
 		return errors;	
@@ -869,10 +973,24 @@ var appdfParser = (function() {
             return errors;
         };
         
-		errors.append(validatePhoneNumber(data["phone"], errorMessages.wrongCustomerPhone));	
-		errors.append(validateEmail(data["email"], errorMessages.wrongCustomerEmail));	
-		errors.append(validateURL(data["website"], errorMessages.wrongCustomerWebPage));	
+		if (data["phone"]) {
+            errors.push(validatePhoneNumber(data["phone"], errorMessages.wrongCustomerPhone));	
+		} else {
+            errors.push(errorMessages.customerPhoneRequired);
+        };
 
+		if (data["email"]) {
+            errors.push(validateEmail(data["email"], errorMessages.wrongCustomerEmail));	
+		} else {
+            errors.push(errorMessages.customerEmailRequired);
+        };
+
+		if (data["website"]) {
+            errors.push(validateURL(data["website"], errorMessages.wrongCustomerWebPage));	
+		} else {
+            errors.push(errorMessages.customerWebSiteRequired);
+        };
+        
 		return errors;	
 	};
 
@@ -921,6 +1039,10 @@ var appdfParser = (function() {
 				default:
 					errors.push("Wrong rating certificate type value \"" + ratingCertificate["type"] + "\". Must be one of 'PEGI', 'ESRB', 'GRB', 'CERO', 'DEJUS', 'FSK'");
 			};
+            
+            if (isUndefined(appdfXMLLoader.appdfFiles[ratingCertificate["certificate"]])) {
+                errors.push(errorMessages.fnResourceNotFound(ratingCertificate["certificate"]));
+            };
 		};
 		return errors;	
 	};
