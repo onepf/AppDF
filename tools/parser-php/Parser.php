@@ -1959,6 +1959,11 @@ class AppDf_Parser
      */
     private static function _getRemoteFileContent($url)
     {
+        $localcopy = dirname(__FILE__) . '/' . pathinfo(PATHINFO_FILENAME);
+        if (is_file($localcopy)) {
+          return file_get_contents($localcopy);
+        }
+            
         $ch = curl_init($url);
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
