@@ -166,7 +166,12 @@ class AppDf_ParseException extends Exception
         if ($message)
             $this->_data['message'] = $message;
 
-        parent::__construct($message, $code, $previous);
+        // PHP <5.3 doesn't support exception chaining
+        if (version_compare(PHP_VERSION, '5.3', '>=')) {
+          parent::__construct($message, $code, $previous);
+        } else {
+          parent::__construct($message, $code);
+        }
     }
 
     /**
