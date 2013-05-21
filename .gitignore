@@ -16,3 +16,5 @@ local.properties
 
 # Other files
 .DS_Store
+
+/.project
