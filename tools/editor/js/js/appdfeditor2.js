@@ -1175,7 +1175,7 @@ var appdfEditor = (function() {
 			};
             
 			if (first) {
-				firstApkFileData = apkData;
+				appdfEditor.firstApkFileData = firstApkFileData = apkData;
 			} else {
 				if (firstApkFileData.package!=apkData.package) {
 					data.valid = false;
