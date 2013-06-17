@@ -1,8 +1,9 @@
 import os
 import time
 import urlparse
+import urllib
+import urllib2
 import dryscrape
-
 
 def fill(elements, values):
     for i, value in enumerate(values):
@@ -34,21 +35,29 @@ class GooglePlay(object):
         self.open_console()
         self.login()
 
-        assert bool(self.ensure_all_applications_header())
+        # assert bool(self.ensure_all_applications_header())
 
+        # select All applications menu
+        xpath = "//sidebar/nav/ul/li/a"
+        self.session.at_xpath(xpath).click()
+        
         if self.ensure_application_listed():
             self.open_app()
+            self.add_languages()
         else:
             self.create_app()
+            self.add_languages()
+        
+        # assert bool(self.ensure_application_header())
+        # assert bool(self.ensure_store_listing_header())
 
-        assert bool(self.ensure_application_header())
-        assert bool(self.ensure_store_listing_header())
-
-        self.fill_store_listing()
+        # self.fill_store_listing()
+        self.load_apk()
 
     # Checks
     def ensure_all_applications_header(self):
         xpath = "//h2[normalize-space(text()) = 'All applications']"
+        # TODO All applications == VSE PRILOZHENIYA
         return self._ensure(xpath)
 
     def ensure_application_listed(self):
@@ -60,11 +69,19 @@ class GooglePlay(object):
         return self._ensure(xpath)
 
     def ensure_store_listing_header(self):
-        return self._ensure("//h3[contains(text(), 'Store Listing')]")
+        xpath = "//h3[contains(text(), 'Store Listing')]"
+        # TODO Store Listing == DANNIE DLY GOOGLE PLAY
+        return self._ensure(xpath)
 
     def ensure_saved_message(self):
-        return self._ensure("//*[normalize-space(text()) = 'Saved']")
+        xpath = "//*[normalize-space(text()) = 'Saved']"
+        # TODO Saved == Sohraneno
+        return self._ensure(xpath)
 
+    def ensure_add_language_header(self):
+        xpath = "//"
+        return self._ensure(xpath)
+    
     def _ensure(self, xpath):
         return self.session.at_xpath(xpath, timeout=5)
 
@@ -90,23 +107,74 @@ class GooglePlay(object):
     def open_app(self):
         xpath = "//p[@data-column='TITLE']/span[contains(text(), '{}')]"
         self.session.at_xpath(xpath.format(self.app.title())).click()
+        
+        # TODO select default language
+        
         self.ensure_application_header()
         self._debug("open_app", "opened")
+        
 
     def create_app(self):
-        xpath = "//*[normalize-space(text()) = 'Add new application']"
+        # xpath = "//*[normalize-space(text()) = 'Add new application']"
+        # self.session.at_xpath(xpath).click()
+        xpath = "//body/div/div/div/div/div/div/div/div/div/div/div/div/div/div/div/h2/button[position()=1]"
         self.session.at_xpath(xpath).click()
         self._debug("create_app", "popup_opened")
 
         self.session.at_css("div.popupContent input").set(self.app.title())
         self._debug("create_app", "filled")
-
-        xpath = "//*[normalize-space(text()) = 'Prepare Store Listing']"
+        
+        self.session.at_css("div.popupContent select").set("en-US")
+        self._debug("create_app", "default_language_set['en-US']")
+        
+        # xpath = "//*[normalize-space(text()) = 'Prepare Store Listing']"
+        # self.session.at_xpath(xpath).click()
+        xpath = "//div[@class='gwt-PopupPanel']/div[@class='popupContent']//footer/button[position()=2]"
         self.session.at_xpath(xpath).click()
+        
         self.ensure_application_header()
         self._debug("create_app", "created")
-
+        
+    
+    def add_languages(self):
+        xpath = "//section/div/div/div/div/div/button"
+        self.session.at_xpath(xpath).click()
+        self.ensure_application_header()
+        self._debug("add_languages", "popup_opened")
+        new_local = 0
+        
+        for desc in self.app.obj.application["description-localization"]:
+            xpath = "//div[@class='popupContent']//tr/td/div/label/span[contains(text(), ' {}')]"
+            xpath = xpath.format(desc.attrib["language"])
+            
+            if self.session.at_xpath(xpath) != None:
+                new_local = 1
+                self.session.at_xpath(xpath).click()
+                # self._debug("add_languages", desc.attrib["language"])
+            
+        if new_local == 0:
+            xpath = "//div[@class='popupContent']//footer/button[last()]"
+            self.session.at_xpath(xpath).click()
+        else:
+            xpath = "//div[@class='popupContent']//footer/button[position()=1]"
+            self.session.at_xpath(xpath).click()
+            
+        self._debug("add_languages", "finished")
+        
+    
     def fill_store_listing(self):
+        self._debug("fill_store_listing", "start")
+        xpath = "//button[contains(@data-lang-code, 'en-US')]"
+        self.session.at_xpath(xpath).click()
+        self.fill_localization("default")
+        
+        for desc in self.app.obj.application["description-localization"]:
+            xpath = "//button[contains(@data-lang-code, '{}')]"
+            xpath = xpath.format(desc.attrib["language"])
+            self.session.at_xpath(xpath).click()
+            self.fill_localization(desc.attrib["language"])
+    
+    def fill_localization(self, local):
         inputs = self.session.css("fieldset input")
         textareas = self.session.css("fieldset textarea")
         selects = self.session.css("fieldset select")
@@ -116,7 +184,7 @@ class GooglePlay(object):
         assert len(selects) == 3
 
         fill(inputs, [
-            self.app.title(),
+            self.app.title(local),
             self.app.video(),
             self.app.website(),
             self.app.email(),
@@ -125,23 +193,87 @@ class GooglePlay(object):
         ])
 
         fill(textareas, [
-            self.app.full_description(),
-            self.app.short_description(),
-            self.app.recent_changes()
+            self.app.full_description(local),
+            self.app.short_description(local),
+            self.app.recent_changes(local)
         ])
 
-        fill(selects, [
-            self.app.type(),
-            self.app.category(),
-            self.app.rating()
-        ])
-
-        self.session.at_xpath("//*[normalize-space(text()) = 'Save']").click()
+        if local=="default":
+            fill(selects, [
+                self.app.type(),
+                self.app.category(),
+                self.app.rating()
+            ])
+        
+        # TODO screenshots ???
+        
+        # self.session.at_xpath("//*[normalize-space(text()) = 'Save']").click()
+        self.session.at_xpath("//section/h3/button").click()
         self.ensure_saved_message()
-        self._debug("fill_store_listing", "saved")
+        self._debug("fill_store_listing['"+local+"']", "saved")
 
+    def load_apk(self):
+        xpath = "//sidebar/ol[@aria-hidden='false']/li/a"
+        self.session.at_xpath(xpath).click()
+        self.ensure_application_header()
+        self._debug("load_apk", "select_apk_folder")
+        
+        xpath = "//section/div/div/div/div/div/div/div/button"
+        self.session.at_xpath(xpath).click()
+        self.ensure_application_header()
+        self._debug("load_apk", "click_apk_button")
+        
+        #xpath = "//div[@class='gwt-PopupPanel']/div[@class='popupContent']/div/div/div/div/button"
+        #self.session.at_xpath(xpath).click()
+        xpath = "//div[@class='gwt-PopupPanel']/div[@class='popupContent']/div/div/div/div/button"
+        print str(self.session.at_xpath(xpath))
+        
+        xpath1 = "//div[@class='gwt-PopupPanel']/div[@class='popupContent']/div/div/div/div/button"
+        print str(self.session.at_xpath(xpath1))
+        
+        # self.session.at_xpath(xpath).drag_to(self.session.at_xpath(xpath1))
+        self.session.at_xpath(xpath).eval_script('document.getElementByTag("body").innerHTML="TEST"')
+        
+        self.ensure_application_header()
+        self._debug("load_apk", "screen2")
+        self.ensure_application_header()
+        self._debug("load_apk", "screen22")
+        self.ensure_application_header()
+        self._debug("load_apk", "screen22")
+        
+        
+        
+        data = urllib.urlencode({
+            "protocolVersion":"0.8",
+            "createSessionRequest":{
+                "fields":[{
+                        "external":{
+                            "name":"file",
+                            "filename":"mxplayer.apk",
+                            "put":{},
+                            "size":7166734
+                        }
+                    },{
+                        "inlined":{
+                            "name":"upload_metadata",
+                            "content":"{\"1\":1,\"6\":\"tmp.12787154245528311782.1369831627105\",\"7\":\"12787154245528311782\",\"10\":1,\"11\":2147483647,\"13\":\"AMtNNDFuvzY0PFXAJGl9hK25HiOz9wSkmQ:1369895837988\"}",
+                            "contentType":"text/plain"
+                        }
+                    }
+                ]
+            }
+        })
+        #req = urllib2.Request("https://play.google.com/apps/publish/upload", data)
+        req = urllib2.Request("https://play.google.com/apps/publish/upload")
+        tmp = urllib2.urlopen(req).read()
+        print tmp
+        
+        
+        
     # Helpers
     def _debug(self, action, state):
-        if self.debug_dir:
-            file_name = "{}-{}-{}.png".format(time.time(), action, state)
-            self.session.render(os.path.join(self.debug_dir, file_name))
+        print action + " : " + state
+        # if self.debug_dir:
+        file_name = "{}-{}-{}.png".format(time.time(), action, state)
+        # self.session.render(os.path.join(self.debug_dir, file_name))
+        self.session.render(file_name)

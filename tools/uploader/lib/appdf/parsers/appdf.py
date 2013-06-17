@@ -3,11 +3,17 @@ import zipfile
 import lxml.etree
 import lxml.objectify
 
+import sys
 
+# @silent_normalize
+# f = silent_normalize(f)
 def silent_normalize(f):
-    def decorate(self):
+    def decorate(self, local="default"):
         try:
-            node = f(self)
+            if local=="default":
+                node = f(self)
+            else:
+                node = f(self, local)
             return node.text.encode("utf-8")
         except AttributeError:
             return None
@@ -31,7 +37,10 @@ class AppDF(object):
             self.archive = archive
             self.xml = archive.read("description.xml")
             self.obj = lxml.objectify.fromstring(self.xml)
-
+            
+            # remove. test output
+            # sys.stdout.write(str(self.xml))
+    
     def validate(self):
         current_dir = os.path.dirname(os.path.realpath(__file__))
         xsd_file = os.path.join(current_dir, "..", "..", "..", "spec",
@@ -40,8 +49,14 @@ class AppDF(object):
         schema.assertValid(lxml.etree.fromstring(self.xml))
 
     @silent_normalize
-    def title(self):
-        return self.obj.application.description.texts.title
+    def title(self, local="default"):
+        if local == "default":
+            return self.obj.application.description.texts.title
+        else:
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"] == local:
+                    return desc.texts.title
+        return ""
 
     def video(self):
         url = None
@@ -69,16 +84,37 @@ class AppDF(object):
         return self.obj.application.description.texts["privacy-policy"]
 
     @silent_normalize
-    def full_description(self):
-        return self.obj.application.description.texts["full-description"]
+    def full_description(self, local="default"):
+        if local=="default":
+            return self.obj.application.description.texts["full-description"]
+        else:
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"]==local:
+                    return desc.texts["full-description"]
+        return ""
+        # return self.obj.application.description.texts["full-description"]
 
     @silent_normalize
-    def short_description(self):
-        return self.obj.application.description.texts["short-description"]
+    def short_description(self, local="default"):
+        if local=="default":
+            return self.obj.application.description.texts["short-description"]
+        else:
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"]==local:
+                    return desc.texts["short-description"]
+        return ""
+        # return self.obj.application.description.texts["short-description"]
 
     @silent_normalize
-    def recent_changes(self):
-        return self.obj.application.description.texts["recent-changes"]
+    def recent_changes(self, local="default"):
+        if local=="default":
+            return self.obj.application.description.texts["recent-changes"]
+        else:
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"]==local:
+                    return desc.texts["recent-changes"]
+        return ""
+        #return self.obj.application.description.texts["recent-changes"]
 
     @silent_normalize
     def type(self):
