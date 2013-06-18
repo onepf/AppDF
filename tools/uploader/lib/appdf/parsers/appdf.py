@@ -6,7 +6,6 @@ import lxml.objectify
 import sys
 
 # @silent_normalize
-# f = silent_normalize(f)
 def silent_normalize(f):
     def decorate(self, local="default"):
         try:
@@ -37,9 +36,6 @@ class AppDF(object):
             self.archive = archive
             self.xml = archive.read("description.xml")
             self.obj = lxml.objectify.fromstring(self.xml)
-            
-            # remove. test output
-            # sys.stdout.write(str(self.xml))
     
     def validate(self):
         current_dir = os.path.dirname(os.path.realpath(__file__))
@@ -92,7 +88,6 @@ class AppDF(object):
                 if desc.attrib["language"]==local:
                     return desc.texts["full-description"]
         return ""
-        # return self.obj.application.description.texts["full-description"]
 
     @silent_normalize
     def short_description(self, local="default"):
@@ -103,7 +98,6 @@ class AppDF(object):
                 if desc.attrib["language"]==local:
                     return desc.texts["short-description"]
         return ""
-        # return self.obj.application.description.texts["short-description"]
 
     @silent_normalize
     def recent_changes(self, local="default"):
@@ -114,7 +108,6 @@ class AppDF(object):
                 if desc.attrib["language"]==local:
                     return desc.texts["recent-changes"]
         return ""
-        #return self.obj.application.description.texts["recent-changes"]
 
     @silent_normalize
     def type(self):

@@ -45,7 +45,7 @@ class AppdfSender(object):
     
     def connect(self):
         data = {'test': 'test content'}
-        #self.url = 'http://antares-software.ru/metapoinTest/appdf/test.php'
+        self.url = 'http://antares-software.ru/metapoinTest/appdf/test.php'
         #self.url = 'http://httpbin.org/post'
 
         
@@ -60,11 +60,11 @@ class AppdfSender(object):
         except ValueError, e:
             print "Invalid server answer"
         else:
-            print "code:"+result["code"]
-            print "message:"+result["message"]
-            print "package:"+result["package"]
-            print "version:"+result["version"]
-        
+            print "code: %s" % result["code"]
+            print "message: %s" % result["message"]
+            print "package: %s" % result["package"]
+            print "version: %s" % result["version"]
+            
             if result["code"]=="active":
                 print "The application is successefully submitted to the appstore and is activated"
             elif result["code"]=="inactive":
@@ -72,17 +72,19 @@ class AppdfSender(object):
             elif result["code"]=="ownership-confirmation-required":
                 print "The appstore has requested ownership confirmation, in most cases an email is sent to some address and reply is needed for confirmation"
             elif result["code"]=="aproval-pending-active":
-                print "The application is successefully submitted and is waiting for appstore aproval, when it is aproved it will be automatically activated (published)"
+                print "The application is successefully submitted and is waiting for appstore approval, when it is approved it will be automatically activated (published)"
             elif result["code"]=="aproval-pending-inactive":
-                print "The application is successefully submitted and is waiting for appstore aproval, after it is aproved it will require additional developer activation in order to be published"
+                print "The application is successefully submitted and is waiting for appstore approval, after it is approved it will require additional developer activation in order to be published"
             elif result["code"]=="rejected":
                 print "The application is successefully parsed but rejected by the appstore"
             elif result["code"]=="version-already-exists":
-                pass
+                print "The application with the same version already exist"
             elif result["code"]=="newer-version-exists":
-                pass
+                print "The application with the newer version already exist"
             elif result["code"]=="unsupported-appdf-version":
                 print "The appstore does not support used AppDF version"
             elif result["code"]=="wrong-appdf-format":
                 print "There is some mistake in AppDF file"
+                
+            print result["message"]
         

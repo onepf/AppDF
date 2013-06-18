@@ -1,8 +1,8 @@
 import os
 import time
-import urlparse
-import urllib
-import urllib2
+# import urlparse
+# import urllib
+# import urllib2
 import dryscrape
 
 def fill(elements, values):
@@ -226,54 +226,15 @@ class GooglePlay(object):
         #xpath = "//div[@class='gwt-PopupPanel']/div[@class='popupContent']/div/div/div/div/button"
         #self.session.at_xpath(xpath).click()
         xpath = "//div[@class='gwt-PopupPanel']/div[@class='popupContent']/div/div/div/div/button"
-        print str(self.session.at_xpath(xpath))
-        
-        xpath1 = "//div[@class='gwt-PopupPanel']/div[@class='popupContent']/div/div/div/div/button"
-        print str(self.session.at_xpath(xpath1))
         
         # self.session.at_xpath(xpath).drag_to(self.session.at_xpath(xpath1))
         self.session.at_xpath(xpath).eval_script('document.getElementByTag("body").innerHTML="TEST"')
         
-        self.ensure_application_header()
-        self._debug("load_apk", "screen2")
-        self.ensure_application_header()
-        self._debug("load_apk", "screen22")
-        self.ensure_application_header()
-        self._debug("load_apk", "screen22")
-        
-        
-        
-        data = urllib.urlencode({
-            "protocolVersion":"0.8",
-            "createSessionRequest":{
-                "fields":[{
-                        "external":{
-                            "name":"file",
-                            "filename":"mxplayer.apk",
-                            "put":{},
-                            "size":7166734
-                        }
-                    },{
-                        "inlined":{
-                            "name":"upload_metadata",
-                            "content":"{\"1\":1,\"6\":\"tmp.12787154245528311782.1369831627105\",\"7\":\"12787154245528311782\",\"10\":1,\"11\":2147483647,\"13\":\"AMtNNDFuvzY0PFXAJGl9hK25HiOz9wSkmQ:1369895837988\"}",
-                            "contentType":"text/plain"
-                        }
-                    }
-                ]
-            }
-        })
-        #req = urllib2.Request("https://play.google.com/apps/publish/upload", data)
-        req = urllib2.Request("https://play.google.com/apps/publish/upload")
-        tmp = urllib2.urlopen(req).read()
-        print tmp
-        
-        
+        # TODO apk file ???
         
     # Helpers
     def _debug(self, action, state):
         print action + " : " + state
-        # if self.debug_dir:
-        file_name = "{}-{}-{}.png".format(time.time(), action, state)
-        # self.session.render(os.path.join(self.debug_dir, file_name))
-        self.session.render(file_name)
+        if self.debug_dir:
+            file_name = "{}-{}-{}.png".format(time.time(), action, state)
+            self.session.render(os.path.join(self.debug_dir, file_name))
