@@ -51,8 +51,8 @@ class GooglePlay(object):
         # assert bool(self.ensure_application_header())
         # assert bool(self.ensure_store_listing_header())
 
-        # self.fill_store_listing()
-        self.load_apk()
+        self.fill_store_listing()
+        #self.load_apk()
 
     # Checks
     def ensure_all_applications_header(self):

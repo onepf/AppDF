@@ -45,6 +45,9 @@ class AppdfSender(object):
     
     def connect(self):
         data = {'test': 'test content'}
+        #self.url = 'http://antares-software.ru/metapoinTest/appdf/test.php'
+        #self.url = 'http://httpbin.org/post'
+
         
         try:
             r = requests.post(self.url, files=self.file, data=data, auth=(self.username, self.password))
