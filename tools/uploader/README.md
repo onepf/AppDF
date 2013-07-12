@@ -51,5 +51,5 @@ source bin/activate
 2) Run publisher 
 
 ```shell
-python bn/appdf.py --username GOOGLE_PLAY_EMAIL --password GOOGLE_PLAY_PASSWORD PATH_TO_APPDF
+python appdf.py --username GOOGLE_PLAY_EMAIL --password GOOGLE_PLAY_PASSWORD PATH_TO_APPDF
 ```
