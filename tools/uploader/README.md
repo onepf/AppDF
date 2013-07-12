@@ -5,23 +5,39 @@ Publisher for [AppDF](https://github.com/onepf/AppDF).
 ## Install
 
 1) Ensure "pip" is installed. If not try this:
-    easy_install pip
+```shell
+easy_install pip
+```
+
 2) Ensure virtualenv is installed. If not try this:
-    pip install virtualenv
+```shell
+pip install virtualenv
+```
+
 3) Create isolated environment to keep your Python installation not messed
-    virtualenv . 
+```shell
+virtualenv . 
+```
 
 4) *Before using "uploader"* switch to isolated environment
-    source bin/activate
+```shell
+source bin/activate
+```
 
 5) Dryscrape is based on webkit-servet that is based on Qt webkit, so ensure if it installed. If not try this:
 Linux: 
-    sudo apt-get install qt4-devel
+```shell
+sudo apt-get install qt4-devel
+```
 Mac:
-    brew install qt4    
+```shell
+brew install qt4
+```
 
 6) Call "make" to download dryscrape and it's prerequisites like webkit-server
-    make
+```shell
+make
+```
 Webkit-server and other stuff should be installed
 
 ## Usage
