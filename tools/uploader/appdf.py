@@ -12,7 +12,7 @@ if sys.frozen == None:
 else:
     current_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
 
-lib_dir = os.path.realpath(os.path.join(current_dir, "..", "lib"))
+lib_dir = os.path.realpath(os.path.join(current_dir, ".", "lib"))
 sys.path.insert(0, lib_dir)
 
 lib_dir = os.path.realpath(os.path.join(current_dir, ".", "webkit_server"))
