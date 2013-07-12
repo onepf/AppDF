@@ -46,68 +46,88 @@ class AppDF(object):
 
     @silent_normalize
     def title(self, local="default"):
-        if local == "default":
-            return self.obj.application.description.texts.title
-        else:
-            for desc in self.obj.application["description-localization"]:
-                if desc.attrib["language"] == local:
-                    return desc.texts.title
-        return ""
+        try:
+            if local == "default":
+                return self.obj.application.description.texts.title
+            else:
+                for desc in self.obj.application["description-localization"]:
+                    if desc.attrib["language"] == local:
+                        return desc.texts.title
+        except AttributeError:
+            return ""
 
     def video(self):
-        url = None
-
-        if self.obj.application.description.videos["youtube-video"]:
-            video_id = self.obj.application.description.videos["youtube-video"]
-            url = "http://www.youtube.com/watch?v={}".format(video_id)
-
-        return url
+        try:
+            if self.obj.application.description.videos["youtube-video"]:
+                video_id = self.obj.application.description.videos["youtube-video"]
+                url = "http://www.youtube.com/watch?v={}".format(video_id)
+                return url
+        except AttributeError:
+            return ""
 
     @silent_normalize
     def website(self):
-        return self.obj.application["customer-support"].website
+        try:
+            return self.obj.application["customer-support"].website
+        except AttributeError:
+            return ""
 
     @silent_normalize
     def email(self):
-        return self.obj.application["customer-support"].email
+        try:
+            return self.obj.application["customer-support"].email
+        except AttributeError:
+            return ""
 
     @silent_normalize
     def phone(self):
-        return self.obj.application["customer-support"].phone
+        try:
+            return self.obj.application["customer-support"].phone
+        except AttributeError:
+            return ""
 
     @silent_normalize
     def privacy_policy(self):
-        return self.obj.application.description.texts["privacy-policy"]
+        try:
+            return self.obj.application.description.texts["privacy-policy"]
+        except AttributeError:
+            return ""
 
     @silent_normalize
     def full_description(self, local="default"):
-        if local=="default":
-            return self.obj.application.description.texts["full-description"]
-        else:
-            for desc in self.obj.application["description-localization"]:
-                if desc.attrib["language"]==local:
-                    return desc.texts["full-description"]
-        return ""
+        try:
+            if local=="default":
+                return self.obj.application.description.texts["full-description"]
+            else:
+                for desc in self.obj.application["description-localization"]:
+                    if desc.attrib["language"]==local:
+                        return desc.texts["full-description"]
+        except AttributeError:
+            return ""
 
     @silent_normalize
     def short_description(self, local="default"):
-        if local=="default":
-            return self.obj.application.description.texts["short-description"]
-        else:
-            for desc in self.obj.application["description-localization"]:
-                if desc.attrib["language"]==local:
-                    return desc.texts["short-description"]
-        return ""
+        try:
+            if local=="default":
+                return self.obj.application.description.texts["short-description"]
+            else:
+                for desc in self.obj.application["description-localization"]:
+                    if desc.attrib["language"]==local:
+                        return desc.texts["short-description"]
+        except AttributeError:
+            return ""
 
     @silent_normalize
     def recent_changes(self, local="default"):
-        if local=="default":
-            return self.obj.application.description.texts["recent-changes"]
-        else:
-            for desc in self.obj.application["description-localization"]:
-                if desc.attrib["language"]==local:
-                    return desc.texts["recent-changes"]
-        return ""
+        try:
+            if local=="default":
+                return self.obj.application.description.texts["recent-changes"]
+            else:
+                for desc in self.obj.application["description-localization"]:
+                    if desc.attrib["language"]==local:
+                        return desc.texts["recent-changes"]
+        except AttributeError:
+            return ""
 
     @silent_normalize
     def type(self):

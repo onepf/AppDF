@@ -143,22 +143,25 @@ class GooglePlay(object):
         self._debug("add_languages", "popup_opened")
         new_local = 0
         
-        for desc in self.app.obj.application["description-localization"]:
-            xpath = "//div[@class='popupContent']//tr/td/div/label/span[contains(text(), ' {}')]"
-            xpath = xpath.format(desc.attrib["language"])
-            
-            if self.session.at_xpath(xpath) != None:
-                new_local = 1
+        try:
+            for desc in self.app.obj.application["description-localization"]:
+                xpath = "//div[@class='popupContent']//tr/td/div/label/span[contains(text(), ' {}')]"
+                xpath = xpath.format(desc.attrib["language"])
+                
+                if self.session.at_xpath(xpath) != None:
+                    new_local = 1
+                    self.session.at_xpath(xpath).click()
+                    # self._debug("add_languages", desc.attrib["language"])
+                
+            if new_local == 0:
+                xpath = "//div[@class='popupContent']//footer/button[last()]"
                 self.session.at_xpath(xpath).click()
-                # self._debug("add_languages", desc.attrib["language"])
-            
-        if new_local == 0:
-            xpath = "//div[@class='popupContent']//footer/button[last()]"
-            self.session.at_xpath(xpath).click()
-        else:
-            xpath = "//div[@class='popupContent']//footer/button[position()=1]"
-            self.session.at_xpath(xpath).click()
-            
+            else:
+                xpath = "//div[@class='popupContent']//footer/button[position()=1]"
+                self.session.at_xpath(xpath).click()
+        except AttributeError:
+            pass
+        
         self._debug("add_languages", "finished")
         
     
@@ -168,11 +171,14 @@ class GooglePlay(object):
         self.session.at_xpath(xpath).click()
         self.fill_localization("default")
         
-        for desc in self.app.obj.application["description-localization"]:
-            xpath = "//button[contains(@data-lang-code, '{}')]"
-            xpath = xpath.format(desc.attrib["language"])
-            self.session.at_xpath(xpath).click()
-            self.fill_localization(desc.attrib["language"])
+        try:
+            for desc in self.app.obj.application["description-localization"]:
+                xpath = "//button[contains(@data-lang-code, '{}')]"
+                xpath = xpath.format(desc.attrib["language"])
+                self.session.at_xpath(xpath).click()
+                self.fill_localization(desc.attrib["language"])
+        except AttributeError:
+            pass
     
     def fill_localization(self, local):
         inputs = self.session.css("fieldset input")
@@ -235,6 +241,8 @@ class GooglePlay(object):
     # Helpers
     def _debug(self, action, state):
         print action + " : " + state
+        
         if self.debug_dir:
             file_name = "{}-{}-{}.png".format(time.time(), action, state)
+            #self.session.render(file_name)
             self.session.render(os.path.join(self.debug_dir, file_name))
