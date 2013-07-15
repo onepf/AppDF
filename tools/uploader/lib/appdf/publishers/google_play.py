@@ -25,6 +25,7 @@ class GooglePlay(object):
         self.debug_dir = debug_dir
 
         self.session = dryscrape.Session()
+        #self.driver = dryscrape.driver.webkit.Driver()
 
         if self.debug_dir:
             if not os.path.exists(self.debug_dir):
@@ -34,7 +35,7 @@ class GooglePlay(object):
     def publish(self):
         self.open_console()
         self.login()
-
+        
         # assert bool(self.ensure_all_applications_header())
 
         # select All applications menu
@@ -99,7 +100,7 @@ class GooglePlay(object):
             email_field.set(self.username)
             password_field.set(self.password)
             self._debug("login", "filled")
-
+            
             email_field.form().submit()
             self.ensure_all_applications_header()
             self._debug("login", "submited")
@@ -143,7 +144,7 @@ class GooglePlay(object):
         self._debug("add_languages", "popup_opened")
         new_local = 0
         
-        try:
+        if hasattr(self.app.obj.application, "description-localization"):
             for desc in self.app.obj.application["description-localization"]:
                 xpath = "//div[@class='popupContent']//tr/td/div/label/span[contains(text(), ' {}')]"
                 xpath = xpath.format(desc.attrib["language"])
@@ -159,8 +160,6 @@ class GooglePlay(object):
             else:
                 xpath = "//div[@class='popupContent']//footer/button[position()=1]"
                 self.session.at_xpath(xpath).click()
-        except AttributeError:
-            pass
         
         self._debug("add_languages", "finished")
         
@@ -171,14 +170,12 @@ class GooglePlay(object):
         self.session.at_xpath(xpath).click()
         self.fill_localization("default")
         
-        try:
+        if hasattr(self.app.obj.application, "description-localization"):
             for desc in self.app.obj.application["description-localization"]:
                 xpath = "//button[contains(@data-lang-code, '{}')]"
                 xpath = xpath.format(desc.attrib["language"])
                 self.session.at_xpath(xpath).click()
                 self.fill_localization(desc.attrib["language"])
-        except AttributeError:
-            pass
     
     def fill_localization(self, local):
         inputs = self.session.css("fieldset input")
@@ -234,7 +231,6 @@ class GooglePlay(object):
         xpath = "//div[@class='gwt-PopupPanel']/div[@class='popupContent']/div/div/div/div/button"
         
         # self.session.at_xpath(xpath).drag_to(self.session.at_xpath(xpath1))
-        self.session.at_xpath(xpath).eval_script('document.getElementByTag("body").innerHTML="TEST"')
         
         # TODO apk file ???
         
@@ -244,5 +240,4 @@ class GooglePlay(object):
         
         if self.debug_dir:
             file_name = "{}-{}-{}.png".format(time.time(), action, state)
-            #self.session.render(file_name)
             self.session.render(os.path.join(self.debug_dir, file_name))

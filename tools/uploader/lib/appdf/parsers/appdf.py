@@ -46,97 +46,101 @@ class AppDF(object):
 
     @silent_normalize
     def title(self, local="default"):
-        try:
-            if local == "default":
-                return self.obj.application.description.texts.title
-            else:
-                for desc in self.obj.application["description-localization"]:
-                    if desc.attrib["language"] == local:
+        if local == "default":
+            return self.obj.application.description.texts.title #required tag
+        elif hasattr(self.obj.application, "description-localization"): #optional tags
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"] == local:
+                    if hasattr(desc, "texts") and hasattr(desc.texts, "title"):  #optional tags
                         return desc.texts.title
-        except AttributeError:
+                    else:
+                        return ""
+        else:
             return ""
-
-    def video(self):
-        try:
-            if self.obj.application.description.videos["youtube-video"]:
-                video_id = self.obj.application.description.videos["youtube-video"]
-                url = "http://www.youtube.com/watch?v={}".format(video_id)
-                return url
-        except AttributeError:
-            return ""
-
-    @silent_normalize
-    def website(self):
-        try:
-            return self.obj.application["customer-support"].website
-        except AttributeError:
+            
+    def video(self): #optional tags
+        if hasattr(self.obj.application.description, "videos") and hasattr(self.obj.application.description, "youtube-video") and self.obj.application.description.videos["youtube-video"]:
+            video_id = self.obj.application.description.videos["youtube-video"]
+            url = "http://www.youtube.com/watch?v={}".format(video_id)
+            return url
+        else:
             return ""
 
     @silent_normalize
-    def email(self):
-        try:
-            return self.obj.application["customer-support"].email
-        except AttributeError:
-            return ""
+    def website(self): #required tags
+        return self.obj.application["customer-support"].website
 
     @silent_normalize
-    def phone(self):
-        try:
-            return self.obj.application["customer-support"].phone
-        except AttributeError:
-            return ""
+    def email(self): #required tags
+        return self.obj.application["customer-support"].email
 
     @silent_normalize
-    def privacy_policy(self):
-        try:
+    def phone(self): #required tags
+        return self.obj.application["customer-support"].phone
+
+    @silent_normalize
+    def privacy_policy(self): #optional tag
+        if hasattr(self.obj.application.description.texts, "privacy-policy"):
             return self.obj.application.description.texts["privacy-policy"]
-        except AttributeError:
+        else:
             return ""
 
     @silent_normalize
     def full_description(self, local="default"):
         try:
-            if local=="default":
+            if local=="default": #required tag
                 return self.obj.application.description.texts["full-description"]
-            else:
+            elif hasattr(self.obj.application, "description-localization"): #optional tag
                 for desc in self.obj.application["description-localization"]:
                     if desc.attrib["language"]==local:
-                        return desc.texts["full-description"]
+                        if hasattr(desc, "texts") and hasattr(desc.texts, "full-description"):
+                            return desc.texts["full-description"]
+                        else:
+                            return ""
         except AttributeError:
             return ""
 
     @silent_normalize
     def short_description(self, local="default"):
         try:
-            if local=="default":
+            if local=="default": #required tag
                 return self.obj.application.description.texts["short-description"]
-            else:
+            elif hasattr(self.obj.application, "description-localization"): #optional tag
                 for desc in self.obj.application["description-localization"]:
                     if desc.attrib["language"]==local:
-                        return desc.texts["short-description"]
+                        if hasattr(desc, "texts") and hasattr(desc.texts, "short-description"):
+                            return desc.texts["short-description"]
+                        else:
+                            return ""
         except AttributeError:
             return ""
 
     @silent_normalize
     def recent_changes(self, local="default"):
         try:
-            if local=="default":
-                return self.obj.application.description.texts["recent-changes"]
-            else:
+            if local=="default": #optional tag
+                if hasattr(self.obj.application.description.texts, "recent-changes"):
+                    return self.obj.application.description.texts["recent-changes"]
+                else:
+                    return ""
+            elif hasattr(self.obj.application, "description-localization"): #optional tag
                 for desc in self.obj.application["description-localization"]:
                     if desc.attrib["language"]==local:
-                        return desc.texts["recent-changes"]
+                        if hasattr(desc, "texts") and hasattr(desc.texts, "recent-changes"):
+                            return desc.texts["recent-changes"]
+                        else:
+                            return ""
         except AttributeError:
             return ""
 
     @silent_normalize
-    def type(self):
+    def type(self): #required tag
         return self.obj.application.categorization.type
 
     @silent_normalize
-    def category(self):
+    def category(self): #required tag
         return self.obj.application.categorization.category
 
     @silent_normalize
-    def rating(self):
+    def rating(self): #required tag
         return self.obj.application["content-description"]["content-rating"]
