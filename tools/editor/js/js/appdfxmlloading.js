@@ -475,7 +475,7 @@ var appdfXMLLoader = (function() {
         appdfFiles = {};
         
         if (!file) {
-            onerror([errorMessages.selectAppDFFile]);
+            onerror([{msg:errorMessages.selectAppDFFile, val:false}]);
             return false;
         };
         
@@ -501,7 +501,7 @@ var appdfXMLLoader = (function() {
                 });
                 
                 if (!descriptionAttachedFlag) {
-                    onerror([errorMessages.descriptionNotFound]);
+                    onerror([{msg:errorMessages.descriptionNotFound, val:false}]);
                     return false;
                 };
                 
@@ -530,7 +530,7 @@ var appdfXMLLoader = (function() {
                 getNextFileData();
             });
         }, function(e) {
-            onerror([e]);
+            onerror([{msg:e, val:false}]);
         });
     };
     
@@ -550,7 +550,7 @@ var appdfXMLLoader = (function() {
             };
             
             fileReader.onerror = function(event) {
-                onerror([errorMessages.fileErrorAndCode(fileName, event.target.error.code)]);
+                onerror([{msg:errorMessages.fileErrorAndCode(fileName, event.target.error.code), val:false}]);
             };
             
             if (fileName==="description.xml") {

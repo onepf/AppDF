@@ -36,20 +36,20 @@ var errorMessages = {
     APKfileSize50M: "APK file size cannot exceed 50M",
     APKfileWrongPackageName: "APK file package names do not match",
     storeExist: "This store already exists",
-    applicationNameWrong: "Application store name could contain only small English letters without special symbols",
-    wrongYoutubeFormat: "Wrong YouTube video ID format. Do not place entire URL but just ID (which is usualy written in URL after 'v='",
+    applicationNameWrong: "Application store name may contain only lower-case, Latin-alphabet letters without special symbols",
+    wrongYoutubeFormat: "Wrong YouTube video ID format. Do not enter entire URL. Only enter ID (usually written in URL after 'v=')",
     wrongCategorization: "Wrong categorisation",
-    wrongCustomerPhone: "Wrong customer support phone number format. Only digits, brackets, spaces and dashes are allowed. Must be in international format like +1 (555) 123-45-67.",
+    wrongCustomerPhone: "Wrong customer support phone number format. Only digits, brackets, spaces and dashes are allowed. Must be in international format, e.g. +1 (555) 123-45-67.",
     wrongCustomerEmail: "Wrong customer support email format. Must be a valid email address.",
     wrongCustomerWebPage: "Wrong customer support webpage format. Must be a valid URL.",
     
     //incode html in appdfeditor2.js
     keywordRequired: "Keyword cannot be empty. Remove keyword input if you do not need it.",
-    pricePattern: "Wrong price value. Must be a valid number like 15.95.",
+    pricePattern: "Wrong price value. Must be a valid number, e.g. 15.95.",
     
     //loading errors
     selectAppDFFile: "Please select AppDF file",
-    errorCreatingAppDFFile: "Cant create AppDF file",
+    errorCreatingAppDFFile: "Cannot create AppDF file",
     notZipFile: "AppDF not in zip format",
     descriptionIsNotXML: "description.xml file is not XML",
     descriptionNotFound: "description.xml file is not found inside AppDF container",
@@ -58,9 +58,14 @@ var errorMessages = {
     requiredGoogleAndroidTagMiss: "Required <google-android-content-guidelines> tag in <consent> section is missing",
     requiredUSExportLawsTagMiss: "Required <us-export-laws> tag in <consent> section is missing",
     requiredSlideMeTagMiss: "Required <slideme-agreement> tag in <consent> section is missing",
-    requiredFree3PartyTagMiss: "Required <free-from-third-party-copytighted-content> tag in <consent> section is missing",
+    requiredFree3PartyTagMiss: "Required <free-from-third-party-copyrighted-content> tag in <consent> section is missing",
     requiredImportExportTagMiss: "Required <import-export> tag in <consent> section is missing",
     availabilityPerionError: "Availability period since date must be earlier than until date",
+    shortDescriptionRequired: "Short description is required",
+    fullDescriptionRequired: "Full description is required",
+    customerPhoneRequired: "Customer phone is required",
+    customerEmailRequired: "Customer email is required",
+    customerWebSiteRequired: "Customer website is required",
     
     //fn
     fnResourceNotFound: function(name) { return name + " not found"; },
@@ -75,7 +80,7 @@ var errorMessages = {
     fnFullDescriptionError: function(languageCode) { return "The full description must be shorter than 4000 symbols (for language \"" + languageCode + "\")"; },
     
     fnFeatureMaxError: function(languageCode) { return "More than five features (for language \"" + languageCode + "\")"; },
-    fnFeatureMinError: function(languageCode) { return "There must be at least three features (for language \"" + languageCode + "\")"; },
+    fnFeatureMinError: function(languageCode) { return "At least three features (for language \"" + languageCode + "\") are required"; },
     fnRecentChangesError: function(languageCode) { return "Recent changes must be shorted than 500 symbols (for language \"" + languageCode + "\")"; },
     
     fnUnableAccessImageData: function(error) { return "Unable to access image data: " + error; },
@@ -88,5 +93,7 @@ var errorMessages = {
     fnUnknownCategory: function(category, type) { return "Unknown category \"" + category + "\" for type \"" + type + "\""; },
     fnUnknownSubCategory: function(subcategory, category) { return "Unknown subcategory \"" + subcategory + "\" for category \"" + category + "\""; },
     fnStoreSpecificXMLError: function(storeSpecificID) { return "Store Specific '" + storeSpecificID + "' - invalid XML"; },
-    fnDublikateRes: function(resName) { return "Dublicated resource " + resName; }
+    fnDublikateRes: function(resName) { return "Dublicated resource " + resName; },
+    
+    fnWrongResSize: function(resName) { return "Width/height from AppDF and actual " + resName + " width/height do not match"; }
 };
