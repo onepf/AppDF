@@ -14,24 +14,33 @@ easy_install pip
 pip install virtualenv
 ```
 
-3) Create isolated environment to keep your Python installation not messed
-```shell
-virtualenv . 
-```
+3) Uploader uses Dryscrape that based on webkit-server (requires Qt webkit) and xml libraries, so ensure you have following packets installed:
 
-4) *Before using "uploader"* switch to isolated environment
-```shell
-source bin/activate
-```
+3.1) libxml
+3.2) libxslt
+3.3) qt4-devel	(contains webkit)
+3.4) python-devel (Python.h is required for building bindings)
 
-5) Dryscrape is based on webkit-servet that is based on Qt webkit, so ensure if it installed. If not try this:
+Install it using your system installer:
 Linux: 
 ```shell
-sudo apt-get install qt4-devel
+sudo apt-get install qt4-devel 
+...
 ```
 Mac:
 ```shell
 brew install qt4
+...
+```
+
+4)  Create isolated environment to keep your Python installation not messed
+```shell
+virtualenv . 
+```
+
+5) *Switch to isolated environment before building or using "uploader"* - it will save hours of your time
+```shell
+source bin/activate
 ```
 
 6) Call "make" to download dryscrape and it's prerequisites like webkit-server
