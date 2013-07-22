@@ -15,11 +15,12 @@ pip install virtualenv
 ```
 
 3) Uploader uses Dryscrape that based on webkit-server (requires Qt webkit) and xml libraries, so ensure you have following packets installed:
-
-3.1) libxml
-3.2) libxslt
-3.3) qt4-devel	(contains webkit)
-3.4) python-devel (Python.h is required for building bindings)
+```shell
+libxml
+libxslt
+qt4-devel	(contains webkit)
+python-devel (Python.h is required for building bindings)
+```
 
 Install it using your system installer:
 Linux: 
