@@ -3,11 +3,16 @@ import zipfile
 import lxml.etree
 import lxml.objectify
 
+import sys
 
+# @silent_normalize
 def silent_normalize(f):
-    def decorate(self):
+    def decorate(self, local="default"):
         try:
-            node = f(self)
+            if local=="default":
+                node = f(self)
+            else:
+                node = f(self, local)
             return node.text.encode("utf-8")
         except AttributeError:
             return None
@@ -31,7 +36,7 @@ class AppDF(object):
             self.archive = archive
             self.xml = archive.read("description.xml")
             self.obj = lxml.objectify.fromstring(self.xml)
-
+    
     def validate(self):
         current_dir = os.path.dirname(os.path.realpath(__file__))
         xsd_file = os.path.join(current_dir, "..", "..", "..", "spec",
@@ -40,54 +45,102 @@ class AppDF(object):
         schema.assertValid(lxml.etree.fromstring(self.xml))
 
     @silent_normalize
-    def title(self):
-        return self.obj.application.description.texts.title
-
-    def video(self):
-        url = None
-
-        if self.obj.application.description.videos["youtube-video"]:
+    def title(self, local="default"):
+        if local == "default":
+            return self.obj.application.description.texts.title #required tag
+        elif hasattr(self.obj.application, "description-localization"): #optional tags
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"] == local:
+                    if hasattr(desc, "texts") and hasattr(desc.texts, "title"):  #optional tags
+                        return desc.texts.title
+                    else:
+                        return ""
+        else:
+            return ""
+            
+    def video(self): #optional tags
+        if hasattr(self.obj.application.description, "videos") and hasattr(self.obj.application.description, "youtube-video") and self.obj.application.description.videos["youtube-video"]:
             video_id = self.obj.application.description.videos["youtube-video"]
             url = "http://www.youtube.com/watch?v={}".format(video_id)
-
-        return url
+            return url
+        else:
+            return ""
 
     @silent_normalize
-    def website(self):
+    def website(self): #required tags
         return self.obj.application["customer-support"].website
 
     @silent_normalize
-    def email(self):
+    def email(self): #required tags
         return self.obj.application["customer-support"].email
 
     @silent_normalize
-    def phone(self):
+    def phone(self): #required tags
         return self.obj.application["customer-support"].phone
 
     @silent_normalize
-    def privacy_policy(self):
-        return self.obj.application.description.texts["privacy-policy"]
+    def privacy_policy(self): #optional tag
+        if hasattr(self.obj.application.description.texts, "privacy-policy"):
+            return self.obj.application.description.texts["privacy-policy"]
+        else:
+            return ""
 
     @silent_normalize
-    def full_description(self):
-        return self.obj.application.description.texts["full-description"]
+    def full_description(self, local="default"):
+        try:
+            if local=="default": #required tag
+                return self.obj.application.description.texts["full-description"]
+            elif hasattr(self.obj.application, "description-localization"): #optional tag
+                for desc in self.obj.application["description-localization"]:
+                    if desc.attrib["language"]==local:
+                        if hasattr(desc, "texts") and hasattr(desc.texts, "full-description"):
+                            return desc.texts["full-description"]
+                        else:
+                            return ""
+        except AttributeError:
+            return ""
 
     @silent_normalize
-    def short_description(self):
-        return self.obj.application.description.texts["short-description"]
+    def short_description(self, local="default"):
+        try:
+            if local=="default": #required tag
+                return self.obj.application.description.texts["short-description"]
+            elif hasattr(self.obj.application, "description-localization"): #optional tag
+                for desc in self.obj.application["description-localization"]:
+                    if desc.attrib["language"]==local:
+                        if hasattr(desc, "texts") and hasattr(desc.texts, "short-description"):
+                            return desc.texts["short-description"]
+                        else:
+                            return ""
+        except AttributeError:
+            return ""
 
     @silent_normalize
-    def recent_changes(self):
-        return self.obj.application.description.texts["recent-changes"]
+    def recent_changes(self, local="default"):
+        try:
+            if local=="default": #optional tag
+                if hasattr(self.obj.application.description.texts, "recent-changes"):
+                    return self.obj.application.description.texts["recent-changes"]
+                else:
+                    return ""
+            elif hasattr(self.obj.application, "description-localization"): #optional tag
+                for desc in self.obj.application["description-localization"]:
+                    if desc.attrib["language"]==local:
+                        if hasattr(desc, "texts") and hasattr(desc.texts, "recent-changes"):
+                            return desc.texts["recent-changes"]
+                        else:
+                            return ""
+        except AttributeError:
+            return ""
 
     @silent_normalize
-    def type(self):
+    def type(self): #required tag
         return self.obj.application.categorization.type
 
     @silent_normalize
-    def category(self):
+    def category(self): #required tag
         return self.obj.application.categorization.category
 
     @silent_normalize
-    def rating(self):
+    def rating(self): #required tag
         return self.obj.application["content-description"]["content-rating"]

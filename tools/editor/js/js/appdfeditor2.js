@@ -28,6 +28,10 @@ var appdfEditor = (function() {
     var firstApkFileData = {};
     var globalUnigueCounter = 0;
 
+    var fileName = "";
+    var fileData = "";
+    
+    
     function getUniqueId() {
         globalUnigueCounter += 1;
         return globalUnigueCounter;
@@ -498,7 +502,7 @@ var appdfEditor = (function() {
                     //Now we make sure the error list is visible and add all the errors there
                     $("#load-appdf-modal-errors").show();
                     for (var i=0; i<errors.length; i++) {
-                        $list.append($("<li>").text(errors[i]));
+                        $list.append($("<li>").text(errors[i].msg));
                     };
                     appdfEditor.importingFlag = false;
                 }, loadProgress, parseProgress);
@@ -1386,13 +1390,18 @@ var appdfEditor = (function() {
         $("#build-appdf-progressbarr").css("width", "0%");
         $("#build-appdf-status").show();
         
-        generateAppDFFile(function(url) {
-            var fileName;
+        generateAppDFFile(function(url, data) {
+            //TODO store file
+            
             if (firstApkFileData) {
                 fileName = firstApkFileData["package"] + ".appdf";
             } else {
                 fileName = "untitled.appdf";
             };
+            console.log("fileName: " + fileName);
+            console.log("appdfEditor.fileName: " + appdfEditor.fileName);
+            fileData = data;
+            
             var clickEvent = document.createEvent("MouseEvents");
             var downloadLink = document.getElementById("build-appdf-file");
             downloadLink.href = url;
@@ -1641,7 +1650,7 @@ var appdfEditor = (function() {
             addDescriptionAndFilesToZipWriter(writer, descriptionXML, files, buildProgress, function() {
                 writer.close(function(blob) {
                     var url = URL.createObjectURL(blob);
-                    onend(url);
+                    onend(url, blob);
                 });
             });
         }, function(error) {
@@ -1742,8 +1751,7 @@ var appdfEditor = (function() {
         
         if (validError) {
             //show button to build unfinished file
-            //TODO TBD
-            //$("#build-unfinished-appdf-file").show();
+            $("#build-unfinished-appdf-file").show();
         };
     };   
     
@@ -1871,6 +1879,26 @@ var appdfEditor = (function() {
         $('#section-store-specific .store-specific').remove();
     };
     
+    function downloadifyInit() {
+        Downloadify.create('downloadify',{
+            filename: function(){
+                return appdfEditor.fileName;
+            },
+            data: function(){ 
+                return appdfEditor.fileData;
+            },
+            onComplete: function(){ alert('Your File Has Been Saved!'); },
+            onCancel: function(){ alert('You have cancelled the saving of this file.'); },
+            onError: function(){ alert('You must put something in the File Contents or there will be nothing to save!'); },
+            swf: 'media/downloadify.swf',
+            downloadImage: 'img/download.png',
+            width: 100,
+            height: 30,
+            transparent: true,
+            append: false
+        });
+    };
+    
     function init() {
         checkInit();
         initRatingCertificate();
@@ -1879,6 +1907,7 @@ var appdfEditor = (function() {
         initFilling();
         addClickHandlers();
         addDatePicker();
+        downloadifyInit();
     };
 
     return {
