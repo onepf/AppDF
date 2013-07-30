@@ -115,6 +115,24 @@ class AppDF(object):
         except AttributeError:
             return ""
 
+    #@silent_normalize
+    def features(self, local="default"):
+        if local=="default":
+            result = ""
+            for feature in self.obj.application.description.texts.features.feature:
+                result += feature + "\n"
+            return result
+        else:
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"]==local:
+                    if hasattr(desc, "texts") and hasattr(desc.texts, "features"):
+                        result = ""
+                        for feature in desc.texts.features.feature:
+                            result += feature + "\n"
+                        return result
+                    else:
+                        return ""
+    
     @silent_normalize
     def recent_changes(self, local="default"):
         try:

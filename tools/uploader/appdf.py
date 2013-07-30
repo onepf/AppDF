@@ -71,8 +71,10 @@ def main():
         publisher = appdf.publishers.AppdfSender(args.username, args.password, 
             args.url, args.command, args.package, file)
     else:
-        publisher = appdf.publishers.GooglePlay(app, args.username, 
+        publisher = appdf.publishers.Amazon(app, args.username, 
             args.password, args.debug_dir)
+        #publisher = appdf.publishers.GooglePlay(app, args.username, 
+            #args.password, args.debug_dir)
     
     publisher.publish()
     
