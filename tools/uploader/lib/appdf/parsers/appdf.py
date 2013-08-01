@@ -135,21 +135,18 @@ class AppDF(object):
     
     @silent_normalize
     def recent_changes(self, local="default"):
-        try:
-            if local=="default": #optional tag
-                if hasattr(self.obj.application.description.texts, "recent-changes"):
-                    return self.obj.application.description.texts["recent-changes"]
-                else:
-                    return ""
-            elif hasattr(self.obj.application, "description-localization"): #optional tag
-                for desc in self.obj.application["description-localization"]:
-                    if desc.attrib["language"]==local:
-                        if hasattr(desc, "texts") and hasattr(desc.texts, "recent-changes"):
-                            return desc.texts["recent-changes"]
-                        else:
-                            return ""
-        except AttributeError:
-            return ""
+        if local=="default": #optional tag
+            if hasattr(self.obj.application.description.texts, "recent-changes"):
+                return self.obj.application.description.texts["recent-changes"]
+            else:
+                return ""
+        elif hasattr(self.obj.application, "description-localization"): #optional tag
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"]==local:
+                    if hasattr(desc, "texts") and hasattr(desc.texts, "recent-changes"):
+                        return desc.texts["recent-changes"]
+                    else:
+                        return ""
 
     @silent_normalize
     def type(self): #required tag
@@ -158,7 +155,30 @@ class AppDF(object):
     @silent_normalize
     def category(self): #required tag
         return self.obj.application.categorization.category
+        
+    @silent_normalize
+    def subcategory(self): #optional tag
+        if hasattr(self.obj.application.categorization, "subcategory"):
+            return self.obj.application.categorization.subcategory
+        else:
+            return ""
 
     @silent_normalize
     def rating(self): #required tag
         return self.obj.application["content-description"]["content-rating"]
+        
+    @silent_normalize
+    def keywords(self, local="default"):
+        if local=="default": #optional tag
+            if hasattr(self.obj.application.description.texts, "keywords"):
+                return self.obj.application.description.texts["keywords"]
+            else:
+                return ""
+        elif hasattr(self.obj.application, "description-localization"): #optional tag
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"]==local:
+                    if hasattr(desc, "texts") and hasattr(desc.texts, "keywords"):
+                        return desc.texts["keywords"]
+                    else:
+                        return ""
+

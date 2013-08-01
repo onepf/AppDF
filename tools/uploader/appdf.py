@@ -62,7 +62,8 @@ def main():
         print "Cannot open %s" % args.file
         sys.exit(1)
     
-    app = appdf.parsers.GooglePlay(args.file)
+    #app = appdf.parsers.GooglePlay(args.file)
+    app = appdf.parsers.Amazon(args.file)
     app.parse()
     if args.validate:
         app.validate()
