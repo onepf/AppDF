@@ -166,7 +166,7 @@ class AppDF(object):
     @silent_normalize
     def rating(self): #required tag
         return self.obj.application["content-description"]["content-rating"]
-        
+    
     @silent_normalize
     def keywords(self, local="default"):
         if local=="default": #optional tag

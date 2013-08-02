@@ -160,6 +160,13 @@ class Amazon(object):
         if self.session.at_xpath(xpath):
             self._ensure(xpath).click();
         
+        #free app of day
+        fill([
+            self.session.at_xpath("//input[@id=\"fad\"]")
+        ], [
+            self.app.free_app_of_day()
+        ])
+        
         self._debug("fill_availability", "fill")
         
         xpath = "//input[@id=\"submit_button\"]"
@@ -171,15 +178,44 @@ class Amazon(object):
         if self.session.at_xpath(xpath):
             self._ensure(xpath).click();
         
-        xpath = "//a[@id=\"edit_button\"]"
-        if self.session.at_xpath(xpath):
-            self._ensure(xpath).click();
+        self.form_description("default")
         
-        #follow localisation
+        if hasattr(self.app.obj.application, "description-localization"):
+            for desc in self.app.obj.application["description-localization"]:
+                language = desc.attrib["language"]
+                #TODO
+                xpath = "//ul[@id=\"collectable_nav_list\"]/li/span[contains(text(), \"{}\")]"
+                xpath = xpath.format()
+                
+                if self.session.at_xpath(xpath) != None:
+                    new_local = 1
+                    self.session.at_xpath(xpath).click()
+                    # self._debug("add_languages", desc.attrib["language"])
+                
+            if new_local == 0:
+                xpath = "//div[@class='popupContent']//footer/button[last()]"
+                self.session.at_xpath(xpath).click()
+            else:
+                xpath = "//div[@class='popupContent']//footer/button[position()=1]"
+                self.session.at_xpath(xpath).click()
+        
+        
+        #follow localization
         # ul#collectable_nav_list
         
         #save and add translation
         xpath = "//input[@id=\"save_and_add_button\"]"
+        
+        
+        
+        xpath = "//input[@id=\"submit_button\"]"
+        self.session.at_xpath(xpath).click();
+        self._debug("description", "save")
+        
+    def form_description(self, local="default"):
+        xpath = "//a[@id=\"edit_button\"]"
+        if self.session.at_xpath(xpath):
+            self._ensure(xpath).click();
         
         fill([
             self.session.at_xpath("//textarea[@id=\"dpShortDescription\"]"),
@@ -187,18 +223,18 @@ class Amazon(object):
             self.session.at_xpath("//textarea[@id=\"dpMarketingBulletsStr\"]"),
             self.session.at_xpath("//textarea[@id=\"keywordsString\"]")
         ], [
-            self.app.short_description("default"),
-            self.app.full_description("default"),
-            self.app.features("default"),
-            self.app.keywords("default")
+            self.app.short_description(local),
+            self.app.full_description(local),
+            self.app.features(local),
+            self.app.keywords(local)
         ])
-        
-        self._debug("description", "fill")
+        self._debug("description", "fill_"+local)
         
         xpath = "//input[@id=\"submit_button\"]"
         self.session.at_xpath(xpath).click();
-        self._debug("description", "save")
+        self._debug("description", "store_"+local)
         
+    
     def fill_images_multimedia(self):
         xpath = "//a[@id=\"header_nav_multimedia_a\"]"
         if self.session.at_xpath(xpath):
@@ -224,14 +260,22 @@ class Amazon(object):
         if self.session.at_xpath(xpath):
             self._ensure(xpath).click();
         
+        content_desc = self.app.content_desc()
         
-        #maturityratingcategory.alcohol_tobacco_or_drug_use_or_references_0
-        #maturityratingcategory.cartoon_or_fantasy_violence_0
-        #maturityratingcategory.cultural_or_religious_intolerance_0
-        #maturityratingcategory.nudity_0
-        #maturityratingcategory.profanity_or_crude_humor_0
-        #maturityratingcategory.realistic_violence_0
-        #maturityratingcategory.sexual_and_suggestive_content_0
+        xpath = "//input[@id=\"maturityratingcategory.alcohol_tobacco_or_drug_use_or_references_" + content_desc[0] + "\"]"
+        self.session.at_xpath(xpath).click()
+        xpath = "//input[@id=\"maturityratingcategory.cartoon_or_fantasy_violence_" + content_desc[1] + "\"]"
+        self.session.at_xpath(xpath).click()
+        xpath = "//input[@id=\"maturityratingcategory.cultural_or_religious_intolerance_" + content_desc[2] + "\"]"
+        self.session.at_xpath(xpath).click()
+        xpath = "//input[@id=\"maturityratingcategory.nudity_" + content_desc[3] + "\"]"
+        self.session.at_xpath(xpath).click()
+        xpath = "//input[@id=\"maturityratingcategory.profanity_or_crude_humor_" + content_desc[4] + "\"]"
+        self.session.at_xpath(xpath).click()
+        xpath = "//input[@id=\"maturityratingcategory.realistic_violence_" + content_desc[5] + "\"]"
+        self.session.at_xpath(xpath).click()
+        xpath = "//input[@id=\"maturityratingcategory.sexual_and_suggestive_content_" + content_desc[6] + "\"]"
+        self.session.at_xpath(xpath).click()
         
         fill([
             self.session.at_xpath("//input[@id=\"maturityratingcategory.account_creation\"]"),
