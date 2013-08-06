@@ -1,3 +1,4 @@
+#coding: utf-8
 import os
 import re
 import time
@@ -37,18 +38,20 @@ class Amazon(object):
         if self.ensure_application_listed():
             self.open_application()
             self.fill_general_information()
-            self.fill_availability()
+            #self.fill_availability()
             self.fill_description()
+            #self.fill_content_rating()
+            
             #self.fill_images_multimedia()
-            self.fill_content_rating()
             #self.fill_binary_files()
         else:
             self.create_application()
             self.fill_general_information()
-            self.fill_availability()
+            #self.fill_availability()
             self.fill_description()
+            #self.fill_content_rating()
+            
             #self.fill_images_multimedia()
-            self.fill_content_rating()
             #self.fill_binary_files()
             
         
@@ -97,8 +100,6 @@ class Amazon(object):
         if self.session.at_xpath(xpath):
             self._ensure(xpath).click();
             
-        self._debug("general_info", "start")
-        
         xpath = "//a[@id=\"edit_button\"]"
         if self.session.at_xpath(xpath):
             self._ensure(xpath).click();
@@ -124,8 +125,7 @@ class Amazon(object):
         
         #category selection
         xpath = "//select[@id=\"parentCategoryList\"]/option[contains(text(), \"{}\")]"
-        #xpath = xpath.format(self.app.category())
-        xpath = xpath.format("Cooking") #TEMPORARY DATA. REMOVE
+        xpath = xpath.format("Cooking") #xpath.format(self.app.category())
         category_value = self.session.at_xpath(xpath).value()
         fill([
             self.session.at_xpath("//select[@id=\"parentCategoryList\"]")
@@ -137,12 +137,12 @@ class Amazon(object):
         if self.app.subcategory() != "":
             xpath = "//select[@id=\"childCategoryList\"]/option[contains(text(), \"{}\")]"
             xpath = xpath.format(self.app.subcategory())
-            if self.session.at_xpath(xpath):
+            if self._ensure(xpath):
                 subcategory_value = self.session.at_xpath(xpath).value()
                 fill([
                     self.session.at_xpath("//select[@id=\"childCategoryList\"]")
                 ], [
-                    subcategory_value
+                    subcategory_value #u"M1E6O3ZVOOL35E"
                 ])
         
         self._debug("general_info", "fill")
@@ -160,6 +160,12 @@ class Amazon(object):
         if self.session.at_xpath(xpath):
             self._ensure(xpath).click();
         
+        
+        if self.app.price()=="yes":
+            self.session.at_xpath("//input[@id=\"charging-no-free-app\"]").click()
+        else:
+            self.session.at_xpath("//input[@id=\"charging-yes\"]").click()
+            
         #free app of day
         fill([
             self.session.at_xpath("//input[@id=\"fad\"]")
@@ -181,41 +187,32 @@ class Amazon(object):
         self.form_description("default")
         
         if hasattr(self.app.obj.application, "description-localization"):
+            language_json = self.app.language()
             for desc in self.app.obj.application["description-localization"]:
                 language = desc.attrib["language"]
-                #TODO
-                xpath = "//ul[@id=\"collectable_nav_list\"]/li/span[contains(text(), \"{}\")]"
-                xpath = xpath.format()
-                
-                if self.session.at_xpath(xpath) != None:
-                    new_local = 1
-                    self.session.at_xpath(xpath).click()
-                    # self._debug("add_languages", desc.attrib["language"])
-                
-            if new_local == 0:
-                xpath = "//div[@class='popupContent']//footer/button[last()]"
-                self.session.at_xpath(xpath).click()
-            else:
-                xpath = "//div[@class='popupContent']//footer/button[position()=1]"
-                self.session.at_xpath(xpath).click()
+                if language in language_json:
+                    xpath = "//ul[@id=\"collectable_nav_list\"]/li/a[contains(text(), \"{}\")]"
+                    xpath = xpath.format(language_json[language])
+                    if self.session.at_xpath(xpath):
+                        self.session.at_xpath(xpath).click()
+                        self.form_description(language)
+                    else:
+                        xpath = "//ul[@id=\"collectable_nav_list\"]/li[last()]/a"
+                        self.session.at_xpath(xpath).click()
+                        self.form_description(language, language_json[language])
         
-        
-        #follow localization
-        # ul#collectable_nav_list
-        
-        #save and add translation
-        xpath = "//input[@id=\"save_and_add_button\"]"
-        
-        
-        
-        xpath = "//input[@id=\"submit_button\"]"
-        self.session.at_xpath(xpath).click();
-        self._debug("description", "save")
-        
-    def form_description(self, local="default"):
+    def form_description(self, local="default", localeLabel=""):
         xpath = "//a[@id=\"edit_button\"]"
         if self.session.at_xpath(xpath):
             self._ensure(xpath).click();
+        elif localeLabel != "":
+            xpath = "//select[@id=\"locale\"]/option[contains(text(), \"{}\")]"
+            xpath = xpath.format(localeLabel)
+            fill([
+                self.session.at_xpath("//select[@id=\"locale\"]")
+            ], [
+                self.session.at_xpath(xpath).value()
+            ])
         
         fill([
             self.session.at_xpath("//textarea[@id=\"dpShortDescription\"]"),
@@ -233,7 +230,6 @@ class Amazon(object):
         xpath = "//input[@id=\"submit_button\"]"
         self.session.at_xpath(xpath).click();
         self._debug("description", "store_"+local)
-        
     
     def fill_images_multimedia(self):
         xpath = "//a[@id=\"header_nav_multimedia_a\"]"

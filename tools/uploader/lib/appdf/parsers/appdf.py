@@ -5,7 +5,6 @@ import lxml.objectify
 
 import sys
 
-# @silent_normalize
 def silent_normalize(f):
     def decorate(self, local="default"):
         try:
@@ -117,19 +116,18 @@ class AppDF(object):
 
     #@silent_normalize
     def features(self, local="default"):
+        result = ""
         if local=="default":
-            result = ""
             for feature in self.obj.application.description.texts.features.feature:
                 result += feature + "\n"
-            return result
+            return result.encode("utf-8")
         else:
             for desc in self.obj.application["description-localization"]:
                 if desc.attrib["language"]==local:
-                    if hasattr(desc, "texts") and hasattr(desc.texts, "features"):
-                        result = ""
+                    if hasattr(desc, "texts") and hasattr(desc.texts, "features") and hasattr(desc.texts.features, "feature"):
                         for feature in desc.texts.features.feature:
                             result += feature + "\n"
-                        return result
+                        return result.encode("utf-8")
                     else:
                         return ""
     

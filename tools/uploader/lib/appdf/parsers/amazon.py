@@ -44,6 +44,13 @@ class Amazon(AppDF):
         category = re.sub("(\s*)$", "", category)
         return category
     
+    def language(self):
+        current_dir = os.path.dirname(os.path.realpath(__file__))
+        languages_file = os.path.join(current_dir, "..", "..", "..", "spec",
+                                       "amazon_language.json")
+        with open(languages_file, "r") as fp:
+            return json.load(fp)
+    
     def include_content(self):
         content_inc = self.obj.application["content-description"]["included-activities"]
         return [
@@ -90,6 +97,9 @@ class Amazon(AppDF):
         ]
     def exchange(self, data):
         return 0 if data == "no" else 1 if data == "light" else 2
+    
+    def price(self):
+        return "yes" if self.obj.application.price.attrib["free"]=="yes" else "no"
     
     def rating(self):
         rating = super(Amazon, self).rating()
