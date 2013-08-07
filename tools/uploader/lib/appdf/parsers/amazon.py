@@ -21,7 +21,11 @@ class Amazon(AppDF):
         
         with open(categories_file, "r") as fp:
             categories = json.load(fp)
-            amazon_category = self.replace(categories[type][category][subcategory]["amazon"])
+            if subcategory == None:
+                amazon_category = self.replace(categories[type][category][""]["amazon"])
+            else:
+                amazon_category = self.replace(categories[type][category][subcategory]["amazon"])
+                
             return amazon_category.split("/")[0]
 
     def subcategory(self):
@@ -35,7 +39,11 @@ class Amazon(AppDF):
         
         with open(categories_file, "r") as fp:
             categories = json.load(fp)
-            amazon_category = self.replace(categories[type][category][subcategory]["amazon"])
+            if subcategory == None:
+                amazon_category = self.replace(categories[type][category][""]["amazon"])
+            else:
+                amazon_category = self.replace(categories[type][category][subcategory]["amazon"])
+            
             return amazon_category.split("/")[1] if len(amazon_category.split("/")) == 2 else ""
     
     def replace(self, category):
@@ -49,6 +57,13 @@ class Amazon(AppDF):
         languages_file = os.path.join(current_dir, "..", "..", "..", "spec",
                                        "amazon_language.json")
         with open(languages_file, "r") as fp:
+            return json.load(fp)
+    
+    def currency(self):
+        current_dir = os.path.dirname(os.path.realpath(__file__))
+        currency_file = os.path.join(current_dir, "..", "..", "..", "spec",
+                                       "amazon_currency.json")
+        with open(currency_file, "r") as fp:
             return json.load(fp)
     
     def include_content(self):
@@ -97,9 +112,6 @@ class Amazon(AppDF):
         ]
     def exchange(self, data):
         return 0 if data == "no" else 1 if data == "light" else 2
-    
-    def price(self):
-        return "yes" if self.obj.application.price.attrib["free"]=="yes" else "no"
     
     def rating(self):
         rating = super(Amazon, self).rating()

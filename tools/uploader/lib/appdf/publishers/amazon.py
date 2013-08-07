@@ -38,8 +38,8 @@ class Amazon(object):
         if self.ensure_application_listed():
             self.open_application()
             self.fill_general_information()
-            #self.fill_availability()
-            self.fill_description()
+            self.fill_availability()
+            #self.fill_description()
             #self.fill_content_rating()
             
             #self.fill_images_multimedia()
@@ -47,8 +47,8 @@ class Amazon(object):
         else:
             self.create_application()
             self.fill_general_information()
-            #self.fill_availability()
-            self.fill_description()
+            self.fill_availability()
+            #self.fill_description()
             #self.fill_content_rating()
             
             #self.fill_images_multimedia()
@@ -120,12 +120,13 @@ class Amazon(object):
             self.app.email(),
             self.app.phone(),
             self.app.website(),
-            self.app.privacy_policy()
+            self.app.privacy_policy_link()
         ])
         
         #category selection
         xpath = "//select[@id=\"parentCategoryList\"]/option[contains(text(), \"{}\")]"
-        xpath = xpath.format("Cooking") #xpath.format(self.app.category())
+        #xpath = xpath.format("Cooking") #TEMPORARY. REMOVE
+        xpath = xpath.format(self.app.category())
         category_value = self.session.at_xpath(xpath).value()
         fill([
             self.session.at_xpath("//select[@id=\"parentCategoryList\"]")
@@ -160,12 +161,67 @@ class Amazon(object):
         if self.session.at_xpath(xpath):
             self._ensure(xpath).click();
         
+        self._debug("fill_availability", "edit")
         
+        #countries
+        if self.app.countries()=="include":
+            #remove selection
+            for selection in ["AF", "AN", "AS", "EU", "NA", "OC", "SA"]:
+                self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input").click()
+                if self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input[@checked]"):
+                    self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input[@checked]").click()
+            
+            #only listed
+            for country in self.app.countries_list():
+                pass #TODO
+            
+        elif self.app.countries()=="exclude":
+            self.session.at_xpath("//input[@id=\"availableWorldWide2\"]").click()
+            
+            #set selection
+            for selection in ["AF", "AN", "AS", "EU", "NA", "OC", "SA"]:
+                self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input").click()
+                if self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input[@checked]"):
+                    pass
+                else:
+                    self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input").click()
+            
+            #all except
+            for country in self.app.countries_list():
+                pass #TODO
+            
+        else:
+            self.session.at_xpath("//input[@id=\"availableWorldWide1\"]").click()
+            
+        self._debug("fill_availability", "countries")
+        
+        #prices
         if self.app.price()=="yes":
             self.session.at_xpath("//input[@id=\"charging-no-free-app\"]").click()
         else:
             self.session.at_xpath("//input[@id=\"charging-yes\"]").click()
+            fill([
+                self.session.at_xpath("//select[@id=\"base_currency\"]"),
+                self.session.at_xpath("//input[@id=\"price\"]")
+            ],[
+                "USD", #base currency
+                self.app.base_price()
+            ])
             
+            self.session.at_xpath("//input[@id=\"pricing_custom\"]").click()
+            
+            currency = self.app.currency()
+            for country in currency:
+                local_price = self.app.local_price(country)
+                if local_price != -1:
+                    fill([
+                        self.session.at_xpath("//input[@id=\"" + currency[country] + "_" + country + "\"]")
+                    ],[
+                        local_price
+                    ])
+        
+        self._debug("fill_availability", "prices")
+        
         #free app of day
         fill([
             self.session.at_xpath("//input[@id=\"fad\"]")

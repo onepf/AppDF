@@ -84,6 +84,12 @@ class AppDF(object):
         else:
             return ""
 
+    def privacy_policy_link(self): #optional tag
+        if hasattr(self.obj.application.description.texts, "privacy-policy"):
+            return self.obj.application.description.texts["privacy-policy"].attrib["href"]
+        else:
+            return ""
+
     @silent_normalize
     def full_description(self, local="default"):
         try:
@@ -164,6 +170,45 @@ class AppDF(object):
     @silent_normalize
     def rating(self): #required tag
         return self.obj.application["content-description"]["content-rating"]
+    
+    def price(self):
+        return "yes" if self.obj.application.price.attrib["free"]=="yes" else "no"
+    
+    def base_price(self):
+        return self.obj.application.price["base-price"]
+    
+    def local_price(self, local="default"):
+        if hasattr(self.obj.application.price, "local-price"):
+            for local_price in self.obj.application.price["local-price"]:
+                if local_price.attrib["country"] == local:
+                    return local_price
+        return -1
+    
+    def countries(self):
+        result = []
+        if hasattr(self.obj.application, "availability") and hasattr(self.obj.application.availability, "countries"):
+            country = self.obj.application.availability.countries
+            if country.attrib["only-listed"] == "yes":
+                return "include"
+            else:
+                return "exclude"
+        else: 
+            return ""
+            
+    def countries_list(self):
+        result = []
+        if hasattr(self.obj.application, "availability") and hasattr(self.obj.application.availability, "countries"):
+            country = self.obj.application.availability.countries
+            if country.attrib["only-listed"] == "yes":
+                for include in country.include:
+                    result.append(include)
+                return result
+            else:
+                for exclude in country.exclude:
+                    result.append(exclude)
+                return result
+        else: 
+            return result
     
     @silent_normalize
     def keywords(self, local="default"):
