@@ -1,5 +1,6 @@
 import os
 import zipfile
+import json
 import lxml.etree
 import lxml.objectify
 
@@ -198,18 +199,40 @@ class AppDF(object):
     def countries_list(self):
         result = []
         if hasattr(self.obj.application, "availability") and hasattr(self.obj.application.availability, "countries"):
-            country = self.obj.application.availability.countries
-            if country.attrib["only-listed"] == "yes":
-                for include in country.include:
-                    result.append(include)
-                return result
-            else:
-                for exclude in country.exclude:
-                    result.append(exclude)
-                return result
+            current_dir = os.path.dirname(os.path.realpath(__file__))
+            countries_file = os.path.join(current_dir, "..", "..", "..", "spec",
+                                           "amazon_countries.json")
+            
+            with open(countries_file, "r") as fp:
+                countries_json = json.load(fp)
+                country = self.obj.application.availability.countries
+                if country.attrib["only-listed"] == "yes":
+                    for include in country.include:
+                        if include in countries_json:
+                            result.append(countries_json[include])
+                    return result
+                else:
+                    for exclude in country.exclude:
+                        if exclude in countries_json:
+                            result.append(countries_json[exclude])
+                    return result
         else: 
             return result
-    
+
+    def period_since(self):
+        if hasattr(self.obj.application, "availability") and hasattr(self.obj.application.availability, "period"):
+            if hasattr(self.obj.application.availability.period, "since"):
+                since = self.obj.application.availability.period.since
+                return since.attrib["month"] + "/" + since.attrib["day"] + "/" + since.attrib["year"][2:4]
+        return None
+        
+    def period_until(self):
+        if hasattr(self.obj.application, "availability") and hasattr(self.obj.application.availability, "period"):
+            if hasattr(self.obj.application.availability.period, "until"):
+                until = self.obj.application.availability.period.until
+                return until.attrib["month"] + "/" + until.attrib["day"] + "/" + until.attrib["year"][2:4]
+        return None
+        
     @silent_normalize
     def keywords(self, local="default"):
         if local=="default": #optional tag

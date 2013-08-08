@@ -1,6 +1,7 @@
 #coding: utf-8
 import os
 import re
+import sys
 import time
 import dryscrape
 
@@ -34,6 +35,9 @@ class Amazon(object):
     def publish(self):
         self.open_console()
         self.login()
+        if self.session.at_css("#ap_signin_existing_radio"):
+            print "Login error"
+            sys.exit(1)
         
         if self.ensure_application_listed():
             self.open_application()
@@ -70,7 +74,8 @@ class Amazon(object):
         password_field = self.session.at_css("#ap_password")
         submit_button = self.session.at_css("#signInSubmit-input")
         
-        self.password = re.sub("\^", "", self.password)
+        #self.password = re.sub("\^", "", self.password)
+        self.password = self.password.decode("utf-8")
         #TEMPORARY PASSWORD DATA. REMOVE
         self.password = "SIjsEDFk83&3l"
         
@@ -78,9 +83,9 @@ class Amazon(object):
         password_field.set(self.password)
         self._debug("login", "filled")
         
-        email_field.form().submit()
-        self._debug("login", "submited")    
-        
+        #email_field.form().submit()
+        self.session.at_xpath("//input[@id=\"signInSubmit-input\"]").click()
+        self._debug("login", "submited")
     
     def open_application(self):
         xpath = "//span[@class=\"itemTitle\" and contains(text(), '{}')]"
@@ -122,6 +127,7 @@ class Amazon(object):
             self.app.website(),
             self.app.privacy_policy_link()
         ])
+        self._debug("general_info", "category")
         
         #category selection
         xpath = "//select[@id=\"parentCategoryList\"]/option[contains(text(), \"{}\")]"
@@ -133,7 +139,10 @@ class Amazon(object):
         ], [
             category_value
         ])
+
+        #self.session.visit("https://developer.amazon.com/category/" + category_value + "/list.json")
         
+        self._debug("general_info", "subcategory")
         #subcategory selection
         if self.app.subcategory() != "":
             xpath = "//select[@id=\"childCategoryList\"]/option[contains(text(), \"{}\")]"
@@ -161,8 +170,6 @@ class Amazon(object):
         if self.session.at_xpath(xpath):
             self._ensure(xpath).click();
         
-        self._debug("fill_availability", "edit")
-        
         #countries
         if self.app.countries()=="include":
             #remove selection
@@ -173,7 +180,8 @@ class Amazon(object):
             
             #only listed
             for country in self.app.countries_list():
-                pass #TODO
+                if self.session.at_xpath("//input[@id=\"" + country + "\"]"):
+                    self.session.at_xpath("//input[@id=\"" + country + "\"]").click()
             
         elif self.app.countries()=="exclude":
             self.session.at_xpath("//input[@id=\"availableWorldWide2\"]").click()
@@ -188,13 +196,12 @@ class Amazon(object):
             
             #all except
             for country in self.app.countries_list():
-                pass #TODO
+                if self.session.at_xpath("//input[@id=\"" + country + "\"]"):
+                    self.session.at_xpath("//input[@id=\"" + country + "\"]").click()
             
         else:
             self.session.at_xpath("//input[@id=\"availableWorldWide1\"]").click()
             
-        self._debug("fill_availability", "countries")
-        
         #prices
         if self.app.price()=="yes":
             self.session.at_xpath("//input[@id=\"charging-no-free-app\"]").click()
@@ -220,7 +227,13 @@ class Amazon(object):
                         local_price
                     ])
         
-        self._debug("fill_availability", "prices")
+        #period
+        if self.app.period_since() != None:
+            fill([
+                self.session.at_xpath("//input[@id=\"availabilityDate\"]")
+            ],[
+                self.app.period_since()
+            ])
         
         #free app of day
         fill([
