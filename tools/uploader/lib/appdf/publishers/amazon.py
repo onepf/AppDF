@@ -3,6 +3,7 @@ import os
 import re
 import sys
 import time
+import json
 import dryscrape
 
 
@@ -26,6 +27,7 @@ class Amazon(object):
         self._debug_dir = debug_dir
 
         self.session = dryscrape.Session()
+        self.session_sub_cat = dryscrape.Session()
         #self.driver = dryscrape.driver.webkit.Driver()
 
         if self._debug_dir:
@@ -43,8 +45,8 @@ class Amazon(object):
             self.open_application()
             self.fill_general_information()
             self.fill_availability()
-            #self.fill_description()
-            #self.fill_content_rating()
+            self.fill_description()
+            self.fill_content_rating()
             
             #self.fill_images_multimedia()
             #self.fill_binary_files()
@@ -52,8 +54,8 @@ class Amazon(object):
             self.create_application()
             self.fill_general_information()
             self.fill_availability()
-            #self.fill_description()
-            #self.fill_content_rating()
+            self.fill_description()
+            self.fill_content_rating()
             
             #self.fill_images_multimedia()
             #self.fill_binary_files()
@@ -75,12 +77,17 @@ class Amazon(object):
         submit_button = self.session.at_css("#signInSubmit-input")
         
         #self.password = re.sub("\^", "", self.password)
-        self.password = self.password.decode("utf-8")
+        #self.password = self.password.decode("utf-8")
         #TEMPORARY PASSWORD DATA. REMOVE
         self.password = "SIjsEDFk83&3l"
         
         email_field.set(self.username)
         password_field.set(self.password)
+        fill([
+            password_field
+        ],[
+            self.password
+        ])
         self._debug("login", "filled")
         
         #email_field.form().submit()
@@ -97,19 +104,14 @@ class Amazon(object):
         self._ensure(xpath).click()
         self._debug("create_application", "create")
         
-        
-        
-        
     def fill_general_information(self):
         xpath = "//a[@id=\"header_nav_general_information_a\"]"
         if self.session.at_xpath(xpath):
-            self._ensure(xpath).click();
+            self.session.at_xpath(xpath).click();
             
         xpath = "//a[@id=\"edit_button\"]"
         if self.session.at_xpath(xpath):
-            self._ensure(xpath).click();
-        
-        self._debug("general_info", "edit")
+            self.session.at_xpath(xpath).click();
         
         if self.session.at_xpath("//input[@id=\"same\" and @checked]"):
             self.session.at_xpath("//input[@id=\"same\" and @checked]").click()
@@ -127,34 +129,34 @@ class Amazon(object):
             self.app.website(),
             self.app.privacy_policy_link()
         ])
-        self._debug("general_info", "category")
         
         #category selection
         xpath = "//select[@id=\"parentCategoryList\"]/option[contains(text(), \"{}\")]"
-        #xpath = xpath.format("Cooking") #TEMPORARY. REMOVE
         xpath = xpath.format(self.app.category())
         category_value = self.session.at_xpath(xpath).value()
         fill([
-            self.session.at_xpath("//select[@id=\"parentCategoryList\"]")
+            self.session.at_xpath("//select[@id=\"parentCategoryList\"]"),
+            self.session.at_xpath("//input[@id=\"selectedCategory\"]")
         ], [
+            category_value,
             category_value
         ])
-
-        #self.session.visit("https://developer.amazon.com/category/" + category_value + "/list.json")
         
-        self._debug("general_info", "subcategory")
         #subcategory selection
         if self.app.subcategory() != "":
-            xpath = "//select[@id=\"childCategoryList\"]/option[contains(text(), \"{}\")]"
-            xpath = xpath.format(self.app.subcategory())
-            if self._ensure(xpath):
-                subcategory_value = self.session.at_xpath(xpath).value()
+            
+            subcategory = self.subcategory_load(category_value)
+            #xpath = "//select[@id=\"childCategoryList\"]/option[contains(text(), \"{}\")]"
+            #xpath = xpath.format(self.app.subcategory())
+            if self.session.at_xpath(xpath):
                 fill([
-                    self.session.at_xpath("//select[@id=\"childCategoryList\"]")
+                    self.session.at_xpath("//input[@id=\"selectedCategory\"]")
+                    #self.session.at_xpath("//select[@id=\"childCategoryList\"]")
                 ], [
-                    subcategory_value #u"M1E6O3ZVOOL35E"
+                    subcategory
+                    #subcategory_value
                 ])
-        
+            
         self._debug("general_info", "fill")
         
         xpath = "//input[@id=\"submit_button\"]"
@@ -309,7 +311,6 @@ class Amazon(object):
         if self.session.at_xpath(xpath):
             self._ensure(xpath).click();
         
-        
         self._debug("images_multimedia", "fill")
         
         xpath = "//input[@id=\"submit_button\"]"
@@ -379,6 +380,33 @@ class Amazon(object):
     def ensure_application_listed(self):
         xpath = "//span[@class=\"itemTitle\" and contains(text(), '{}')]"
         return self._ensure(xpath.format(self.app.title()))
+    
+    def subcategory_load(self, category_value):
+        self.session_sub_cat.visit("https://developer.amazon.com/welcome.html")
+        
+        xpath = "//a[@id=\"header_login_link\"]"
+        if self.session_sub_cat.at_xpath(xpath):
+            self.session_sub_cat.at_xpath(xpath).click()
+        
+        email_field = self.session_sub_cat.at_css("#ap_email")
+        self.session_sub_cat.at_css("#ap_signin_existing_radio").click()
+        password_field = self.session_sub_cat.at_css("#ap_password")
+        submit_button = self.session_sub_cat.at_css("#signInSubmit-input")
+        
+        email_field.set(self.username)
+        password_field.set(self.password)
+        fill([
+            password_field
+        ],[
+            self.password
+        ])
+        self.session_sub_cat.at_xpath("//input[@id=\"signInSubmit-input\"]").click()
+        self.session_sub_cat.visit("https://developer.amazon.com/category/" + category_value + "/list.json")
+        json_data = json.loads(self.session_sub_cat.source())
+        for value in json_data["data"]:
+            if value["name"] == self.app.subcategory():
+                return value["value"]
+        return ""
     
     def _ensure(self, xpath):
         return self.session.at_xpath(xpath, timeout=5)
