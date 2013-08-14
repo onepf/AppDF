@@ -24,15 +24,14 @@ class Amazon(object):
         self.app = app
         self.username = username
         self.password = password
-        self._debug_dir = debug_dir
+        self.debug_dir = debug_dir
 
         self.session = dryscrape.Session()
         self.session_sub_cat = dryscrape.Session()
-        #self.driver = dryscrape.driver.webkit.Driver()
 
-        if self._debug_dir:
-            if not os.path.exists(self._debug_dir):
-                os.mkdir(self._debug_dir)
+        if self.debug_dir:
+            if not os.path.exists(self.debug_dir):
+                os.mkdir(self.debug_dir)
 
     def publish(self):
         self.open_console()
@@ -75,11 +74,6 @@ class Amazon(object):
         self.session.at_css("#ap_signin_existing_radio").click()
         password_field = self.session.at_css("#ap_password")
         submit_button = self.session.at_css("#signInSubmit-input")
-        
-        #self.password = re.sub("\^", "", self.password)
-        #self.password = self.password.decode("utf-8")
-        #TEMPORARY PASSWORD DATA. REMOVE
-        self.password = "SIjsEDFk83&3l"
         
         email_field.set(self.username)
         password_field.set(self.password)
@@ -144,7 +138,6 @@ class Amazon(object):
         
         #subcategory selection
         if self.app.subcategory() != "":
-            
             subcategory = self.subcategory_load(category_value)
             #xpath = "//select[@id=\"childCategoryList\"]/option[contains(text(), \"{}\")]"
             #xpath = xpath.format(self.app.subcategory())
@@ -417,9 +410,7 @@ class Amazon(object):
     def _debug(self, action, state):
         print action + " : " + state
         
-        #if self._debug_dir:
-        file_name = "{}-{}-{}.png".format(time.time(), action, state)
-            #self.session.render(os.path.join(self._debug_dir, file_name))
-        self.session.render(file_name)
-
-    
+        if self.debug_dir:
+            file_name = "{}-{}-{}.png".format(time.time(), action, state)
+            self.session.render(os.path.join(self.debug_dir, file_name))
+        

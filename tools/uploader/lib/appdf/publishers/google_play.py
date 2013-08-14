@@ -1,9 +1,6 @@
 import os
 import time
 import sys
-# import urlparse
-# import urllib
-# import urllib2
 import dryscrape
 
 def fill(elements, values):
@@ -26,7 +23,6 @@ class GooglePlay(object):
         self.debug_dir = debug_dir
 
         self.session = dryscrape.Session()
-        #self.driver = dryscrape.driver.webkit.Driver()
 
         if self.debug_dir:
             if not os.path.exists(self.debug_dir):
