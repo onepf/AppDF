@@ -1,4 +1,3 @@
-#coding: utf-8
 import os
 import re
 import sys
@@ -74,18 +73,12 @@ class Amazon(object):
         self.session.at_css("#ap_signin_existing_radio").click()
         password_field = self.session.at_css("#ap_password")
         submit_button = self.session.at_css("#signInSubmit-input")
-        
+
         email_field.set(self.username)
         password_field.set(self.password)
-        fill([
-            password_field
-        ],[
-            self.password
-        ])
         self._debug("login", "filled")
         
-        #email_field.form().submit()
-        self.session.at_xpath("//input[@id=\"signInSubmit-input\"]").click()
+        email_field.form().submit()
         self._debug("login", "submited")
     
     def open_application(self):
@@ -304,12 +297,13 @@ class Amazon(object):
         if self.session.at_xpath(xpath):
             self._ensure(xpath).click();
         
+        
         self._debug("images_multimedia", "fill")
         
         xpath = "//input[@id=\"submit_button\"]"
         self.session.at_xpath(xpath).click();
         self._debug("images_multimedia", "save")
-        
+
     def fill_content_rating(self):
         xpath = "//a[@id=\"header_nav_rating_a\"]"
         if self.session.at_xpath(xpath):

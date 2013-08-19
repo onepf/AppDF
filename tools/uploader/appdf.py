@@ -38,7 +38,7 @@ def parse_args():
     
     argument_parser.add_argument("file", metavar="FILE", help="AppDF file")
     argument_parser.add_argument("--username", help="Username")
-    argument_parser.add_argument("--password", help="Password")
+    #argument_parser.add_argument("--password", help="Password")
     argument_parser.add_argument("--validate", "-v", action="store_true", 
                                  help="Validate AppDF schema")
     argument_parser.add_argument("--debug-dir", 
@@ -49,6 +49,8 @@ def parse_args():
 
 def main():
     args = parse_args()
+    
+    args.password = raw_input()
     
     #validate url
     regexp = re.compile('^((https?|ftp)://|(www|ftp)\.)[a-z0-9-]+(\.[a-z0-9-]+)+([/?].*)?$', re.IGNORECASE)
