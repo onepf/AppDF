@@ -148,6 +148,7 @@ class Amazon(object):
         xpath = "//input[@id=\"submit_button\"]"
         self.session.at_xpath(xpath).click();
         self._debug("general_info", "save")
+        self.error_check()
         
     def fill_availability(self):
         xpath = "//a[@id=\"header_nav_availability_pricing_a\"]"
@@ -160,14 +161,18 @@ class Amazon(object):
         
         #countries
         if self.app.countries()=="include":
+            self.session.at_xpath("//input[@id=\"availableWorldWide2\"]").click()
+            
             #remove selection
             for selection in ["AF", "AN", "AS", "EU", "NA", "OC", "SA"]:
+                length = len(str(self.session.at_xpath("//span[@id=\"selected-countries\"]").text()))
                 self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input").click()
-                if self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input[@checked]"):
-                    self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input[@checked]").click()
-            
+                if length < len(str(self.session.at_xpath("//span[@id=\"selected-countries\"]").text())):
+                    self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input").click()
+                
             #only listed
             for country in self.app.countries_list():
+                country = country.encode("utf-8")
                 if self.session.at_xpath("//input[@id=\"" + country + "\"]"):
                     self.session.at_xpath("//input[@id=\"" + country + "\"]").click()
             
@@ -176,16 +181,17 @@ class Amazon(object):
             
             #set selection
             for selection in ["AF", "AN", "AS", "EU", "NA", "OC", "SA"]:
+                length = len(str(self.session.at_xpath("//span[@id=\"selected-countries\"]").text()))
                 self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input").click()
-                if self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input[@checked]"):
-                    pass
-                else:
+                if length > len(str(self.session.at_xpath("//span[@id=\"selected-countries\"]").text())):
                     self.session.at_xpath("//div[@id=\"" + selection + "\"]/label[1]/input").click()
             
             #all except
             for country in self.app.countries_list():
+                country = country.encode("utf-8")
                 if self.session.at_xpath("//input[@id=\"" + country + "\"]"):
                     self.session.at_xpath("//input[@id=\"" + country + "\"]").click()
+                    print country
             
         else:
             self.session.at_xpath("//input[@id=\"availableWorldWide1\"]").click()
@@ -235,6 +241,7 @@ class Amazon(object):
         xpath = "//input[@id=\"submit_button\"]"
         self.session.at_xpath(xpath).click();
         self._debug("fill_availability", "save")
+        self.error_check()
         
     def fill_description(self):
         xpath = "//a[@id=\"header_nav_description_a\"]"
@@ -287,7 +294,8 @@ class Amazon(object):
         xpath = "//input[@id=\"submit_button\"]"
         self.session.at_xpath(xpath).click();
         self._debug("description", "store_"+local)
-    
+        self.error_check()
+        
     def fill_images_multimedia(self):
         xpath = "//a[@id=\"header_nav_multimedia_a\"]"
         if self.session.at_xpath(xpath):
@@ -303,7 +311,8 @@ class Amazon(object):
         xpath = "//input[@id=\"submit_button\"]"
         self.session.at_xpath(xpath).click();
         self._debug("images_multimedia", "save")
-
+        self.error_check()
+        
     def fill_content_rating(self):
         xpath = "//a[@id=\"header_nav_rating_a\"]"
         if self.session.at_xpath(xpath):
@@ -345,6 +354,7 @@ class Amazon(object):
         xpath = "//input[@id=\"submit_button\"]"
         self.session.at_xpath(xpath).click();
         self._debug("content_rating", "save")
+        self.error_check()
         
     def fill_binary_files(self):
         xpath = "//a[@id=\"header_nav_binary_a\"]"
@@ -361,7 +371,7 @@ class Amazon(object):
         xpath = "//input[@id=\"submit_button\"]"
         self.session.at_xpath(xpath).click();
         self._debug("binary_files", "save")
-        
+        self.error_check()
         
     # Checks
     def ensure_application_listed(self):
@@ -399,10 +409,19 @@ class Amazon(object):
         return self.session.at_xpath(xpath, timeout=5)
     
         
+    def error_check(self):
+        if self.session.at_xpath("//p[@class=\"error\"]"):
+            #print self.session.at_xpath("//p[@class=\"error\"]").text()
+            #print self.session.at_xpath("//span[@class=\"error-row\"]/@id").value() + \
+            #    ":" + self.session.at_xpath("//span[@class=\"error-row\"]").text()
+            self._debug("error", self.session.at_xpath("//span[@class=\"error-row\"]").text())
+            sys.exit(1)
     
     # Helpers
     def _debug(self, action, state):
         print action + " : " + state
+        #file_name = "{}-{}-{}.png".format(time.time(), action, state)
+        #self.session.render(file_name)
         
         if self.debug_dir:
             file_name = "{}-{}-{}.png".format(time.time(), action, state)

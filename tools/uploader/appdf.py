@@ -50,7 +50,7 @@ def parse_args():
 def main():
     args = parse_args()
     
-    args.password = raw_input()
+    args.password = raw_input("Password: ")
     
     #validate url
     regexp = re.compile('^((https?|ftp)://|(www|ftp)\.)[a-z0-9-]+(\.[a-z0-9-]+)+([/?].*)?$', re.IGNORECASE)

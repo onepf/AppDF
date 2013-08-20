@@ -3,6 +3,7 @@ import zipfile
 import json
 import lxml.etree
 import lxml.objectify
+import re
 
 import sys
 
@@ -68,7 +69,11 @@ class AppDF(object):
 
     @silent_normalize
     def website(self): #required tags
-        return self.obj.application["customer-support"].website
+        site = str(self.obj.application["customer-support"].website)
+        if re.search("http", str(site)) == None:
+            site.append("http://")
+        print site
+        return site
 
     @silent_normalize
     def email(self): #required tags
