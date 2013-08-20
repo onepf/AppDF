@@ -1,8 +1,6 @@
 import os
 import time
-# import urlparse
-# import urllib
-# import urllib2
+import sys
 import dryscrape
 
 def fill(elements, values):
@@ -25,7 +23,6 @@ class GooglePlay(object):
         self.debug_dir = debug_dir
 
         self.session = dryscrape.Session()
-        #self.driver = dryscrape.driver.webkit.Driver()
 
         if self.debug_dir:
             if not os.path.exists(self.debug_dir):
@@ -40,7 +37,11 @@ class GooglePlay(object):
 
         # select All applications menu
         xpath = "//sidebar/nav/ul/li/a"
-        self.session.at_xpath(xpath).click()
+        if self.session.at_xpath(xpath):
+            self.session.at_xpath(xpath).click()
+        else:
+            print "Login error"
+            sys.exit(1)
         
         if self.ensure_application_listed():
             self.open_app()
