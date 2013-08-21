@@ -1,11 +1,12 @@
 import os
 import zipfile
+import json
 import lxml.etree
 import lxml.objectify
+import re
 
 import sys
 
-# @silent_normalize
 def silent_normalize(f):
     def decorate(self, local="default"):
         try:
@@ -68,7 +69,11 @@ class AppDF(object):
 
     @silent_normalize
     def website(self): #required tags
-        return self.obj.application["customer-support"].website
+        site = str(self.obj.application["customer-support"].website)
+        if re.search("http", str(site)) == None:
+            site.append("http://")
+        print site
+        return site
 
     @silent_normalize
     def email(self): #required tags
@@ -82,6 +87,12 @@ class AppDF(object):
     def privacy_policy(self): #optional tag
         if hasattr(self.obj.application.description.texts, "privacy-policy"):
             return self.obj.application.description.texts["privacy-policy"]
+        else:
+            return ""
+
+    def privacy_policy_link(self): #optional tag
+        if hasattr(self.obj.application.description.texts, "privacy-policy"):
+            return self.obj.application.description.texts["privacy-policy"].attrib["href"]
         else:
             return ""
 
@@ -115,23 +126,37 @@ class AppDF(object):
         except AttributeError:
             return ""
 
+    #@silent_normalize
+    def features(self, local="default"):
+        result = ""
+        if local=="default":
+            for feature in self.obj.application.description.texts.features.feature:
+                result += feature + "\n"
+            return result.encode("utf-8")
+        else:
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"]==local:
+                    if hasattr(desc, "texts") and hasattr(desc.texts, "features") and hasattr(desc.texts.features, "feature"):
+                        for feature in desc.texts.features.feature:
+                            result += feature + "\n"
+                        return result.encode("utf-8")
+                    else:
+                        return ""
+    
     @silent_normalize
     def recent_changes(self, local="default"):
-        try:
-            if local=="default": #optional tag
-                if hasattr(self.obj.application.description.texts, "recent-changes"):
-                    return self.obj.application.description.texts["recent-changes"]
-                else:
-                    return ""
-            elif hasattr(self.obj.application, "description-localization"): #optional tag
-                for desc in self.obj.application["description-localization"]:
-                    if desc.attrib["language"]==local:
-                        if hasattr(desc, "texts") and hasattr(desc.texts, "recent-changes"):
-                            return desc.texts["recent-changes"]
-                        else:
-                            return ""
-        except AttributeError:
-            return ""
+        if local=="default": #optional tag
+            if hasattr(self.obj.application.description.texts, "recent-changes"):
+                return self.obj.application.description.texts["recent-changes"]
+            else:
+                return ""
+        elif hasattr(self.obj.application, "description-localization"): #optional tag
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"]==local:
+                    if hasattr(desc, "texts") and hasattr(desc.texts, "recent-changes"):
+                        return desc.texts["recent-changes"]
+                    else:
+                        return ""
 
     @silent_normalize
     def type(self): #required tag
@@ -140,7 +165,91 @@ class AppDF(object):
     @silent_normalize
     def category(self): #required tag
         return self.obj.application.categorization.category
+        
+    @silent_normalize
+    def subcategory(self): #optional tag
+        if hasattr(self.obj.application.categorization, "subcategory"):
+            return self.obj.application.categorization.subcategory
+        else:
+            return ""
 
     @silent_normalize
     def rating(self): #required tag
         return self.obj.application["content-description"]["content-rating"]
+    
+    def price(self):
+        return "yes" if self.obj.application.price.attrib["free"]=="yes" else "no"
+    
+    def base_price(self):
+        return self.obj.application.price["base-price"]
+    
+    def local_price(self, local="default"):
+        if hasattr(self.obj.application.price, "local-price"):
+            for local_price in self.obj.application.price["local-price"]:
+                if local_price.attrib["country"] == local:
+                    return local_price
+        return -1
+    
+    def countries(self):
+        result = []
+        if hasattr(self.obj.application, "availability") and hasattr(self.obj.application.availability, "countries"):
+            country = self.obj.application.availability.countries
+            if country.attrib["only-listed"] == "yes":
+                return "include"
+            else:
+                return "exclude"
+        else: 
+            return ""
+            
+    def countries_list(self):
+        result = []
+        if hasattr(self.obj.application, "availability") and hasattr(self.obj.application.availability, "countries"):
+            current_dir = os.path.dirname(os.path.realpath(__file__))
+            countries_file = os.path.join(current_dir, "..", "..", "..", "spec",
+                                           "amazon_countries.json")
+            
+            with open(countries_file, "r") as fp:
+                countries_json = json.load(fp)
+                country = self.obj.application.availability.countries
+                if country.attrib["only-listed"] == "yes":
+                    for include in country.include:
+                        if include in countries_json:
+                            result.append(countries_json[include])
+                    return result
+                else:
+                    for exclude in country.exclude:
+                        if exclude in countries_json:
+                            result.append(countries_json[exclude])
+                    return result
+        else: 
+            return result
+
+    def period_since(self):
+        if hasattr(self.obj.application, "availability") and hasattr(self.obj.application.availability, "period"):
+            if hasattr(self.obj.application.availability.period, "since"):
+                since = self.obj.application.availability.period.since
+                return since.attrib["month"] + "/" + since.attrib["day"] + "/" + since.attrib["year"][2:4]
+        return None
+        
+    def period_until(self):
+        if hasattr(self.obj.application, "availability") and hasattr(self.obj.application.availability, "period"):
+            if hasattr(self.obj.application.availability.period, "until"):
+                until = self.obj.application.availability.period.until
+                return until.attrib["month"] + "/" + until.attrib["day"] + "/" + until.attrib["year"][2:4]
+        return None
+        
+    @silent_normalize
+    def keywords(self, local="default"):
+        if local=="default": #optional tag
+            if hasattr(self.obj.application.description.texts, "keywords"):
+                return self.obj.application.description.texts["keywords"]
+            else:
+                return ""
+        elif hasattr(self.obj.application, "description-localization"): #optional tag
+            for desc in self.obj.application["description-localization"]:
+                if desc.attrib["language"]==local:
+                    if hasattr(desc, "texts") and hasattr(desc.texts, "keywords"):
+                        return desc.texts["keywords"]
+                    else:
+                        return ""
+
