@@ -31,7 +31,8 @@ var dataCategories = {
       ""
     ],
     "Business" : [
-      ""
+      "",
+      "Reference"
     ],
     "Calculators" : [
       ""
@@ -95,6 +96,9 @@ var dataCategories = {
       "Music",
       "Sports",
       "Theatre",
+      "Movies",
+      "Fun tools",
+      "Bollywood",
       "Other"
     ],
     "Finance" : [
@@ -114,7 +118,8 @@ var dataCategories = {
       "Medical",
       "Meditation",
       "Pregnancy",
-      "Sleep Trackers"
+      "Sleep Trackers",
+      "Books"
     ],
     "Health & Fitness" : [
       ""
@@ -231,6 +236,9 @@ var dataCategories = {
       "Christianity",
       "Hinduism",
       "Islam",
+      "Quran",
+      "Hadith",
+      "Islamic tools",
       "Other"
     ],
     "Ringtones" : [
@@ -263,6 +271,7 @@ var dataCategories = {
       "Athletic",
       "Disabled",
       "Extreme",
+      "Cricket",
       "Motor",
       "Baseball",
       "Basketball",
@@ -355,6 +364,12 @@ var dataCategories = {
       ""
     ],
     "Racing" : [
+      ""
+    ],
+    "Football" : [
+      ""
+    ],
+    "Cricket" : [
       ""
     ],
     "Sports" : [
