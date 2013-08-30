@@ -72,7 +72,6 @@ class AppDF(object):
         site = str(self.obj.application["customer-support"].website)
         if re.search("http", str(site)) == None:
             site.append("http://")
-        print site
         return site
 
     @silent_normalize
