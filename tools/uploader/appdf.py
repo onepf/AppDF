@@ -22,7 +22,7 @@ sys.path.insert(0, lib_dir)
 import argparse
 import appdf
 import re
-
+import getpass
 
 def parse_args():
     argument_parser = argparse.ArgumentParser(description="AppDF publisher")
@@ -50,7 +50,11 @@ def parse_args():
 def main():
     args = parse_args()
     
-    args.password = raw_input("Password: ")
+    args.password = None
+    if sys.stdin.isatty():
+        args.password = getpass.getpass() 
+    else:
+        args.password = sys.stdin.readline()
     
     #validate url
     regexp = re.compile('^((https?|ftp)://|(www|ftp)\.)[a-z0-9-]+(\.[a-z0-9-]+)+([/?].*)?$', re.IGNORECASE)

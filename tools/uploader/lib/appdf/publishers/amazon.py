@@ -191,7 +191,6 @@ class Amazon(object):
                 country = country.encode("utf-8")
                 if self.session.at_xpath("//input[@id=\"" + country + "\"]"):
                     self.session.at_xpath("//input[@id=\"" + country + "\"]").click()
-                    print country
             
         else:
             self.session.at_xpath("//input[@id=\"availableWorldWide1\"]").click()
