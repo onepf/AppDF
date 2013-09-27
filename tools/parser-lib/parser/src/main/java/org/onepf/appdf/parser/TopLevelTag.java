@@ -28,7 +28,16 @@ import org.w3c.dom.Node;
 
 public enum TopLevelTag implements NodeParser<Application> {
 
-    CATEGORIZATION {
+	DEVELOPER {
+
+        @Override
+        public void parse(Node node, Application element)
+                throws ParsingException {
+            element.setDeveloperName(node.getTextContent());
+
+        }
+    },
+	CATEGORIZATION {
 
         @Override
         public void parse(Node node, Application application)
