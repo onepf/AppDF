@@ -100,12 +100,12 @@ class googleScrape(object):
             self._ensure(xpath).click()
         
         self.open_app()
-        #self.fillCategorization(application)
-        #self.fillDescription(application)
-        #self.fillContentDesctiption(application)
-        #self.fillCustomerSupport(application)
+        self.fillCategorization(application)
+        self.fillDescription(application)
+        self.fillContentDesctiption(application)
+        self.fillCustomerSupport(application)
         self.fillPrices(application)
-        #self.getAPK(application)
+        self.getAPK(application)
         
         self._debug("scrape", "finish")
         
