@@ -211,6 +211,9 @@ var appdfXMLLoader = (function() {
         console.log("Description.XML is parsed");
         console.log(data);
 
+        //set Developer name
+        $("#developer-name").val(data["developer"]);
+        
         //Set control values in the categorization section
         $("#categorization-type").val(data["categorization"]["type"]);
         appdfEditor.fillCategories();

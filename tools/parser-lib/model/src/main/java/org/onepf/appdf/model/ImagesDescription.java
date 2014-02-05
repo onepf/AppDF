@@ -21,31 +21,31 @@ import java.util.List;
 public class ImagesDescription implements ModelElement {
 
 	private List<AppIcon> appIcons;
-	private String largePromo;
-	private String smallPromo;
-	private List<String> screenShots;
+	private LargePromo largePromo;
+	private SmallPromo smallPromo;
+	private List<Screenshot> screenShots;
 	public List<AppIcon> getAppIcons() {
 		return appIcons;
 	}
 	public void setAppIcons(List<AppIcon> appIcons) {
 		this.appIcons = appIcons;
 	}
-	public String getLargePromo() {
+	public LargePromo getLargePromo() {
 		return largePromo;
 	}
-	public void setLargePromo(String largePromo) {
+	public void setLargePromo(LargePromo largePromo) {
 		this.largePromo = largePromo;
 	}
-	public String getSmallPromo() {
+	public SmallPromo getSmallPromo() {
 		return smallPromo;
 	}
-	public void setSmallPromo(String smallPromo) {
+	public void setSmallPromo(SmallPromo smallPromo) {
 		this.smallPromo = smallPromo;
 	}
-	public List<String> getScreenShots() {
+	public List<Screenshot> getScreenShots() {
 		return screenShots;
 	}
-	public void setScreenShots(List<String> screenShots) {
+	public void setScreenShots(List<Screenshot> screenShots) {
 		this.screenShots = screenShots;
 	}
 	
@@ -56,9 +56,9 @@ public class ImagesDescription implements ModelElement {
 	    appIcons.add(appIcon);
 	}
 	
-	public void addScreenshot(String screenshot){
+	public void addScreenshot(Screenshot screenshot){
 	    if ( screenShots == null ){
-	        screenShots = new ArrayList<String>();
+	        screenShots = new ArrayList<Screenshot>();
 	    }
 	    screenShots.add(screenshot);
 	}

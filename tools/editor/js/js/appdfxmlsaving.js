@@ -23,6 +23,10 @@
 
 var appdfXMLSaver = (function() {
 
+	function generateDeveloperXML(xml) {
+        xml.addNonEmptyTextTag("<developer>", $("#developer-name").val());
+	};
+    
 	function generateCategorizationXML(xml) {
 		xml.addTag("<categorization>", function() {
 			xml.addTag("<type>", $("#categorization-type").val());
@@ -443,18 +447,19 @@ var appdfXMLSaver = (function() {
 		xml.addLine('<?xml version="1.0" encoding="UTF-8"?>');
 		xml.addTag('<application-description-file version="1">', function() {
 			xml.addTag('<application platform="android" package="' + appdfEditor.firstApkFileData.package + '">', function() {
-				generateCategorizationXML(xml);
-				generateDescriptionXML(xml);
-				generateDescriptionLocalizationsXML(xml);
-				generateContentDescriptionXML(xml);
-				generateAvailabilityXML(xml);
-				generatePriceXML(xml);
-				generateApkFilesXML(xml);
-				generateRequirementsXML(xml);
-				generateTestingInstructionsXML(xml);
-				generateConsentXML(xml);
-				generateCustomerSupportXML(xml);
-				generateStoreSpecificXML(xml);
+                generateDeveloperXML(xml);
+                generateCategorizationXML(xml);
+                generateDescriptionXML(xml);
+                generateDescriptionLocalizationsXML(xml);
+                generateContentDescriptionXML(xml);
+                generateAvailabilityXML(xml);
+                generatePriceXML(xml);
+                generateApkFilesXML(xml);
+                generateRequirementsXML(xml);
+                generateTestingInstructionsXML(xml);
+                generateConsentXML(xml);
+                generateCustomerSupportXML(xml);
+                generateStoreSpecificXML(xml);
 			});
 		});
 		return xml.getXmlText();

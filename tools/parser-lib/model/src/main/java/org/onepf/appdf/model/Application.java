@@ -128,6 +128,7 @@ public class Application implements ModelElement {
     }
 
     private String packageName;
+    private String developerName;
     private Categorisation categorisation;
     private Description mainDescription;
     private List<Description> descriptionLocalisations;
@@ -147,6 +148,10 @@ public class Application implements ModelElement {
 
     public void setPackageName(String packageName) {
         this.packageName = packageName;
+    }
+
+    public void setDeveloperName(String developerName) {
+        this.developerName = developerName;
     }
 
     public Categorisation getCategorisation() {

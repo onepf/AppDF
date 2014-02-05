@@ -253,6 +253,9 @@ var appdfParser = (function() {
         
 		$curXml = getElementsByPath($xml, "application-description-file/application");
 
+        //Developer
+        loadText("developer");
+
 		//Categorization 
 		section("categorization", "categorization", function() {
 			loadText("type");
