@@ -2,13 +2,13 @@
  * Copyright 2012 Vassili Philippov <vassiliphilippov@onepf.org>
  * Copyright 2012 One Platform Foundation <www.onepf.org>
  * Copyright 2012 Yandex <www.yandex.com>
- * 
+ *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
- * 
+ *
  *        http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -38,7 +38,7 @@
         $(".app-icon-first").append($imageGroup);
         appdfEditor.addValidationToElements($imageGroup.find("input"));
     };
-    
+
 	function addMoreAppIcon(e) {
 		var $parent = $(e).closest(".controls").find(".image-group:first");
 		var $controlGroup = $(' \
@@ -55,10 +55,10 @@
 		$parent.append($controlGroup);
 		appdfEditor.addValidationToElements($controlGroup.find("input"));
 	};
-	
+
     function addLargePromo(e) {
         var $parent = $(e).closest(".controls").find(".image-group:first");
-        
+
         $parent.find(".image-input-group").remove();
 		var $controlGroup = $(' \
         <div class="image-input-group"> \
@@ -75,10 +75,10 @@
 		$parent.append($controlGroup);
 		appdfEditor.addValidationToElements($controlGroup.find("input"));
     };
-    
+
     function addSmallPromo(e) {
         var $parent = $(e).closest(".image-group");
-        
+
         $parent.find(".image-input-group").remove();
 		var $controlGroup = $(' \
         <div class="image-input-group"> \
@@ -95,7 +95,7 @@
 		$parent.append($controlGroup);
 		appdfEditor.addValidationToElements($controlGroup.find("input"));
     };
-    
+
 	function addMoreScreenshots(e) {
 		var $parent = $(e).closest(".image-group");
 		var $controlGroup = $(' \
@@ -112,7 +112,7 @@
 		$parent.append($controlGroup);
 		appdfEditor.addValidationToElements($controlGroup.find("input"));
 	};
-	
+
 	function addScreenshotIndex(e) {
 		var $parent = $(e.target).closest(".image-input-group");
 		var $controlGroup = $(' \
@@ -126,13 +126,13 @@
 		$parent.find("p").before($controlGroup);
 		appdfEditor.addValidationToElements($controlGroup.find("input"));
 	};
-	
+
 	function onInputImageRemove(e) {
         $(e.target).closest(".image-input-group").remove();
 		setScreenshotsIndexList(e);
         return false;
     };
-	
+
 	function setScreenshotsIndexList(e) {
 		var $screenshotsGroup = $(e.target).closest(".image-group").find(".image-input-group.not-empty-group");
 		var currentIndex = 1;
@@ -140,7 +140,7 @@
 			$($screenshotsGroup[i]).data("index", currentIndex++);
 		};
 	};
-	
+
     function onScreenshotImageInputMoveUp(e) {
         var $imageInputGroup = $(e.target).closest(".image-input-group");
         var $imageGroup = $imageInputGroup.parent();
@@ -174,19 +174,19 @@
 
         if ($group.parent().find("input.empty-image").length===0) {
             addMoreAppIcon($el);
-        };    
+        };
 
         return false;
     };
 
     function onScreenshotImageInputChange(e) {
         onImageInputChange(e);
-        
+
 		var $el = $(e.target);
         if (appdfEditor.isNoFile($el[0])) {
             return false;
         };
-        
+
         var $group = $el.closest(".image-input-group");
 
         $group.find(".image-input-label").append($('<span class="btn-group"> \
@@ -198,13 +198,13 @@
 		if (!$group.hasClass("not-empty-group")) {
 			$group.addClass("not-empty-group");
 		};
-		
+
         if (!$group.parent().find(".image-input-group:not(.not-empty-group)").size()) {
             addMoreScreenshots($el);
         };
-		
+
 		setScreenshotsIndexList(e);
-        return false; 
+        return false;
     };
 
     function onImageInputChange(e) {
@@ -212,20 +212,20 @@
         if (appdfEditor.isNoFile($el[0])) {
             return false;
         };
-        
+
         var imageFileName = appdfEditor.getFileName($el[0]);
-        var URL = window.webkitURL || window.mozURL || window.URL;    
+        var URL = window.webkitURL || window.mozURL || window.URL;
         var file = appdfEditor.getFileContent($el[0]);
         if (typeof file==="undefined") {
             //error
             return false;
         };
-        
+
         var imgUrl = URL.createObjectURL(file);
-		
+
 		$el.next().attr("src", imgUrl);
 		$el.removeClass("empty-image");
-        
+
         var $group = $el.closest(".image-input-group");
 		$group.find(".image-input-label").html('<span class="label image-input-name"></span><span>&nbsp;&nbsp;</span>');
 
@@ -237,14 +237,7 @@
 
         return false;
     };
-    
-    function getImgSizeFromBlob(imgBlob, onsize) {
-        var URL = window.webkitURL || window.mozURL || window.URL;    
-        var imgSrc = URL.createObjectURL(imgBlob);
-        
-        getImgSize(imgSrc, onsize);
-    };
-    
+
     function getImgSize(imgSrc, onsize) {
         var newImg = new Image();
         newImg.onload = function() {
@@ -254,7 +247,7 @@
         };
         newImg.src = imgSrc; // this must be done AFTER setting onload
     };
-    
+
     function checkTransparency(imgSrc, oncheck) {
         var start = false;
         var context = null;
@@ -265,17 +258,13 @@
                 start = true;
             };
         };
-        
+
         var loadImage = new Image();
-        loadImage.style.position = "absolute";
-        loadImage.style.left = "-10000px";
-        loadImage.style.top = "-10000px";
-        document.body.appendChild(loadImage);
-        
+
         loadImage.onload = function() {
-            var iWidth = this.offsetWidth;
-            var iHeight = this.offsetHeight;
-            
+            var iWidth = this.width;
+            var iHeight = this.height;
+
             if (start) {
                 c.width = iWidth;
                 c.height = iHeight;
@@ -295,10 +284,9 @@
                         valid: true,
                         message: errorMessages.canvasNotSupported
                     });
-                    document.body.removeChild(loadImage);
                     return;
                 };
-                
+
                 var imgData = imgDat.data;
                 for(var i=0, n=imgData.length; i<n; i+=4) {
                     if (imgData[i+3]===0) {
@@ -307,11 +295,10 @@
                             valid: false,
                             message: errorMessages.imageHasTransparency
                         });
-                        document.body.removeChild(loadImage);
                         return;
                     };
                 };
-                
+
                 oncheck(iWidth, iHeight, {
                     checked: true,
                     valid: true,
@@ -324,11 +311,10 @@
                     message: errorMessages.canvasNotSupported
                 });
             };
-            document.body.removeChild(loadImage);
         };
         loadImage.src = imgSrc;
     };
-    
+
     function init() {
         $('body').on('click', '.image-input-moveup', onScreenshotImageInputMoveUp);
         $('body').on('click', '.image-input-movedown', onScreenshotImageInputMoveDown);
@@ -347,11 +333,11 @@
 			addScreenshotIndex(e);
 			return false;
 		});
-		
+
         $('body').on('click', '.image-input-remove', function(e) {
             onInputImageRemove(e);
             return false;
-        });        
+        });
     };
 
     return {
@@ -366,11 +352,10 @@
         onScreenshotImageInputChange : onScreenshotImageInputChange,
         onImageInputChange : onImageInputChange,
         getImgSize : getImgSize,
-        getImgSizeFromBlob : getImgSizeFromBlob,
         checkTransparency : checkTransparency
 	};
  })();
- 
+
  $(function() {
 	appdfImages.init();
 });
