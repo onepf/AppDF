@@ -335,7 +335,7 @@ var appdfXMLSaver = (function() {
                     });
                 };
                 if (checkedUnsupportedCountries) {
-                    xml.addTag("<countries-resolutions only-listed=\"no\">", function() {
+                    xml.addTag("<countries only-listed=\"no\">", function() {
                         $selectedUnSupportedCountries.each(function() {
                             xml.addTag("<exclude>", $(this).attr('id').split('-')[2]);
                         });
