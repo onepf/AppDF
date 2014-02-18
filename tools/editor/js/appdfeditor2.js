@@ -1751,7 +1751,7 @@ var appdfEditor = (function() {
         
         if (validError) {
             //show button to build unfinished file
-            $("#build-unfinished-appdf-file").show();
+            $("#build-unfinished-appdf-file").css('display', 'inline-block');
         };
     };   
     
