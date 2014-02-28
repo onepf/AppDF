@@ -4,6 +4,7 @@ Apache License, Version 2.0
 http://www.apache.org/licenses/LICENSE-2.0.html
 
 Copyright (c) 2012 Vassili Philippov <vassiliphilippov@onepf.org>
+Copyright (c) 2014 Ruslan Sayfutdinov <ruslan@sayfutdinov.com>
 Copyright (c) 2012 One Platform Foundation <www.onepf.org>
 Copyright (c) 2012 Yandex <www.yandex.com>
 -->
@@ -16,7 +17,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -26,10 +27,12 @@ Copyright (c) 2012 Yandex <www.yandex.com>
         padding: 9px 0;
       }
     </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="css/appdfeditor.css" rel="stylesheet">
     <link href="css/bsdocs.css" rel="stylesheet">
     <link href="css/datepicker.css" rel="stylesheet">
+    <link href="../editor/css/bootstrap-panel.css" rel="stylesheet">
+    <link href="../editor/css/bootstrap-switch.min.css" rel="stylesheet">
 
   <script type="text/javascript" src="data/categories.js"></script>
   <script type="text/javascript" src="data/store_categories.js"></script>
@@ -41,8 +44,9 @@ Copyright (c) 2012 Yandex <www.yandex.com>
   <script type="text/javascript" src="data/device_models.js"></script>
   <script type="text/javascript" src="data/error_messages.js"></script>
   <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="../editor/js/bootstrap-switch.min.js"></script>
   <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>    
   <script type="text/javascript" src="js/xmlgenerator.js"></script>    
   <script type="text/javascript" src="js/zip/zip.js"></script>
@@ -54,7 +58,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
   <script type="text/javascript" src="js/appdfparser.js"></script>
   <script type="text/javascript" src="js/appdfxmlsaving.js"></script>
   <script type="text/javascript" src="js/appdfxmlloading.js"></script>
-  <script type="text/javascript" src="js/appdfeditor2.js"></script>
+  <script type="text/javascript" src="js/appdfeditor.js"></script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -102,6 +106,8 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             <li><a href="#section-requirements"><i class="icon-chevron-right"></i> Requirements</a></li>
             <li><a href="#section-testing-instructions"><i class="icon-chevron-right"></i> Testing Instructions</a></li>
             <li><a href="#section-store-specific"><i class="icon-chevron-right"></i> Store Specific</a></li>
+            <li><a href="#section-inapp-products"><i class="icon-chevron-right"></i> In-app Products</a></li>
+            <li><a href="#section-submit-appdf"><i class="icon-chevron-right"></i> Submit AppDF</a></li>
           </ul>
         </div><!--/.well -->
       </div><!--/span-->
@@ -261,7 +267,24 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
             <button class="btn btn-primary">OK</button>
           </div>
-        </div><!--Modal-->            
+        </div><!--Modal-->   
+
+            <div id="add-localization-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="add-localization-modal-label" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="add-localization-modal-label">Add Localization</h3>
+              </div>
+              <div class="modal-body">
+                <p>Language: 
+                  <select id="add-localization-modal-language">
+                  </select>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button class="btn btn-primary">Add Localization</button>
+              </div>
+            </div><!--Model-->          
         <!--MODALS END-->
 
         <form class="form-horizontal" action='' method="POST" novalidate>
@@ -335,40 +358,26 @@ Copyright (c) 2012 Yandex <www.yandex.com>
           </section><!--section-categorizatio-->
 
           <section id="section-description">
-            <div id="add-localization-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="add-localization-modal-label" aria-hidden="true">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="add-localization-modal-label">Add Localization</h3>
-              </div>
-              <div class="modal-body">
-                <p>Language: 
-                  <select id="add-localization-modal-language">
-                  </select>
-                </p>
-              </div>
-              <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                <button class="btn btn-primary">Add Localization</button>
-              </div>
-            </div><!--Model-->            
+
+
+
             <fieldset>
               <div id="legend">
                 <legend class="">Description</legend>
               </div>
-              <div class="tabbable"> <!-- Only required for left/right tabs -->
-                <ul class="nav nav-tabs" id="description-tab-header">
-                  <li class="active"><a href="#localization-tab-default" data-toggle="tab">English US (Default)</a></li>
+              <div class="tabbable" id="description-locales"> <!-- Only required for left/right tabs -->
+                <ul class="nav nav-tabs" id="description-locales-header">
+                  <li class="active"><a href="#description-locales-tab-default" data-toggle="tab">English US (Default)</a></li>
                   <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">More <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                      <li><a class="description-tab-addlocation" href="#">Add Localization</a></li>
-                      <li><a class="description-tab-removeselectedlocalization" href="#">Remove Selected Localization</a></li>
-                      <li class="divider"></li>
+                      <li><a class="tab-addlocalization" href="#">Add Localization</a></li>
+                      <li><a class="tab-removeselectedlocalization" href="#">Remove Selected Localization</a></li>
                     </ul>
                   </li>
                 </ul>
-                <div class="tab-content" id="description-tab-content">
-                  <div class="tab-pane active" id="localization-tab-default">
+                <div class="tab-content" id="description-locales-content">
+                  <div class="tab-pane active" id="description-locales-tab-default">
                     <div class="control-group-container">
                       <div class="control-group">
                         <!-- description/texts/title -->
@@ -1365,6 +1374,153 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             </fieldset>
           </section><!--section-store-specific-->          
 
+          <section id="section-inapp-products">
+            <fieldset>
+              <div id="legend">
+                <legend class="">In-app Products</legend>
+              </div>
+              <div id="inapp-products">
+                  
+                <div class="control-group-container">
+                  <div class="control-group">
+                    <label class="checkbox">
+                      <input type="checkbox" class="no-validation" id="fortumo-support">
+                      Fortumo Support
+                      </label>
+                  </div>
+                </div>
+                <!--abstract panel-->
+                <div class="panel" id="inapp-product-abstract" style="display: none">
+                  <a class="close close-panel" style="margin-top:-6px">×</a>
+                  <div class="control-group-container">
+                    <div class="control-group">
+                      <label class="control-label" for="inapp-type">Product type</label>
+                      <div class="controls">
+                        <div class="btn-group" data-toggle="buttons-radio">
+                          <button class="btn active inapp-type inapp-type-item" type="button">Item</button>
+                          <button class="btn inapp-type inapp-type-subs" type="button">Subscription</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div><!--product type-->
+
+                  <div class="control-group-container">
+                    <div class="control-group">
+                      <label class="control-label" for="inapp-id-abstract">ID <span class="required-mark">*</span></label>
+                      <div class="controls">
+                        <input id="inapp-id-abstract" type="text" 
+                        name="inapp-id-abstract" 
+                        required 
+                        data-validation-required-message="Product ID is required" 
+                        data-validation-regex-regex="^([a-z]|[0-9]){1}[a-z0-9._]*$" 
+                        data-validation-regex-message="Product ID must start with a small letter or digit."
+                        class="no-validation" 
+                      >
+                      </div>
+                    </div>
+                  </div><!--id-->
+
+                  <div class="control-group-container fortumo" style="display:none">
+                    <div class="control-group">
+                      <label class="control-label" for="fortumo-serviceid-abstract">Fortumo Service ID <span class="required-mark">*</span></label>
+                      <div class="controls">
+                        <input id="fortumo-serviceid-abstract" type="text" 
+                        name="fortumo-serviceid-abstract" 
+                        required 
+                        data-validation-required-message="Service ID is required"
+                        class="no-validation" 
+                      >
+                      </div>
+                    </div>
+                  </div><!--fortumo service id-->
+
+                  <div class="control-group-container fortumo" style="display:none">
+                    <div class="control-group">
+                      <label class="control-label" for="fortumo-secret-abstract">Fortumo In-app Secret <span class="required-mark">*</span></label>
+                      <div class="controls">
+                        <input id="fortumo-secret-abstract" type="text" 
+                        name="fortumo-secret-abstract" 
+                        required 
+                        data-validation-required-message="In-app Secret is required"
+                        class="no-validation" 
+                      >
+                      </div>
+                    </div>
+                  </div><!--fortumo secret-->
+
+                  <div class="control-group-container">
+                    <div class="control-group">
+                      <label class="control-label" for="inapp-published-abstract">Published</label>
+                      <div class="controls">
+                        <input type="checkbox" class="no-validation" id="inapp-published-abstract">   
+                      </div>
+                    </div>
+                  </div><!--published-->
+
+                  <div class="control-group-container inapp-subscription-period" style="display:none">
+                    <div class="control-group">
+                      <label class="control-label" for="inapp-subscription-period-abstract">Subscription period</label>
+                      <div class="controls">
+                        <select id="inapp-subscription-period-abstract" name="inapp-subscription-period-abstract">
+                          <option value="oneMonth">One month</option>
+                          <option value="oneYear">One year</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div><!--subscription period-->
+
+                  <div class="tabbable" id="inapp-locales-abstract">
+                    <ul class="nav nav-tabs" id="inapp-locales-abstract-header">
+                      <li class="active"><a href="#inapp-locales-abstract-tab-default" data-toggle="tab">English US (Default)</a></li>
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">More <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a class="tab-addlocalization" href="#">Add Localization</a></li>
+                          <li><a class="tab-removeselectedlocalization" href="#">Remove Selected Localization</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="inapp-locales-abstract-content">
+                      <div class="tab-pane active" id="inapp-locales-abstract-tab-default">
+                   
+                        <div class="control-group">
+                          <label class="control-label" for="inapp-title">Title <span class="required-mark">*</span></label>
+                          <div class="controls">
+                            <input type="text"
+                            name="inapp-title" 
+                            required 
+                            data-validation-required-message="Product title is required" 
+                            data-validation-regex-regex="^.{1,55}$" 
+                            data-validation-regex-message="Product title must be no longer than 55 symbols."
+                            class="inapp-title no-validation" 
+                          >
+                          </div>
+                        </div><!--title-->
+
+                        <div class="control-group">
+                          <label class="control-label" for="inapp-description">Description <span class="required-mark">*</span></label>
+                          <div class="controls">
+                            <input type="text"
+                            name="inapp-description" 
+                            required 
+                            data-validation-required-message="Product description is required" 
+                            data-validation-regex-regex="^.{1,80}$" 
+                            data-validation-regex-message="Product description must be no longer than 80 symbols."
+                            class="inapp-description input-xxlarge no-validation" 
+                          >
+                          </div>
+                        </div><!--description-->
+
+                      </div>
+                    </div>
+                  </div><!--tabable-->
+
+                </div><!--panel-->
+              </div>
+              <a href="#" class="btn" id="inapp-addmore">Add new in-app product</a> 
+            </fieldset>
+          </section><!--section-inapp-products-->     
+
           <div class="form-actions">
             <div class="alert alert-error hide" id="form-errors">
               <b>Errors:</b>
@@ -1379,10 +1535,12 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             </div>
             <a href="#" id="build-appdf-file" class="btn btn-primary">Build AppDF File</a>
             <a href="#" id="build-unfinished-appdf-file" class="btn btn-primary hide">Build unfinished AppDF File</a>
+            <a href="#" id="build-inapp-products-xml" class="btn btn-primary">Build In-app Products XML</a>
+            <a href="#" id="build-fortumo-xml" class="btn btn-primary">Build Fortumo XML</a>
             <div id="downloadify" style="display:none;"></div>
           </div>
 
-          <section id="section-store-specific">
+          <section id="section-submit-appdf">
             <fieldset>
               <div id="legend">
                 <legend class="">Submit AppDF File to Appstores</legend>

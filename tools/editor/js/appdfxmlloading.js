@@ -228,14 +228,14 @@ var appdfXMLLoader = (function() {
         progress(3);//6
         for (languageCode in data["description"]) {
             if (languageCode!="default") {
-                appdfLocalization.addLocalization(languageCode, dataLanguages[languageCode]);
+                appdfLocalization.addLocalization(languageCode, dataLanguages[languageCode], "description-locales");
             };
             loadDescriptionLocalizationSection(languageCode, data["description"][languageCode]);
             progress(20);
         };//20*LanguageCount + 6
 
         //Select default language as open tab
-        appdfLocalization.selectLanguage("default");
+        appdfLocalization.selectLanguage("default", "description-locales");
 
         //Price
         progress();//20*LanguageCount + 7

@@ -38,7 +38,8 @@ var appdfEditor = (function() {
     };
     
     function addValidationToElements($elements) {
-        $elements.jqBootstrapValidation({
+        $elements = $elements.not(".no-validation");
+        $elements.live().jqBootstrapValidation({
             preventSubmit: true,
             submitError: function($form, event, errors) {
                 // Here I do nothing, but you could do something like display 
@@ -904,6 +905,66 @@ var appdfEditor = (function() {
             appdfImages.addSmallPromo(event.target);
             return false;
         });
+
+        // In-app handlers
+        $("#fortumo-support").change(function() {
+            selectFortumoSupport();
+        });
+
+        $("#inapp-products").on("click", ".inapp-type", function(event) {
+            selectInappType(event.target);
+            return true;
+        });
+
+        $("#inapp-products").on("click", ".close-panel", function(event) {
+            $(event.target).closest(".panel").remove();
+            return false;
+        });
+
+        $("#inapp-addmore").click(function(event) {
+            addInappProduct();
+            return false;
+        });
+    };
+
+    function selectFortumoSupport() {
+        var fortumoSupport = $("#fortumo-support").attr("checked");
+        if (fortumoSupport === "checked") {
+            $(".panel:not(#inapp-product-abstract)").children(".fortumo").find("input").removeClass("no-validation");
+            appdfEditor.addValidationToElements($(".panel:not(#inapp-product-abstract)").children(".fortumo").find("input"));
+            $(".fortumo").show();
+        } else {
+            $(".fortumo").find("input").addClass("no-validation").jqBootstrapValidation("destroy");
+            $(".fortumo").hide();
+        };        
+    };
+
+    function selectInappType(button) {
+        var $subs_period = $(button).closest(".panel").find(".inapp-subscription-period");
+        if ($(button).hasClass("inapp-type-subs")) {
+            $subs_period.show();
+        } else {
+            $subs_period.hide();
+        }
+    };
+
+    var inappProductsCount = 0;
+
+    function addInappProduct() {
+        var panelHtml = $("<div>").append($("#inapp-product-abstract").clone()).html();
+        panelHtml = panelHtml.replace(/\-abstract/g, "-" + inappProductsCount);
+        $("#inapp-products").append(panelHtml);
+        var newPanelId = "inapp-product-" + inappProductsCount;
+        $("#" + newPanelId).find(".no-validation").removeClass("no-validation");
+        $("#inapp-published-" + inappProductsCount).bootstrapSwitch();
+        $("#inapp-published-" + inappProductsCount).addClass("no-validation");
+        var fortumoSupport = $("#fortumo-support").attr("checked");
+        if (fortumoSupport !== "checked") {
+            $("#" + newPanelId).children(".fortumo").find("input").addClass("no-validation");
+        }
+        $("#" + newPanelId).show();
+        appdfEditor.addValidationToElements($("#" + newPanelId).find("input,textarea,select"));
+        inappProductsCount++;
     };
 
     function addDatePicker() {
@@ -1779,7 +1840,7 @@ var appdfEditor = (function() {
         
         //description
         //remove localisations
-        appdfLocalization.removeAllLocalizations();
+        appdfLocalization.removeAllLocalizations("description-locales");
         
         //clear appicons
         $(".image-input-remove").click();
@@ -1898,7 +1959,7 @@ var appdfEditor = (function() {
             append: false
         });
     };
-    
+
     function init() {
         checkInit();
         initRatingCertificate();
