@@ -83,27 +83,27 @@ var appdfEditor = (function() {
     };
 
     function getFileName($el) {
-        if ($($el).val()) {
-            return normalizeInputFileName($($el).val());
-        } else if ($($el).data("file")) {
-            return $($el).data("file");
+        if ($el.val()) {
+            return normalizeInputFileName($el.val());
+        } else if ($el.data("file")) {
+            return $el.data("file");
         } else {
             return "";
         };
     };
     
     function getFileContent($el) {
-        if ($el.files.length) {
-            return $el.files[0];
-        } else if ($($el).data("file")) {
-            return appdfXMLLoader.appdfFiles[$($el).data("file")];
+        if ($el[0].files.length) {
+            return $el[0].files[0];
+        } else if ($el.data("file")) {
+            return appdfXMLLoader.appdfFiles[$el.data("file")];
         } else {
             return null;
         };
     };
     
     function isNoFile($el) {
-        if ($el.files.length || $($el).data("file")) {
+        if ($el[0].files.length || $el.data("file")) {
             return false;
         } else {
             return true;
@@ -111,7 +111,7 @@ var appdfEditor = (function() {
     };
     
     function isOnlyDataImage($el) {
-        if (!$el.files.length && $($el).data("file")) {
+        if (!$el[0].files.length && $el.data("file")) {
             return true;
         } else {
             return false;
@@ -416,7 +416,7 @@ var appdfEditor = (function() {
                     
                     var $list = $("#import-descriptionxml-modal-errors").find("ul");
                     $list.find("li").remove();
-                    for (var i=0; i<errors.length; i++) {
+                    for (var i = 0; i < errors.length; i++) {
                         $list.append($("<li>").text(errors[i]));
                     };
                     appdfEditor.importingFlag = false;
@@ -502,7 +502,7 @@ var appdfEditor = (function() {
 
                     //Now we make sure the error list is visible and add all the errors there
                     $("#load-appdf-modal-errors").show();
-                    for (var i=0; i<errors.length; i++) {
+                    for (var i = 0; i < errors.length; i++) {
                         $list.append($("<li>").text(errors[i].msg));
                     };
                     appdfEditor.importingFlag = false;
@@ -562,10 +562,10 @@ var appdfEditor = (function() {
             var matched2 = $input.val().match(youtubeRegex2);
 
             videoId = "";
-            if (matched && matched.length>0) {
+            if (matched && matched.length > 0) {
                 videoId = matched[1];
             };
-            if (!videoId && matched2 && matched2.length>0) {
+            if (!videoId && matched2 && matched2.length > 0) {
                 videoId = matched2[1];
             };
         };
@@ -662,8 +662,8 @@ var appdfEditor = (function() {
         
         var $row;
         $.each($div, function() {
-            for (var i=0; i<countryCodes.length; i++) {
-                if (i%3 === 0) {
+            for (var i = 0; i < countryCodes.length; i++) {
+                if (i % 3 === 0) {
                     $row = $("<div class='row'>");
                     $(this).append($row);
                 };
@@ -695,11 +695,11 @@ var appdfEditor = (function() {
 		var $subcategories = $("#categorization-subcategory");
 		var subcategoryArray = dataCategories[selectedType][selectedCategory];
 		$subcategories.empty();
-		for (var i=0; i<subcategoryArray.length; i++) {
+		for (var i = 0; i < subcategoryArray.length; i++) {
 			var s = subcategoryArray[i];
 			$subcategories.append($("<option />").val(s).text(s));
 		}
-		if (subcategoryArray.length<=1) {
+		if (subcategoryArray.length <= 1) {
 			$subcategories.closest(".control-group").hide();    
 		} else {
 			$subcategories.closest(".control-group").show();            
@@ -880,11 +880,11 @@ var appdfEditor = (function() {
         });
         
         $("#build-appdf-file").click(function(event) {
-            return buildAppdDFFile(event);
+            return buildAppdfFile(event);
         });
 
         $("#build-unfinished-appdf-file").click(function(event) {
-            startBuildingFile(true);
+            startBuildingAppdfFile(true);
             return false;
         });
 
@@ -924,6 +924,14 @@ var appdfEditor = (function() {
         $("#inapp-addmore").click(function(event) {
             addInappProduct();
             return false;
+        });
+
+        $("#build-inapp-products-xml").click(function(event) {
+            return buildInappProductsXml(event);
+        });
+
+        $("#build-fortumo-xml").click(function(event) {
+            return buildFortumoXml(event);
         });
     };
 
@@ -965,6 +973,44 @@ var appdfEditor = (function() {
         $("#" + newPanelId).show();
         appdfEditor.addValidationToElements($("#" + newPanelId).find("input,textarea,select"));
         inappProductsCount++;
+    };
+
+    function buildInappProductsXml(event) {
+        alert("Build In-app products XML");
+        var downloadLink = document.getElementById("build-inapp-products-xml");
+        if (downloadLink.download) {
+            return true;
+        };
+        
+        if ($("#build-inapp-products-xml[init]").size()) {
+            return false;
+        };
+        $("#build-inapp-products-xml").attr("init", true);
+        
+        //If not we start the checking and building process.
+        //First we collect all the errors and check if there are any
+        collectBuildErrors(startBuildingInappProductsXml, showValidationErrors);
+
+        return false;
+    };
+
+    function buildFortumoXml(event) {
+        alert("Build Fortumo XML");
+        var downloadLink = document.getElementById("build-fortumo-xml");
+        if (downloadLink.download) {
+            return true;
+        };
+        
+        if ($("#build-fortumo-xml[init]").size()) {
+            return false;
+        };
+        $("#build-fortumo-xml").attr("init", true);
+        
+        //If not we start the checking and building process.
+        //First we collect all the errors and check if there are any
+        collectBuildErrors(startBuildingFortumoXml, showValidationErrors);
+
+        return false;
     };
 
     function addDatePicker() {
@@ -1048,7 +1094,7 @@ var appdfEditor = (function() {
                 var deviceModelRegEx = /([^\(]*)\s\([.]*/i;
                 var matched = item.match(deviceModelRegEx); 
                 
-                if (matched && matched.length>0) {
+                if (matched && matched.length > 0) {
                     return matched[1];
                 } else {
                     return item;
@@ -1058,7 +1104,7 @@ var appdfEditor = (function() {
     };
 	
 	function validationCallbackPromo($el, value, callback) {
-		if (isNoFile($el[0])) {
+		if (isNoFile($el)) {
 			callback({
 				value: value,
 				valid: true
@@ -1066,15 +1112,15 @@ var appdfEditor = (function() {
 			return;
 		};
 		
-		var promoName = $($el).attr("name").split("-")[2];
-		var imageFileName = getFileName($el[0]);
-		var file = getFileContent($el[0]);
+		var promoName = $el.attr("name").split("-")[2];
+		var imageFileName = getFileName($el);
+		var file = getFileContent($el);
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
 		
 		appdfImages.checkTransparency(imgUrl, function(width, height, result) {
             result.value = value;
-			if (((promoName==="smallpromo" && width===180 && height===120) || (promoName==="largepromo" && width===1024 && height===500)) && result.valid) {
+			if (((promoName === "smallpromo" && width === 180 && height === 120) || (promoName === "largepromo" && width === 1024 && height === 500)) && result.valid) {
 				$el.data("width", width).data("height", height);
 				callback({
 					value: value,
@@ -1084,7 +1130,7 @@ var appdfEditor = (function() {
 				callback({
 					value: value,
 					valid: false,
-					message: promoName==="smallpromo"?errorMessages.smallPromoWrongSize:errorMessages.largePromoWrongSize 
+					message: promoName === "smallpromo"?errorMessages.smallPromoWrongSize:errorMessages.largePromoWrongSize 
 				});
 			} else {
                 callback(result);
@@ -1093,7 +1139,7 @@ var appdfEditor = (function() {
 	};
 	
 	function validationCallbackScreenshotRequired($el, value, callback) {
-		if (isNoFile($el[0])) {
+		if (isNoFile($el)) {
 			callback({
 				value: value,
 				valid: true
@@ -1101,8 +1147,8 @@ var appdfEditor = (function() {
 			});
 			return;
 		};
-		var imageFileName = getFileName($el[0]);
-		var file = getFileContent($el[0]);
+		var imageFileName = getFileName($el);
+		var file = getFileContent($el);
         if (typeof file==="undefined") {
             callback({
                 value: value,
@@ -1117,7 +1163,7 @@ var appdfEditor = (function() {
 		
 		appdfImages.checkTransparency(imgUrl, function(width, height,result) {
             result.value = value;
-			if (((width===480 && height===800) || (width===1080 && height===1920) || (width===1920 && height===1200)) && result.valid) {
+			if (((width === 480 && height === 800) || (width === 1080 && height === 1920) || (width === 1920 && height === 1200)) && result.valid) {
 				callback({
 					value: value,
 					valid: true
@@ -1157,7 +1203,7 @@ var appdfEditor = (function() {
     };
     
 	function validationCallbackAppIcon($el, value, callback, first) {
-		if (first && isNoFile($el[0])) {
+		if (first && isNoFile($el)) {
 			callback({
 				value: value,
 				valid: false,
@@ -1166,9 +1212,9 @@ var appdfEditor = (function() {
 			return false;
 		};
         
-		var imageFileName = getFileName($el[0]);
-		var file = getFileContent($el[0]);
-        if (typeof file==="undefined") {
+		var imageFileName = getFileName($el);
+		var file = getFileContent($el);
+        if (typeof file === "undefined") {
             callback({
                 value: value,
                 valid: false,
@@ -1179,13 +1225,13 @@ var appdfEditor = (function() {
         
 		var URL = window.webkitURL || window.mozURL || window.URL;    
 		var imgUrl = URL.createObjectURL(file);
-        if (isOnlyDataImage($el[0])) {
-            $($el[0]).removeClass("empty-image");
-            $($el[0]).next().attr("src", imgUrl);
+        if (isOnlyDataImage($el)) {
+            $el.removeClass("empty-image");
+            $el.next().attr("src", imgUrl);
         };
         
 		appdfImages.getImgSize(imgUrl, function(width, height) {
-			if ((first && width===512 && height===512)||(!first && width===height)) {
+			if ((first && width === 512 && height === 512)||(!first && width === height)) {
 				callback({
 					value: value,
 					valid: true
@@ -1201,10 +1247,10 @@ var appdfEditor = (function() {
 	};
 	
 	function validationCallbackApkFile($el, value, callback, first) {
-        var apkFileName = getFileName($el[0]);
+        var apkFileName = getFileName($el);
         $el.closest(".controls").find("input:text").val(apkFileName);
 
-		if (first && isNoFile($el[0])) {
+		if (first && isNoFile($el)) {
 			callback({
 				value: value,
 				valid: false,
@@ -1213,8 +1259,8 @@ var appdfEditor = (function() {
 			return;
 		};
 		
-		var file = getFileContent($el[0]);
-        if (typeof file==="undefined") {
+		var file = getFileContent($el);
+        if (typeof file === "undefined") {
             callback({
                 value: value,
                 valid: false,
@@ -1223,7 +1269,7 @@ var appdfEditor = (function() {
             return false;
         };
         
-		if (file.size>MAXIMUM_APK_FILE_SIZE) {
+		if (file.size > MAXIMUM_APK_FILE_SIZE) {
 			callback({
 				value: value,
 				valid: false,
@@ -1242,7 +1288,7 @@ var appdfEditor = (function() {
 			if (first) {
 				appdfEditor.firstApkFileData = firstApkFileData = apkData;
 			} else {
-				if (firstApkFileData.package!=apkData.package) {
+				if (firstApkFileData.package != apkData.package) {
 					data.valid = false;
 					data.message = errorMessages.APKfileWrongPackageName;
 				};
@@ -1262,7 +1308,7 @@ var appdfEditor = (function() {
 		validationCallbackApkFile($el, value, function(data) {
 			if (data.valid) {
 				var descriptionXML = localStorage.getItem(firstApkFileData.package);
-				if (descriptionXML && descriptionXML!="") {
+				if (descriptionXML && descriptionXML != "") {
 					//TODO handle carefully that we set it only if page is empty
 					//appdfXMLLoader.loadDescriptionXML(descriptionXML, function(){}, function(error){});
 				};
@@ -1314,7 +1360,7 @@ var appdfEditor = (function() {
     };
     
     function validationCallbackVideoFile($el, value, callback) {
-        var videoFileName = getFileName($el[0]);
+        var videoFileName = getFileName($el);
         $el.closest(".controls").removeClass("empty-video");
         $el.closest(".controls").find("input[id^=\"pretty-video-file\"]").val(videoFileName);
         
@@ -1418,7 +1464,7 @@ var appdfEditor = (function() {
     };
 
 
-    function buildAppdDFFile(event) {
+    function buildAppdfFile(event) {
         //First we check if there is already built file, if so we return to a standard download handler
         $("#build-unfinished-appdf-file").hide();
         
@@ -1434,22 +1480,24 @@ var appdfEditor = (function() {
         
         //If not we start the checking and building process.
         //First we collect all the errors and check if there are any
-        collectBuildErrors(startBuildingFile, showValidationErrors);
+        collectBuildErrors(startBuildingAppdfFile, showValidationErrors);
 
         return false;
     };
 
-    function startBuildingFile(errorsExist){
+    function startBuildingAppdfFile(errorsExist){
         //If there are not errors, we hide the error block and show the progress block
+        alert("startBuildingAppdfFile")
         if (!errorsExist) {
             $("#form-errors").hide();
         } else {
             $("#build-appdf-file").attr("init", true);
+            alert("attr init true!");
         };
         
         buildProgress(0, 100);
-        $("#build-appdf-progressbarr").css("width", "0%");
-        $("#build-appdf-status").show();
+        $("#build-appdf-progressbar").css("width", "0%");
+        $("#build-status").show();
         
         generateAppDFFile(function(url, data) {
             //TODO store file
@@ -1469,7 +1517,7 @@ var appdfEditor = (function() {
             downloadLink.download = fileName;
             clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
             downloadLink.dispatchEvent(clickEvent);
-            $("#build-appdf-status").hide();
+            $("#build-status").hide();
             setTimeout(clearBuildedAppdfFile, 1);
         });
     };
@@ -1482,38 +1530,36 @@ var appdfEditor = (function() {
         
         var errorArray = [];
         checkProgress(0, 100);
-        $("#build-appdf-status").show();
-        
+        $("#build-status").show();
+        // TODO: rewrite this!
         for (field in errors) {
-            if (name!=undefined) {
-                var fieldErrors = errors[field];
-                var errorValidation = false;
-                for (var i=0; i<fieldErrors.length; i++) {
-                    var error = fieldErrors[i];
-                    if (error.indexOf("required") != -1) {
-                        errorValidation = true;
-                    };
-                    if (errorArray.indexOf(error) === -1) {
-                        errorArray.push(error);
-                    };
+            var fieldErrors = errors[field];
+            var errorValidation = false;
+            for (var i = 0; i < fieldErrors.length; i++) {
+                var error = fieldErrors[i];
+                if (error.indexOf("required") != -1) {
+                    errorValidation = true;
                 };
-                validErrors = validErrors && errorValidation;
+                if (errorArray.indexOf(error) === -1) {
+                    errorArray.push(error);
+                };
             };
+            validErrors = validErrors && errorValidation;
         };
-        
         function checkBuildErrorsCount() {
-            checkProgress(currentErrorCheckCount + 0, totalErrorCheckCount);
+            checkProgress(currentErrorCheckCount, totalErrorCheckCount);
             if (currentErrorCheckCount === totalErrorCheckCount) {
                 if (errorArray.length) {
                     onerror(errorArray, validErrors, onsuccess);
                 } else {
-                    $("#build-appdf-status").hide();
+                    $("#build-status").hide();
                     onsuccess(false);
                 };
             };
             currentErrorCheckCount++;
         };
         
+        // TODO: rewrite this
         function checkErrorMessage(data) {
             if (!data.valid) {
                 if (validErrors && data.message.indexOf("required") != -1) {
@@ -1581,7 +1627,7 @@ var appdfEditor = (function() {
         $privacyPolicyArr.each(function() {
             var linkValue = $(this).val();
             var fullTextValue = $(this).next().next().val();
-            if ((linkValue!=="" && fullTextValue==="") || (linkValue==="" && fullTextValue!=="")) {
+            if ((linkValue !== "" && fullTextValue === "") || (linkValue === "" && fullTextValue !== "")) {
                 checkErrorMessage({
                     valid: false,
                     value: "",
@@ -1598,7 +1644,7 @@ var appdfEditor = (function() {
         $eulaArr.each(function() {
             var linkValue = $(this).val();
             var fullTextValue = $(this).next().next().val();
-            if ((linkValue!=="" && fullTextValue==="") || (linkValue==="" && fullTextValue!=="")) {
+            if ((linkValue !== "" && fullTextValue === "") || (linkValue === "" && fullTextValue !== "")) {
                 checkErrorMessage({
                     valid: false,
                     value: "",
@@ -1640,8 +1686,8 @@ var appdfEditor = (function() {
         function addInputFiles($el) {
             $el.each(function() {
                 //check if the file is already in the list then do not push it
-                var fileName = appdfEditor.getFileName($(this)[0]);
-                if (!appdfEditor.isNoFile($(this)[0]) && fileNames.indexOf(fileName)===-1) {
+                var fileName = appdfEditor.getFileName($(this));
+                if (!appdfEditor.isNoFile($(this)) && fileNames.indexOf(fileName) === -1) {
                     fileNames.push(fileName);
                 } else if (fileName) {
                     totalErrorCheckCount++;
@@ -1686,9 +1732,9 @@ var appdfEditor = (function() {
         function addInputFiles($el) {
             $el.each(function() {
                 //check if the file is already in the list then do not push it
-                if (!appdfEditor.isNoFile($(this)[0]) && fileNames.indexOf(appdfEditor.getFileName($(this)[0]))===-1) {
-                    files.push(appdfEditor.getFileContent($(this)[0]));
-                    fileNames.push(appdfEditor.getFileName($(this)[0]));
+                if (!appdfEditor.isNoFile($(this)) && fileNames.indexOf(appdfEditor.getFileName($(this))) === -1) {
+                    files.push(appdfEditor.getFileContent($(this)));
+                    fileNames.push(appdfEditor.getFileName($(this)));
                 };
             });
         };
@@ -1748,7 +1794,7 @@ var appdfEditor = (function() {
         var sizeOfAlreadyZippedFilesIncludingCurrent = 0;
 
         function addNextFile() {
-            if (addIndex===flattenedFiles.length) {
+            if (addIndex === flattenedFiles.length) {
                 onend();
                 return;
             };
@@ -1787,7 +1833,7 @@ var appdfEditor = (function() {
                 currentErrorCount++;
                 validateProgress(currentErrorCount, totalErrorCount);
                 $this.trigger("submit.validation").trigger("validationLostFocus.validation");
-                if (currentErrorCount===totalErrorCount) {
+                if (currentErrorCount === totalErrorCount) {
                     showBuildErrors(errors, validError);
                 };
             }, 5);
@@ -1795,7 +1841,7 @@ var appdfEditor = (function() {
     };
     
     function showBuildErrors(errors, validError) {
-        $("#build-appdf-status").hide();
+        $("#build-status").hide();
         validateProgress(0, 100);
         $("#build-appdf-file").removeAttr("init");
         
@@ -1806,8 +1852,8 @@ var appdfEditor = (function() {
 
         //Now we make sure the error list is visible and add all the errors there
         $("#form-errors").show();
-        for (var i=0; i<errors.length; i++) {
-            $list.append($("<li>"+errors[i]+"</li>"))
+        for (var i = 0; i < errors.length; i++) {
+            $list.append($("<li>" + errors[i] + "</li>"))
         };
         
         if (validError) {
@@ -1938,6 +1984,8 @@ var appdfEditor = (function() {
         
         //store specific
         $('#section-store-specific .store-specific').remove();
+
+        // TODO: remove inapp products
     };
     
     function downloadifyInit() {
