@@ -982,14 +982,14 @@ var appdfEditor = (function() {
             return true;
         };
         
-        if ($("#build-inapp-products-xml[init]").size()) {
+        if ($("#build-progressbar[init]").size()) {
             return false;
         };
-        $("#build-inapp-products-xml").attr("init", true);
+        $("#build-progressbar").attr("init", true);
         
         //If not we start the checking and building process.
         //First we collect all the errors and check if there are any
-        collectBuildErrors(startBuildingInappProductsXml, showValidationErrors);
+        collectInappBuildErrors(startBuildingInappProductsXml, showValidationErrors);
 
         return false;
     };
@@ -1001,14 +1001,14 @@ var appdfEditor = (function() {
             return true;
         };
         
-        if ($("#build-fortumo-xml[init]").size()) {
+        if ($("#build-progressbar[init]").size()) {
             return false;
         };
-        $("#build-fortumo-xml").attr("init", true);
+        $("#build-progressbar").attr("init", true);
         
         //If not we start the checking and building process.
         //First we collect all the errors and check if there are any
-        collectBuildErrors(startBuildingFortumoXml, showValidationErrors);
+        collectInappBuildErrors(startBuildingFortumoXml, showValidationErrors);
 
         return false;
     };
@@ -1387,17 +1387,17 @@ var appdfEditor = (function() {
     };
     
     function validateProgress(current, total) {
-        var $bar = $("#build-appdf-progressbar");
+        var $bar = $("#build-progressbar");
         onProgress(current, total, $bar, "Validating: ");
     };
     
     function checkProgress(current, total) {
-        var $bar = $("#build-appdf-progressbar");
+        var $bar = $("#build-progressbar");
         onProgress(current, total, $bar, "Checking: ");
     };
     
     function buildProgress(current, total) {
-        var $bar = $("#build-appdf-progressbar");
+        var $bar = $("#build-progressbar");
         onProgress(current, total, $bar, "Building: ");
     };
     
@@ -1451,7 +1451,7 @@ var appdfEditor = (function() {
         ];
         
         $.each(supportBrowserData, function(i, val) {
-            if ($.browser[val.browser] && version>=val.version && isCanvasSupported() && window.FileReader) {
+            if ($.browser[val.browser] && version >= val.version && isCanvasSupported() && window.FileReader) {
                 supportFlag = true;
             };
         });
@@ -1473,14 +1473,14 @@ var appdfEditor = (function() {
             return true;
         };
         
-        if ($("#build-appdf-file[init]").size()) {
+        if ($("#build-progressbar[init]").size()) {
             return false;
         };
-        $("#build-appdf-file").attr("init", true);
+        $("#build-progressbar").attr("init", true);
         
         //If not we start the checking and building process.
         //First we collect all the errors and check if there are any
-        collectBuildErrors(startBuildingAppdfFile, showValidationErrors);
+        collectAppdfBuildErrors(startBuildingAppdfFile, showValidationErrors);
 
         return false;
     };
@@ -1491,12 +1491,12 @@ var appdfEditor = (function() {
         if (!errorsExist) {
             $("#form-errors").hide();
         } else {
-            $("#build-appdf-file").attr("init", true);
+            $("#build-progressbar").attr("init", true);
             alert("attr init true!");
         };
         
         buildProgress(0, 100);
-        $("#build-appdf-progressbar").css("width", "0%");
+        $("#build-progressbar").css("width", "0%");
         $("#build-status").show();
         
         generateAppDFFile(function(url, data) {
@@ -1522,7 +1522,7 @@ var appdfEditor = (function() {
         });
     };
         
-    function collectBuildErrors(onsuccess, onerror) {
+    function collectAppdfBuildErrors(onsuccess, onerror) {
         var totalErrorCheckCount = 0; //TOTAL check for error blocks;
         var currentErrorCheckCount = 0;
         var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
@@ -1531,7 +1531,6 @@ var appdfEditor = (function() {
         var errorArray = [];
         checkProgress(0, 100);
         $("#build-status").show();
-        // TODO: rewrite this!
         for (field in errors) {
             var fieldErrors = errors[field];
             var errorValidation = false;
@@ -1559,7 +1558,6 @@ var appdfEditor = (function() {
             currentErrorCheckCount++;
         };
         
-        // TODO: rewrite this
         function checkErrorMessage(data) {
             if (!data.valid) {
                 if (validErrors && data.message.indexOf("required") != -1) {
@@ -1574,7 +1572,6 @@ var appdfEditor = (function() {
             };
             checkBuildErrorsCount();
         };
-        
         totalErrorCheckCount++;
         appdfEditor.validationCallbackApkFileFirst($("#apk-file"), 
             appdfEditor.getFileName($("#apk-file")), checkErrorMessage);
@@ -1732,7 +1729,7 @@ var appdfEditor = (function() {
         function addInputFiles($el) {
             $el.each(function() {
                 //check if the file is already in the list then do not push it
-                if (!appdfEditor.isNoFile($(this)) && fileNames.indexOf(appdfEditor.getFileName($(this))) === -1) {
+                if (!appdfEditor.isNoFile($(this)) && fileNames.indexOf(appdfEditor.getF0ileName($(this))) === -1) {
                     files.push(appdfEditor.getFileContent($(this)));
                     fileNames.push(appdfEditor.getFileName($(this)));
                 };
@@ -1843,7 +1840,7 @@ var appdfEditor = (function() {
     function showBuildErrors(errors, validError) {
         $("#build-status").hide();
         validateProgress(0, 100);
-        $("#build-appdf-file").removeAttr("init");
+        $("#build-progressbar").removeAttr("init");
         
         var $list = $("#form-errors").find("ul");
 
@@ -1863,7 +1860,7 @@ var appdfEditor = (function() {
     };   
     
     function clearBuildedAppdfFile() {
-        $("#build-appdf-file").removeAttr("init");
+        $("#build-progressbar").removeAttr("init");
         var downloadLink = document.getElementById("build-appdf-file");
         downloadLink.download = null;
     };
