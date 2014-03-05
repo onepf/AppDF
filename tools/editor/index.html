@@ -108,6 +108,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             <li><a href="#section-testing-instructions"><i class="icon-chevron-right"></i> Testing Instructions</a></li>
             <li><a href="#section-store-specific"><i class="icon-chevron-right"></i> Store Specific</a></li>
             <li><a href="#section-inapp-products"><i class="icon-chevron-right"></i> In-app Products</a></li>
+            <li><a href="#section-build"><i class="icon-chevron-right"></i> Build</a></li>
             <li><a href="#section-submit-appdf"><i class="icon-chevron-right"></i> Submit AppDF</a></li>
           </ul>
         </div><!--/.well -->
@@ -1522,29 +1523,31 @@ Copyright (c) 2012 Yandex <www.yandex.com>
             </fieldset>
           </section><!--section-inapp-products-->     
 
-          <div class="form-actions">
-            <div class="alert alert-error hide" id="form-errors">
-              <b>Errors:</b>
-              <ul>
-              </ul>              
-            </div>
-            <div class="alert alert-success hide" id="build-status">
-              <b>Build progress:</b><br>
-              <div class="progress">
-                <div id="build-progressbar" class="bar" style="width: 0%;"></div>
+          <section id="section-build">
+            <fieldset>
+              <div id="legend">
+                <legend class="">Build</legend>
               </div>
-            </div>
-            <div class="control-group" style="margin-left: -180px">
-              <label class="control-label" for="build-appdf-file">Build</label>
-              <div class="controls">
+              <div class="form-actions" style="padding: 20px 80px 20px 100px">
+                <div class="alert alert-error hide" id="form-errors">
+                  <b>Errors:</b>
+                  <ul>
+                  </ul>              
+                </div>
+                <div class="alert alert-success hide" id="build-status">
+                  <b>Build progress:</b><br>
+                  <div class="progress">
+                    <div id="build-progressbar" class="bar" style="width: 0%;"></div>
+                  </div>
+                </div>
                 <a href="#" id="build-appdf-file" class="btn btn-primary">AppDF File</a>
                 <a href="#" id="build-unfinished-appdf-file" class="btn btn-primary hide">Unfinished AppDF File</a>
                 <a href="#" id="build-inapp-products-xml" class="btn btn-primary">In-app Products XML</a>
                 <a href="#" id="build-fortumo-xml" class="btn btn-primary">Fortumo XML</a>
+                <div id="downloadify" style="display:none;"></div>
               </div>
-            </div>
-            <div id="downloadify" style="display:none;"></div>
-          </div>
+            </fieldset>
+          </section>
 
           <section id="section-submit-appdf">
             <fieldset>
