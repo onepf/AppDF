@@ -30,8 +30,9 @@ var appdfLocalization = (function() {
         var langs = [];
         $("#" + localesNavId + "-header").find("a").each(function() {
             var strHref = $(this).attr("href").toLowerCase();
-            if (strHref.indexOf("#localization-tab-") == 0) {
-                langs.push(strHref.substr(18));
+            if (strHref.indexOf("#" + localesNavId + "-tab-") == 0) {
+                // Cut language code from href
+                langs.push(strHref.substr((localesNavId + "-tab-").length + 1));
             };
         });
         return langs;
