@@ -944,8 +944,8 @@ var appdfEditor = (function() {
         } else {
             $(".fortumo").find("input").addClass("no-validation").jqBootstrapValidation("destroy");
             $(".fortumo").hide();
-        };        
-    };
+        };       
+    }
 
     function selectInappType(button) {
         var $subs_period = $(button).closest(".panel").find(".inapp-subscription-period");
@@ -954,7 +954,7 @@ var appdfEditor = (function() {
         } else {
             $subs_period.hide();
         }
-    };
+    }
 
     var inappProductsCount = 0;
 
@@ -973,18 +973,17 @@ var appdfEditor = (function() {
         $("#" + newPanelId).show();
         appdfEditor.addValidationToElements($("#" + newPanelId).find("input,textarea,select"));
         inappProductsCount++;
-    };
+    }
 
     function buildInappProductsXml(event) {
-        alert("Build In-app products XML");
         var downloadLink = document.getElementById("build-inapp-products-xml");
         if (downloadLink.download) {
             return true;
-        };
+        }
         
         if ($("#build-progressbar[init]").size()) {
             return false;
-        };
+        }
         $("#build-progressbar").attr("init", true);
         
         //If not we start the checking and building process.
@@ -992,18 +991,17 @@ var appdfEditor = (function() {
         collectInappBuildErrors(startBuildingInappProductsXml, showBuildErrors);
 
         return false;
-    };
+    }
 
     function buildFortumoXml(event) {
-        alert("Build Fortumo XML");
         var downloadLink = document.getElementById("build-fortumo-xml");
         if (downloadLink.download) {
             return true;
-        };
+        }
         
         if ($("#build-progressbar[init]").size()) {
             return false;
-        };
+        }
         $("#build-progressbar").attr("init", true);
         
         //If not we start the checking and building process.
@@ -1011,7 +1009,7 @@ var appdfEditor = (function() {
         collectInappBuildErrors(startBuildingFortumoXml, showBuildErrors);
 
         return false;
-    };
+    }
 
     function collectInappBuildErrors(onsuccess, onerror) {
         var errors = $("#inapp-products").find("input").jqBootstrapValidation("collectErrors");
@@ -1026,16 +1024,30 @@ var appdfEditor = (function() {
                 var error = fieldErrors[i];
                 if (errorArray.indexOf(error) === -1) {
                     errorArray.push(error);
-                };
-            };
+                }
+            }
             currentErrorCount++;
             checkProgress(currentErrorCount, totalErrorCount);
-        };
-    };
+        }
+        if (errorArray.length) {
+            $validateList = $("#inapp-products").find("input[required],select[required],textarea[required]");
+            $validateList.each(function() {
+                $(this).trigger("submit.validation").trigger("validationLostFocus.validation");
+            });
+            onerror(errorArray);
+        } else {
+            $("#form-errors").hide();
+            onsuccess();
+        }
+    }
 
-    function startBuildingInappProductXml() {
+    function startBuildingInappProductsXml() {
+        alert("startBuildingInappProductsXml");
+    }
 
-    };
+    function startBuildingFortumoXml() {
+        alert("startBuildingFortumoXml");
+    }
 
     function addDatePicker() {
         var nowTemp = new Date();
@@ -1540,7 +1552,7 @@ var appdfEditor = (function() {
             clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
             downloadLink.dispatchEvent(clickEvent);
             $("#build-status").hide();
-            setTimeout(clearBuildedAppdfFile, 1);
+            //setTimeout(clearBuildedAppdfFile, 1);
         });
     };
         
@@ -1847,7 +1859,7 @@ var appdfEditor = (function() {
         //$("input,select,textarea").trigger("submit.validation").trigger("validationLostFocus.validation");
         $validateList.each( function() {
             var $this = $(this);
-            setTimeout(function() {
+            //setTimeout(function() {
                 currentErrorCount++;
                 validateProgress(currentErrorCount, totalErrorCount);
                 $this.trigger("submit.validation").trigger("validationLostFocus.validation");
@@ -1858,13 +1870,12 @@ var appdfEditor = (function() {
                         $("#build-unfinished-appdf-file").css('display', 'inline-block');
                     };
                 };
-            }, 5);
+            //}, 5);
         });
     };
     
     function showBuildErrors(errors) {
         $("#build-status").hide();
-        validateProgress(0, 100);
         $("#build-progressbar").removeAttr("init");
         
         var $list = $("#form-errors").find("ul");
