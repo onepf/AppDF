@@ -937,9 +937,11 @@ var appdfEditor = (function() {
             $(".panel:not(#inapp-product-abstract)").children(".fortumo").find("input").removeClass("no-validation");
             appdfEditor.addValidationToElements($(".panel:not(#inapp-product-abstract)").children(".fortumo").find("input"));
             $(".fortumo").show();
+            $("#build-fortumo-xml").removeAttr("disabled");
         } else {
             $(".fortumo").find("input").addClass("no-validation").jqBootstrapValidation("destroy");
             $(".fortumo").hide();
+            $("#build-fortumo-xml").attr("disabled", true);
         };       
     }
 
@@ -1037,7 +1039,7 @@ var appdfEditor = (function() {
     function startBuildingFortumoXml() {
         var fileName = "fortumo.xml";
         var fortumoProductsXml = appdfXMLSaver.generateFortumoProductsXml(); ;
-        var blob = new Blob([fortumoXml], {type: "application/xml;charset=utf-8"});
+        var blob = new Blob([fortumoProductsXml], {type: "application/xml;charset=utf-8"});
         saveAs(blob, fileName);  
         $("#build-progressbar").removeAttr("init");
     }
