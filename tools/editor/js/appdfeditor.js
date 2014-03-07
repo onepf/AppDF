@@ -2015,26 +2015,6 @@ var appdfEditor = (function() {
 
         // TODO: remove inapp products
     };
-    
-    function downloadifyInit() {
-        Downloadify.create('downloadify',{
-            filename: function(){
-                return appdfEditor.fileName;
-            },
-            data: function(){ 
-                return appdfEditor.fileData;
-            },
-            onComplete: function(){ alert('Your File Has Been Saved!'); },
-            onCancel: function(){ alert('You have cancelled the saving of this file.'); },
-            onError: function(){ alert('You must put something in the File Contents or there will be nothing to save!'); },
-            swf: 'media/downloadify.swf',
-            downloadImage: 'img/download.png',
-            width: 100,
-            height: 30,
-            transparent: true,
-            append: false
-        });
-    };
 
     function init() {
         checkInit();
@@ -2044,7 +2024,6 @@ var appdfEditor = (function() {
         initFilling();
         addClickHandlers();
         addDatePicker();
-        downloadifyInit();
     };
 
     return {
