@@ -28,10 +28,6 @@ var appdfEditor = (function() {
     var firstApkFileData = {};
     var globalUnigueCounter = 0;
 
-    var fileName = "";
-    var fileData = "";
-    
-    
     function getUniqueId() {
         globalUnigueCounter += 1;
         return globalUnigueCounter;
@@ -976,11 +972,6 @@ var appdfEditor = (function() {
     }
 
     function buildInappProductsXml(event) {
-        var downloadLink = document.getElementById("build-inapp-products-xml");
-        if (downloadLink.download) {
-            return true;
-        }
-        
         if ($("#build-progressbar[init]").size()) {
             return false;
         }
@@ -994,11 +985,6 @@ var appdfEditor = (function() {
     }
 
     function buildFortumoXml(event) {
-        var downloadLink = document.getElementById("build-fortumo-xml");
-        if (downloadLink.download) {
-            return true;
-        }
-        
         if ($("#build-progressbar[init]").size()) {
             return false;
         }
@@ -1504,11 +1490,6 @@ var appdfEditor = (function() {
         //First we check if there is already built file, if so we return to a standard download handler
         $("#build-unfinished-appdf-file").hide();
         
-        var downloadLink = document.getElementById("build-appdf-file");
-        if (downloadLink.download) {
-            return true;
-        };
-        
         if ($("#build-progressbar[init]").size()) {
             return false;
         };
@@ -1521,7 +1502,7 @@ var appdfEditor = (function() {
         return false;
     };
 
-    function startBuildingAppdfFile(errorsExist){
+    function startBuildingAppdfFile(errorsExist) {
         //If there are not errors, we hide the error block and show the progress block
         if (!errorsExist) {
             $("#form-errors").hide();
@@ -1533,26 +1514,13 @@ var appdfEditor = (function() {
         $("#build-progressbar").css("width", "0%");
         $("#build-status").show();
         
-        generateAppDFFile(function(url, data) {
-            //TODO store file
-            
+        generateAppDFFile(function(blob) {
+            var fileName = "untitled.appdf";
             if (firstApkFileData) {
                 fileName = firstApkFileData["package"] + ".appdf";
-            } else {
-                fileName = "untitled.appdf";
-            };
-            console.log("fileName: " + fileName);
-            console.log("appdfEditor.fileName: " + appdfEditor.fileName);
-            fileData = data;
-            
-            var clickEvent = document.createEvent("MouseEvents");
-            var downloadLink = document.getElementById("build-appdf-file");
-            downloadLink.href = url;
-            downloadLink.download = fileName;
-            clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            downloadLink.dispatchEvent(clickEvent);
+            }
+            saveAs(blob, fileName);  
             $("#build-status").hide();
-            //setTimeout(clearBuildedAppdfFile, 1);
         });
     };
         
@@ -1756,8 +1724,6 @@ var appdfEditor = (function() {
         console.log(firstApkFileData);
         localStorage.setItem(firstApkFileData.package, descriptionXML);
 
-        var URL = window.webkitURL || window.mozURL || window.URL;
-
         var files = [];
         var fileNames = [];
         function addInputFiles($el) {
@@ -1786,10 +1752,7 @@ var appdfEditor = (function() {
         
         zip.createWriter(new zip.BlobWriter(), function(writer) {
             addDescriptionAndFilesToZipWriter(writer, descriptionXML, files, buildProgress, function() {
-                writer.close(function(blob) {
-                    var url = URL.createObjectURL(blob);
-                    onend(url, blob);
-                });
+                writer.close(onend);
             });
         }, function(error) {
             alert("error:" + error);
