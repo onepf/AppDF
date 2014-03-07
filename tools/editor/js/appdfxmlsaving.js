@@ -460,7 +460,17 @@ var appdfXMLSaver = (function() {
         return xml.getXmlText();
     };
 
+    function generateInappProductsXml() {
+        return "<products></products>"
+    }
+
+    function generateFortumoProductsXml() {
+        return "<fortumo></fortumo>"
+    }
+
     return {
-        generateDescriptionFileXML : generateDescriptionFileXML
+        generateDescriptionFileXML : generateDescriptionFileXML,
+        generateInappProductsXml : generateInappProductsXml,
+        generateFortumoProductsXml : generateFortumoProductsXml
     };
 })();    

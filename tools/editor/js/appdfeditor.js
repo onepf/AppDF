@@ -980,7 +980,6 @@ var appdfEditor = (function() {
         //If not we start the checking and building process.
         //First we collect all the errors and check if there are any
         collectInappBuildErrors(startBuildingInappProductsXml, showBuildErrors);
-
         return false;
     }
 
@@ -993,7 +992,6 @@ var appdfEditor = (function() {
         //If not we start the checking and building process.
         //First we collect all the errors and check if there are any
         collectInappBuildErrors(startBuildingFortumoXml, showBuildErrors);
-
         return false;
     }
 
@@ -1025,14 +1023,23 @@ var appdfEditor = (function() {
             $("#form-errors").hide();
             onsuccess();
         }
+        $("#build-status").hide();
     }
 
     function startBuildingInappProductsXml() {
-        alert("startBuildingInappProductsXml");
+        var fileName = "inapp-products.xml";
+        var inappProductsXml = appdfXMLSaver.generateInappProductsXml(); ;
+        var blob = new Blob([inappProductsXml], {type: "application/xml;charset=utf-8"});
+        saveAs(blob, fileName);  
+        $("#build-progressbar").removeAttr("init");
     }
 
     function startBuildingFortumoXml() {
-        alert("startBuildingFortumoXml");
+        var fileName = "fortumo.xml";
+        var fortumoProductsXml = appdfXMLSaver.generateFortumoProductsXml(); ;
+        var blob = new Blob([fortumoXml], {type: "application/xml;charset=utf-8"});
+        saveAs(blob, fileName);  
+        $("#build-progressbar").removeAttr("init");
     }
 
     function addDatePicker() {
@@ -1487,7 +1494,6 @@ var appdfEditor = (function() {
 
 
     function buildAppdfFile(event) {
-        //First we check if there is already built file, if so we return to a standard download handler
         $("#build-unfinished-appdf-file").hide();
         
         if ($("#build-progressbar[init]").size()) {
@@ -1521,6 +1527,7 @@ var appdfEditor = (function() {
             }
             saveAs(blob, fileName);  
             $("#build-status").hide();
+            $("#build-progressbar").removeAttr("init");
         });
     };
         
@@ -1852,12 +1859,6 @@ var appdfEditor = (function() {
             $list.append($("<li>" + errors[i] + "</li>"))
         };
     };   
-    
-    function clearBuildedAppdfFile() {
-        $("#build-progressbar").removeAttr("init");
-        var downloadLink = document.getElementById("build-appdf-file");
-        downloadLink.download = null;
-    };
     
     function reinitEditor() {
         //remove all warnings
