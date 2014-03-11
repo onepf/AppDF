@@ -19,7 +19,7 @@
 
 /**
  * Localization related logic of AppDF Editor
- * Depends on: jquery.js, appdfedior.js, bootstrap.js,
+ * Depends on: jquery.js, appdfeditor.js, bootstrap.js,
  */
 
 var appdfLocalization = (function() {
@@ -63,7 +63,7 @@ var appdfLocalization = (function() {
 
         //Create new tab content container
         var strHtmlContent = '<div class="tab-pane" id="' + localesNavId + '-tab-' + languageCode + '"></div>';
-        var $tabContent = $("#" + localesNavId + "-content")
+        var $tabContent = $("#" + localesNavId + "-content");
         $tabContent.append($(strHtmlContent));
 
         //reset all warnings before cloning.
@@ -83,6 +83,9 @@ var appdfLocalization = (function() {
             e.preventDefault();
             $(this).tab('show');
         });
+
+        $validateElements = $tabContent.children("div#" + localesNavId + "-tab-" + languageCode).find("input,textarea, select");
+        appdfEditor.addValidationToElements($validateElements);
     };
 
     function prepareJustCopiedDescription($e) {
