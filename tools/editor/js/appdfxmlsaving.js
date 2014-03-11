@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright 2012 Vassili Philippov <vassiliphilippov@onepf.org>
+ * Copyright 2014 Ruslan Sayfutdinov <ruslan@sayfutdinov.com>
  * Copyright 2012 One Platform Foundation <www.onepf.org>
  * Copyright 2012 Yandex <www.yandex.com>
  * 
@@ -460,8 +461,71 @@ var appdfXMLSaver = (function() {
         return xml.getXmlText();
     };
 
+    function generateProductXml(xml, $prod, isSubs) {
+        var productTag = isSubs ? "subscription" : "item";
+        var id = $prod.find("input[id^=inapp-id-]").val();
+        var publishState = ($prod.find("input[id^=inapp-published-]").attr("checked") === "checked") ? "published" : "unpublished";
+        var args = 'id="{0}" publish-state="{1}"'.f(id, publishState);
+        if (isSubs) {
+            var period = $prod.find("select[id^=inapp-subscription-period-]").val();
+            args += ' period="{0}"'.f(period);
+        }
+        xml.addTag('<{0} {1}>'.f(productTag, args), function() {
+            xml.addTag('<summary>', function() {
+                var localesId = $prod.find("div[id^=inapp-locales-]").attr("id");
+                var locales = appdfLocalization.getDescriptionLanguages(localesId);
+                console.log(locales);
+                for (var i = 0; i < locales.length; i++) {
+                    var localeName = (locales[i].length == 2) ? locales[i] + "_" + locales[i] : locales[i];
+                    localeName = localeName.replace(/_[a-z]{2}/g, function(letter) {
+                        return letter.toUpperCase();
+                    });
+                    console.log(localeName);
+                    var localeTag = (locales[i] === "default") ? '<summary-base>' : '<summary-localization locale="{0}">'.f(localeName);
+                    xml.addTag(localeTag, function() {
+                        var $localeTab = $prod.find("#" + localesId + "-tab-" + locales[i]);
+                        console.log("#" + localesId + "-tab-" + locales[i]);
+                        xml.addTag("<title>", $localeTab.find(".inapp-title").val());
+                        xml.addTag("<description>", $localeTab.find(".inapp-description").val());
+                    });
+                }
+            });
+            var autofill = false;
+            xml.addTag('<price autofill="' + autofill + '">');
+        });
+    }
+
     function generateInappProductsXml() {
-        return "<products></products>"
+        var items = [];
+        var subs = [];
+        var $products = $("div[id^='inapp-product-']").not("#inapp-product-abstract");
+        $products.each(function() {
+            var isSubs = $(this).find("button.active").hasClass("inapp-type-subs");
+            if (isSubs) {
+                subs.push($(this));
+            } else {
+                items.push($(this));
+            }
+        });
+        var xml = new XMLGenerator();
+        xml.addLine('<?xml version="1.0" encoding="UTF-8"?>');
+        xml.addTag('<inapp-products>', function() {
+            if (items.length) {
+                xml.addTag('<items>', function() {
+                    for (var i = 0; i < items.length; i++) {
+                        generateProductXml(xml, items[i], false);
+                    }
+                });
+            }
+            if (subs.length) {
+                xml.addTag('<subscriptions>', function() {
+                    for (var i = 0; i < subs.length; i++) {
+                        generateProductXml(xml, subs[i], true);
+                    }
+                });
+            }
+        });
+        return xml.getXmlText();
     }
 
     function generateFortumoProductsXml() {
