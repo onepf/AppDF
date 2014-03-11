@@ -1477,6 +1477,7 @@ var appdfEditor = (function() {
         var version = regExp.exec($.browser.version)[0];
         
         var supportBrowserData = [
+            // TODO add actual versions of Opera and Mozilla
             {browser: "mozilla", version: 15},
             {browser: "chrome", version: 19}
         ];
@@ -1982,7 +1983,20 @@ var appdfEditor = (function() {
         // TODO: remove inapp products
     };
 
+    function stringFormatInit() {
+        String.prototype.format = String.prototype.f = function() {
+            var s = this,
+                i = arguments.length;
+
+            while (i--) {
+                s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+            }
+            return s;
+        };
+    }
+    
     function init() {
+        stringFormatInit();
         checkInit();
         initRatingCertificate();
         initMenuStickToTop();
