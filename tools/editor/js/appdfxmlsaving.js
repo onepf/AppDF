@@ -529,7 +529,19 @@ var appdfXMLSaver = (function() {
     }
 
     function generateFortumoProductsXml() {
-        return "<fortumo></fortumo>"
+        var $products = $("div[id^='inapp-product-']").not("#inapp-product-abstract");
+        var xml = new XMLGenerator();
+        xml.addLine('<?xml version="1.0" encoding="UTF-8"?>');
+        xml.addTag('<fortumo-products>', function() {
+            $products.each(function() {
+                var id = $(this).find("input[id^=inapp-id-]").val();
+                var consumable = ($(this).find("input[id^=fortumo-consumable-]").attr("checked") === "checked") ? "true" : "false";
+                var serviceId = $(this).find("input[id^=fortumo-serviceid-]").val();
+                var secret = $(this).find("input[id^=fortumo-secret-]").val();
+                xml.addTag('<product id="{0}" consumable="{1}" service-id="{2}" service-inapp-secret="{3}">'.f(id, consumable, serviceId, secret));
+            });
+        });
+        return xml.getXmlText();
     }
 
     return {

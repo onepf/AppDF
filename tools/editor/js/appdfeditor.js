@@ -934,7 +934,7 @@ var appdfEditor = (function() {
     function selectFortumoSupport() {
         var fortumoSupport = $("#fortumo-support").attr("checked");
         if (fortumoSupport === "checked") {
-            $(".panel:not(#inapp-product-abstract)").children(".fortumo").find("input").removeClass("no-validation");
+            $(".panel:not(#inapp-product-abstract)").children(".fortumo").find("input:not(:checkbox)").removeClass("no-validation");
             appdfEditor.addValidationToElements($(".panel:not(#inapp-product-abstract)").children(".fortumo").find("input"));
             $(".fortumo").show();
             $("#build-fortumo-xml").removeAttr("disabled");
@@ -964,6 +964,8 @@ var appdfEditor = (function() {
         $("#" + newPanelId).find(".no-validation").removeClass("no-validation");
         $("#inapp-published-" + inappProductsCount).bootstrapSwitch();
         $("#inapp-published-" + inappProductsCount).addClass("no-validation");
+        $("#fortumo-consumable-" + inappProductsCount).bootstrapSwitch();
+        $("#fortumo-consumable-" + inappProductsCount).addClass("no-validation");
         var fortumoSupport = $("#fortumo-support").attr("checked");
         if (fortumoSupport !== "checked") {
             $("#" + newPanelId).children(".fortumo").find("input").addClass("no-validation");
