@@ -160,9 +160,9 @@ var appdfEditor = (function() {
                 <!-- price/local-price --> \
                 <label class="control-label" for="price-baseprice">Local price</label> \
                 <div class="controls"> \
+                    <select id="price-localprice-country-' + getUniqueId() + '" style="margin-right: 10px;"> \
+                    </select> \
                     <div class="input-prepend input-append"> \
-                        <select id="price-localprice-country-' + getUniqueId() + '" style="margin-right: 10px;"> \
-                        </select> \
                         <span class="add-on"></span> \
                         <input class="span2" type="text" id="price-localprice-' + getUniqueId() + '" value="' + value + '" \
                             pattern="^\\d+\\.\\d+$|^\\d+$" \
