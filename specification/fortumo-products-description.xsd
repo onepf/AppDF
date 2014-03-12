@@ -25,7 +25,7 @@
     </xs:complexType>
 
     <xs:simpleType name="type-product-id">
-        <xs:restriction base="xs:string">
+        <xs:restriction xml:base="xs:string">
             <xs:pattern value="([a-z]|[0-9]){1}[a-z0-9._]*"/>
         </xs:restriction>
     </xs:simpleType>
