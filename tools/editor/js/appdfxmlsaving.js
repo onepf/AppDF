@@ -484,14 +484,17 @@ var appdfXMLSaver = (function() {
                     var localeTag = (locales[i] === "default") ? '<summary-base>' : '<summary-localization locale="{0}">'.f(localeName);
                     xml.addTag(localeTag, function() {
                         var $localeTab = $prod.find("#" + localesId + "-tab-" + locales[i]);
-                        console.log("#" + localesId + "-tab-" + locales[i]);
+                        //console.log("#" + localesId + "-tab-" + locales[i]);
                         xml.addTag("<title>", $localeTab.find(".inapp-title").val());
                         xml.addTag("<description>", $localeTab.find(".inapp-description").val());
                     });
                 }
             });
-            var autofill = false;
-            xml.addTag('<price autofill="' + autofill + '">');
+            var autofill = $prod.find("input[id^=inapp-autofill-]").attr("checked") === "checked";;
+            xml.addTag('<price autofill="' + autofill + '">', function() {
+                var priceBase = $prod.find("input[id^=inapp-baseprice-]").val();
+                xml.addTag('<price-base>', priceBase);
+            });
         });
     }
 
@@ -535,7 +538,7 @@ var appdfXMLSaver = (function() {
         xml.addTag('<fortumo-products>', function() {
             $products.each(function() {
                 var id = $(this).find("input[id^=inapp-id-]").val();
-                var consumable = ($(this).find("input[id^=fortumo-consumable-]").attr("checked") === "checked") ? "true" : "false";
+                var consumable = $(this).find("input[id^=fortumo-consumable-]").attr("checked") === "checked";
                 var serviceId = $(this).find("input[id^=fortumo-serviceid-]").val();
                 var secret = $(this).find("input[id^=fortumo-secret-]").val();
                 xml.addTag('<product id="{0}" consumable="{1}" service-id="{2}" service-inapp-secret="{3}">'.f(id, consumable, serviceId, secret));

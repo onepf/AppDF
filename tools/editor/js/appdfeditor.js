@@ -158,13 +158,13 @@ var appdfEditor = (function() {
         var $controlGroup = $(' \
             <div class="control-group"> \
                 <!-- price/local-price --> \
-                <label class="control-label" for="price-baseprice">Local price</label> \
+                <label class="control-label" for="price-localprice">Local price</label> \
                 <div class="controls"> \
                     <select id="price-localprice-country-' + getUniqueId() + '" style="margin-right: 10px;"> \
                     </select> \
                     <div class="input-prepend input-append"> \
                         <span class="add-on"></span> \
-                        <input class="span2" type="text" id="price-localprice-' + getUniqueId() + '" value="' + value + '" \
+                        <input class="span3" type="text" id="price-localprice-' + getUniqueId() + '" value="' + value + '" \
                             pattern="^\\d+\\.\\d+$|^\\d+$" \
                             data-validation-pattern-message="' + errorMessages.pricePattern + '" \
                         > \
@@ -954,25 +954,21 @@ var appdfEditor = (function() {
         }
     }
 
-    var inappProductsCount = 0;
-
     function addInappProduct() {
         var panelHtml = $("<div>").append($("#inapp-product-abstract").clone()).html();
-        panelHtml = panelHtml.replace(/\-abstract/g, "-" + inappProductsCount);
+        var id = getUniqueId();
+        panelHtml = panelHtml.replace(/\-abstract/g, "-" + id);
         $("#inapp-products").append(panelHtml);
-        var newPanelId = "inapp-product-" + inappProductsCount;
+        var newPanelId = "inapp-product-" + id;
         $("#" + newPanelId).find(".no-validation").removeClass("no-validation");
-        $("#inapp-published-" + inappProductsCount).bootstrapSwitch();
-        $("#inapp-published-" + inappProductsCount).addClass("no-validation");
-        $("#fortumo-consumable-" + inappProductsCount).bootstrapSwitch();
-        $("#fortumo-consumable-" + inappProductsCount).addClass("no-validation");
+        $("#" + newPanelId).find("input:checkbox").bootstrapSwitch();
+        $("#" + newPanelId).find("input:checkbox").addClass("no-validation");
         var fortumoSupport = $("#fortumo-support").attr("checked");
         if (fortumoSupport !== "checked") {
             $("#" + newPanelId).children(".fortumo").find("input").addClass("no-validation");
         }
         $("#" + newPanelId).show();
         appdfEditor.addValidationToElements($("#" + newPanelId).find("input,textarea,select"));
-        inappProductsCount++;
     }
 
     function buildInappProductsXml(event) {

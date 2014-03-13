@@ -707,7 +707,7 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                             data-validation-pattern-message="Wrong price value. Must be a valid number like '15.95'."
                           >
                         </div>
-                        <p class="help-block">Default product price in USD. Price for other currencies will be automatically converted by the stores from USD. If you want manual control you can <button class="btn price-localprice-add">add local prices</button>.</p>
+                        <p class="help-block">Default product price in USD. Price for other currencies will be automatically converted by the stores from USD. If you want manual control you can <a href="#" class="price-localprice-add">add local prices</a>.</p>
                       </div>
                     </div><!--./control-group -->
                   </div><!--./tab-pane -->
@@ -1526,6 +1526,32 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                       </div>
                     </div>
                   </div><!--tabable-->
+                  <hr/>
+
+                  <div class="control-group">
+                    <label class="control-label" for="inapp-baseprice-abstract">Price <span class="required-mark">*</span></label>
+                    <div class="controls">
+                      <div class="input-prepend">
+                        <span class="add-on">USD</span>
+                        <input type="text" id="inapp-baseprice-abstract"
+                          required 
+                          data-validation-required-message="Product price is required" 
+                          pattern="^\d+\.\d+$|^\d+$"
+                          data-validation-pattern-message="Wrong product price value. Must be a valid number like '15.95'."
+                          class="input-small no-validation" 
+                        >
+                      </div>
+                    </div>
+                  </div><!--price-->
+
+                  <div class="control-group-container">
+                    <div class="control-group">
+                      <label class="control-label" for="inapp-autofill-abstract">Autofill prices</label>
+                      <div class="controls">
+                        <input type="checkbox" class="no-validation" id="inapp-autofill-abstract">   
+                      </div>
+                    </div>
+                  </div><!--autofill prices-->
 
                 </div><!--panel-->
               </div>
