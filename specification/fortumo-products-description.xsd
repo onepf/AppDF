@@ -20,8 +20,10 @@
     <xs:complexType name="type-product">
         <xs:attribute name="id" type="type-product-id" use="required"/>
         <xs:attribute name="consumable" type="xs:boolean" use="required"/>
-        <xs:attribute name="service-id" type="type-not-empty-string" use="required"/>
-        <xs:attribute name="service-inapp-secret" type="type-not-empty-string" use="required"/>
+        <xs:attribute name="service-id" type="type-not-empty-string" use="optional"/>
+        <xs:attribute name="service-inapp-secret" type="type-not-empty-string" use="optional"/>
+        <xs:attribute name="nook-service-id" type="type-not-empty-string" use="optional"/>
+        <xs:attribute name="nook-service-inapp-secret" type="type-not-empty-string" use="optional"/>
     </xs:complexType>
 
     <xs:simpleType name="type-product-id">
