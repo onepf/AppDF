@@ -1416,58 +1416,12 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                         required 
                         data-validation-required-message="Product ID is required" 
                         data-validation-regex-regex="^([a-z]|[0-9]){1}[a-z0-9._]*$" 
-                        data-validation-regex-message="Product ID must start with a small letter or digit."
+                        data-validation-regex-message="Product ID must start with a small letter or digit and contain only small letters, digits, commas and underscores."
                         class="no-validation" 
                       >
                       </div>
                     </div>
                   </div><!--id-->
-
-                  <div class="control-group-container fortumo" style="display:none">
-                    <div class="control-group">
-                      <label class="control-label" for="fortumo-serviceid-abstract">Fortumo Service ID <span class="required-mark">*</span></label>
-                      <div class="controls">
-                        <input id="fortumo-serviceid-abstract" type="text" 
-                        name="fortumo-serviceid-abstract" 
-                        required 
-                        data-validation-required-message="Service ID is required"
-                        class="no-validation" 
-                      >
-                      </div>
-                    </div>
-                  </div><!--fortumo service id-->
-
-                  <div class="control-group-container fortumo" style="display:none">
-                    <div class="control-group">
-                      <label class="control-label" for="fortumo-secret-abstract">Fortumo In-app Secret <span class="required-mark">*</span></label>
-                      <div class="controls">
-                        <input id="fortumo-secret-abstract" type="text" 
-                        name="fortumo-secret-abstract" 
-                        required 
-                        data-validation-required-message="In-app Secret is required"
-                        class="no-validation" 
-                      >
-                      </div>
-                    </div>
-                  </div><!--fortumo secret-->
-
-                  <div class="control-group-container fortumo" style="display:none">
-                    <div class="control-group">
-                      <label class="control-label" for="fortumo-consumable-abstract">Consumable</label>
-                      <div class="controls">
-                        <input type="checkbox" class="no-validation" id="fortumo-consumable-abstract">   
-                      </div>
-                    </div>
-                  </div><!--consumable-->
-
-                  <div class="control-group-container">
-                    <div class="control-group">
-                      <label class="control-label" for="inapp-published-abstract">Published</label>
-                      <div class="controls">
-                        <input type="checkbox" class="no-validation" id="inapp-published-abstract">   
-                      </div>
-                    </div>
-                  </div><!--published-->
 
                   <div class="control-group-container inapp-subscription-period" style="display:none">
                     <div class="control-group">
@@ -1480,6 +1434,72 @@ Copyright (c) 2012 Yandex <www.yandex.com>
                       </div>
                     </div>
                   </div><!--subscription period-->
+
+                  <div class="control-group-container">
+                    <div class="control-group">
+                      <label class="control-label" for="inapp-published-abstract">Published</label>
+                      <div class="controls">
+                        <input type="checkbox" class="no-validation" id="inapp-published-abstract">   
+                      </div>
+                    </div>
+                  </div><!--published-->
+
+                  <div class="control-group-container fortumo" style="display:none">
+                    <div class="control-group">
+                      <label class="control-label" for="fortumo-consumable-abstract">Consumable</label>
+                      <div class="controls">
+                        <input type="checkbox" class="no-validation" id="fortumo-consumable-abstract">   
+                      </div>
+                    </div>
+                  </div><!--consumable-->
+
+                  <div class="control-group-container fortumo" style="display:none">
+                    <div class="control-group">
+                      <label class="control-label" for="fortumo-serviceid-abstract">Fortumo Service ID</label>
+                      <div class="controls">
+                        <input id="fortumo-serviceid-abstract" type="text" 
+                        name="fortumo-serviceid-abstract" 
+                        class="no-validation" 
+                      >
+                      </div>
+                    </div>
+                  </div><!--fortumo service id-->
+
+                  <div class="control-group-container fortumo" style="display:none">
+                    <div class="control-group">
+                      <label class="control-label" for="fortumo-secret-abstract">Fortumo In-app Secret</label>
+                      <div class="controls">
+                        <input id="fortumo-secret-abstract" type="text" 
+                        name="fortumo-secret-abstract" 
+                        class="no-validation" 
+                      >
+                      </div>
+                    </div>
+                  </div><!--fortumo secret-->
+
+                  <div class="control-group-container fortumo" style="display:none">
+                    <div class="control-group">
+                      <label class="control-label" for="nook-serviceid-abstract">Nook Service ID</label>
+                      <div class="controls">
+                        <input id="nook-serviceid-abstract" type="text" 
+                        name="nook-serviceid-abstract" 
+                        class="no-validation " 
+                      >
+                      </div>
+                    </div>
+                  </div><!--fortumo service id-->
+
+                  <div class="control-group-container fortumo" style="display:none">
+                    <div class="control-group">
+                      <label class="control-label" for="nook-secret-abstract">Nook In-app Secret</label>
+                      <div class="controls">
+                        <input id="nook-secret-abstract" type="text" 
+                        name="nook-secret-abstract" 
+                        class="no-validation" 
+                      >
+                      </div>
+                    </div>
+                  </div><!--fortumo secret-->
 
                   <div class="tabbable" id="inapp-locales-abstract">
                     <ul class="nav nav-tabs" id="inapp-locales-abstract-header">

@@ -539,9 +539,18 @@ var appdfXMLSaver = (function() {
             $products.each(function() {
                 var id = $(this).find("input[id^=inapp-id-]").val();
                 var consumable = $(this).find("input[id^=fortumo-consumable-]").attr("checked") === "checked";
-                var serviceId = $(this).find("input[id^=fortumo-serviceid-]").val();
-                var secret = $(this).find("input[id^=fortumo-secret-]").val();
-                xml.addTag('<product id="{0}" consumable="{1}" service-id="{2}" service-inapp-secret="{3}">'.f(id, consumable, serviceId, secret));
+                var fortumoServiceId = $(this).find("input[id^=fortumo-serviceid-]").val();
+                var fortumoSecret = $(this).find("input[id^=fortumo-secret-]").val();
+                var nookServiceId = $(this).find("input[id^=nook-serviceid-]").val();
+                var nookSecret = $(this).find("input[id^=nook-secret-]").val();
+                var args = 'id="{0}" consumable="{1}"'.f(id, consumable);
+                if (fortumoServiceId !== "" && fortumoSecret !== "") {
+                    args += ' service-id="{0}" service-inapp-secret="{1}"'.f(fortumoServiceId, fortumoSecret);
+                }
+                if (nookServiceId !== "" && nookSecret !== "") {
+                    args += ' nook-service-id="{0}" nook-service-inapp-secret="{1}"'.f(nookServiceId, nookSecret);
+                }
+                xml.addTag('<product {0}>'.f(args));
             });
         });
         return xml.getXmlText();
