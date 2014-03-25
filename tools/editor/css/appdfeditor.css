@@ -58,3 +58,7 @@ textarea.after-input {
 textarea.input-x-xlarge {
     width: 516px;
 }
+
+a[disabled] {
+    pointer-events: none; 
+}

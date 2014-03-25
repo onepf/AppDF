@@ -28,17 +28,14 @@ var appdfEditor = (function() {
     var firstApkFileData = {};
     var globalUnigueCounter = 0;
 
-    var fileName = "";
-    var fileData = "";
-    
-    
     function getUniqueId() {
         globalUnigueCounter += 1;
         return globalUnigueCounter;
     };
     
     function addValidationToElements($elements) {
-        $elements.jqBootstrapValidation({
+        $elements = $elements.not(".no-validation");
+        $elements.live().jqBootstrapValidation({
             preventSubmit: true,
             submitError: function($form, event, errors) {
                 // Here I do nothing, but you could do something like display 
@@ -82,27 +79,27 @@ var appdfEditor = (function() {
     };
 
     function getFileName($el) {
-        if ($($el).val()) {
-            return normalizeInputFileName($($el).val());
-        } else if ($($el).data("file")) {
-            return $($el).data("file");
+        if ($el.val()) {
+            return normalizeInputFileName($el.val());
+        } else if ($el.data("file")) {
+            return $el.data("file");
         } else {
             return "";
         };
     };
     
     function getFileContent($el) {
-        if ($el.files.length) {
-            return $el.files[0];
-        } else if ($($el).data("file")) {
-            return appdfXMLLoader.appdfFiles[$($el).data("file")];
+        if ($el[0].files.length) {
+            return $el[0].files[0];
+        } else if ($el.data("file")) {
+            return appdfXMLLoader.appdfFiles[$el.data("file")];
         } else {
             return null;
         };
     };
     
     function isNoFile($el) {
-        if ($el.files.length || $($el).data("file")) {
+        if ($el[0].files.length || $el.data("file")) {
             return false;
         } else {
             return true;
@@ -110,7 +107,7 @@ var appdfEditor = (function() {
     };
     
     function isOnlyDataImage($el) {
-        if (!$el.files.length && $($el).data("file")) {
+        if (!$el[0].files.length && $el.data("file")) {
             return true;
         } else {
             return false;
@@ -135,16 +132,16 @@ var appdfEditor = (function() {
     };
 
     function addMoreUnsupportedDevices(e, value) {
-		if ($('#section-requirements input[name="unsupport-device-name-' + value + '"]').length) {
-			return false;
-		};
-		
+        if ($('#section-requirements input[name="unsupport-device-name-' + value + '"]').length) {
+            return false;
+        };
+        
         var $parent = $(e).closest(".input-append").parent();
         var $controlGroup = $(' \
             <div class="input-container"> \
                 <div class="input-append"> \
                     <input type="text" readonly id="requirements-supporteddevices-more-' + getUniqueId() + '" \
-					name="unsupport-device-name-' + value + '" value="' + value + '" \
+                    name="unsupport-device-name-' + value + '" value="' + value + '" \
                     > \
                     <button class="btn requirements-supporteddevices-remove"><i class="icon-remove"></i></button> \
                 </div> \
@@ -153,7 +150,7 @@ var appdfEditor = (function() {
         //$parent.find("p.help-block").before($controlGroup);
         $parent.find(".input-append:first").after($controlGroup);
         addValidationToElements($controlGroup.find("input"));
-		return true;
+        return true;
     };
 
     function addMoreLocalPrice(e, value, country) {
@@ -161,13 +158,13 @@ var appdfEditor = (function() {
         var $controlGroup = $(' \
             <div class="control-group"> \
                 <!-- price/local-price --> \
-                <label class="control-label" for="price-baseprice">Local price</label> \
+                <label class="control-label" for="price-localprice">Local price</label> \
                 <div class="controls"> \
+                    <select id="price-localprice-country-' + getUniqueId() + '" style="margin-right: 10px;"> \
+                    </select> \
                     <div class="input-prepend input-append"> \
-                        <select id="price-localprice-country-' + getUniqueId() + '" style="margin-right: 10px;"> \
-                        </select> \
                         <span class="add-on"></span> \
-                        <input class="span2" type="text" id="price-localprice-' + getUniqueId() + '" value="' + value + '" \
+                        <input class="span3" type="text" id="price-localprice-' + getUniqueId() + '" value="' + value + '" \
                             pattern="^\\d+\\.\\d+$|^\\d+$" \
                             data-validation-pattern-message="' + errorMessages.pricePattern + '" \
                         > \
@@ -191,10 +188,10 @@ var appdfEditor = (function() {
     };
 
     function addMoreStoreSpecific(e, store, value) {
-		var regExp = /^[^\s][a-z]*$/;
-		if ($('#section-store-specific input[name="storespecific-name-' + store + '"]').length || !regExp.test(store)) {
-			return false;
-		};
+        var regExp = /^[^\s][a-z]*$/;
+        if ($('#section-store-specific input[name="storespecific-name-' + store + '"]').length || !regExp.test(store)) {
+            return false;
+        };
         
         var $parent = $(e).closest(".control-group-container");
         var $controlGroup = $(' \
@@ -211,8 +208,8 @@ var appdfEditor = (function() {
         
         $parent.append($controlGroup);
         //$controlGroup.find("input").focus();
-		addValidationToElements($controlGroup.find("input,textarea,select"));
-		return true;
+        addValidationToElements($controlGroup.find("input,textarea,select"));
+        return true;
     };
 
     function addMoreTitles(e, value) {
@@ -415,7 +412,7 @@ var appdfEditor = (function() {
                     
                     var $list = $("#import-descriptionxml-modal-errors").find("ul");
                     $list.find("li").remove();
-                    for (var i=0; i<errors.length; i++) {
+                    for (var i = 0; i < errors.length; i++) {
                         $list.append($("<li>").text(errors[i]));
                     };
                     appdfEditor.importingFlag = false;
@@ -501,7 +498,7 @@ var appdfEditor = (function() {
 
                     //Now we make sure the error list is visible and add all the errors there
                     $("#load-appdf-modal-errors").show();
-                    for (var i=0; i<errors.length; i++) {
+                    for (var i = 0; i < errors.length; i++) {
                         $list.append($("<li>").text(errors[i].msg));
                     };
                     appdfEditor.importingFlag = false;
@@ -561,10 +558,10 @@ var appdfEditor = (function() {
             var matched2 = $input.val().match(youtubeRegex2);
 
             videoId = "";
-            if (matched && matched.length>0) {
+            if (matched && matched.length > 0) {
                 videoId = matched[1];
             };
-            if (!videoId && matched2 && matched2.length>0) {
+            if (!videoId && matched2 && matched2.length > 0) {
                 videoId = matched2[1];
             };
         };
@@ -635,7 +632,7 @@ var appdfEditor = (function() {
 
     function fillScreenResolutions() {
         var $div = $("div[id^=\"requirements-supportedresolutions\"]");
-		$div.empty();
+        $div.empty();
         for (var resolution in dataScreenResolutions) {
             var $resolutionElement = $('<label class="checkbox"><input type="checkbox" id="requirements-supportedresolutions-' + resolution + '">' + dataScreenResolutions[resolution] + '</label>');
             $div.append($resolutionElement);
@@ -645,7 +642,7 @@ var appdfEditor = (function() {
     function fillSupportedCountries() {
         var $div = $("div[id^=\"availability-supportedcountries-\"]");
         
-		$div.empty();
+        $div.empty();
         $div.append("\
             <div>\
                 <button class=\"btn availability-supportedcountries-selectall\">Select all</button>\
@@ -661,8 +658,8 @@ var appdfEditor = (function() {
         
         var $row;
         $.each($div, function() {
-            for (var i=0; i<countryCodes.length; i++) {
-                if (i%3 === 0) {
+            for (var i = 0; i < countryCodes.length; i++) {
+                if (i % 3 === 0) {
                     $row = $("<div class='row'>");
                     $(this).append($row);
                 };
@@ -679,31 +676,31 @@ var appdfEditor = (function() {
     };
     
     function fillCategories() {
-		var selectedType = $("#categorization-type").find(":selected").val();
-		var $categories = $("#categorization-category");
-		var categoryHash = dataCategories[selectedType];
-		$categories.empty();
-		for (var k in categoryHash) {
-			$categories.append($("<option />").val(k).text(k));
-		}
-	};
+        var selectedType = $("#categorization-type").find(":selected").val();
+        var $categories = $("#categorization-category");
+        var categoryHash = dataCategories[selectedType];
+        $categories.empty();
+        for (var k in categoryHash) {
+            $categories.append($("<option />").val(k).text(k));
+        }
+    };
 
-	function fillSubcategories() {
-		var selectedType = $("#categorization-type").find(":selected").val();
-		var selectedCategory = $("#categorization-category").find(":selected").val();
-		var $subcategories = $("#categorization-subcategory");
-		var subcategoryArray = dataCategories[selectedType][selectedCategory];
-		$subcategories.empty();
-		for (var i=0; i<subcategoryArray.length; i++) {
-			var s = subcategoryArray[i];
-			$subcategories.append($("<option />").val(s).text(s));
-		}
-		if (subcategoryArray.length<=1) {
-			$subcategories.closest(".control-group").hide();    
-		} else {
-			$subcategories.closest(".control-group").show();            
-		}
-	};
+    function fillSubcategories() {
+        var selectedType = $("#categorization-type").find(":selected").val();
+        var selectedCategory = $("#categorization-category").find(":selected").val();
+        var $subcategories = $("#categorization-subcategory");
+        var subcategoryArray = dataCategories[selectedType][selectedCategory];
+        $subcategories.empty();
+        for (var i = 0; i < subcategoryArray.length; i++) {
+            var s = subcategoryArray[i];
+            $subcategories.append($("<option />").val(s).text(s));
+        }
+        if (subcategoryArray.length <= 1) {
+            $subcategories.closest(".control-group").hide();    
+        } else {
+            $subcategories.closest(".control-group").show();            
+        }
+    };
 
     function fillCategoryStoresInfo() {
         var $table = $("<table class='table table-striped table-bordered'/>");
@@ -733,8 +730,8 @@ var appdfEditor = (function() {
             var $input = $(e.target).closest(".input-append").find("input");
             if ($input.val() !== "") {
                 if (addMoreUnsupportedDevices(e.target, $input.val())) {
-					$input.val("");
-				}
+                    $input.val("");
+                }
             };
             $input.focus();
             return false;
@@ -824,19 +821,19 @@ var appdfEditor = (function() {
             $("#requirements-supportedlanguages input[type=\"checkbox\"]").removeAttr("checked");
             return false;
         });
-		
+        
         $('#requirements-supportedresolutions-type-include').click(function(event) {
             $("#requirements-supportedresolutions-include").show();
-			$("#requirements-supportedresolutions-exclude").hide();
+            $("#requirements-supportedresolutions-exclude").hide();
         });
-		$('#requirements-supportedresolutions-type-exclude').click(function(event) {
-			$("#requirements-supportedresolutions-include").hide();
+        $('#requirements-supportedresolutions-type-exclude').click(function(event) {
+            $("#requirements-supportedresolutions-include").hide();
             $("#requirements-supportedresolutions-exclude").show();
         });
-		$('#requirements-supportedresolutions-type-default').click(function(event) {
-			$("#requirements-supportedresolutions-include").hide();
-			$("#requirements-supportedresolutions-exclude").hide();
-		});
+        $('#requirements-supportedresolutions-type-default').click(function(event) {
+            $("#requirements-supportedresolutions-include").hide();
+            $("#requirements-supportedresolutions-exclude").hide();
+        });
 
         $("#availability-supportedcountries-type-default").click(function(event) {
             $("#availability-supportedcountries-include").hide();
@@ -879,11 +876,11 @@ var appdfEditor = (function() {
         });
         
         $("#build-appdf-file").click(function(event) {
-            return buildAppdDFFile(event);
+            return buildAppdfFile(event);
         });
 
         $("#build-unfinished-appdf-file").click(function(event) {
-            startBuildingFile(true);
+            startBuildingAppdfFile(true);
             return false;
         });
 
@@ -904,7 +901,146 @@ var appdfEditor = (function() {
             appdfImages.addSmallPromo(event.target);
             return false;
         });
+
+        // In-app handlers
+        $("#fortumo-support").change(function() {
+            selectFortumoSupport();
+        });
+
+        $("#inapp-products").on("click", ".inapp-type", function(event) {
+            selectInappType(event.target);
+            return true;
+        });
+
+        $("#inapp-products").on("click", ".close-panel", function(event) {
+            $(event.target).closest(".panel").remove();
+            return false;
+        });
+
+        $("#inapp-addmore").click(function(event) {
+            addInappProduct();
+            return false;
+        });
+
+        $("#build-inapp-products-xml").click(function(event) {
+            return buildInappProductsXml(event);
+        });
+
+        $("#build-fortumo-xml").click(function(event) {
+            return buildFortumoXml(event);
+        });
     };
+
+    function selectFortumoSupport() {
+        var fortumoSupport = $("#fortumo-support").attr("checked");
+        if (fortumoSupport === "checked") {
+            $(".panel:not(#inapp-product-abstract)").children(".fortumo").find("input:not(:checkbox)").removeClass("no-validation");
+            appdfEditor.addValidationToElements($(".panel:not(#inapp-product-abstract)").children(".fortumo").find("input"));
+            $(".fortumo").show();
+            $("#build-fortumo-xml").removeAttr("disabled");
+        } else {
+            $(".fortumo").find("input").addClass("no-validation").jqBootstrapValidation("destroy");
+            $(".fortumo").hide();
+            $("#build-fortumo-xml").attr("disabled", true);
+        };       
+    }
+
+    function selectInappType(button) {
+        var $subs_period = $(button).closest(".panel").find(".inapp-subscription-period");
+        if ($(button).hasClass("inapp-type-subs")) {
+            $subs_period.show();
+        } else {
+            $subs_period.hide();
+        }
+    }
+
+    function addInappProduct() {
+        var panelHtml = $("<div>").append($("#inapp-product-abstract").clone()).html();
+        var id = getUniqueId();
+        panelHtml = panelHtml.replace(/\-abstract/g, "-" + id);
+        $("#inapp-products").append(panelHtml);
+        var newPanelId = "inapp-product-" + id;
+        $("#" + newPanelId).find(".no-validation").removeClass("no-validation");
+        $("#" + newPanelId).find("input:checkbox").bootstrapSwitch();
+        $("#" + newPanelId).find("input:checkbox").addClass("no-validation");
+        var fortumoSupport = $("#fortumo-support").attr("checked");
+        if (fortumoSupport !== "checked") {
+            $("#" + newPanelId).children(".fortumo").find("input").addClass("no-validation");
+        }
+        $("#" + newPanelId).show();
+        appdfEditor.addValidationToElements($("#" + newPanelId).find("input,textarea,select"));
+    }
+
+    function buildInappProductsXml(event) {
+        if ($("#build-progressbar[init]").size()) {
+            return false;
+        }
+        $("#build-progressbar").attr("init", true);
+        
+        //If not we start the checking and building process.
+        //First we collect all the errors and check if there are any
+        collectInappBuildErrors(startBuildingInappProductsXml, showBuildErrors);
+        return false;
+    }
+
+    function buildFortumoXml(event) {
+        if ($("#build-progressbar[init]").size()) {
+            return false;
+        }
+        $("#build-progressbar").attr("init", true);
+        
+        //If not we start the checking and building process.
+        //First we collect all the errors and check if there are any
+        collectInappBuildErrors(startBuildingFortumoXml, showBuildErrors);
+        return false;
+    }
+
+    function collectInappBuildErrors(onsuccess, onerror) {
+        var errors = $("#inapp-products").find("input").jqBootstrapValidation("collectErrors");
+        var totalErrorCount = errors.length; 
+        var currentErrorCount = 0;
+        var errorArray = [];
+        $("#build-status").show();
+        for (field in errors) {
+            var fieldErrors = errors[field];
+            var errorValidation = false;
+            for (var i = 0; i < fieldErrors.length; i++) {
+                var error = fieldErrors[i];
+                if (errorArray.indexOf(error) === -1) {
+                    errorArray.push(error);
+                }
+            }
+            currentErrorCount++;
+            checkProgress(currentErrorCount, totalErrorCount);
+        }
+        if (errorArray.length) {
+            $validateList = $("#inapp-products").find("input[required],select[required],textarea[required]");
+            $validateList.each(function() {
+                $(this).trigger("submit.validation").trigger("validationLostFocus.validation");
+            });
+            onerror(errorArray);
+        } else {
+            $("#form-errors").hide();
+            onsuccess();
+        }
+        $("#build-status").hide();
+    }
+
+    function startBuildingInappProductsXml() {
+        var fileName = "inapp-products.xml";
+        var inappProductsXml = appdfXMLSaver.generateInappProductsXml(); ;
+        var blob = new Blob([inappProductsXml], {type: "application/xml;charset=utf-8"});
+        saveAs(blob, fileName);  
+        $("#build-progressbar").removeAttr("init");
+    }
+
+    function startBuildingFortumoXml() {
+        var fileName = "fortumo.xml";
+        var fortumoProductsXml = appdfXMLSaver.generateFortumoProductsXml(); ;
+        var blob = new Blob([fortumoProductsXml], {type: "application/xml;charset=utf-8"});
+        saveAs(blob, fileName);  
+        $("#build-progressbar").removeAttr("init");
+    }
 
     function addDatePicker() {
         var nowTemp = new Date();
@@ -935,8 +1071,8 @@ var appdfEditor = (function() {
     
     function fillSupportedLanguages() {
         var $div = $("#requirements-supportedlanguages");
-		$div.empty();
-		
+        $div.empty();
+        
         $div.append("\
             <div>\
                 <button class=\"btn requirements-supportedlanguages-selectall\">Select all</button>\
@@ -950,8 +1086,8 @@ var appdfEditor = (function() {
             langCodes.push(code);
         };
         var $row;
-        for (var i=0; i<langCodes.length; i++) {
-            if (i%3 === 0) {
+        for (var i = 0; i < langCodes.length; i++) {
+            if (i % 3 === 0) {
                 $row = $("<div class='row'>");
                 $div.append($row);
             };
@@ -987,7 +1123,7 @@ var appdfEditor = (function() {
                 var deviceModelRegEx = /([^\(]*)\s\([.]*/i;
                 var matched = item.match(deviceModelRegEx); 
                 
-                if (matched && matched.length>0) {
+                if (matched && matched.length > 0) {
                     return matched[1];
                 } else {
                     return item;
@@ -995,53 +1131,53 @@ var appdfEditor = (function() {
             }
         });
     };
-	
-	function validationCallbackPromo($el, value, callback) {
-		if (isNoFile($el[0])) {
-			callback({
-				value: value,
-				valid: true
-			});
-			return;
-		};
-		
-		var promoName = $($el).attr("name").split("-")[2];
-		var imageFileName = getFileName($el[0]);
-		var file = getFileContent($el[0]);
-		var URL = window.webkitURL || window.mozURL || window.URL;    
-		var imgUrl = URL.createObjectURL(file);
-		
-		appdfImages.checkTransparency(imgUrl, function(width, height, result) {
+    
+    function validationCallbackPromo($el, value, callback) {
+        if (isNoFile($el)) {
+            callback({
+                value: value,
+                valid: true
+            });
+            return;
+        };
+        
+        var promoName = $el.attr("name").split("-")[2];
+        var imageFileName = getFileName($el);
+        var file = getFileContent($el);
+        var URL = window.webkitURL || window.mozURL || window.URL;    
+        var imgUrl = URL.createObjectURL(file);
+        
+        appdfImages.checkTransparency(imgUrl, function(width, height, result) {
             result.value = value;
-			if (((promoName==="smallpromo" && width===180 && height===120) || (promoName==="largepromo" && width===1024 && height===500)) && result.valid) {
-				$el.data("width", width).data("height", height);
-				callback({
-					value: value,
-					valid: true
-				});
-			} else if (result.valid) {
-				callback({
-					value: value,
-					valid: false,
-					message: promoName==="smallpromo"?errorMessages.smallPromoWrongSize:errorMessages.largePromoWrongSize 
-				});
-			} else {
+            if (((promoName === "smallpromo" && width === 180 && height === 120) || (promoName === "largepromo" && width === 1024 && height === 500)) && result.valid) {
+                $el.data("width", width).data("height", height);
+                callback({
+                    value: value,
+                    valid: true
+                });
+            } else if (result.valid) {
+                callback({
+                    value: value,
+                    valid: false,
+                    message: promoName === "smallpromo"?errorMessages.smallPromoWrongSize:errorMessages.largePromoWrongSize 
+                });
+            } else {
                 callback(result);
             };
-		});
-	};
-	
-	function validationCallbackScreenshotRequired($el, value, callback) {
-		if (isNoFile($el[0])) {
-			callback({
-				value: value,
-				valid: true
-				//message: errorMessages.screenshotRequired
-			});
-			return;
-		};
-		var imageFileName = getFileName($el[0]);
-		var file = getFileContent($el[0]);
+        });
+    };
+    
+    function validationCallbackScreenshotRequired($el, value, callback) {
+        if (isNoFile($el)) {
+            callback({
+                value: value,
+                valid: true
+                //message: errorMessages.screenshotRequired
+            });
+            return;
+        };
+        var imageFileName = getFileName($el);
+        var file = getFileContent($el);
         if (typeof file==="undefined") {
             callback({
                 value: value,
@@ -1051,63 +1187,63 @@ var appdfEditor = (function() {
             return false;
         };
         
-		var URL = window.webkitURL || window.mozURL || window.URL;    
-		var imgUrl = URL.createObjectURL(file);
-		
-		appdfImages.checkTransparency(imgUrl, function(width, height,result) {
+        var URL = window.webkitURL || window.mozURL || window.URL;    
+        var imgUrl = URL.createObjectURL(file);
+        
+        appdfImages.checkTransparency(imgUrl, function(width, height,result) {
             result.value = value;
-			if (((width===480 && height===800) || (width===1080 && height===1920) || (width===1920 && height===1200)) && result.valid) {
-				callback({
-					value: value,
-					valid: true
-				});
-			} else if (result.valid) {
-				callback({
-					value: value,
-					valid: false,
-					message: errorMessages.screenshowWrongSize
-				});
-			} else {
+            if (((width === 480 && height === 800) || (width === 1080 && height === 1920) || (width === 1920 && height === 1200)) && result.valid) {
+                callback({
+                    value: value,
+                    valid: true
+                });
+            } else if (result.valid) {
+                callback({
+                    value: value,
+                    valid: false,
+                    message: errorMessages.screenshowWrongSize
+                });
+            } else {
                 callback(result);
             };
-		});
-	};
+        });
+    };
 
-	function validationCallbackRequirementDevice($el, value, callback) {
-		if ($('#section-requirements input[name="unsupport-device-name-' + value + '"]').length) {
-			callback({
-				value: value,
-				valid: false,
-				message: errorMessages.deviceAlreadyExist
-			});
-		} else {
-			callback({
-				value: value,
-				valid: true
-			});
-		}
-	};
+    function validationCallbackRequirementDevice($el, value, callback) {
+        if ($('#section-requirements input[name="unsupport-device-name-' + value + '"]').length) {
+            callback({
+                value: value,
+                valid: false,
+                message: errorMessages.deviceAlreadyExist
+            });
+        } else {
+            callback({
+                value: value,
+                valid: true
+            });
+        }
+    };
     
-	function validationCallbackAppIconFirst($el, value, callback) {
+    function validationCallbackAppIconFirst($el, value, callback) {
         validationCallbackAppIcon($el, value, callback, true);
     };
-	function validationCallbackAppIconMore($el, value, callback) {
+    function validationCallbackAppIconMore($el, value, callback) {
         validationCallbackAppIcon($el, value, callback, false);
     };
     
-	function validationCallbackAppIcon($el, value, callback, first) {
-		if (first && isNoFile($el[0])) {
-			callback({
-				value: value,
-				valid: false,
-				message: errorMessages.appIconRequired
-			});
-			return false;
-		};
+    function validationCallbackAppIcon($el, value, callback, first) {
+        if (first && isNoFile($el)) {
+            callback({
+                value: value,
+                valid: false,
+                message: errorMessages.appIconRequired
+            });
+            return false;
+        };
         
-		var imageFileName = getFileName($el[0]);
-		var file = getFileContent($el[0]);
-        if (typeof file==="undefined") {
+        var imageFileName = getFileName($el);
+        var file = getFileContent($el);
+        if (typeof file === "undefined") {
             callback({
                 value: value,
                 valid: false,
@@ -1116,44 +1252,44 @@ var appdfEditor = (function() {
             return false;
         };
         
-		var URL = window.webkitURL || window.mozURL || window.URL;    
-		var imgUrl = URL.createObjectURL(file);
-        if (isOnlyDataImage($el[0])) {
-            $($el[0]).removeClass("empty-image");
-            $($el[0]).next().attr("src", imgUrl);
+        var URL = window.webkitURL || window.mozURL || window.URL;    
+        var imgUrl = URL.createObjectURL(file);
+        if (isOnlyDataImage($el)) {
+            $el.removeClass("empty-image");
+            $el.next().attr("src", imgUrl);
         };
         
-		appdfImages.getImgSize(imgUrl, function(width, height) {
-			if ((first && width===512 && height===512)||(!first && width===height)) {
-				callback({
-					value: value,
-					valid: true
-				});
-			} else {
-				callback({
-					value: value,
-					valid: false,
-					message: first?errorMessages.appIconSize512:errorMessages.appIconSizeSquare
-				});
-			};
-		});
-	};
-	
-	function validationCallbackApkFile($el, value, callback, first) {
-        var apkFileName = getFileName($el[0]);
+        appdfImages.getImgSize(imgUrl, function(width, height) {
+            if ((first && width === 512 && height === 512)||(!first && width === height)) {
+                callback({
+                    value: value,
+                    valid: true
+                });
+            } else {
+                callback({
+                    value: value,
+                    valid: false,
+                    message: first?errorMessages.appIconSize512:errorMessages.appIconSizeSquare
+                });
+            };
+        });
+    };
+    
+    function validationCallbackApkFile($el, value, callback, first) {
+        var apkFileName = getFileName($el);
         $el.closest(".controls").find("input:text").val(apkFileName);
 
-		if (first && isNoFile($el[0])) {
-			callback({
-				value: value,
-				valid: false,
-				message: errorMessages.APKfileRequired
-			});
-			return;
-		};
-		
-		var file = getFileContent($el[0]);
-        if (typeof file==="undefined") {
+        if (first && isNoFile($el)) {
+            callback({
+                value: value,
+                valid: false,
+                message: errorMessages.APKfileRequired
+            });
+            return;
+        };
+        
+        var file = getFileContent($el);
+        if (typeof file === "undefined") {
             callback({
                 value: value,
                 valid: false,
@@ -1162,98 +1298,98 @@ var appdfEditor = (function() {
             return false;
         };
         
-		if (file.size>MAXIMUM_APK_FILE_SIZE) {
-			callback({
-				value: value,
-				valid: false,
-				message: errorMessages.APKfileSize50M
-			});
-			return;
-		};
+        if (file.size > MAXIMUM_APK_FILE_SIZE) {
+            callback({
+                value: value,
+                valid: false,
+                message: errorMessages.APKfileSize50M
+            });
+            return;
+        };
 
-		apkParser.parseApkFile(file, apkFileName, function(apkData) {
-			fillApkFileInfo($el, apkData);
-			var data = {
-				value: value,
-				valid: true
-			};
+        apkParser.parseApkFile(file, apkFileName, function(apkData) {
+            fillApkFileInfo($el, apkData);
+            var data = {
+                value: value,
+                valid: true
+            };
             
-			if (first) {
-				appdfEditor.firstApkFileData = firstApkFileData = apkData;
-			} else {
-				if (firstApkFileData.package!=apkData.package) {
-					data.valid = false;
-					data.message = errorMessages.APKfileWrongPackageName;
-				};
-			};
-			callback(data);
-		}, function (error) {
-			fillApkFileInfo($el, null);
-			callback({
-				value: value,
-				valid: false,
-				message: error
-			});
-		});
-	};
+            if (first) {
+                appdfEditor.firstApkFileData = firstApkFileData = apkData;
+            } else {
+                if (firstApkFileData.package != apkData.package) {
+                    data.valid = false;
+                    data.message = errorMessages.APKfileWrongPackageName;
+                };
+            };
+            callback(data);
+        }, function (error) {
+            fillApkFileInfo($el, null);
+            callback({
+                value: value,
+                valid: false,
+                message: error
+            });
+        });
+    };
 
-	function validationCallbackApkFileFirst($el, value, callback) {
-		validationCallbackApkFile($el, value, function(data) {
-			if (data.valid) {
-				var descriptionXML = localStorage.getItem(firstApkFileData.package);
-				if (descriptionXML && descriptionXML!="") {
-					//TODO handle carefully that we set it only if page is empty
-					//appdfXMLLoader.loadDescriptionXML(descriptionXML, function(){}, function(error){});
-				};
-			};
-			callback(data);
-		}, true);
-	};
-	
-	function validationCallbackApkFileMore($el, value, callback) {
-		validationCallbackApkFile($el, value, callback, false);
-	};
+    function validationCallbackApkFileFirst($el, value, callback) {
+        validationCallbackApkFile($el, value, function(data) {
+            if (data.valid) {
+                var descriptionXML = localStorage.getItem(firstApkFileData.package);
+                if (descriptionXML && descriptionXML != "") {
+                    //TODO handle carefully that we set it only if page is empty
+                    //appdfXMLLoader.loadDescriptionXML(descriptionXML, function(){}, function(error){});
+                };
+            };
+            callback(data);
+        }, true);
+    };
+    
+    function validationCallbackApkFileMore($el, value, callback) {
+        validationCallbackApkFile($el, value, callback, false);
+    };
 
-	function validationCallbackStoreSpecify($el, value, callback) {
-		var regExp = /^[^\s][a-z]*$/;
-		if ($('#section-store-specific input[name="storespecific-name-' + value + '"]').length) {
-			callback({
-				value: value,
-				valid: false,
-				message: errorMessages.storeExist
-			});
-		} else if (value && !regExp.test(value)) {
-			callback({
-				value: value,
-				valid: false,
-				message: errorMessages.applicationNameWrong
-			});
-		} else {
-			callback({
-				value: value,
-				valid: true
-			});
-		};
-	};
-	
+    function validationCallbackStoreSpecify($el, value, callback) {
+        var regExp = /^[^\s][a-z]*$/;
+        if ($('#section-store-specific input[name="storespecific-name-' + value + '"]').length) {
+            callback({
+                value: value,
+                valid: false,
+                message: errorMessages.storeExist
+            });
+        } else if (value && !regExp.test(value)) {
+            callback({
+                value: value,
+                valid: false,
+                message: errorMessages.applicationNameWrong
+            });
+        } else {
+            callback({
+                value: value,
+                valid: true
+            });
+        };
+    };
+    
     function validationCallbackYoutube($el, value, callback) {
         var regExp = /^[0-9a-zA-Z\-\_]{11}$/;
-		if (value && !regExp.test(value)) {
-			callback({
-				value: value,
-				valid: false,
-				message: errorMessages.wrongYoutubeFormat
-			});
-		} else {
-			callback({
-				value: value,
-				valid: true
-			});
-		};
+        if (value && !regExp.test(value)) {
+            callback({
+                value: value,
+                valid: false,
+                message: errorMessages.wrongYoutubeFormat
+            });
+        } else {
+            callback({
+                value: value,
+                valid: true
+            });
+        };
     };
     
     function validationCallbackVideoFile($el, value, callback) {
-        var videoFileName = getFileName($el[0]);
+        var videoFileName = getFileName($el);
         $el.closest(".controls").removeClass("empty-video");
         $el.closest(".controls").find("input[id^=\"pretty-video-file\"]").val(videoFileName);
         
@@ -1280,17 +1416,17 @@ var appdfEditor = (function() {
     };
     
     function validateProgress(current, total) {
-        var $bar = $("#build-appdf-progressbar");
+        var $bar = $("#build-progressbar");
         onProgress(current, total, $bar, "Validating: ");
     };
     
     function checkProgress(current, total) {
-        var $bar = $("#build-appdf-progressbar");
+        var $bar = $("#build-progressbar");
         onProgress(current, total, $bar, "Checking: ");
     };
     
     function buildProgress(current, total) {
-        var $bar = $("#build-appdf-progressbar");
+        var $bar = $("#build-progressbar");
         onProgress(current, total, $bar, "Building: ");
     };
     
@@ -1339,12 +1475,13 @@ var appdfEditor = (function() {
         var version = regExp.exec($.browser.version)[0];
         
         var supportBrowserData = [
+            // TODO add actual versions of Opera and Mozilla
             {browser: "mozilla", version: 15},
             {browser: "chrome", version: 19}
         ];
         
         $.each(supportBrowserData, function(i, val) {
-            if ($.browser[val.browser] && version>=val.version && isCanvasSupported() && window.FileReader) {
+            if ($.browser[val.browser] && version >= val.version && isCanvasSupported() && window.FileReader) {
                 supportFlag = true;
             };
         });
@@ -1357,63 +1494,45 @@ var appdfEditor = (function() {
     };
 
 
-    function buildAppdDFFile(event) {
-        //First we check if there is already built file, if so we return to a standard download handler
+    function buildAppdfFile(event) {
         $("#build-unfinished-appdf-file").hide();
         
-        var downloadLink = document.getElementById("build-appdf-file");
-        if (downloadLink.download) {
-            return true;
-        };
-        
-        if ($("#build-appdf-file[init]").size()) {
+        if ($("#build-progressbar[init]").size()) {
             return false;
         };
-        $("#build-appdf-file").attr("init", true);
+        $("#build-progressbar").attr("init", true);
         
         //If not we start the checking and building process.
         //First we collect all the errors and check if there are any
-        collectBuildErrors(startBuildingFile, showValidationErrors);
+        collectAppdfBuildErrors(startBuildingAppdfFile, showValidationErrors);
 
         return false;
     };
 
-    function startBuildingFile(errorsExist){
+    function startBuildingAppdfFile(errorsExist) {
         //If there are not errors, we hide the error block and show the progress block
         if (!errorsExist) {
             $("#form-errors").hide();
         } else {
-            $("#build-appdf-file").attr("init", true);
+            $("#build-progressbar").attr("init", true);
         };
         
         buildProgress(0, 100);
-        $("#build-appdf-progressbarr").css("width", "0%");
-        $("#build-appdf-status").show();
+        $("#build-progressbar").css("width", "0%");
+        $("#build-status").show();
         
-        generateAppDFFile(function(url, data) {
-            //TODO store file
-            
+        generateAppDFFile(function(blob) {
+            var fileName = "untitled.appdf";
             if (firstApkFileData) {
                 fileName = firstApkFileData["package"] + ".appdf";
-            } else {
-                fileName = "untitled.appdf";
-            };
-            console.log("fileName: " + fileName);
-            console.log("appdfEditor.fileName: " + appdfEditor.fileName);
-            fileData = data;
-            
-            var clickEvent = document.createEvent("MouseEvents");
-            var downloadLink = document.getElementById("build-appdf-file");
-            downloadLink.href = url;
-            downloadLink.download = fileName;
-            clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            downloadLink.dispatchEvent(clickEvent);
-            $("#build-appdf-status").hide();
-            setTimeout(clearBuildedAppdfFile, 1);
+            }
+            saveAs(blob, fileName);  
+            $("#build-status").hide();
+            $("#build-progressbar").removeAttr("init");
         });
     };
         
-    function collectBuildErrors(onsuccess, onerror) {
+    function collectAppdfBuildErrors(onsuccess, onerror) {
         var totalErrorCheckCount = 0; //TOTAL check for error blocks;
         var currentErrorCheckCount = 0;
         var errors = $("input,select,textarea").jqBootstrapValidation("collectErrors");
@@ -1421,32 +1540,28 @@ var appdfEditor = (function() {
         
         var errorArray = [];
         checkProgress(0, 100);
-        $("#build-appdf-status").show();
-        
+        $("#build-status").show();
         for (field in errors) {
-            if (name!=undefined) {
-                var fieldErrors = errors[field];
-                var errorValidation = false;
-                for (var i=0; i<fieldErrors.length; i++) {
-                    var error = fieldErrors[i];
-                    if (error.indexOf("required") != -1) {
-                        errorValidation = true;
-                    };
-                    if (errorArray.indexOf(error) === -1) {
-                        errorArray.push(error);
-                    };
+            var fieldErrors = errors[field];
+            var errorValidation = false;
+            for (var i = 0; i < fieldErrors.length; i++) {
+                var error = fieldErrors[i];
+                if (error.indexOf("required") != -1) {
+                    errorValidation = true;
                 };
-                validErrors = validErrors && errorValidation;
+                if (errorArray.indexOf(error) === -1) {
+                    errorArray.push(error);
+                };
             };
+            validErrors = validErrors && errorValidation;
         };
-        
         function checkBuildErrorsCount() {
-            checkProgress(currentErrorCheckCount + 0, totalErrorCheckCount);
+            checkProgress(currentErrorCheckCount, totalErrorCheckCount);
             if (currentErrorCheckCount === totalErrorCheckCount) {
                 if (errorArray.length) {
                     onerror(errorArray, validErrors, onsuccess);
                 } else {
-                    $("#build-appdf-status").hide();
+                    $("#build-status").hide();
                     onsuccess(false);
                 };
             };
@@ -1467,7 +1582,6 @@ var appdfEditor = (function() {
             };
             checkBuildErrorsCount();
         };
-        
         totalErrorCheckCount++;
         appdfEditor.validationCallbackApkFileFirst($("#apk-file"), 
             appdfEditor.getFileName($("#apk-file")), checkErrorMessage);
@@ -1497,7 +1611,7 @@ var appdfEditor = (function() {
         });
         
         totalErrorCheckCount++;
-        defaultScreenshotCount = $("#localization-tab-default .screenshots-group .image-input-group.not-empty-group").size();
+        defaultScreenshotCount = $("#description-locales-tab-default .screenshots-group .image-input-group.not-empty-group").size();
         if (defaultScreenshotCount < 4) {
             checkErrorMessage({
                 valid: false,
@@ -1520,7 +1634,7 @@ var appdfEditor = (function() {
         $privacyPolicyArr.each(function() {
             var linkValue = $(this).val();
             var fullTextValue = $(this).next().next().val();
-            if ((linkValue!=="" && fullTextValue==="") || (linkValue==="" && fullTextValue!=="")) {
+            if ((linkValue !== "" && fullTextValue === "") || (linkValue === "" && fullTextValue !== "")) {
                 checkErrorMessage({
                     valid: false,
                     value: "",
@@ -1537,7 +1651,7 @@ var appdfEditor = (function() {
         $eulaArr.each(function() {
             var linkValue = $(this).val();
             var fullTextValue = $(this).next().next().val();
-            if ((linkValue!=="" && fullTextValue==="") || (linkValue==="" && fullTextValue!=="")) {
+            if ((linkValue !== "" && fullTextValue === "") || (linkValue === "" && fullTextValue !== "")) {
                 checkErrorMessage({
                     valid: false,
                     value: "",
@@ -1579,8 +1693,8 @@ var appdfEditor = (function() {
         function addInputFiles($el) {
             $el.each(function() {
                 //check if the file is already in the list then do not push it
-                var fileName = appdfEditor.getFileName($(this)[0]);
-                if (!appdfEditor.isNoFile($(this)[0]) && fileNames.indexOf(fileName)===-1) {
+                var fileName = appdfEditor.getFileName($(this));
+                if (!appdfEditor.isNoFile($(this)) && fileNames.indexOf(fileName) === -1) {
                     fileNames.push(fileName);
                 } else if (fileName) {
                     totalErrorCheckCount++;
@@ -1618,16 +1732,14 @@ var appdfEditor = (function() {
         console.log(firstApkFileData);
         localStorage.setItem(firstApkFileData.package, descriptionXML);
 
-        var URL = window.webkitURL || window.mozURL || window.URL;
-
         var files = [];
         var fileNames = [];
         function addInputFiles($el) {
             $el.each(function() {
                 //check if the file is already in the list then do not push it
-                if (!appdfEditor.isNoFile($(this)[0]) && fileNames.indexOf(appdfEditor.getFileName($(this)[0]))===-1) {
-                    files.push(appdfEditor.getFileContent($(this)[0]));
-                    fileNames.push(appdfEditor.getFileName($(this)[0]));
+                if (!appdfEditor.isNoFile($(this)) && fileNames.indexOf(appdfEditor.getF0ileName($(this))) === -1) {
+                    files.push(appdfEditor.getFileContent($(this)));
+                    fileNames.push(appdfEditor.getFileName($(this)));
                 };
             });
         };
@@ -1648,10 +1760,7 @@ var appdfEditor = (function() {
         
         zip.createWriter(new zip.BlobWriter(), function(writer) {
             addDescriptionAndFilesToZipWriter(writer, descriptionXML, files, buildProgress, function() {
-                writer.close(function(blob) {
-                    var url = URL.createObjectURL(blob);
-                    onend(url, blob);
-                });
+                writer.close(onend);
             });
         }, function(error) {
             alert("error:" + error);
@@ -1687,7 +1796,7 @@ var appdfEditor = (function() {
         var sizeOfAlreadyZippedFilesIncludingCurrent = 0;
 
         function addNextFile() {
-            if (addIndex===flattenedFiles.length) {
+            if (addIndex === flattenedFiles.length) {
                 onend();
                 return;
             };
@@ -1718,25 +1827,27 @@ var appdfEditor = (function() {
         //$("input,select,textarea");
         var currentErrorCount = 0;
         totalErrorCount = $validateList.size();
-        
         //$("input,select,textarea").trigger("submit.validation").trigger("validationLostFocus.validation");
         $validateList.each( function() {
             var $this = $(this);
-            setTimeout(function() {
+            //setTimeout(function() {
                 currentErrorCount++;
                 validateProgress(currentErrorCount, totalErrorCount);
                 $this.trigger("submit.validation").trigger("validationLostFocus.validation");
-                if (currentErrorCount===totalErrorCount) {
-                    showBuildErrors(errors, validError);
+                if (currentErrorCount === totalErrorCount) {
+                    showBuildErrors(errors);
+                    if (validError) {
+                        //show button to build unfinished file
+                        $("#build-unfinished-appdf-file").css('display', 'inline-block');
+                    };
                 };
-            }, 5);
+            //}, 5);
         });
     };
     
-    function showBuildErrors(errors, validError) {
-        $("#build-appdf-status").hide();
-        validateProgress(0, 100);
-        $("#build-appdf-file").removeAttr("init");
+    function showBuildErrors(errors) {
+        $("#build-status").hide();
+        $("#build-progressbar").removeAttr("init");
         
         var $list = $("#form-errors").find("ul");
 
@@ -1745,21 +1856,10 @@ var appdfEditor = (function() {
 
         //Now we make sure the error list is visible and add all the errors there
         $("#form-errors").show();
-        for (var i=0; i<errors.length; i++) {
-            $list.append($("<li>"+errors[i]+"</li>"))
-        };
-        
-        if (validError) {
-            //show button to build unfinished file
-            $("#build-unfinished-appdf-file").show();
+        for (var i = 0; i < errors.length; i++) {
+            $list.append($("<li>" + errors[i] + "</li>"))
         };
     };   
-    
-    function clearBuildedAppdfFile() {
-        $("#build-appdf-file").removeAttr("init");
-        var downloadLink = document.getElementById("build-appdf-file");
-        downloadLink.download = null;
-    };
     
     function reinitEditor() {
         //remove all warnings
@@ -1779,7 +1879,7 @@ var appdfEditor = (function() {
         
         //description
         //remove localisations
-        appdfLocalization.removeAllLocalizations();
+        appdfLocalization.removeAllLocalizations("description-locales");
         
         //clear appicons
         $(".image-input-remove").click();
@@ -1877,29 +1977,24 @@ var appdfEditor = (function() {
         
         //store specific
         $('#section-store-specific .store-specific').remove();
+
+        // TODO: remove inapp products
     };
-    
-    function downloadifyInit() {
-        Downloadify.create('downloadify',{
-            filename: function(){
-                return appdfEditor.fileName;
-            },
-            data: function(){ 
-                return appdfEditor.fileData;
-            },
-            onComplete: function(){ alert('Your File Has Been Saved!'); },
-            onCancel: function(){ alert('You have cancelled the saving of this file.'); },
-            onError: function(){ alert('You must put something in the File Contents or there will be nothing to save!'); },
-            swf: 'media/downloadify.swf',
-            downloadImage: 'img/download.png',
-            width: 100,
-            height: 30,
-            transparent: true,
-            append: false
-        });
-    };
+
+    function stringFormatInit() {
+        String.prototype.format = String.prototype.f = function() {
+            var s = this,
+                i = arguments.length;
+
+            while (i--) {
+                s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+            }
+            return s;
+        };
+    }
     
     function init() {
+        stringFormatInit();
         checkInit();
         initRatingCertificate();
         initMenuStickToTop();
@@ -1907,7 +2002,6 @@ var appdfEditor = (function() {
         initFilling();
         addClickHandlers();
         addDatePicker();
-        downloadifyInit();
     };
 
     return {
@@ -1921,8 +2015,8 @@ var appdfEditor = (function() {
         addMoreLocalPrice : addMoreLocalPrice,
         addMoreTitles : addMoreTitles,
         addMoreShortDescriptions : addMoreShortDescriptions,
-		addMoreStoreSpecific: addMoreStoreSpecific,
-		addMoreUnsupportedDevices: addMoreUnsupportedDevices,
+        addMoreStoreSpecific: addMoreStoreSpecific,
+        addMoreUnsupportedDevices: addMoreUnsupportedDevices,
         normalizeInputFileName : normalizeInputFileName,
         getFileName : getFileName,
         getFileContent : getFileContent,
@@ -1931,14 +2025,14 @@ var appdfEditor = (function() {
         fillSubcategories : fillSubcategories,
         fillCategoryStoresInfo : fillCategoryStoresInfo,
         fillSupportedCountries : fillSupportedCountries,
-		validationCallbackAppIconFirst : validationCallbackAppIconFirst,
+        validationCallbackAppIconFirst : validationCallbackAppIconFirst,
         validationCallbackAppIconMore : validationCallbackAppIconMore,
-		validationCallbackApkFileFirst : validationCallbackApkFileFirst,
-		validationCallbackApkFileMore : validationCallbackApkFileMore,
-		validationCallbackPromo : validationCallbackPromo,
-		validationCallbackScreenshotRequired : validationCallbackScreenshotRequired,
-		validationCallbackRequirementDevice : validationCallbackRequirementDevice,
-		validationCallbackStoreSpecify : validationCallbackStoreSpecify,
+        validationCallbackApkFileFirst : validationCallbackApkFileFirst,
+        validationCallbackApkFileMore : validationCallbackApkFileMore,
+        validationCallbackPromo : validationCallbackPromo,
+        validationCallbackScreenshotRequired : validationCallbackScreenshotRequired,
+        validationCallbackRequirementDevice : validationCallbackRequirementDevice,
+        validationCallbackStoreSpecify : validationCallbackStoreSpecify,
         validationCallbackYoutube : validationCallbackYoutube,
         validationCallbackVideoFile : validationCallbackVideoFile,
         addValidationToElements : addValidationToElements,

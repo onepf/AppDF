@@ -1,5 +1,6 @@
 /*******************************************************************************
  * Copyright 2012 Vassili Philippov <vassiliphilippov@onepf.org>
+ * Copyright 2014 Ruslan Sayfutdinov <ruslan@sayfutdinov.com>
  * Copyright 2012 One Platform Foundation <www.onepf.org>
  * Copyright 2012 Yandex <www.yandex.com>
  * 
@@ -18,40 +19,40 @@
 
 /**
  * Localization related logic of AppDF Editor
- * Depends on: jquery.js, appdfedior.js, bootstrap.js,
+ * Depends on: jquery.js, appdfeditor.js, bootstrap.js,
  */
 
 var appdfLocalization = (function() {
 
     var MAX_LOCALIZATION_TABS = 5;
 
-    function getDescriptionLanguages() {
+    function getDescriptionLanguages(localesNavId) {
         var langs = [];
-        $("#description-tab-header").find("a").each(function() {
+        $("#" + localesNavId + "-header").find("a").each(function() {
             var strHref = $(this).attr("href").toLowerCase();
-            if (strHref.indexOf("#localization-tab-")==0) {
-                langs.push(strHref.substr(18));
+            if (strHref.indexOf("#" + localesNavId + "-tab-") == 0) {
+                // Cut language code from href
+                langs.push(strHref.substr((localesNavId + "-tab-").length + 1));
             };
         });
         return langs;
     };
 
-    function selectLanguage(languageCode) {
-        var $tabHeader = $("#description-tab-header");
-        $tabHeader.find('a[href="#localization-tab-' + languageCode + '"]').tab('show');
+    function selectLanguage(languageCode, localesNavId) {
+        $("#" + localesNavId + "-header").find('a[href="#' + localesNavId + '-tab-' + languageCode + '"]').tab('show');
     };
 
-    function addLocalization(languageCode, languageName) {
-        var descriptionLangs = getDescriptionLanguages();
+    function addLocalization(languageCode, languageName, localesNavId) {
+        var descriptionLangs = getDescriptionLanguages(localesNavId);
 
         //Preventing adding one language twice
-        if (descriptionLangs.indexOf(languageCode)>=0) {
+        if (descriptionLangs.indexOf(languageCode) >= 0) {
             return;
         };
         
-        var strHtmlHeader = '<li><a href="#localization-tab-' + languageCode + '" data-toggle="tab">' + languageName + '</a></li>';
+        var strHtmlHeader = '<li><a href="#' + localesNavId + '-tab-' + languageCode + '" data-toggle="tab">' + languageName + '</a></li>';
 
-        var $tabHeader = $("#description-tab-header");
+        var $tabHeader = $("#" + localesNavId + "-header");
 
         //We do not allow more than MAX_LOCALIZATION_TABS tabs, if more we add it to the "More" tab
         if ($tabHeader.children().length<MAX_LOCALIZATION_TABS) {
@@ -61,24 +62,30 @@ var appdfLocalization = (function() {
         };
 
         //Create new tab content container
-        var strHtmlContent = '<div class="tab-pane" id="localization-tab-' + languageCode + '"></div>';
-        $("#description-tab-content").append($(strHtmlContent));
+        var strHtmlContent = '<div class="tab-pane" id="' + localesNavId + '-tab-' + languageCode + '"></div>';
+        var $tabContent = $("#" + localesNavId + "-content");
+        $tabContent.append($(strHtmlContent));
 
         //reset all warnings before cloning.
-        $("#description-tab-content").children("div#localization-tab-default").find("input,select,textarea").trigger("clear.validation");
+        $tabContent.children("div#" + localesNavId + "-tab-default").find("input,select,textarea").trigger("clear.validation");
 
         //Add copy of default langauge content to just created container 
-        var strHtmlClone = $("#description-tab-content").children("div#localization-tab-default").html();
+        var strHtmlClone = $tabContent.children("div#" + localesNavId + "-tab-default").html();
         var $localizedDescription = $(strHtmlClone);
-        prepareJustCopiedDescription($localizedDescription);
-        $("#description-tab-content").children().last().append($localizedDescription);
+        if (localesNavId === "description-locales") {
+            prepareJustCopiedDescription($localizedDescription);
+        }
+        $tabContent.children().last().append($localizedDescription);
 
         //Open just created tab and create a handler 
-        $tabHeader.find('a[href="#localization-tab-' + languageCode + '"]').tab('show');
-        $tabHeader.find('a[href="#localization-tab-' + languageCode + '"]').click(function (e) {
+        $tabHeader.find('a[href="#' + localesNavId + '-tab-' + languageCode + '"]').tab('show');
+        $tabHeader.find('a[href="#' + localesNavId + '-tab-' + languageCode + '"]').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
         });
+
+        $validateElements = $tabContent.children("div#" + localesNavId + "-tab-" + languageCode).find("input,textarea, select");
+        appdfEditor.addValidationToElements($validateElements);
     };
 
     function prepareJustCopiedDescription($e) {
@@ -100,25 +107,25 @@ var appdfLocalization = (function() {
         $e.find("input[id^=description-texts-keywords-more-]").closest(".input-container").remove();
     };
 
-    function removeAllLocalizations() {
-        var $tabHeader = $("#description-tab-header");
-        var $tabContent = $("#description-tab-content");
+    function removeAllLocalizations(localesNavId) {
+        var $tabHeader = $("#" + localesNavId + "-header");
+        var $tabContent = $("#" + localesNavId + "-content");
 
         $tabHeader.find("a").each(function() {
             var strHref = $(this).attr("href");
-            if (strHref!="#localization-tab-default" && strHref!="#") {
+            if (strHref != "#" + localesNavId + "-tab-default" && strHref != "#") {
                 $(this).closest("li").remove();
                 $tabContent.children("div" + strHref).remove();
             };
         });
     };
 
-    function removeSelectedLocalization() {
-        var $tabHeader = $("#description-tab-header");
-        var $tabContent = $("#description-tab-content");
+    function removeSelectedLocalization(localesNavId) {
+        var $tabHeader = $("#" + localesNavId + "-header");
+        var $tabContent = $("#" + localesNavId + "-content");
         var strHref = $tabHeader.find(".active").children("a").attr("href");
 
-        if (strHref=="#localization-tab-default") {
+        if (strHref.match("#" + localesNavId + "-tab-default")) {
             alert("Cannot remove default (English) localization");
             return;
         };
@@ -133,35 +140,32 @@ var appdfLocalization = (function() {
             $tabContent.children("div" + strHref).remove();
         };
 
-        selectLanguage("default");
+        selectLanguage("default", localesNavId);
     };
 
-    var localizationDialogInit = false;
-    function showAllLocalizationDialog() {
+    function showAllLocalizationDialog(localesNavId) {
         var $modal = $("#add-localization-modal");
         var $okButton = $modal.find(".btn-primary");
         
-        if (!localizationDialogInit) {
-            localizationDialogInit = true;
-            $okButton.click(function(event) {
-                event.preventDefault();
-                $modal.modal('hide');
-                addLocalization($("#add-localization-modal-language").val(), $("#add-localization-modal-language").children(":selected").text());
-            });
-        };
+        $okButton.unbind("click").click(function(event) {
+            event.preventDefault();
+            $modal.modal('hide');
+            addLocalization($("#add-localization-modal-language").val(), $("#add-localization-modal-language").children(":selected").text(), localesNavId);
+        });
         
         $modal.modal("show");
     };
 
     function init() {
-        $('body').on('click', '.description-tab-addlocation', function(event) {
-            showAllLocalizationDialog();
+        $('body').on('click', '.tab-addlocalization', function(event) {
+            showAllLocalizationDialog($(this).closest("div.tabbable").attr("id"));
             return false;
         });
         
-        $('body').on('click', '.description-tab-removeselectedlocalization', function(event) {
-            removeSelectedLocalization();
-            var $tabHeader = $("#description-tab-header");
+        $('body').on('click', '.tab-removeselectedlocalization', function(event) {
+            var localesNavId = $(this).closest("div.tabbable").attr("id");
+            removeSelectedLocalization(localesNavId);
+            var $tabHeader = $("#" + localesNavId + "-header");
             $tabHeader.find("li.dropdown.open").removeClass("open");
             return false;
         });
@@ -169,9 +173,8 @@ var appdfLocalization = (function() {
     
     function isDefaultLanguage($el) {
         var $tab = $el.closest(".tab-pane");
-        var tabId = $tab.attr('id')
-        var result = (tabId==="localization-tab-default");
-        return result;
+        var tabId = $tab.attr('id');
+        return tabId.match("\-tab\-default$");
     };
 
     return {

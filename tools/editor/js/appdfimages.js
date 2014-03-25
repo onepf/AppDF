@@ -136,7 +136,7 @@
 	function setScreenshotsIndexList(e) {
 		var $screenshotsGroup = $(e.target).closest(".image-group").find(".image-input-group.not-empty-group");
 		var currentIndex = 1;
-		for (var i=0; i<$screenshotsGroup.length; i++) {
+		for (var i = 0; i < $screenshotsGroup.length; i++) {
 			$($screenshotsGroup[i]).data("index", currentIndex++);
 		};
 	};
@@ -144,7 +144,7 @@
     function onScreenshotImageInputMoveUp(e) {
         var $imageInputGroup = $(e.target).closest(".image-input-group");
         var $imageGroup = $imageInputGroup.parent();
-        if ($imageInputGroup.prev().length>0) {
+        if ($imageInputGroup.prev().length > 0) {
             $imageInputGroup.prev().before($imageInputGroup);
         };
 		setScreenshotsIndexList(e);
@@ -154,7 +154,7 @@
     function onScreenshotImageInputMoveDown(e) {
         var $imageInputGroup = $(e.target).closest(".image-input-group");
         var $imageGroup = $imageInputGroup.parent();
-        if ($imageInputGroup.next().length>0) {
+        if ($imageInputGroup.next().length > 0) {
             $imageInputGroup.next().after($imageInputGroup);
         };
 		setScreenshotsIndexList(e);
@@ -172,7 +172,7 @@
             $group.find(".image-input-label").append($('&nbsp;<span><a href="#" class="btn btn-small image-input-remove">remove</a></span>'));
         };
 
-        if ($group.parent().find("input.empty-image").length===0) {
+        if ($group.parent().find("input.empty-image").length === 0) {
             addMoreAppIcon($el);
         };
 
@@ -183,7 +183,7 @@
         onImageInputChange(e);
 
 		var $el = $(e.target);
-        if (appdfEditor.isNoFile($el[0])) {
+        if (appdfEditor.isNoFile($el)) {
             return false;
         };
 
@@ -209,14 +209,13 @@
 
     function onImageInputChange(e) {
         var $el = $(e.target);
-        if (appdfEditor.isNoFile($el[0])) {
+        if (appdfEditor.isNoFile($el)) {
             return false;
         };
-
-        var imageFileName = appdfEditor.getFileName($el[0]);
+        var imageFileName = appdfEditor.getFileName($el);
         var URL = window.webkitURL || window.mozURL || window.URL;
-        var file = appdfEditor.getFileContent($el[0]);
-        if (typeof file==="undefined") {
+        var file = appdfEditor.getFileContent($el);
+        if (typeof file === "undefined") {
             //error
             return false;
         };
@@ -288,8 +287,8 @@
                 };
 
                 var imgData = imgDat.data;
-                for(var i=0, n=imgData.length; i<n; i+=4) {
-                    if (imgData[i+3]===0) {
+                for(var i = 0, n = imgData.length; i < n; i += 4) {
+                    if (imgData[i + 3] === 0) {
                         oncheck(iWidth, iHeight, {
                             checked: true,
                             valid: false,
