@@ -682,120 +682,69 @@ var appdfParser = (function() {
         return errors;
     };
     
+    function validateImage(image, errors, onend, checkSize) {
+    	asyncValidationCount++;
+    	if (isUndefined(appdfXMLLoader.appdfFiles[image.name])) { //file not exist
+            errors.push({msg: errorMessages.fnResourceNotFound(image.name), val: false});
+            onend([]);
+            return;
+        } else {
+        	checkSize();
+        }
+        //check for size
+        //TODO check format
+        (function(image) {
+            appdfImages.getImgSizeFromBlob(appdfXMLLoader.appdfFiles[image.name], function(width, height) {
+                if (width != 1 * image.width || height != 1 * image.height) {
+                    onend([{msg: errorMessages.fnWrongResSize(image.name), val: false}]);
+                } else {
+                    onend([]);
+                };
+            });
+        })(image);
+    }
+
 	function validateDescriptionImages(languageCode, data, onend) {
 		var errors = [];
         
         var appIconList = data["app-icon"];
-        if (appIconList.length) {
-            for (var i=0; i<appIconList.length; i++) {
-                asyncValidationCount++;
-                if (isUndefined(appdfXMLLoader.appdfFiles[appIconList[i].name])) {//file exist
-                    errors.push({msg:errorMessages.fnResourceNotFound(appIconList[i].name), val:false});
-                    onend([]);
-                    continue;
-                } else if ((i===0 && appIconList[i].width==="512" && appIconList[i].height==="512")||(i!==0 && appIconList[i].width===appIconList[i].height)) {//declared correct file resolution
-                    //nothing
-                } else {//wrong declared file resolution
-                    errors.push({msg:(i===0?errorMessages.appIconSize512:errorMessages.appIconSizeSquare), val:false});
-                };
-                
-                //check for size
-                //TODO check format???
-                (function(i) {
-                    appdfImages.getImgSizeFromBlob(appdfXMLLoader.appdfFiles[appIconList[i].name], function(width, height) {
-                        if (width!=1*appIconList[i].width || height!=1*appIconList[i].height) {
-                            onend([{msg:errorMessages.fnWrongResSize(appIconList[i].name), val:false}]);
-                        } else {
-                            onend([]);
-                        };
-                    });
-                })(i);
-            };
-        };
+        for (var i = 0; i < appIconList.length; i++) {
+        	validateImage(appIconList[i], errors, onend, function() {
+        		if ((i === 0 && (appIconList[i].width !== "512" || appIconList[i].height !== "512")) 
+            	 || (i !== 0 && appIconList[i].width !== appIconList[i].height)) { //wrong declared file resolution
+            		errors.push({msg: (i === 0 ? errorMessages.appIconSize512 : errorMessages.appIconSizeSquare), val: false});
+            	}
+        	});
+        }
         
         var screenshotList = data["screenshots"];
-        if (screenshotList.length) {
-            for (var i=0; i<screenshotList.length; i++) {
-                asyncValidationCount++;
-                if (isUndefined(appdfXMLLoader.appdfFiles[screenshotList[i].name])) {
-                    errors.push({msg:errorMessages.fnResourceNotFound(screenshotList[i].name), val:false});
-                    onend([]);
-                    continue;
-                } else if ((screenshotList[i].width==="480" && screenshotList[i].height==="800") || 
-                    (screenshotList[i].width==="1080" && screenshotList[i].height==="1920") || 
-                    (screenshotList[i].width==="1920" && screenshotList[i].height==="1200")) {
-                    //nothing
-                } else {//wrong declared file resolution
-                    errors.push({msg:errorMessages.screenshowWrongSize, val:false});
-                };
-                
-                //check for size
-                //TODO check format???
-                (function(i) {
-                    appdfImages.getImgSizeFromBlob(appdfXMLLoader.appdfFiles[screenshotList[i].name], function(width, height) {
-                        if (screenshotList[i].width*1===width && screenshotList[i].height*1===height) {
-                            onend([]);
-                        } else {
-                            onend([{msg:errorMessages.fnWrongResSize(screenshotList[i].name), val:false}]);
-                        };
-                    });
-                })(i);
-            };
-        };
+        for (var i = 0; i < screenshotList.length; i++) {
+        	validateImage(screenshotList[i], errors, onend, function() {
+				if (!((screenshotList[i].width === "480" && screenshotList[i].height === "800") 
+            	   || (screenshotList[i].width === "1080" && screenshotList[i].height === "1920")
+            	   || (screenshotList[i].width === "1920" && screenshotList[i].height === "1200"))) {//wrong declared file resolution
+                	errors.push({msg: errorMessages.screenshowWrongSize, val: false});
+            	}
+        	});
+        }
         
         var largePromo = data["large-promo"];
         if (largePromo) {
-            asyncValidationCount++;
-            if (isUndefined(appdfXMLLoader.appdfFiles[largePromo.name])) {
-                errors.push({msg:errorMessages.fnResourceNotFound(largePromo.name), val:false});
-                onend([]);
-            } else {
-                if (largePromo.width==="1024" && largePromo.height==="500") {
-                    //nothing
-                } else {//wrong declared resolution
-                    errors.push({msg:errorMessages.largePromoWrongSize, val:false});
-                };
-                
-                //check for size
-                //TODO check format???
-                (function(i) {
-                    appdfImages.getImgSizeFromBlob(appdfXMLLoader.appdfFiles[largePromo.name], function(width, height) {
-                        if (largePromo.width*1===width && largePromo.height*1===height) {
-                            onend([]);
-                        } else {
-                            onend([{msg:errorMessages.fnWrongResSize(largePromo.name), val:false}]);
-                        };
-                    });
-                })(i);
-            };
-        };
+        	validateImage(largePromo, errors, onend, function() {
+        		if (largePromo.width !== "1024" || largePromo.height !== "500") {//wrong declared resolution
+                    errors.push({msg: errorMessages.largePromoWrongSize, val: false});
+                }
+        	});
+        }
         
         var smallPromo = data["small-promo"];
         if (smallPromo) {
-            asyncValidationCount++;
-            if (isUndefined(appdfXMLLoader.appdfFiles[smallPromo.name])) {
-                errors.push({msg:errorMessages.fnResourceNotFound(smallPromo.name), val:false});
-                onend([]);
-            } else {
-                if (largePromo.width==="180" && largePromo.height==="120") {
-                    //nothing
-                } else {//wrong declared resolution
-                    errors.push({msg:errorMessages.smallPromoWrongSize, val:false});
-                };
-                
-                //check for size
-                //TODO check format???
-                (function(i) {
-                    appdfImages.getImgSizeFromBlob(appdfXMLLoader.appdfFiles[smallPromo.name], function(width, height) {
-                        if (smallPromo.width*1===width && smallPromo.height*1===height) {
-                            onend([]);
-                        } else {
-                            onend([{msg:errorMessages.fnWrongResSize(smallPromo.name), val:false}]);
-                        };
-                    });
-                })(i);
-            };
-        };
+        	validateImage(smallPromo, errors, onend, function() {
+        		if (largePromo.width !== "180" || largePromo.height !== "120") {//wrong declared resolution
+                    errors.push({msg: errorMessages.smallPromoWrongSize, val: false});
+                }
+        	});
+        }
         
 		return errors;
 	};
