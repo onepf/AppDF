@@ -221,7 +221,7 @@ var appdfEditor = (function() {
                 <div class="controls"> \
                     <div class="input-append"> \
                         <input type="text" id="description-texts-title-more-' + getUniqueId() + ' class="input-xxlarge" value="' + value + '"> \
-                        <button class="btn" type="button" onclick="appdfEditor.removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
+                        <button class="btn remove-control-group" type="button"><i class="icon-remove"></i></button> \
                     </div> \
                     <p class="help-block">Enter longer title and it will be used by those stores that support longer titles.</p> \
                 </div> \
@@ -240,7 +240,7 @@ var appdfEditor = (function() {
                 <div class="controls"> \
                     <div class="input-append"> \
                         <input type="text" id="description-texts-shortdescription-more-' + getUniqueId() + '" class="input-xxlarge" value="' + value + '"> \
-                        <button class="btn" type="button" onclick="appdfEditor.removeControlGroup(this); return false;"><i class="icon-remove"></i></button> \
+                        <button class="btn remove-control-group" type="button"><i class="icon-remove"></i></button> \
                     </div> \
                     <p class="help-block">Enter longer short description and it will be used by those stores that support longer short descriptions.</p> \
                 </div> \
@@ -929,6 +929,11 @@ var appdfEditor = (function() {
         $("#build-fortumo-xml").click(function(event) {
             return buildFortumoXml(event);
         });
+
+        $("body").on("click", ".remove-control-group", function(event) {
+            $(event.target).closest(".control-group").remove();
+            return false;
+        });
     };
 
     function selectFortumoSupport() {
@@ -1397,10 +1402,6 @@ var appdfEditor = (function() {
             value: value,
             valid: true
         });
-    };
-    
-    function removeControlGroup(e) {
-        $(e).closest(".control-group").remove();
     };
     
     function fillApkFileInfo($el, apkData) {

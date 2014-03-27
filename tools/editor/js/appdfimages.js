@@ -237,6 +237,13 @@
         return false;
     };
 
+    function getImgSizeFromBlob(imgBlob, onsize) {
+        var URL = window.webkitURL || window.mozURL || window.URL;    
+        var imgSrc = URL.createObjectURL(imgBlob);
+        
+        getImgSize(imgSrc, onsize);
+    };
+
     function getImgSize(imgSrc, onsize) {
         var newImg = new Image();
         newImg.onload = function() {
@@ -351,6 +358,7 @@
         onScreenshotImageInputChange : onScreenshotImageInputChange,
         onImageInputChange : onImageInputChange,
         getImgSize : getImgSize,
+        getImgSizeFromBlob : getImgSizeFromBlob,
         checkTransparency : checkTransparency
 	};
  })();
