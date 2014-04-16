@@ -1738,7 +1738,7 @@ var appdfEditor = (function() {
         function addInputFiles($el) {
             $el.each(function() {
                 //check if the file is already in the list then do not push it
-                if (!appdfEditor.isNoFile($(this)) && fileNames.indexOf(appdfEditor.getF0ileName($(this))) === -1) {
+                if (!appdfEditor.isNoFile($(this)) && fileNames.indexOf(appdfEditor.getFileName($(this))) === -1) {
                     files.push(appdfEditor.getFileContent($(this)));
                     fileNames.push(appdfEditor.getFileName($(this)));
                 };
