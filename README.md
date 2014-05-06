@@ -42,11 +42,12 @@ Appstores
 We have just started the AppDF project. The following Android application stores already support AppDF format (you can go to their developer portals and submit AppDF files):
 * <a href="http://apps.opera.com/">Opera Mobile Store</a>
 * <a href="http://store.yandex.com/">Yandex.Store</a>
+* <a href="http://slideme.org/">SlideME</a>
+* <a href="http://www.applandinc.com/">Appland</a>
 
 The following appstores are working on AppDF support but not ready with implementation yet:
-* <a href="http://www.appland.se/">Appland</a>
+
 * <a href="http://www.aptoide.com/">Aptoide</a>
-* <a href="http://slideme.org/">SlideME</a>
 
 Specification
 =====
