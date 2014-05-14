@@ -26,7 +26,7 @@
       <xsd:element name="price" type="type-price" />
       <xsd:element name="apk-files" type="type-apkfiles" />
       <xsd:element name="requirements" type="type-requirements" minOccurs="0" />
-      <xsd:element name="testing-instructions" type="type-testinginstructions" />
+      <xsd:element name="testing-instructions" type="type-testinginstructions" minOccurs="0" />
       <xsd:element name="consent" type="type-consent" />
       <xsd:element name="customer-support" type="type-customersupport" />
       <xsd:element name="store-specific" type="type-storespecific" minOccurs="0" />
