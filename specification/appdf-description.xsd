@@ -381,10 +381,10 @@
   
   <xsd:complexType name="type-requirements">
     <xsd:sequence>
-      <xsd:element name="features" type="type-requirements-features" minOccurs="0" />
+      <!--<xsd:element name="features" type="type-requirements-features" minOccurs="0" />-->
       <xsd:element name="supported-languages" type="type-requirements-supportedlanguages" minOccurs="0" />
-      <xsd:element name="supported-devices" type="type-requirements-supporteddevices" minOccurs="0" />
-      <xsd:element name="supported-resolutions" type="type-requirements-supportedresolutions" minOccurs="0" />
+      <!--<xsd:element name="supported-devices" type="type-requirements-supporteddevices" minOccurs="0" />-->
+      <!--<xsd:element name="supported-resolutions" type="type-requirements-supportedresolutions" minOccurs="0" />-->
     </xsd:sequence>
   </xsd:complexType>
   
