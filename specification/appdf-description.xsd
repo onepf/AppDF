@@ -29,7 +29,7 @@
       <xsd:element name="testing-instructions" type="type-testinginstructions" minOccurs="0" />
       <xsd:element name="consent" type="type-consent" minOccurs="0"/>
       <xsd:element name="customer-support" type="type-customersupport" />
-      <xsd:element name="store-specific" type="type-storespecific" minOccurs="0" />
+      <!--<xsd:element name="store-specific" type="type-storespecific" minOccurs="0"/>-->
     </xsd:sequence>
     <xsd:attribute name="platform" type="type-application-attr-platform" use="required"/>
     <xsd:attribute name="package" type="type-attr-package" use="required"/>
