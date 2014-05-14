@@ -226,7 +226,7 @@
     <xsd:sequence>
       <xsd:element name="content-rating" type="type-contentdescription-contentrating" />
       <xsd:element name="rating-certificates" type="type-contentdescription-ratingcertificates" minOccurs="0" />
-      <xsd:element name="content-descriptors" type="type-contentdescription-contentdescriptors" />
+      <xsd:element name="content-descriptors" type="type-contentdescription-contentdescriptors" minOccurs="0" />
       <xsd:element name="included-activities" type="type-contentdescription-includedactivities" minOccurs="0" />
     </xsd:sequence>
   </xsd:complexType>
