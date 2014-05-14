@@ -127,7 +127,7 @@
 
   <xsd:complexType name="type-description-images-screenshots">
     <xsd:sequence>
-      <xsd:element name="screenshot" type="type-description-images-screenshots-screenshot" minOccurs="4" maxOccurs="unbounded" />
+      <xsd:element name="screenshot" type="type-description-images-screenshots-screenshot" minOccurs="2" maxOccurs="unbounded" />
     </xsd:sequence>
   </xsd:complexType>
   
