@@ -356,6 +356,7 @@ Sample Description.xml File
 
   <!--Required. Customer support information-->
   <customer-support>
+    <company>Yandex</company>
     <phone>+1 (555) 1234-56-78</phone>
     <email>support@yandex-team.ru</email>
     <website>http://www.yandex.ru/support</website>
@@ -460,6 +461,7 @@ List of Tags:
 * [testing-instructions](#testing-instructions)
 * [consent](#consent)
 * [customer-support](#customer-support)
+	* [company](#customer-supportcompany)
 	* [phone](#customer-supportphone)
 	* [email](#customer-supportemail)
 	* [website](#customer-supportwebsite)
@@ -4326,11 +4328,89 @@ No attributes.
 Example:
 ```xml
 <customer-support>
+  <company>Yandex</company>
   <phone>+1 (555) 1234-56-78</phone>
   <email>support@yandex-team.ru</email>
   <website>http://www.yandex.ru/support</website>
 </customer-support>
 ```
+
+#### customer-support/company
+Required.
+No attributes.
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Localizable</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Appland</td>
+    <td>Yes</td>
+    <td></td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+</table>
 
 #### customer-support/phone
 Required.
@@ -4399,6 +4479,13 @@ No attributes.
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Appland</td>
+    <td>Yes</td>
+    <td></td>
+    <td>No</td>
+    <td>No</td>
   </tr>
 </table>
 
@@ -4470,6 +4557,13 @@ No attributes.
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>Appland</td>
+    <td>Yes</td>
+    <td></td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
 </table>
 
 #### customer-support/website
@@ -4539,6 +4633,13 @@ No attributes.
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Appland</td>
+    <td>Yes</td>
+    <td></td>
+    <td>No</td>
+    <td>No</td>
   </tr>
 </table>
 
@@ -7657,6 +7758,9 @@ Last update: March 25, 2013
 
 Change History
 -------------
+### Version 1.01 (May 20, 2014)
+* Added `company` to support information.
+
 ### Version 1.00 (April 08, 2013)
 * Version 0.97 is accepted as 1.0 without changes
 
