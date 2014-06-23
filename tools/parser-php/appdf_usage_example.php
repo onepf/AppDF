@@ -10,7 +10,7 @@ $unzipped_file_dir = 'test/';
 
 // If AppDf supports your store (categories, store specific information etc.)
 // set your store-code
-$store_code = 'samsung';
+$store_code = 'slideme';
 
 try
 {

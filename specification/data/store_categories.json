@@ -30,7 +30,7 @@
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
           "appland" : "Books & Magazines / Misc",
-          "slideme" : "Publications / E-books"
+          "slideme" : "Publications / E-books / Other"
         }
     },
     "Books & Readers" : {
@@ -52,7 +52,7 @@
           "yandex" : "Business & Finance",
           "samsung" : "Business",
           "appland" : "Business / Tools",
-          "slideme" : "Finance / Corporate"
+          "slideme" : "Finance / Corporate / Other"
         },
         "Reference" : {
           "google" : "Business",
@@ -206,7 +206,7 @@
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
           "appland" : "Books & Magazines / Misc",
-          "slideme" : "Publications / Comics"
+          "slideme" : "Publications / Comics / Other"
         }
     },
     "Communication" : {
@@ -217,7 +217,7 @@
           "yandex" : "Communication",
           "samsung" : "Social Networking",
           "appland" : "Social & Messaging / Misc",
-          "slideme" : "Communication"
+          "slideme" : "Communication / Other"
         },
         "E-mail" : {
           "google" : "Communication",
@@ -264,7 +264,7 @@
           "yandex" : "Health",
           "samsung" : "Health/Fitness",
           "appland" : "Women World / Cooking",
-          "slideme" : "Home & Hobby / Cooking"
+          "slideme" : "Home & Hobby / Cooking / Other"
         }
     },
     "Country Guides" : {
@@ -297,7 +297,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Education/E-Book",
           "appland" : "Education & Careers / Misc",
-          "slideme" : "Education"
+          "slideme" : "Education / Other"
         },
         "Higher" : {
           "google" : "Education",
@@ -387,7 +387,7 @@
           "yandex" : "Languages & Translators",
           "samsung" : "Education/E-Book",
           "appland" : "Education & Careers / Languages",
-          "slideme" : "Languages"
+          "slideme" : "Languages / Other"
         },
         "Dictionaries" : {
           "google" : "Education",
@@ -416,7 +416,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
           "appland" : "Entertainment / Misc",
-          "slideme" : "Entertainment"
+          "slideme" : "Entertainment / Other"
         },
         "Comedy" : {
           "google" : "Entertainment",
@@ -499,7 +499,7 @@
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
           "appland" : "Finance / Misc",
-          "slideme" : "Finance"
+          "slideme" : "Finance / Other"
         },
         "Corporate" : {
           "google" : "Finance",
@@ -508,7 +508,7 @@
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
           "appland" : "Finance / Misc",
-          "slideme" : "Finance / Corporate"
+          "slideme" : "Finance / Corporate / Other"
         },
         "Other" : {
           "google" : "Finance",
@@ -526,7 +526,7 @@
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
           "appland" : "Finance / Misc",
-          "slideme" : "Finance"
+          "slideme" : "Finance / Other"
         },
         "Banking" : {
           "google" : "Finance",
@@ -535,7 +535,7 @@
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
           "appland" : "Finance / Misc",
-          "slideme" : "Finance"
+          "slideme" : "Finance / Other"
         },
         "Investing" : {
           "google" : "Finance",
@@ -544,7 +544,7 @@
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
           "appland" : "Finance / Misc",
-          "slideme" : "Finance"
+          "slideme" : "Finance / Other"
         },
         "Money & Currency" : {
           "google" : "Finance",
@@ -553,7 +553,7 @@
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
           "appland" : "Finance / Misc",
-          "slideme" : "Finance"
+          "slideme" : "Finance / Other"
         }
     },
     "Graphic Novels" : {
@@ -631,7 +631,7 @@
           "yandex" : "Health",
           "samsung" : "Health/Fitness",
           "appland" : "Health & Fitness / Misc",
-          "slideme" : "Health & Fitness"
+          "slideme" : "Health & Fitness / Other"
         }
     },
     "Home & Hobby" : {
@@ -642,7 +642,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
           "appland" : "Lifestyle / Misc",
-          "slideme" : "Home & Hobby"
+          "slideme" : "Home & Hobby / Other"
         },
         "Other" : {
           "google" : "Lifestyle",
@@ -763,7 +763,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
           "appland" : "Lifestyle / Misc",
-          "slideme" : "Lifestyle"
+          "slideme" : "Lifestyle / Other"
         },
         "Advice" : {
           "google" : "Lifestyle",
@@ -891,7 +891,7 @@
           "yandex" : "Themes & Skins",
           "samsung" : "Theme",
           "appland" : "Entertainment / Misc",
-          "slideme" : "Themes / Live Wallpapers"
+          "slideme" : "Themes / Live Wallpapers / Other"
         }
     },
     "Magazines" : {
@@ -902,7 +902,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "Books & Magazines / Misc",
-          "slideme" : "Publications / Magazines"
+          "slideme" : "Publications / Magazines / Other"
         }
     },
     "Music" : {
@@ -913,7 +913,7 @@
           "yandex" : "Multimedia",
           "samsung" : "Music/Video",
           "appland" : "Entertainment / Music",
-          "slideme" : "Music"
+          "slideme" : "Music / Other"
         },
         "Artists" : {
           "google" : "Music & Audio",
@@ -931,7 +931,7 @@
           "yandex" : "Multimedia",
           "samsung" : "Music/Video",
           "appland" : "Entertainment / Music",
-          "slideme" : "Music / Instruments"
+          "slideme" : "Music / Instruments / Other"
         },
         "Songbooks" : {
           "google" : "Music & Audio",
@@ -962,7 +962,7 @@
           "yandex" : "Travel & Maps",
           "samsung" : "Navigation",
           "appland" : "Lifestyle / Navigation",
-          "slideme" : "Travel & Locality / Navigation"
+          "slideme" : "Travel & Locality / Navigation / Other"
         }
     },
     "News" : {
@@ -973,7 +973,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "News & Info / Misc",
-          "slideme" : "News & Weather / News"
+          "slideme" : "News & Weather / News / Other"
         },
         "Regional News" : {
           "google" : "News & Magazines",
@@ -1000,7 +1000,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "News & Info / Misc",
-          "slideme" : "News & Weather"
+          "slideme" : "News & Weather / Other"
         },
         "Business" : {
           "google" : "News & Magazines",
@@ -1009,7 +1009,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "News & Info / Misc",
-          "slideme" : "News & Weather / News"
+          "slideme" : "News & Weather / News / Other"
         },
         "Entertainment" : {
           "google" : "News & Magazines",
@@ -1018,7 +1018,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "News & Info / Misc",
-          "slideme" : "News & Weather / News"
+          "slideme" : "News & Weather / News / Other"
         },
         "Health" : {
           "google" : "News & Magazines",
@@ -1027,7 +1027,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "News & Info / Misc",
-          "slideme" : "News & Weather / News"
+          "slideme" : "News & Weather / News / Other"
         },
         "Politics" : {
           "google" : "News & Magazines",
@@ -1036,7 +1036,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "News & Info / Misc",
-          "slideme" : "News & Weather / News"
+          "slideme" : "News & Weather / News / Other"
         },
         "Science & Tech" : {
           "google" : "News & Magazines",
@@ -1045,7 +1045,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "News & Info / Misc",
-          "slideme" : "News & Weather / News"
+          "slideme" : "News & Weather / News / Other"
         },
         "Sports" : {
           "google" : "News & Magazines",
@@ -1054,7 +1054,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "News & Info / Misc",
-          "slideme" : "News & Weather / News"
+          "slideme" : "News & Weather / News / Other"
         },
         "US" : {
           "google" : "News & Magazines",
@@ -1063,7 +1063,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "News & Info / Misc",
-          "slideme" : "News & Weather / News"
+          "slideme" : "News & Weather / News / Other"
         },
         "World" : {
           "google" : "News & Magazines",
@@ -1072,7 +1072,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "News & Info / Misc",
-          "slideme" : "News & Weather / News"
+          "slideme" : "News & Weather / News / Other"
         }
     },
     "Newspapers" : {
@@ -1083,7 +1083,7 @@
           "yandex" : "Entertainment",
           "samsung" : "News/Magazine",
           "appland" : "Books & Magazines / Music",
-          "slideme" : "News & Weather / News"
+          "slideme" : "News & Weather / News / Other"
         }
     },
     "Notes" : {
@@ -1105,7 +1105,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
           "appland" : "Books & Magazines/ Misc",
-          "slideme" : "Entertainment"
+          "slideme" : "Entertainment / Other"
         }
     },
     "Personal Finance" : {
@@ -1116,7 +1116,7 @@
           "yandex" : "Business & Finance",
           "samsung" : "Finance",
           "appland" : "Finance / Misc",
-          "slideme" : "Finance / Personal"
+          "slideme" : "Finance / Personal / Other"
         }
     },
     "Personalization" : {
@@ -1127,7 +1127,7 @@
           "yandex" : "Themes & Skins",
           "samsung" : "Theme",
           "appland" : "Entertainment / Misc",
-          "slideme" : "Themes"
+          "slideme" : "Themes / Other"
         }
     },
     "Photography" : {
@@ -1138,7 +1138,7 @@
           "yandex" : "Multimedia",
           "samsung" : "Photo",
           "appland" : "Lifestyle / Photography",
-          "slideme" : "Photography"
+          "slideme" : "Photography / Other"
         },
         "Camera" : {
           "google" : "Photography",
@@ -1185,7 +1185,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
           "appland" : "Entertainment / Misc",
-          "slideme" : "Entertainment"
+          "slideme" : "Entertainment / Other"
         }
     },
     "Productivity" : {
@@ -1196,7 +1196,7 @@
           "yandex" : "Organizers",
           "samsung" : "Productivity",
           "appland" : "Business / Productivity",
-          "slideme" : "Productivity"
+          "slideme" : "Productivity / Other"
         }
     },
     "Publications" : {
@@ -1207,7 +1207,7 @@
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
           "appland" : "Books & Magazines / Misc",
-          "slideme" : "Publications"
+          "slideme" : "Publications / Other"
         }
     },
     "Radio" : {
@@ -1240,7 +1240,7 @@
           "yandex" : "eBooks",
           "samsung" : "Education/E-Book",
           "appland" : "Books & Magazines / Misc",
-          "slideme" : "Publications"
+          "slideme" : "Publications / Other"
         }
     },
     "Religion" : {
@@ -1251,7 +1251,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Lifestyle",
           "appland" : "Lifestyle / Misc",
-          "slideme" : "Religion"
+          "slideme" : "Religion / Other"
         },
         "Buddhism" : {
           "google" : "Lifestyle",
@@ -1498,7 +1498,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Entertainment",
           "appland" : "Entertainment / Misc",
-          "slideme" : "Home & Hobby / Shopping"
+          "slideme" : "Home & Hobby / Shopping / Other"
         }
     },
     "Social" : {
@@ -1520,7 +1520,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Sports",
           "appland" : "Sport / Misc",
-          "slideme" : "Sports"
+          "slideme" : "Sports / Other"
         },
         "Athletic" : {
           "google" : "Sports",
@@ -1538,7 +1538,7 @@
           "yandex" : "Entertainment",
           "samsung" : "Sports",
           "appland" : "Sport / Cricket",
-          "slideme" : "Sports" 
+          "slideme" : "Sports / Other" 
         },
         "Disabled" : {
           "google" : "Sports",
@@ -1675,7 +1675,7 @@
           "yandex" : "Travel & Maps",
           "samsung" : "Travel",
           "appland" : "Lifestyle / Travel",
-          "slideme" : "Travel & Locality"
+          "slideme" : "Travel & Locality / Other"
         },
         "Auto Rental" : {
           "google" : "Travel & Local",
@@ -1722,7 +1722,7 @@
           "yandex" : "Utilities",
           "samsung" : "Utilities",
           "appland" : "Lifestyle / Misc",
-          "slideme" : "Tools & Utilities"
+          "slideme" : "Tools & Utilities / Other"
         },
         "Developer" : {
           "google" : "Libraries & Demo",
@@ -1731,7 +1731,7 @@
           "yandex" : "Utilities",
           "samsung" : "Utilities",
           "appland" : "Lifestyle / Misc",
-          "slideme" : "Tools & Utilities / Developer вЂ“ Programmer"
+          "slideme" : "Tools & Utilities / Developer/Programmer"
         },
         "Other" : {
           "google" : "Libraries & Demo",
@@ -1749,7 +1749,7 @@
           "yandex" : "Utilities",
           "samsung" : "Utilities",
           "appland" : "Lifestyle / Misc",
-          "slideme" : "Tools & Utilities / Security"
+          "slideme" : "Tools & Utilities / Security / Other"
         }
     },
     "Video" : {
@@ -1771,7 +1771,7 @@
           "yandex" : "Themes & Skins",
           "samsung" : "Theme",
           "appland" : "Entertainment / Misc",
-          "slideme" : "Themes / Wallpapers"
+          "slideme" : "Themes / Wallpapers / Other"
         }
     },
     "Weather" : {
@@ -1782,7 +1782,7 @@
           "yandex" : "Travel & Maps",
           "samsung" : "Weather",
           "appland" : "Travel & Weather / Misc",
-          "slideme" : "News & Weather / Weather"
+          "slideme" : "News & Weather / Weather / Other"
         }
     },
     "Web Browsers" : {
@@ -1807,7 +1807,7 @@
         "yandex" : "Arcade",
         "samsung" : "Game / Puzzle",
         "appland" : "Gaming / Puzzle",
-        "slideme" : "Fun & Games / Puzzle"
+        "slideme" : "Fun & Games / Puzzle / Other"
       }
     },
 
@@ -1855,7 +1855,7 @@
         "yandex" : "Arcade",
         "samsung" : "Game / Others",
         "appland" : "Gaming / Misc",
-        "slideme" : "Fun & Games / Casual"
+        "slideme" : "Fun & Games / Casual / Other"
       }
     },
 
@@ -1867,7 +1867,7 @@
         "yandex" : "Arcade",
         "samsung" : "Game / Others",
         "appland" : "Gaming / Misc",
-        "slideme" : "Fun & Games / Educational"
+        "slideme" : "Fun & Games / Educational / Other"
       }
     },
 
@@ -1891,7 +1891,7 @@
         "yandex" : "Arcade",
         "samsung" : "Game / Others",
         "appland" : "Gaming / Misc",
-        "slideme" : "Fun & Games / Multiplayer"
+        "slideme" : "Fun & Games / Multiplayer / Other"
       }
     },
 
@@ -1903,7 +1903,7 @@
         "yandex" : "Arcade",
         "samsung" : "Game / Music",
         "appland" : "Gaming / Misc",
-        "slideme" : "Fun & Games / Music"
+        "slideme" : "Fun & Games / Music / Other"
       }
     },
 
@@ -1915,7 +1915,7 @@
         "yandex" : "Arcade",
         "samsung" : "Game / Arcade",
         "appland" : "Gaming / Arcade",
-        "slideme" : "Fun & Games / Arcade"
+        "slideme" : "Fun & Games / Arcade / Other"
       }
     },
 
@@ -1939,7 +1939,7 @@
         "yandex" : "Action",
         "samsung" : "Game / Action",
         "appland" : "Gaming / Misc",
-        "slideme" : "Fun & Games / Action"
+        "slideme" : "Fun & Games / Action / Other"
       }
     },
 
@@ -1951,7 +1951,7 @@
         "yandex" : "Action",
         "samsung" : "Game / Adventure",
         "appland" : "Gaming / Adventure",
-        "slideme" : "Fun & Games / Adventure"
+        "slideme" : "Fun & Games / Adventure / Other"
       }
     },
 
@@ -1963,7 +1963,7 @@
         "yandex" : "Strategy",
         "samsung" : "Game / Role Playing",
         "appland" : "Gaming / Misc",
-        "slideme" : "Fun & Games / Role Playing"
+        "slideme" : "Fun & Games / Role Playing / Other"
       }
     },
 
@@ -1975,7 +1975,7 @@
         "yandex" : "Strategy",
         "samsung" : "Game / Strategy",
         "appland" : "Gaming / Strategy",
-        "slideme" : "Fun & Games / Strategy"
+        "slideme" : "Fun & Games / Strategy / Other"
       }
     },
 
@@ -1987,7 +1987,7 @@
         "yandex" : "Cards",
         "samsung" : "Game / Card/Casino",
         "appland" : "Gaming / Misc",
-        "slideme" : "Fun & Games / Cards & Casino"
+        "slideme" : "Fun & Games / Cards & Casino / Other"
       }
     },
 
@@ -1999,7 +1999,7 @@
         "yandex" : "Cards",
         "samsung" : "Game / Card/Casino",
         "appland" : "Gaming / Misc",
-        "slideme" : "Fun & Games / Cards & Casino"
+        "slideme" : "Fun & Games / Cards & Casino / Other"
       }
     },
 
@@ -2011,7 +2011,7 @@
         "yandex" : "Sports",
         "samsung" : "Game / Sports",
         "appland" : "Gaming / Racing",
-        "slideme" : "Fun & Games / Racing"
+        "slideme" : "Fun & Games / Racing / Other"
       }
     },
 
@@ -2023,7 +2023,7 @@
         "yandex" : "Sports",
         "samsung" : "Game / Sports",
         "appland" : "Gaming / Football",
-        "slideme" : "Fun & Games / Sports"
+        "slideme" : "Fun & Games / Sports / Other"
       }
     },
 
@@ -2035,7 +2035,7 @@
         "yandex" : "Sports",
         "samsung" : "Game / Sports",
         "appland" : "Gaming / Cricket",
-        "slideme" : "Fun & Games / Sports"
+        "slideme" : "Fun & Games / Sports / Other"
       }
     },
 
@@ -2047,7 +2047,7 @@
         "yandex" : "Sports",
         "samsung" : "Game / Sports",
         "appland" : "Gaming / Sport",
-        "slideme" : "Fun & Games / Sports"
+        "slideme" : "Fun & Games / Sports / Other"
       }
     }
   }
