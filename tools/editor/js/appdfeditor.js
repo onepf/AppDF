@@ -1613,7 +1613,7 @@ var appdfEditor = (function() {
         
         totalErrorCheckCount++;
         defaultScreenshotCount = $("#description-locales-tab-default .screenshots-group .image-input-group.not-empty-group").size();
-        if (defaultScreenshotCount < 4) {
+        if (defaultScreenshotCount < 2) {
             checkErrorMessage({
                 valid: false,
                 value: "",

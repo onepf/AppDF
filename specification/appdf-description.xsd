@@ -26,10 +26,10 @@
       <xsd:element name="price" type="type-price" />
       <xsd:element name="apk-files" type="type-apkfiles" />
       <xsd:element name="requirements" type="type-requirements" minOccurs="0" />
-      <xsd:element name="testing-instructions" type="type-testinginstructions" />
-      <xsd:element name="consent" type="type-consent" />
+      <xsd:element name="testing-instructions" type="type-testinginstructions" minOccurs="0" />
+      <xsd:element name="consent" type="type-consent" minOccurs="0"/>
       <xsd:element name="customer-support" type="type-customersupport" />
-      <xsd:element name="store-specific" type="type-storespecific" minOccurs="0" />
+      <!--<xsd:element name="store-specific" type="type-storespecific" minOccurs="0"/>-->
     </xsd:sequence>
     <xsd:attribute name="platform" type="type-application-attr-platform" use="required"/>
     <xsd:attribute name="package" type="type-attr-package" use="required"/>
@@ -60,10 +60,10 @@
   <xsd:complexType name="type-description-texts">
     <xsd:sequence>
       <xsd:element name="title" type="xsd:string" maxOccurs="unbounded"/>
-      <xsd:element name="keywords" type="xsd:string"/>
-      <xsd:element name="short-description" type="xsd:string" maxOccurs="unbounded" />
+      <xsd:element name="keywords" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="short-description" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
       <xsd:element name="full-description" type="type-description-texts-fulldescription" maxOccurs="1" />
-      <xsd:element name="features" type="type-description-texts-features" />
+      <xsd:element name="features" type="type-description-texts-features" minOccurs="0"/>
       <xsd:element name="recent-changes" type="xsd:string" minOccurs="0"/>
       <xsd:element name="privacy-policy" type="type-description-texts-privacypolicy" minOccurs="0"/>
       <xsd:element name="eula" type="type-description-texts-eula" minOccurs="0"/>
@@ -127,7 +127,7 @@
 
   <xsd:complexType name="type-description-images-screenshots">
     <xsd:sequence>
-      <xsd:element name="screenshot" type="type-description-images-screenshots-screenshot" minOccurs="4" maxOccurs="unbounded" />
+      <xsd:element name="screenshot" type="type-description-images-screenshots-screenshot" minOccurs="2" maxOccurs="unbounded" />
     </xsd:sequence>
   </xsd:complexType>
   
@@ -226,8 +226,8 @@
     <xsd:sequence>
       <xsd:element name="content-rating" type="type-contentdescription-contentrating" />
       <xsd:element name="rating-certificates" type="type-contentdescription-ratingcertificates" minOccurs="0" />
-      <xsd:element name="content-descriptors" type="type-contentdescription-contentdescriptors" />
-      <xsd:element name="included-activities" type="type-contentdescription-includedactivities" />
+      <xsd:element name="content-descriptors" type="type-contentdescription-contentdescriptors" minOccurs="0" />
+      <xsd:element name="included-activities" type="type-contentdescription-includedactivities" minOccurs="0" />
     </xsd:sequence>
   </xsd:complexType>
   
@@ -381,10 +381,10 @@
   
   <xsd:complexType name="type-requirements">
     <xsd:sequence>
-      <xsd:element name="features" type="type-requirements-features" minOccurs="0" />
+      <!--<xsd:element name="features" type="type-requirements-features" minOccurs="0" />-->
       <xsd:element name="supported-languages" type="type-requirements-supportedlanguages" minOccurs="0" />
-      <xsd:element name="supported-devices" type="type-requirements-supporteddevices" minOccurs="0" />
-      <xsd:element name="supported-resolutions" type="type-requirements-supportedresolutions" minOccurs="0" />
+      <!--<xsd:element name="supported-devices" type="type-requirements-supporteddevices" minOccurs="0" />-->
+      <!--<xsd:element name="supported-resolutions" type="type-requirements-supportedresolutions" minOccurs="0" />-->
     </xsd:sequence>
   </xsd:complexType>
   
@@ -446,9 +446,9 @@
   
   <xsd:complexType name="type-customersupport">
     <xsd:all>
-      <xsd:element name="phone" type="xsd:string" />
-      <xsd:element name="email" type="xsd:string" />
-      <xsd:element name="website" type="xsd:string" />
+      <xsd:element name="phone" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="email" type="xsd:string" minOccurs="1"/>
+      <xsd:element name="website" type="xsd:string" minOccurs="0"/>
     </xsd:all>
   </xsd:complexType>
   
