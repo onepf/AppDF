@@ -1948,7 +1948,21 @@ class AppDf_Parser
                 'Description file is invalid'
             );
 
-        return @$desc_xml->schemaValidateSource($description_schema);
+        $old_status = libxml_use_internal_errors(TRUE);
+        $validation_status = @$desc_xml->schemaValidateSource($description_schema);
+        
+        if (!$validation_status) {
+            foreach (libxml_get_errors() as $error) {
+                $this->_errors[] = array(
+                    'subject' => $this->_description_xml_file,
+                    'message' => "$error->message on line $error->line",
+                    'exception_code' => AppDf_ParseException::E_DESCRIPTION_INVALID_XML,
+                );
+            }
+        }
+        libxml_clear_errors();
+        libxml_use_internal_errors($old_status);
+        return $validation_status;
     }
 
     /**
