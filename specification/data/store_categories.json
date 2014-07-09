@@ -568,6 +568,15 @@
         }
     },
     "Health" : {
+        "" : {
+          "google" : "Health & Fitness",
+          "amazon" : "Health & Fitness / Medical",
+          "opera" : "Health",
+          "yandex" : "Health",
+          "samsung" : "Health/Fitness",
+          "appland" : "Health & Fitness / Misc",
+          "slideme" : "Health & Fitness / Other"
+        },
         "Exercise" : {
           "google" : "Health & Fitness",
           "amazon" : "Health & Fitness / Exercise & Fitness",
@@ -1659,18 +1668,18 @@
         }
     },
     "Travel" : {
-        "Transportation" : {
-          "google" : "Transportation",
-          "amazon" : "Travel / Transportation",
+        "" : {
+          "google" : "Travel & Local",
+          "amazon" : "Travel / Other",
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Travel",
           "appland" : "Lifestyle / Travel",
           "slideme" : "Travel & Locality / Other"
         },
-        "" : {
-          "google" : "Travel & Local",
-          "amazon" : "Travel / Other",
+        "Transportation" : {
+          "google" : "Transportation",
+          "amazon" : "Travel / Transportation",
           "opera" : "Travel & Maps",
           "yandex" : "Travel & Maps",
           "samsung" : "Travel",
