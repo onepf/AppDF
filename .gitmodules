@@ -1,0 +1,3 @@
+[submodule "tools/editor"]
+	path = tools/editor
+	url = git@github.com:onepf/AppDF-tools-editor.git
