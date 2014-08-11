@@ -1,0 +1,17 @@
+apply plugin: 'application'
+
+dependencies {
+    compile project(':library')
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+
+tasks.getByName('classes') {
+    sourceCompatibility = 1.7
+    sourceTarget = 1.7
+}
+
+tasks.getByName('run')  {
+    main = 'org.onepf.appdf.googleplay.samples.AppDFUploadApk'
+}
