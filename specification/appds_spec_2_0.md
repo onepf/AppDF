@@ -361,6 +361,31 @@ Sample Description.xml File
     <website>http://www.yandex.ru/support</website>
   </customer-support>
 
+  <!--List of supported Open IAB products if this App has support for Open IAB-->
+  <openiab-products>
+    <!--List of Open IAB product-->
+    <product>
+      <!--The product Id if this product-->
+      <product-id>buy-gas</product-id>
+      <!-- Price of this product, base price is defined in USD-->
+      <base-price>4.95</base-price>
+      <local-price country="DE">3.95</local-price>
+      <local-price country="FR">3.95</local-price>
+      <local-price country="RU">9.9</local-price>
+      <!--The Title of this product in English (English US) use the localization for other language-->
+      <title>Buy Gas</tilte>
+      <!--The Description of this product in English (English US) use the localization for other language-->
+      <description>Buy more gas to your vehicle</description>
+      <!--Description for a Open IAB product can be localized to other languages using this tag-->
+      <!--Language is set in two letter ISO 639-1 language code (like "en") or two letters language code + two letter ISO 3166‑1 country code (like "en-au")-->
+      <localization language="ru">
+        <!--The Title of this product-->
+        <title>Купить газ</tilte>
+        <!--The Description of this product-->
+        <description>Купить больше газа для вашего автомобиля</description>
+      </localization>
+    </product>
+  </openiab-products>
   <!--Optional tag that collects some store specific information-->
   <!--Top level subtags correspond to store ids, see the documentation for the list of these ids-->
   <!--The store tags could also include replacement of any of the subtags from the <application> tag. See -->
@@ -397,7 +422,6 @@ Sample Description.xml File
       <license-type>apache2</license-type>
     </slideme>
   </store-specific>
-
 </application>
 
 </application-description-file>
@@ -410,64 +434,73 @@ Description.xml Structure
 
 List of Tags:
 * [categorization](#categorization)
-	* [type](#categorizationtype)
-	* [category](#categorizationcategory)
-	* [subcategory](#categorizationsubcategory)
+  * [type](#categorizationtype)
+  * [category](#categorizationcategory)
+  * [subcategory](#categorizationsubcategory)
 * [description](#description)
-	* [texts](#descriptiontexts)
-		* [title](#descriptiontextstitle)
-		* [keywords](#descriptiontextskeywords)
-		* [short-description](#descriptiontextsshort-description)
-		* [full-description](#descriptiontextsfull-description)
-		* [features](#descriptiontextsfeatures)
-		* [recent-changes](#descriptiontextsrecent-changes)
-		* [privacy-policy](#descriptiontextsprivacy-policy)
-		* [eula](#descriptiontextseula)
-	* [images](#descriptionimages)
-		* [app-icon](#descriptionimagesapp-icon)
-		* [large-promo](#descriptionimageslarge-promo)
-		* [small-promo](#descriptionimagessmall-promo)
+  * [texts](#descriptiontexts)
+    * [title](#descriptiontextstitle)
+    * [keywords](#descriptiontextskeywords)
+    * [short-description](#descriptiontextsshort-description)
+    * [full-description](#descriptiontextsfull-description)
+    * [features](#descriptiontextsfeatures)
+    * [recent-changes](#descriptiontextsrecent-changes)
+    * [privacy-policy](#descriptiontextsprivacy-policy)
+    * [eula](#descriptiontextseula)
+  * [images](#descriptionimages)
+    * [app-icon](#descriptionimagesapp-icon)
+    * [large-promo](#descriptionimageslarge-promo)
+    * [small-promo](#descriptionimagessmall-promo)
     * [screenshots](#descriptionimagesscreenshots)
       * [screenshot](#descriptionimagesscreenshotsscreenshot)
-	* [videos](#descriptionvideos)
-		* [youtube-video](#descriptionvideosyoutube-video)
-		* [video-file](#descriptionvideosvideo-file)
+  * [videos](#descriptionvideos)
+    * [youtube-video](#descriptionvideosyoutube-video)
+    * [video-file](#descriptionvideosvideo-file)
 * [description-localization](#description-localization)
 * [content-description](#content-description)
-	* [content-rating](#content-descriptioncontent-rating)
-	* rating-certificates
-		* [rating-certificate](#content-descriptionrating-certificatesrating-certificate)
-	* [content-descriptors](#content-descriptioncontent-descriptors)
-	* [included-activities](#content-descriptionincluded-activities)
+  * [content-rating](#content-descriptioncontent-rating)
+  * rating-certificates
+    * [rating-certificate](#content-descriptionrating-certificatesrating-certificate)
+  * [content-descriptors](#content-descriptioncontent-descriptors)
+  * [included-activities](#content-descriptionincluded-activities)
 * [availability](#availability)
-	* [countries](#availabilitycountries)
-	* period
-		* [since](#availabilityperiodsince)
-		* [until](#availabilityperioduntil)
+  * [countries](#availabilitycountries)
+  * period
+    * [since](#availabilityperiodsince)
+    * [until](#availabilityperioduntil)
 * [price](#price)
-	* [base-price](#pricebase-price)
-	* [local-price](#pricelocal-price)
-	* [trial-version](#pricetrial-version)
+  * [base-price](#pricebase-price)
+  * [local-price](#pricelocal-price)
+  * [trial-version](#pricetrial-version)
 * [apk-files](#apk-files)
 * [requirements](#requirements)
-	* [features](#requirementsfeatures)
-		* [root](#requirementsroot)
-		* [gms](#requirementsgms)
-		* [online](#requirementsonline)
-	* [supported-languages](#requirementssupported-languages)
-	* [supported-devices](#requirementssupported-devices)
-	* [supported-resolutions](#requirementssupported-resolutions)
+  * [features](#requirementsfeatures)
+    * [root](#requirementsroot)
+    * [gms](#requirementsgms)
+    * [online](#requirementsonline)
+  * [supported-languages](#requirementssupported-languages)
+  * [supported-devices](#requirementssupported-devices)
+  * [supported-resolutions](#requirementssupported-resolutions)
 * [testing-instructions](#testing-instructions)
 * [consent](#consent)
 * [customer-support](#customer-support)
-	* [phone](#customer-supportphone)
-	* [email](#customer-supportemail)
-	* [website](#customer-supportwebsite)
+  * [phone](#customer-supportphone)
+  * [email](#customer-supportemail)
+  * [website](#customer-supportwebsite)
+* [openiab-products](#openiab-products)
+  * [product](#openiab-productsproduct)
+    * [product-id](#openiab-productsproductproduct-id)
+    * [base-price](#openiab-productsproductbase-price)
+    * [local-price](#openiab-productsproductlocal-price)
+    * [title](#openiab-productsproducttitle)
+    * [description](#openiab-productsproductdescription)
+    * [localization](#openiab-productsproductlocalization)
+      * [title](#openiab-productsproducttitle)
+      * [description](#openiab-productsproductdescription)
 * [store-specific](#store-specific)
-	* [amazon](#store-specificamazon)
-	* [samsung](#store-specificsamsung)
-	* [slideme](#store-specificslideme)
-
+  * [amazon](#store-specificamazon)
+  * [samsung](#store-specificsamsung)
+  * [slideme](#store-specificslideme)
 
 ### categorization
 
@@ -4542,6 +4575,150 @@ No attributes.
   </tr>
 </table>
 
+### openiab-products
+Optional.
+No attributes.
+A list of Open IAB products if this app support [Open IAB](https://github.com/onepf/OpenIAB)
+
+#### openiab-products/product
+Optional.
+No attributes.
+A product item for Open IAB.
+
+#### openiab-products/product/product-id
+Required.
+No attributes.
+The product ID that is use for identify this product.
+#### openiab-products/product/base-price
+Required.
+No attributes. 
+Application price. Tag value should be a dot-separated number. This price is set in USD used to automatically calculate the prices in other currencies unless you manually specify such prices using `<local-price>` tags.
+#### openiab-products/product/local-price
+Optional.
+Attributes: `country`. 
+
+The stores will use your default price defined in the `<base-price>` tag to automatically generate prices for other currencies and other countries. Nevertheless you can use `<local-price>` tags to manually define price for some countries. Tag value should be a dot-separated number.
+
+Reference country list in [JSON](http://www.onepf.org/appdf/data/countries.json) and [XML](data/countries.xml) formats.
+
+Reference currency list in [JSON](http://www.onepf.org/appdf/data/currencies.json) and [XML](data/currencies.xml) formats.
+
+Currencies used in different countries in [JSON](http://www.onepf.org/appdf/data/country_currencies.json) and [XML](data/country_currencies.xml) formats. One currency per country. If there are several official currencies in a country one is selected. Local prices are set in a currency defined according to this table. 
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>Default</th>
+    <th>How it works</th>
+  </tr>
+  <tr>
+    <td>country</td>
+    <td>two letter ISO 3166-1 country code, see the list in <a href="http://www.onepf.org/appdf/data/countries.json">JSON</a> or <a href="data/countries.xml">XML</a> formats</td>
+    <td>required</td>
+    <td></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Store support</th>
+    <th>Supported</th>
+    <th>Name</th>
+    <th>Including sales tax</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>Yes</td>
+    <td>Pricing and Distribution / Country List / Price</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>Yes</td>
+    <td>Availability & Pricing / Calculated prices</td>
+    <td>Yes</td>
+    <td>Only US, UK, DE, FR, ES, IT, JP are supported</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>Yes</td>
+    <td>Stores</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Samsung Apps</td>
+    <td>Yes</td>
+    <td>Basic Information / Sales / Country/Price / Detailed Country &amp; Price Settings</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>NOOK apps</td>
+    <td>Yes</td>
+    <td>Basic / Application Price</td>
+    <td>?</td>
+    <td>Only UK price in GBP is supported now</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>No</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+#### openiab-products/product/title
+Required.
+No attributes.
+A title for this product. A title can be localized using <localization> section.
+
+#### openiab-products/product/description
+Required.
+No attributes.
+A short descriptons of this product. A title can be localized using <localization> section.
+
+#### openiab-products/product/localization
+Optional.
+Attributes: `language`. 
+
+You can use `<localization>` section to localize texts, the tag has [`<title>`](#openiab-productsproducttitle) and [`<description>`](#openiab-productsproductdescription) as sub element.
+
+Reference language list in [JSON](http://www.onepf.org/appdf/data/languages.json) and [XML](data/languages.xml) formats.
+
+Reference country list in [JSON](http://www.onepf.org/appdf/data/countries.json) and [XML](data/countries.xml) formats.
+
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Possible values</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td>language</td>
+    <td>two letter ISO 639-1 language code (like "en", full language list in <a href="http://www.onepf.org/appdf/data/languages.json">JSON</a> and <a href="data/languages.xml">XML</a> formats) or two letters language code + two upper case letter ISO 3166‑1 country code (like "en-US", full country list in <a href="http://www.onepf.org/appdf/data/countries.json">JSON</a> and <a href="data/countries.xml">XML</a> formats)</td>
+    <td>required tag</td>
+  </tr>
+</table>
+
 ### store-specific
 Optional.
 No attributes.
@@ -7653,10 +7830,13 @@ Status
 -------------
 Current status: draft of version 2.0  
 Specification version: 1.00
-Last update: March 25, 2013  
+Last update: January 08, 2014 
 
 Change History
 -------------
+### Version 1.1 (January 08, 2014)
+* Add section for describe Open IAB productes if the app support [Open IAB](https://github.com/onepf/OpenIAB)
+
 ### Version 1.00 (April 08, 2013)
 * Version 0.97 is accepted as 1.0 without changes
 
