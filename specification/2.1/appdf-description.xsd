@@ -1,0 +1,650 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+    elementFormDefault="qualified" version="2.1">
+    <xsd:annotation>
+        <xsd:documentation>AppDF description.xml schema</xsd:documentation>
+        <xsd:documentation>Project home: http://www.github.com/onepf/appdf</xsd:documentation>
+        <xsd:documentation>Authors: Vassili Philippov, Anastasia Karimova</xsd:documentation>
+        <xsd:documentation>License: http://www.apache.org/licenses/LICENSE-2.0</xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="application-description-file" type="typeApplicationDescriptionFile" />
+
+    <xsd:complexType name="typeApplicationDescriptionFile">
+        <xsd:sequence>
+            <xsd:element name="application" type="typeApplication" />
+        </xsd:sequence>
+        <xsd:attribute name="version" type="xsd:positiveInteger" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="typeApplication">
+        <xsd:sequence>
+            <xsd:element name="categorization" type="typeCategorization" />
+            <xsd:element name="description" type="typeDescription" />
+            <xsd:element name="description-localization" maxOccurs="unbounded" minOccurs="0"
+                type="typeDescriptionLocalization" />
+            <xsd:element name="content-description" type="typeContentDescription" />
+            <xsd:element name="availability" minOccurs="0" type="typeAvailability" />
+            <xsd:element name="price" minOccurs="0" type="typePrice" />
+            <xsd:element name="in-app-purchases" minOccurs="0" type="typeInAppPurchases" />
+            <xsd:element name="apk-files" type="typeApkFiles" />
+            <xsd:element name="requirements" minOccurs="0" type="typeRequirements" />
+            <xsd:element name="testing-instructions" minOccurs="0" type="typeTestingInstructions" />
+            <xsd:element name="consent" minOccurs="0" type="typeConsent" />
+            <xsd:element name="customer-support" type="typeCustomerSupport" />
+            <xsd:element name="store-specific" minOccurs="0" type="typeStoreSpecific" />
+        </xsd:sequence>
+        <xsd:attribute name="platform" type="typeAttrApplicationPlatform" use="required" />
+        <xsd:attribute name="package" type="typeAttrApplicationPackage" use="required" />
+        <xsd:attribute name="distribution-type" default="production"
+            type="typeAttrApplicationDistributionType" />
+    </xsd:complexType>
+
+    <xsd:complexType name="typeCategorization">
+        <xsd:sequence>
+            <xsd:element name="type" type="typeCategorizationType" />
+            <xsd:element name="category" type="xsd:string" />
+            <xsd:element name="subcategory" minOccurs="0" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeCategorizationType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="application|game" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typeDescription">
+        <xsd:sequence>
+            <xsd:element name="texts" type="typeDescriptionTexts" />
+            <xsd:element name="images" type="typeDescriptionImages" />
+            <xsd:element name="videos" minOccurs="0" type="typeDescriptionVideos" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeDescriptionTexts">
+        <xsd:sequence>
+            <xsd:element name="title" maxOccurs="unbounded" type="xsd:string" />
+            <xsd:element name="keywords" minOccurs="0" type="xsd:string" />
+            <xsd:element name="short-description" maxOccurs="unbounded" minOccurs="0"
+                type="xsd:string" />
+            <xsd:element name="full-description" type="typeDescriptionTextsFullDescription" />
+            <xsd:element name="features" minOccurs="0" type="typeDescriptionTextsFeatures" />
+            <xsd:element name="recent-changes" minOccurs="0" type="xsd:string" />
+            <xsd:element name="privacy-policy" minOccurs="0"
+                type="typeDescriptionTextsPrivacyPolicy" />
+            <xsd:element name="eula" minOccurs="0" type="typeDescriptionTextsEula" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeDescriptionTextsFullDescription" mixed="true">
+        <xsd:sequence minOccurs="0">
+            <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="skip" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeDescriptionTextsFeatures">
+        <xsd:sequence>
+            <xsd:element name="feature" maxOccurs="5" minOccurs="3" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeDescriptionTextsEula">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="href" type="xsd:anyURI" use="required" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeDescriptionTextsPrivacyPolicy">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="href" type="xsd:anyURI" use="required" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeDescriptionImages">
+        <xsd:sequence>
+            <xsd:element name="app-icon" maxOccurs="unbounded" type="typeImage" />
+            <xsd:element name="large-promo" minOccurs="0" type="typeImage" />
+            <xsd:element name="small-promo" minOccurs="0" type="typeImage" />
+            <xsd:element name="screenshots" type="typeDescriptionImagesScreenshots" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="typeDescriptionImagesScreenshots">
+        <xsd:sequence>
+            <xsd:element name="screenshot" maxOccurs="unbounded" minOccurs="2"
+                type="typeDescriptionImagesScreenshotsScreenshot" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeDescriptionImagesScreenshotsScreenshot">
+        <xsd:simpleContent>
+            <xsd:extension base="typeImage">
+                <xsd:attribute name="index" type="xsd:positiveInteger" use="required" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeDescriptionVideos">
+        <xsd:sequence>
+            <xsd:element name="youtube-video" minOccurs="0" type="typeAttrYoutubeId" />
+            <xsd:element name="video-file" maxOccurs="unbounded" minOccurs="0"
+                type="typeLocalFile" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeAttrApplicationPlatform">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="android|tizen" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="typeAttrApplicationPackage">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([_a-zA-Z0-9\-]+\.)+[_a-zA-Z0-9\-]+" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="typeAttrDescriptionLanguage">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[a-z][a-z]|[a-z][a-z]\-[A-Z][A-Z]" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="typeAttrYoutubeId">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[a-zA-Z0-9_\-]{11}" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typeDescriptionLocalization">
+        <xsd:sequence>
+            <xsd:element name="texts" minOccurs="0" type="typeDescriptionLocalizationTexts" />
+            <xsd:element name="images" minOccurs="0" type="typeDescriptionLocalizationImages" />
+            <xsd:element name="videos" minOccurs="0" type="type-descriptionlocalization-videos" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="typeAttrDescriptionLanguage" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="typeDescriptionLocalizationTexts">
+        <xsd:sequence>
+            <xsd:element name="title" maxOccurs="unbounded" minOccurs="0" type="xsd:string" />
+            <xsd:element name="keywords" minOccurs="0" type="xsd:string" />
+            <xsd:element name="short-description" maxOccurs="unbounded" minOccurs="0"
+                type="xsd:string" />
+            <xsd:element name="full-description" minOccurs="0"
+                type="typeDescriptionTextsFullDescription" />
+            <xsd:element name="features" minOccurs="0" type="typeDescriptionTextsFeatures" />
+            <xsd:element name="recent-changes" minOccurs="0" type="xsd:string" />
+            <xsd:element name="privacy-policy" minOccurs="0"
+                type="typeDescriptionTextsPrivacyPolicy" />
+            <xsd:element name="eula" minOccurs="0" type="typeDescriptionTextsEula" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeDescriptionLocalizationImages">
+        <xsd:sequence>
+            <xsd:element name="app-icon" maxOccurs="unbounded" minOccurs="0" type="typeImage" />
+            <xsd:element name="large-promo" minOccurs="0" type="typeImage" />
+            <xsd:element name="small-promo" minOccurs="0" type="typeImage" />
+            <xsd:element name="screenshots" minOccurs="0" type="typeDescriptionImagesScreenshots" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="type-descriptionlocalization-videos">
+        <xsd:sequence>
+            <xsd:element name="youtube-video" minOccurs="0" type="xsd:string" />
+            <xsd:element name="video-file" maxOccurs="unbounded" minOccurs="0"
+                type="typeLocalFile" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeContentDescription">
+        <xsd:sequence>
+            <xsd:element name="content-rating" type="typeContentDescriptionContentRating" />
+            <xsd:element name="rating-certificates" minOccurs="0"
+                type="typeContentDescriptionRatingCertificates" />
+            <xsd:element name="content-descriptors" minOccurs="0"
+                type="typeContentDescriptionContentDescriptors" />
+            <xsd:element name="included-activities" minOccurs="0"
+                type="typeContentDescriptionIncludedActivities" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeContentDescriptionContentRating">
+        <xsd:restriction base="xsd:positiveInteger">
+            <xsd:pattern value="3|6|10|13|17|18" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typeContentDescriptionRatingCertificates">
+        <xsd:sequence>
+            <xsd:element name="rating-certificate" maxOccurs="unbounded"
+                type="typeContentDescriptionRatingCertificatesRatingCertificate" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeContentDescriptionRatingCertificatesRatingCertificate">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="type" type="typeAttrContentDescriptionRatingCertificatesType"
+                    use="required" />
+                <xsd:attribute name="certificate" type="typeLocalFile" />
+                <xsd:attribute name="mark" type="typeLocalFile" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeAttrContentDescriptionRatingCertificatesType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="PEGI|ESRB|GRB|CERO|DEJUS|FSK" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typeContentDescriptionContentDescriptors">
+        <xsd:sequence>
+            <xsd:element name="cartoon-violence"
+                type="typeContentDescriptionContentDescriptorsElement" />
+            <xsd:element name="realistic-violence"
+                type="typeContentDescriptionContentDescriptorsElement" />
+            <xsd:element name="bad-language"
+                type="typeContentDescriptionContentDescriptorsElement" />
+            <xsd:element name="fear" type="typeContentDescriptionContentDescriptorsElement" />
+            <xsd:element name="sexual-content"
+                type="typeContentDescriptionContentDescriptorsElement" />
+            <xsd:element name="drugs" type="typeContentDescriptionContentDescriptorsElement" />
+            <xsd:element name="gambling-reference"
+                type="typeContentDescriptionContentDescriptorsElement" />
+            <xsd:element name="alcohol" type="typeContentDescriptionContentDescriptorsElement" />
+            <xsd:element name="smoking" type="typeContentDescriptionContentDescriptorsElement" />
+            <xsd:element name="discrimination"
+                type="typeContentDescriptionContentDescriptorsElement" />
+            <xsd:element name="nazi-reference"
+                type="typeContentDescriptionContentDescriptorsElement" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeContentDescriptionContentDescriptorsElement">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="no|light|strong" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typeContentDescriptionIncludedActivities">
+        <xsd:sequence>
+            <xsd:element name="in-app-billing" type="typeYesNo" />
+            <xsd:element name="gambling" type="typeYesNo" />
+            <xsd:element name="advertising" type="typeYesNo" />
+            <xsd:element name="user-generated-content" type="typeYesNo" />
+            <xsd:element name="user-to-user-communications" type="typeYesNo" />
+            <xsd:element name="account-creation" type="typeYesNo" />
+            <xsd:element name="personal-information-collection" type="typeYesNo" />
+            <xsd:element name="web-browser-or-search-engine" type="typeYesNo" />
+            <xsd:element name="user-location-sharing" type="typeYesNo" />
+            <xsd:element name="user-info-with-third-parties-sharing" type="typeYesNo" />
+            <xsd:element name="user-to-user-content-exchange" type="typeYesNo" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeAvailability">
+        <xsd:sequence>
+            <xsd:element name="countries" minOccurs="0" type="typeAvailabilityCountries" />
+            <xsd:element name="period" minOccurs="0" type="typeAvailabilityPeriod" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeAvailabilityCountries">
+        <xsd:sequence>
+            <xsd:element name="include" maxOccurs="unbounded" minOccurs="0"
+                type="typeAttrCountry" />
+            <xsd:element name="exclude" maxOccurs="unbounded" minOccurs="0"
+                type="typeAttrCountry" />
+        </xsd:sequence>
+        <xsd:attribute name="only-listed" type="typeYesNo" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="typeAvailabilityPeriod">
+        <xsd:sequence>
+            <xsd:element name="since" minOccurs="0" type="typeAttrDate" />
+            <xsd:element name="until" minOccurs="0" type="typeAttrDate" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeAttrCountry">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Z][A-Z]" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typeAttrDate">
+        <xsd:attribute name="year" type="typeAttrYear" use="required" />
+        <xsd:attribute name="month" type="typeAttrMonth" use="required" />
+        <xsd:attribute name="day" type="typeAttrDay" use="required" />
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeAttrYear">
+        <xsd:restriction base="xsd:positiveInteger">
+            <xsd:minInclusive value="2007" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="typeAttrMonth">
+        <xsd:restriction base="xsd:positiveInteger">
+            <xsd:minInclusive value="1" />
+            <xsd:maxInclusive value="12" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="typeAttrDay">
+        <xsd:restriction base="xsd:positiveInteger">
+            <xsd:minInclusive value="1" />
+            <xsd:maxInclusive value="31" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typePrice">
+        <xsd:sequence>
+            <xsd:element name="base-price" minOccurs="0" type="xsd:decimal" />
+            <xsd:element name="local-price" maxOccurs="unbounded" minOccurs="0"
+                type="typePriceLocalPrice" />
+            <xsd:element name="trial-version" minOccurs="0" type="typePriceTrialVersion" />
+        </xsd:sequence>
+        <xsd:attribute name="free" type="typeYesNo" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="typePriceLocalPrice">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:decimal">
+                <xsd:attribute name="country" type="typeAttrCountry" use="required" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:simpleType name="typeAttrCurrency">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Z][A-Z][A-Z]" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="typePriceTrialVersion">
+        <xsd:attribute name="full-version" type="typeAttrApplicationPackage" />
+    </xsd:complexType>
+
+    <xsd:complexType name="typeApkFiles">
+        <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="apk-file" type="typeApkFile" />
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeApkFile">
+        <xsd:simpleContent>
+            <xsd:extension base="typeLocalFile">
+                <xsd:attribute name="main-exp-file" type="typeLocalFile" use="optional" />
+                <xsd:attribute name="patch-exp-file" type="typeLocalFile" use="optional" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeRequirements">
+        <xsd:sequence>
+            <xsd:element name="features" minOccurs="0" type="typRequirementsFeatures" />
+            <xsd:element name="supported-languages" minOccurs="0"
+                type="typeRequirementsSupportedLanguages" />
+            <xsd:element name="supported-devices" minOccurs="0"
+                type="typeRequirementsSupportedDevices" />
+            <xsd:element name="supported-resolutions" minOccurs="0"
+                type="typeRequirementsSupportedResolutions" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typRequirementsFeatures">
+        <xsd:sequence>
+            <xsd:element name="root" minOccurs="0" type="typeYesNo" />
+            <xsd:element name="gms" minOccurs="0" type="typeYesNo" />
+            <xsd:element name="online" minOccurs="0" type="typeYesNo" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeRequirementsSupportedLanguages">
+        <xsd:sequence>
+            <xsd:element name="language" maxOccurs="unbounded" type="typeAttrLanguage" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeRequirementsSupportedDevices">
+        <xsd:sequence>
+            <xsd:element name="exclude" maxOccurs="unbounded" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeRequirementsSupportedResolutions">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+            <xsd:element name="exclude" type="typeResolution" />
+            <xsd:element name="include" type="typeResolution" />
+        </xsd:choice>
+        <xsd:attribute name="only-listed" type="typeYesNo" use="required" />
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeAttrLanguage">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[a-z][a-z]|[a-z][a-z]\-[A-Z][A-Z]" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="typeTestingInstructions">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="4000" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typeConsent">
+        <xsd:sequence>
+            <xsd:element name="google-android-content-guidelines" minOccurs="0" type="typeYesNo" />
+            <xsd:element name="us-export-laws" minOccurs="0" type="typeYesNo" />
+            <xsd:element name="slideme-agreement" minOccurs="0" type="typeYesNo" />
+            <xsd:element name="free-from-third-party-copytighted-content" minOccurs="0"
+                type="typeYesNo" />
+            <xsd:element name="import-export" minOccurs="0" type="typeYesNo" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeCustomerSupport">
+        <xsd:sequence>
+            <xsd:element name="email" type="xsd:string" />
+            <xsd:element name="phone" minOccurs="0" type="xsd:string" />
+            <xsd:element name="website" minOccurs="0" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeStoreSpecific">
+        <xsd:sequence>
+            <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="skip" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeAttrApplicationDistributionType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="alpha|beta|rollout|production" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--in-app purchases-->
+    <xsd:complexType name="typeInAppPurchases">
+        <xsd:sequence>
+            <xsd:choice maxOccurs="unbounded">
+                <xsd:element name="item" type="typeInAppItem" />
+                <xsd:element name="subscription" type="typeInAppSubscription" />
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeInApp">
+        <xsd:sequence>
+            <xsd:element name="id" type="typeInAppId" />
+            <xsd:element name="description" type="typeInAppDescription" />
+            <xsd:element name="description-localization" maxOccurs="unbounded" minOccurs="0"
+                type="typeInAppDescriptionLocalization" />
+            <xsd:element name="price" type="typeInAppPrice" />
+        </xsd:sequence>
+        <xsd:attribute name="published" default="yes" type="typeYesNo" />
+    </xsd:complexType>
+
+    <xsd:complexType name="typeInAppSubscription">
+        <xsd:complexContent>
+            <xsd:extension base="typeInApp">
+                <xsd:sequence>
+                    <xsd:element name="subs-period" type="typeInAppSubscriptionPeriod" />
+                    <xsd:element name="trial-period" minOccurs="0" type="xsd:positiveInteger" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeInAppItem">
+        <xsd:complexContent>
+            <xsd:extension base="typeInApp">
+                <xsd:attribute name="type" type="typeAttrInAppItemType" use="required" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeInAppId">
+        <xsd:restriction base="typeNonEmptyString">
+            <xsd:pattern value="([a-z]|[0-9]){1}[a-z0-9._]*" />
+            <xsd:maxLength value="139" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="typeInAppSubscriptionPeriod">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="oneWeek|oneMonth|twoMonth|threeMonth|sixMonth|oneYear" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typeInAppDescription">
+        <xsd:sequence>
+            <xsd:element name="title" maxOccurs="unbounded" type="typeNonEmptyString" />
+            <xsd:element name="text" maxOccurs="unbounded" type="typeNonEmptyString" />
+            <xsd:element name="small-icon" maxOccurs="unbounded" minOccurs="0" type="typeImage" />
+            <xsd:element name="large-icon" maxOccurs="unbounded" minOccurs="0" type="typeImage" />
+            <xsd:element name="store-specific" maxOccurs="1" minOccurs="0"
+                type="typeInAppStoreSpecific" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="typeInAppStoreSpecific">
+        <xsd:sequence>
+            <xsd:element name="amazon" maxOccurs="1" minOccurs="0" type="typeInAppAmazon" />
+            <xsd:element name="slideme" maxOccurs="1" minOccurs="0" type="typeInAppSlideme" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--amazon-->
+    <xsd:complexType name="typeInAppAmazon">
+        <xsd:sequence>
+            <xsd:element name="additional-file-delivered" type="typeYesNo" />
+            <xsd:element name="small-icon" type="typeImage" />
+            <xsd:element name="large-icon" type="typeImage" />
+            <xsd:element name="calculated-prices" type="typeYesNo" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--slideme-->
+    <xsd:complexType name="typeInAppSlideme">
+        <xsd:sequence>
+            <xsd:element name="test-mode" type="typeInAppSlidemeTestMode" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeInAppSlidemeTestMode">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="disabled|success|failure" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typeInAppDescriptionLocalization">
+        <xsd:complexContent>
+            <xsd:extension base="typeInAppDescription">
+                <xsd:attribute name="locale" type="typeAttrInAppLocale" use="required" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeAttrInAppLocale">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[a-z][a-z]_[A-Z][A-Z]" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typeInAppPriceLocal">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:decimal">
+                <xsd:attribute name="country" type="typeAttrInAppPriceCountry" use="required" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeAttrInAppPriceCountry">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Z][A-Z]" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="typeInAppPrice">
+        <xsd:sequence>
+            <xsd:element name="base-price" minOccurs="0" type="xsd:decimal" />
+            <xsd:element name="local-price" maxOccurs="unbounded" minOccurs="0"
+                type="typeInAppPriceLocal" />
+        </xsd:sequence>
+        <xsd:attribute name="free" default="no" type="typeYesNo" />
+    </xsd:complexType>
+
+    <xsd:simpleType name="typeAttrInAppItemType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="consumable|nonconsumable" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--common types-->
+
+    <!--human-readable boolean-->
+    <xsd:simpleType name="typeYesNo">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="yes|no" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--local file-->
+    <xsd:simpleType name="typeLocalFile">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[_ a-zA-Z0-9\-\./]*" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--image-->
+    <xsd:complexType name="typeImage">
+        <xsd:simpleContent>
+            <xsd:extension base="typeLocalFile">
+                <xsd:attribute name="width" type="xsd:positiveInteger" use="required" />
+                <xsd:attribute name="height" type="xsd:positiveInteger" use="required" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <!--resolution-->
+    <xsd:simpleType name="typeResolution">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]+x[0-9]+" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--non-empty string-->
+    <xsd:simpleType name="typeNonEmptyString">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>
