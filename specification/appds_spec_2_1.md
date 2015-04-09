@@ -599,6 +599,7 @@ Example
 
 Required.  
 No attributes.  
+
 Value could be either `application` or `game`.
 
 <table>
@@ -3950,6 +3951,7 @@ This tag is ignored for paid apps.
 
 Required.  
 Attributes: `main-exp-file`, `patch-optional-file`.  
+
 Each application could have 1+ APK files. All APK files must have the same package name.
 
 <table>
@@ -5542,6 +5544,7 @@ Type of the in-app product. Can be ``consumable`` and ``non-consumable``. ``Cons
 Required.  
 No attributes.  
 Max length: 139 characters.  
+
 Regexp to describe: ([a-z]|[0-9]){1}[a-z0-9._]*  
 Unique identifier of the in-app product. Also known as `SKU`, store keeping unit. Non-localizable.
 
@@ -6178,6 +6181,7 @@ Currencies used in different countries in [JSON](http://www.onepf.org/appdf/data
 Required.  
 No attributes.  
 Possible values: `oneWeek`, `oneMonth`, `twoMonth`, `threeMonth`, `sixMonth`, `oneYear`.  
+
 A subscription duration, a period when the feature/product is available to the user.
 
 <table>
@@ -6223,6 +6227,7 @@ A subscription duration, a period when the feature/product is available to the u
 
 Optional.  
 No attributes.  
+
 A trial period of the subscription, in days.
 
 <table>
