@@ -3979,7 +3979,7 @@ Example
 ```xml
 <apk-files>
   <apk-file patch-exp-file="patch.314159.com.yandex.shell.obb">yandexshell2.apk</apk-file>
-  <apk-file main-exp-file="main.314159.com.yandex.shell.obb" patch-exp-file="patch.314159.com.yandex.shell.obb>yandexshell3.apk</apk-file>
+  <apk-file main-exp-file="main.314159.com.yandex.shell.obb" patch-exp-file="patch.314159.com.yandex.shell.obb">yandexshell3.apk</apk-file>
 </apk-files>
 ```
 
