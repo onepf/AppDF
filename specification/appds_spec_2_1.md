@@ -6110,7 +6110,16 @@ This section describes whether the in-app is free or paid and if paid what its p
     <td></td>
     <td>Yes</td>
   </tr>
-</table>
+</table>  
+
+Example
+```xml
+<price>
+    <base-price>2.00</base-price>
+    <!--Optional:-->
+    <local-price country="RU">2.00</local-price>
+</price>
+```
 
 #### <a name="in-app-item--sub-price-base-price"/>price/base-price
 
