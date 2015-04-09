@@ -5593,7 +5593,19 @@ Unique identifier of the in-app product. Also known as `SKU`, store keeping unit
     <td>Yes</td>
     <td>No requirements.</td>
   </tr>
-</table>
+</table>  
+
+Example 1
+
+```xml
+<id>org.onepf.sample.trivialdrive.sku_infinite_gas</id>
+```
+
+Example 2
+
+```xml
+<id>sku1</id>
+```
 
 ### <a name="in-app-item--sub-desc"/>description 
 
