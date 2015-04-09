@@ -5602,6 +5602,37 @@ This section has the same structure for `<item>` and `<subscription>`.
 
 The section contains in-app description in text form as well as pictures in English US language. A part of the main <description> tag there could be several <description-localization> tags for different languages. If some information is missing in the localized <description-localization> tag it will be taken from the default <description-base> section.
 
+Example  
+```xml
+<description>
+    <title>Red skin</title>
+    <text>Cool red skin for your car.</text>
+    <!--Optional:-->
+    <small-icon height="135" width="135">images/en/sku_res_skin_small_icon.png
+    </small-icon>
+    <!--Optional:-->
+    <large-icon height="512" width="512">images/en/sku_res_skin_large_icon.png
+    </large-icon>
+    <store-specific>
+        <!--Optional:-->
+        <amazon>
+            <additional-file-delivered>no</additional-file-delivered>
+            <small-icon height="114" width="114">
+                images/en/amazon/sku_res_skin_small_icon.png
+            </small-icon>
+            <large-icon height="512" width="512">
+                images/en/amazon/sku_res_skin_large_icon.png
+            </large-icon>
+            <calculated-prices>yes</calculated-prices>
+        </amazon>
+        <!--Optional:-->
+        <slideme>
+            <test-mode>success</test-mode>
+        </slideme>
+    </store-specific>
+</description>
+```
+
 #### <a name="in-app-item--sub-title"/>description/title
 
 Required.  
