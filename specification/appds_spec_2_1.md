@@ -528,7 +528,7 @@ The main tag. Contains all information required for publishing.
     <td>distribution-type</td>
     <td>alpha | beta | rollout | production</td>
     <td>Optional</td>
-    <td>The default value is `production`.</td>
+    <td>The default value is production.</td>
  </tr>
 </table>
 
