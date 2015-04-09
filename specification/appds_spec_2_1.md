@@ -515,13 +515,13 @@ The main tag. Contains all information required for publishing.
   <tr>
     <td>platform</td>
     <td>android | tizen</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The supported platform.</td>
   </tr>
   <tr>
     <td>package</td>
     <td>String with the pattern: ([_a-zA-Z0-9\-]+\.)+[_a-zA-Z0-9\-]+</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The package name of the application.</td>
   </tr>
   <tr>
@@ -1854,13 +1854,13 @@ High resolution application icon. Must be in PNG format. Different stores requir
   <tr>
     <td>width</td>
     <td>A number</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512.</td>
   </tr>
 </table>
@@ -5427,7 +5427,7 @@ The following attributes are common for `<item>` and `<subscription>` elements.
   <tr>
     <td>published</td>
     <td>yes | no</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>Is the in-app product published or not (is it visible to the end users)</td>
   </tr>
 </table>
@@ -5489,7 +5489,7 @@ The following attributes are `<item>`-specific.
    <tr>
     <td>type</td>
     <td>consumable |  nonconsumable</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>Is the in-app product consumable or not.</td>
   </tr>
 </table>
@@ -5744,13 +5744,13 @@ Small in-app icon. Must be in PNG format. As everything inside the `<description
   <tr>
     <td>width</td>
     <td>A number</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The store selects the small icon in the most appropriate size. The first icon must be 135x135, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The store selects the app icon in the most appropriate size. The first icon must be 135x135, PNG.</td>
   </tr>
 </table>
@@ -5823,13 +5823,13 @@ Large in-app icon. Must be in PNG format. As everything inside the `<description
   <tr>
     <td>width</td>
     <td>A number</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The store selects the large icon in the most appropriate size. The first icon must be 512x512, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The store selects the large icon in the most appropriate size. The first icon must be 512x512, PNG.</td>
   </tr>
 </table>
@@ -5924,13 +5924,13 @@ Small in-app icon.
   <tr>
     <td>width</td>
     <td>A number</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The icon must be 114x114, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The icon must be 114x114, PNG.</td>
   </tr>
 </table>
@@ -5950,13 +5950,13 @@ Attributes: `width`, `height`.
   <tr>
     <td>width</td>
     <td>A number</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The icon must be 512x512, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
-    <td>Mandatory</td>
+    <td>Required</td>
     <td>The icon must be 512x512, PNG.</td>
   </tr>
 </table>
