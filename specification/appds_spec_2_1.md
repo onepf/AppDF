@@ -3329,7 +3329,7 @@ Attributes: `only-listed`.
   </tr>
   <tr>
     <td>only-listed</td>
-    <td>yes, no</td>
+    <td>yes | no</td>
     <td>Yes</td>
     <td>If value is "yes" then only &lt;include&gt; subtags could be included, if "no" then only &lt;exclude&gt; subtags could be included</td>
   </tr>
