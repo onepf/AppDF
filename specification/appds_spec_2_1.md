@@ -510,25 +510,25 @@ The main tag. Contains all information required for publishing.
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>platform</td>
     <td>android | tizen</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The supported platform.</td>
   </tr>
   <tr>
     <td>package</td>
     <td>String with the pattern: ([_a-zA-Z0-9\-]+\.)+[_a-zA-Z0-9\-]+</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The package name of the application.</td>
   </tr>
   <tr>
     <td>distribution-type</td>
     <td>alpha | beta | rollout | production</td>
-    <td>Optional</td>
+    <td>No</td>
     <td>The default value is production.</td>
  </tr>
 </table>
@@ -1619,11 +1619,13 @@ you, your account or your email addresses with anyone. Period.</privacy-policy>
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>href</td>
     <td>URL</td>
+    <td>Yes</td>
     <td>Link to a webpage with your privacy policy for this application</td>
   </tr>
 </table>
@@ -1724,11 +1726,13 @@ us even if it is our fault.</eula>
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
+    <th>Requied</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>href</td>
     <td>URL</td>
+    <td>Yes</td>
     <td>Link to a webpage with your End User License Agreement for this application</td>
   </tr>
 </table>
@@ -1849,19 +1853,19 @@ High resolution application icon. Must be in PNG format. Different stores requir
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>width</td>
     <td>A number</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512.</td>
   </tr>
 </table>
@@ -1972,14 +1976,17 @@ Large promotion picture usually used by the stores on the PC websites, some stor
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
+    <th>Required</th>
   </tr>
   <tr>
     <td>width</td>
     <td>Must be `1024`</td>
+    <td>Yes</td>
   </tr>
   <tr>
     <td>height</td>
     <td>Must be `500`</td>
+    <td>Yes</td>
   </tr>
 </table>
 
@@ -2080,14 +2087,17 @@ A small promotion picture is usually used by the stores on a mobile device for p
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
+    <th>Required</th>
   </tr>
   <tr>
     <td>width</td>
     <td>Must be `180`</td>
+    <td>Yes</td>
   </tr>
   <tr>
     <td>height</td>
     <td>Must be `120`</td>
+    <td>Yes</td>
   </tr>
 </table>
 
@@ -2194,21 +2204,25 @@ A tag that describes one screenshot. Screenshots must be in PNG format. There co
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>width</td>
     <td>A number</td>
+    <td>Yes</td>
     <td>Each store will choose one the best matching screen resolution from each screenshot group</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
+    <td>Yes</td>
     <td>Each store will choose one the best matching screen resolution from each screenshot group</td>
   </tr>
   <tr>
     <td>index</td>
     <td>A number</td>
+    <td>Yes</td>
     <td>If several screenshots have the same index attribute then they represent the same screenshot in different sizes</td>
   </tr>
 </table>
@@ -2569,12 +2583,12 @@ Reference country list in [JSON](http://www.onepf.org/appdf/data/countries.json)
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
   </tr>
   <tr>
     <td>language</td>
     <td>two letter ISO 639-1 language code (like "en", full language list in <a href="http://www.onepf.org/appdf/data/languages.json">JSON</a> and <a href="data/languages.xml">XML</a> formats) or two letters language code + two upper case letter ISO 3166‑1 country code (like "en-US", full country list in <a href="http://www.onepf.org/appdf/data/countries.json">JSON</a> and <a href="data/countries.xml">XML</a> formats)</td>
-    <td>required tag</td>
+    <td>Yes</td>
   </tr>
 </table>
 
@@ -2863,19 +2877,19 @@ Example
   <tr>
     <td>type</td>
     <td>PEGI, ESRB, GRB, CERO, DEJUS or FSK</td>
-    <td>required</td>
+    <td>Yes</td>
     <td>Name of the content rating certificate</td>
   </tr>
   <tr>
     <td>certificate</td>
     <td>File name from the AppDF package</td>
-    <td>optional</td>
+    <td>No</td>
     <td>If you have a scanned certificate you can add it there</td>
   </tr>
   <tr>
     <td>mark</td>
     <td>File name from the AppDF package</td>
-    <td>optional</td>
+    <td>No</td>
     <td>If you have a special label you can add it there</td>
   </tr>
 </table>
@@ -3316,7 +3330,7 @@ Attributes: `only-listed`.
   <tr>
     <td>only-listed</td>
     <td>yes, no</td>
-    <td>required</td>
+    <td>Yes</td>
     <td>If value is "yes" then only &lt;include&gt; subtags could be included, if "no" then only &lt;exclude&gt; subtags could be included</td>
   </tr>
 </table>
@@ -3463,25 +3477,25 @@ If presented this tag defines a date from which the application can be distribut
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>year</td>
     <td>A number like 2012</td>
-    <td>required</td>
+    <td>Yes</td>
     <td>Year of the date</td>
   </tr>
   <tr>
     <td>month</td>
     <td>Month number, Jan=1, Feb=2, ..., Dec=12</td>
-    <td>required</td>
+    <td>Yes</td>
     <td>Month of the date</td>
   </tr>
   <tr>
     <td>day</td>
     <td>Number of the day between 1 and 31</td>
-    <td>required</td>
+    <td>Yes</td>
     <td>Day of the date</td>
   </tr>
 </table>
@@ -3556,25 +3570,25 @@ If presented this tag defines a final date of application distribution. Stores t
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>year</td>
     <td>A number like 2012</td>
-    <td>required</td>
+    <td>Yes</td>
     <td>Year of the date</td>
   </tr>
   <tr>
     <td>month</td>
     <td>Month number, Jan=1, Feb=2, ..., Dec=12</td>
-    <td>required</td>
+    <td>Yes</td>
     <td>Month of the date</td>
   </tr>
   <tr>
     <td>day</td>
     <td>Number of the day between 1 and 31</td>
-    <td>required</td>
+    <td>Yes</td>
     <td>Day of the date</td>
   </tr>
 </table>
@@ -3667,13 +3681,13 @@ Example 2
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>free</td>
-    <td>yes or no</td>
-    <td>yes</td>
+    <td>yes | no</td>
+    <td>Yes</td>
     <td>&lt;base-price&gt; and &lt;local-price&gt; subtags are applicable for paid apps, &lt;trial-version&gt; subtag is applicable for free apps</td>
   </tr>
 </table>
@@ -3790,13 +3804,13 @@ Currencies used in different countries in [JSON](http://www.onepf.org/appdf/data
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>country</td>
     <td>two letter ISO 3166-1 country code, see the list in <a href="http://www.onepf.org/appdf/data/countries.json">JSON</a> or <a href="data/countries.xml">XML</a> formats</td>
-    <td>required</td>
+    <td>Yes</td>
     <td></td>
   </tr>
 </table>
@@ -3884,13 +3898,13 @@ This tag is ignored for paid apps.
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>full-version</td>
     <td>package name (Android notation)</td>
-    <td>required</td>
+    <td>Yes</td>
     <td></td>
   </tr>
 </table>
@@ -3959,19 +3973,19 @@ Each application could have 1+ APK files. All APK files must have the same packa
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>main-exp-file</td>
     <td>The local path to the main expansion file, must be in the main.app-version-code.package-name.obb format.</td>
-    <td>Optional</td>
+    <td>No</td>
     <td>The main expansion file is the primary expansion file for additional resources required by your application.</td>
   </tr>
   <tr>
     <td>patch-exp-file</td>
     <td>The local path to the patch expansion file, must be in the patch.app-version-code.package-name.obb format.</td>
-    <td>Optional</td>
+    <td>No</td>
     <td>The patch expansion file is optional and intended for small updates to the main expansion file.</td>
   </tr>
 </table>
@@ -4479,7 +4493,7 @@ Example 2
   <tr>
     <td>only-listed</td>
     <td>yes, no</td>
-    <td>required</td>
+    <td>Yes</td>
     <td>If value is "yes" then only &lt;include&gt; subtags could be included, if "no" then only &lt;exclude&gt; subtags could be included</td>
   </tr>
 </table>
@@ -5423,13 +5437,13 @@ The following attributes are common for `<item>` and `<subscription>` elements.
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>published</td>
     <td>yes | no</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>Is the in-app product published or not (is it visible to the end users)</td>
   </tr>
 </table>
@@ -5485,13 +5499,13 @@ The following attributes are `<item>`-specific.
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
    <tr>
     <td>type</td>
     <td>consumable |  nonconsumable</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>Is the in-app product consumable or not.</td>
   </tr>
 </table>
@@ -5783,19 +5797,19 @@ Small in-app icon. Must be in PNG format. As everything inside the `<description
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>width</td>
     <td>A number</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The store selects the small icon in the most appropriate size. The first icon must be 135x135, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The store selects the app icon in the most appropriate size. The first icon must be 135x135, PNG.</td>
   </tr>
 </table>
@@ -5862,19 +5876,19 @@ Large in-app icon. Must be in PNG format. As everything inside the `<description
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>width</td>
     <td>A number</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The store selects the large icon in the most appropriate size. The first icon must be 512x512, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The store selects the large icon in the most appropriate size. The first icon must be 512x512, PNG.</td>
   </tr>
 </table>
@@ -5963,19 +5977,19 @@ Small in-app icon.
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>width</td>
     <td>A number</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The icon must be 114x114, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The icon must be 114x114, PNG.</td>
   </tr>
 </table>
@@ -5989,19 +6003,19 @@ Attributes: `width`, `height`.
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>width</td>
     <td>A number</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The icon must be 512x512, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
-    <td>Required</td>
+    <td>Yes</td>
     <td>The icon must be 512x512, PNG.</td>
   </tr>
 </table>
@@ -6074,13 +6088,13 @@ This section describes whether the in-app is free or paid and if paid what its p
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>free</td>
     <td>yes | no</td>
-    <td>Optional attribute</td>
+    <td>No</td>
     <td>Default value is "no". Currently only Amazon Appstore supports this option in the raw.</td>
   </tr>
 </table>
@@ -6204,13 +6218,13 @@ Currencies used in different countries in [JSON](http://www.onepf.org/appdf/data
   <tr>
     <th>Attribute</th>
     <th>Possible values</th>
-    <th>Default</th>
+    <th>Required</th>
     <th>How it works</th>
   </tr>
   <tr>
     <td>country</td>
     <td>two letter ISO 3166-1 country code, see the list in <a href="http://www.onepf.org/appdf/data/countries.json">JSON</a> or <a href="data/countries.xml">XML</a> formats</td>
-    <td>required</td>
+    <td>Yes</td>
     <td></td>
   </tr>
 </table>
