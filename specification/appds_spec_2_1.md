@@ -1626,7 +1626,7 @@ you, your account or your email addresses with anyone. Period.</privacy-policy>
     <td>href</td>
     <td>URL</td>
     <td>Yes</td>
-    <td>Link to a webpage with your privacy policy for this application</td>
+    <td>Link to a webpage with your privacy policy for this application.</td>
   </tr>
 </table>
 
@@ -1733,7 +1733,7 @@ us even if it is our fault.</eula>
     <td>href</td>
     <td>URL</td>
     <td>Yes</td>
-    <td>Link to a webpage with your End User License Agreement for this application</td>
+    <td>Link to a webpage with your End User License Agreement for this application.</td>
   </tr>
 </table>
 
@@ -2211,19 +2211,19 @@ A tag that describes one screenshot. Screenshots must be in PNG format. There co
     <td>width</td>
     <td>A number</td>
     <td>Yes</td>
-    <td>Each store will choose one the best matching screen resolution from each screenshot group</td>
+    <td>Each store will choose one the best matching screen resolution from each screenshot group.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
     <td>Yes</td>
-    <td>Each store will choose one the best matching screen resolution from each screenshot group</td>
+    <td>Each store will choose one the best matching screen resolution from each screenshot group.</td>
   </tr>
   <tr>
     <td>index</td>
     <td>A number</td>
     <td>Yes</td>
-    <td>If several screenshots have the same index attribute then they represent the same screenshot in different sizes</td>
+    <td>If several screenshots have the same index attribute then they represent the same screenshot in different sizes.</td>
   </tr>
 </table>
 
@@ -2878,19 +2878,19 @@ Example
     <td>type</td>
     <td>PEGI, ESRB, GRB, CERO, DEJUS or FSK</td>
     <td>Yes</td>
-    <td>Name of the content rating certificate</td>
+    <td>Name of the content rating certificate.</td>
   </tr>
   <tr>
     <td>certificate</td>
     <td>File name from the AppDF package</td>
     <td>No</td>
-    <td>If you have a scanned certificate you can add it there</td>
+    <td>If you have a scanned certificate you can add it there.</td>
   </tr>
   <tr>
     <td>mark</td>
     <td>File name from the AppDF package</td>
     <td>No</td>
-    <td>If you have a special label you can add it there</td>
+    <td>If you have a special label you can add it there.</td>
   </tr>
 </table>
 
@@ -3331,7 +3331,7 @@ Attributes: `only-listed`.
     <td>only-listed</td>
     <td>yes | no</td>
     <td>Yes</td>
-    <td>If value is "yes" then only &lt;include&gt; subtags could be included, if "no" then only &lt;exclude&gt; subtags could be included</td>
+    <td>If value is "yes" then only &lt;include&gt; subtags could be included, if "no" then only &lt;exclude&gt; subtags could be included.</td>
   </tr>
 </table>
 
@@ -3484,19 +3484,19 @@ If presented this tag defines a date from which the application can be distribut
     <td>year</td>
     <td>A number like 2012</td>
     <td>Yes</td>
-    <td>Year of the date</td>
+    <td>Year of the date.</td>
   </tr>
   <tr>
     <td>month</td>
     <td>Month number, Jan=1, Feb=2, ..., Dec=12</td>
     <td>Yes</td>
-    <td>Month of the date</td>
+    <td>Month of the date.</td>
   </tr>
   <tr>
     <td>day</td>
     <td>Number of the day between 1 and 31</td>
     <td>Yes</td>
-    <td>Day of the date</td>
+    <td>Day of the date.</td>
   </tr>
 </table>
 
@@ -3577,19 +3577,19 @@ If presented this tag defines a final date of application distribution. Stores t
     <td>year</td>
     <td>A number like 2012</td>
     <td>Yes</td>
-    <td>Year of the date</td>
+    <td>Year of the date.</td>
   </tr>
   <tr>
     <td>month</td>
     <td>Month number, Jan=1, Feb=2, ..., Dec=12</td>
     <td>Yes</td>
-    <td>Month of the date</td>
+    <td>Month of the date.</td>
   </tr>
   <tr>
     <td>day</td>
     <td>Number of the day between 1 and 31</td>
     <td>Yes</td>
-    <td>Day of the date</td>
+    <td>Day of the date.</td>
   </tr>
 </table>
 
@@ -3688,7 +3688,7 @@ Example 2
     <td>free</td>
     <td>yes | no</td>
     <td>Yes</td>
-    <td>&lt;base-price&gt; and &lt;local-price&gt; subtags are applicable for paid apps, &lt;trial-version&gt; subtag is applicable for free apps</td>
+    <td>&lt;base-price&gt; and &lt;local-price&gt; subtags are applicable for paid apps, &lt;trial-version&gt; subtag is applicable for free apps.</td>
   </tr>
 </table>
 
@@ -3809,7 +3809,7 @@ Currencies used in different countries in [JSON](http://www.onepf.org/appdf/data
   </tr>
   <tr>
     <td>country</td>
-    <td>two letter ISO 3166-1 country code, see the list in <a href="http://www.onepf.org/appdf/data/countries.json">JSON</a> or <a href="data/countries.xml">XML</a> formats</td>
+    <td>two letter ISO 3166-1 country code, see the list in <a href="http://www.onepf.org/appdf/data/countries.json">JSON</a> or <a href="data/countries.xml">XML</a> formats.</td>
     <td>Yes</td>
     <td></td>
   </tr>
@@ -4494,7 +4494,7 @@ Example 2
     <td>only-listed</td>
     <td>yes, no</td>
     <td>Yes</td>
-    <td>If value is "yes" then only &lt;include&gt; subtags could be included, if "no" then only &lt;exclude&gt; subtags could be included</td>
+    <td>If value is "yes" then only &lt;include&gt; subtags could be included, if "no" then only &lt;exclude&gt; subtags could be included.</td>
   </tr>
 </table>
 
@@ -5444,7 +5444,7 @@ The following attributes are common for `<item>` and `<subscription>` elements.
     <td>published</td>
     <td>yes | no</td>
     <td>Yes</td>
-    <td>Is the in-app product published or not (is it visible to the end users)</td>
+    <td>Is the in-app product published or not (is it visible to the end users).</td>
   </tr>
 </table>
 
@@ -6223,7 +6223,7 @@ Currencies used in different countries in [JSON](http://www.onepf.org/appdf/data
   </tr>
   <tr>
     <td>country</td>
-    <td>two letter ISO 3166-1 country code, see the list in <a href="http://www.onepf.org/appdf/data/countries.json">JSON</a> or <a href="data/countries.xml">XML</a> formats</td>
+    <td>two letter ISO 3166-1 country code, see the list in <a href="http://www.onepf.org/appdf/data/countries.json">JSON</a> or <a href="data/countries.xml">XML</a> formats.</td>
     <td>Yes</td>
     <td></td>
   </tr>
