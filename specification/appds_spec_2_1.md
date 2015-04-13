@@ -1858,13 +1858,13 @@ High resolution application icon. Must be in PNG format. Different stores requir
   </tr>
   <tr>
     <td>width</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512, PNG.</td>
   </tr>
@@ -2209,19 +2209,19 @@ A tag that describes one screenshot. Screenshots must be in PNG format. There co
   </tr>
   <tr>
     <td>width</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>Each store will choose one the best matching screen resolution from each screenshot group.</td>
   </tr>
   <tr>
     <td>height</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>Each store will choose one the best matching screen resolution from each screenshot group.</td>
   </tr>
   <tr>
     <td>index</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>If several screenshots have the same index attribute then they represent the same screenshot in different sizes.</td>
   </tr>
@@ -3482,7 +3482,7 @@ If presented this tag defines a date from which the application can be distribut
   </tr>
   <tr>
     <td>year</td>
-    <td>A number like 2012</td>
+    <td>A positive integer like 2012</td>
     <td>Yes</td>
     <td>Year of the date.</td>
   </tr>
@@ -3575,7 +3575,7 @@ If presented this tag defines a final date of application distribution. Stores t
   </tr>
   <tr>
     <td>year</td>
-    <td>A number like 2012</td>
+    <td>A positive integer like 2012</td>
     <td>Yes</td>
     <td>Year of the date.</td>
   </tr>
@@ -5802,13 +5802,13 @@ Small in-app icon. Must be in PNG format. As everything inside the `<description
   </tr>
   <tr>
     <td>width</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>The store selects the small icon in the most appropriate size. The first icon must be 135x135, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>The store selects the app icon in the most appropriate size. The first icon must be 135x135, PNG.</td>
   </tr>
@@ -5881,13 +5881,13 @@ Large in-app icon. Must be in PNG format. As everything inside the `<description
   </tr>
   <tr>
     <td>width</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>The store selects the large icon in the most appropriate size. The first icon must be 512x512, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>The store selects the large icon in the most appropriate size. The first icon must be 512x512, PNG.</td>
   </tr>
@@ -5982,13 +5982,13 @@ Small in-app icon.
   </tr>
   <tr>
     <td>width</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>The icon must be 114x114, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>The icon must be 114x114, PNG.</td>
   </tr>
@@ -6008,13 +6008,13 @@ Attributes: `width`, `height`.
   </tr>
   <tr>
     <td>width</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>The icon must be 512x512, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
-    <td>A number</td>
+    <td>A positive integer</td>
     <td>Yes</td>
     <td>The icon must be 512x512, PNG.</td>
   </tr>
