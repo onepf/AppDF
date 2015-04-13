@@ -5077,11 +5077,11 @@ Top level subtags correspond to the application AppDF ids from the following tab
     <td>NOOK apps</td>
     <td>nook</td>
   </tr>
-  -->
   <tr>
     <td>AppsLib</td>
     <td>appslib</td>
   </tr>
+  -->
 </table>
 
 Each store subtag can replace any of the parameters from the entire description.xml by including a replacement for the corresponding tag starting from the `<application>` tag. For example if we want to use another large promotion picture for Amazon AppStore we can include the following code:
