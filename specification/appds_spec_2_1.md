@@ -975,7 +975,7 @@ Example
 ##### <a name="description-texts-title"/>description/texts/title
 
 Required.  
-No attributes. 
+No attributes.  
 Maximum length: the first tag must be 30 characters or shorter.
 
 The application name is shown in the application list. As everything inside the `<description>` tag can be localized using `<description-localization>` section. Different stores have different requirements for maximum title length. In order to have flexibility to get the best from each of the stores you can include several copies of title tag. The store will take the longest one that is fits in its maximum size. The first title must be 30 symbols or shorter in order to be supported by all the stores.
