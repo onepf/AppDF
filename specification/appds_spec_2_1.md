@@ -5392,7 +5392,10 @@ Example
     <td>Yes</td>
     <td>No</td>
   </tr>
-</table>
+</table>  
+
+
+### <a name="in-app-purchases-section-structure">In-app Section Structure
 
 * [in-app-purchases](#in-app-purchases)
 	* [item | subscription](#in-app-item--sub)
