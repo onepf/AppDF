@@ -6375,7 +6375,7 @@ A trial period of the subscription, in days.
 
 ### Summary tables
 
-####Required for publishing  
+#### Required for publishing  
 
 <table>
   <tr>
@@ -6470,11 +6470,20 @@ A trial period of the subscription, in days.
     <td>yes</td>
   </tr>
   <tr>
-    <th>store-specific requirements</th>
-    <td>short-description, large promo (`Feature Graphic`), privacy-policy, availability/countries, consent, content-rating, content-descriptors, included-activities</td>
-    <td>categorization/subcategory, description/texts/short-description, description/texts/features, description/texts/recent-changes, description/images/screenshots/screenshot(3+ vs 2+), content-description/content-rating, content-description/content-descriptors, content-description/included-activities, availability/countries, customer-support/phone, customer-support/website</td>
-    <td>categorization/subcategory, description/texts/short-description</td>
+    <th>store-specific requirements that has direct mapping in AppDF</th>
+    <td>short-description,<br>large promo,<br>privacy-policy,<br>availability/countries,<br>consent,<br>content-rating,<br>content-descriptors,<br>included-activities</td>
+    <td>categorization/subcategory,<br>description/texts/short-description,<br>description/texts/features,<br>description/texts/recent-changes,<br>description/images/screenshots/screenshot (3+ vs 2+),<br>content-description/content-rating,<br>content-description/content-descriptors,<br>content-description/included-activities, availability/countries,<br>customer-support/phone,<br>customer-support/website</td>
+    <td>categorization/subcategory,<br>description/texts/short-description</td>
     <td>categorization/subcategory</td>
+  </tr>
+  <tr>
+  </tr>
+   <tr>
+    <th>store-specific requirements</th>
+    <td></td>
+    <td>Apply Amazon DRM? </td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
   </tr>
