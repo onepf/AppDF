@@ -86,7 +86,7 @@ The only naming convention for the files inside AppDF package is that the descri
     <texts>
       <!-- The first title must be 30 symbols or shorter, longer titles will be used by the stores that support longer titles -->
       <title>Yandex.Shell</title>
-      <title>Yandex.Shell - Free Launcher + Dialer + Widgets</title>
+      <title>Yandex.Shell — Free Launcher + Dialer + Widgets</title>
       <keywords>shell, homescreen, launcher</keywords>
       <!--If several versions of short-description tag are presented the store will take the longest supported-->
       <short-description>My short description</short-description>
@@ -2258,7 +2258,7 @@ Example
     <td>Store Listing / GRAPHIC ASSETS / Screenshots</td>
     <td>Yes</td>
     <td>Yes</td>
-    <td>Min length for any side: 320px. Max length for any side: 3840px</td>
+    <td>Min length for any side: 320 px. Max length for any side: 3840 px</td>
     <td>JPEG or 24-bit PNG (no alpha)</td>
     <td>2+. Max 8 screenshots per type (Phone, 7-inch tablet, 10-inch tablet, TV).</td>
   </tr>
@@ -2279,11 +2279,11 @@ Example
     <td>Images & Multimedia / Screenshots</td>
     <td>Yes</td>
     <td>Yes</td>
-    <td>800 x 480px, 1024 x 600px, 1280 x 720px,
-1280 x 800px, 1920 x 1080px, 1920 x 1200px,
-or 2560 x 1600px (portrait or landscape)</td>
+    <td>800x480 px, 1024x600 px, 1280x720 px,
+1280x800 px, 1920x1080 px, 1920x1200 px,
+or 2560x1600 px (portrait or landscape)</td>
     <td>JPG or PNG</td>
-    <td>3-10</td>
+    <td>3 — 10</td>
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
@@ -2303,7 +2303,7 @@ or 2560 x 1600px (portrait or landscape)</td>
     <td>No</td>
     <td>Min 320 pixels, Max 3840 pixels, Image ratio 2:1</td>
     <td>JPG, PNG</td>
-    <td>4-8</td>
+    <td>4 — 8</td>
   </tr>
   <tr>
     <td>SlideME</td>
@@ -2507,7 +2507,7 @@ Some stores don't support including of YouTube videos but do support uploaded vi
     <td>No</td>
     <td>0-5</td>
     <td>MPEG-2, WMV, MOV, FLV, AVI, or H.264 MPEG-4
-720 - 1080px wide (4:3 or 16:9); 1200 kbps or higher; SFTP files larger than 150 MB</td>
+720 - 1080 px wide (4:3 or 16:9); 1200 kbps or higher; SFTP files larger than 150 MB</td>
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
@@ -2755,7 +2755,7 @@ There is no universal content rating system (aka parental control rating, aka mi
     <td>Child Directed</td>
     <td>n/a</td>
     <td>Over age 0</td>
-    <td>Early Childhood (age 3-6)</td>
+    <td>Early Childhood (age 3 — 6)</td>
     <!--<td>Ages 0-4</td>-->
   </tr>
   <tr>
@@ -5845,7 +5845,7 @@ Small in-app icon. Must be in PNG format. As everything inside the `<description
     <td>In-App Items  / Images / Small icon</td>
     <td>Yes</td>
     <td>Yes</td>
-    <td>114 x 114px PNG</td>
+    <td>114x114 px PNG</td>
   </tr>
   <tr>
     <td>GALAXY Apps</td>
@@ -5853,7 +5853,7 @@ Small in-app icon. Must be in PNG format. As everything inside the `<description
     <td>In App Purchase / Item Image</td>
     <td>No</td>
     <td>No</td>
-    <td>135*135 px JPG/GIF (under 500KB)</td>
+    <td>135x135 px JPG/GIF (under 500KB)</td>
   </tr>
   <tr>
     <td>SlideME</td>
@@ -5925,7 +5925,7 @@ Large in-app icon. Must be in PNG format. As everything inside the `<description
     <td>In-App Items  / Images / Large icon</td>
     <td>Yes</td>
     <td>Yes</td>
-    <td>512 x 512px PNG</td>
+    <td>512x512 px PNG</td>
   </tr>
   <tr>
     <td>GALAXY Apps</td>
