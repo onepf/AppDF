@@ -6471,9 +6471,9 @@ A trial period of the subscription, in days.
   </tr>
   <tr>
     <th>store-specific requirements that has direct mapping in AppDF</th>
-    <td>short-description,<br>large promo,<br>privacy-policy,<br>availability/countries,<br>consent,<br>content-rating,<br>content-descriptors,<br>included-activities</td>
-    <td>categorization/subcategory,<br>description/texts/short-description,<br>description/texts/features,<br>description/texts/recent-changes,<br>description/images/screenshots/screenshot (3+ vs 2+),<br>content-description/content-rating,<br>content-description/content-descriptors,<br>content-description/included-activities, availability/countries,<br>customer-support/phone,<br>customer-support/website</td>
-    <td>categorization/subcategory,<br>description/texts/short-description</td>
+    <td>short-description<br>large promo,<br>privacy-policy<br>availability/countries<br>consent<br>content-rating<br>content-descriptors<br>included-activities</td>
+    <td>categorization/subcategory<br>description/texts/short-description<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities, availability/countries<br>customer-support/phone<br>customer-support/website</td>
+    <td>categorization/subcategory<br>description/texts/short-description</td>
     <td>categorization/subcategory</td>
   </tr>
   <tr>
