@@ -4492,7 +4492,7 @@ Example 2
   </tr>
   <tr>
     <td>only-listed</td>
-    <td>yes, no</td>
+    <td>yes | no</td>
     <td>Yes</td>
     <td>If value is "yes" then only &lt;include&gt; subtags could be included, if "no" then only &lt;exclude&gt; subtags could be included.</td>
   </tr>
@@ -5140,14 +5140,14 @@ Example
     <td>free-app-of-the-day-eligibility</td>
     <td>No</td>
     <td>Availability & Pricing / Free App of the Day (FAD) eligibility</td>
-    <td>yes, no</td>
+    <td>yes | no</td>
     <td>If your app is being considered, we will contact you with more detail about the program and what to expect as your app goes through the approval process.</td>
   </tr>
   <tr>
     <td>apply-amazon-drm</td>
     <td>Yes</td>
     <td>Binary File(s) / Apply Amazon DRM?</td>
-    <td>yes, no</td>
+    <td>yes | no</td>
     <td>Protect your application from unauthorized use. Without DRM, your app can be used without restrictions by any user.</td>
   </tr>
   <tr>
@@ -5161,28 +5161,28 @@ Example
     <td>kindle-support/kindle-fire-first-generation</td>
     <td>Yes</td>
     <td>Binary File(s) / Device Support</td>
-    <td>yes, no</td>
+    <td>yes | no</td>
     <td>Kindle Fire (1st Generation) support</td>
   </tr>
   <tr>
     <td>kindle-support/kindle-fire</td>
     <td>Yes</td>
     <td>Binary File(s) / Device Support</td>
-    <td>yes, no</td>
+    <td>yes | no</td>
     <td>Kindle Fire support</td>
   </tr>
   <tr>
     <td>kindle-support/kindle-fire-hd</td>
     <td>Yes</td>
     <td>Binary File(s) / Device Support</td>
-    <td>yes, no</td>
+    <td>yes | no</td>
     <td>Kindle Fire HD support</td>
   </tr>
   <tr>
     <td>kindle-support/kindle-fire-hd-8-9</td>
     <td>Yes</td>
     <td>Binary File(s) / Device Support</td>
-    <td>yes, no</td>
+    <td>yes | no</td>
     <td>Kindle Fire HD 8.9 support</td>
   </tr>
 </table>
