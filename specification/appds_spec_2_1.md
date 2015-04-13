@@ -5845,7 +5845,7 @@ Small in-app icon. Must be in PNG format. As everything inside the `<description
     <td>In-App Items  / Images / Small icon</td>
     <td>Yes</td>
     <td>Yes</td>
-    <td>114x114 px PNG</td>
+    <td>114x114 px, PNG</td>
   </tr>
   <tr>
     <td>GALAXY Apps</td>
@@ -5853,7 +5853,7 @@ Small in-app icon. Must be in PNG format. As everything inside the `<description
     <td>In App Purchase / Item Image</td>
     <td>No</td>
     <td>No</td>
-    <td>135x135 px JPG/GIF (under 500 KB)</td>
+    <td>135x135 px, JPG/GIF (under 500 KB)</td>
   </tr>
   <tr>
     <td>SlideME</td>
