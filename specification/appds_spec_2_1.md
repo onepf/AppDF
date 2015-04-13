@@ -1860,13 +1860,13 @@ High resolution application icon. Must be in PNG format. Different stores requir
     <td>width</td>
     <td>A number</td>
     <td>Yes</td>
-    <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512.</td>
+    <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512, PNG.</td>
   </tr>
   <tr>
     <td>height</td>
     <td>A number</td>
     <td>Yes</td>
-    <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512.</td>
+    <td>The store selects the app icon in the most appropriate size. The first icon must be 512x512, PNG.</td>
   </tr>
 </table>
 
@@ -5925,7 +5925,7 @@ Large in-app icon. Must be in PNG format. As everything inside the `<description
     <td>In-App Items  / Images / Large icon</td>
     <td>Yes</td>
     <td>Yes</td>
-    <td>512x512 px PNG</td>
+    <td>512x512 px, PNG</td>
   </tr>
   <tr>
     <td>GALAXY Apps</td>
