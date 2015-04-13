@@ -1896,7 +1896,7 @@ High resolution application icon. Must be in PNG format. Different stores requir
     <td>Yes</td>
     <td>Yes</td>
     <td>512x512</td>
-    <td>32-bit PNG (with alpha), less than 1024KB</td>
+    <td>32-bit PNG (with alpha), less than 1 MB</td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
@@ -1923,7 +1923,7 @@ High resolution application icon. Must be in PNG format. Different stores requir
     <td>Yes</td>
     <td>No</td>
     <td>512x512</td>
-    <td>PNG, less than 1024KB</td>
+    <td>PNG, less than 1 MB</td>
   </tr>
   <tr>
     <td>SlideME</td>
@@ -5853,7 +5853,7 @@ Small in-app icon. Must be in PNG format. As everything inside the `<description
     <td>In App Purchase / Item Image</td>
     <td>No</td>
     <td>No</td>
-    <td>135x135 px JPG/GIF (under 500KB)</td>
+    <td>135x135 px JPG/GIF (under 500 KB)</td>
   </tr>
   <tr>
     <td>SlideME</td>
