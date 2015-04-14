@@ -2834,7 +2834,9 @@ Here you can find more detailed information about content rating definitions use
 
 ### <a name="content-description-rating-certificates"/>content-description/rating-certificates
 Optional.  
-No attributes.
+No attributes.  
+
+Parent tag for a set of rating certificates for the application.
 
 #### <a name="content-description-rating-certificates-rating-certificate"/>content-description/rating-certificates/rating-certificate
 
