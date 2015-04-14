@@ -6479,7 +6479,7 @@ A trial period of the subscription, in days.
   <tr>
   </tr>
    <tr>
-    <th>store-specific obligatory requirements that have no direct mapping in AppDF<</th>
+    <th>store-specific obligatory requirements that have no direct mapping in AppDF</th>
     <td></td>
     <td>Apply Amazon DRM? </td>
     <td></td>
