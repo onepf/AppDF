@@ -5224,7 +5224,7 @@ Example
     <td>required-third-party-libraries</td>
     <td>Yes</td>
     <td>yes | no</td>
-    <td>Select Yes if the application requires third-party libraries (e.g. non-preloaded libraries).</td>
+    <td>Select Yes if the application requires third-party libraries (e.g. non-preloaded libraries).<br>Default value is "no".</td>
   </tr>
   </tr>
     <tr>
@@ -5257,7 +5257,7 @@ Example
 <br>Themes/Wallpapers/ <b><i>Fantasy | Holidays | Nature | Sports | Other</i></b>
 <br>Tools & Utilities/Security/ <b><i>Ad Scanning | Antivirus | Other</i></b>
 <br>Travel & Locality/Navigation/ <b><i>GPS | Maps | Other</i></b></td>
-    <td></td>
+    <td>Default value is "Other".</td>
   </tr>
   <tr>
     <td>default-language</td>
@@ -5705,7 +5705,7 @@ Yoruba |
 Yoruba (Nigeria) |
 Zulu |
 Zulu (South Africa)</td>
-    <td></td>
+    <td>Default value is "English (United States)".</td>
   </tr>
 </table>
 
