@@ -5699,7 +5699,7 @@ Welsh (United Kingdom) |
 Yoruba |
 Yoruba (Nigeria) |
 Zulu |
-Zulu (South Africa) |</td>
+Zulu (South Africa)</td>
     <td></td>
   </tr>
 </table>
