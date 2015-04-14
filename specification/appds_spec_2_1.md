@@ -381,19 +381,6 @@ The only naming convention for the files inside AppDF package is that the descri
       </kindle-support>
       <binary-alias>Version 1</binary-alias>
     </amazon>
-    <samsung>
-      <!--Options: tv, phone, tablet, or any combination in comma separated string-->
-      <form-factor>phone,tablet</form-factor>
-      <!--Optional tag, set to yes, if your application uses Samsung Zirconia DRM protection-->
-      <contains-zirconia-protection>yes</contains-zirconia-protection>
-      <!--Optional tag, set to yes, if your application requires Samsung S-Pen-->
-      <s-pen>yes</s-pen> 
-      <!-- Samsung requires each app to have 2-5 tags -->
-      <tags>
-        <tag>Education / Video</tag>
-        <tag>Music / Album</tag>
-      </tags>
-    </samsung>
     <slideme>
       <license-type>Apache License 2.0</license-type>
       <required-third-party-libraries>no</required-third-party-libraries>
@@ -5028,15 +5015,6 @@ Example
     </kindle-support>
     <binary-alias>Version 1</binary-alias>
   </amazon>
-  <samsung>
-    <form-factor>phone,tablet</form-factor>
-    <contains-zirconia-protection>yes</contains-zirconia-protection>
-    <s-pen>yes</s-pen> 
-    <tags>
-      <tag>Education / Video</tag>
-      <tag>Music / Album</tag>
-    </tags>
-  </samsung>
   <slideme>
     <license-type>Apache License 2.0</license-type>
     <required-third-party-libraries>no</required-third-party-libraries>
@@ -6966,7 +6944,7 @@ A trial period of the subscription, in days.
     <td>short-description (can be taken from AppDF full description)<br>large promo<br>privacy-policy<br>availability/countries<br>consent<br>content-rating<br>content-descriptors<br>included-activities</td>
     <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website</td>
     <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)</td>
-    <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)<br>requirements/supported-languages</td>
+    <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)<br>requirements/supported-languages<br>requirements/supported-resolutions<br>requirements/features</td>
     <td>description/texts/keywords<br>price/trial-version<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising<br>requirements/features/root<br>requirements/features/root</td>
   </tr>
   <tr>
