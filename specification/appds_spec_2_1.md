@@ -457,7 +457,6 @@ List of Tags:
 		* [website](#customer-support-website)
 	* [store-specific](#store-specific)
 		* [amazon](#store-specific-amazon)
-		* [samsung](#store-specific-samsung)
 		* [slideme](#store-specific-slideme)
 	* [in-app-purchases](#in-app-purchases)   
 		* [item | subscription](#in-app-item--sub)
