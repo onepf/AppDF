@@ -395,8 +395,10 @@ The only naming convention for the files inside AppDF package is that the descri
       </tags>
     </samsung>
     <slideme>
-      <!--Optional tag, if missed the license is considered as proprietary-->
-      <license-type>apache2</license-type>
+      <license-type>Apache License 2.0</license-type>
+      <required-third-party-libraries>no</required-third-party-libraries>
+      <subsubcategory>Other</subsubcategory>
+      <default-language>English (United States)</default-language>
     </slideme>
   </store-specific>
 
@@ -5036,8 +5038,11 @@ Example
     </tags>
   </samsung>
   <slideme>
-    <license-type>apache2</license-type>
-  </slideme>
+    <license-type>Apache License 2.0</license-type>
+    <required-third-party-libraries>no</required-third-party-libraries>
+    <subsubcategory>Other</subsubcategory>
+    <default-language>English (United States)</default-language>
+</slideme>
 </store-specific>
 ```
 
