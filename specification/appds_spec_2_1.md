@@ -5196,6 +5196,9 @@ Example
 ```xml
 <slideme>
   <license-type>Apache License 2.0</license-type>
+  <required-third-party-libraries>no</required-third-party-libraries>
+  <subsubcategory>no</subsubcategory>
+  <default-language>English (United States)</default-language>
 </slideme>
 ```
 
@@ -5203,16 +5206,501 @@ Example
   <tr>
     <th>Tag</th>
     <th>Required</th>
-    <th>Amazon name</th>
     <th>Possible values</th>
     <th>Comments</th>
   </tr>
   <tr>
     <td>license-type</td>
-    <td>No</td>
-    <td>License / License</td>
+    <td>Yes</td>
     <td>All Rights Reserved | Apache License 2.0 | Commercial Royalty-Free | Common Development and Distribution License (CDDL) | Eclipse Public License (EPL) | FREE Licensed Closed Source - Public Domain | GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3 | GNU General Public License (GPL) v2 | GNU General Public License (GPL) v3 | GNU Library General Public License (LGPL) | GNU Library General Public License (LGPL)  v3 | Mozilla Public License 1.1 (MPL) | New BSD License | Other / Proprietary | The MIT License</td>
     <td>Default value is "All Rights Reserved"</td>
+  </tr>
+    <tr>
+    <td>required-third-party-libraries</td>
+    <td>Yes</td>
+    <td>yes | no</td>
+    <td>Select Yes if the application requires third-party libraries (e.g. non-preloaded libraries).</td>
+  </tr>
+  </tr>
+    <tr>
+    <td>subsubcategory</td>
+    <td>Depends on a subcategory</td>
+    <td>Finance/Corporate/ <b><i>Budgeting | Investments | Tax | Other</i></b>
+<br>Finance/Personal/ <b><i>Budgeting | Investments | Tax | Other
+<br>Fun & Games/Action/ <b><i>Hack-And-Slash | Platformer | Rail Shooter | Shooter | Third-Person Shooter | Thriller | Other</i></b>
+<br>Fun & Games/Adventure/ <b><i>Roleplaying | Third Person Shooter | Other</i></b>
+<br>Fun & Games/Arcade/ <b><i>Shooter | Fighting | Flight | Hack-And-Slash | Racing | Rail Shooter | Third Person Shooter | Other</i></b>
+<br>Fun & Games/Cards & Casino/ <b><i>Betting | Blackjack | Bridge | Euchre | Freecell | Gin | Hearts | Poker | Rummy | Slots | Solitaire | Spades | Other</i></b>
+<br>Fun & Games/Casual/ <b><i>Physics-Based | Social Gaming | Other</i></b>
+<br>Fun & Games/Educational/ <b><i>Arithmetic | Geography | Grammar | Kids | Science | Other</i></b>
+<br>Fun & Games/Multiplayer/ <b><i>Online Roleplaying | Social Gaming | Other</i></b>
+<br>Fun & Games/Music/ <b><i>Karaoke | Party | Rhythm | Simulation | Other</i></b>
+<br>Fun & Games/Puzzle/ <b><i>Hidden Object | Jigsaw | Physics | Pictures | Sokoban | Sudoku | Trivia | Words | Other</i></b>
+<br>Fun & Games/Racing/ <b><i>Arcade Racing | Betting | Dog | Horse | Simulation Racing | Other</i></b>
+<br>Fun & Games/Role Playing/ <b><i>Action Rpg | Mmorpg | Social Rpg | Other</i></b>
+<br>Fun & Games/Sports/ <b><i>Basketball | Cricket | Football | Soccer | Swimming | Other</i></b>
+<br>Fun & Games/Strategy/ <b><i>Moba | Realtime Strategy | Simulation | Tower Defense | Other</i></b>
+<br>Home & Hobby/Cooking/ <b><i>African | Arabic | Asian | Chinese | French | Fusion | Greek | International | Italian | Japanese | Mediterranean | Mexican | Middle East | Oriental | Thai | Vietnamese | Other</i></b>
+<br>Home & Hobby/Shopping/ <b><i>Beauty | Decoration | Fashion | Gadgets | Knitting | Sports | Other</i></b>
+<br>Music/Instruments/ <b><i>Drums | Piano | Other</i></b>
+<br>News & Weather/News/ vPolitics | Sports | Technology | Other</i></b>
+<br>News & Weather/Weather/ <b><i>Local Forecast | Widget | Other</i></b>
+<br>Publications/Comics/ <b><i>Comic Book | Comic Strip | Comix | Doujinshi | Graphic Novel | Manga | Motion Comic | Other</i></b>
+<br>Publications/E-books/ <b><i>Biography | Business | Children | Cooking | Fantasy | Fiction | Health | History | Humor | Lifestyle | Mystery | Non-Fiction | Parenting | Politics | Reference | Religion | Romance | Science | Sports | Technology | Travel | Other</i></b>
+<br>Publications/Magazines/ <b><i>Beauty | Cooking | Fashion | Gadgets | Knitting | Photography | Sports | Other</i></b>
+<br>Themes/Live Wallpapers/ <b><i>Animation | Fantasy | Holidays | Nature | Sports | Other</i></b>
+<br>Themes/Wallpapers/ <b><i>Fantasy | Holidays | Nature | Sports | Other</i></b>
+<br>Tools & Utilities/Security/ <b><i>Ad Scanning | Antivirus | Other</i></b>
+<br>Travel & Locality/Navigation/ <b><i>GPS | Maps | Other</i></b></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>default-language</td>
+    <td>Yes</td>
+    <td>Afrikaans |
+Afrikaans (Namibia) |
+Afrikaans (South Africa) |
+Akan |
+Akan (Ghana) |
+Albanian |
+Albanian (Albania) |
+Amharic |
+Amharic (Ethiopia) |
+Arabic |
+Arabic (Algeria) |
+Arabic (Bahrain) |
+Arabic (Egypt) |
+Arabic (Iraq) |
+Arabic (Israel) |
+Arabic (Jordan) | 
+Arabic (Kuwait) |
+Arabic (Lebanon) |
+Arabic (Libya) |
+Arabic (Morocco) |
+Arabic (Oman) |
+Arabic (Qatar) |
+Arabic (Saudi Arabia) |
+Arabic (Sudan) |
+Arabic (Syria) |
+Arabic (Tunisia) |
+Arabic (United Arab Emirates) |
+Arabic (Yemen) |
+Armenian |
+Armenian (Armenia) |
+Assamese |
+Assamese (India) |
+Asu |
+Asu (Tanzania) |
+Azerbaijani |
+Azerbaijani (Cyrillic) |
+Azerbaijani (Cyrillic, Azerbaijan) |
+Azerbaijani (Latin) |
+Azerbaijani (Latin, Azerbaijan) |
+Bambara |
+Bambara (Mali) |
+Basque |
+Basque (Spain) |
+Belarusian |
+Belarusian (Belarus) |
+Bemba |
+Bemba (Zambia) |
+Bena |
+Bena (Tanzania) |
+Bengali |
+Bengali (Bangladesh) |
+Bengali (India) |
+Bosnian |
+Bosnian (Bosnia and Herzegovina) |
+Bulgarian |
+Bulgarian (Bulgaria) |
+Burmese |
+Burmese (Myanmar [Burma]) |
+Catalan |
+Catalan (Spain) |
+Central Morocco Tamazight |
+Central Morocco Tamazight (Latin) |
+Central Morocco Tamazight (Latin, Morocco) |
+Cherokee |
+Cherokee (United States) |
+Chiga |
+Chiga (Uganda) |
+Chinese |
+Chinese (China) |
+Chinese (Hong Kong SAR China) |
+Chinese (Simplified Han) |
+Chinese (Simplified Han, China) |
+Chinese (Simplified Han, Hong Kong SAR China) |
+Chinese (Simplified Han, Macau SAR China) |
+Chinese (Simplified Han, Singapore) |
+Chinese (Taiwan) |
+Chinese (Traditional Han) |
+Chinese (Traditional Han, Hong Kong SAR China) |
+Chinese (Traditional Han, Macau SAR China) |
+Chinese (Traditional Han, Taiwan) |
+Cornish |
+Cornish (United Kingdom) |
+Croatian |
+Croatian (Croatia) |
+Czech |
+Czech (Czech Republic) |
+Danish |
+Danish (Denmark) |
+Dutch |
+Dutch (Belgium) |
+Dutch (Netherlands) |
+Embu |
+Embu (Kenya) |
+ selected=English |
+English (American Samoa) |
+English (Australia) |
+English (Belgium) |
+English (Belize) |
+English (Botswana) |
+English (Canada) |
+English (Guam) |
+English (Hong Kong SAR China) |
+English (India) |
+English (Ireland) |
+English (Jamaica) |
+English (Malta) |
+English (Marshall Islands) |
+English (Mauritius) |
+English (Namibia) |
+English (New Zealand) |
+English (Northern Mariana Islands) |
+English (Pakistan) |
+English (Philippines) |
+English (Singapore) |
+English (South Africa) |
+English (Trinidad and Tobago) |
+English (U.S. Minor Outlying Islands) |
+English (U.S. Virgin Islands) |
+English (United Kingdom) |
+English (United States) |
+English (United States, Computer) |
+English (Zimbabwe) |
+Esperanto |
+Estonian |
+Estonian (Estonia) |
+Ewe |
+Ewe (Ghana) |
+Ewe (Togo) |
+Faroese |
+Faroese (Faroe Islands) |
+Filipino |
+Filipino (Philippines) |
+Finnish |
+Finnish (Finland) |
+French |
+French (Belgium) |
+French (Benin) |
+French (Burkina Faso) |
+French (Burundi) |
+French (Cameroon) |
+French (Canada) |
+French (Central African Republic) |
+French (Chad) |
+French (Comoros) |
+French (Congo - Brazzaville) |
+French (Congo - Kinshasa) |
+French (Côte d’Ivoire) |
+French (Djibouti) |
+French (Equatorial Guinea) |
+French (France) |
+French (Gabon) |
+French (Guadeloupe) |
+French (Guinea) |
+French (Luxembourg) |
+French (Madagascar) |
+French (Mali) |
+French (Martinique) |
+French (Monaco) |
+French (Niger) |
+French (Réunion) |
+French (Rwanda) |
+French (Saint Barthélemy) |
+French (Saint Martin) |
+French (Senegal) |
+French (Switzerland) |
+French (Togo) |
+Fulah |
+Fulah (Senegal) |
+Galician |
+Galician (Spain) |
+Ganda |
+Ganda (Uganda) |
+Georgian |
+Georgian (Georgia) |
+German |
+German (Austria) |
+German (Belgium) |
+German (Germany) |
+German (Liechtenstein) |
+German (Luxembourg) |
+German (Switzerland) |
+Greek |
+Greek (Cyprus) |
+Greek (Greece) |
+Gujarati |
+Gujarati (India) |
+Gusii |
+Gusii (Kenya) |
+Hausa |
+Hausa (Latin) |
+Hausa (Latin, Ghana) |
+Hausa (Latin, Niger) |
+Hausa (Latin, Nigeria) |
+Hawaiian |
+Hawaiian (United States) |
+Hebrew |
+Hebrew (Israel) |
+Hebrew (legacy iw locale) |
+Hindi |
+Hindi (India) |
+Hungarian |
+Hungarian (Hungary) |
+Icelandic |
+Icelandic (Iceland) |
+Igbo |
+Igbo (Nigeria) |
+Indonesian |
+Indonesian (Indonesia) |
+Indonesian (legacy in code) |
+Irish |
+Irish (Ireland) |
+Italian |
+Italian (Italy) |
+Italian (Switzerland) |
+Japanese |
+Japanese (Japan) |
+Kabuverdianu |
+Kabuverdianu (Cape Verde) |
+Kabyle |
+Kabyle (Algeria) |
+Kalaallisut |
+Kalaallisut (Greenland) |
+Kalenjin |
+Kalenjin (Kenya) |
+Kamba |
+Kamba (Kenya) |
+Kannada |
+Kannada (India) |
+Kazakh |
+Kazakh (Cyrillic) |
+Kazakh (Cyrillic, Kazakhstan) |
+Khmer |
+Khmer (Cambodia) |
+Kikuyu |
+Kikuyu (Kenya) |
+Kinyarwanda |
+Kinyarwanda (Rwanda) |
+Konkani |
+Konkani (India) |
+Korean |
+Korean (South Korea) |
+Koyra Chiini |
+Koyra Chiini (Mali) |
+Koyraboro Senni |
+Koyraboro Senni (Mali) |
+Langi |
+Langi (Tanzania) |
+Latvian |
+Latvian (Latvia) |
+Lithuanian |
+Lithuanian (Lithuania) |
+Luo |
+Luo (Kenya) |
+Luyia |
+Luyia (Kenya) |
+Macedonian |
+Macedonian (Macedonia) |
+Machame |
+Machame (Tanzania) |
+Makonde |
+Makonde (Tanzania) |
+Malagasy |
+Malagasy (Madagascar) |
+Malay |
+Malay (Brunei) |
+Malay (Malaysia) |
+Malayalam |
+Malayalam (India) |
+Maltese |
+Maltese (Malta) |
+Manx |
+Manx (United Kingdom) |
+Marathi |
+Marathi (India) |
+Masai |
+Masai (Kenya) |
+Masai (Tanzania) |
+Meru |
+Meru (Kenya) |
+Morisyen |
+Morisyen (Mauritius) |
+Nama |
+Nama (Namibia) |
+Nepali |
+Nepali (India) |
+Nepali (Nepal) |
+North Ndebele |
+North Ndebele (Zimbabwe) |
+Norwegian |
+Norwegian Bokmål |
+Norwegian Bokmål (Norway) |
+Norwegian Nynorsk |
+Norwegian Nynorsk (Norway) |
+Nyankole |
+Nyankole (Uganda) |
+Oriya |
+Oriya (India) |
+Oromo |
+Oromo (Ethiopia) |
+Oromo (Kenya) |
+Pashto |
+Pashto (Afghanistan) |
+Persian |
+Persian (Afghanistan) |
+Persian (Iran) |
+Polish |
+Polish (Poland) |
+Portuguese |
+Portuguese (Brazil) |
+Portuguese (Guinea-Bissau) |
+Portuguese (Mozambique) |
+Portuguese (Portugal) |
+Punjabi |
+Punjabi (Arabic) |
+Punjabi (Arabic, Pakistan) |
+Punjabi (Gurmukhi) |
+Punjabi (Gurmukhi, India) |
+Romanian |
+Romanian (Moldova) |
+Romanian (Romania) |
+Romansh |
+Romansh (Switzerland) |
+Rombo |
+Rombo (Tanzania) |
+Russian |
+Russian (Moldova) |
+Russian (Russia) |
+Russian (Ukraine) |
+Rwa |
+Rwa (Tanzania) |
+Samburu |
+Samburu (Kenya) |
+Sango |
+Sango (Central African Republic) |
+Sena |
+Sena (Mozambique) |
+Serbian |
+Serbian (Cyrillic) |
+Serbian (Cyrillic, Bosnia and Herzegovina) |
+Serbian (Cyrillic, Montenegro) |
+Serbian (Cyrillic, Serbia) |
+Serbian (Latin) |
+Serbian (Latin, Bosnia and Herzegovina) |
+Serbian (Latin, Montenegro) |
+Serbian (Latin, Serbia) |
+Shona |
+Shona (Zimbabwe) |
+Sichuan Yi |
+Sichuan Yi (China) |
+Sinhala |
+Sinhala (Sri Lanka) |
+Slovak |
+Slovak (Slovakia) |
+Slovenian |
+Slovenian (Slovenia) |
+Soga |
+Soga (Uganda) |
+Somali |
+Somali (Djibouti) |
+Somali (Ethiopia) |
+Somali (Kenya) |
+Somali (Somalia) |
+Spanish |
+Spanish (Argentina) |
+Spanish (Bolivia) |
+Spanish (Chile) |
+Spanish (Colombia) |
+Spanish (Costa Rica) |
+Spanish (Dominican Republic) |
+Spanish (Ecuador) |
+Spanish (El Salvador) |
+Spanish (Equatorial Guinea) |
+Spanish (Guatemala) |
+Spanish (Honduras) |
+Spanish (Latin America) |
+Spanish (Mexico) |
+Spanish (Nicaragua) |
+Spanish (Panama) |
+Spanish (Paraguay) |
+Spanish (Peru) |
+Spanish (Puerto Rico) |
+Spanish (Spain) |
+Spanish (United States) |
+Spanish (Uruguay) |
+Spanish (Venezuela) |
+Swahili |
+Swahili (Kenya) |
+Swahili (Tanzania) |
+Swedish |
+Swedish (Finland) |
+Swedish (Sweden) |
+Swiss German |
+Swiss German (Switzerland) |
+Tachelhit |
+Tachelhit (Latin) |
+Tachelhit (Latin, Morocco) |
+Tachelhit (Tifinagh) |
+Tachelhit (Tifinagh, Morocco) |
+Tagalog |
+Taita |
+Taita (Kenya) |
+Tamil |
+Tamil (India) |
+Tamil (Sri Lanka) |
+Telugu |
+Telugu (India) |
+Teso |
+Teso (Kenya) |
+Teso (Uganda) |
+Thai |
+Thai (Thailand) |
+Tibetan |
+Tibetan (China) |
+Tibetan (India) |
+Tigrinya |
+Tigrinya (Eritrea) |
+Tigrinya (Ethiopia) |
+Tonga |
+Tonga (Tonga) |
+Turkish |
+Turkish (Turkey) |
+Ukrainian |
+Ukrainian (Ukraine) |
+Urdu |
+Urdu (India) |
+Urdu (Pakistan) |
+Uzbek |
+Uzbek (Arabic) |
+Uzbek (Arabic, Afghanistan) |
+Uzbek (Cyrillic) |
+Uzbek (Cyrillic, Uzbekistan) |
+Uzbek (Latin) |
+Uzbek (Latin, Uzbekistan) |
+Vietnamese |
+Vietnamese (Vietnam) |
+Vunjo |
+Vunjo (Tanzania) |
+Welsh |
+Welsh (United Kingdom) |
+Yoruba |
+Yoruba (Nigeria) |
+Zulu |
+Zulu (South Africa) |</td>
+    <td></td>
   </tr>
 </table>
 
