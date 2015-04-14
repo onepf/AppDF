@@ -5197,7 +5197,7 @@ Example
 <slideme>
   <license-type>Apache License 2.0</license-type>
   <required-third-party-libraries>no</required-third-party-libraries>
-  <subsubcategory>no</subsubcategory>
+  <subsubcategory>Other</subsubcategory>
   <default-language>English (United States)</default-language>
 </slideme>
 ```
@@ -5768,7 +5768,10 @@ Example
                 </amazon>
                 <!--Optional:-->
                 <slideme>
-                    <test-mode>success</test-mode>
+                    <license-type>Apache License 2.0</license-type>
+  		    <required-third-party-libraries>no</required-third-party-libraries>
+                    <subsubcategory>Other</subsubcategory>
+                    <default-language>English (United States)</default-language>
                 </slideme>
             </store-specific>
         </description-localization>
