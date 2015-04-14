@@ -6488,7 +6488,7 @@ A trial period of the subscription, in days.
     <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website</td>
     <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)</td>
     <td>categorization/subcategory<br>requirements/supported-languages</td>
-    <td>Default language<br>Trial version</td>
+    <td>price/trial-version<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising</td>
   </tr>
   <tr>
   </tr>
@@ -6498,7 +6498,7 @@ A trial period of the subscription, in days.
     <td>Apply Amazon DRM? </td>
     <td></td>
     <td></td>
-    <td></td>
+    <td>Default language<br>Licence ( All Rights Reserved | Apache License 2.0 | Commercial Royalty-Free | Common Development and Distribution License (CDDL) | Eclipse Public License (EPL) | FREE Licensed Closed Source - Public Domain | GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3 | GNU General Public License (GPL) v2 | GNU General Public License (GPL) v3 | GNU Library General Public License (LGPL) | GNU Library General Public License (LGPL) v3 | Mozilla Public License 1.1 (MPL) | New BSD License | Other / Proprietary | The MIT License)<br></td>
   </tr>
   <tr>
   </tr>
