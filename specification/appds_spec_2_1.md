@@ -5211,27 +5211,10 @@ Example
     <td>license-type</td>
     <td>No</td>
     <td>License / License</td>
-    <td>One from the list below</td>
+    <td>All Rights Reserved | Apache License 2.0 | Commercial Royalty-Free | Common Development and Distribution License (CDDL) | Eclipse Public License (EPL) | FREE Licensed Closed Source - Public Domain | GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3 | GNU General Public License (GPL) v2 | GNU General Public License (GPL) v3 | GNU Library General Public License (LGPL) | GNU Library General Public License (LGPL)  v3 | Mozilla Public License 1.1 (MPL) | New BSD License | Other / Proprietary | The MIT License</td>
     <td>Default value is "All Rights Reserved"</td>
   </tr>
 </table>
-
-Possible `<license-type>` values:
-* All Rights Reserved
-* Apache License 2.0
-* Commercial Royalty-Free
-* Common Development and Distribution License (CDDL)
-* Eclipse Public License (EPL)
-* FREE Licensed Closed Source - Public Domain
-* GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3
-* GNU General Public License (GPL) v2
-* GNU General Public License (GPL) v3
-* GNU Library General Public License (LGPL)
-* GNU Library General Public License (LGPL)  v3
-* Mozilla Public License 1.1 (MPL)
-* New BSD License
-* Other / Proprietary
-* The MIT License
 
 ### <a name="in-app-purchases"/>in-app-purchases
 
