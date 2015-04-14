@@ -350,7 +350,7 @@ The only naming convention for the files inside AppDF package is that the descri
     <!--http://slideme.org/developers/dda-->
     <slideme-agreement>yes</slideme-agreement>
     <!--If your app uses third party copyrighted images, sounds, databases or other information--> 
-    <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+    <free-from-third-party-copyrighted-content>yes</free-from-third-party-copyrighted-content>
     <!--You confirm that you have all the rights for your application to import to and export from all the supported countries--> 
     <import-export>yes</import-export>
   </consent>
@@ -1142,10 +1142,10 @@ Comma separated the list of keywords. As everything inside the `<description>` t
     <td>SlideME</td>
     <td>Yes</td>
     <td>Keywords</td>
-    <td>No</td>
+    <td>Yes</td>
     <td>No</td>
     <td>Max 6 keywords</td>
-    <td></td>
+    <td>2 — 6 keywords required</td>
   </tr>
   <!--
   <tr>
@@ -4647,7 +4647,7 @@ Example
   <google-android-content-guidelines>yes</google-android-content-guidelines>
   <slideme-agreement>yes</slideme-agreement>
   <us-export-laws>yes</us-export-laws>
-  <free-from-third-party-copytighted-content>yes</free-from-third-party-copytighted-content>
+  <free-from-third-party-copyrighted-content>yes</free-from-third-party-copyrighted-content>
   <import-export>yes</import-export>
 </consent>
 ```
@@ -4674,7 +4674,7 @@ Example
     <td>http://slideme.org/developers/dda</td>
   </tr>
   <tr>
-    <td>&lt;free-from-third-party-copytighted-content&gt;</td>
+    <td>&lt;free-from-third-party-copyrighted-content&gt;</td>
     <td>You confirm that your application is free from third-party copyrighted picture, sounds, database or other types of information</td>
     <td>Used by SK T-Store, more: http://dev.tstore.co.kr/devpoc/iprCenter/iprCenterInfo.omp</td>
   </tr>
@@ -4746,7 +4746,7 @@ Example
     <td>SK T-Store</td>
     <td>Yes</td>
     <td>Basic Information / Intellectual property rights</td>
-    <td>&lt;free-from-third-party-copytighted-content&gt;</td>
+    <td>&lt;free-from-third-party-copyrighted-content&gt;</td>
   </tr>
   -->
 </table>
@@ -6487,8 +6487,8 @@ A trial period of the subscription, in days.
     <td>short-description (can be taken from AppDF full description)<br>large promo<br>privacy-policy<br>availability/countries<br>consent<br>content-rating<br>content-descriptors<br>included-activities</td>
     <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website</td>
     <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)</td>
-    <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)</td>
-    <td>price/trial-version<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising</td>
+    <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)<br>requirements/supported-languages</td>
+    <td>description/texts/keywords<br>price/trial-version<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising<br>requirements/features/root<br>requirements/features/root</td>
   </tr>
   <tr>
   </tr>
@@ -6498,7 +6498,7 @@ A trial period of the subscription, in days.
     <td>Apply Amazon DRM? </td>
     <td></td>
     <td></td>
-    <td>Default language<br>Licence ( All Rights Reserved | Apache License 2.0 | Commercial Royalty-Free | Common Development and Distribution License (CDDL) | Eclipse Public License (EPL) | FREE Licensed Closed Source - Public Domain | GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3 | GNU General Public License (GPL) v2 | GNU General Public License (GPL) v3 | GNU Library General Public License (LGPL) | GNU Library General Public License (LGPL) v3 | Mozilla Public License 1.1 (MPL) | New BSD License | Other / Proprietary | The MIT License)<br></td>
+    <td>Default language<br>Licence ( All Rights Reserved | Apache License 2.0 | Commercial Royalty-Free | Common Development and Distribution License (CDDL) | Eclipse Public License (EPL) | FREE Licensed Closed Source - Public Domain | GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3 | GNU General Public License (GPL) v2 | GNU General Public License (GPL) v3 | GNU Library General Public License (LGPL) | GNU Library General Public License (LGPL) v3 | Mozilla Public License 1.1 (MPL) | New BSD License | Other / Proprietary | The MIT License)<br>Requires third-party libraries (yes | no)<br>subsubcategory for certain items</td>
   </tr>
   <tr>
   </tr>
