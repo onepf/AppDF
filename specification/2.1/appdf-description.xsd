@@ -379,12 +379,11 @@
     </xsd:complexType>
 
     <xsd:complexType name="typeApkFile">
-        <xsd:simpleContent>
-            <xsd:extension base="typeLocalFile">
-                <xsd:attribute name="main-exp-file" type="typeLocalFile" use="optional" />
-                <xsd:attribute name="patch-exp-file" type="typeLocalFile" use="optional" />
-            </xsd:extension>
-        </xsd:simpleContent>
+        <xsd:sequence>
+            <xsd:element name="local-file" type="typeLocalFile" />
+            <xsd:element name="main-exp-file" minOccurs="0" type="typeLocalFile" />
+            <xsd:element name="patch-exp-file" minOccurs="0" type="typeLocalFile" />
+        </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="typeRequirements">
