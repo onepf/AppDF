@@ -286,10 +286,11 @@ The only naming convention for the files inside AppDF package is that the descri
   </price>
   -->
 
-  <apk-files>
-    <apk-file patch-exp-file="patch.314159.com.yandex.shell.obb">yandexshell2.apk</apk-file>
-    <apk-file main-exp-file="main.314159.com.yandex.shell.obb">yandexshell3.apk</apk-file>
-  </apk-files>
+   <apk-file>
+        <local-file>yandexshell2.apk</local-file>
+        <patch-exp-file>patch.314159.com.yandex.shell.obb</patch-exp-file>
+        <main-exp-file>main.314159.com.yandex.shell.obb</main-exp-file>
+    </apk-file>
 
   <!--Optional tag, add it if the application has some special requirements-->
   <requirements>
@@ -3980,11 +3981,22 @@ Each application could have 1+ APK files. All APK files must have the same packa
   </tr>
 </table>
 
-Example
+Example 1
 ```xml
 <apk-files>
-  <apk-file patch-exp-file="patch.314159.com.yandex.shell.obb">yandexshell2.apk</apk-file>
-  <apk-file main-exp-file="main.314159.com.yandex.shell.obb" patch-exp-file="patch.314159.com.yandex.shell.obb">yandexshell3.apk</apk-file>
+   <apk-file>
+        <local-file>yandexshell4.apk</local-file>
+    </apk-file>
+</apk-files>
+```
+Example 2
+```xml
+<apk-files>
+   <apk-file>
+        <local-file>yandexshell2.apk</local-file>
+        <patch-exp-file>patch.314159.com.yandex.shell.obb</patch-exp-file>
+        <main-exp-file>main.314159.com.yandex.shell.obb</main-exp-file>
+    </apk-file>
 </apk-files>
 ```
 
