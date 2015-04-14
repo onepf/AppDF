@@ -6487,7 +6487,7 @@ A trial period of the subscription, in days.
     <td>short-description (can be taken from AppDF full description)<br>large promo<br>privacy-policy<br>availability/countries<br>consent<br>content-rating<br>content-descriptors<br>included-activities</td>
     <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website</td>
     <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)</td>
-    <td>categorization/subcategory<br>requirements/supported-languages</td>
+    <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)</td>
     <td>price/trial-version<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising</td>
   </tr>
   <tr>
