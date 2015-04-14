@@ -7329,7 +7329,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <th>Amazon AppStore</th>
   <th>Opera Store</th>
   <th>Yandex.Store</th>
-  <th>GALAXY Apps</th>
   <th>SlideMe</th>
 </tr>
 <tr>
@@ -7338,7 +7337,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Books &amp; Comic / Comic Strips</td>
   <td>eBooks</td>
   <td>eBooks</td>
-  <td>Education/E-Book</td>
   <td>Publications / Comics</td>
 </tr>
 <tr>
@@ -7347,7 +7345,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Books &amp; Comic / Other</td>
   <td>eBooks</td>
   <td>eBooks</td>
-  <td>Education/E-Book</td>
   <td>Publications / E-books</td>
 </tr>
 <tr>
@@ -7356,7 +7353,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Books &amp; Comic / Other</td>
   <td>eBooks</td>
   <td>eBooks</td>
-  <td>Education/E-Book</td>
   <td>Publications</td>
 </tr>
 <tr>
@@ -7365,7 +7361,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Books &amp; Comic / Books &amp; Readers</td>
   <td>eBooks</td>
   <td>eBooks</td>
-  <td>Education/E-Book</td>
   <td>Publications / E-book readers</td>
 </tr>
 <tr>
@@ -7374,7 +7369,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Books &amp; Comic / Children’s Books</td>
   <td>eBooks</td>
   <td>eBooks</td>
-  <td>Education/E-Book</td>
   <td>Publications</td>
 </tr>
 <tr>
@@ -7383,7 +7377,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Books &amp; Comic / Graphic Novels</td>
   <td>eBooks</td>
   <td>eBooks</td>
-  <td>Education/E-Book</td>
   <td>Publications</td>
 </tr>
 <tr>
@@ -7392,7 +7385,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Reference</td>
   <td>eBooks</td>
   <td>eBooks</td>
-  <td>Education/E-Book</td>
   <td>Publications</td>
 </tr>
 <tr>
@@ -7401,7 +7393,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / Other</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / City Guides</td>
 </tr>
 <tr>
@@ -7410,7 +7401,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / Other</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / Country Guides</td>
 </tr>
 <tr>
@@ -7419,7 +7409,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / Boston</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / City Guides</td>
 </tr>
 <tr>
@@ -7428,7 +7417,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / Chicago</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / City Guides</td>
 </tr>
 <tr>
@@ -7437,7 +7425,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / Dallas</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / City Guides</td>
 </tr>
 <tr>
@@ -7446,7 +7433,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / Los Angeles</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / City Guides</td>
 </tr>
 <tr>
@@ -7455,7 +7441,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / Miami</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / City Guides</td>
 </tr>
 <tr>
@@ -7464,7 +7449,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / New York</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / City Guides</td>
 </tr>
 <tr>
@@ -7473,7 +7457,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / Philadelphia</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / City Guides</td>
 </tr>
 <tr>
@@ -7482,7 +7465,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / Phoenix</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / City Guides</td>
 </tr>
 <tr>
@@ -7491,7 +7473,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / San Francisco</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / City Guides</td>
 </tr>
 <tr>
@@ -7500,7 +7481,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>City Info / Seattle</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Reference</td>
   <td>Travel &amp; Locality / City Guides</td>
 </tr>
 <tr>
@@ -7509,7 +7489,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / Weather</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Weather</td>
   <td>News &amp; Weather / Weather</td>
 </tr>
 <tr>
@@ -7518,7 +7497,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Travel / Transportation</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Travel</td>
   <td>Travel &amp; Locality / Other</td>
 </tr>
 <tr>
@@ -7527,7 +7505,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Travel / Other</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Travel</td>
   <td>Travel &amp; Locality</td>
 </tr>
 <tr>
@@ -7536,7 +7513,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Travel / Auto Rental</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Travel</td>
   <td>Travel &amp; Locality / Other</td>
 </tr>
 <tr>
@@ -7545,7 +7521,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Travel / Flight</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Travel</td>
   <td>Travel &amp; Locality / Other</td>
 </tr>
 <tr>
@@ -7554,7 +7529,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Travel / Hotel</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Travel</td>
   <td>Travel &amp; Locality / Other</td>
 </tr>
 <tr>
@@ -7563,7 +7537,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Travel / Trip Planner</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Travel</td>
   <td>Travel &amp; Locality / Other</td>
 </tr>
 <tr>
@@ -7572,7 +7545,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Navigation</td>
   <td>Travel &amp; Maps</td>
   <td>Travel &amp; Maps</td>
-  <td>Navigation</td>
   <td>Travel &amp; Locality / Navigation</td>
 </tr>
 <tr>
@@ -7581,7 +7553,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Religion</td>
 </tr>
 <tr>
@@ -7590,7 +7561,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Religion / Buddhism</td>
 </tr>
 <tr>
@@ -7599,7 +7569,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Religion / Chinese folk</td>
 </tr>
 <tr>
@@ -7608,7 +7577,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Religion / Christianity</td>
 </tr>
 <tr>
@@ -7617,7 +7585,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Religion / Hinduism</td>
 </tr>
 <tr>
@@ -7626,7 +7593,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Religion / Islam</td>
 </tr>
 <tr>
@@ -7635,7 +7601,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Religion / Other</td>
 </tr>
 <tr>
@@ -7645,7 +7610,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Lifestyle</td>
-  <td>Lifestyle</td>
 </tr>
 <tr>
 <td>Home &amp; Hobby</td>
@@ -7653,7 +7617,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Home &amp; Hobby</td>
 </tr>
 <tr>
@@ -7662,7 +7625,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Home &amp; Hobby / Other</td>
 </tr>
 <tr>
@@ -7671,7 +7633,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Advice</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Other</td>
 </tr>
 <tr>
@@ -7680,7 +7641,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Astrology</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Other</td>
 </tr>
 <tr>
@@ -7689,7 +7649,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Celebrity</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Celebrities</td>
 </tr>
 <tr>
@@ -7698,7 +7657,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Celebrity</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Culture</td>
 </tr>
 <tr>
@@ -7707,7 +7665,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Celebrity</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Design</td>
 </tr>
 <tr>
@@ -7716,7 +7673,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Celebrity</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Fashion</td>
 </tr>
 <tr>
@@ -7725,7 +7681,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Celebrity</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Living</td>
 </tr>
 <tr>
@@ -7734,7 +7689,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Hair &amp; Beauty</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Other</td>
 </tr>
 <tr>
@@ -7743,7 +7697,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Home &amp; Garden</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Other</td>
 </tr>
 <tr>
@@ -7752,7 +7705,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Parenting</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Other</td>
 </tr>
 <tr>
@@ -7761,7 +7713,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Quizzes &amp; Games</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Other</td>
 </tr>
 <tr>
@@ -7770,7 +7721,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Relationships</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Other</td>
 </tr>
 <tr>
@@ -7779,7 +7729,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Lifestyle / Self Improvement</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Lifestyle</td>
   <td>Lifestyle / Other</td>
 </tr>
 <tr>
@@ -7788,7 +7737,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Magazines</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>Publications / Magazines</td>
 </tr>
 <tr>
@@ -7797,7 +7745,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Newspapers</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>Publications</td>
 </tr>
 <tr>
@@ -7806,7 +7753,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather / News</td>
 </tr>
 <tr>
@@ -7815,7 +7761,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather / Regional News</td>
 </tr>
 <tr>
@@ -7824,7 +7769,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather / Other</td>
 </tr>
 <tr>
@@ -7833,7 +7777,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather</td>
 </tr>
 <tr>
@@ -7842,7 +7785,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / Business</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather / News</td>
 </tr>
 <tr>
@@ -7851,7 +7793,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather / News</td>
 </tr>
 <tr>
@@ -7860,7 +7801,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / Health</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather / News</td>
 </tr>
 <tr>
@@ -7869,7 +7809,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / Politics</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather / News</td>
 </tr>
 <tr>
@@ -7878,7 +7817,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / Science &amp; Tech</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather / News</td>
 </tr>
 <tr>
@@ -7887,7 +7825,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / Sports</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather / News</td>
 </tr>
 <tr>
@@ -7896,7 +7833,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / US</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather / News</td>
 </tr>
 <tr>
@@ -7905,14 +7841,12 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>News &amp; Weather / World</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>News/Magazine</td>
   <td>News &amp; Weather / News</td>
 </tr>
 <tr>
 <td>Shopping</td>
   <td>Shopping</td>
   <td>Shopping</td>
-  <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Home &amp; Hobby / Shopping</td>
@@ -7924,7 +7858,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Sports</td>
-  <td>Sports</td>
 </tr>
 <tr>
 <td>Sports / Athletic</td>
@@ -7932,7 +7865,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Athletic</td>
 </tr>
 <tr>
@@ -7941,7 +7873,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Disabled</td>
 </tr>
 <tr>
@@ -7950,7 +7881,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Extreme</td>
 </tr>
 <tr>
@@ -7959,7 +7889,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Motor</td>
 </tr>
 <tr>
@@ -7968,7 +7897,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Baseball</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Other</td>
 </tr>
 <tr>
@@ -7977,7 +7905,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Basketball</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Other</td>
 </tr>
 <tr>
@@ -7986,7 +7913,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Boxing</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Other</td>
 </tr>
 <tr>
@@ -7995,7 +7921,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Football</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Other</td>
 </tr>
 <tr>
@@ -8004,7 +7929,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Golf</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Other</td>
 </tr>
 <tr>
@@ -8013,18 +7937,15 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Hockey</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Other</td>
 </tr>
 <tr>
 <td>Sports / NCAA
 </td>
   <td>Sports</td>
-  <td>Sports / NCAA
-</td>
+  <td>Sports / NCAA</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Other</td>
 </tr>
 <tr>
@@ -8033,7 +7954,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Soccer</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Other</td>
 </tr>
 <tr>
@@ -8042,25 +7962,21 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Sports / Tennis</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Other</td>
 </tr>
 <tr>
 <td>Sports / UFC
 </td>
   <td>Sports</td>
-  <td>Sports / UFC
-</td>
+  <td>Sports / UFC</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Sports</td>
   <td>Sports / Other</td>
 </tr>
 <tr>
 <td>Novelty</td>
   <td>Entertainment</td>
   <td>Novelty</td>
-  <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
@@ -8072,11 +7988,9 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Entertainment</td>
 </tr>
 <tr>
 <td>Entertainment</td>
-  <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
@@ -8089,12 +8003,10 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Entertainment</td>
   <td>Entertainment / Comedy</td>
 </tr>
 <tr>
 <td>Entertainment / Music</td>
-  <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
@@ -8107,12 +8019,10 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Entertainment</td>
   <td>Entertainment / Sports</td>
 </tr>
 <tr>
 <td>Entertainment / Theatre</td>
-  <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
@@ -8125,7 +8035,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Entertainment</td>
   <td>Entertainment / Other</td>
 </tr>
 <tr>
@@ -8134,7 +8043,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Entertainment</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Music/Video</td>
   <td>Entertainment / Film</td>
 </tr>
 <tr>
@@ -8143,7 +8051,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Kids / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Kids / All</td>
   <td>Education / Early Childhood</td>
 </tr>
 <tr>
@@ -8152,7 +8059,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Kids / Alphabet</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Kids / Edutainment</td>
   <td>Education / Early Childhood</td>
 </tr>
 <tr>
@@ -8161,7 +8067,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Kids / Animals</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Kids / Edutainment</td>
   <td>Education / Early Childhood</td>
 </tr>
 <tr>
@@ -8170,7 +8075,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Kids / History</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Kids / Edutainment</td>
   <td>Education / Early Childhood</td>
 </tr>
 <tr>
@@ -8179,7 +8083,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Kids / Language</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Kids / Edutainment</td>
   <td>Education / Early Childhood</td>
 </tr>
 <tr>
@@ -8188,7 +8091,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Kids / Math</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Kids / Edutainment</td>
   <td>Education / Early Childhood</td>
 </tr>
 <tr>
@@ -8197,7 +8099,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Kids / Popular Characters</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Kids / Edutainmenttd>
   <td>Education / Early Childhood</td>
 </tr>
 <tr>
@@ -8206,7 +8107,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Kids / Reading</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Kids / Edutainment</td>
   <td>Education / Early Childhood</td>
 </tr>
 <tr>
@@ -8215,7 +8115,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Kids / Science</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Kids / Edutainment</td>
   <td>Education / Early Childhood</td>
 </tr>
 <tr>
@@ -8224,7 +8123,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Kids / Writing</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Kids / Edutainment</td>
   <td>Education / Early Childhood</td>
 </tr>
 <tr>
@@ -8233,7 +8131,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Education/E-Book</td>
   <td>Education</td>
 </tr>
 <tr>
@@ -8242,7 +8139,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Education/E-Book</td>
   <td>Education / Higher</td>
 </tr>
 <tr>
@@ -8251,7 +8147,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Education/E-Book</td>
   <td>Education / Primary</td>
 </tr>
 <tr>
@@ -8260,7 +8155,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Other</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Education/E-Book</td>
   <td>Education / Secondary</td>
 </tr>
 <tr>
@@ -8269,7 +8163,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / History</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Education/E-Book</td>
   <td>Education / Other</td>
 </tr>
 <tr>
@@ -8278,7 +8171,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Math</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Education/E-Book</td>
   <td>Education / Other</td>
 </tr>
 <tr>
@@ -8287,7 +8179,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Reading</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Education/E-Book</td>
   <td>Education / Other</td>
 </tr>
 <tr>
@@ -8296,7 +8187,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Science</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Education/E-Book</td>
   <td>Education / Other</td>
 </tr>
 <tr>
@@ -8305,7 +8195,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Test Guides</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Education/E-Book</td>
   <td>Education / Other</td>
 </tr>
 <tr>
@@ -8314,7 +8203,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Writing</td>
   <td>Entertainment</td>
   <td>Entertainment</td>
-  <td>Education/E-Book</td>
   <td>Education / Other</td>
 </tr>
 <tr>
@@ -8323,7 +8211,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Language</td>
   <td>Languages &amp; Translators</td>
   <td>Languages &amp; Translators</td>
-  <td>Education/E-Book</td>
   <td>Languages</td>
 </tr>
 <tr>
@@ -8332,7 +8219,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Language</td>
   <td>Languages &amp; Translators</td>
   <td>Languages &amp; Translators</td>
-  <td>Education/E-Book</td>
   <td>Languages / Dictionaries</td>
 </tr>
 <tr>
@@ -8341,7 +8227,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Education / Language</td>
   <td>Languages &amp; Translators</td>
   <td>Languages &amp; Translators</td>
-  <td>Education/E-Book</td>
   <td>Languages / Language learning</td>
 </tr>
 <tr>
@@ -8350,7 +8235,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Web Browsers</td>
   <td>Communication</td>
   <td>Communication</td>
-  <td>Social Networking</td>
   <td>Tools &amp; Utilities / Browsers</td>
 </tr>
 <tr>
@@ -8359,7 +8243,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Communication</td>
   <td>Communication</td>
   <td>Communication</td>
-  <td>Social Networking</td>
   <td>Communication</td>
 </tr>
 <tr>
@@ -8368,7 +8251,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Communication</td>
   <td>Communication</td>
   <td>Communication</td>
-  <td>Social Networking</td>
   <td>Communication / E-mail</td>
 </tr>
 <tr>
@@ -8377,7 +8259,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Communication</td>
   <td>Communication</td>
   <td>Communication</td>
-  <td>Social Networking</td>
   <td>Communication / Instant Messaging</td>
 </tr>
 <tr>
@@ -8387,7 +8268,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Communication</td>
   <td>Communication</td>
   <td>Communication</td>
-  <td>Social Networking</td>
   <td>Communication / SMS
 </td>
 </tr>
@@ -8397,7 +8277,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Communication</td>
   <td>Communication</td>
   <td>Communication</td>
-  <td>Social Networking</td>
   <td>Communication / Other</td>
 </tr>
 <tr>
@@ -8406,7 +8285,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Social Networking</td>
   <td>Communication</td>
   <td>Communication</td>
-  <td>Social Networking</td>
   <td>Communication / Social Networking</td>
 </tr>
 <tr>
@@ -8415,7 +8293,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Real Estate</td>
   <td>Business &amp; Finance</td>
   <td>Business &amp; Finance</td>
-  <td>Business</td>
   <td>Finance / Other</td>
 </tr>
 <tr>
@@ -8424,7 +8301,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Finance / Other</td>
   <td>Business &amp; Finance</td>
   <td>Business &amp; FinanceBusiness</td>
-  <td>Business</td>
   <td>Finance / Other</td>
 </tr>
 <tr>
@@ -8434,7 +8310,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Business &amp; Finance</td>
   <td>Business &amp; Finance</td>
   <td>Finance</td>
-  <td>Finance</td>
 </tr>
 <tr>
 <td>Finance / Corporate</td>
@@ -8442,7 +8317,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Finance / Other</td>
   <td>Business &amp; Finance</td>
   <td>Business &amp; Finance</td>
-  <td>Finance</td>
   <td>Finance / Corporate</td>
 </tr>
 <tr>
@@ -8451,7 +8325,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Finance / Other</td>
   <td>Business &amp; Finance</td>
   <td>Business &amp; Finance</td>
-  <td>Finance</td>
   <td>Finance / Other</td>
 </tr>
 <tr>
@@ -8461,7 +8334,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Business &amp; Finance</td>
   <td>Business &amp; Finance</td>
   <td>Finance</td>
-  <td>Finance</td>
 </tr>
 <tr>
 <td>Finance / Banking</td>
@@ -8469,7 +8341,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Finance / Banking</td>
   <td>Business &amp; Finance</td>
   <td>Business &amp; Finance</td>
-  <td>Finance</td>
   <td>Finance</td>
 </tr>
 <tr>
@@ -8479,7 +8350,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Business &amp; Finance</td>
   <td>Business &amp; Finance</td>
   <td>Finance</td>
-  <td>Finance</td>
 </tr>
 <tr>
 <td>Finance / Money &amp; Currency</td>
@@ -8488,7 +8358,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Business &amp; Finance</td>
   <td>Business &amp; Finance</td>
   <td>Finance</td>
-  <td>Finance</td>
 </tr>
 <tr>
 <td>Personal Finance</td>
@@ -8496,7 +8365,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Finance / Personal Finance</td>
   <td>Business &amp; Finance</td>
   <td>Business &amp; Finance</td>
-  <td>Finance</td>
   <td>Finance / Personal</td>
 </tr>
 <tr>
@@ -8505,7 +8373,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Finance / Personal Finance</td>
   <td>Business &amp; Finance</td>
   <td>Business &amp; Finance</td>
-  <td>Finance</td>
   <td>Home &amp; Hobby / Budgeting</td>
 </tr>
 <tr>
@@ -8514,7 +8381,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Health &amp; Fitness / Other</td>
   <td>Health</td>
   <td>Health</td>
-  <td>Health/Fitness</td>
   <td>Health &amp; Fitness</td>
 </tr>
 <tr>
@@ -8523,7 +8389,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Health &amp; Fitness / Diet &amp; Weight Loss</td>
   <td>Health</td>
   <td>Health</td>
-  <td>Health/Fitness</td>
   <td>Health &amp; Fitness / Calorie calculators</td>
 </tr>
 <tr>
@@ -8532,7 +8397,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Health &amp; Fitness / Exercise &amp; Fitness</td>
   <td>Health</td>
   <td>Health</td>
-  <td>Health/Fitness</td>
   <td>Health &amp; Fitness / Fitness</td>
 </tr>
 <tr>
@@ -8541,7 +8405,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Health &amp; Fitness / Medical</td>
   <td>Health</td>
   <td>Health</td>
-  <td>Health/Fitness</td>
   <td>Health &amp; Fitness / Other</td>
 </tr>
 <tr>
@@ -8550,7 +8413,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Health &amp; Fitness / Meditation</td>
   <td>Health</td>
   <td>Health</td>
-  <td>Health/Fitness</td>
   <td>Health &amp; Fitness / Other</td>
 </tr>
 <tr>
@@ -8559,7 +8421,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Health &amp; Fitness / Pregnancy</td>
   <td>Health</td>
   <td>Health</td>
-  <td>Health/Fitness</td>
   <td>Health &amp; Fitness / Family Planning</td>
 </tr>
 <tr>
@@ -8568,7 +8429,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Health &amp; Fitness / Sleep Trackers</td>
   <td>Health</td>
   <td>Health</td>
-  <td>Health/Fitness</td>
   <td>Health &amp; Fitness / Other</td>
 </tr>
 <tr>
@@ -8577,14 +8437,12 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Cooking</td>
   <td>Health</td>
   <td>Health</td>
-  <td>Health/Fitness</td>
   <td>Home &amp; Hobby / Cooking</td>
 </tr>
 <tr>
 <td>Utilities</td>
   <td>Libraries &amp; Demo</td>
   <td>Utilities / Other</td>
-  <td>Utilities</td>
   <td>Utilities</td>
   <td>Utilities</td>
   <td>Tools &amp; Utilities</td>
@@ -8595,14 +8453,12 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Utilities / Other</td>
   <td>Utilities</td>
   <td>Utilities</td>
-  <td>Utilities</td>
   <td>Tools &amp; Utilities / Developer – Programmer</td>
 </tr>
 <tr>
 <td>Utilities / Other</td>
   <td>Libraries &amp; Demo</td>
   <td>Utilities / Other</td>
-  <td>Utilities</td>
   <td>Utilities</td>
   <td>Utilities</td>
   <td>Tools &amp; Utilities / Other</td>
@@ -8613,14 +8469,12 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Utilities / Other</td>
   <td>Utilities</td>
   <td>Utilities</td>
-  <td>Utilities</td>
   <td>Tools &amp; Utilities / Security</td>
 </tr>
 <tr>
 <td>Alarms &amp; Clocks</td>
   <td>Tools</td>
   <td>Utilities / Alarms &amp; Clocks</td>
-  <td>Utilities</td>
   <td>Utilities</td>
   <td>Utilities</td>
   <td>Tools &amp; Utilities / Other</td>
@@ -8631,14 +8485,12 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Utilities / Battery Savers</td>
   <td>Utilities</td>
   <td>Utilities</td>
-  <td>Utilities</td>
   <td>Tools &amp; Utilities / Other</td>
 </tr>
 <tr>
 <td>Calculators</td>
   <td>Tools</td>
   <td>Utilities / Calculators</td>
-  <td>Utilities</td>
   <td>Utilities</td>
   <td>Utilities</td>
   <td>Tools &amp; Utilities / Other</td>
@@ -8649,7 +8501,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Utilities / Calendars</td>
   <td>Organizers</td>
   <td>Organizers</td>
-  <td>Utilities</td>
   <td>Tools &amp; Utilities / Other</td>
 </tr>
 <tr>
@@ -8658,7 +8509,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Utilities / Notes</td>
   <td>Organizers</td>
   <td>Organizers</td>
-  <td>Utilities</td>
   <td>Tools &amp; Utilities / Other</td>
 </tr>
 <tr>
@@ -8668,7 +8518,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Organizers</td>
   <td>Organizers</td>
   <td>Productivity</td>
-  <td>Productivity</td>
 </tr>
 <tr>
 <td>Music</td>
@@ -8676,7 +8525,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Music / Other</td>
   <td>Multimedia</td>
   <td>Multimedia</td>
-  <td>Music/Video</td>
   <td>Music</td>
 </tr>
 <tr>
@@ -8685,7 +8533,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Music / Artists</td>
   <td>Multimedia</td>
   <td>Multimedia</td>
-  <td>Music/Video</td>
   <td>Music / Other</td>
 </tr>
 <tr>
@@ -8694,7 +8541,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Music / Instruments</td>
   <td>Multimedia</td>
   <td>Multimedia</td>
-  <td>Music/Video</td>
   <td>Music / Instruments</td>
 </tr>
 <tr>
@@ -8703,7 +8549,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Music / Music Players</td>
   <td>Multimedia</td>
   <td>Multimedia</td>
-  <td>Music/Video</td>
   <td>Music / Music players</td>
 </tr>
 <tr>
@@ -8712,7 +8557,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Music / Radio</td>
   <td>Multimedia</td>
   <td>Multimedia</td>
-  <td>Music/Video</td>
   <td>Music / Radio</td>
 </tr>
 <tr>
@@ -8721,7 +8565,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Music / Songbooks</td>
   <td>Multimedia</td>
   <td>Multimedia</td>
-  <td>Music/Video</td>
   <td>Music / Other</td>
 </tr>
 <tr>
@@ -8730,7 +8573,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Photography</td>
   <td>Multimedia</td>
   <td>Multimedia</td>
-  <td>Photo</td>
   <td>Photography</td>
 </tr>
 <tr>
@@ -8739,7 +8581,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Photography</td>
   <td>Multimedia</td>
   <td>Multimedia</td>
-  <td>Photo</td>
   <td>Photography / Camera</td>
 </tr>
 <tr>
@@ -8748,7 +8589,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Photography</td>
   <td>Multimedia</td>
   <td>Multimedia</td>
-  <td>Photo</td>
   <td>Photography / Editing</td>
 </tr>
 <tr>
@@ -8757,7 +8597,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Photography</td>
   <td>Multimedia</td>
   <td>Multimedia</td>
-  <td>Photo</td>
   <td>Photography / Gallery</td>
 </tr>
 <tr>
@@ -8766,7 +8605,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Photography</td>
   <td>Multimedia</td>
   <td>Multimedia</td>
-  <td>Photo</td>
   <td>Photography / Sharing</td>
 </tr>
 <tr>
@@ -8775,7 +8613,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Themes</td>
   <td>Themes &amp; Skins</td>
   <td>Themes &amp; Skins</td>
-  <td>Theme</td>
   <td>Themes</td>
 </tr>
 <tr>
@@ -8784,7 +8621,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Themes</td>
   <td>Themes &amp; Skins</td>
   <td>Themes &amp; Skins</td>
-  <td>Theme</td>
   <td>Themes / Live Wallpapers</td>
 </tr>
 <tr>
@@ -8793,7 +8629,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Themes</td>
   <td>Themes &amp; Skins</td>
   <td>Themes &amp; Skins</td>
-  <td>Theme</td>
   <td>Themes / Wallpapers</td>
 </tr>
 <tr>
@@ -8802,7 +8637,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Other</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8811,7 +8645,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Christian</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8820,7 +8653,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Classical</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8829,7 +8661,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Collegiate</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8838,7 +8669,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Comedy</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8847,7 +8677,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Country</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8856,7 +8685,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Dance &amp; Electronic</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8865,7 +8693,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Jazz &amp; Standards</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8874,7 +8701,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Latin</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8883,7 +8709,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Pop</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8892,7 +8717,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Rap</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8901,7 +8725,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Rock</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8910,7 +8733,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Sound Effects</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8919,7 +8741,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Soundtracks</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8928,7 +8749,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Sports</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8937,7 +8757,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / TV</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 <tr>
@@ -8946,7 +8765,6 @@ The AppDF category list is available as [JSON](http://www.onepf.org/appdf/data/c
   <td>Ringtones / Voicetones</td>
   <td>Ringtones</td>
   <td>Ringtones</td>
-  <td>Music/Video</td>
   <td>Themes / Ringtones</td>
 </tr>
 </table>
