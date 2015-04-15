@@ -3956,7 +3956,7 @@ This tag is ignored for paid apps.
 ### <a name="apk-files"/>apk-files
 
 Required.  
-Attributes: `main-exp-file`, `patch-optional-file`.  
+Optional.  
 
 Each application could have 1+ APK files. All APK files must have the same package name.  
 
@@ -4081,7 +4081,15 @@ The patch expansion file is optional and intended for small updates to the main 
 Optional.  
 No attributes.  
 
-The local path to the main expansion file, must be in the main.app-version-code.package-name.obb format. The main expansion file is the primary expansion file for additional resources required by your application.
+The local path to the main expansion file, must be in the main.app-version-code.package-name.obb format. The main expansion file is the primary expansion file for additional resources required by your application.  
+
+##### <a name="apk-files-apk-file"/>apk-files/apk-file/apk-alias  
+
+Optional.  
+No attributes.  
+Pattern:  [a-zA-Z0-9_.]+
+
+This name is used to distinguish between multiple binary files. 
 
 ### <a name="requirements"/>requirements
 
