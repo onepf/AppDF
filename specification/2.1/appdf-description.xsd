@@ -383,9 +383,15 @@
             <xsd:element name="apk" type="typeLocalFile" />
             <xsd:element name="main-exp-file" minOccurs="0" type="typeLocalFile" />
             <xsd:element name="patch-exp-file" minOccurs="0" type="typeLocalFile" />
-            <xsd:element name="binary-alias" minOccurs="0" type="xsd:string" />
+            <xsd:element name="apk-alias" minOccurs="0" type="typeApkAlias" />
         </xsd:sequence>
     </xsd:complexType>
+
+    <xsd:simpleType name="typeApkAlias">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[a-zA-Z0-9_.]+" />
+        </xsd:restriction>
+    </xsd:simpleType>
 
     <xsd:complexType name="typeRequirements">
         <xsd:sequence>
