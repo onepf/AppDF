@@ -380,7 +380,6 @@ The only naming convention for the files inside AppDF package is that the descri
         <kindle-fire-hd>yes</kindle-fire-hd>
         <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
       </fire-phones-and-tablets-support>
-      <binary-alias>Version 1</binary-alias>
     </amazon>
     <slideme>
       <license-type>Apache License 2.0</license-type>
@@ -5038,7 +5037,6 @@ Example
       <kindle-fire-hd>yes</kindle-fire-hd>
       <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
     </fire-phones-and-tablets-support>
-    <binary-alias>Version 1</binary-alias>
   </amazon>
   <slideme>
     <license-type>Apache License 2.0</license-type>
@@ -5129,7 +5127,6 @@ Example
     <fire-tv>yes</fire-tv>
     <fire-tv-stick>no</fire-tv-stick>
   </fire-tv>
-  <binary-alias>Version 1</binary-alias>
 </amazon>
 ```
 
@@ -5161,13 +5158,6 @@ Example
     <td>Binary File(s) / Apply Amazon DRM?</td>
     <td>yes | no</td>
     <td>Protect your application from unauthorized use. Without DRM, your app can be used without restrictions by any user.</td>
-  </tr>
-  <tr>
-    <td>binary-alias</td>
-    <td>Yes</td>
-    <td>Binary File(s) / Binary1</td>
-    <td>Alphanumeric characters, dots (.), and underscores (_) only.</td>
-    <td>This name is used to distinguish between multiple binary files</td>
   </tr>
   <tr>
     <td>fire-phones-and-tablets-support/kindle-fire-first-generation</td>
@@ -7034,7 +7024,7 @@ A trial period of the subscription, in days.
   <tr>
     <th>store-specific obligatory requirements that have direct mapping in AppDF</th>
     <td>short-description (can be taken from AppDF full description)<br>large promo<br>privacy-policy<br>availability/countries<br>consent<br>content-rating<br>content-descriptors<br>included-activities</td>
-    <td><categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website</td>
+    <td><categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website<br>apk-files/apk-file/binary-alias</td>
     <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)</td>
     <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)<br>requirements/supported-languages<br>requirements/supported-resolutions<br>requirements/features</td>
     <td>description/texts/keywords<br>price/trial-version<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising<br>requirements/features/root<br>requirements/features/root</td>
