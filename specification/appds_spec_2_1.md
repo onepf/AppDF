@@ -3989,6 +3989,7 @@ Example 2
     <th>Maximum APK file size</th>
     <th>Multiple APK file support</th>
     <th>Expansion file support</th>
+    <th>APK alias</th>
   </tr>
   <tr>
     <td>Google Play</td>
@@ -3997,6 +3998,7 @@ Example 2
     <td>50M</td>
     <td>Yes</td>
     <td>Yes (2 files, max 2GB)</td>
+    <td>No</td>
   </tr>
   <tr>
     <td>Yandex.Store</td>
@@ -4004,6 +4006,7 @@ Example 2
     <td>Builds / Upload build</td>
     <td>700M</td>
     <td>Yes</td>
+    <td>No</td>
     <td>No</td>
   </tr>
   <tr>
@@ -4013,6 +4016,7 @@ Example 2
     <td>Unlimited</td>
     <td>Yes</td>
     <td>No</td>
+    <td>Yes</td>
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
@@ -4020,6 +4024,7 @@ Example 2
     <td>APK file</td>
     <td>Unlimited</td>
     <!-- todo check multiple again-->
+    <td>No</td>
     <td>No</td>
     <td>No</td>
   </tr>
@@ -4031,6 +4036,7 @@ Example 2
     <td>Unlimited</td>
     <td>Yes (up to 10)</td>
     <td>No</td>
+    <td>No</td>
   </tr>
   <tr>
     <td>SlideME</td>
@@ -4039,6 +4045,7 @@ Example 2
     <td>99M</td>
     <td>No</td>
     <td>Yes (2 files, max 512M)</td>
+    <td>No</td>
   </tr>
   <!--
   <tr>
