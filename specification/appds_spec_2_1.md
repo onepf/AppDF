@@ -7037,7 +7037,7 @@ A trial period of the subscription, in days.
   </tr>
   <tr>
     <th>store-specific obligatory requirements that have direct mapping in AppDF</th>
-    <td>short-description (can be taken from AppDF full description)<br>large promo<br>privacy-policy<br>availability/countries<br>consent<br>content-rating<br>content-descriptors<br>included-activities</td>
+    <td>short-description (can be taken from AppDF full description)<br>large promo<br>privacy-policy<br>availability/countries<br>consent<br>content-rating<br>content-descriptors<br>consent/us-export-laws<br>consent/google-android-content-guidelines</td>
     <td><categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website<br>apk-files/apk-file/apk-alias</td>
     <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)</td>
     <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)<br>requirements/supported-languages<br>requirements/supported-resolutions<br>requirements/features</td>
@@ -7047,7 +7047,7 @@ A trial period of the subscription, in days.
   </tr>
    <tr>
     <th>store-specific obligatory requirements that have no direct mapping in AppDF</th>
-    <td></td>
+    <td>Marketing opt-out</td>
     <td>App title (can be taken fron description/text/title)<br>Apply Amazon DRM?<br>Images & Multimedia / Small icon<br>Content Rating / Intolerance<br>Content Rating / Academic<br>Content Rating / Rude Humor<br><import-export></td>
     <td></td>
     <td></td>
