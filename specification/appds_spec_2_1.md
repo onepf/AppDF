@@ -5138,6 +5138,13 @@ Example
     <th>Possible values</th>
     <th>Comments</th>
   </tr>
+   <tr>
+    <td>Use Amazon Maps Redirection</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Use Amazon Maps Redirection</td>
+    <td>yes | no</td>
+    <td>Google Maps v1 API — Amazon Maps redirection.</td>
+  </tr>
   <tr>
     <td>form-factory</td>
     <td>Yes</td>
