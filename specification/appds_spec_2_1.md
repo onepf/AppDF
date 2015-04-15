@@ -372,6 +372,7 @@ The only naming convention for the files inside AppDF package is that the descri
       <!--Optional tag, default value is no-->
       <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
       <apply-amazon-drm>yes</apply-amazon-drm>
+      <small-icon>amazon_small_icon.png</small-icon>
       <fire-phones-and-tablets-support>
         <kindle-fire-first-generation>yes</kindle-fire-first-generation>
         <kindle-fire>yes</kindle-fire>
@@ -5027,12 +5028,10 @@ Example
 <store-specific>
   <amazon>
     <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
+    <small-icon>amazon_small_icon.png</small-icon>
     <apply-amazon-drm>yes</apply-amazon-drm>
-    <fire-phones-and-tablets-support>
+    <fire-phones-and-tablets-support only-listed="yes">
       <kindle-fire-first-generation>yes</kindle-fire-first-generation>
-      <kindle-fire>yes</kindle-fire>
-      <kindle-fire-hd>yes</kindle-fire-hd>
-      <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
     </fire-phones-and-tablets-support>
   </amazon>
   <slideme>
@@ -5112,16 +5111,13 @@ Example
 ```xml
 <amazon>
   <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
+  <small-icon>amazon_small_icon.png</small-icon>
   <apply-amazon-drm>yes</apply-amazon-drm>
-  <fire-phones-and-tablets-support>
+  <fire-phones-and-tablets-support only-listed="no">
     <kindle-fire-first-generation>yes</kindle-fire-first-generation>
-    <kindle-fire>yes</kindle-fire>
-    <kindle-fire-hd>yes</kindle-fire-hd>
-    <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
   </fire-phones-and-tablets-support>
-  <fire-tv-support>
+  <fire-tv-support only-listed="yes">
     <fire-tv>yes</fire-tv>
-    <fire-tv-stick>no</fire-tv-stick>
   </fire-tv>
 </amazon>
 ```
@@ -5154,21 +5150,21 @@ Example
     <td>Yes</td>
     <td>Binary File(s) / Use Amazon Maps Redirection</td>
     <td>yes | no</td>
-    <td>Google Maps v1 API — Amazon Maps redirection.</td>
+    <td>Google Maps v1 API — Amazon Maps redirection. Yes is the default value.</td>
   </tr>
   <tr>
     <td>free-app-of-the-day-eligibility</td>
     <td>No</td>
     <td>Availability & Pricing / Free App of the Day (FAD) eligibility</td>
     <td>yes | no</td>
-    <td>If your app is being considered, we will contact you with more detail about the program and what to expect as your app goes through the approval process.</td>
+    <td>If your app is being considered, we will contact you with more detail about the program and what to expect as your app goes through the approval process. The default value is yes.</td>
   </tr>
   <tr>
     <td>apply-amazon-drm</td>
     <td>Yes</td>
     <td>Binary File(s) / Apply Amazon DRM?</td>
     <td>yes | no</td>
-    <td>Protect your application from unauthorized use. Without DRM, your app can be used without restrictions by any user.</td>
+    <td>Protect your application from unauthorized use. Without DRM, your app can be used without restrictions by any user. The default value is yes.</td>
   </tr>
   <tr>
     <td>fire-phones-and-tablets-support/kindle-fire-first-generation</td>
