@@ -374,12 +374,12 @@ The only naming convention for the files inside AppDF package is that the descri
       <!--Optional tag, default value is no-->
       <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
       <apply-amazon-drm>yes</apply-amazon-drm>
-      <fire-phones-and-tablets>
+      <fire-phones-and-tablets-support>
         <kindle-fire-first-generation>yes</kindle-fire-first-generation>
         <kindle-fire>yes</kindle-fire>
         <kindle-fire-hd>yes</kindle-fire-hd>
         <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
-      </fire-phones-and-tablets>
+      </fire-phones-and-tablets-support>
       <binary-alias>Version 1</binary-alias>
     </amazon>
     <slideme>
@@ -5024,12 +5024,12 @@ Example
     <form-factor>all</form-factor>
     <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
     <apply-amazon-drm>yes</apply-amazon-drm>
-    <fire-phones-and-tablets>
+    <fire-phones-and-tablets-support>
       <kindle-fire-first-generation>yes</kindle-fire-first-generation>
       <kindle-fire>yes</kindle-fire>
       <kindle-fire-hd>yes</kindle-fire-hd>
       <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
-    </fire-phones-and-tablets>
+    </fire-phones-and-tablets-support>
     <binary-alias>Version 1</binary-alias>
   </amazon>
   <slideme>
@@ -5111,12 +5111,16 @@ Example
   <form-factor>all</form-factor>
   <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
   <apply-amazon-drm>yes</apply-amazon-drm>
-  <fire-phones-and-tablets>
+  <fire-phones-and-tablets-support>
     <kindle-fire-first-generation>yes</kindle-fire-first-generation>
     <kindle-fire>yes</kindle-fire>
     <kindle-fire-hd>yes</kindle-fire-hd>
     <kindle-fire-hd-8-9>yes</kindle-fire-hd-8-9>
-  </fire-phones-and-tablets>
+  </fire-phones-and-tablets-support>
+  <fire-tv-support>
+    <fire-tv>yes</fire-tv>
+    <fire-tv-stick>no</fire-tv-stick>
+  </fire-tv>
   <binary-alias>Version 1</binary-alias>
 </amazon>
 ```
@@ -5158,81 +5162,95 @@ Example
     <td>This name is used to distinguish between multiple binary files</td>
   </tr>
   <tr>
-    <td>fire-phones-and-tablets/kindle-fire-first-generation</td>
+    <td>fire-phones-and-tablets-support/kindle-fire-first-generation</td>
     <td>Yes</td>
-    <td>Binary File(s) / Amazon Fire Phones and Tablets / Device Support / Kindle Fire (1st Gen)</td>
+    <td>Binary File(s) / Device Support / Amazon Fire Phones and Tablets / Kindle Fire (1st Gen)</td>
     <td>yes | no</td>
     <td>Kindle Fire (1st Gen) support.</td>
   </tr>
    <tr>
-    <td>fire-phones-and-tablets/kindle-fire-second-generation</td>
+    <td>fire-phones-and-tablets-support/kindle-fire-second-generation</td>
     <td>Yes</td>
-    <td>Binary File(s) / Amazon Fire Phones and Tablets / Device Support / Kindle Fire (2nd Gen)</td>
+    <td>Binary File(s) / Device Support / Amazon Fire Phones and Tablets / Kindle Fire (2nd Gen)</td>
     <td>yes | no</td>
     <td>Kindle Fire (2nd Gen) support.</td>
   </tr>
   <tr>
-    <td>fire-phones-and-tablets/kindle-fire-hd-7-second-generation</td>
+    <td>fire-phones-and-tablets-support/kindle-fire-hd-7-second-generation</td>
     <td>Yes</td>
-    <td>Binary File(s) / Amazon Fire Phones and Tablets / Device Support / Kindle Fire HD 7 (2nd Gen)</td>
+    <td>Binary File(s) / Device Support / Amazon Fire Phones and Tablets / Kindle Fire HD 7 (2nd Gen)</td>
     <td>yes | no</td>
     <td>Kindle Fire HD 7 (2nd Gen) support.</td>
   </tr>
   <tr>
-    <td>fire-phones-and-tablets/kindle-fire-hd-8-9-second-generation</td>
+    <td>fire-phones-and-tablets-support/kindle-fire-hd-8-9-second-generation</td>
     <td>Yes</td>
-    <td>Binary File(s) / Amazon Fire Phones and Tablets / Device Support / Kindle Fire HD 8.9 (2nd Gen)</td>
+    <td>Binary File(s) / Device Support / Amazon Fire Phones and Tablets / Kindle Fire HD 8.9 (2nd Gen)</td>
     <td>yes | no</td>
     <td>Kindle Fire HD 8.9 (2nd Gen) support.</td>
   </tr>
   <tr>
-    <td>fire-phones-and-tablets/kindle-fire-hd-7-third-generation</td>
+    <td>fire-phones-and-tablets-support/kindle-fire-hd-7-third-generation</td>
     <td>Yes</td>
-    <td>Binary File(s) / Amazon Fire Phones and Tablets / Device Support / Kindle Fire HD 7 (3rd Gen)</td>
+    <td>Binary File(s) / Device Support / Amazon Fire Phones and Tablets / Kindle Fire HD 7 (3rd Gen)</td>
     <td>yes | no</td>
     <td>Kindle Fire HD 7 (3rd Gen) support.</td>
   </tr>
   <tr>
-    <td>fire-phones-and-tablets/kindle-fire-hdx-7-third-generation</td>
+    <td>fire-phones-and-tablets-support/kindle-fire-hdx-7-third-generation</td>
     <td>Yes</td>
-    <td>Binary File(s) / Amazon Fire Phones and Tablets / Device Support / Kindle Fire HDX 7 (3rd Gen)</td>
+    <td>Binary File(s) / Device Support / Amazon Fire Phones and Tablets / Kindle Fire HDX 7 (3rd Gen)</td>
     <td>yes | no</td>
     <td>Kindle Fire HDX 7 (3rd Gen) support.</td>
   </tr>
   <tr>
-    <td>fire-phones-and-tablets/kindle-fire-hdx-8-9-third-generation</td>
+    <td>fire-phones-and-tablets-support/kindle-fire-hdx-8-9-third-generation</td>
     <td>Yes</td>
-    <td>Binary File(s) / Amazon Fire Phones and Tablets / Device Support / Kindle Fire HDX 8.9 (3rd Gen)</td>
+    <td>Binary File(s) / Device Support / Amazon Fire Phones and Tablets / Kindle Fire HDX 8.9 (3rd Gen)</td>
     <td>yes | no</td>
     <td>Kindle Fire HDX 8.9 (3rd Gen) support.</td>
   </tr>
   <tr>
-    <td>fire-phones-and-tablets/fire-hd-4-fourth-generation</td>
+    <td>fire-phones-and-tablets-support/fire-hd-4-fourth-generation</td>
     <td>Yes</td>
-    <td>Binary File(s) / Amazon Fire Phones and Tablets / Device Support / Fire HD 6 (4th Gen)</td>
+    <td>Binary File(s) / Device Support / Amazon Fire Phones and Tablets / Fire HD 6 (4th Gen)</td>
     <td>yes | no</td>
     <td>Fire HD 6 (4th Gen) support.</td>
   </tr>
   <tr>
-    <td>fire-phones-and-tablets/fire-hd-7-fourth-generation</td>
+    <td>fire-phones-and-tablets-support/fire-hd-7-fourth-generation</td>
     <td>Yes</td>
-    <td>Binary File(s) / Amazon Fire Phones and Tablets / Device Support / Fire HD 7 (4th Gen)</td>
+    <td>Binary File(s) / Device Support / Amazon Fire Phones and Tablets / Fire HD 7 (4th Gen)</td>
     <td>yes | no</td>
     <td>Fire HD 7 (4th Gen) support.</td>
   </tr>
   <tr>
-    <td>fire-phones-and-tablets/fire-hdx-8-9-fourth-generation</td>
+    <td>fire-phones-and-tablets-support/fire-hdx-8-9-fourth-generation</td>
     <td>Yes</td>
-    <td>Binary File(s) / Amazon Fire Phones and Tablets / Device Support / Fire HDX 8.9 (4th Gen)</td>
+    <td>Binary File(s) / Device Support / Amazon Fire Phones and Tablets / Fire HDX 8.9 (4th Gen)</td>
     <td>yes | no</td>
     <td>Fire HDX 8.9 (4th Gen) support.</td>
   </tr>
   <tr>
-    <td>fire-phones-and-tablets/fire-phone</td>
+    <td>fire-phones-and-tablets-support/fire-phone</td>
     <td>Yes</td>
-    <td>Binary File(s) / Amazon Fire Phones and Tablets / Device Support / Amazon Fire Phone</td>
+    <td>Binary File(s) / Device Support / Amazon Fire Phones and Tablets / Amazon Fire Phone</td>
     <td>yes | no</td>
     <td>Amazon Fire Phone support.</td>
+  </tr>
+  <tr>
+    <td>fire-tv-support/fire-tv</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Device Support / Amazon Fire TV / Amazon Fire TV</td>
+    <td>yes | no</td>
+    <td>Fire TV support.</td>
+  </tr>
+  <tr>
+    <td>fire-tv-support/fire-tv-stick</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Device Support / Amazon Fire TV / Fire TV Stick</td>
+    <td>yes | no</td>
+    <td>Fire TV Stick support.</td>
   </tr>
 </table>
 
