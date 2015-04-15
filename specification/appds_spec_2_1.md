@@ -369,8 +369,6 @@ The only naming convention for the files inside AppDF package is that the descri
   <!--The store tags could also include replacement of any of the subtags from the <application> tag. See -->
   <store-specific>
     <amazon>
-      <!--Options: phone, tablet, all-->
-      <form-factor>all</form-factor>
       <!--Optional tag, default value is no-->
       <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
       <apply-amazon-drm>yes</apply-amazon-drm>
@@ -5028,7 +5026,6 @@ Example
 ```xml
 <store-specific>
   <amazon>
-    <form-factor>all</form-factor>
     <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
     <apply-amazon-drm>yes</apply-amazon-drm>
     <fire-phones-and-tablets-support>
@@ -5114,7 +5111,6 @@ No attributes.
 Example
 ```xml
 <amazon>
-  <form-factor>all</form-factor>
   <free-app-of-the-day-eligibility>yes</free-app-of-the-day-eligibility>
   <apply-amazon-drm>yes</apply-amazon-drm>
   <fire-phones-and-tablets-support>
@@ -5144,13 +5140,6 @@ Example
     <td>Binary File(s) / Use Amazon Maps Redirection</td>
     <td>yes | no</td>
     <td>Google Maps v1 API — Amazon Maps redirection.</td>
-  </tr>
-  <tr>
-    <td>form-factory</td>
-    <td>Yes</td>
-    <td>General Information / Form Factor</td>
-    <td>phone, tablet, all</td>
-    <td></td>
   </tr>
   <tr>
     <td>free-app-of-the-day-eligibility</td>
