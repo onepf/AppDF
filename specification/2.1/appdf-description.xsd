@@ -380,7 +380,7 @@
 
     <xsd:complexType name="typeApkFile">
         <xsd:sequence>
-            <xsd:element name="local-file" type="typeLocalFile" />
+            <xsd:element name="apk" type="typeLocalFile" />
             <xsd:element name="main-exp-file" minOccurs="0" type="typeLocalFile" />
             <xsd:element name="patch-exp-file" minOccurs="0" type="typeLocalFile" />
         </xsd:sequence>
