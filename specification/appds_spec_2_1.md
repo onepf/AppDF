@@ -287,7 +287,7 @@ The only naming convention for the files inside AppDF package is that the descri
   -->
 
    <apk-file>
-        <local-file>yandexshell2.apk</local-file>
+        <apk>yandexshell2.apk</apk>
         <patch-exp-file>patch.314159.com.yandex.shell.obb</patch-exp-file>
         <main-exp-file>main.314159.com.yandex.shell.obb</main-exp-file>
     </apk-file>
@@ -3958,34 +3958,18 @@ This tag is ignored for paid apps.
 Required.  
 Attributes: `main-exp-file`, `patch-optional-file`.  
 
-Each application could have 1+ APK files. All APK files must have the same package name.
+Each application could have 1+ APK files. All APK files must have the same package name.  
 
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Possible values</th>
-    <th>Required</th>
-    <th>How it works</th>
-  </tr>
-  <tr>
-    <td>main-exp-file</td>
-    <td>The local path to the main expansion file, must be in the main.app-version-code.package-name.obb format.</td>
-    <td>No</td>
-    <td>The main expansion file is the primary expansion file for additional resources required by your application.</td>
-  </tr>
-  <tr>
-    <td>patch-exp-file</td>
-    <td>The local path to the patch expansion file, must be in the patch.app-version-code.package-name.obb format.</td>
-    <td>No</td>
-    <td>The patch expansion file is optional and intended for small updates to the main expansion file.</td>
-  </tr>
-</table>
+#### <a name="apk-files-apk-file"/>apk-files/apk-file  
 
 Example 1
 ```xml
 <apk-files>
    <apk-file>
-        <local-file>yandexshell4.apk</local-file>
+        <apk>yandexshell4.apk</apk>
+    </apk-file>
+    <apk-file>
+        <apk>yandexshell4_2.apk</apk>
     </apk-file>
 </apk-files>
 ```
@@ -3993,13 +3977,12 @@ Example 2
 ```xml
 <apk-files>
    <apk-file>
-        <local-file>yandexshell2.apk</local-file>
+        <apk>yandexshell2.apk</apk>
         <patch-exp-file>patch.314159.com.yandex.shell.obb</patch-exp-file>
         <main-exp-file>main.314159.com.yandex.shell.obb</main-exp-file>
     </apk-file>
 </apk-files>
 ```
-
 <table>
   <tr>
     <th>Store support</th>
@@ -4078,6 +4061,27 @@ Example 2
   </tr>
   -->
 </table>
+
+##### <a name="apk-files-apk-file"/>apk-files/apk-file/apk  
+
+Required.  
+No attributes.  
+
+The local path to the apk file.  
+
+##### <a name="apk-files-apk-file"/>apk-files/apk-file/patch-exp-file  
+
+Optional.  
+No attributes.  
+
+The patch expansion file is optional and intended for small updates to the main expansion file. The patch expansion file is optional and intended for small updates to the main expansion file.
+
+##### <a name="apk-files-apk-file"/>apk-files/apk-file/main-exp-file  
+
+Optional.  
+No attributes.  
+
+The local path to the main expansion file, must be in the main.app-version-code.package-name.obb format. The main expansion file is the primary expansion file for additional resources required by your application.
 
 ### <a name="requirements"/>requirements
 
