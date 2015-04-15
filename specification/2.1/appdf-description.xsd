@@ -383,6 +383,7 @@
             <xsd:element name="apk" type="typeLocalFile" />
             <xsd:element name="main-exp-file" minOccurs="0" type="typeLocalFile" />
             <xsd:element name="patch-exp-file" minOccurs="0" type="typeLocalFile" />
+            <xsd:element name="binary-alias" minOccurs="0" type="xsd:string" />
         </xsd:sequence>
     </xsd:complexType>
 
