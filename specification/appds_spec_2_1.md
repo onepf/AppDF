@@ -5134,8 +5134,16 @@ Example
     <th>Possible values</th>
     <th>Comments</th>
   </tr>
-   <tr>
-    <td>Use Amazon Maps Redirection</td>
+  <tr>
+    <td>previous-release</td>
+    <td>Yes</td>
+    <td>Binary File(s) / Has this app already been released?</td>
+    <td>if yes: &lt;previously-released month="" day="" year=""/&gt;<br>
+    if no: &lt;first-time-released/&gt;</td>
+    <td>Google Maps v1 API — Amazon Maps redirection.</td>
+  </tr>
+  <tr>
+    <td>use-amazon-maps-redirection</td>
     <td>Yes</td>
     <td>Binary File(s) / Use Amazon Maps Redirection</td>
     <td>yes | no</td>
