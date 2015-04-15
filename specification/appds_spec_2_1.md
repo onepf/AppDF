@@ -7045,7 +7045,7 @@ A trial period of the subscription, in days.
    <tr>
     <th>store-specific obligatory requirements that have no direct mapping in AppDF</th>
     <td></td>
-    <td>App title (can be taken fron description/text/title)<br>Apply Amazon DRM?<br>Images & Multimedia / Small icon<br>Content Rating / Intolerance<br>Content Rating / Academic<br>Content Rating / Rude Humor</td>
+    <td>App title (can be taken fron description/text/title)<br>Apply Amazon DRM?<br>Images & Multimedia / Small icon<br>Content Rating / Intolerance<br>Content Rating / Academic<br>Content Rating / Rude Humor<br><import-export></td>
     <td></td>
     <td></td>
     <td>Default language<br>Licence ( All Rights Reserved | Apache License 2.0 | Commercial Royalty-Free | Common Development and Distribution License (CDDL) | Eclipse Public License (EPL) | FREE Licensed Closed Source - Public Domain | GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3 | GNU General Public License (GPL) v2 | GNU General Public License (GPL) v3 | GNU Library General Public License (LGPL) | GNU Library General Public License (LGPL) v3 | Mozilla Public License 1.1 (MPL) | New BSD License | Other / Proprietary | The MIT License)<br>Requires third-party libraries (yes | no)<br>subsubcategory for certain items</td>
