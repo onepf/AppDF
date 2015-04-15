@@ -1874,7 +1874,7 @@ High resolution application icon. Must be in PNG format. Different stores requir
     <td>Yes</td>
     <td>Yes</td>
     <td>512x512</td>
-    <td>32-bit PNG (with alpha)</td>
+    <td>32-bit PNG</td>
   </tr>
   <tr>
     <td>Yandex.Store</td>
@@ -1883,7 +1883,7 @@ High resolution application icon. Must be in PNG format. Different stores requir
     <td>Yes</td>
     <td>Yes</td>
     <td>512x512</td>
-    <td>32-bit PNG (with alpha), less than 1 MB</td>
+    <td>32-bit PNG, less than 1 MB</td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
@@ -1947,7 +1947,7 @@ High resolution application icon. Must be in PNG format. Different stores requir
     <td>Yes</td>
     <td>No</td>
     <td>212x212</td>
-    <td>JPEG, PNG, GIF or BMP</td>
+    <td>PNG, GIF or BMP</td>
   </tr>
   -->
 </table>
@@ -1994,7 +1994,7 @@ Large promotion picture usually used by the stores on the PC websites, some stor
     <td>Yes</td>
     <td>Yes</td>
     <td>1024 w x 500 h</td>
-    <td>JPG or 24-bit PNG (no alpha)</td>
+    <td>JPG, 24-bit PNG</td>
   </tr>
   <tr>
     <td>Yandex.Store</td>
@@ -2003,7 +2003,7 @@ Large promotion picture usually used by the stores on the PC websites, some stor
     <td>No</td>
     <td>Yes</td>
     <td>1024x500</td>
-    <td>JPEG or 24-bit PNG (no alpha)</td>
+    <td>JPG, 24-bit PNG</td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
@@ -2105,7 +2105,7 @@ A small promotion picture is usually used by the stores on a mobile device for p
     <td>No</td>
     <td>Yes</td>
     <td>180 w x 120 h</td>
-    <td>JPG or 24-bit PNG (no alpha)</td>
+    <td>JPG, 24-bit PNG</td>
   </tr>
   <tr>
     <td>Yandex.Store</td>
@@ -2246,7 +2246,7 @@ Example
     <td>Yes</td>
     <td>Yes</td>
     <td>Min length for any side: 320 px. Max length for any side: 3840 px</td>
-    <td>JPEG or 24-bit PNG (no alpha)</td>
+    <td>JPG, 24-bit PNG</td>
     <td>2+. Max 8 screenshots per type (Phone, 7-inch tablet, 10-inch tablet, TV).</td>
   </tr>
   <tr>
@@ -2256,7 +2256,7 @@ Example
     <td>Yes</td>
     <td>Yes</td>
     <td>from 250×140 to 1920×1080 px, no frame</td>
-    <td>JPEG or 24-bit PNG (no alpha)</td>
+    <td>JPG, 24-bit PNG</td>
     <!--todo check max number Lesha-->
     <td>2+</td>
   </tr>
@@ -2299,7 +2299,7 @@ or 2560x1600 px (portrait or landscape)</td>
     <td>Yes</td>
     <td>No</td>
     <td>Images must be between 180x180 pixels and 1600x1600. Maximum file size: 1 MB</td>
-    <td>JPG, JPEG, PNG, GIF</td>
+    <td>JPG, PNG, GIF</td>
     <!-- todo do they have a limit? didn't find it-->
     <td>2+</td>
   </tr>
