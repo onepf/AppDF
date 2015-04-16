@@ -6945,7 +6945,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>yes</td>
     <td>no</td>
-    <td></td>
+    <td>yes</td>
   </tr>
   <tr>
     <th>category</th>
@@ -6953,7 +6953,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>yes</td>
     <td>yes</td>
-    <td></td>
+    <td>yes</td>
   </tr>
   <tr>
     <th>title</th>
@@ -6961,7 +6961,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>yes</td>
     <td>yes</td>
-    <td></td>
+    <td>yes</td>
   </tr>
   <tr>
     <th>full-description</th>
@@ -6969,7 +6969,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>yes</td>
     <td>yes</td>
-    <td></td>
+    <td>yes</td>
   </tr>
   <tr>
     <th>app-icon</th>
@@ -6977,7 +6977,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>no</td>
     <td>yes</td>
-    <td></td>
+    <td>yes</td>
   </tr>
   <tr>
     <th>screenshots</th>
@@ -6985,7 +6985,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>no</td>
     <td>yes</td>
-    <td></td>
+    <td>yes</td>
   </tr>
   <tr>
     <th>content-rating</th>
@@ -6993,7 +6993,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>no</td>
     <td>yes</td>
-    <td></td>
+    <td>yes</td>
   </tr>
   <tr>
     <th>content-descriptors</th>
@@ -7001,7 +7001,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>yes</td>
     <td>no</td>
-    <td></td>
+    <td>no</td>
   </tr>
   <tr>
     <th>included-activities</th>
@@ -7009,7 +7009,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>no</td>
     <td>no</td>
-    <td></td>
+    <td>???</td>
   </tr>
   <tr>
     <th>base-price (for paid apps)</th>
@@ -7017,7 +7017,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>yes</td>
     <td>yes</td>
-    <td></td>
+    <td>yes</td>
   </tr>
   <tr>
     <th>apk-files</th>
@@ -7025,7 +7025,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>yes</td>
     <td>yes</td>
-    <td></td>
+    <td>yes</td>
   </tr>
   <tr>
     <th>customer-support/email</th>
@@ -7033,7 +7033,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>no</td>
     <td>yes</td>
-    <td></td>
+    <td>no</td>
   </tr>
   <tr>
     <th>store-specific obligatory requirements that have direct mapping in AppDF</th>
@@ -7041,7 +7041,7 @@ A trial period of the subscription, in days.
     <td><categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website<br>apk-files/apk-file/apk-alias</td>
     <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)</td>
     <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)<br>requirements/supported-languages<br>requirements/supported-resolutions<br>requirements/features</td>
-    <td>description/texts/keywords<br>price/trial-version<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising<br>requirements/features/root<br>requirements/features/root</td>
+    <td>categorization/subcategory<br>description/texts/keywords<br>price/trial-version<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising<br>requirements/features/root<br>requirements/features/root</td>
   </tr>
   <tr>
   </tr>
