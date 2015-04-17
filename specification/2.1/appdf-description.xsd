@@ -542,33 +542,9 @@
 
     <xsd:complexType name="typeInAppStoreSpecific">
         <xsd:sequence>
-            <xsd:element name="amazon" maxOccurs="1" minOccurs="0" type="typeInAppAmazon" />
-            <xsd:element name="slideme" maxOccurs="1" minOccurs="0" type="typeInAppSlideme" />
+            <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="skip" />
         </xsd:sequence>
     </xsd:complexType>
-
-    <!--amazon-->
-    <xsd:complexType name="typeInAppAmazon">
-        <xsd:sequence>
-            <xsd:element name="additional-file-delivered" type="typeYesNo" />
-            <xsd:element name="small-icon" type="typeImage" />
-            <xsd:element name="large-icon" type="typeImage" />
-            <xsd:element name="calculated-prices" type="typeYesNo" />
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <!--slideme-->
-    <xsd:complexType name="typeInAppSlideme">
-        <xsd:sequence>
-            <xsd:element name="test-mode" type="typeInAppSlidemeTestMode" />
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:simpleType name="typeInAppSlidemeTestMode">
-        <xsd:restriction base="xsd:string">
-            <xsd:pattern value="disabled|success|failure" />
-        </xsd:restriction>
-    </xsd:simpleType>
 
     <xsd:complexType name="typeInAppDescriptionLocalization">
         <xsd:complexContent>
