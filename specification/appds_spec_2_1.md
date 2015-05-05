@@ -6536,10 +6536,6 @@ Top level subtags correspond to the application AppDF ids from the following tab
     <td>amazon</td>
   </tr>
   <tr>
-    <td>Opera Mobile Store</td>
-    <td>opera</td>
-  </tr>
-  <tr>
     <td>Yandex.Store</td>
     <td>yandex</td>
   </tr>
