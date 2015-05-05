@@ -521,42 +521,49 @@ The main tag. Contains all information required for publishing.
 <table>
   <tr>
     <th>Store</th>
+    <th>draft</th>
     <th>alpha</th>
     <th>beta</th>
     <th>rollout</th>
   </tr>
   <tr>
     <td>Google Play</td>
+    <td>supported</td>
     <td>supported, "ALPHA"</td>
     <td>supported, "BETA"</td>
     <td>suported</td>
   </tr>
   <tr>
     <td>Yandex.Store</td>
-    <td>has an analogue, "Draft" mode</td>
-    <td>has an analogue,"Draft" mode</td>
+    <td>supported</td>
+    <td>N/S</td>
+    <td>N/S</td>
     <td>N/S</td>
   </tr>
   <tr>
     <td>Amazon AppStore</td>
+    <td>supported</td>
     <td>N/S</td>
     <td>N/S</td>
     <td>N/S</td>
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
+    <td>supported</td>
     <td>N/S</td>
     <td>N/S</td>
     <td>N/S</td>
   </tr>
   <tr>
     <td>GALAXY Apps</td>
+    <td>supported</td>
     <td>N/S</td>
     <td>N/S</td>
     <td>N/S</td>
   </tr>
   <tr>
     <td>SlideME</td>
+    <td>supported</td>
     <td>N/S</td>
     <td>N/S</td>
     <td>N/S</td>
