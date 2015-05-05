@@ -5795,14 +5795,14 @@ No attributes.
 Example
 ```xml
 <opera>
-  <product-type>yes</product-type>
+  <product-type>freeware</product-type>
 </opera>
 ```
 <table>
   <tr>
     <th>Tag</th>
     <th>Required</th>
-    <th>Amazon name</th>
+    <th>Opera name</th>
     <th>Possible values</th>
     <th>Comments</th>
   </tr>
