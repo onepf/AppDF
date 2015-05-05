@@ -7081,7 +7081,7 @@ A trial period of the subscription, in days.
     <td><categorization/subcategory<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website<br>apk-files/apk-file/apk-alias</td>
     <td>categorization/subcategory</td>
     <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)<br>requirements/supported-languages<br>requirements/supported-resolutions<br>requirements/features</td>
-    <td>categorization/subcategory<br>description/texts/keywords<br>price/trial-version<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising<br>requirements/features/root</td>
+    <td>categorization/subcategory<br>description/texts/keywords<br>price/trial-version<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising<br>requirements/features/root<br>requirements/features/gms</td>
   </tr>
   <tr>
   </tr>
