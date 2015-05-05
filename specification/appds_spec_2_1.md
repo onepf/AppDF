@@ -1154,7 +1154,7 @@ Comma separated the list of keywords. As everything inside the `<description>` t
 
 ##### <a name="description-texts-short-description"/>description/texts/short-description
 
-Optional.  
+Required.  
 No attributes.  
 Maximum length: the first tag should be 80 characters or shorter.
 
@@ -6997,6 +6997,14 @@ A trial period of the subscription, in days.
     <td>yes</td>
   </tr>
   <tr>
+    <th>short-description</th>
+    <td>yes</td>
+    <td>yes</td>
+    <td>yes</td>
+    <td>no</td>
+    <td>yes</td>
+  </tr>
+  <tr>
     <th>full-description</th>
     <td>yes</td>
     <td>yes</td>
@@ -7070,9 +7078,9 @@ A trial period of the subscription, in days.
   </tr>
   <tr>
     <th>store-specific obligatory requirements that have direct mapping in AppDF</th>
-    <td>short-description (can be taken from AppDF full description)<br>large promo<br>privacy-policy<br>availability/countries<br>consent<br>content-rating<br>content-descriptors<br>consent/us-export-laws<br>consent/google-android-content-guidelines</td>
-    <td><categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website<br>apk-files/apk-file/apk-alias</td>
-    <td>categorization/subcategory<br>description/texts/short-description (can be taken from AppDF full description)</td>
+    <td>large promo<br>privacy-policy<br>availability/countries<br>consent<br>content-rating<br>content-descriptors<br>consent/us-export-laws<br>consent/google-android-content-guidelines</td>
+    <td><categorization/subcategory<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website<br>apk-files/apk-file/apk-alias</td>
+    <td>categorization/subcategory<</td>
     <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)<br>requirements/supported-languages<br>requirements/supported-resolutions<br>requirements/features</td>
     <td>categorization/subcategory<br>description/texts/keywords<br>price/trial-version<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising<br>requirements/features/root</td>
   </tr>
