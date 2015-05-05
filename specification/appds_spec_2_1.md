@@ -6614,14 +6614,24 @@ All Amazon Appstore - specific information is collected in this section. Current
 Optional.  
 No attributes.
 
-All SlideME-specific information is collected in this section.
+All SlideME-specific information is collected in this section.  
 
-##### <a name="in-app-item--sub-desc-store-spec-slideme-test-mode"/>description/store-specific/slideme/test-mode  
-
-Required.  
-No attributes.
-
-Test mode to check the app behaviour under different scenarios. Possible values: `disabled` (Disabled), `success` (Simulate Success), `failure` (Simulate Failure).
+<table>
+ <tr>
+    <th>Tag</th>
+    <th>Required</th>
+    <th>Amazon name</th>
+    <th>Possible values</th>
+    <th>Comments</th>
+ </tr>
+ <tr>
+    <td>test-mode</td>
+    <td>Yes</td>
+    <td>Test mode</td>
+    <td>disabled | success | failure</td>
+    <td>Test mode to check the app behaviour under different scenarios.</td>
+  </tr>
+</table> 
 
 ### <a name="in-app-item--sub-desc-store-spec-desc-loc"/>description-localization
 
