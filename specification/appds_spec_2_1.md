@@ -5798,7 +5798,6 @@ Example
   <product-type>yes</product-type>
 </opera>
 ```
-
 <table>
   <tr>
     <th>Tag</th>
@@ -5814,7 +5813,7 @@ Example
     <td>commercial | shareware | freeware</td>
     <td>Commercial (Buy only), Shareware (Try and Buy), Freeware (Free)</td>
   </tr>
- </table>  
+</table>  
  
 ### <a name="in-app-purchases"/>in-app-purchases
 
