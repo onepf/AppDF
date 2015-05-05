@@ -1901,10 +1901,10 @@ High resolution application icon. Must be in PNG format. Different stores requir
     <td>Opera Mobile Store</td>
     <td>Yes</td>
     <td>Thumbnail</td>
-    <td>No</td>
+    <td>Yes</td>
     <td>No</td>
     <td>512x512</td>
-    <td><!--todo check types PNG, JPG, GIF--></td>
+    <td>Marked as "optiona" but required</td>
   </tr>
   <tr>
     <td>GALAXY Apps</td>
@@ -7023,7 +7023,7 @@ A trial period of the subscription, in days.
     <th>app-icon</th>
     <td>yes</td>
     <td>yes</td>
-    <td>no</td>
+    <td>yes</td>
     <td>yes</td>
     <td>yes</td>
   </tr>
