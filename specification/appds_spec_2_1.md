@@ -6504,9 +6504,75 @@ Large in-app icon. Must be in PNG format. As everything inside the `<description
 #### <a name="in-app-item--sub-desc-store-spec"/>description/store-specific  
 
 Optional.  
-No attributes.  
+No attributes.
 
-All store specific information is collected in this section. Currently the following stores are supported: Amazon Appstore, SlideME.
+All store specific information is collected in this section.  
+
+Example
+```xml
+<store-specific>
+  <amazon>
+    <additional-file-delivered>yes</additional-file-delivered>
+  </amazon>
+  <slideme>
+    
+  </slideme>
+</store-specific>
+```
+
+Top level subtags correspond to the application AppDF ids from the following table:
+
+<table>
+  <tr>
+    <th>Application Store</th>
+    <th>AppDF store id</th>
+  </tr>
+  <tr>
+    <td>Google Play</td>
+    <td>google</td>
+  </tr>
+  <tr>
+    <td>Amazon AppStore</td>
+    <td>amazon</td>
+  </tr>
+  <tr>
+    <td>Opera Mobile Store</td>
+    <td>opera</td>
+  </tr>
+  <tr>
+    <td>Yandex.Store</td>
+    <td>yandex</td>
+  </tr>
+  <tr>
+    <td>SlideME</td>
+    <td>slideme</td>
+  </tr>
+  <tr>
+    <td>GALAXY Apps</td>
+    <td>samsung</td>
+  </tr>
+  <!--
+  <tr>
+    <td>NOOK apps</td>
+    <td>nook</td>
+  </tr>
+  <tr>
+    <td>AppsLib</td>
+    <td>appslib</td>
+  </tr>
+  -->
+</table>
+
+Each store subtag can replace any of the non-store specific parameters from the`<description>` tag. For example if we want to use another title for for the in-app for Amazon AppStore we can include the following code:
+```xml
+<store-specific>
+  <amazon>
+    <title>Really red skin.</title>
+  </amazon>
+</store-specific>
+```
+
+There are also some optional and required store specific parameters you can/must use if you want that your AppDF file is supported by the corresponding store.
 
 ##### <a name="in-app-item--sub-desc-store-spec-amazon"/>description/store-specific/amazon
 
