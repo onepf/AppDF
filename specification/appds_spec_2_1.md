@@ -5794,9 +5794,9 @@ No attributes.
 
 Example
 ```xml
-<amazon>
+<opera>
   <product-type>yes</product-type>
-</amazon>
+</opera>
 ```
 
 <table>
@@ -5816,7 +5816,7 @@ Example
   </tr>
  </table>  
  
- ### <a name="in-app-purchases"/>in-app-purchases
+### <a name="in-app-purchases"/>in-app-purchases
 
 Optional.  
 No attributes.  
