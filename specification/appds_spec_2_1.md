@@ -612,14 +612,14 @@ Value could be either `application` or `game`.
     <td>Amazon AppStore</td>
     <td>Yes</td>
     <td>General Information / Category</td>
-    <td>Yes</td>
+    <td>No</td>
     <td>Games is an item in the application category list</td>
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
     <td>Yes</td>
     <td>Category</td>
-    <td>Yes</td>
+    <td>No</td>
     <td>Games is an item in the application category list</td>
   </tr>
   <tr>
@@ -633,7 +633,7 @@ Value could be either `application` or `game`.
     <td>SlideME</td>
     <td>Yes</td>
     <td>Category</td>
-    <td>Yes</td>
+    <td>No</td>
     <td>Games is an item in the application category list</td>
   </tr>
   <!--
@@ -6975,10 +6975,10 @@ A trial period of the subscription, in days.
   <tr>
     <th>type</th>
     <td>yes</td>
-    <td>yes</td>
-    <td>yes</td>
     <td>no</td>
-    <td>yes</td>
+    <td>no</td>
+    <td>no</td>
+    <td>no</td>
   </tr>
   <tr>
     <th>category</th>
