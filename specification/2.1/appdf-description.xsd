@@ -471,7 +471,7 @@
 
     <xsd:simpleType name="typeAttrApplicationDistributionType">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="alpha|beta|rollout|production" />
+            <xsd:pattern value="draft|alpha|beta|rollout|production" />
         </xsd:restriction>
     </xsd:simpleType>
 
