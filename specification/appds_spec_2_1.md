@@ -6577,68 +6577,36 @@ No attributes.
 
 All Amazon Appstore - specific information is collected in this section. Currently this section contains small and large icons, are additional assets will be delivered or not.
 
-##### <a name="in-app-item--sub-desc-store-spec-amazon-file-delivered"/>description/store-specific/amazon/additional-file-delivered  
-
-Required.  
-No attributes.  
-
-This element describes whether you'll deliver additional assets after purchasing or not.
-
-##### <a name="in-app-item--sub-desc-store-spec-amazon-small-icon"/>description/store-specific/amazon/small-icon  
-
-Required.  
-Attributes: `width`, `height`.
-
-Small in-app icon.
-
 <table>
   <tr>
-    <th>Attribute</th>
-    <th>Possible values</th>
+    <th>Tag</th>
     <th>Required</th>
-    <th>How it works</th>
+    <th>Amazon name</th>
+    <th>Possible values</th>
+    <th>Comments</th>
   </tr>
   <tr>
-    <td>width</td>
-    <td>A positive integer</td>
+    <td>additional-file-delivered</td>
     <td>Yes</td>
+    <td>General Information / Content delivery</td>
+    <td>yes | no</td>
+    <td>This element describes whether you'll deliver additional assets after purchasing or not.</td>
+  </tr>
+  <tr>
+    <td>small-icon</td>
+    <td>Yes</td>
+    <td>Images / Small icon</td>
+    <td>PNG icon</td>
     <td>The icon must be 114x114, PNG.</td>
   </tr>
   <tr>
-    <td>height</td>
-    <td>A positive integer</td>
+    <td>large-icon</td>
     <td>Yes</td>
-    <td>The icon must be 114x114, PNG.</td>
-  </tr>
-</table>
-
-##### <a name="in-app-item--sub-desc-store-spec-amazon-large-icon"/>description/store-specific/amazon/large-icon 
-
-Required.  
-Attributes: `width`, `height`.
-
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Possible values</th>
-    <th>Required</th>
-    <th>How it works</th>
-  </tr>
-  <tr>
-    <td>width</td>
-    <td>A positive integer</td>
-    <td>Yes</td>
+    <td>Images / Large icon</td>
+    <td>PNG icon</td>
     <td>The icon must be 512x512, PNG.</td>
   </tr>
-  <tr>
-    <td>height</td>
-    <td>A positive integer</td>
-    <td>Yes</td>
-    <td>The icon must be 512x512, PNG.</td>
-  </tr>
-</table>
-
-Large in-app icon.
+ </table>
 
 ##### <a name="in-app-item--sub-desc-store-spec-slideme"/>description/store-specific/slideme
 
