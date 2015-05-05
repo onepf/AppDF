@@ -7060,11 +7060,11 @@ A trial period of the subscription, in days.
     <td>???</td>
   </tr>
   <tr>
-    <th>base-price/free checkbox</th>
-    <td>yes</td>
-    <td>yes</td>
-    <td>yes</td>
-    <td>yes</td>
+    <th>price</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
     <td>yes</td>
   </tr>
   <tr>
