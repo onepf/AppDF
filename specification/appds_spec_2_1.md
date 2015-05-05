@@ -7053,7 +7053,7 @@ A trial period of the subscription, in days.
     <td>???</td>
   </tr>
   <tr>
-    <th>base-price (for paid apps)</th>
+    <th>base-price/free checkbox</th>
     <td>yes</td>
     <td>yes</td>
     <td>yes</td>
