@@ -535,7 +535,7 @@
             <xsd:element name="text" maxOccurs="unbounded" type="typeNonEmptyString" />
             <xsd:element name="small-icon" maxOccurs="unbounded" minOccurs="0" type="typeImage" />
             <xsd:element name="large-icon" maxOccurs="unbounded" minOccurs="0" type="typeImage" />
-            <xsd:element name="store-specific" maxOccurs="1" minOccurs="0"
+            <xsd:element name="store-specific" minOccurs="0"
                 type="typeInAppStoreSpecific" />
         </xsd:sequence>
     </xsd:complexType>
