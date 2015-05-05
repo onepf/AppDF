@@ -7061,14 +7061,6 @@ A trial period of the subscription, in days.
     <td>yes</td>
   </tr>
   <tr>
-    <th>apk-files</th>
-    <td>yes</td>
-    <td>yes</td>
-    <td>yes</td>
-    <td>yes</td>
-    <td>yes</td>
-  </tr>
-  <tr>
     <th>customer-support/email</th>
     <td>yes</td>
     <td>yes</td>
