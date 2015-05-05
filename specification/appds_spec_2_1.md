@@ -6515,7 +6515,7 @@ Example
     <additional-file-delivered>yes</additional-file-delivered>
   </amazon>
   <slideme>
-    
+    <test-mode>disabled</test-mode> 
   </slideme>
 </store-specific>
 ```
