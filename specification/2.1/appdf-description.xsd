@@ -65,8 +65,7 @@
         <xsd:sequence>
             <xsd:element name="title" maxOccurs="unbounded" type="xsd:string" />
             <xsd:element name="keywords" minOccurs="0" type="xsd:string" />
-            <xsd:element name="short-description" maxOccurs="unbounded" minOccurs="0"
-                type="xsd:string" />
+            <xsd:element name="short-description" maxOccurs="unbounded" type="typeNonEmptyString" />
             <xsd:element name="full-description" type="typeDescriptionTextsFullDescription" />
             <xsd:element name="features" minOccurs="0" type="typeDescriptionTextsFeatures" />
             <xsd:element name="recent-changes" minOccurs="0" type="xsd:string" />
