@@ -457,6 +457,7 @@ List of Tags:
 	* [store-specific](#store-specific)
 		* [amazon](#store-specific-amazon)
 		* [slideme](#store-specific-slideme)
+		* [opera](#store-specific-opera)
 	* [in-app-purchases](#in-app-purchases)   
 		* [item | subscription](#in-app-item--sub)
 			* [Attributes](#in-app-item--sub-attrs)
@@ -5786,7 +5787,36 @@ Zulu (South Africa)</td>
   </tr>
 </table>
 
-### <a name="in-app-purchases"/>in-app-purchases
+#### <a name="store-specific-opera"/>store-specific/opera
+
+Optional.  
+No attributes.
+
+Example
+```xml
+<amazon>
+  <product-type>yes</product-type>
+</amazon>
+```
+
+<table>
+  <tr>
+    <th>Tag</th>
+    <th>Required</th>
+    <th>Amazon name</th>
+    <th>Possible values</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td>product-type</td>
+    <td>Yes</td>
+    <td>Type</td>
+    <td>commercial | shareware | freeware</td>
+    <td>Commercial (Buy only), Shareware (Try and Buy), Freeware (Free)</td>
+  </tr>
+ </table>  
+ 
+ ### <a name="in-app-purchases"/>in-app-purchases
 
 Optional.  
 No attributes.  
