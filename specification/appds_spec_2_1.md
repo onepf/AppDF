@@ -2008,7 +2008,7 @@ Large promotion picture usually used by the stores on the PC websites, some stor
     <td>No</td>
     <td>No</td>
     <td>1024x500 (landscape only)</td>
-    <td>PNG or JPG</td>
+    <td>PNG, JPG</td>
   </tr>
   <tr>
     <td>Opera Mobile Store</td>
@@ -2035,7 +2035,7 @@ Large promotion picture usually used by the stores on the PC websites, some stor
     <td>No</td>
     <td>No</td>
     <td>1024x500</td>
-    <td>PNG or JPG</td>
+    <td>PNG, JPG</td>
   </tr>
   <!--
   <tr>
@@ -2265,7 +2265,7 @@ Example
     <td>800x480 px, 1024x600 px, 1280x720 px,
 1280x800 px, 1920x1080 px, 1920x1200 px,
 or 2560x1600 px (portrait or landscape)</td>
-    <td>JPG or PNG</td>
+    <td>JPG, PNG</td>
     <td>3 — 10</td>
   </tr>
   <tr>
