@@ -6575,7 +6575,7 @@ There are also some optional and required store specific parameters you can/must
 Optional.  
 No attributes.
 
-All Amazon Appstore - specific information is collected in this section. Currently this section contains small and large icons, are additional assets will be delivered or not.  
+All Amazon Appstore - specific information is collected in this section.
 
 <table>
  <tr>
