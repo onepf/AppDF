@@ -6575,11 +6575,40 @@ There are also some optional and required store specific parameters you can/must
 Optional.  
 No attributes.
 
-All Amazon Appstore - specific information is collected in this section. Currently this section contains small and large icons, are additional assets will be delivered or not.
+All Amazon Appstore - specific information is collected in this section. Currently this section contains small and large icons, are additional assets will be delivered or not.  
 
-
+<table>
+ <tr>
+    <th>Tag</th>
+    <th>Required</th>
+    <th>Amazon name</th>
+    <th>Possible values</th>
+    <th>Comments</th>
+ </tr>
+ <tr>
+    <td>additional-file-delivered</td>
+    <td>Yes</td>
+    <td>General Information / Content delivery</td>
+    <td>yes | no</td>
+    <td>This element describes whether you'll deliver additional assets after purchasing or not.</td>
+  </tr>
+  <tr>
+    <td>small-icon</td>
+    <td>Yes</td>
+    <td>Images / Small icon</td>
+    <td>PNG icon</td>
+    <td>The icon must be 114x114, PNG.</td>
+  </tr>
+  <tr>
+    <td>large-icon</td>
+    <td>Yes</td>
+    <td>Images / Large icon</td>
+    <td>PNG icon</td>
+    <td>The icon must be 512x512, PNG.</td>
+  </tr>
+</table> 
  
-
+ 
 ##### <a name="in-app-item--sub-desc-store-spec-slideme"/>description/store-specific/slideme
 
 Optional.  
