@@ -7082,7 +7082,7 @@ A trial period of the subscription, in days.
     <td>categorization/subcategory</td>
     <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)<br>requirements/supported-languages<br>requirements/supported-resolutions<br>requirements/features</td>
     <td>categorization/subcategory<br>description/texts/keywords<br>price/trial-version<br>
-content-description/content-rating<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising<br>requirements/features/root<br>requirements/features/gms</td>
+content-description/content-rating<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising<br>requirements/features/root<br>requirements/features/gms<br>consent</td>
   </tr>
   <tr>
   </tr>
@@ -7092,7 +7092,7 @@ content-description/content-rating<br>content-description/included-activities/in
     <td>App title (can be taken fron description/text/title)<br>Apply Amazon DRM?<br>Images & Multimedia / Small icon<br>Content Rating / Intolerance<br>Content Rating / Academic<br>Content Rating / Rude Humor<br><import-export></td>
     <td></td>
     <td></td>
-    <td>Default language<br>Licence ( All Rights Reserved | Apache License 2.0 | Commercial Royalty-Free | Common Development and Distribution License (CDDL) | Eclipse Public License (EPL) | FREE Licensed Closed Source - Public Domain | GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3 | GNU General Public License (GPL) v2 | GNU General Public License (GPL) v3 | GNU Library General Public License (LGPL) | GNU Library General Public License (LGPL) v3 | Mozilla Public License 1.1 (MPL) | New BSD License | Other / Proprietary | The MIT License)<br>Requires third-party libraries (yes | no)<br>subsubcategory for certain items</td>
+    <td>Default language (can be taken from the APK)<br>Licence ( All Rights Reserved | Apache License 2.0 | Commercial Royalty-Free | Common Development and Distribution License (CDDL) | Eclipse Public License (EPL) | FREE Licensed Closed Source - Public Domain | GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) v3 | GNU General Public License (GPL) v2 | GNU General Public License (GPL) v3 | GNU Library General Public License (LGPL) | GNU Library General Public License (LGPL) v3 | Mozilla Public License 1.1 (MPL) | New BSD License | Other / Proprietary | The MIT License)<br>Requires third-party libraries (yes | no)<br>subsubcategory for certain items</td>
   </tr>
   <tr>
   </tr>
