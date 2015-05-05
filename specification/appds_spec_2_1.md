@@ -7062,7 +7062,7 @@ A trial period of the subscription, in days.
   <tr>
     <th>price</th>
     <td></td>
-    <td></td>
+    <td>yes</td>
     <td></td>
     <td></td>
     <td>yes</td>
