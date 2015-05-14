@@ -7030,7 +7030,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>yes</td>
     <td>yes</td>
-    <td>yes</td>
+    <td>yes (from APK)</td>
   </tr>
   <tr>
     <th>short-description</th>
@@ -7086,7 +7086,7 @@ A trial period of the subscription, in days.
     <td>yes</td>
     <td>no</td>
     <td>no</td>
-    <td>???</td>
+    <td>+-</td>
   </tr>
   <tr>
     <th>price</th>
