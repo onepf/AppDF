@@ -7093,7 +7093,7 @@ A trial period of the subscription, in days.
     <td></td>
     <td>yes</td>
     <td></td>
-    <td></td>
+    <td>yes</td>
     <td>yes</td>
   </tr>
   <tr>
@@ -7109,7 +7109,7 @@ A trial period of the subscription, in days.
     <td>large promo<br>privacy-policy<br>availability/countries<br>consent<br>content-rating<br>content-descriptors<br>consent/us-export-laws<br>consent/google-android-content-guidelines</td>
     <td><categorization/subcategory<br>description/texts/features<br>description/texts/recent-changes<br>description/images/screenshots/screenshot (3+ vs 2+)<br>content-description/content-rating<br>content-description/content-descriptors<br>content-description/included-activities<br>availability/countries<br>customer-support/phone<br>customer-support/website<br>apk-files/apk-file/apk-alias</td>
     <td>categorization/subcategory</td>
-    <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)<br>requirements/supported-languages<br>requirements/supported-resolutions<br>requirements/features</td>
+    <td>categorization/subcategory<br>description/images/screenshots/screenshot (4+ vs 2+)<br>requirements/supported-languages<br>requirements/supported-resolutions<br>requirements/features/gms</td>
     <td>categorization/subcategory<br>description/texts/keywords<br>price/trial-version<br>
 content-description/content-rating<br>content-description/included-activities/in-app-billing<br>content-description/included-activities/advertising<br>requirements/features/root<br>requirements/features/gms<br>consent</td>
   </tr>
