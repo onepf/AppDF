@@ -1,3 +1,9 @@
+Dear friends
+============
+Currently our small team doesn't have enough time to support and develop the project.
+I hope in the nearest future we will continue the work.    
+Thank you!
+
 AppDF
 =====
 
@@ -74,10 +80,10 @@ There are two ways to explore the samples:
 AppDF Editor 
 =====
 We are developing an HTML5 AppDF editor (client-side only code). Current preview version that does not support several important features yet could be found at:
-http://www.onepf.org/editor/index.html
+http://onepf.org/editor
 
 Source code here:
-https://github.com/onepf/AppDF/tree/master/tools/editor/js
+https://github.com/onepf/AppDF-tools-editor
 
 License 
 =====
